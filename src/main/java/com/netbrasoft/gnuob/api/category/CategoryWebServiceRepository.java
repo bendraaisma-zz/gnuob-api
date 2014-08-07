@@ -1,8 +1,7 @@
-package com.netbrasoft.gnuob.generic.category;
+package com.netbrasoft.gnuob.api.category;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -64,14 +63,7 @@ public class CategoryWebServiceRepository {
 		paramFindCategory.setPaging(paramPaging);
 		paramFindCategory.setOrderBy(paramOrderBy);
 		FindCategoryResponse findCategoryResponse = categoryWebServiceImpl.findCategory(paramFindCategory, paramMetaData);
-
-		ArrayList<Category> findCategoryReturn = new ArrayList<Category>();
-
-		for (Object object : findCategoryResponse.getReturn()) {
-			findCategoryReturn.add((Category) object);
-		}
-
-		return findCategoryReturn;
+		return findCategoryResponse.getReturn();
 	}
 
 	public Category merge(MetaData paramMetaData, Category paramCategory) throws GNUOpenBusinessServiceException_Exception {

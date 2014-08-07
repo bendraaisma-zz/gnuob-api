@@ -1,4 +1,4 @@
-package com.netbrasoft.gnuob.generic.order;
+package com.netbrasoft.gnuob.api.order;
 
 import java.net.MalformedURLException;
 import java.net.URL;

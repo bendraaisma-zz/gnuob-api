@@ -20,9 +20,9 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;extension base="{http://gnuob.netbrasoft.com/}access">
  *       &lt;sequence>
+ *         &lt;element name="contents" type="{http://gnuob.netbrasoft.com/}content" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="position" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="subCategories" type="{http://gnuob.netbrasoft.com/}subCategory" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
@@ -34,9 +34,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "category", propOrder = {
+    "contents",
     "description",
     "name",
-    "position",
     "subCategories"
 })
 public class Category
@@ -44,11 +44,41 @@ public class Category
     implements Serializable
 {
 
+    @XmlElement(nillable = true)
+    protected List<Content> contents;
     protected String description;
     protected String name;
-    protected Integer position;
     @XmlElement(nillable = true)
     protected List<SubCategory> subCategories;
+
+    /**
+     * Gets the value of the contents property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the contents property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getContents().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Content }
+     * 
+     * 
+     */
+    public List<Content> getContents() {
+        if (contents == null) {
+            contents = new ArrayList<Content>();
+        }
+        return this.contents;
+    }
 
     /**
      * Gets the value of the description property.
@@ -96,30 +126,6 @@ public class Category
      */
     public void setName(String value) {
         this.name = value;
-    }
-
-    /**
-     * Gets the value of the position property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public Integer getPosition() {
-        return position;
-    }
-
-    /**
-     * Sets the value of the position property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setPosition(Integer value) {
-        this.position = value;
     }
 
     /**

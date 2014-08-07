@@ -1,4 +1,4 @@
-package com.netbrasoft.gnuob.generic.contract;
+package com.netbrasoft.gnuob.api.contract;
 
 import java.net.MalformedURLException;
 import java.net.URL;
