@@ -6,26 +6,26 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.netbrasoft.gnuob.CountOrder;
-import com.netbrasoft.gnuob.CountOrderResponse;
-import com.netbrasoft.gnuob.FindOrder;
-import com.netbrasoft.gnuob.FindOrderById;
-import com.netbrasoft.gnuob.FindOrderByIdResponse;
-import com.netbrasoft.gnuob.FindOrderResponse;
-import com.netbrasoft.gnuob.GNUOpenBusinessServiceException_Exception;
-import com.netbrasoft.gnuob.MergeOrder;
-import com.netbrasoft.gnuob.MergeOrderResponse;
-import com.netbrasoft.gnuob.MetaData;
-import com.netbrasoft.gnuob.Order;
-import com.netbrasoft.gnuob.OrderBy;
-import com.netbrasoft.gnuob.OrderWebServiceImpl;
-import com.netbrasoft.gnuob.OrderWebServiceImplService;
-import com.netbrasoft.gnuob.Paging;
-import com.netbrasoft.gnuob.PersistOrder;
-import com.netbrasoft.gnuob.PersistOrderResponse;
-import com.netbrasoft.gnuob.RefreshOrder;
-import com.netbrasoft.gnuob.RefreshOrderResponse;
-import com.netbrasoft.gnuob.RemoveOrder;
+import com.netbrasoft.gnuob.api.CountOrder;
+import com.netbrasoft.gnuob.api.CountOrderResponse;
+import com.netbrasoft.gnuob.api.FindOrder;
+import com.netbrasoft.gnuob.api.FindOrderById;
+import com.netbrasoft.gnuob.api.FindOrderByIdResponse;
+import com.netbrasoft.gnuob.api.FindOrderResponse;
+import com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException_Exception;
+import com.netbrasoft.gnuob.api.MergeOrder;
+import com.netbrasoft.gnuob.api.MergeOrderResponse;
+import com.netbrasoft.gnuob.api.MetaData;
+import com.netbrasoft.gnuob.api.Order;
+import com.netbrasoft.gnuob.api.OrderBy;
+import com.netbrasoft.gnuob.api.OrderWebServiceImpl;
+import com.netbrasoft.gnuob.api.OrderWebServiceImplService;
+import com.netbrasoft.gnuob.api.Paging;
+import com.netbrasoft.gnuob.api.PersistOrder;
+import com.netbrasoft.gnuob.api.PersistOrderResponse;
+import com.netbrasoft.gnuob.api.RefreshOrder;
+import com.netbrasoft.gnuob.api.RefreshOrderResponse;
+import com.netbrasoft.gnuob.api.RemoveOrder;
 
 @Repository("OrderWebServiceRepository")
 public class OrderWebServiceRepository {

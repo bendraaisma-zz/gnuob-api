@@ -6,26 +6,26 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.netbrasoft.gnuob.CountUser;
-import com.netbrasoft.gnuob.CountUserResponse;
-import com.netbrasoft.gnuob.FindUser;
-import com.netbrasoft.gnuob.FindUserById;
-import com.netbrasoft.gnuob.FindUserByIdResponse;
-import com.netbrasoft.gnuob.FindUserResponse;
-import com.netbrasoft.gnuob.GNUOpenBusinessServiceException_Exception;
-import com.netbrasoft.gnuob.MergeUser;
-import com.netbrasoft.gnuob.MergeUserResponse;
-import com.netbrasoft.gnuob.MetaData;
-import com.netbrasoft.gnuob.OrderBy;
-import com.netbrasoft.gnuob.Paging;
-import com.netbrasoft.gnuob.PersistUser;
-import com.netbrasoft.gnuob.PersistUserResponse;
-import com.netbrasoft.gnuob.RefreshUser;
-import com.netbrasoft.gnuob.RefreshUserResponse;
-import com.netbrasoft.gnuob.RemoveUser;
-import com.netbrasoft.gnuob.User;
-import com.netbrasoft.gnuob.UserWebServiceImpl;
-import com.netbrasoft.gnuob.UserWebServiceImplService;
+import com.netbrasoft.gnuob.api.CountUser;
+import com.netbrasoft.gnuob.api.CountUserResponse;
+import com.netbrasoft.gnuob.api.FindUser;
+import com.netbrasoft.gnuob.api.FindUserById;
+import com.netbrasoft.gnuob.api.FindUserByIdResponse;
+import com.netbrasoft.gnuob.api.FindUserResponse;
+import com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException_Exception;
+import com.netbrasoft.gnuob.api.MergeUser;
+import com.netbrasoft.gnuob.api.MergeUserResponse;
+import com.netbrasoft.gnuob.api.MetaData;
+import com.netbrasoft.gnuob.api.OrderBy;
+import com.netbrasoft.gnuob.api.Paging;
+import com.netbrasoft.gnuob.api.PersistUser;
+import com.netbrasoft.gnuob.api.PersistUserResponse;
+import com.netbrasoft.gnuob.api.RefreshUser;
+import com.netbrasoft.gnuob.api.RefreshUserResponse;
+import com.netbrasoft.gnuob.api.RemoveUser;
+import com.netbrasoft.gnuob.api.User;
+import com.netbrasoft.gnuob.api.UserWebServiceImpl;
+import com.netbrasoft.gnuob.api.UserWebServiceImplService;
 
 @Repository("UserWebServiceRepository")
 public class UserWebServiceRepository {

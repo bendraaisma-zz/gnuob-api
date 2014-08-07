@@ -6,26 +6,26 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.netbrasoft.gnuob.CountGroup;
-import com.netbrasoft.gnuob.CountGroupResponse;
-import com.netbrasoft.gnuob.FindGroup;
-import com.netbrasoft.gnuob.FindGroupById;
-import com.netbrasoft.gnuob.FindGroupByIdResponse;
-import com.netbrasoft.gnuob.FindGroupResponse;
-import com.netbrasoft.gnuob.GNUOpenBusinessServiceException_Exception;
-import com.netbrasoft.gnuob.Group;
-import com.netbrasoft.gnuob.GroupWebServiceImpl;
-import com.netbrasoft.gnuob.GroupWebServiceImplService;
-import com.netbrasoft.gnuob.MergeGroup;
-import com.netbrasoft.gnuob.MergeGroupResponse;
-import com.netbrasoft.gnuob.MetaData;
-import com.netbrasoft.gnuob.OrderBy;
-import com.netbrasoft.gnuob.Paging;
-import com.netbrasoft.gnuob.PersistGroup;
-import com.netbrasoft.gnuob.PersistGroupResponse;
-import com.netbrasoft.gnuob.RefreshGroup;
-import com.netbrasoft.gnuob.RefreshGroupResponse;
-import com.netbrasoft.gnuob.RemoveGroup;
+import com.netbrasoft.gnuob.api.CountGroup;
+import com.netbrasoft.gnuob.api.CountGroupResponse;
+import com.netbrasoft.gnuob.api.FindGroup;
+import com.netbrasoft.gnuob.api.FindGroupById;
+import com.netbrasoft.gnuob.api.FindGroupByIdResponse;
+import com.netbrasoft.gnuob.api.FindGroupResponse;
+import com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException_Exception;
+import com.netbrasoft.gnuob.api.Group;
+import com.netbrasoft.gnuob.api.GroupWebServiceImpl;
+import com.netbrasoft.gnuob.api.GroupWebServiceImplService;
+import com.netbrasoft.gnuob.api.MergeGroup;
+import com.netbrasoft.gnuob.api.MergeGroupResponse;
+import com.netbrasoft.gnuob.api.MetaData;
+import com.netbrasoft.gnuob.api.OrderBy;
+import com.netbrasoft.gnuob.api.Paging;
+import com.netbrasoft.gnuob.api.PersistGroup;
+import com.netbrasoft.gnuob.api.PersistGroupResponse;
+import com.netbrasoft.gnuob.api.RefreshGroup;
+import com.netbrasoft.gnuob.api.RefreshGroupResponse;
+import com.netbrasoft.gnuob.api.RemoveGroup;
 
 @Repository("GroupWebServiceRepository")
 public class GroupWebServiceRepository {

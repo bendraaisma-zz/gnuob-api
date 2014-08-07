@@ -6,26 +6,26 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.netbrasoft.gnuob.CountOffer;
-import com.netbrasoft.gnuob.CountOfferResponse;
-import com.netbrasoft.gnuob.FindOffer;
-import com.netbrasoft.gnuob.FindOfferById;
-import com.netbrasoft.gnuob.FindOfferByIdResponse;
-import com.netbrasoft.gnuob.FindOfferResponse;
-import com.netbrasoft.gnuob.GNUOpenBusinessServiceException_Exception;
-import com.netbrasoft.gnuob.MergeOffer;
-import com.netbrasoft.gnuob.MergeOfferResponse;
-import com.netbrasoft.gnuob.MetaData;
-import com.netbrasoft.gnuob.Offer;
-import com.netbrasoft.gnuob.OfferWebServiceImpl;
-import com.netbrasoft.gnuob.OfferWebServiceImplService;
-import com.netbrasoft.gnuob.OrderBy;
-import com.netbrasoft.gnuob.Paging;
-import com.netbrasoft.gnuob.PersistOffer;
-import com.netbrasoft.gnuob.PersistOfferResponse;
-import com.netbrasoft.gnuob.RefreshOffer;
-import com.netbrasoft.gnuob.RefreshOfferResponse;
-import com.netbrasoft.gnuob.RemoveOffer;
+import com.netbrasoft.gnuob.api.CountOffer;
+import com.netbrasoft.gnuob.api.CountOfferResponse;
+import com.netbrasoft.gnuob.api.FindOffer;
+import com.netbrasoft.gnuob.api.FindOfferById;
+import com.netbrasoft.gnuob.api.FindOfferByIdResponse;
+import com.netbrasoft.gnuob.api.FindOfferResponse;
+import com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException_Exception;
+import com.netbrasoft.gnuob.api.MergeOffer;
+import com.netbrasoft.gnuob.api.MergeOfferResponse;
+import com.netbrasoft.gnuob.api.MetaData;
+import com.netbrasoft.gnuob.api.Offer;
+import com.netbrasoft.gnuob.api.OfferWebServiceImpl;
+import com.netbrasoft.gnuob.api.OfferWebServiceImplService;
+import com.netbrasoft.gnuob.api.OrderBy;
+import com.netbrasoft.gnuob.api.Paging;
+import com.netbrasoft.gnuob.api.PersistOffer;
+import com.netbrasoft.gnuob.api.PersistOfferResponse;
+import com.netbrasoft.gnuob.api.RefreshOffer;
+import com.netbrasoft.gnuob.api.RefreshOfferResponse;
+import com.netbrasoft.gnuob.api.RemoveOffer;
 
 @Repository("OfferWebServiceRepository")
 public class OfferWebServiceRepository {

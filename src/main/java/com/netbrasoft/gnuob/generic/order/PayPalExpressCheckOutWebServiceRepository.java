@@ -5,17 +5,17 @@ import java.net.URL;
 
 import org.springframework.stereotype.Repository;
 
-import com.netbrasoft.gnuob.DoCheckout;
-import com.netbrasoft.gnuob.DoCheckoutDetails;
-import com.netbrasoft.gnuob.DoCheckoutDetailsResponse;
-import com.netbrasoft.gnuob.DoCheckoutPayment;
-import com.netbrasoft.gnuob.DoCheckoutPaymentResponse;
-import com.netbrasoft.gnuob.DoCheckoutResponse;
-import com.netbrasoft.gnuob.GNUOpenBusinessServiceException_Exception;
-import com.netbrasoft.gnuob.MetaData;
-import com.netbrasoft.gnuob.Order;
-import com.netbrasoft.gnuob.PayPalExpressCheckOutWebServiceImpl;
-import com.netbrasoft.gnuob.PayPalExpressCheckOutWebServiceImplService;
+import com.netbrasoft.gnuob.api.DoCheckout;
+import com.netbrasoft.gnuob.api.DoCheckoutDetails;
+import com.netbrasoft.gnuob.api.DoCheckoutDetailsResponse;
+import com.netbrasoft.gnuob.api.DoCheckoutPayment;
+import com.netbrasoft.gnuob.api.DoCheckoutPaymentResponse;
+import com.netbrasoft.gnuob.api.DoCheckoutResponse;
+import com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException_Exception;
+import com.netbrasoft.gnuob.api.MetaData;
+import com.netbrasoft.gnuob.api.Order;
+import com.netbrasoft.gnuob.api.PayPalExpressCheckOutWebServiceImpl;
+import com.netbrasoft.gnuob.api.PayPalExpressCheckOutWebServiceImplService;
 
 @Repository("PayPalExpressCheckOutWebServiceRepository")
 public class PayPalExpressCheckOutWebServiceRepository {

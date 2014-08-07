@@ -6,26 +6,26 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.netbrasoft.gnuob.Contract;
-import com.netbrasoft.gnuob.ContractWebServiceImpl;
-import com.netbrasoft.gnuob.ContractWebServiceImplService;
-import com.netbrasoft.gnuob.CountContract;
-import com.netbrasoft.gnuob.CountContractResponse;
-import com.netbrasoft.gnuob.FindContract;
-import com.netbrasoft.gnuob.FindContractById;
-import com.netbrasoft.gnuob.FindContractByIdResponse;
-import com.netbrasoft.gnuob.FindContractResponse;
-import com.netbrasoft.gnuob.GNUOpenBusinessServiceException_Exception;
-import com.netbrasoft.gnuob.MergeContract;
-import com.netbrasoft.gnuob.MergeContractResponse;
-import com.netbrasoft.gnuob.MetaData;
-import com.netbrasoft.gnuob.OrderBy;
-import com.netbrasoft.gnuob.Paging;
-import com.netbrasoft.gnuob.PersistContract;
-import com.netbrasoft.gnuob.PersistContractResponse;
-import com.netbrasoft.gnuob.RefreshContract;
-import com.netbrasoft.gnuob.RefreshContractResponse;
-import com.netbrasoft.gnuob.RemoveContract;
+import com.netbrasoft.gnuob.api.Contract;
+import com.netbrasoft.gnuob.api.ContractWebServiceImpl;
+import com.netbrasoft.gnuob.api.ContractWebServiceImplService;
+import com.netbrasoft.gnuob.api.CountContract;
+import com.netbrasoft.gnuob.api.CountContractResponse;
+import com.netbrasoft.gnuob.api.FindContract;
+import com.netbrasoft.gnuob.api.FindContractById;
+import com.netbrasoft.gnuob.api.FindContractByIdResponse;
+import com.netbrasoft.gnuob.api.FindContractResponse;
+import com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException_Exception;
+import com.netbrasoft.gnuob.api.MergeContract;
+import com.netbrasoft.gnuob.api.MergeContractResponse;
+import com.netbrasoft.gnuob.api.MetaData;
+import com.netbrasoft.gnuob.api.OrderBy;
+import com.netbrasoft.gnuob.api.Paging;
+import com.netbrasoft.gnuob.api.PersistContract;
+import com.netbrasoft.gnuob.api.PersistContractResponse;
+import com.netbrasoft.gnuob.api.RefreshContract;
+import com.netbrasoft.gnuob.api.RefreshContractResponse;
+import com.netbrasoft.gnuob.api.RemoveContract;
 
 @Repository("ContractWebServiceRepository")
 public class ContractWebServiceRepository {

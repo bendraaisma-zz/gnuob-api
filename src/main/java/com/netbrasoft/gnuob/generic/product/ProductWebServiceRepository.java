@@ -6,26 +6,26 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.netbrasoft.gnuob.CountProduct;
-import com.netbrasoft.gnuob.CountProductResponse;
-import com.netbrasoft.gnuob.FindProduct;
-import com.netbrasoft.gnuob.FindProductById;
-import com.netbrasoft.gnuob.FindProductByIdResponse;
-import com.netbrasoft.gnuob.FindProductResponse;
-import com.netbrasoft.gnuob.GNUOpenBusinessServiceException_Exception;
-import com.netbrasoft.gnuob.MergeProduct;
-import com.netbrasoft.gnuob.MergeProductResponse;
-import com.netbrasoft.gnuob.MetaData;
-import com.netbrasoft.gnuob.OrderBy;
-import com.netbrasoft.gnuob.Paging;
-import com.netbrasoft.gnuob.PersistProduct;
-import com.netbrasoft.gnuob.PersistProductResponse;
-import com.netbrasoft.gnuob.Product;
-import com.netbrasoft.gnuob.ProductWebServiceImpl;
-import com.netbrasoft.gnuob.ProductWebServiceImplService;
-import com.netbrasoft.gnuob.RefreshProduct;
-import com.netbrasoft.gnuob.RefreshProductResponse;
-import com.netbrasoft.gnuob.RemoveProduct;
+import com.netbrasoft.gnuob.api.CountProduct;
+import com.netbrasoft.gnuob.api.CountProductResponse;
+import com.netbrasoft.gnuob.api.FindProduct;
+import com.netbrasoft.gnuob.api.FindProductById;
+import com.netbrasoft.gnuob.api.FindProductByIdResponse;
+import com.netbrasoft.gnuob.api.FindProductResponse;
+import com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException_Exception;
+import com.netbrasoft.gnuob.api.MergeProduct;
+import com.netbrasoft.gnuob.api.MergeProductResponse;
+import com.netbrasoft.gnuob.api.MetaData;
+import com.netbrasoft.gnuob.api.OrderBy;
+import com.netbrasoft.gnuob.api.Paging;
+import com.netbrasoft.gnuob.api.PersistProduct;
+import com.netbrasoft.gnuob.api.PersistProductResponse;
+import com.netbrasoft.gnuob.api.Product;
+import com.netbrasoft.gnuob.api.ProductWebServiceImpl;
+import com.netbrasoft.gnuob.api.ProductWebServiceImplService;
+import com.netbrasoft.gnuob.api.RefreshProduct;
+import com.netbrasoft.gnuob.api.RefreshProductResponse;
+import com.netbrasoft.gnuob.api.RemoveProduct;
 
 @Repository("ProductWebServiceRepository")
 public class ProductWebServiceRepository {

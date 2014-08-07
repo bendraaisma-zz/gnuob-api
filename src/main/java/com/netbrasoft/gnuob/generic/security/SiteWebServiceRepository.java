@@ -6,26 +6,26 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.netbrasoft.gnuob.CountSite;
-import com.netbrasoft.gnuob.CountSiteResponse;
-import com.netbrasoft.gnuob.FindSite;
-import com.netbrasoft.gnuob.FindSiteById;
-import com.netbrasoft.gnuob.FindSiteByIdResponse;
-import com.netbrasoft.gnuob.FindSiteResponse;
-import com.netbrasoft.gnuob.GNUOpenBusinessServiceException_Exception;
-import com.netbrasoft.gnuob.MergeSite;
-import com.netbrasoft.gnuob.MergeSiteResponse;
-import com.netbrasoft.gnuob.MetaData;
-import com.netbrasoft.gnuob.OrderBy;
-import com.netbrasoft.gnuob.Paging;
-import com.netbrasoft.gnuob.PersistSite;
-import com.netbrasoft.gnuob.PersistSiteResponse;
-import com.netbrasoft.gnuob.RefreshSite;
-import com.netbrasoft.gnuob.RefreshSiteResponse;
-import com.netbrasoft.gnuob.RemoveSite;
-import com.netbrasoft.gnuob.Site;
-import com.netbrasoft.gnuob.SiteWebServiceImpl;
-import com.netbrasoft.gnuob.SiteWebServiceImplService;
+import com.netbrasoft.gnuob.api.CountSite;
+import com.netbrasoft.gnuob.api.CountSiteResponse;
+import com.netbrasoft.gnuob.api.FindSite;
+import com.netbrasoft.gnuob.api.FindSiteById;
+import com.netbrasoft.gnuob.api.FindSiteByIdResponse;
+import com.netbrasoft.gnuob.api.FindSiteResponse;
+import com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException_Exception;
+import com.netbrasoft.gnuob.api.MergeSite;
+import com.netbrasoft.gnuob.api.MergeSiteResponse;
+import com.netbrasoft.gnuob.api.MetaData;
+import com.netbrasoft.gnuob.api.OrderBy;
+import com.netbrasoft.gnuob.api.Paging;
+import com.netbrasoft.gnuob.api.PersistSite;
+import com.netbrasoft.gnuob.api.PersistSiteResponse;
+import com.netbrasoft.gnuob.api.RefreshSite;
+import com.netbrasoft.gnuob.api.RefreshSiteResponse;
+import com.netbrasoft.gnuob.api.RemoveSite;
+import com.netbrasoft.gnuob.api.Site;
+import com.netbrasoft.gnuob.api.SiteWebServiceImpl;
+import com.netbrasoft.gnuob.api.SiteWebServiceImplService;
 
 @Repository("SiteWebServiceRepository")
 public class SiteWebServiceRepository {

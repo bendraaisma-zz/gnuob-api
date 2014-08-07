@@ -6,26 +6,26 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.netbrasoft.gnuob.CountCustomer;
-import com.netbrasoft.gnuob.CountCustomerResponse;
-import com.netbrasoft.gnuob.Customer;
-import com.netbrasoft.gnuob.CustomerWebServiceImpl;
-import com.netbrasoft.gnuob.CustomerWebServiceImplService;
-import com.netbrasoft.gnuob.FindCustomer;
-import com.netbrasoft.gnuob.FindCustomerById;
-import com.netbrasoft.gnuob.FindCustomerByIdResponse;
-import com.netbrasoft.gnuob.FindCustomerResponse;
-import com.netbrasoft.gnuob.GNUOpenBusinessServiceException_Exception;
-import com.netbrasoft.gnuob.MergeCustomer;
-import com.netbrasoft.gnuob.MergeCustomerResponse;
-import com.netbrasoft.gnuob.MetaData;
-import com.netbrasoft.gnuob.OrderBy;
-import com.netbrasoft.gnuob.Paging;
-import com.netbrasoft.gnuob.PersistCustomer;
-import com.netbrasoft.gnuob.PersistCustomerResponse;
-import com.netbrasoft.gnuob.RefreshCustomer;
-import com.netbrasoft.gnuob.RefreshCustomerResponse;
-import com.netbrasoft.gnuob.RemoveCustomer;
+import com.netbrasoft.gnuob.api.CountCustomer;
+import com.netbrasoft.gnuob.api.CountCustomerResponse;
+import com.netbrasoft.gnuob.api.Customer;
+import com.netbrasoft.gnuob.api.CustomerWebServiceImpl;
+import com.netbrasoft.gnuob.api.CustomerWebServiceImplService;
+import com.netbrasoft.gnuob.api.FindCustomer;
+import com.netbrasoft.gnuob.api.FindCustomerById;
+import com.netbrasoft.gnuob.api.FindCustomerByIdResponse;
+import com.netbrasoft.gnuob.api.FindCustomerResponse;
+import com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException_Exception;
+import com.netbrasoft.gnuob.api.MergeCustomer;
+import com.netbrasoft.gnuob.api.MergeCustomerResponse;
+import com.netbrasoft.gnuob.api.MetaData;
+import com.netbrasoft.gnuob.api.OrderBy;
+import com.netbrasoft.gnuob.api.Paging;
+import com.netbrasoft.gnuob.api.PersistCustomer;
+import com.netbrasoft.gnuob.api.PersistCustomerResponse;
+import com.netbrasoft.gnuob.api.RefreshCustomer;
+import com.netbrasoft.gnuob.api.RefreshCustomerResponse;
+import com.netbrasoft.gnuob.api.RemoveCustomer;
 
 @Repository("CustomerWebServiceRepository")
 public class CustomerWebServiceRepository {

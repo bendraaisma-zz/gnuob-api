@@ -6,26 +6,26 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.netbrasoft.gnuob.Content;
-import com.netbrasoft.gnuob.ContentWebServiceImpl;
-import com.netbrasoft.gnuob.ContentWebServiceImplService;
-import com.netbrasoft.gnuob.CountContent;
-import com.netbrasoft.gnuob.CountContentResponse;
-import com.netbrasoft.gnuob.FindContent;
-import com.netbrasoft.gnuob.FindContentById;
-import com.netbrasoft.gnuob.FindContentByIdResponse;
-import com.netbrasoft.gnuob.FindContentResponse;
-import com.netbrasoft.gnuob.GNUOpenBusinessServiceException_Exception;
-import com.netbrasoft.gnuob.MergeContent;
-import com.netbrasoft.gnuob.MergeContentResponse;
-import com.netbrasoft.gnuob.MetaData;
-import com.netbrasoft.gnuob.OrderBy;
-import com.netbrasoft.gnuob.Paging;
-import com.netbrasoft.gnuob.PersistContent;
-import com.netbrasoft.gnuob.PersistContentResponse;
-import com.netbrasoft.gnuob.RefreshContent;
-import com.netbrasoft.gnuob.RefreshContentResponse;
-import com.netbrasoft.gnuob.RemoveContent;
+import com.netbrasoft.gnuob.api.Content;
+import com.netbrasoft.gnuob.api.ContentWebServiceImpl;
+import com.netbrasoft.gnuob.api.ContentWebServiceImplService;
+import com.netbrasoft.gnuob.api.CountContent;
+import com.netbrasoft.gnuob.api.CountContentResponse;
+import com.netbrasoft.gnuob.api.FindContent;
+import com.netbrasoft.gnuob.api.FindContentById;
+import com.netbrasoft.gnuob.api.FindContentByIdResponse;
+import com.netbrasoft.gnuob.api.FindContentResponse;
+import com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException_Exception;
+import com.netbrasoft.gnuob.api.MergeContent;
+import com.netbrasoft.gnuob.api.MergeContentResponse;
+import com.netbrasoft.gnuob.api.MetaData;
+import com.netbrasoft.gnuob.api.OrderBy;
+import com.netbrasoft.gnuob.api.Paging;
+import com.netbrasoft.gnuob.api.PersistContent;
+import com.netbrasoft.gnuob.api.PersistContentResponse;
+import com.netbrasoft.gnuob.api.RefreshContent;
+import com.netbrasoft.gnuob.api.RefreshContentResponse;
+import com.netbrasoft.gnuob.api.RemoveContent;
 
 @Repository("ContentWebServiceRepository")
 public class ContentWebServiceRepository {
