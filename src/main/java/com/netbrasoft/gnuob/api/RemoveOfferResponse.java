@@ -31,5 +31,7 @@ public class RemoveOfferResponse
     implements Serializable
 {
 
+	private static final long serialVersionUID = -3199069599061676769L;
+
 
 }

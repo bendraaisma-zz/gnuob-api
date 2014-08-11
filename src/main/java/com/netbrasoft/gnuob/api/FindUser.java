@@ -38,7 +38,8 @@ public class FindUser
     implements Serializable
 {
 
-    protected User user;
+    private static final long serialVersionUID = -8910520861719848846L;
+	protected User user;
     protected Paging paging;
     protected OrderBy orderBy;
 

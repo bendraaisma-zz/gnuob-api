@@ -35,7 +35,8 @@ public class MergeCategoryResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    private static final long serialVersionUID = 5301947819616259406L;
+	@XmlElement(name = "return")
     protected Category _return;
 
     /**

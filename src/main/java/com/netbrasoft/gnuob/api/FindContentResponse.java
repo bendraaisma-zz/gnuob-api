@@ -37,7 +37,8 @@ public class FindContentResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    private static final long serialVersionUID = 1621452245203068571L;
+	@XmlElement(name = "return")
     protected List<Content> _return;
 
     /**

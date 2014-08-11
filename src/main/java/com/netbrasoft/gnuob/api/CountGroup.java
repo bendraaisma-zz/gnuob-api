@@ -34,7 +34,8 @@ public class CountGroup
     implements Serializable
 {
 
-    protected Group group;
+    private static final long serialVersionUID = 7218106099419334885L;
+	protected Group group;
 
     /**
      * Gets the value of the group property.

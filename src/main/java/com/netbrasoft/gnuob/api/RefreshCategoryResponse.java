@@ -35,7 +35,8 @@ public class RefreshCategoryResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    private static final long serialVersionUID = 9056396442395408449L;
+	@XmlElement(name = "return")
     protected Category _return;
 
     /**

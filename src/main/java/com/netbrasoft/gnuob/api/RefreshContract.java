@@ -34,7 +34,8 @@ public class RefreshContract
     implements Serializable
 {
 
-    protected Contract contract;
+    private static final long serialVersionUID = 5390825567701739167L;
+	protected Contract contract;
 
     /**
      * Gets the value of the contract property.

@@ -42,7 +42,8 @@ public class Invoice
     implements Serializable
 {
 
-    @XmlElement(required = true)
+    private static final long serialVersionUID = -465676114757061441L;
+	@XmlElement(required = true)
     protected Address address;
     protected String invoiceId;
     protected List<Payment> payments;

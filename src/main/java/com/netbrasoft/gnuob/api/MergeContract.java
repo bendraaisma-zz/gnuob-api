@@ -34,7 +34,8 @@ public class MergeContract
     implements Serializable
 {
 
-    protected Contract contract;
+    private static final long serialVersionUID = -647424693923924453L;
+	protected Contract contract;
 
     /**
      * Gets the value of the contract property.

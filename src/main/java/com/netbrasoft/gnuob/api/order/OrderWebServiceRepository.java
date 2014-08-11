@@ -1,7 +1,5 @@
 package com.netbrasoft.gnuob.api.order;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -30,29 +28,22 @@ import com.netbrasoft.gnuob.api.RemoveOrder;
 @Repository("OrderWebServiceRepository")
 public class OrderWebServiceRepository {
 
-	private static final String GNUOB_ORDER_WEB_SERVICE = System.getProperty("gnuob.order-service.url", "http://localhost:8080/gnuob-soap/OrderWebServiceImpl?wsdl");
 	private OrderWebServiceImpl orderWebServiceImpl;
 
 	public OrderWebServiceRepository() {
-		try {
-			OrderWebServiceImplService orderWebServiceImplService = new OrderWebServiceImplService(new URL(GNUOB_ORDER_WEB_SERVICE));
-			orderWebServiceImpl = orderWebServiceImplService.getOrderWebServiceImplPort();
-		} catch (MalformedURLException e) {
-			throw new RuntimeException(e.getMessage(), e);
-		}
 	}
 
 	public long count(MetaData paramMetaData, Order paramOrder) throws GNUOpenBusinessServiceException_Exception {
 		CountOrder paramCountOrder = new CountOrder();
 		paramCountOrder.setOrder(paramOrder);
-		CountOrderResponse countOrderResponse = orderWebServiceImpl.countOrder(paramCountOrder, paramMetaData);
+		CountOrderResponse countOrderResponse = getOrderWebServiceImpl().countOrder(paramCountOrder, paramMetaData);
 		return countOrderResponse.getReturn();
 	}
 
 	public Order find(MetaData paramMetaData, Order paramOrder) throws GNUOpenBusinessServiceException_Exception {
 		FindOrderById paramFindOrderById = new FindOrderById();
 		paramFindOrderById.setOrder(paramOrder);
-		FindOrderByIdResponse findOrderByIdResponse = orderWebServiceImpl.findOrderById(paramFindOrderById, paramMetaData);
+		FindOrderByIdResponse findOrderByIdResponse = getOrderWebServiceImpl().findOrderById(paramFindOrderById, paramMetaData);
 		return findOrderByIdResponse.getReturn();
 
 	}
@@ -62,34 +53,43 @@ public class OrderWebServiceRepository {
 		paramFindOrder.setOrder(paramOrder);
 		paramFindOrder.setPaging(paramPaging);
 		paramFindOrder.setOrderBy(paramOrderBy);
-		FindOrderResponse findOrderResponse = orderWebServiceImpl.findOrder(paramFindOrder, paramMetaData);
+		FindOrderResponse findOrderResponse = getOrderWebServiceImpl().findOrder(paramFindOrder, paramMetaData);
 		return findOrderResponse.getReturn();
+	}
+
+	private OrderWebServiceImpl getOrderWebServiceImpl() {
+		if (orderWebServiceImpl == null) {
+			OrderWebServiceImplService orderWebServiceImplService = new OrderWebServiceImplService(OrderWebServiceImplService.WSDL_LOCATION);
+			orderWebServiceImpl = orderWebServiceImplService.getOrderWebServiceImplPort();
+		}
+
+		return orderWebServiceImpl;
 	}
 
 	public Order merge(MetaData paramMetaData, Order paramOrder) throws GNUOpenBusinessServiceException_Exception {
 		MergeOrder paramMergeOrder = new MergeOrder();
 		paramMergeOrder.setOrder(paramOrder);
-		MergeOrderResponse mergeOrderResponse = orderWebServiceImpl.mergeOrder(paramMergeOrder, paramMetaData);
+		MergeOrderResponse mergeOrderResponse = getOrderWebServiceImpl().mergeOrder(paramMergeOrder, paramMetaData);
 		return mergeOrderResponse.getReturn();
 	}
 
 	public Order persist(MetaData paramMetaData, Order paramOrder) throws GNUOpenBusinessServiceException_Exception {
 		PersistOrder paramPersistOrder = new PersistOrder();
 		paramPersistOrder.setOrder(paramOrder);
-		PersistOrderResponse persistOrderResponse = orderWebServiceImpl.persistOrder(paramPersistOrder, paramMetaData);
+		PersistOrderResponse persistOrderResponse = getOrderWebServiceImpl().persistOrder(paramPersistOrder, paramMetaData);
 		return persistOrderResponse.getReturn();
 	}
 
 	public Order refresh(MetaData paramMetaData, Order paramOrder) throws GNUOpenBusinessServiceException_Exception {
 		RefreshOrder paramRefreshOrder = new RefreshOrder();
 		paramRefreshOrder.setOrder(paramOrder);
-		RefreshOrderResponse refreshOrderResponse = orderWebServiceImpl.refreshOrder(paramRefreshOrder, paramMetaData);
+		RefreshOrderResponse refreshOrderResponse = getOrderWebServiceImpl().refreshOrder(paramRefreshOrder, paramMetaData);
 		return refreshOrderResponse.getReturn();
 	}
 
 	public void remove(MetaData paramMetaData, Order paramOrder) throws GNUOpenBusinessServiceException_Exception {
 		RemoveOrder paramRemoveOrder = new RemoveOrder();
 		paramRemoveOrder.setOrder(paramOrder);
-		orderWebServiceImpl.removeOrder(paramRemoveOrder, paramMetaData);
+		getOrderWebServiceImpl().removeOrder(paramRemoveOrder, paramMetaData);
 	}
 }

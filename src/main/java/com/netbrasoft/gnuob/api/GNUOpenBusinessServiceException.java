@@ -34,7 +34,8 @@ public class GNUOpenBusinessServiceException
     implements Serializable
 {
 
-    protected String message;
+    private static final long serialVersionUID = -5099137019892563470L;
+	protected String message;
 
     /**
      * Gets the value of the message property.

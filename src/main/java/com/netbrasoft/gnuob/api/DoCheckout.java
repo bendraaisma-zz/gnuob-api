@@ -34,7 +34,8 @@ public class DoCheckout
     implements Serializable
 {
 
-    protected Order order;
+    private static final long serialVersionUID = 3929374843223010794L;
+	protected Order order;
 
     /**
      * Gets the value of the order property.

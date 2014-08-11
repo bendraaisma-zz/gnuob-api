@@ -35,7 +35,8 @@ public class PersistContractResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    private static final long serialVersionUID = -4408943581055805380L;
+	@XmlElement(name = "return")
     protected Contract _return;
 
     /**

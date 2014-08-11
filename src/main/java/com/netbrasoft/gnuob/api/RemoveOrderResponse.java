@@ -31,5 +31,7 @@ public class RemoveOrderResponse
     implements Serializable
 {
 
+	private static final long serialVersionUID = -895504250792390079L;
+
 
 }

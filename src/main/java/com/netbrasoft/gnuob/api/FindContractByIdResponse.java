@@ -35,7 +35,8 @@ public class FindContractByIdResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    private static final long serialVersionUID = 834814568770366073L;
+	@XmlElement(name = "return")
     protected Contract _return;
 
     /**

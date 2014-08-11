@@ -34,7 +34,8 @@ public class RefreshUser
     implements Serializable
 {
 
-    protected User user;
+    private static final long serialVersionUID = 9191956595433488971L;
+	protected User user;
 
     /**
      * Gets the value of the user property.

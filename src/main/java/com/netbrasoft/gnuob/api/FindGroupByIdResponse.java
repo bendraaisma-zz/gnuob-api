@@ -35,7 +35,8 @@ public class FindGroupByIdResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    private static final long serialVersionUID = 4677446218396128190L;
+	@XmlElement(name = "return")
     protected Group _return;
 
     /**

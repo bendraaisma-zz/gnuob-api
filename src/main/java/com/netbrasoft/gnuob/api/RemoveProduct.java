@@ -34,7 +34,8 @@ public class RemoveProduct
     implements Serializable
 {
 
-    protected Product product;
+    private static final long serialVersionUID = -2733938979578882743L;
+	protected Product product;
 
     /**
      * Gets the value of the product property.

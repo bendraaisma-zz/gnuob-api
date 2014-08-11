@@ -34,7 +34,8 @@ public class MergeProduct
     implements Serializable
 {
 
-    protected Product product;
+    private static final long serialVersionUID = -1610448843226522480L;
+	protected Product product;
 
     /**
      * Gets the value of the product property.

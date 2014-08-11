@@ -38,7 +38,8 @@ public class Site
     implements Serializable
 {
 
-    protected String description;
+    private static final long serialVersionUID = -8281449739009994034L;
+	protected String description;
     @XmlElement(required = true)
     protected String name;
 

@@ -35,7 +35,8 @@ public class RefreshProductResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    private static final long serialVersionUID = 1532262428779835567L;
+	@XmlElement(name = "return")
     protected Product _return;
 
     /**

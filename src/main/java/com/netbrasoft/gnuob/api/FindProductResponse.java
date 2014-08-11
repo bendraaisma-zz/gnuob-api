@@ -37,7 +37,8 @@ public class FindProductResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    private static final long serialVersionUID = -7017526260684966682L;
+	@XmlElement(name = "return")
     protected List<Product> _return;
 
     /**

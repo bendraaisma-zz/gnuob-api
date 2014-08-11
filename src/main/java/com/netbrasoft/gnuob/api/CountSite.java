@@ -34,7 +34,8 @@ public class CountSite
     implements Serializable
 {
 
-    protected Site site;
+    private static final long serialVersionUID = -7187239064529914075L;
+	protected Site site;
 
     /**
      * Gets the value of the site property.

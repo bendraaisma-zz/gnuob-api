@@ -34,7 +34,8 @@ public class PersistOrder
     implements Serializable
 {
 
-    protected Order order;
+    private static final long serialVersionUID = -6419251623490874200L;
+	protected Order order;
 
     /**
      * Gets the value of the order property.

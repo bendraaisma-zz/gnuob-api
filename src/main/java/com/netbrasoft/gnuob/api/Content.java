@@ -42,7 +42,8 @@ public class Content
     implements Serializable
 {
 
-    @XmlElement(required = true)
+    private static final long serialVersionUID = -8594647005451740908L;
+	@XmlElement(required = true)
     @XmlMimeType("application/octet-stream")
     protected DataHandler content;
     @XmlElement(required = true)

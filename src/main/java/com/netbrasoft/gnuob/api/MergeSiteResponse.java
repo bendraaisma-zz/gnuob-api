@@ -35,7 +35,8 @@ public class MergeSiteResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    private static final long serialVersionUID = 150180048656998959L;
+	@XmlElement(name = "return")
     protected Site _return;
 
     /**

@@ -46,7 +46,8 @@ public class SubCategory
     implements Serializable
 {
 
-    @XmlElement(nillable = true)
+    private static final long serialVersionUID = -1149048022730097301L;
+	@XmlElement(nillable = true)
     protected List<Content> contents;
     protected String description;
     protected String name;

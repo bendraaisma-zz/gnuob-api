@@ -35,7 +35,8 @@ public class RefreshSiteResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    private static final long serialVersionUID = 7518389249202242545L;
+	@XmlElement(name = "return")
     protected Site _return;
 
     /**

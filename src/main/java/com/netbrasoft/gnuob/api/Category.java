@@ -44,7 +44,8 @@ public class Category
     implements Serializable
 {
 
-    @XmlElement(nillable = true)
+    private static final long serialVersionUID = 4383780275328734530L;
+	@XmlElement(nillable = true)
     protected List<Content> contents;
     protected String description;
     protected String name;

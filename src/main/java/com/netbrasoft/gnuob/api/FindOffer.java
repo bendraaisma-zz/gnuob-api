@@ -38,7 +38,8 @@ public class FindOffer
     implements Serializable
 {
 
-    protected Offer offer;
+    private static final long serialVersionUID = 7583630229443284808L;
+	protected Offer offer;
     protected Paging paging;
     protected OrderBy orderBy;
 

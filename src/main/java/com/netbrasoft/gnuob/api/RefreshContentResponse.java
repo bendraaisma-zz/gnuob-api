@@ -35,7 +35,8 @@ public class RefreshContentResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    private static final long serialVersionUID = 3936328265580030581L;
+	@XmlElement(name = "return")
     protected Content _return;
 
     /**

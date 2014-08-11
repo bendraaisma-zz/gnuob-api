@@ -34,7 +34,8 @@ public class CountUser
     implements Serializable
 {
 
-    protected User user;
+    private static final long serialVersionUID = -6715745824566959344L;
+	protected User user;
 
     /**
      * Gets the value of the user property.

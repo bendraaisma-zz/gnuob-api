@@ -35,7 +35,8 @@ public class PersistOrderResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    private static final long serialVersionUID = 3305646360692067211L;
+	@XmlElement(name = "return")
     protected Order _return;
 
     /**

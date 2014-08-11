@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="READ_ACCESS"/>
  *     &lt;enumeration value="UPDATE_ACCESS"/>
  *     &lt;enumeration value="DELETE_ACCESS"/>
- *     &lt;enumeration value="NO_ACCESS"/>
+ *     &lt;enumeration value="NONE_ACCESS"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -31,7 +31,7 @@ public enum Rule {
     READ_ACCESS,
     UPDATE_ACCESS,
     DELETE_ACCESS,
-    NO_ACCESS;
+    NONE_ACCESS;
 
     public String value() {
         return name();

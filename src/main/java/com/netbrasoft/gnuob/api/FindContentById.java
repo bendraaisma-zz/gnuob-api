@@ -34,7 +34,8 @@ public class FindContentById
     implements Serializable
 {
 
-    protected Content content;
+    private static final long serialVersionUID = 1531671104927717108L;
+	protected Content content;
 
     /**
      * Gets the value of the content property.

@@ -34,7 +34,8 @@ public class FindGroupById
     implements Serializable
 {
 
-    protected Group group;
+    private static final long serialVersionUID = -7732065011501210216L;
+	protected Group group;
 
     /**
      * Gets the value of the group property.

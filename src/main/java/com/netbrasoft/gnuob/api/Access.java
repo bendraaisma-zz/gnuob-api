@@ -29,12 +29,14 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "access")
 @XmlSeeAlso({
-    Site.class
+    Setting.class
 })
 public abstract class Access
     extends Type
     implements Serializable
 {
+
+	private static final long serialVersionUID = 3272702539107768184L;
 
 
 }

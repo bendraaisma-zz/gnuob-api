@@ -91,7 +91,8 @@ public class Order
     implements Serializable
 {
 
-    @XmlElement(required = true)
+    private static final long serialVersionUID = 974638843826274732L;
+	@XmlElement(required = true)
     protected Contract contract;
     @XmlElement(nillable = true)
     protected List<OrderRecord> records;

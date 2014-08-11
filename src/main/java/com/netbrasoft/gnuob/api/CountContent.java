@@ -34,7 +34,8 @@ public class CountContent
     implements Serializable
 {
 
-    protected Content content;
+    private static final long serialVersionUID = -4432505307421483684L;
+	protected Content content;
 
     /**
      * Gets the value of the content property.

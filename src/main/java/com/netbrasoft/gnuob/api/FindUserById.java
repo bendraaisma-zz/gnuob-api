@@ -34,7 +34,8 @@ public class FindUserById
     implements Serializable
 {
 
-    protected User user;
+    private static final long serialVersionUID = -7469418993341949612L;
+	protected User user;
 
     /**
      * Gets the value of the user property.

@@ -34,7 +34,8 @@ public class RemoveContent
     implements Serializable
 {
 
-    protected Content content;
+    private static final long serialVersionUID = -4681208930861277555L;
+	protected Content content;
 
     /**
      * Gets the value of the content property.

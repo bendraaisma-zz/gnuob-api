@@ -34,7 +34,8 @@ public class PersistContent
     implements Serializable
 {
 
-    protected Content content;
+    private static final long serialVersionUID = 9072323104298542995L;
+	protected Content content;
 
     /**
      * Gets the value of the content property.

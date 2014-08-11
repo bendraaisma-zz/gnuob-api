@@ -34,7 +34,8 @@ public class CountOrder
     implements Serializable
 {
 
-    protected Order order;
+    private static final long serialVersionUID = -7962790981310848472L;
+	protected Order order;
 
     /**
      * Gets the value of the order property.

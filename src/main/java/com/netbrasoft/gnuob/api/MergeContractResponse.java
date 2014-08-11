@@ -35,7 +35,8 @@ public class MergeContractResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    private static final long serialVersionUID = 9028278093358681923L;
+	@XmlElement(name = "return")
     protected Contract _return;
 
     /**

@@ -35,7 +35,8 @@ public class RefreshUserResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    private static final long serialVersionUID = 921594554487616376L;
+	@XmlElement(name = "return")
     protected User _return;
 
     /**

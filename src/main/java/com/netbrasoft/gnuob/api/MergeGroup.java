@@ -34,7 +34,8 @@ public class MergeGroup
     implements Serializable
 {
 
-    protected Group group;
+    private static final long serialVersionUID = 349173172611768619L;
+	protected Group group;
 
     /**
      * Gets the value of the group property.

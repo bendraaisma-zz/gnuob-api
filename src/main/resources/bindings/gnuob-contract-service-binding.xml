@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project>
 <jaxws:bindings wsdlLocation="http://localhost:8080/gnuob-soap/ContractWebServiceImpl?wsdl"
         xmlns:jaxws="http://java.sun.com/xml/ns/jaxws"
         xmlns:xs="http://www.w3.org/2001/XMLSchema"

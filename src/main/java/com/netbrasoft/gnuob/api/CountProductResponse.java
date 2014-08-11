@@ -35,7 +35,8 @@ public class CountProductResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    private static final long serialVersionUID = 2292894052252025705L;
+	@XmlElement(name = "return")
     protected long _return;
 
     /**

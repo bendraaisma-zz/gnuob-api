@@ -34,7 +34,8 @@ public class RemoveContract
     implements Serializable
 {
 
-    protected Contract contract;
+    private static final long serialVersionUID = 2927809473841805665L;
+	protected Contract contract;
 
     /**
      * Gets the value of the contract property.

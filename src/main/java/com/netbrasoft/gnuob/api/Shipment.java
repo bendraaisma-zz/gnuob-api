@@ -36,7 +36,8 @@ public class Shipment
     implements Serializable
 {
 
-    @XmlElement(required = true)
+    private static final long serialVersionUID = 7242272972103717935L;
+	@XmlElement(required = true)
     protected Address address;
 
     /**

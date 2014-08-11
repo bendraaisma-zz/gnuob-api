@@ -34,7 +34,8 @@ public class RemoveGroup
     implements Serializable
 {
 
-    protected Group group;
+    private static final long serialVersionUID = -1217335018544815646L;
+	protected Group group;
 
     /**
      * Gets the value of the group property.

@@ -34,7 +34,8 @@ public class RemoveCategory
     implements Serializable
 {
 
-    protected Category category;
+    private static final long serialVersionUID = 152018483054378814L;
+	protected Category category;
 
     /**
      * Gets the value of the category property.

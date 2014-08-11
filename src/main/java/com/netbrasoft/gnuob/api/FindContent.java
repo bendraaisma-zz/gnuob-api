@@ -38,7 +38,8 @@ public class FindContent
     implements Serializable
 {
 
-    protected Content content;
+    private static final long serialVersionUID = -4266558082325217709L;
+	protected Content content;
     protected Paging paging;
     protected OrderBy orderBy;
 

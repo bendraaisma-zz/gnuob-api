@@ -35,7 +35,8 @@ public class CountCategoryResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    private static final long serialVersionUID = -8323852807390604261L;
+	@XmlElement(name = "return")
     protected long _return;
 
     /**

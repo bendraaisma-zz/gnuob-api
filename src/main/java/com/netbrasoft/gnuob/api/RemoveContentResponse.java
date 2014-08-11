@@ -31,5 +31,7 @@ public class RemoveContentResponse
     implements Serializable
 {
 
+	private static final long serialVersionUID = 7859463367718041926L;
+
 
 }

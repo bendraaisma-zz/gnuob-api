@@ -34,7 +34,8 @@ public class CountContract
     implements Serializable
 {
 
-    protected Contract contract;
+    private static final long serialVersionUID = -2139534051495765767L;
+	protected Contract contract;
 
     /**
      * Gets the value of the contract property.

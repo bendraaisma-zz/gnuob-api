@@ -38,7 +38,8 @@ public abstract class Type
     implements Serializable
 {
 
-    @XmlAttribute(name = "id", required = true)
+    private static final long serialVersionUID = 7946172752307429119L;
+	@XmlAttribute(name = "id", required = true)
     protected long id;
     @XmlAttribute(name = "version", required = true)
     protected int version;

@@ -38,7 +38,8 @@ public class FindGroup
     implements Serializable
 {
 
-    protected Group group;
+    private static final long serialVersionUID = -4807358343614343972L;
+	protected Group group;
     protected Paging paging;
     protected OrderBy orderBy;
 

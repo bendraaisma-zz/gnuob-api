@@ -35,7 +35,8 @@ public class PersistProductResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    private static final long serialVersionUID = -7568070934910705920L;
+	@XmlElement(name = "return")
     protected Product _return;
 
     /**

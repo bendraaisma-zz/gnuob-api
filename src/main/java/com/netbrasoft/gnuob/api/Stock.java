@@ -40,7 +40,8 @@ public class Stock
     implements Serializable
 {
 
-    protected BigInteger maxQuantity;
+    private static final long serialVersionUID = 1370554796617371872L;
+	protected BigInteger maxQuantity;
     protected BigInteger minQuantity;
     protected BigInteger quantity;
 

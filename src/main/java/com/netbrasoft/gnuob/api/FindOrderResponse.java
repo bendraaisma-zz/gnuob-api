@@ -37,7 +37,8 @@ public class FindOrderResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    private static final long serialVersionUID = 5799125564017240964L;
+	@XmlElement(name = "return")
     protected List<Order> _return;
 
     /**

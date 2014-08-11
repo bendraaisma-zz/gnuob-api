@@ -1,7 +1,5 @@
 package com.netbrasoft.gnuob.api.security;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -30,29 +28,22 @@ import com.netbrasoft.gnuob.api.SiteWebServiceImplService;
 @Repository("SiteWebServiceRepository")
 public class SiteWebServiceRepository {
 
-	private static final String GNUOB_SITE_WEB_SERVICE = System.getProperty("gnuob.site-service.url", "http://localhost:8080/gnuob-soap/SiteWebServiceImpl?wsdl");
 	private SiteWebServiceImpl siteWebServiceImpl;
 
 	public SiteWebServiceRepository() {
-		try {
-			SiteWebServiceImplService siteWebServiceImplService = new SiteWebServiceImplService(new URL(GNUOB_SITE_WEB_SERVICE));
-			siteWebServiceImpl = siteWebServiceImplService.getSiteWebServiceImplPort();
-		} catch (MalformedURLException e) {
-			throw new RuntimeException(e.getMessage(), e);
-		}
 	}
 
 	public long count(MetaData paramMetaData, Site paramSite) throws GNUOpenBusinessServiceException_Exception {
 		CountSite paramCountSite = new CountSite();
 		paramCountSite.setSite(paramSite);
-		CountSiteResponse countSiteResponse = siteWebServiceImpl.countSite(paramCountSite, paramMetaData);
+		CountSiteResponse countSiteResponse = getSiteWebServiceImpl().countSite(paramCountSite, paramMetaData);
 		return countSiteResponse.getReturn();
 	}
 
 	public Site find(MetaData paramMetaData, Site paramSite) throws GNUOpenBusinessServiceException_Exception {
 		FindSiteById paramFindSiteById = new FindSiteById();
 		paramFindSiteById.setSite(paramSite);
-		FindSiteByIdResponse findSiteByIdResponse = siteWebServiceImpl.findSiteById(paramFindSiteById, paramMetaData);
+		FindSiteByIdResponse findSiteByIdResponse = getSiteWebServiceImpl().findSiteById(paramFindSiteById, paramMetaData);
 		return findSiteByIdResponse.getReturn();
 
 	}
@@ -62,34 +53,43 @@ public class SiteWebServiceRepository {
 		paramFindSite.setSite(paramSite);
 		paramFindSite.setPaging(paramPaging);
 		paramFindSite.setOrderBy(paramOrderBy);
-		FindSiteResponse findSiteResponse = siteWebServiceImpl.findSite(paramFindSite, paramMetaData);
+		FindSiteResponse findSiteResponse = getSiteWebServiceImpl().findSite(paramFindSite, paramMetaData);
 		return findSiteResponse.getReturn();
+	}
+
+	private SiteWebServiceImpl getSiteWebServiceImpl() {
+		if (siteWebServiceImpl == null) {
+			SiteWebServiceImplService siteWebServiceImplService = new SiteWebServiceImplService(SiteWebServiceImplService.WSDL_LOCATION);
+			siteWebServiceImpl = siteWebServiceImplService.getSiteWebServiceImplPort();
+		}
+
+		return siteWebServiceImpl;
 	}
 
 	public Site merge(MetaData paramMetaData, Site paramSite) throws GNUOpenBusinessServiceException_Exception {
 		MergeSite paramMergeSite = new MergeSite();
 		paramMergeSite.setSite(paramSite);
-		MergeSiteResponse mergeSiteResponse = siteWebServiceImpl.mergeSite(paramMergeSite, paramMetaData);
+		MergeSiteResponse mergeSiteResponse = getSiteWebServiceImpl().mergeSite(paramMergeSite, paramMetaData);
 		return mergeSiteResponse.getReturn();
 	}
 
 	public Site persist(MetaData paramMetaData, Site paramSite) throws GNUOpenBusinessServiceException_Exception {
 		PersistSite paramPersistSite = new PersistSite();
 		paramPersistSite.setSite(paramSite);
-		PersistSiteResponse persistSiteResponse = siteWebServiceImpl.persistSite(paramPersistSite, paramMetaData);
+		PersistSiteResponse persistSiteResponse = getSiteWebServiceImpl().persistSite(paramPersistSite, paramMetaData);
 		return persistSiteResponse.getReturn();
 	}
 
 	public Site refresh(MetaData paramMetaData, Site paramSite) throws GNUOpenBusinessServiceException_Exception {
 		RefreshSite paramRefresSite = new RefreshSite();
 		paramRefresSite.setSite(paramSite);
-		RefreshSiteResponse refresSiteResponse = siteWebServiceImpl.refreshSite(paramRefresSite, paramMetaData);
+		RefreshSiteResponse refresSiteResponse = getSiteWebServiceImpl().refreshSite(paramRefresSite, paramMetaData);
 		return refresSiteResponse.getReturn();
 	}
 
 	public void remove(MetaData paramMetaData, Site paramSite) throws GNUOpenBusinessServiceException_Exception {
 		RemoveSite paramRemoveSite = new RemoveSite();
 		paramRemoveSite.setSite(paramSite);
-		siteWebServiceImpl.removeSite(paramRemoveSite, paramMetaData);
+		getSiteWebServiceImpl().removeSite(paramRemoveSite, paramMetaData);
 	}
 }

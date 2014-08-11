@@ -53,7 +53,8 @@ public class Address
     implements Serializable
 {
 
-    protected String cityName;
+    private static final long serialVersionUID = 6444082675697536523L;
+	protected String cityName;
     protected String country;
     protected String countryName;
     protected String internationalStateAndCity;

@@ -34,7 +34,8 @@ public class PersistProduct
     implements Serializable
 {
 
-    protected Product product;
+    private static final long serialVersionUID = -390434822928798841L;
+	protected Product product;
 
     /**
      * Gets the value of the product property.

@@ -34,7 +34,8 @@ public class MergeOrder
     implements Serializable
 {
 
-    protected Order order;
+    private static final long serialVersionUID = 6824108726319765663L;
+	protected Order order;
 
     /**
      * Gets the value of the order property.

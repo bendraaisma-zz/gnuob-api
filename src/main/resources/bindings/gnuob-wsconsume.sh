@@ -10,4 +10,5 @@
 /home/bernard/Tools/wildfly-8.1.0.Final/bin/wsconsume.sh -b gnuob-user-service-binding.xml -k -p com.netbrasoft.gnuob.api -s /home/bernard/Projects/gnuob/gnuob-api/src/main/java -n http://localhost:8080/gnuob-soap/UserWebServiceImpl?wsdl
 /home/bernard/Tools/wildfly-8.1.0.Final/bin/wsconsume.sh -b gnuob-group-service-binding.xml -k -p com.netbrasoft.gnuob.api -s /home/bernard/Projects/gnuob/gnuob-api/src/main/java -n http://localhost:8080/gnuob-soap/GroupWebServiceImpl?wsdl
 /home/bernard/Tools/wildfly-8.1.0.Final/bin/wsconsume.sh -b gnuob-site-service-binding.xml -k -p com.netbrasoft.gnuob.api -s /home/bernard/Projects/gnuob/gnuob-api/src/main/java -n http://localhost:8080/gnuob-soap/SiteWebServiceImpl?wsdl
+/home/bernard/Tools/wildfly-8.1.0.Final/bin/wsconsume.sh -b gnuob-setting-service-binding.xml -k -p com.netbrasoft.gnuob.api -s /home/bernard/Projects/gnuob/gnuob-api/src/main/java -n http://localhost:8080/gnuob-soap/SettingWebServiceImpl?wsdl
 rm -Rf output

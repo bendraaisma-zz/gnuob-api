@@ -68,7 +68,8 @@ public class OrderRecord
     implements Serializable
 {
 
-    protected BigDecimal amount;
+    private static final long serialVersionUID = 6320126464597083184L;
+	protected BigDecimal amount;
     protected String description;
     protected BigDecimal itemHeight;
     protected String itemHeightUnit;

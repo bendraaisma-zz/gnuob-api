@@ -37,7 +37,8 @@ public class FindUserResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    private static final long serialVersionUID = 8509198622694324219L;
+	@XmlElement(name = "return")
     protected List<User> _return;
 
     /**

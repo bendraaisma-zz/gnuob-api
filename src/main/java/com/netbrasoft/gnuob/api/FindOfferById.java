@@ -34,7 +34,8 @@ public class FindOfferById
     implements Serializable
 {
 
-    protected Offer offer;
+    private static final long serialVersionUID = -4709741510794022070L;
+	protected Offer offer;
 
     /**
      * Gets the value of the offer property.

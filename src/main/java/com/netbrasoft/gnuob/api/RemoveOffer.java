@@ -34,7 +34,8 @@ public class RemoveOffer
     implements Serializable
 {
 
-    protected Offer offer;
+    private static final long serialVersionUID = 1129092679185431077L;
+	protected Offer offer;
 
     /**
      * Gets the value of the offer property.

@@ -34,7 +34,8 @@ public class RemoveUser
     implements Serializable
 {
 
-    protected User user;
+    private static final long serialVersionUID = 9218982907040199335L;
+	protected User user;
 
     /**
      * Gets the value of the user property.

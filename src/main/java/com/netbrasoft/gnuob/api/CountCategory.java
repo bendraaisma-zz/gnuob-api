@@ -34,7 +34,8 @@ public class CountCategory
     implements Serializable
 {
 
-    protected Category category;
+    private static final long serialVersionUID = 3902730806710731966L;
+	protected Category category;
 
     /**
      * Gets the value of the category property.

@@ -34,7 +34,8 @@ public class MergeSite
     implements Serializable
 {
 
-    protected Site site;
+    private static final long serialVersionUID = -4939631128551387924L;
+	protected Site site;
 
     /**
      * Gets the value of the site property.

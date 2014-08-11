@@ -38,7 +38,8 @@ public class FindContract
     implements Serializable
 {
 
-    protected Contract contract;
+    private static final long serialVersionUID = 3052083502150748371L;
+	protected Contract contract;
     protected Paging paging;
     protected OrderBy orderBy;
 

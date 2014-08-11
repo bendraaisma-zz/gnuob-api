@@ -69,7 +69,8 @@ public class Payment
     implements Serializable
 {
 
-    @XmlElement(required = true)
+    private static final long serialVersionUID = 1770691786544144736L;
+	@XmlElement(required = true)
     protected String exchangeRate;
     @XmlElement(required = true)
     protected BigDecimal feeAmount;

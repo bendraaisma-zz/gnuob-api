@@ -34,7 +34,8 @@ public class RemoveSite
     implements Serializable
 {
 
-    protected Site site;
+    private static final long serialVersionUID = -8502434522674670682L;
+	protected Site site;
 
     /**
      * Gets the value of the site property.

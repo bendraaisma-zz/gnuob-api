@@ -81,7 +81,8 @@ public class Product
     implements Serializable
 {
 
-    @XmlElement(required = true)
+    private static final long serialVersionUID = 1869955068008822928L;
+	@XmlElement(required = true)
     protected BigDecimal amount;
     protected Boolean bestsellers;
     @XmlElement(nillable = true)

@@ -34,7 +34,8 @@ public class FindProductById
     implements Serializable
 {
 
-    protected Product product;
+    private static final long serialVersionUID = -9076681392921043890L;
+	protected Product product;
 
     /**
      * Gets the value of the product property.

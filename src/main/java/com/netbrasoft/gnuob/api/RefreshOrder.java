@@ -34,7 +34,8 @@ public class RefreshOrder
     implements Serializable
 {
 
-    protected Order order;
+    private static final long serialVersionUID = -3918183465211424106L;
+	protected Order order;
 
     /**
      * Gets the value of the order property.

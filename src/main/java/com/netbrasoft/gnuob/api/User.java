@@ -48,7 +48,8 @@ public class User
     implements Serializable
 {
 
-    protected String description;
+    private static final long serialVersionUID = 8753606117647310779L;
+	protected String description;
     @XmlElement(nillable = true)
     protected List<Group> groups;
     @XmlElement(required = true)

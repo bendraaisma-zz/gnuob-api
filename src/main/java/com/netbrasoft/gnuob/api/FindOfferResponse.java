@@ -37,7 +37,8 @@ public class FindOfferResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    private static final long serialVersionUID = 6496627361637763300L;
+	@XmlElement(name = "return")
     protected List<Offer> _return;
 
     /**

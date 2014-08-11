@@ -35,7 +35,8 @@ public class RefreshOfferResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    private static final long serialVersionUID = -9163475115788809204L;
+	@XmlElement(name = "return")
     protected Offer _return;
 
     /**

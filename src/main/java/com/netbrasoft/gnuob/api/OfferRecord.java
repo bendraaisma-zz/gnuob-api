@@ -68,7 +68,8 @@ public class OfferRecord
     implements Serializable
 {
 
-    protected BigDecimal amount;
+    private static final long serialVersionUID = 546789756717912252L;
+	protected BigDecimal amount;
     protected String description;
     protected BigDecimal itemHeight;
     protected String itemHeightUnit;

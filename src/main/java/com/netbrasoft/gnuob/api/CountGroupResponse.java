@@ -35,7 +35,8 @@ public class CountGroupResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    private static final long serialVersionUID = -2637628156814649032L;
+	@XmlElement(name = "return")
     protected long _return;
 
     /**

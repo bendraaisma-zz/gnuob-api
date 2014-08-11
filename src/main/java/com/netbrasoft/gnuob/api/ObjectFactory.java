@@ -24,25 +24,24 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _FindSettingResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "findSettingResponse");
+    private final static QName _CountSetting_QNAME = new QName("http://gnuob.netbrasoft.com/", "countSetting");
+    private final static QName _RemoveSettingResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "removeSettingResponse");
     private final static QName _MetaData_QNAME = new QName("http://gnuob.netbrasoft.com/", "metaData");
-    private final static QName _FindSiteByIdResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "findSiteByIdResponse");
-    private final static QName _FindSite_QNAME = new QName("http://gnuob.netbrasoft.com/", "findSite");
-    private final static QName _PersistSiteResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "persistSiteResponse");
-    private final static QName _CountSite_QNAME = new QName("http://gnuob.netbrasoft.com/", "countSite");
-    private final static QName _RefreshSiteResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "refreshSiteResponse");
-    private final static QName _MergeSite_QNAME = new QName("http://gnuob.netbrasoft.com/", "mergeSite");
-    private final static QName _RefreshSite_QNAME = new QName("http://gnuob.netbrasoft.com/", "refreshSite");
+    private final static QName _RefreshSetting_QNAME = new QName("http://gnuob.netbrasoft.com/", "refreshSetting");
+    private final static QName _CountSettingResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "countSettingResponse");
+    private final static QName _PersistSetting_QNAME = new QName("http://gnuob.netbrasoft.com/", "persistSetting");
+    private final static QName _RemoveSetting_QNAME = new QName("http://gnuob.netbrasoft.com/", "removeSetting");
+    private final static QName _PersistSettingResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "persistSettingResponse");
     private final static QName _Paging_QNAME = new QName("http://gnuob.netbrasoft.com/", "Paging");
+    private final static QName _MergeSetting_QNAME = new QName("http://gnuob.netbrasoft.com/", "mergeSetting");
     private final static QName _GNUOpenBusinessServiceException_QNAME = new QName("http://gnuob.netbrasoft.com/", "GNUOpenBusinessServiceException");
-    private final static QName _MergeSiteResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "mergeSiteResponse");
-    private final static QName _RemoveSiteResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "removeSiteResponse");
-    private final static QName _CountSiteResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "countSiteResponse");
-    private final static QName _RemoveSite_QNAME = new QName("http://gnuob.netbrasoft.com/", "removeSite");
+    private final static QName _FindSetting_QNAME = new QName("http://gnuob.netbrasoft.com/", "findSetting");
+    private final static QName _FindSettingById_QNAME = new QName("http://gnuob.netbrasoft.com/", "findSettingById");
+    private final static QName _RefreshSettingResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "refreshSettingResponse");
+    private final static QName _FindSettingByIdResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "findSettingByIdResponse");
     private final static QName _OrderBy_QNAME = new QName("http://gnuob.netbrasoft.com/", "OrderBy");
-    private final static QName _FindSiteResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "findSiteResponse");
-    private final static QName _Site_QNAME = new QName("http://gnuob.netbrasoft.com/", "Site");
-    private final static QName _PersistSite_QNAME = new QName("http://gnuob.netbrasoft.com/", "persistSite");
-    private final static QName _FindSiteById_QNAME = new QName("http://gnuob.netbrasoft.com/", "findSiteById");
+    private final static QName _MergeSettingResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "mergeSettingResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.netbrasoft.gnuob.api
@@ -52,59 +51,43 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link FindSiteById }
+     * Create an instance of {@link MergeSettingResponse }
      * 
      */
-    public FindSiteById createFindSiteById() {
-        return new FindSiteById();
+    public MergeSettingResponse createMergeSettingResponse() {
+        return new MergeSettingResponse();
     }
 
     /**
-     * Create an instance of {@link PersistSite }
+     * Create an instance of {@link FindSettingByIdResponse }
      * 
      */
-    public PersistSite createPersistSite() {
-        return new PersistSite();
+    public FindSettingByIdResponse createFindSettingByIdResponse() {
+        return new FindSettingByIdResponse();
     }
 
     /**
-     * Create an instance of {@link Site }
+     * Create an instance of {@link RefreshSettingResponse }
      * 
      */
-    public Site createSite() {
-        return new Site();
+    public RefreshSettingResponse createRefreshSettingResponse() {
+        return new RefreshSettingResponse();
     }
 
     /**
-     * Create an instance of {@link FindSiteResponse }
+     * Create an instance of {@link FindSettingById }
      * 
      */
-    public FindSiteResponse createFindSiteResponse() {
-        return new FindSiteResponse();
+    public FindSettingById createFindSettingById() {
+        return new FindSettingById();
     }
 
     /**
-     * Create an instance of {@link RemoveSite }
+     * Create an instance of {@link FindSetting }
      * 
      */
-    public RemoveSite createRemoveSite() {
-        return new RemoveSite();
-    }
-
-    /**
-     * Create an instance of {@link RemoveSiteResponse }
-     * 
-     */
-    public RemoveSiteResponse createRemoveSiteResponse() {
-        return new RemoveSiteResponse();
-    }
-
-    /**
-     * Create an instance of {@link CountSiteResponse }
-     * 
-     */
-    public CountSiteResponse createCountSiteResponse() {
-        return new CountSiteResponse();
+    public FindSetting createFindSetting() {
+        return new FindSetting();
     }
 
     /**
@@ -116,11 +99,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MergeSiteResponse }
+     * Create an instance of {@link PersistSettingResponse }
      * 
      */
-    public MergeSiteResponse createMergeSiteResponse() {
-        return new MergeSiteResponse();
+    public PersistSettingResponse createPersistSettingResponse() {
+        return new PersistSettingResponse();
     }
 
     /**
@@ -132,59 +115,43 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link RefreshSite }
+     * Create an instance of {@link MergeSetting }
      * 
      */
-    public RefreshSite createRefreshSite() {
-        return new RefreshSite();
+    public MergeSetting createMergeSetting() {
+        return new MergeSetting();
     }
 
     /**
-     * Create an instance of {@link MergeSite }
+     * Create an instance of {@link RemoveSetting }
      * 
      */
-    public MergeSite createMergeSite() {
-        return new MergeSite();
+    public RemoveSetting createRemoveSetting() {
+        return new RemoveSetting();
     }
 
     /**
-     * Create an instance of {@link RefreshSiteResponse }
+     * Create an instance of {@link PersistSetting }
      * 
      */
-    public RefreshSiteResponse createRefreshSiteResponse() {
-        return new RefreshSiteResponse();
+    public PersistSetting createPersistSetting() {
+        return new PersistSetting();
     }
 
     /**
-     * Create an instance of {@link CountSite }
+     * Create an instance of {@link CountSettingResponse }
      * 
      */
-    public CountSite createCountSite() {
-        return new CountSite();
+    public CountSettingResponse createCountSettingResponse() {
+        return new CountSettingResponse();
     }
 
     /**
-     * Create an instance of {@link PersistSiteResponse }
+     * Create an instance of {@link RefreshSetting }
      * 
      */
-    public PersistSiteResponse createPersistSiteResponse() {
-        return new PersistSiteResponse();
-    }
-
-    /**
-     * Create an instance of {@link FindSite }
-     * 
-     */
-    public FindSite createFindSite() {
-        return new FindSite();
-    }
-
-    /**
-     * Create an instance of {@link FindSiteByIdResponse }
-     * 
-     */
-    public FindSiteByIdResponse createFindSiteByIdResponse() {
-        return new FindSiteByIdResponse();
+    public RefreshSetting createRefreshSetting() {
+        return new RefreshSetting();
     }
 
     /**
@@ -193,6 +160,65 @@ public class ObjectFactory {
      */
     public MetaData createMetaData() {
         return new MetaData();
+    }
+
+    /**
+     * Create an instance of {@link RemoveSettingResponse }
+     * 
+     */
+    public RemoveSettingResponse createRemoveSettingResponse() {
+        return new RemoveSettingResponse();
+    }
+
+    /**
+     * Create an instance of {@link CountSetting }
+     * 
+     */
+    public CountSetting createCountSetting() {
+        return new CountSetting();
+    }
+
+    /**
+     * Create an instance of {@link FindSettingResponse }
+     * 
+     */
+    public FindSettingResponse createFindSettingResponse() {
+        return new FindSettingResponse();
+    }
+
+    /**
+     * Create an instance of {@link Setting }
+     * 
+     */
+    public Setting createSetting() {
+        return new Setting();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindSettingResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "findSettingResponse")
+    public JAXBElement<FindSettingResponse> createFindSettingResponse(FindSettingResponse value) {
+        return new JAXBElement<FindSettingResponse>(_FindSettingResponse_QNAME, FindSettingResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CountSetting }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "countSetting")
+    public JAXBElement<CountSetting> createCountSetting(CountSetting value) {
+        return new JAXBElement<CountSetting>(_CountSetting_QNAME, CountSetting.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RemoveSettingResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "removeSettingResponse")
+    public JAXBElement<RemoveSettingResponse> createRemoveSettingResponse(RemoveSettingResponse value) {
+        return new JAXBElement<RemoveSettingResponse>(_RemoveSettingResponse_QNAME, RemoveSettingResponse.class, null, value);
     }
 
     /**
@@ -205,66 +231,48 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindSiteByIdResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link RefreshSetting }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "findSiteByIdResponse")
-    public JAXBElement<FindSiteByIdResponse> createFindSiteByIdResponse(FindSiteByIdResponse value) {
-        return new JAXBElement<FindSiteByIdResponse>(_FindSiteByIdResponse_QNAME, FindSiteByIdResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "refreshSetting")
+    public JAXBElement<RefreshSetting> createRefreshSetting(RefreshSetting value) {
+        return new JAXBElement<RefreshSetting>(_RefreshSetting_QNAME, RefreshSetting.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindSite }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CountSettingResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "findSite")
-    public JAXBElement<FindSite> createFindSite(FindSite value) {
-        return new JAXBElement<FindSite>(_FindSite_QNAME, FindSite.class, null, value);
+    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "countSettingResponse")
+    public JAXBElement<CountSettingResponse> createCountSettingResponse(CountSettingResponse value) {
+        return new JAXBElement<CountSettingResponse>(_CountSettingResponse_QNAME, CountSettingResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PersistSiteResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link PersistSetting }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "persistSiteResponse")
-    public JAXBElement<PersistSiteResponse> createPersistSiteResponse(PersistSiteResponse value) {
-        return new JAXBElement<PersistSiteResponse>(_PersistSiteResponse_QNAME, PersistSiteResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "persistSetting")
+    public JAXBElement<PersistSetting> createPersistSetting(PersistSetting value) {
+        return new JAXBElement<PersistSetting>(_PersistSetting_QNAME, PersistSetting.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CountSite }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link RemoveSetting }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "countSite")
-    public JAXBElement<CountSite> createCountSite(CountSite value) {
-        return new JAXBElement<CountSite>(_CountSite_QNAME, CountSite.class, null, value);
+    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "removeSetting")
+    public JAXBElement<RemoveSetting> createRemoveSetting(RemoveSetting value) {
+        return new JAXBElement<RemoveSetting>(_RemoveSetting_QNAME, RemoveSetting.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RefreshSiteResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link PersistSettingResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "refreshSiteResponse")
-    public JAXBElement<RefreshSiteResponse> createRefreshSiteResponse(RefreshSiteResponse value) {
-        return new JAXBElement<RefreshSiteResponse>(_RefreshSiteResponse_QNAME, RefreshSiteResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link MergeSite }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "mergeSite")
-    public JAXBElement<MergeSite> createMergeSite(MergeSite value) {
-        return new JAXBElement<MergeSite>(_MergeSite_QNAME, MergeSite.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RefreshSite }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "refreshSite")
-    public JAXBElement<RefreshSite> createRefreshSite(RefreshSite value) {
-        return new JAXBElement<RefreshSite>(_RefreshSite_QNAME, RefreshSite.class, null, value);
+    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "persistSettingResponse")
+    public JAXBElement<PersistSettingResponse> createPersistSettingResponse(PersistSettingResponse value) {
+        return new JAXBElement<PersistSettingResponse>(_PersistSettingResponse_QNAME, PersistSettingResponse.class, null, value);
     }
 
     /**
@@ -277,6 +285,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link MergeSetting }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "mergeSetting")
+    public JAXBElement<MergeSetting> createMergeSetting(MergeSetting value) {
+        return new JAXBElement<MergeSetting>(_MergeSetting_QNAME, MergeSetting.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GNUOpenBusinessServiceException }{@code >}}
      * 
      */
@@ -286,39 +303,39 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link MergeSiteResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindSetting }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "mergeSiteResponse")
-    public JAXBElement<MergeSiteResponse> createMergeSiteResponse(MergeSiteResponse value) {
-        return new JAXBElement<MergeSiteResponse>(_MergeSiteResponse_QNAME, MergeSiteResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "findSetting")
+    public JAXBElement<FindSetting> createFindSetting(FindSetting value) {
+        return new JAXBElement<FindSetting>(_FindSetting_QNAME, FindSetting.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RemoveSiteResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindSettingById }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "removeSiteResponse")
-    public JAXBElement<RemoveSiteResponse> createRemoveSiteResponse(RemoveSiteResponse value) {
-        return new JAXBElement<RemoveSiteResponse>(_RemoveSiteResponse_QNAME, RemoveSiteResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "findSettingById")
+    public JAXBElement<FindSettingById> createFindSettingById(FindSettingById value) {
+        return new JAXBElement<FindSettingById>(_FindSettingById_QNAME, FindSettingById.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CountSiteResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link RefreshSettingResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "countSiteResponse")
-    public JAXBElement<CountSiteResponse> createCountSiteResponse(CountSiteResponse value) {
-        return new JAXBElement<CountSiteResponse>(_CountSiteResponse_QNAME, CountSiteResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "refreshSettingResponse")
+    public JAXBElement<RefreshSettingResponse> createRefreshSettingResponse(RefreshSettingResponse value) {
+        return new JAXBElement<RefreshSettingResponse>(_RefreshSettingResponse_QNAME, RefreshSettingResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RemoveSite }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindSettingByIdResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "removeSite")
-    public JAXBElement<RemoveSite> createRemoveSite(RemoveSite value) {
-        return new JAXBElement<RemoveSite>(_RemoveSite_QNAME, RemoveSite.class, null, value);
+    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "findSettingByIdResponse")
+    public JAXBElement<FindSettingByIdResponse> createFindSettingByIdResponse(FindSettingByIdResponse value) {
+        return new JAXBElement<FindSettingByIdResponse>(_FindSettingByIdResponse_QNAME, FindSettingByIdResponse.class, null, value);
     }
 
     /**
@@ -331,39 +348,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindSiteResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link MergeSettingResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "findSiteResponse")
-    public JAXBElement<FindSiteResponse> createFindSiteResponse(FindSiteResponse value) {
-        return new JAXBElement<FindSiteResponse>(_FindSiteResponse_QNAME, FindSiteResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Site }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "Site")
-    public JAXBElement<Site> createSite(Site value) {
-        return new JAXBElement<Site>(_Site_QNAME, Site.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PersistSite }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "persistSite")
-    public JAXBElement<PersistSite> createPersistSite(PersistSite value) {
-        return new JAXBElement<PersistSite>(_PersistSite_QNAME, PersistSite.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindSiteById }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "findSiteById")
-    public JAXBElement<FindSiteById> createFindSiteById(FindSiteById value) {
-        return new JAXBElement<FindSiteById>(_FindSiteById_QNAME, FindSiteById.class, null, value);
+    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "mergeSettingResponse")
+    public JAXBElement<MergeSettingResponse> createMergeSettingResponse(MergeSettingResponse value) {
+        return new JAXBElement<MergeSettingResponse>(_MergeSettingResponse_QNAME, MergeSettingResponse.class, null, value);
     }
 
 }

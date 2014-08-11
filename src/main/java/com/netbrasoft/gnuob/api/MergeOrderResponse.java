@@ -35,7 +35,8 @@ public class MergeOrderResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    private static final long serialVersionUID = -7221604371228258990L;
+	@XmlElement(name = "return")
     protected Order _return;
 
     /**

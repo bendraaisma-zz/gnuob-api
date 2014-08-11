@@ -1,7 +1,5 @@
 package com.netbrasoft.gnuob.api.security;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -30,29 +28,22 @@ import com.netbrasoft.gnuob.api.RemoveGroup;
 @Repository("GroupWebServiceRepository")
 public class GroupWebServiceRepository {
 
-	private static final String GNUOB_GROUP_WEB_SERVICE = System.getProperty("gnuob.group-service.url", "http://localhost:8080/gnuob-soap/GroupWebServiceImpl?wsdl");
 	private GroupWebServiceImpl groupWebServiceImpl;
 
 	public GroupWebServiceRepository() {
-		try {
-			GroupWebServiceImplService groupWebServiceImplService = new GroupWebServiceImplService(new URL(GNUOB_GROUP_WEB_SERVICE));
-			groupWebServiceImpl = groupWebServiceImplService.getGroupWebServiceImplPort();
-		} catch (MalformedURLException e) {
-			throw new RuntimeException(e.getMessage(), e);
-		}
 	}
 
 	public long count(MetaData paramMetaData, Group paramGroup) throws GNUOpenBusinessServiceException_Exception {
 		CountGroup paramCountGroup = new CountGroup();
 		paramCountGroup.setGroup(paramGroup);
-		CountGroupResponse countGroupResponse = groupWebServiceImpl.countGroup(paramCountGroup, paramMetaData);
+		CountGroupResponse countGroupResponse = getGroupWebServiceImpl().countGroup(paramCountGroup, paramMetaData);
 		return countGroupResponse.getReturn();
 	}
 
 	public Group find(MetaData paramMetaData, Group paramGroup) throws GNUOpenBusinessServiceException_Exception {
 		FindGroupById paramFindGroupById = new FindGroupById();
 		paramFindGroupById.setGroup(paramGroup);
-		FindGroupByIdResponse findGroupByIdResponse = groupWebServiceImpl.findGroupById(paramFindGroupById, paramMetaData);
+		FindGroupByIdResponse findGroupByIdResponse = getGroupWebServiceImpl().findGroupById(paramFindGroupById, paramMetaData);
 		return findGroupByIdResponse.getReturn();
 
 	}
@@ -62,34 +53,43 @@ public class GroupWebServiceRepository {
 		paramFindGroup.setGroup(paramGroup);
 		paramFindGroup.setPaging(paramPaging);
 		paramFindGroup.setOrderBy(paramOrderBy);
-		FindGroupResponse findGroupResponse = groupWebServiceImpl.findGroup(paramFindGroup, paramMetaData);
+		FindGroupResponse findGroupResponse = getGroupWebServiceImpl().findGroup(paramFindGroup, paramMetaData);
 		return findGroupResponse.getReturn();
+	}
+
+	private GroupWebServiceImpl getGroupWebServiceImpl() {
+		if (groupWebServiceImpl == null) {
+			GroupWebServiceImplService groupWebServiceImplService = new GroupWebServiceImplService(GroupWebServiceImplService.WSDL_LOCATION);
+			groupWebServiceImpl = groupWebServiceImplService.getGroupWebServiceImplPort();
+		}
+
+		return groupWebServiceImpl;
 	}
 
 	public Group merge(MetaData paramMetaData, Group paramGroup) throws GNUOpenBusinessServiceException_Exception {
 		MergeGroup paramMergeGroup = new MergeGroup();
 		paramMergeGroup.setGroup(paramGroup);
-		MergeGroupResponse mergeGroupResponse = groupWebServiceImpl.mergeGroup(paramMergeGroup, paramMetaData);
+		MergeGroupResponse mergeGroupResponse = getGroupWebServiceImpl().mergeGroup(paramMergeGroup, paramMetaData);
 		return mergeGroupResponse.getReturn();
 	}
 
 	public Group persist(MetaData paramMetaData, Group paramGroup) throws GNUOpenBusinessServiceException_Exception {
 		PersistGroup paramPersistGroup = new PersistGroup();
 		paramPersistGroup.setGroup(paramGroup);
-		PersistGroupResponse persistGroupResponse = groupWebServiceImpl.persistGroup(paramPersistGroup, paramMetaData);
+		PersistGroupResponse persistGroupResponse = getGroupWebServiceImpl().persistGroup(paramPersistGroup, paramMetaData);
 		return persistGroupResponse.getReturn();
 	}
 
 	public Group refresh(MetaData paramMetaData, Group paramGroup) throws GNUOpenBusinessServiceException_Exception {
 		RefreshGroup paramRefresGroup = new RefreshGroup();
 		paramRefresGroup.setGroup(paramGroup);
-		RefreshGroupResponse refresGroupResponse = groupWebServiceImpl.refreshGroup(paramRefresGroup, paramMetaData);
+		RefreshGroupResponse refresGroupResponse = getGroupWebServiceImpl().refreshGroup(paramRefresGroup, paramMetaData);
 		return refresGroupResponse.getReturn();
 	}
 
 	public void remove(MetaData paramMetaData, Group paramGroup) throws GNUOpenBusinessServiceException_Exception {
 		RemoveGroup paramRemoveGroup = new RemoveGroup();
 		paramRemoveGroup.setGroup(paramGroup);
-		groupWebServiceImpl.removeGroup(paramRemoveGroup, paramMetaData);
+		getGroupWebServiceImpl().removeGroup(paramRemoveGroup, paramMetaData);
 	}
 }

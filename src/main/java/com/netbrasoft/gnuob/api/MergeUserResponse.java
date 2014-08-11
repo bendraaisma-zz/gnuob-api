@@ -35,7 +35,8 @@ public class MergeUserResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    private static final long serialVersionUID = 2930218592841392789L;
+	@XmlElement(name = "return")
     protected User _return;
 
     /**
