@@ -20,11 +20,12 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;extension base="{http://gnuob.netbrasoft.com/}access">
  *       &lt;sequence>
+ *         &lt;element name="access" type="{http://gnuob.netbrasoft.com/}rule" minOccurs="0"/>
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="groups" type="{http://gnuob.netbrasoft.com/}group" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="rule" type="{http://gnuob.netbrasoft.com/}rule" minOccurs="0"/>
+ *         &lt;element name="role" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="sites" type="{http://gnuob.netbrasoft.com/}site" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
@@ -36,11 +37,12 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "user", propOrder = {
+    "access",
     "description",
     "groups",
     "name",
     "password",
-    "rule",
+    "role",
     "sites"
 })
 public class User
@@ -48,17 +50,43 @@ public class User
     implements Serializable
 {
 
-    private static final long serialVersionUID = 8753606117647310779L;
-	protected String description;
+    private static final long serialVersionUID = 6859526010736932806L;
+	protected Rule access;
+    protected String description;
     @XmlElement(nillable = true)
     protected List<Group> groups;
     @XmlElement(required = true)
     protected String name;
     @XmlElement(required = true)
     protected String password;
-    protected Rule rule;
+    @XmlElement(required = true)
+    protected String role;
     @XmlElement(nillable = true)
     protected List<Site> sites;
+
+    /**
+     * Gets the value of the access property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Rule }
+     *     
+     */
+    public Rule getAccess() {
+        return access;
+    }
+
+    /**
+     * Sets the value of the access property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Rule }
+     *     
+     */
+    public void setAccess(Rule value) {
+        this.access = value;
+    }
 
     /**
      * Gets the value of the description property.
@@ -162,27 +190,27 @@ public class User
     }
 
     /**
-     * Gets the value of the rule property.
+     * Gets the value of the role property.
      * 
      * @return
      *     possible object is
-     *     {@link Rule }
+     *     {@link String }
      *     
      */
-    public Rule getRule() {
-        return rule;
+    public String getRole() {
+        return role;
     }
 
     /**
-     * Sets the value of the rule property.
+     * Sets the value of the role property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Rule }
+     *     {@link String }
      *     
      */
-    public void setRule(Rule value) {
-        this.rule = value;
+    public void setRole(String value) {
+        this.role = value;
     }
 
     /**

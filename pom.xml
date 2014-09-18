@@ -30,10 +30,11 @@
 	</licenses>
 
 	<properties>
+		<version.jar.plugin>2.5</version.jar.plugin>
 		<version.springframework.plugin>4.0.1.RELEASE</version.springframework.plugin>
 
-		<maven.compiler.target>1.7</maven.compiler.target>
-		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
 	</properties>
 
 	<dependencies>
@@ -53,5 +54,18 @@
 			<version>${version.springframework.plugin}</version>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>${version.jar.plugin}</version>
+				<configuration>
+					<useDefaultManifestFile>true</useDefaultManifestFile>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>

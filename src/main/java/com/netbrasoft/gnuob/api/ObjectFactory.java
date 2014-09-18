@@ -40,7 +40,9 @@ public class ObjectFactory {
     private final static QName _FindSettingById_QNAME = new QName("http://gnuob.netbrasoft.com/", "findSettingById");
     private final static QName _RefreshSettingResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "refreshSettingResponse");
     private final static QName _FindSettingByIdResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "findSettingByIdResponse");
+    private final static QName _Rule_QNAME = new QName("http://gnuob.netbrasoft.com/", "Rule");
     private final static QName _OrderBy_QNAME = new QName("http://gnuob.netbrasoft.com/", "OrderBy");
+    private final static QName _Permission_QNAME = new QName("http://gnuob.netbrasoft.com/", "Permission");
     private final static QName _MergeSettingResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "mergeSettingResponse");
 
     /**
@@ -56,6 +58,14 @@ public class ObjectFactory {
      */
     public MergeSettingResponse createMergeSettingResponse() {
         return new MergeSettingResponse();
+    }
+
+    /**
+     * Create an instance of {@link Permission }
+     * 
+     */
+    public Permission createPermission() {
+        return new Permission();
     }
 
     /**
@@ -339,12 +349,30 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Rule }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "Rule")
+    public JAXBElement<Rule> createRule(Rule value) {
+        return new JAXBElement<Rule>(_Rule_QNAME, Rule.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link OrderBy }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "OrderBy")
     public JAXBElement<OrderBy> createOrderBy(OrderBy value) {
         return new JAXBElement<OrderBy>(_OrderBy_QNAME, OrderBy.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Permission }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "Permission")
+    public JAXBElement<Permission> createPermission(Permission value) {
+        return new JAXBElement<Permission>(_Permission_QNAME, Permission.class, null, value);
     }
 
     /**

@@ -20,7 +20,6 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="rule" type="{http://gnuob.netbrasoft.com/}rule" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -32,19 +31,17 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "group", propOrder = {
     "description",
-    "name",
-    "rule"
+    "name"
 })
 public class Group
     extends Access
     implements Serializable
 {
 
-    private static final long serialVersionUID = -5309247451995832720L;
+    private static final long serialVersionUID = 3690075816000776825L;
 	protected String description;
     @XmlElement(required = true)
     protected String name;
-    protected Rule rule;
 
     /**
      * Gets the value of the description property.
@@ -92,30 +89,6 @@ public class Group
      */
     public void setName(String value) {
         this.name = value;
-    }
-
-    /**
-     * Gets the value of the rule property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Rule }
-     *     
-     */
-    public Rule getRule() {
-        return rule;
-    }
-
-    /**
-     * Sets the value of the rule property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Rule }
-     *     
-     */
-    public void setRule(Rule value) {
-        this.rule = value;
     }
 
 }

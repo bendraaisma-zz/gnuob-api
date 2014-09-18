@@ -18,6 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;extension base="{http://gnuob.netbrasoft.com/}type">
  *       &lt;sequence>
+ *         &lt;element name="permission" type="{http://gnuob.netbrasoft.com/}permission" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -27,7 +28,9 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "access")
+@XmlType(name = "access", propOrder = {
+    "permission"
+})
 @XmlSeeAlso({
     Setting.class
 })
@@ -36,7 +39,31 @@ public abstract class Access
     implements Serializable
 {
 
-	private static final long serialVersionUID = 3272702539107768184L;
+    private static final long serialVersionUID = 6977666207311097211L;
+	protected Permission permission;
 
+    /**
+     * Gets the value of the permission property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Permission }
+     *     
+     */
+    public Permission getPermission() {
+        return permission;
+    }
+
+    /**
+     * Sets the value of the permission property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Permission }
+     *     
+     */
+    public void setPermission(Permission value) {
+        this.permission = value;
+    }
 
 }

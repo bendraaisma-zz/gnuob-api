@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "type")
 @XmlSeeAlso({
+    Permission.class,
     Access.class
 })
 public abstract class Type
