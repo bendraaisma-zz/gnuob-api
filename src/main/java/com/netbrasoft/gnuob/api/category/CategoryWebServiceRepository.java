@@ -59,6 +59,7 @@ public class CategoryWebServiceRepository {
 	}
 
 	private CategoryWebServiceImpl getCategoryWebServiceImpl() {
+
 		if (categoryWebServiceImpl == null) {
 			CategoryWebServiceImplService categoryWebServiceImplService = new CategoryWebServiceImplService(CategoryWebServiceImplService.WSDL_LOCATION);
 			categoryWebServiceImpl = categoryWebServiceImplService.getCategoryWebServiceImplPort();

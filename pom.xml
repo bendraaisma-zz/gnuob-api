@@ -31,7 +31,8 @@
 
 	<properties>
 		<version.jar.plugin>2.5</version.jar.plugin>
-		<version.springframework.plugin>4.0.1.RELEASE</version.springframework.plugin>
+		<version.springframework.plugin>4.1.0.RELEASE</version.springframework.plugin>
+		<version.surefire.plugin>2.10</version.surefire.plugin>
 
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -73,18 +74,9 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-core</artifactId>
-			<version>${version.springframework.plugin}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-beans</artifactId>
-			<version>${version.springframework.plugin}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>${version.springframework.plugin}</version>
+			<scope>compile</scope>
 		</dependency>
 	</dependencies>
 

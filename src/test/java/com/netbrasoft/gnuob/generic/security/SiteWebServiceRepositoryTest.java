@@ -1,6 +1,5 @@
 package com.netbrasoft.gnuob.generic.security;
 
-import java.util.List;
 import java.util.UUID;
 
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -12,10 +11,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException_Exception;
+import com.netbrasoft.gnuob.api.Group;
 import com.netbrasoft.gnuob.api.MetaData;
-import com.netbrasoft.gnuob.api.OrderBy;
-import com.netbrasoft.gnuob.api.Paging;
+import com.netbrasoft.gnuob.api.Rule;
 import com.netbrasoft.gnuob.api.Site;
+import com.netbrasoft.gnuob.api.User;
 import com.netbrasoft.gnuob.api.security.SiteWebServiceRepository;
 import com.netbrasoft.gnuob.generic.utils.Utils;
 
@@ -27,84 +27,130 @@ public class SiteWebServiceRepositoryTest {
 		return Utils.createDeployment();
 	}
 
-	private MetaData paramMetaData = null;
-	private SiteWebServiceRepository siteWebServiceRepository;
-	private Site paramSite = null;
-
-	@Test
-	public void countNewSiteWithNoAccess() throws GNUOpenBusinessServiceException_Exception {
-		long countNewSiteWithNoAccess = siteWebServiceRepository.count(paramMetaData, paramSite);
-
-		Assert.assertEquals(1, countNewSiteWithNoAccess);
-	}
-
-	public void createNewSite() throws GNUOpenBusinessServiceException_Exception {
-
-		paramSite = new Site();
-		paramSite.setName(UUID.randomUUID().toString());
-		paramSite.setDescription(UUID.randomUUID().toString());
-
-		paramSite = siteWebServiceRepository.persist(paramMetaData, paramSite);
-
-		Assert.assertTrue(paramSite.getId() > 0);
-	}
-
-	@Test
-	public void findNewSite() throws GNUOpenBusinessServiceException_Exception {
-		Paging paging = new Paging();
-		paging.setFirst(0);
-		paging.setMax(1);
-
-		List<Site> findSiteWithNoAccessList = siteWebServiceRepository.find(paramMetaData, paramSite, paging, OrderBy.NONE);
-
-		Assert.assertEquals(1, findSiteWithNoAccessList.size());
-	}
-
-	@Test
-	public void findNewSiteById() throws GNUOpenBusinessServiceException_Exception {
-		Site site = siteWebServiceRepository.find(paramMetaData, paramSite);
-
-		Assert.assertEquals(paramSite.getId(), site.getId());
-	}
+	private SiteWebServiceRepository siteWebServiceRepository = new SiteWebServiceRepository();
+	private MetaData metaData = null;
+	private User user = null;
+	private Group group = null;
+	private Site site = null;
 
 	@Before
-	public void init() throws GNUOpenBusinessServiceException_Exception {
-		paramMetaData = Utils.paramMetaData();
-		siteWebServiceRepository = new SiteWebServiceRepository();
-		createNewSite();
+	public void testBefore() {
+		metaData = new MetaData();
+		user = new User();
+		group = new Group();
+		site = new Site();
+
+		metaData.setUser("administrator");
+		metaData.setPassword("administrator");
+		metaData.setSite("www.netbrasoft.com");
+
+		user.setName(UUID.randomUUID().toString());
+		user.setDescription(UUID.randomUUID().toString());
+		user.setPassword(UUID.randomUUID().toString());
+		user.setRole(UUID.randomUUID().toString());
+		user.setAccess(Rule.NONE_ACCESS);
+
+		group.setName(UUID.randomUUID().toString());
+		group.setDescription(UUID.randomUUID().toString());
+
+		site.setName(UUID.randomUUID().toString());
+		site.setDescription(UUID.randomUUID().toString());
+
+		user.getGroups().add(group);
+		user.getSites().add(site);
 	}
 
 	@Test
-	public void mergeNewSite() throws GNUOpenBusinessServiceException_Exception {
-		String descripton = paramSite.getDescription();
+	public void testFindSite() throws GNUOpenBusinessServiceException_Exception {
+		String siteName = site.getName();
+		String siteDescription = site.getDescription();
 
-		paramSite.setDescription(UUID.randomUUID().toString());
-		paramSite = siteWebServiceRepository.merge(paramMetaData, paramSite);
+		Site persistSite = siteWebServiceRepository.persist(metaData, site);
 
-		Assert.assertTrue(paramSite.getId() > 0);
-		Assert.assertFalse(paramSite.getDescription().equals(descripton));
+		Site findSite = siteWebServiceRepository.find(metaData, persistSite);
+
+		Assert.assertTrue("Site id has no value bigger than zero.", findSite.getId() > 0);
+		Assert.assertEquals("Site name is not equal.", siteName, findSite.getName());
+		Assert.assertEquals("Site description is not equal.", siteDescription, findSite.getDescription());
 	}
 
-	// @Test
-	public void refreshNewSite() throws GNUOpenBusinessServiceException_Exception {
-		String descripton = paramSite.getDescription();
+	@Test
+	public void testMergeSite() throws GNUOpenBusinessServiceException_Exception {
+		String siteName = UUID.randomUUID().toString();
+		String siteDescription = UUID.randomUUID().toString();
 
-		paramSite.setDescription(UUID.randomUUID().toString());
-		paramSite = siteWebServiceRepository.refresh(paramMetaData, paramSite);
+		Site persistSite = siteWebServiceRepository.persist(metaData, site);
 
-		Assert.assertTrue(paramSite.getId() > 0);
-		Assert.assertTrue(paramSite.getDescription().equals(descripton));
+		persistSite.setName(siteName);
+		persistSite.setDescription(siteDescription);
+
+		Site mergeSite = siteWebServiceRepository.merge(metaData, persistSite);
+
+		Assert.assertTrue("Site id has no value bigger than zero.", mergeSite.getId() > 0);
+		Assert.assertEquals("Site name is not equal.", siteName, mergeSite.getName());
+		Assert.assertEquals("Site description is not equal.", siteDescription, mergeSite.getDescription());
 	}
 
-	// @After
-	public void removeNewSite() throws GNUOpenBusinessServiceException_Exception {
-		Paging paging = new Paging();
-		paging.setFirst(0);
-		paging.setMax(1);
+	@Test
+	public void testPersistSite() throws GNUOpenBusinessServiceException_Exception {
+		String siteName = site.getName();
+		String siteDescription = site.getDescription();
 
-		paramSite = siteWebServiceRepository.find(paramMetaData, paramSite, paging, OrderBy.NONE).get(0);
+		Site persistSite = siteWebServiceRepository.persist(metaData, site);
 
-		siteWebServiceRepository.remove(paramMetaData, paramSite);
+		Assert.assertTrue("Site id has no value bigger than zero.", persistSite.getId() > 0);
+		Assert.assertEquals("Site name is not equal.", siteName, persistSite.getName());
+		Assert.assertEquals("Site description is not equal.", siteDescription, persistSite.getDescription());
 	}
 
+	@Test
+	public void testRefreshSite() throws GNUOpenBusinessServiceException_Exception {
+		Site persistSite = siteWebServiceRepository.persist(metaData, site);
+
+		String siteName = site.getName();
+		String siteDescription = site.getDescription();
+
+		persistSite.setName(UUID.randomUUID().toString());
+		persistSite.setDescription(UUID.randomUUID().toString());
+
+		Site refreshSite = siteWebServiceRepository.refresh(metaData, persistSite);
+
+		Assert.assertTrue("Site id has no value bigger than zero.", refreshSite.getId() > 0);
+		Assert.assertEquals("Site name is not equal.", siteName, refreshSite.getName());
+		Assert.assertEquals("Site description is not equal.", siteDescription, refreshSite.getDescription());
+	}
+
+	@Test
+	public void testRemoveSite() throws GNUOpenBusinessServiceException_Exception {
+		Site persistSite = siteWebServiceRepository.persist(metaData, site);
+		siteWebServiceRepository.remove(metaData, persistSite);
+
+		Site findSite = siteWebServiceRepository.find(metaData, persistSite);
+
+		Assert.assertNull("Site is found.", findSite);
+	}
+
+	@Test
+	public void testRemoveUserWithGroupAndSiteButOtherUserHasNoRightToDelete() throws GNUOpenBusinessServiceException_Exception {
+		metaData.setUser("manager");
+		metaData.setPassword("manager");
+
+		Site persistSite = siteWebServiceRepository.persist(metaData, site);
+
+		metaData.setUser("employee");
+		metaData.setPassword("employee");
+
+		try {
+			siteWebServiceRepository.remove(metaData, persistSite);
+		} catch (Exception e) {
+			Assert.assertEquals("Exception message is not equal.", "com.netbrasoft.gnuob.exception.GNUOpenBusinessServiceException: Given user [employee] doesn't have the right access, verify that the given user has access.", e.getMessage());
+		}
+
+		metaData.setUser("manager");
+		metaData.setPassword("manager");
+
+		Site findSite = siteWebServiceRepository.find(metaData, persistSite);
+
+		Assert.assertNotNull("Site is not found.", findSite);
+	}
 }
