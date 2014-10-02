@@ -2,6 +2,8 @@ package com.netbrasoft.gnuob.generic.security;
 
 import java.util.UUID;
 
+import javax.xml.ws.soap.SOAPFaultException;
+
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
@@ -101,6 +103,55 @@ public class SiteWebServiceRepositoryTest {
 		Assert.assertTrue("Site id has no value bigger than zero.", persistSite.getId() > 0);
 		Assert.assertEquals("Site name is not equal.", siteName, persistSite.getName());
 		Assert.assertEquals("Site description is not equal.", siteDescription, persistSite.getDescription());
+	}
+
+	@Test
+	public void testPersistSiteWithSiteThatDoesNotExist() throws GNUOpenBusinessServiceException_Exception {
+		metaData.setSite("NO_ACCESS_SITE");
+
+		try {
+			siteWebServiceRepository.persist(metaData, site);
+		} catch (Exception e) {
+			Assert.assertEquals("Exception message is not equal.", "com.netbrasoft.gnuob.exception.GNUOpenBusinessServiceException: Given site [NO_ACCESS_SITE] doesn't have the right access, verify that the given site has access.", e.getMessage());
+		}
+	}
+
+	@Test
+	public void testPersistSiteWithUserThatHasNoCreateAccess() throws GNUOpenBusinessServiceException_Exception {
+		metaData.setUser("guest");
+		metaData.setPassword("guest");
+		metaData.setSite("www.netbrasoft.com");
+
+		try {
+			siteWebServiceRepository.persist(metaData, site);
+		} catch (SOAPFaultException e) {
+			Assert.assertEquals("Exception message is not equal.", "com.netbrasoft.gnuob.exception.GNUOpenBusinessServiceException: Given user [guest] doesn't have the right access, verify that the given user has access.", e.getMessage());
+		}
+	}
+
+	@Test
+	public void testPersistSiteWithUserThatHaveNoAccessToTheSite() throws GNUOpenBusinessServiceException_Exception {
+		metaData.setUser("manager");
+		metaData.setPassword("manager");
+		metaData.setSite("www.cheirodeflor.nl");
+
+		try {
+			siteWebServiceRepository.persist(metaData, site);
+		} catch (SOAPFaultException e) {
+			Assert.assertEquals("Exception message is not equal.",
+					"com.netbrasoft.gnuob.exception.GNUOpenBusinessServiceException: Given user [manager] doesn't have the right access for site [www.cheirodeflor.nl], verify that the given user have access to the site.", e.getMessage());
+		}
+	}
+
+	@Test
+	public void testPersistSiteWithUserThatThatDoesNotExist() throws GNUOpenBusinessServiceException_Exception {
+		metaData.setUser("NO_ACCESS_USER");
+
+		try {
+			siteWebServiceRepository.persist(metaData, site);
+		} catch (Exception e) {
+			Assert.assertEquals("Exception message is not equal.", "com.netbrasoft.gnuob.exception.GNUOpenBusinessServiceException: Given user [NO_ACCESS_USER] doesn't have the right access, verify that the given user has access.", e.getMessage());
+		}
 	}
 
 	@Test
