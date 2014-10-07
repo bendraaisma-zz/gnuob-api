@@ -1,4 +1,3 @@
-
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
@@ -6,11 +5,13 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for refreshUser complex type.
+ * <p>
+ * Java class for refreshUser complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="refreshUser">
@@ -27,23 +28,17 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "refreshUser", propOrder = {
-    "user"
-})
-public class RefreshUser
-    implements Serializable
-{
+@XmlType(name = "refreshUser", propOrder = { "user" })
+public class RefreshUser implements Serializable {
 
     private static final long serialVersionUID = 9191956595433488971L;
-	protected User user;
+    protected User user;
 
     /**
      * Gets the value of the user property.
      * 
-     * @return
-     *     possible object is
-     *     {@link User }
-     *     
+     * @return possible object is {@link User }
+     * 
      */
     public User getUser() {
         return user;
@@ -53,9 +48,8 @@ public class RefreshUser
      * Sets the value of the user property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link User }
-     *     
+     *            allowed object is {@link User }
+     * 
      */
     public void setUser(User value) {
         this.user = value;

@@ -1,4 +1,3 @@
-
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
@@ -6,11 +5,13 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for countSite complex type.
+ * <p>
+ * Java class for countSite complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="countSite">
@@ -27,23 +28,17 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "countSite", propOrder = {
-    "site"
-})
-public class CountSite
-    implements Serializable
-{
+@XmlType(name = "countSite", propOrder = { "site" })
+public class CountSite implements Serializable {
 
     private static final long serialVersionUID = -7187239064529914075L;
-	protected Site site;
+    protected Site site;
 
     /**
      * Gets the value of the site property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Site }
-     *     
+     * @return possible object is {@link Site }
+     * 
      */
     public Site getSite() {
         return site;
@@ -53,9 +48,8 @@ public class CountSite
      * Sets the value of the site property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link Site }
-     *     
+     *            allowed object is {@link Site }
+     * 
      */
     public void setSite(Site value) {
         this.site = value;

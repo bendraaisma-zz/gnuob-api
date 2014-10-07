@@ -1,4 +1,3 @@
-
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
@@ -6,11 +5,13 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for address complex type.
+ * <p>
+ * Java class for address complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="address">
@@ -18,10 +19,13 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;extension base="{http://gnuob.netbrasoft.com/}type">
  *       &lt;sequence>
  *         &lt;element name="cityName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="complement" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="country" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="countryName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="district" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="internationalStateAndCity" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="internationalStreet" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="number" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="phone" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="postalCode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="stateOrProvince" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -36,29 +40,18 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "address", propOrder = {
-    "cityName",
-    "country",
-    "countryName",
-    "internationalStateAndCity",
-    "internationalStreet",
-    "phone",
-    "postalCode",
-    "stateOrProvince",
-    "street1",
-    "street2"
-})
-public class Address
-    extends Type
-    implements Serializable
-{
+@XmlType(name = "address", propOrder = { "cityName", "complement", "country", "countryName", "district", "internationalStateAndCity", "internationalStreet", "number", "phone", "postalCode", "stateOrProvince", "street1", "street2" })
+public class Address extends Type implements Serializable {
 
-    private static final long serialVersionUID = 6444082675697536523L;
-	protected String cityName;
+    private static final long serialVersionUID = 6926594235185558246L;
+    protected String cityName;
+    protected String complement;
     protected String country;
     protected String countryName;
+    protected String district;
     protected String internationalStateAndCity;
     protected String internationalStreet;
+    protected String number;
     protected String phone;
     protected String postalCode;
     protected String stateOrProvince;
@@ -68,10 +61,8 @@ public class Address
     /**
      * Gets the value of the cityName property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getCityName() {
         return cityName;
@@ -81,21 +72,39 @@ public class Address
      * Sets the value of the cityName property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setCityName(String value) {
         this.cityName = value;
     }
 
     /**
+     * Gets the value of the complement property.
+     * 
+     * @return possible object is {@link String }
+     * 
+     */
+    public String getComplement() {
+        return complement;
+    }
+
+    /**
+     * Sets the value of the complement property.
+     * 
+     * @param value
+     *            allowed object is {@link String }
+     * 
+     */
+    public void setComplement(String value) {
+        this.complement = value;
+    }
+
+    /**
      * Gets the value of the country property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getCountry() {
         return country;
@@ -105,9 +114,8 @@ public class Address
      * Sets the value of the country property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setCountry(String value) {
         this.country = value;
@@ -116,10 +124,8 @@ public class Address
     /**
      * Gets the value of the countryName property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getCountryName() {
         return countryName;
@@ -129,21 +135,39 @@ public class Address
      * Sets the value of the countryName property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setCountryName(String value) {
         this.countryName = value;
     }
 
     /**
+     * Gets the value of the district property.
+     * 
+     * @return possible object is {@link String }
+     * 
+     */
+    public String getDistrict() {
+        return district;
+    }
+
+    /**
+     * Sets the value of the district property.
+     * 
+     * @param value
+     *            allowed object is {@link String }
+     * 
+     */
+    public void setDistrict(String value) {
+        this.district = value;
+    }
+
+    /**
      * Gets the value of the internationalStateAndCity property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getInternationalStateAndCity() {
         return internationalStateAndCity;
@@ -153,9 +177,8 @@ public class Address
      * Sets the value of the internationalStateAndCity property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setInternationalStateAndCity(String value) {
         this.internationalStateAndCity = value;
@@ -164,10 +187,8 @@ public class Address
     /**
      * Gets the value of the internationalStreet property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getInternationalStreet() {
         return internationalStreet;
@@ -177,21 +198,39 @@ public class Address
      * Sets the value of the internationalStreet property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setInternationalStreet(String value) {
         this.internationalStreet = value;
     }
 
     /**
+     * Gets the value of the number property.
+     * 
+     * @return possible object is {@link String }
+     * 
+     */
+    public String getNumber() {
+        return number;
+    }
+
+    /**
+     * Sets the value of the number property.
+     * 
+     * @param value
+     *            allowed object is {@link String }
+     * 
+     */
+    public void setNumber(String value) {
+        this.number = value;
+    }
+
+    /**
      * Gets the value of the phone property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getPhone() {
         return phone;
@@ -201,9 +240,8 @@ public class Address
      * Sets the value of the phone property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setPhone(String value) {
         this.phone = value;
@@ -212,10 +250,8 @@ public class Address
     /**
      * Gets the value of the postalCode property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getPostalCode() {
         return postalCode;
@@ -225,9 +261,8 @@ public class Address
      * Sets the value of the postalCode property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setPostalCode(String value) {
         this.postalCode = value;
@@ -236,10 +271,8 @@ public class Address
     /**
      * Gets the value of the stateOrProvince property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getStateOrProvince() {
         return stateOrProvince;
@@ -249,9 +282,8 @@ public class Address
      * Sets the value of the stateOrProvince property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setStateOrProvince(String value) {
         this.stateOrProvince = value;
@@ -260,10 +292,8 @@ public class Address
     /**
      * Gets the value of the street1 property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getStreet1() {
         return street1;
@@ -273,9 +303,8 @@ public class Address
      * Sets the value of the street1 property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setStreet1(String value) {
         this.street1 = value;
@@ -284,10 +313,8 @@ public class Address
     /**
      * Gets the value of the street2 property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getStreet2() {
         return street2;
@@ -297,9 +324,8 @@ public class Address
      * Sets the value of the street2 property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setStreet2(String value) {
         this.street2 = value;

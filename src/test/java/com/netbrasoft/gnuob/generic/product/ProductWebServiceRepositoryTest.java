@@ -20,79 +20,125 @@ import com.netbrasoft.gnuob.api.OrderBy;
 import com.netbrasoft.gnuob.api.Paging;
 import com.netbrasoft.gnuob.api.Product;
 import com.netbrasoft.gnuob.api.Stock;
+import com.netbrasoft.gnuob.api.SubCategory;
 import com.netbrasoft.gnuob.api.product.ProductWebServiceRepository;
 import com.netbrasoft.gnuob.generic.utils.Utils;
 
 @RunWith(Arquillian.class)
 public class ProductWebServiceRepositoryTest {
 
-	@Deployment
-	public static Archive<?> createDeployment() {
-		return Utils.createDeployment();
-	}
+    @Deployment
+    public static Archive<?> createDeployment() {
+        return Utils.createDeployment();
+    }
 
-	private ProductWebServiceRepository productWebServiceRepository = new ProductWebServiceRepository();
-	private MetaData metaData = null;
-	private Product product = null;
+    private ProductWebServiceRepository productWebServiceRepository = new ProductWebServiceRepository();
+    private MetaData metaData = null;
+    private Product product = null;
 
-	@Before
-	public void init() throws GNUOpenBusinessServiceException_Exception {
+    @Before
+    public void testBefore() {
+        Random randomGenerator = new Random();
 
-	}
+        metaData = new MetaData();
 
-	@Before
-	public void testBefore() {
-		Random randomGenerator = new Random();
+        metaData.setUser("administrator");
+        metaData.setPassword("administrator");
+        metaData.setSite("www.netbrasoft.com");
 
-		metaData = new MetaData();
+        product = new Product();
 
-		metaData.setUser("administrator");
-		metaData.setPassword("administrator");
-		metaData.setSite("www.netbrasoft.com");
+        product.setName(UUID.randomUUID().toString());
+        product.setDescription(UUID.randomUUID().toString());
+        product.setNumber(UUID.randomUUID().toString());
+        product.setAmount(BigDecimal.valueOf(randomGenerator.nextInt()));
+        product.setTax(BigDecimal.valueOf(randomGenerator.nextInt()));
+        product.setDiscount(BigDecimal.valueOf(randomGenerator.nextInt()));
+        product.setRecommended(randomGenerator.nextBoolean());
+        product.setRating(randomGenerator.nextInt());
+        product.setBestsellers(randomGenerator.nextBoolean());
+        product.setShippingCost(BigDecimal.ZERO);
 
-		product = new Product();
+        Stock stock = new Stock();
+        stock.setMaxQuantity(BigInteger.valueOf(100));
+        stock.setMinQuantity(BigInteger.ZERO);
+        stock.setQuantity(BigInteger.valueOf(30));
 
-		product.setName(UUID.randomUUID().toString());
-		product.setDescription(UUID.randomUUID().toString());
-		product.setNumber(UUID.randomUUID().toString());
-		product.setAmount(BigDecimal.valueOf(randomGenerator.nextInt()));
-		product.setTax(BigDecimal.valueOf(randomGenerator.nextInt()));
-		product.setDiscount(BigDecimal.valueOf(randomGenerator.nextInt()));
-		product.setRecommended(randomGenerator.nextBoolean());
-		product.setRating(randomGenerator.nextInt());
-		product.setBestsellers(randomGenerator.nextBoolean());
+        product.setStock(stock);
 
-		Stock stock = new Stock();
-		stock.setMaxQuantity(BigInteger.valueOf(100));
-		stock.setMinQuantity(BigInteger.ZERO);
-		stock.setQuantity(BigInteger.valueOf(30));
+        SubCategory subCategory = new SubCategory();
 
-		product.setStock(stock);
-	}
+        subCategory.setName(UUID.randomUUID().toString());
+        subCategory.setDescription(UUID.randomUUID().toString());
 
-	@Test
-	public void testFindProduct() throws GNUOpenBusinessServiceException_Exception {
-		Product persistProduct = productWebServiceRepository.persist(metaData, product);
+        product.getSubCategories().add(subCategory);
+    }
 
-		Paging paging = new Paging();
+    @Test
+    public void testFindProductBySubCategoryName() throws GNUOpenBusinessServiceException_Exception {
+        String productName = product.getName();
+        String productDescription = product.getDescription();
 
-		paging.setFirst(-1);
-		paging.setMax(-1);
+        productWebServiceRepository.persist(metaData, product);
 
-		List<Product> products = productWebServiceRepository.find(metaData, persistProduct, paging, OrderBy.NONE);
+        Paging paging = new Paging();
 
-		Assert.assertTrue("Find products has no value bigger than 1.", products.size() == 1);
-	}
+        paging.setFirst(-1);
+        paging.setMax(-1);
 
-	@Test
-	public void testPersistProduct() throws GNUOpenBusinessServiceException_Exception {
-		String productName = product.getName();
-		String productDescription = product.getDescription();
+        SubCategory subCategory = new SubCategory();
+        subCategory.setName(product.getSubCategories().get(0).getName());
 
-		Product persistProduct = productWebServiceRepository.persist(metaData, product);
+        Product product = new Product();
+        product.getSubCategories().add(subCategory);
 
-		Assert.assertTrue("Product id has no value bigger than zero.", persistProduct.getId() > 0);
-		Assert.assertEquals("Product name is not equal.", productName, persistProduct.getName());
-		Assert.assertEquals("Product description is not equal.", productDescription, persistProduct.getDescription());
-	}
+        List<Product> findProducts = productWebServiceRepository.find(metaData, product, paging, OrderBy.NONE);
+
+        Assert.assertTrue("Find products has no value bigger than 1.", findProducts.size() == 1);
+
+        Product findProduct = findProducts.iterator().next();
+
+        Assert.assertTrue("Product id has no value bigger than zero.", findProduct.getId() > 0);
+        Assert.assertEquals("Product name is not equal.", productName, findProduct.getName());
+        Assert.assertEquals("Product description is not equal.", productDescription, findProduct.getDescription());
+    }
+
+    @Test
+    public void testMergeProduct() throws GNUOpenBusinessServiceException_Exception {
+        String productName = UUID.randomUUID().toString();
+        String productDescription = UUID.randomUUID().toString();
+
+        Product persistProduct = productWebServiceRepository.persist(metaData, product);
+
+        persistProduct.setName(productName);
+        persistProduct.setDescription(productDescription);
+
+        Product mergeProduct = productWebServiceRepository.merge(metaData, persistProduct);
+
+        Assert.assertTrue("Product id has no value bigger than zero.", mergeProduct.getId() > 0);
+        Assert.assertEquals("Product name is not equal.", productName, mergeProduct.getName());
+        Assert.assertEquals("Product description is not equal.", productDescription, mergeProduct.getDescription());
+    }
+
+    @Test
+    public void testPersistProduct() throws GNUOpenBusinessServiceException_Exception {
+        String productName = product.getName();
+        String productDescription = product.getDescription();
+
+        Product persistProduct = productWebServiceRepository.persist(metaData, product);
+
+        Assert.assertTrue("Product id has no value bigger than zero.", persistProduct.getId() > 0);
+        Assert.assertEquals("Product name is not equal.", productName, persistProduct.getName());
+        Assert.assertEquals("Product description is not equal.", productDescription, persistProduct.getDescription());
+    }
+
+    @Test
+    public void testRemoveProduct() throws GNUOpenBusinessServiceException_Exception {
+        Product persistProduct = productWebServiceRepository.persist(metaData, product);
+        productWebServiceRepository.remove(metaData, persistProduct);
+
+        Product findProduct = productWebServiceRepository.find(metaData, product);
+
+        Assert.assertNull("Product is found.", findProduct);
+    }
 }

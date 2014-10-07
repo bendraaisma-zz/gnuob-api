@@ -1,4 +1,3 @@
-
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
@@ -10,11 +9,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for offer complex type.
+ * <p>
+ * Java class for offer complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="offer">
@@ -38,23 +39,11 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "offer", propOrder = {
-    "contract",
-    "description",
-    "handlingTotal",
-    "insuranceTotal",
-    "records",
-    "reference",
-    "shippingDiscount",
-    "shippingTotal"
-})
-public class Offer
-    extends Access
-    implements Serializable
-{
+@XmlType(name = "offer", propOrder = { "contract", "description", "handlingTotal", "insuranceTotal", "records", "reference", "shippingDiscount", "shippingTotal" })
+public class Offer extends Access implements Serializable {
 
     private static final long serialVersionUID = 9099667990766991119L;
-	@XmlElement(required = true)
+    @XmlElement(required = true)
     protected Contract contract;
     @XmlElement(required = true)
     protected String description;
@@ -74,10 +63,8 @@ public class Offer
     /**
      * Gets the value of the contract property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Contract }
-     *     
+     * @return possible object is {@link Contract }
+     * 
      */
     public Contract getContract() {
         return contract;
@@ -87,9 +74,8 @@ public class Offer
      * Sets the value of the contract property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link Contract }
-     *     
+     *            allowed object is {@link Contract }
+     * 
      */
     public void setContract(Contract value) {
         this.contract = value;
@@ -98,10 +84,8 @@ public class Offer
     /**
      * Gets the value of the description property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getDescription() {
         return description;
@@ -111,9 +95,8 @@ public class Offer
      * Sets the value of the description property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setDescription(String value) {
         this.description = value;
@@ -122,10 +105,8 @@ public class Offer
     /**
      * Gets the value of the handlingTotal property.
      * 
-     * @return
-     *     possible object is
-     *     {@link BigDecimal }
-     *     
+     * @return possible object is {@link BigDecimal }
+     * 
      */
     public BigDecimal getHandlingTotal() {
         return handlingTotal;
@@ -135,9 +116,8 @@ public class Offer
      * Sets the value of the handlingTotal property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link BigDecimal }
-     *     
+     *            allowed object is {@link BigDecimal }
+     * 
      */
     public void setHandlingTotal(BigDecimal value) {
         this.handlingTotal = value;
@@ -146,10 +126,8 @@ public class Offer
     /**
      * Gets the value of the insuranceTotal property.
      * 
-     * @return
-     *     possible object is
-     *     {@link BigDecimal }
-     *     
+     * @return possible object is {@link BigDecimal }
+     * 
      */
     public BigDecimal getInsuranceTotal() {
         return insuranceTotal;
@@ -159,9 +137,8 @@ public class Offer
      * Sets the value of the insuranceTotal property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link BigDecimal }
-     *     
+     *            allowed object is {@link BigDecimal }
+     * 
      */
     public void setInsuranceTotal(BigDecimal value) {
         this.insuranceTotal = value;
@@ -171,15 +148,16 @@ public class Offer
      * Gets the value of the records property.
      * 
      * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the records property.
+     * This accessor method returns a reference to the live list, not a
+     * snapshot. Therefore any modification you make to the returned list will
+     * be present inside the JAXB object. This is why there is not a
+     * <CODE>set</CODE> method for the records property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * 
      * <pre>
-     *    getRecords().add(newItem);
+     * getRecords().add(newItem);
      * </pre>
      * 
      * 
@@ -199,10 +177,8 @@ public class Offer
     /**
      * Gets the value of the reference property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getReference() {
         return reference;
@@ -212,9 +188,8 @@ public class Offer
      * Sets the value of the reference property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setReference(String value) {
         this.reference = value;
@@ -223,10 +198,8 @@ public class Offer
     /**
      * Gets the value of the shippingDiscount property.
      * 
-     * @return
-     *     possible object is
-     *     {@link BigDecimal }
-     *     
+     * @return possible object is {@link BigDecimal }
+     * 
      */
     public BigDecimal getShippingDiscount() {
         return shippingDiscount;
@@ -236,9 +209,8 @@ public class Offer
      * Sets the value of the shippingDiscount property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link BigDecimal }
-     *     
+     *            allowed object is {@link BigDecimal }
+     * 
      */
     public void setShippingDiscount(BigDecimal value) {
         this.shippingDiscount = value;
@@ -247,10 +219,8 @@ public class Offer
     /**
      * Gets the value of the shippingTotal property.
      * 
-     * @return
-     *     possible object is
-     *     {@link BigDecimal }
-     *     
+     * @return possible object is {@link BigDecimal }
+     * 
      */
     public BigDecimal getShippingTotal() {
         return shippingTotal;
@@ -260,9 +230,8 @@ public class Offer
      * Sets the value of the shippingTotal property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link BigDecimal }
-     *     
+     *            allowed object is {@link BigDecimal }
+     * 
      */
     public void setShippingTotal(BigDecimal value) {
         this.shippingTotal = value;

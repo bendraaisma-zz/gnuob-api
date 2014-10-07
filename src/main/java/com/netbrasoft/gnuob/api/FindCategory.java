@@ -1,4 +1,3 @@
-
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
@@ -6,11 +5,13 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for findCategory complex type.
+ * <p>
+ * Java class for findCategory complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="findCategory">
@@ -29,27 +30,19 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "findCategory", propOrder = {
-    "category",
-    "paging",
-    "orderBy"
-})
-public class FindCategory
-    implements Serializable
-{
+@XmlType(name = "findCategory", propOrder = { "category", "paging", "orderBy" })
+public class FindCategory implements Serializable {
 
     private static final long serialVersionUID = -7855380685819154586L;
-	protected Category category;
+    protected Category category;
     protected Paging paging;
     protected OrderBy orderBy;
 
     /**
      * Gets the value of the category property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Category }
-     *     
+     * @return possible object is {@link Category }
+     * 
      */
     public Category getCategory() {
         return category;
@@ -59,9 +52,8 @@ public class FindCategory
      * Sets the value of the category property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link Category }
-     *     
+     *            allowed object is {@link Category }
+     * 
      */
     public void setCategory(Category value) {
         this.category = value;
@@ -70,10 +62,8 @@ public class FindCategory
     /**
      * Gets the value of the paging property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Paging }
-     *     
+     * @return possible object is {@link Paging }
+     * 
      */
     public Paging getPaging() {
         return paging;
@@ -83,9 +73,8 @@ public class FindCategory
      * Sets the value of the paging property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link Paging }
-     *     
+     *            allowed object is {@link Paging }
+     * 
      */
     public void setPaging(Paging value) {
         this.paging = value;
@@ -94,10 +83,8 @@ public class FindCategory
     /**
      * Gets the value of the orderBy property.
      * 
-     * @return
-     *     possible object is
-     *     {@link OrderBy }
-     *     
+     * @return possible object is {@link OrderBy }
+     * 
      */
     public OrderBy getOrderBy() {
         return orderBy;
@@ -107,9 +94,8 @@ public class FindCategory
      * Sets the value of the orderBy property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link OrderBy }
-     *     
+     *            allowed object is {@link OrderBy }
+     * 
      */
     public void setOrderBy(OrderBy value) {
         this.orderBy = value;

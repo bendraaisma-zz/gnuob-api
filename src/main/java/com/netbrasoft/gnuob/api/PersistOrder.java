@@ -1,4 +1,3 @@
-
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
@@ -6,18 +5,20 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for persistOrder complex type.
+ * <p>
+ * Java class for persistOrder complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="persistOrder">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="order" type="{http://gnuob.netbrasoft.com/}Order" minOccurs="0"/>
+ *         &lt;element name="order" type="{http://gnuob.netbrasoft.com/}order" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -27,23 +28,17 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "persistOrder", propOrder = {
-    "order"
-})
-public class PersistOrder
-    implements Serializable
-{
+@XmlType(name = "persistOrder", propOrder = { "order" })
+public class PersistOrder implements Serializable {
 
     private static final long serialVersionUID = -6419251623490874200L;
-	protected Order order;
+    protected Order order;
 
     /**
      * Gets the value of the order property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Order }
-     *     
+     * @return possible object is {@link Order }
+     * 
      */
     public Order getOrder() {
         return order;
@@ -53,9 +48,8 @@ public class PersistOrder
      * Sets the value of the order property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link Order }
-     *     
+     *            allowed object is {@link Order }
+     * 
      */
     public void setOrder(Order value) {
         this.order = value;

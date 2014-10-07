@@ -1,4 +1,3 @@
-
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
@@ -6,11 +5,13 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for findProduct complex type.
+ * <p>
+ * Java class for findProduct complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="findProduct">
@@ -29,27 +30,19 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "findProduct", propOrder = {
-    "product",
-    "paging",
-    "orderBy"
-})
-public class FindProduct
-    implements Serializable
-{
+@XmlType(name = "findProduct", propOrder = { "product", "paging", "orderBy" })
+public class FindProduct implements Serializable {
 
     private static final long serialVersionUID = 9031365656524104536L;
-	protected Product product;
+    protected Product product;
     protected Paging paging;
     protected OrderBy orderBy;
 
     /**
      * Gets the value of the product property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Product }
-     *     
+     * @return possible object is {@link Product }
+     * 
      */
     public Product getProduct() {
         return product;
@@ -59,9 +52,8 @@ public class FindProduct
      * Sets the value of the product property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link Product }
-     *     
+     *            allowed object is {@link Product }
+     * 
      */
     public void setProduct(Product value) {
         this.product = value;
@@ -70,10 +62,8 @@ public class FindProduct
     /**
      * Gets the value of the paging property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Paging }
-     *     
+     * @return possible object is {@link Paging }
+     * 
      */
     public Paging getPaging() {
         return paging;
@@ -83,9 +73,8 @@ public class FindProduct
      * Sets the value of the paging property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link Paging }
-     *     
+     *            allowed object is {@link Paging }
+     * 
      */
     public void setPaging(Paging value) {
         this.paging = value;
@@ -94,10 +83,8 @@ public class FindProduct
     /**
      * Gets the value of the orderBy property.
      * 
-     * @return
-     *     possible object is
-     *     {@link OrderBy }
-     *     
+     * @return possible object is {@link OrderBy }
+     * 
      */
     public OrderBy getOrderBy() {
         return orderBy;
@@ -107,9 +94,8 @@ public class FindProduct
      * Sets the value of the orderBy property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link OrderBy }
-     *     
+     *            allowed object is {@link OrderBy }
+     * 
      */
     public void setOrderBy(OrderBy value) {
         this.orderBy = value;

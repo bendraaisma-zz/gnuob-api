@@ -1,4 +1,3 @@
-
 package com.netbrasoft.gnuob.api;
 
 import javax.xml.bind.JAXBElement;
@@ -6,19 +5,15 @@ import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
-
 /**
- * This object contains factory methods for each 
- * Java content interface and Java element interface 
- * generated in the com.netbrasoft.gnuob.api package. 
- * <p>An ObjectFactory allows you to programatically 
- * construct new instances of the Java representation 
- * for XML content. The Java representation of XML 
- * content can consist of schema derived interfaces 
- * and classes representing the binding of schema 
- * type definitions, element declarations and model 
- * groups.  Factory methods for each of these are 
- * provided in this class.
+ * This object contains factory methods for each Java content interface and Java
+ * element interface generated in the com.netbrasoft.gnuob.api package.
+ * <p>
+ * An ObjectFactory allows you to programatically construct new instances of the
+ * Java representation for XML content. The Java representation of XML content
+ * can consist of schema derived interfaces and classes representing the binding
+ * of schema type definitions, element declarations and model groups. Factory
+ * methods for each of these are provided in this class.
  * 
  */
 @XmlRegistry
@@ -35,7 +30,6 @@ public class ObjectFactory {
     private final static QName _PersistSettingResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "persistSettingResponse");
     private final static QName _Paging_QNAME = new QName("http://gnuob.netbrasoft.com/", "Paging");
     private final static QName _MergeSetting_QNAME = new QName("http://gnuob.netbrasoft.com/", "mergeSetting");
-    private final static QName _GNUOpenBusinessServiceException_QNAME = new QName("http://gnuob.netbrasoft.com/", "GNUOpenBusinessServiceException");
     private final static QName _FindSetting_QNAME = new QName("http://gnuob.netbrasoft.com/", "findSetting");
     private final static QName _FindSettingById_QNAME = new QName("http://gnuob.netbrasoft.com/", "findSettingById");
     private final static QName _RefreshSettingResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "refreshSettingResponse");
@@ -46,7 +40,8 @@ public class ObjectFactory {
     private final static QName _MergeSettingResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "mergeSettingResponse");
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.netbrasoft.gnuob.api
+     * Create a new ObjectFactory that can be used to create new instances of
+     * schema derived classes for package: com.netbrasoft.gnuob.api
      * 
      */
     public ObjectFactory() {
@@ -98,14 +93,6 @@ public class ObjectFactory {
      */
     public FindSetting createFindSetting() {
         return new FindSetting();
-    }
-
-    /**
-     * Create an instance of {@link GNUOpenBusinessServiceException }
-     * 
-     */
-    public GNUOpenBusinessServiceException createGNUOpenBusinessServiceException() {
-        return new GNUOpenBusinessServiceException();
     }
 
     /**
@@ -205,7 +192,8 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindSettingResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}
+     * {@link FindSettingResponse }{@code >}
      * 
      */
     @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "findSettingResponse")
@@ -214,7 +202,8 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CountSetting }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CountSetting }
+     * {@code >}
      * 
      */
     @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "countSetting")
@@ -223,7 +212,8 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RemoveSettingResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}
+     * {@link RemoveSettingResponse }{@code >}
      * 
      */
     @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "removeSettingResponse")
@@ -232,7 +222,8 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link MetaData }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link MetaData }
+     * {@code >}
      * 
      */
     @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "metaData")
@@ -241,7 +232,8 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RefreshSetting }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link RefreshSetting }
+     * {@code >}
      * 
      */
     @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "refreshSetting")
@@ -250,7 +242,8 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CountSettingResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}
+     * {@link CountSettingResponse }{@code >}
      * 
      */
     @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "countSettingResponse")
@@ -259,7 +252,8 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PersistSetting }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link PersistSetting }
+     * {@code >}
      * 
      */
     @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "persistSetting")
@@ -268,7 +262,8 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RemoveSetting }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link RemoveSetting }
+     * {@code >}
      * 
      */
     @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "removeSetting")
@@ -277,7 +272,8 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PersistSettingResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}
+     * {@link PersistSettingResponse }{@code >}
      * 
      */
     @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "persistSettingResponse")
@@ -286,7 +282,7 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Paging }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Paging }{@code >}
      * 
      */
     @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "Paging")
@@ -295,7 +291,8 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link MergeSetting }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link MergeSetting }
+     * {@code >}
      * 
      */
     @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "mergeSetting")
@@ -304,16 +301,8 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GNUOpenBusinessServiceException }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "GNUOpenBusinessServiceException")
-    public JAXBElement<GNUOpenBusinessServiceException> createGNUOpenBusinessServiceException(GNUOpenBusinessServiceException value) {
-        return new JAXBElement<GNUOpenBusinessServiceException>(_GNUOpenBusinessServiceException_QNAME, GNUOpenBusinessServiceException.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindSetting }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindSetting }
+     * {@code >}
      * 
      */
     @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "findSetting")
@@ -322,7 +311,8 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindSettingById }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindSettingById }
+     * {@code >}
      * 
      */
     @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "findSettingById")
@@ -331,7 +321,8 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RefreshSettingResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}
+     * {@link RefreshSettingResponse }{@code >}
      * 
      */
     @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "refreshSettingResponse")
@@ -340,7 +331,8 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindSettingByIdResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}
+     * {@link FindSettingByIdResponse }{@code >}
      * 
      */
     @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "findSettingByIdResponse")
@@ -349,7 +341,7 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Rule }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Rule }{@code >}
      * 
      */
     @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "Rule")
@@ -358,7 +350,7 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link OrderBy }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link OrderBy }{@code >}
      * 
      */
     @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "OrderBy")
@@ -367,7 +359,8 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Permission }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Permission }
+     * {@code >}
      * 
      */
     @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "Permission")
@@ -376,7 +369,8 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link MergeSettingResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}
+     * {@link MergeSettingResponse }{@code >}
      * 
      */
     @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "mergeSettingResponse")

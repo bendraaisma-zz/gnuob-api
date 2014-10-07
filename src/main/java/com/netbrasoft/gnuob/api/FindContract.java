@@ -1,4 +1,3 @@
-
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
@@ -6,11 +5,13 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for findContract complex type.
+ * <p>
+ * Java class for findContract complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="findContract">
@@ -29,27 +30,19 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "findContract", propOrder = {
-    "contract",
-    "paging",
-    "orderBy"
-})
-public class FindContract
-    implements Serializable
-{
+@XmlType(name = "findContract", propOrder = { "contract", "paging", "orderBy" })
+public class FindContract implements Serializable {
 
     private static final long serialVersionUID = 3052083502150748371L;
-	protected Contract contract;
+    protected Contract contract;
     protected Paging paging;
     protected OrderBy orderBy;
 
     /**
      * Gets the value of the contract property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Contract }
-     *     
+     * @return possible object is {@link Contract }
+     * 
      */
     public Contract getContract() {
         return contract;
@@ -59,9 +52,8 @@ public class FindContract
      * Sets the value of the contract property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link Contract }
-     *     
+     *            allowed object is {@link Contract }
+     * 
      */
     public void setContract(Contract value) {
         this.contract = value;
@@ -70,10 +62,8 @@ public class FindContract
     /**
      * Gets the value of the paging property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Paging }
-     *     
+     * @return possible object is {@link Paging }
+     * 
      */
     public Paging getPaging() {
         return paging;
@@ -83,9 +73,8 @@ public class FindContract
      * Sets the value of the paging property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link Paging }
-     *     
+     *            allowed object is {@link Paging }
+     * 
      */
     public void setPaging(Paging value) {
         this.paging = value;
@@ -94,10 +83,8 @@ public class FindContract
     /**
      * Gets the value of the orderBy property.
      * 
-     * @return
-     *     possible object is
-     *     {@link OrderBy }
-     *     
+     * @return possible object is {@link OrderBy }
+     * 
      */
     public OrderBy getOrderBy() {
         return orderBy;
@@ -107,9 +94,8 @@ public class FindContract
      * Sets the value of the orderBy property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link OrderBy }
-     *     
+     *            allowed object is {@link OrderBy }
+     * 
      */
     public void setOrderBy(OrderBy value) {
         this.orderBy = value;

@@ -1,4 +1,3 @@
-
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
@@ -9,11 +8,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlMimeType;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for content complex type.
+ * <p>
+ * Java class for content complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="content">
@@ -32,18 +33,11 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "content", propOrder = {
-    "content",
-    "format",
-    "name"
-})
-public class Content
-    extends Access
-    implements Serializable
-{
+@XmlType(name = "content", propOrder = { "content", "format", "name" })
+public class Content extends Access implements Serializable {
 
     private static final long serialVersionUID = -8594647005451740908L;
-	@XmlElement(required = true)
+    @XmlElement(required = true)
     @XmlMimeType("application/octet-stream")
     protected DataHandler content;
     @XmlElement(required = true)
@@ -54,10 +48,8 @@ public class Content
     /**
      * Gets the value of the content property.
      * 
-     * @return
-     *     possible object is
-     *     {@link DataHandler }
-     *     
+     * @return possible object is {@link DataHandler }
+     * 
      */
     public DataHandler getContent() {
         return content;
@@ -67,9 +59,8 @@ public class Content
      * Sets the value of the content property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link DataHandler }
-     *     
+     *            allowed object is {@link DataHandler }
+     * 
      */
     public void setContent(DataHandler value) {
         this.content = value;
@@ -78,10 +69,8 @@ public class Content
     /**
      * Gets the value of the format property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getFormat() {
         return format;
@@ -91,9 +80,8 @@ public class Content
      * Sets the value of the format property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setFormat(String value) {
         this.format = value;
@@ -102,10 +90,8 @@ public class Content
     /**
      * Gets the value of the name property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getName() {
         return name;
@@ -115,9 +101,8 @@ public class Content
      * Sets the value of the name property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setName(String value) {
         this.name = value;

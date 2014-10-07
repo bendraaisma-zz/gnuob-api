@@ -1,15 +1,16 @@
-
 package com.netbrasoft.gnuob.api;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for mergeCustomer complex type.
+ * <p>
+ * Java class for mergeCustomer complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="mergeCustomer">
@@ -26,9 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "mergeCustomer", propOrder = {
-    "customer"
-})
+@XmlType(name = "mergeCustomer", propOrder = { "customer" })
 public class MergeCustomer {
 
     protected Customer customer;
@@ -36,10 +35,8 @@ public class MergeCustomer {
     /**
      * Gets the value of the customer property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Customer }
-     *     
+     * @return possible object is {@link Customer }
+     * 
      */
     public Customer getCustomer() {
         return customer;
@@ -49,9 +46,8 @@ public class MergeCustomer {
      * Sets the value of the customer property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link Customer }
-     *     
+     *            allowed object is {@link Customer }
+     * 
      */
     public void setCustomer(Customer value) {
         this.customer = value;

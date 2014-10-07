@@ -1,4 +1,3 @@
-
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
@@ -6,11 +5,13 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for findGroupById complex type.
+ * <p>
+ * Java class for findGroupById complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="findGroupById">
@@ -27,23 +28,17 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "findGroupById", propOrder = {
-    "group"
-})
-public class FindGroupById
-    implements Serializable
-{
+@XmlType(name = "findGroupById", propOrder = { "group" })
+public class FindGroupById implements Serializable {
 
     private static final long serialVersionUID = -7732065011501210216L;
-	protected Group group;
+    protected Group group;
 
     /**
      * Gets the value of the group property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Group }
-     *     
+     * @return possible object is {@link Group }
+     * 
      */
     public Group getGroup() {
         return group;
@@ -53,9 +48,8 @@ public class FindGroupById
      * Sets the value of the group property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link Group }
-     *     
+     *            allowed object is {@link Group }
+     * 
      */
     public void setGroup(Group value) {
         this.group = value;

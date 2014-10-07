@@ -28,68 +28,68 @@ import com.netbrasoft.gnuob.api.RemoveOffer;
 @Repository("OfferWebServiceRepository")
 public class OfferWebServiceRepository {
 
-	private OfferWebServiceImpl offerWebServiceImpl;
+    private OfferWebServiceImpl offerWebServiceImpl;
 
-	public OfferWebServiceRepository() {
-	}
+    public OfferWebServiceRepository() {
+    }
 
-	public long count(MetaData paramMetaData, Offer paramOffer) throws GNUOpenBusinessServiceException_Exception {
-		CountOffer paramCountOffer = new CountOffer();
-		paramCountOffer.setOffer(paramOffer);
-		CountOfferResponse countOfferResponse = getOfferWebServiceImpl().countOffer(paramCountOffer, paramMetaData);
-		return countOfferResponse.getReturn();
-	}
+    public long count(MetaData paramMetaData, Offer paramOffer) throws GNUOpenBusinessServiceException_Exception {
+        CountOffer paramCountOffer = new CountOffer();
+        paramCountOffer.setOffer(paramOffer);
+        CountOfferResponse countOfferResponse = getOfferWebServiceImpl().countOffer(paramCountOffer, paramMetaData);
+        return countOfferResponse.getReturn();
+    }
 
-	public Offer find(MetaData paramMetaData, Offer paramOffer) throws GNUOpenBusinessServiceException_Exception {
-		FindOfferById paramFindOfferById = new FindOfferById();
-		paramFindOfferById.setOffer(paramOffer);
-		FindOfferByIdResponse findOfferByIdResponse = getOfferWebServiceImpl().findOfferById(paramFindOfferById, paramMetaData);
-		return findOfferByIdResponse.getReturn();
+    public Offer find(MetaData paramMetaData, Offer paramOffer) throws GNUOpenBusinessServiceException_Exception {
+        FindOfferById paramFindOfferById = new FindOfferById();
+        paramFindOfferById.setOffer(paramOffer);
+        FindOfferByIdResponse findOfferByIdResponse = getOfferWebServiceImpl().findOfferById(paramFindOfferById, paramMetaData);
+        return findOfferByIdResponse.getReturn();
 
-	}
+    }
 
-	public List<Offer> find(MetaData paramMetaData, Offer paramOffer, Paging paramPaging, OrderBy paramOrderBy) throws GNUOpenBusinessServiceException_Exception {
-		FindOffer paramFindOffer = new FindOffer();
-		paramFindOffer.setOffer(paramOffer);
-		paramFindOffer.setPaging(paramPaging);
-		paramFindOffer.setOrderBy(paramOrderBy);
-		FindOfferResponse findOfferResponse = getOfferWebServiceImpl().findOffer(paramFindOffer, paramMetaData);
-		return findOfferResponse.getReturn();
-	}
+    public List<Offer> find(MetaData paramMetaData, Offer paramOffer, Paging paramPaging, OrderBy paramOrderBy) throws GNUOpenBusinessServiceException_Exception {
+        FindOffer paramFindOffer = new FindOffer();
+        paramFindOffer.setOffer(paramOffer);
+        paramFindOffer.setPaging(paramPaging);
+        paramFindOffer.setOrderBy(paramOrderBy);
+        FindOfferResponse findOfferResponse = getOfferWebServiceImpl().findOffer(paramFindOffer, paramMetaData);
+        return findOfferResponse.getReturn();
+    }
 
-	private OfferWebServiceImpl getOfferWebServiceImpl() {
-		if (offerWebServiceImpl == null) {
-			OfferWebServiceImplService offerWebServiceImplService = new OfferWebServiceImplService(OfferWebServiceImplService.WSDL_LOCATION);
-			offerWebServiceImpl = offerWebServiceImplService.getOfferWebServiceImplPort();
-		}
+    private OfferWebServiceImpl getOfferWebServiceImpl() {
+        if (offerWebServiceImpl == null) {
+            OfferWebServiceImplService offerWebServiceImplService = new OfferWebServiceImplService(OfferWebServiceImplService.WSDL_LOCATION);
+            offerWebServiceImpl = offerWebServiceImplService.getOfferWebServiceImplPort();
+        }
 
-		return getOfferWebServiceImpl();
-	}
+        return getOfferWebServiceImpl();
+    }
 
-	public Offer merge(MetaData paramMetaData, Offer paramOffer) throws GNUOpenBusinessServiceException_Exception {
-		MergeOffer paramMergeOffer = new MergeOffer();
-		paramMergeOffer.setOffer(paramOffer);
-		MergeOfferResponse mergeOfferResponse = getOfferWebServiceImpl().mergeOffer(paramMergeOffer, paramMetaData);
-		return mergeOfferResponse.getReturn();
-	}
+    public Offer merge(MetaData paramMetaData, Offer paramOffer) throws GNUOpenBusinessServiceException_Exception {
+        MergeOffer paramMergeOffer = new MergeOffer();
+        paramMergeOffer.setOffer(paramOffer);
+        MergeOfferResponse mergeOfferResponse = getOfferWebServiceImpl().mergeOffer(paramMergeOffer, paramMetaData);
+        return mergeOfferResponse.getReturn();
+    }
 
-	public Offer persist(MetaData paramMetaData, Offer paramOffer) throws GNUOpenBusinessServiceException_Exception {
-		PersistOffer paramPersistOffer = new PersistOffer();
-		paramPersistOffer.setOffer(paramOffer);
-		PersistOfferResponse persistOfferResponse = getOfferWebServiceImpl().persistOffer(paramPersistOffer, paramMetaData);
-		return persistOfferResponse.getReturn();
-	}
+    public Offer persist(MetaData paramMetaData, Offer paramOffer) throws GNUOpenBusinessServiceException_Exception {
+        PersistOffer paramPersistOffer = new PersistOffer();
+        paramPersistOffer.setOffer(paramOffer);
+        PersistOfferResponse persistOfferResponse = getOfferWebServiceImpl().persistOffer(paramPersistOffer, paramMetaData);
+        return persistOfferResponse.getReturn();
+    }
 
-	public Offer refresh(MetaData paramMetaData, Offer paramOffer) throws GNUOpenBusinessServiceException_Exception {
-		RefreshOffer paramRefresOffer = new RefreshOffer();
-		paramRefresOffer.setOffer(paramOffer);
-		RefreshOfferResponse refresOfferResponse = getOfferWebServiceImpl().refreshOffer(paramRefresOffer, paramMetaData);
-		return refresOfferResponse.getReturn();
-	}
+    public Offer refresh(MetaData paramMetaData, Offer paramOffer) throws GNUOpenBusinessServiceException_Exception {
+        RefreshOffer paramRefresOffer = new RefreshOffer();
+        paramRefresOffer.setOffer(paramOffer);
+        RefreshOfferResponse refresOfferResponse = getOfferWebServiceImpl().refreshOffer(paramRefresOffer, paramMetaData);
+        return refresOfferResponse.getReturn();
+    }
 
-	public void remove(MetaData paramMetaData, Offer paramOffer) throws GNUOpenBusinessServiceException_Exception {
-		RemoveOffer paramRemoveOffer = new RemoveOffer();
-		paramRemoveOffer.setOffer(paramOffer);
-		getOfferWebServiceImpl().removeOffer(paramRemoveOffer, paramMetaData);
-	}
+    public void remove(MetaData paramMetaData, Offer paramOffer) throws GNUOpenBusinessServiceException_Exception {
+        RemoveOffer paramRemoveOffer = new RemoveOffer();
+        paramRemoveOffer.setOffer(paramOffer);
+        getOfferWebServiceImpl().removeOffer(paramRemoveOffer, paramMetaData);
+    }
 }

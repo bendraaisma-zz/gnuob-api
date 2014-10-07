@@ -28,68 +28,68 @@ import com.netbrasoft.gnuob.api.RemoveCustomer;
 @Repository("CustomerWebServiceRepository")
 public class CustomerWebServiceRepository {
 
-	private CustomerWebServiceImpl customerWebServiceImpl;
+    private CustomerWebServiceImpl customerWebServiceImpl;
 
-	public CustomerWebServiceRepository() {
-	}
+    public CustomerWebServiceRepository() {
+    }
 
-	public long count(MetaData paramMetaData, Customer paramCustomer) throws GNUOpenBusinessServiceException_Exception {
-		CountCustomer paramCountCustomer = new CountCustomer();
-		paramCountCustomer.setCustomer(paramCustomer);
-		CountCustomerResponse countCustomerResponse = getCustomerWebServiceImpl().countCustomer(paramCountCustomer, paramMetaData);
-		return countCustomerResponse.getReturn();
-	}
+    public long count(MetaData paramMetaData, Customer paramCustomer) throws GNUOpenBusinessServiceException_Exception {
+        CountCustomer paramCountCustomer = new CountCustomer();
+        paramCountCustomer.setCustomer(paramCustomer);
+        CountCustomerResponse countCustomerResponse = getCustomerWebServiceImpl().countCustomer(paramCountCustomer, paramMetaData);
+        return countCustomerResponse.getReturn();
+    }
 
-	public Customer find(MetaData paramMetaData, Customer paramCustomer) throws GNUOpenBusinessServiceException_Exception {
-		FindCustomerById paramFindCustomerById = new FindCustomerById();
-		paramFindCustomerById.setCustomer(paramCustomer);
-		FindCustomerByIdResponse findCustomerByIdResponse = getCustomerWebServiceImpl().findCustomerById(paramFindCustomerById, paramMetaData);
-		return findCustomerByIdResponse.getReturn();
+    public Customer find(MetaData paramMetaData, Customer paramCustomer) throws GNUOpenBusinessServiceException_Exception {
+        FindCustomerById paramFindCustomerById = new FindCustomerById();
+        paramFindCustomerById.setCustomer(paramCustomer);
+        FindCustomerByIdResponse findCustomerByIdResponse = getCustomerWebServiceImpl().findCustomerById(paramFindCustomerById, paramMetaData);
+        return findCustomerByIdResponse.getReturn();
 
-	}
+    }
 
-	public List<Customer> find(MetaData paramMetaData, Customer paramCustomer, Paging paramPaging, OrderBy paramOrderBy) throws GNUOpenBusinessServiceException_Exception {
-		FindCustomer paramFindCustomer = new FindCustomer();
-		paramFindCustomer.setCustomer(paramCustomer);
-		paramFindCustomer.setPaging(paramPaging);
-		paramFindCustomer.setOrderBy(paramOrderBy);
-		FindCustomerResponse findCustomerResponse = getCustomerWebServiceImpl().findCustomer(paramFindCustomer, paramMetaData);
-		return findCustomerResponse.getReturn();
-	}
+    public List<Customer> find(MetaData paramMetaData, Customer paramCustomer, Paging paramPaging, OrderBy paramOrderBy) throws GNUOpenBusinessServiceException_Exception {
+        FindCustomer paramFindCustomer = new FindCustomer();
+        paramFindCustomer.setCustomer(paramCustomer);
+        paramFindCustomer.setPaging(paramPaging);
+        paramFindCustomer.setOrderBy(paramOrderBy);
+        FindCustomerResponse findCustomerResponse = getCustomerWebServiceImpl().findCustomer(paramFindCustomer, paramMetaData);
+        return findCustomerResponse.getReturn();
+    }
 
-	private CustomerWebServiceImpl getCustomerWebServiceImpl() {
-		if (customerWebServiceImpl == null) {
-			CustomerWebServiceImplService customerWebServiceImplService = new CustomerWebServiceImplService(CustomerWebServiceImplService.WSDL_LOCATION);
-			customerWebServiceImpl = customerWebServiceImplService.getCustomerWebServiceImplPort();
-		}
+    private CustomerWebServiceImpl getCustomerWebServiceImpl() {
+        if (customerWebServiceImpl == null) {
+            CustomerWebServiceImplService customerWebServiceImplService = new CustomerWebServiceImplService(CustomerWebServiceImplService.WSDL_LOCATION);
+            customerWebServiceImpl = customerWebServiceImplService.getCustomerWebServiceImplPort();
+        }
 
-		return customerWebServiceImpl;
-	}
+        return customerWebServiceImpl;
+    }
 
-	public Customer merge(MetaData paramMetaData, Customer paramCustomer) throws GNUOpenBusinessServiceException_Exception {
-		MergeCustomer paramMergeCustomer = new MergeCustomer();
-		paramMergeCustomer.setCustomer(paramCustomer);
-		MergeCustomerResponse mergeCustomerResponse = getCustomerWebServiceImpl().mergeCustomer(paramMergeCustomer, paramMetaData);
-		return mergeCustomerResponse.getReturn();
-	}
+    public Customer merge(MetaData paramMetaData, Customer paramCustomer) throws GNUOpenBusinessServiceException_Exception {
+        MergeCustomer paramMergeCustomer = new MergeCustomer();
+        paramMergeCustomer.setCustomer(paramCustomer);
+        MergeCustomerResponse mergeCustomerResponse = getCustomerWebServiceImpl().mergeCustomer(paramMergeCustomer, paramMetaData);
+        return mergeCustomerResponse.getReturn();
+    }
 
-	public Customer persist(MetaData paramMetaData, Customer paramCustomer) throws GNUOpenBusinessServiceException_Exception {
-		PersistCustomer paramPersistCustomer = new PersistCustomer();
-		paramPersistCustomer.setCustomer(paramCustomer);
-		PersistCustomerResponse persistCustomerResponse = getCustomerWebServiceImpl().persistCustomer(paramPersistCustomer, paramMetaData);
-		return persistCustomerResponse.getReturn();
-	}
+    public Customer persist(MetaData paramMetaData, Customer paramCustomer) throws GNUOpenBusinessServiceException_Exception {
+        PersistCustomer paramPersistCustomer = new PersistCustomer();
+        paramPersistCustomer.setCustomer(paramCustomer);
+        PersistCustomerResponse persistCustomerResponse = getCustomerWebServiceImpl().persistCustomer(paramPersistCustomer, paramMetaData);
+        return persistCustomerResponse.getReturn();
+    }
 
-	public Customer refresh(MetaData paramMetaData, Customer paramCustomer) throws GNUOpenBusinessServiceException_Exception {
-		RefreshCustomer paramRefresCustomer = new RefreshCustomer();
-		paramRefresCustomer.setCustomer(paramCustomer);
-		RefreshCustomerResponse refresCustomerResponse = getCustomerWebServiceImpl().refreshCustomer(paramRefresCustomer, paramMetaData);
-		return refresCustomerResponse.getReturn();
-	}
+    public Customer refresh(MetaData paramMetaData, Customer paramCustomer) throws GNUOpenBusinessServiceException_Exception {
+        RefreshCustomer paramRefresCustomer = new RefreshCustomer();
+        paramRefresCustomer.setCustomer(paramCustomer);
+        RefreshCustomerResponse refresCustomerResponse = getCustomerWebServiceImpl().refreshCustomer(paramRefresCustomer, paramMetaData);
+        return refresCustomerResponse.getReturn();
+    }
 
-	public void remove(MetaData paramMetaData, Customer paramCustomer) throws GNUOpenBusinessServiceException_Exception {
-		RemoveCustomer paramRemoveCustomer = new RemoveCustomer();
-		paramRemoveCustomer.setCustomer(paramCustomer);
-		getCustomerWebServiceImpl().removeCustomer(paramRemoveCustomer, paramMetaData);
-	}
+    public void remove(MetaData paramMetaData, Customer paramCustomer) throws GNUOpenBusinessServiceException_Exception {
+        RemoveCustomer paramRemoveCustomer = new RemoveCustomer();
+        paramRemoveCustomer.setCustomer(paramCustomer);
+        getCustomerWebServiceImpl().removeCustomer(paramRemoveCustomer, paramMetaData);
+    }
 }

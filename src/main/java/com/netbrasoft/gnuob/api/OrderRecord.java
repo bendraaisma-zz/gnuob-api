@@ -1,4 +1,3 @@
-
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
@@ -9,11 +8,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for orderRecord complex type.
+ * <p>
+ * Java class for orderRecord complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="orderRecord">
@@ -35,6 +36,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="number" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="product" type="{http://gnuob.netbrasoft.com/}product" minOccurs="0"/>
  *         &lt;element name="quantity" type="{http://www.w3.org/2001/XMLSchema}integer"/>
+ *         &lt;element name="shippingCost" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         &lt;element name="tax" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
@@ -45,31 +47,12 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "orderRecord", propOrder = {
-    "amount",
-    "description",
-    "itemHeight",
-    "itemHeightUnit",
-    "itemLength",
-    "itemLengthUnit",
-    "itemUrl",
-    "itemWeight",
-    "itemWeightUnit",
-    "itemWidth",
-    "itemWidthUnit",
-    "name",
-    "number",
-    "product",
-    "quantity",
-    "tax"
-})
-public class OrderRecord
-    extends Type
-    implements Serializable
-{
+@XmlType(name = "orderRecord", propOrder = { "amount", "description", "itemHeight", "itemHeightUnit", "itemLength", "itemLengthUnit", "itemUrl", "itemWeight", "itemWeightUnit", "itemWidth", "itemWidthUnit", "name", "number", "product", "quantity",
+        "shippingCost", "tax" })
+public class OrderRecord extends Type implements Serializable {
 
-    private static final long serialVersionUID = 6320126464597083184L;
-	protected BigDecimal amount;
+    private static final long serialVersionUID = -839571434110384569L;
+    protected BigDecimal amount;
     protected String description;
     protected BigDecimal itemHeight;
     protected String itemHeightUnit;
@@ -85,15 +68,14 @@ public class OrderRecord
     protected Product product;
     @XmlElement(required = true)
     protected BigInteger quantity;
+    protected BigDecimal shippingCost;
     protected BigDecimal tax;
 
     /**
      * Gets the value of the amount property.
      * 
-     * @return
-     *     possible object is
-     *     {@link BigDecimal }
-     *     
+     * @return possible object is {@link BigDecimal }
+     * 
      */
     public BigDecimal getAmount() {
         return amount;
@@ -103,9 +85,8 @@ public class OrderRecord
      * Sets the value of the amount property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link BigDecimal }
-     *     
+     *            allowed object is {@link BigDecimal }
+     * 
      */
     public void setAmount(BigDecimal value) {
         this.amount = value;
@@ -114,10 +95,8 @@ public class OrderRecord
     /**
      * Gets the value of the description property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getDescription() {
         return description;
@@ -127,9 +106,8 @@ public class OrderRecord
      * Sets the value of the description property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setDescription(String value) {
         this.description = value;
@@ -138,10 +116,8 @@ public class OrderRecord
     /**
      * Gets the value of the itemHeight property.
      * 
-     * @return
-     *     possible object is
-     *     {@link BigDecimal }
-     *     
+     * @return possible object is {@link BigDecimal }
+     * 
      */
     public BigDecimal getItemHeight() {
         return itemHeight;
@@ -151,9 +127,8 @@ public class OrderRecord
      * Sets the value of the itemHeight property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link BigDecimal }
-     *     
+     *            allowed object is {@link BigDecimal }
+     * 
      */
     public void setItemHeight(BigDecimal value) {
         this.itemHeight = value;
@@ -162,10 +137,8 @@ public class OrderRecord
     /**
      * Gets the value of the itemHeightUnit property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getItemHeightUnit() {
         return itemHeightUnit;
@@ -175,9 +148,8 @@ public class OrderRecord
      * Sets the value of the itemHeightUnit property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setItemHeightUnit(String value) {
         this.itemHeightUnit = value;
@@ -186,10 +158,8 @@ public class OrderRecord
     /**
      * Gets the value of the itemLength property.
      * 
-     * @return
-     *     possible object is
-     *     {@link BigDecimal }
-     *     
+     * @return possible object is {@link BigDecimal }
+     * 
      */
     public BigDecimal getItemLength() {
         return itemLength;
@@ -199,9 +169,8 @@ public class OrderRecord
      * Sets the value of the itemLength property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link BigDecimal }
-     *     
+     *            allowed object is {@link BigDecimal }
+     * 
      */
     public void setItemLength(BigDecimal value) {
         this.itemLength = value;
@@ -210,10 +179,8 @@ public class OrderRecord
     /**
      * Gets the value of the itemLengthUnit property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getItemLengthUnit() {
         return itemLengthUnit;
@@ -223,9 +190,8 @@ public class OrderRecord
      * Sets the value of the itemLengthUnit property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setItemLengthUnit(String value) {
         this.itemLengthUnit = value;
@@ -234,10 +200,8 @@ public class OrderRecord
     /**
      * Gets the value of the itemUrl property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getItemUrl() {
         return itemUrl;
@@ -247,9 +211,8 @@ public class OrderRecord
      * Sets the value of the itemUrl property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setItemUrl(String value) {
         this.itemUrl = value;
@@ -258,10 +221,8 @@ public class OrderRecord
     /**
      * Gets the value of the itemWeight property.
      * 
-     * @return
-     *     possible object is
-     *     {@link BigDecimal }
-     *     
+     * @return possible object is {@link BigDecimal }
+     * 
      */
     public BigDecimal getItemWeight() {
         return itemWeight;
@@ -271,9 +232,8 @@ public class OrderRecord
      * Sets the value of the itemWeight property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link BigDecimal }
-     *     
+     *            allowed object is {@link BigDecimal }
+     * 
      */
     public void setItemWeight(BigDecimal value) {
         this.itemWeight = value;
@@ -282,10 +242,8 @@ public class OrderRecord
     /**
      * Gets the value of the itemWeightUnit property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getItemWeightUnit() {
         return itemWeightUnit;
@@ -295,9 +253,8 @@ public class OrderRecord
      * Sets the value of the itemWeightUnit property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setItemWeightUnit(String value) {
         this.itemWeightUnit = value;
@@ -306,10 +263,8 @@ public class OrderRecord
     /**
      * Gets the value of the itemWidth property.
      * 
-     * @return
-     *     possible object is
-     *     {@link BigDecimal }
-     *     
+     * @return possible object is {@link BigDecimal }
+     * 
      */
     public BigDecimal getItemWidth() {
         return itemWidth;
@@ -319,9 +274,8 @@ public class OrderRecord
      * Sets the value of the itemWidth property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link BigDecimal }
-     *     
+     *            allowed object is {@link BigDecimal }
+     * 
      */
     public void setItemWidth(BigDecimal value) {
         this.itemWidth = value;
@@ -330,10 +284,8 @@ public class OrderRecord
     /**
      * Gets the value of the itemWidthUnit property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getItemWidthUnit() {
         return itemWidthUnit;
@@ -343,9 +295,8 @@ public class OrderRecord
      * Sets the value of the itemWidthUnit property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setItemWidthUnit(String value) {
         this.itemWidthUnit = value;
@@ -354,10 +305,8 @@ public class OrderRecord
     /**
      * Gets the value of the name property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getName() {
         return name;
@@ -367,9 +316,8 @@ public class OrderRecord
      * Sets the value of the name property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setName(String value) {
         this.name = value;
@@ -378,10 +326,8 @@ public class OrderRecord
     /**
      * Gets the value of the number property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getNumber() {
         return number;
@@ -391,9 +337,8 @@ public class OrderRecord
      * Sets the value of the number property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setNumber(String value) {
         this.number = value;
@@ -402,10 +347,8 @@ public class OrderRecord
     /**
      * Gets the value of the product property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Product }
-     *     
+     * @return possible object is {@link Product }
+     * 
      */
     public Product getProduct() {
         return product;
@@ -415,9 +358,8 @@ public class OrderRecord
      * Sets the value of the product property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link Product }
-     *     
+     *            allowed object is {@link Product }
+     * 
      */
     public void setProduct(Product value) {
         this.product = value;
@@ -426,10 +368,8 @@ public class OrderRecord
     /**
      * Gets the value of the quantity property.
      * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
+     * @return possible object is {@link BigInteger }
+     * 
      */
     public BigInteger getQuantity() {
         return quantity;
@@ -439,21 +379,39 @@ public class OrderRecord
      * Sets the value of the quantity property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
+     *            allowed object is {@link BigInteger }
+     * 
      */
     public void setQuantity(BigInteger value) {
         this.quantity = value;
     }
 
     /**
+     * Gets the value of the shippingCost property.
+     * 
+     * @return possible object is {@link BigDecimal }
+     * 
+     */
+    public BigDecimal getShippingCost() {
+        return shippingCost;
+    }
+
+    /**
+     * Sets the value of the shippingCost property.
+     * 
+     * @param value
+     *            allowed object is {@link BigDecimal }
+     * 
+     */
+    public void setShippingCost(BigDecimal value) {
+        this.shippingCost = value;
+    }
+
+    /**
      * Gets the value of the tax property.
      * 
-     * @return
-     *     possible object is
-     *     {@link BigDecimal }
-     *     
+     * @return possible object is {@link BigDecimal }
+     * 
      */
     public BigDecimal getTax() {
         return tax;
@@ -463,9 +421,8 @@ public class OrderRecord
      * Sets the value of the tax property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link BigDecimal }
-     *     
+     *            allowed object is {@link BigDecimal }
+     * 
      */
     public void setTax(BigDecimal value) {
         this.tax = value;

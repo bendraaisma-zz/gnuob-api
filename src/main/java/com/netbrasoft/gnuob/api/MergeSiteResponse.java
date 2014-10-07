@@ -1,4 +1,3 @@
-
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
@@ -7,11 +6,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for mergeSiteResponse complex type.
+ * <p>
+ * Java class for mergeSiteResponse complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="mergeSiteResponse">
@@ -28,24 +29,18 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "mergeSiteResponse", propOrder = {
-    "_return"
-})
-public class MergeSiteResponse
-    implements Serializable
-{
+@XmlType(name = "mergeSiteResponse", propOrder = { "_return" })
+public class MergeSiteResponse implements Serializable {
 
     private static final long serialVersionUID = 150180048656998959L;
-	@XmlElement(name = "return")
+    @XmlElement(name = "return")
     protected Site _return;
 
     /**
      * Gets the value of the return property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Site }
-     *     
+     * @return possible object is {@link Site }
+     * 
      */
     public Site getReturn() {
         return _return;
@@ -55,9 +50,8 @@ public class MergeSiteResponse
      * Sets the value of the return property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link Site }
-     *     
+     *            allowed object is {@link Site }
+     * 
      */
     public void setReturn(Site value) {
         this._return = value;

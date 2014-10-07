@@ -1,4 +1,3 @@
-
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
@@ -8,11 +7,13 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for type complex type.
+ * <p>
+ * Java class for type complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="type">
@@ -31,16 +32,11 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "type")
-@XmlSeeAlso({
-    Permission.class,
-    Access.class
-})
-public abstract class Type
-    implements Serializable
-{
+@XmlSeeAlso({ Permission.class, Access.class })
+public abstract class Type implements Serializable {
 
     private static final long serialVersionUID = 7946172752307429119L;
-	@XmlAttribute(name = "id", required = true)
+    @XmlAttribute(name = "id", required = true)
     protected long id;
     @XmlAttribute(name = "version", required = true)
     protected int version;

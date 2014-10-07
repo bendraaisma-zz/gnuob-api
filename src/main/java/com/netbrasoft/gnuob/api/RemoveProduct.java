@@ -1,4 +1,3 @@
-
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
@@ -6,11 +5,13 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for removeProduct complex type.
+ * <p>
+ * Java class for removeProduct complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="removeProduct">
@@ -27,23 +28,17 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "removeProduct", propOrder = {
-    "product"
-})
-public class RemoveProduct
-    implements Serializable
-{
+@XmlType(name = "removeProduct", propOrder = { "product" })
+public class RemoveProduct implements Serializable {
 
     private static final long serialVersionUID = -2733938979578882743L;
-	protected Product product;
+    protected Product product;
 
     /**
      * Gets the value of the product property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Product }
-     *     
+     * @return possible object is {@link Product }
+     * 
      */
     public Product getProduct() {
         return product;
@@ -53,9 +48,8 @@ public class RemoveProduct
      * Sets the value of the product property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link Product }
-     *     
+     *            allowed object is {@link Product }
+     * 
      */
     public void setProduct(Product value) {
         this.product = value;

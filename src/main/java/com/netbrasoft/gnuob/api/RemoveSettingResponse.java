@@ -1,4 +1,3 @@
-
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
@@ -6,11 +5,13 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for removeSettingResponse complex type.
+ * <p>
+ * Java class for removeSettingResponse complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="removeSettingResponse">
@@ -27,11 +28,8 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "removeSettingResponse")
-public class RemoveSettingResponse
-    implements Serializable
-{
+public class RemoveSettingResponse implements Serializable {
 
-	private static final long serialVersionUID = 5205250889902549244L;
-
+    private static final long serialVersionUID = 5205250889902549244L;
 
 }

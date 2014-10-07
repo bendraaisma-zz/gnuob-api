@@ -1,4 +1,3 @@
-
 package com.netbrasoft.gnuob.api;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -6,11 +5,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for refreshCustomerResponse complex type.
+ * <p>
+ * Java class for refreshCustomerResponse complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="refreshCustomerResponse">
@@ -27,9 +28,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "refreshCustomerResponse", propOrder = {
-    "_return"
-})
+@XmlType(name = "refreshCustomerResponse", propOrder = { "_return" })
 public class RefreshCustomerResponse {
 
     @XmlElement(name = "return")
@@ -38,10 +37,8 @@ public class RefreshCustomerResponse {
     /**
      * Gets the value of the return property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Customer }
-     *     
+     * @return possible object is {@link Customer }
+     * 
      */
     public Customer getReturn() {
         return _return;
@@ -51,9 +48,8 @@ public class RefreshCustomerResponse {
      * Sets the value of the return property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link Customer }
-     *     
+     *            allowed object is {@link Customer }
+     * 
      */
     public void setReturn(Customer value) {
         this._return = value;

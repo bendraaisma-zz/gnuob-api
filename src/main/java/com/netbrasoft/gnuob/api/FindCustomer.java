@@ -1,15 +1,16 @@
-
 package com.netbrasoft.gnuob.api;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for findCustomer complex type.
+ * <p>
+ * Java class for findCustomer complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="findCustomer">
@@ -28,11 +29,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "findCustomer", propOrder = {
-    "customer",
-    "paging",
-    "orderBy"
-})
+@XmlType(name = "findCustomer", propOrder = { "customer", "paging", "orderBy" })
 public class FindCustomer {
 
     protected Customer customer;
@@ -42,10 +39,8 @@ public class FindCustomer {
     /**
      * Gets the value of the customer property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Customer }
-     *     
+     * @return possible object is {@link Customer }
+     * 
      */
     public Customer getCustomer() {
         return customer;
@@ -55,9 +50,8 @@ public class FindCustomer {
      * Sets the value of the customer property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link Customer }
-     *     
+     *            allowed object is {@link Customer }
+     * 
      */
     public void setCustomer(Customer value) {
         this.customer = value;
@@ -66,10 +60,8 @@ public class FindCustomer {
     /**
      * Gets the value of the paging property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Paging }
-     *     
+     * @return possible object is {@link Paging }
+     * 
      */
     public Paging getPaging() {
         return paging;
@@ -79,9 +71,8 @@ public class FindCustomer {
      * Sets the value of the paging property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link Paging }
-     *     
+     *            allowed object is {@link Paging }
+     * 
      */
     public void setPaging(Paging value) {
         this.paging = value;
@@ -90,10 +81,8 @@ public class FindCustomer {
     /**
      * Gets the value of the orderBy property.
      * 
-     * @return
-     *     possible object is
-     *     {@link OrderBy }
-     *     
+     * @return possible object is {@link OrderBy }
+     * 
      */
     public OrderBy getOrderBy() {
         return orderBy;
@@ -103,9 +92,8 @@ public class FindCustomer {
      * Sets the value of the orderBy property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link OrderBy }
-     *     
+     *            allowed object is {@link OrderBy }
+     * 
      */
     public void setOrderBy(OrderBy value) {
         this.orderBy = value;

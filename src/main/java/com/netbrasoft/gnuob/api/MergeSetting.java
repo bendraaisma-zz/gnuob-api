@@ -1,4 +1,3 @@
-
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
@@ -7,11 +6,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for mergeSetting complex type.
+ * <p>
+ * Java class for mergeSetting complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="mergeSetting">
@@ -28,24 +29,18 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "mergeSetting", propOrder = {
-    "setting"
-})
-public class MergeSetting
-    implements Serializable
-{
+@XmlType(name = "mergeSetting", propOrder = { "setting" })
+public class MergeSetting implements Serializable {
 
     private static final long serialVersionUID = 2617913420745656999L;
-	@XmlElement(name = "Setting")
+    @XmlElement(name = "Setting")
     protected Setting setting;
 
     /**
      * Gets the value of the setting property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Setting }
-     *     
+     * @return possible object is {@link Setting }
+     * 
      */
     public Setting getSetting() {
         return setting;
@@ -55,9 +50,8 @@ public class MergeSetting
      * Sets the value of the setting property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link Setting }
-     *     
+     *            allowed object is {@link Setting }
+     * 
      */
     public void setSetting(Setting value) {
         this.setting = value;

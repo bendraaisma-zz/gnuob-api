@@ -1,4 +1,3 @@
-
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
@@ -7,11 +6,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for shipment complex type.
+ * <p>
+ * Java class for shipment complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="shipment">
@@ -19,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;extension base="{http://gnuob.netbrasoft.com/}type">
  *       &lt;sequence>
  *         &lt;element name="address" type="{http://gnuob.netbrasoft.com/}address"/>
+ *         &lt;element name="shipmentType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -28,25 +30,19 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "shipment", propOrder = {
-    "address"
-})
-public class Shipment
-    extends Type
-    implements Serializable
-{
+@XmlType(name = "shipment", propOrder = { "address", "shipmentType" })
+public class Shipment extends Type implements Serializable {
 
-    private static final long serialVersionUID = 7242272972103717935L;
-	@XmlElement(required = true)
+    private static final long serialVersionUID = -166684490965353205L;
+    @XmlElement(required = true)
     protected Address address;
+    protected String shipmentType;
 
     /**
      * Gets the value of the address property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Address }
-     *     
+     * @return possible object is {@link Address }
+     * 
      */
     public Address getAddress() {
         return address;
@@ -56,12 +52,32 @@ public class Shipment
      * Sets the value of the address property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link Address }
-     *     
+     *            allowed object is {@link Address }
+     * 
      */
     public void setAddress(Address value) {
         this.address = value;
+    }
+
+    /**
+     * Gets the value of the shipmentType property.
+     * 
+     * @return possible object is {@link String }
+     * 
+     */
+    public String getShipmentType() {
+        return shipmentType;
+    }
+
+    /**
+     * Sets the value of the shipmentType property.
+     * 
+     * @param value
+     *            allowed object is {@link String }
+     * 
+     */
+    public void setShipmentType(String value) {
+        this.shipmentType = value;
     }
 
 }

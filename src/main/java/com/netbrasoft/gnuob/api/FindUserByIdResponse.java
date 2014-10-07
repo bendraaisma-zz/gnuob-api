@@ -1,4 +1,3 @@
-
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
@@ -7,11 +6,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for findUserByIdResponse complex type.
+ * <p>
+ * Java class for findUserByIdResponse complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="findUserByIdResponse">
@@ -28,24 +29,18 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "findUserByIdResponse", propOrder = {
-    "_return"
-})
-public class FindUserByIdResponse
-    implements Serializable
-{
+@XmlType(name = "findUserByIdResponse", propOrder = { "_return" })
+public class FindUserByIdResponse implements Serializable {
 
     private static final long serialVersionUID = -6009105607741275344L;
-	@XmlElement(name = "return")
+    @XmlElement(name = "return")
     protected User _return;
 
     /**
      * Gets the value of the return property.
      * 
-     * @return
-     *     possible object is
-     *     {@link User }
-     *     
+     * @return possible object is {@link User }
+     * 
      */
     public User getReturn() {
         return _return;
@@ -55,9 +50,8 @@ public class FindUserByIdResponse
      * Sets the value of the return property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link User }
-     *     
+     *            allowed object is {@link User }
+     * 
      */
     public void setReturn(User value) {
         this._return = value;

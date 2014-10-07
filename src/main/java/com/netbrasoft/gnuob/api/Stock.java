@@ -1,4 +1,3 @@
-
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
@@ -7,11 +6,13 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for stock complex type.
+ * <p>
+ * Java class for stock complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="stock">
@@ -30,28 +31,19 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "stock", propOrder = {
-    "maxQuantity",
-    "minQuantity",
-    "quantity"
-})
-public class Stock
-    extends Type
-    implements Serializable
-{
+@XmlType(name = "stock", propOrder = { "maxQuantity", "minQuantity", "quantity" })
+public class Stock extends Type implements Serializable {
 
     private static final long serialVersionUID = 1370554796617371872L;
-	protected BigInteger maxQuantity;
+    protected BigInteger maxQuantity;
     protected BigInteger minQuantity;
     protected BigInteger quantity;
 
     /**
      * Gets the value of the maxQuantity property.
      * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
+     * @return possible object is {@link BigInteger }
+     * 
      */
     public BigInteger getMaxQuantity() {
         return maxQuantity;
@@ -61,9 +53,8 @@ public class Stock
      * Sets the value of the maxQuantity property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
+     *            allowed object is {@link BigInteger }
+     * 
      */
     public void setMaxQuantity(BigInteger value) {
         this.maxQuantity = value;
@@ -72,10 +63,8 @@ public class Stock
     /**
      * Gets the value of the minQuantity property.
      * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
+     * @return possible object is {@link BigInteger }
+     * 
      */
     public BigInteger getMinQuantity() {
         return minQuantity;
@@ -85,9 +74,8 @@ public class Stock
      * Sets the value of the minQuantity property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
+     *            allowed object is {@link BigInteger }
+     * 
      */
     public void setMinQuantity(BigInteger value) {
         this.minQuantity = value;
@@ -96,10 +84,8 @@ public class Stock
     /**
      * Gets the value of the quantity property.
      * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
+     * @return possible object is {@link BigInteger }
+     * 
      */
     public BigInteger getQuantity() {
         return quantity;
@@ -109,9 +95,8 @@ public class Stock
      * Sets the value of the quantity property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
+     *            allowed object is {@link BigInteger }
+     * 
      */
     public void setQuantity(BigInteger value) {
         this.quantity = value;

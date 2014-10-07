@@ -17,38 +17,38 @@ import com.netbrasoft.gnuob.api.PayPalExpressCheckOutWebServiceImplService;
 @Repository("PayPalExpressCheckOutWebServiceRepository")
 public class PayPalExpressCheckOutWebServiceRepository {
 
-	private PayPalExpressCheckOutWebServiceImpl payPalExpressCheckOutWebServiceImpl = null;
+    private PayPalExpressCheckOutWebServiceImpl payPalExpressCheckOutWebServiceImpl = null;
 
-	public PayPalExpressCheckOutWebServiceRepository() {
-	}
+    public PayPalExpressCheckOutWebServiceRepository() {
+    }
 
-	public Order doCheckout(MetaData paramMetaData, Order paramOrder) throws GNUOpenBusinessServiceException_Exception {
-		DoCheckout paramDoCheckout = new DoCheckout();
-		paramDoCheckout.setOrder(paramOrder);
-		DoCheckoutResponse doCheckoutResponse = getPayPalExpressCheckOutWebServiceImpl().doCheckout(paramDoCheckout, paramMetaData);
-		return doCheckoutResponse.getReturn();
-	}
+    public Order doCheckout(MetaData paramMetaData, Order paramOrder) throws GNUOpenBusinessServiceException_Exception {
+        DoCheckout paramDoCheckout = new DoCheckout();
+        paramDoCheckout.setOrder(paramOrder);
+        DoCheckoutResponse doCheckoutResponse = getPayPalExpressCheckOutWebServiceImpl().doCheckout(paramDoCheckout, paramMetaData);
+        return doCheckoutResponse.getReturn();
+    }
 
-	public Order doCheckoutDetails(MetaData paramMetaData, Order paramOrder) throws GNUOpenBusinessServiceException_Exception {
-		DoCheckoutDetails paramDoCheckoutDetails = new DoCheckoutDetails();
-		paramDoCheckoutDetails.setOrder(paramOrder);
-		DoCheckoutDetailsResponse doCheckoutDetailsResponse = getPayPalExpressCheckOutWebServiceImpl().doCheckoutDetails(paramDoCheckoutDetails, paramMetaData);
-		return doCheckoutDetailsResponse.getReturn();
-	}
+    public Order doCheckoutDetails(MetaData paramMetaData, Order paramOrder) throws GNUOpenBusinessServiceException_Exception {
+        DoCheckoutDetails paramDoCheckoutDetails = new DoCheckoutDetails();
+        paramDoCheckoutDetails.setOrder(paramOrder);
+        DoCheckoutDetailsResponse doCheckoutDetailsResponse = getPayPalExpressCheckOutWebServiceImpl().doCheckoutDetails(paramDoCheckoutDetails, paramMetaData);
+        return doCheckoutDetailsResponse.getReturn();
+    }
 
-	public Order doCheckoutPayment(MetaData paramMetaData, Order paramOrder) throws GNUOpenBusinessServiceException_Exception {
-		DoCheckoutPayment paramDoCheckoutPayment = new DoCheckoutPayment();
-		paramDoCheckoutPayment.setOrder(paramOrder);
-		DoCheckoutPaymentResponse doCheckoutPaymentResponse = getPayPalExpressCheckOutWebServiceImpl().doCheckoutPayment(paramDoCheckoutPayment, paramMetaData);
-		return doCheckoutPaymentResponse.getReturn();
-	}
+    public Order doCheckoutPayment(MetaData paramMetaData, Order paramOrder) throws GNUOpenBusinessServiceException_Exception {
+        DoCheckoutPayment paramDoCheckoutPayment = new DoCheckoutPayment();
+        paramDoCheckoutPayment.setOrder(paramOrder);
+        DoCheckoutPaymentResponse doCheckoutPaymentResponse = getPayPalExpressCheckOutWebServiceImpl().doCheckoutPayment(paramDoCheckoutPayment, paramMetaData);
+        return doCheckoutPaymentResponse.getReturn();
+    }
 
-	private PayPalExpressCheckOutWebServiceImpl getPayPalExpressCheckOutWebServiceImpl() {
-		if (payPalExpressCheckOutWebServiceImpl == null) {
-			PayPalExpressCheckOutWebServiceImplService payPalExpressCheckOutWebServiceImplService = new PayPalExpressCheckOutWebServiceImplService(PayPalExpressCheckOutWebServiceImplService.WSDL_LOCATION);
-			payPalExpressCheckOutWebServiceImpl = payPalExpressCheckOutWebServiceImplService.getPayPalExpressCheckOutWebServiceImplPort();
-		}
+    private PayPalExpressCheckOutWebServiceImpl getPayPalExpressCheckOutWebServiceImpl() {
+        if (payPalExpressCheckOutWebServiceImpl == null) {
+            PayPalExpressCheckOutWebServiceImplService payPalExpressCheckOutWebServiceImplService = new PayPalExpressCheckOutWebServiceImplService(PayPalExpressCheckOutWebServiceImplService.WSDL_LOCATION);
+            payPalExpressCheckOutWebServiceImpl = payPalExpressCheckOutWebServiceImplService.getPayPalExpressCheckOutWebServiceImplPort();
+        }
 
-		return payPalExpressCheckOutWebServiceImpl;
-	}
+        return payPalExpressCheckOutWebServiceImpl;
+    }
 }

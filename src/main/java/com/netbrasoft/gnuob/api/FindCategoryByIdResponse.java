@@ -1,4 +1,3 @@
-
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
@@ -7,11 +6,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for findCategoryByIdResponse complex type.
+ * <p>
+ * Java class for findCategoryByIdResponse complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="findCategoryByIdResponse">
@@ -28,24 +29,18 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "findCategoryByIdResponse", propOrder = {
-    "_return"
-})
-public class FindCategoryByIdResponse
-    implements Serializable
-{
+@XmlType(name = "findCategoryByIdResponse", propOrder = { "_return" })
+public class FindCategoryByIdResponse implements Serializable {
 
     private static final long serialVersionUID = 5091356672370905344L;
-	@XmlElement(name = "return")
+    @XmlElement(name = "return")
     protected Category _return;
 
     /**
      * Gets the value of the return property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Category }
-     *     
+     * @return possible object is {@link Category }
+     * 
      */
     public Category getReturn() {
         return _return;
@@ -55,9 +50,8 @@ public class FindCategoryByIdResponse
      * Sets the value of the return property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link Category }
-     *     
+     *            allowed object is {@link Category }
+     * 
      */
     public void setReturn(Category value) {
         this._return = value;

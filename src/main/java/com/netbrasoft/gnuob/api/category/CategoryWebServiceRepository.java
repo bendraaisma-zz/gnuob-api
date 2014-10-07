@@ -28,70 +28,70 @@ import com.netbrasoft.gnuob.api.RemoveCategory;
 @Repository("CategoryWebServiceRepository")
 public class CategoryWebServiceRepository {
 
-	private CategoryWebServiceImpl categoryWebServiceImpl = null;
+    private CategoryWebServiceImpl categoryWebServiceImpl = null;
 
-	public CategoryWebServiceRepository() {
+    public CategoryWebServiceRepository() {
 
-	}
+    }
 
-	public long count(MetaData paramMetaData, Category paramCategory) throws GNUOpenBusinessServiceException_Exception {
-		CountCategory paramCountCategory = new CountCategory();
-		paramCountCategory.setCategory(paramCategory);
-		CountCategoryResponse countCategoryResponse = getCategoryWebServiceImpl().countCategory(paramCountCategory, paramMetaData);
-		return countCategoryResponse.getReturn();
-	}
+    public long count(MetaData paramMetaData, Category paramCategory) throws GNUOpenBusinessServiceException_Exception {
+        CountCategory paramCountCategory = new CountCategory();
+        paramCountCategory.setCategory(paramCategory);
+        CountCategoryResponse countCategoryResponse = getCategoryWebServiceImpl().countCategory(paramCountCategory, paramMetaData);
+        return countCategoryResponse.getReturn();
+    }
 
-	public Category find(MetaData paramMetaData, Category paramCategory) throws GNUOpenBusinessServiceException_Exception {
-		FindCategoryById paramFindCategoryById = new FindCategoryById();
-		paramFindCategoryById.setCategory(paramCategory);
-		FindCategoryByIdResponse findCategoryByIdResponse = getCategoryWebServiceImpl().findCategoryById(paramFindCategoryById, paramMetaData);
-		return findCategoryByIdResponse.getReturn();
+    public Category find(MetaData paramMetaData, Category paramCategory) throws GNUOpenBusinessServiceException_Exception {
+        FindCategoryById paramFindCategoryById = new FindCategoryById();
+        paramFindCategoryById.setCategory(paramCategory);
+        FindCategoryByIdResponse findCategoryByIdResponse = getCategoryWebServiceImpl().findCategoryById(paramFindCategoryById, paramMetaData);
+        return findCategoryByIdResponse.getReturn();
 
-	}
+    }
 
-	public List<Category> find(MetaData paramMetaData, Category paramCategory, Paging paramPaging, OrderBy paramOrderBy) throws GNUOpenBusinessServiceException_Exception {
-		FindCategory paramFindCategory = new FindCategory();
-		paramFindCategory.setCategory(paramCategory);
-		paramFindCategory.setPaging(paramPaging);
-		paramFindCategory.setOrderBy(paramOrderBy);
-		FindCategoryResponse findCategoryResponse = getCategoryWebServiceImpl().findCategory(paramFindCategory, paramMetaData);
-		return findCategoryResponse.getReturn();
-	}
+    public List<Category> find(MetaData paramMetaData, Category paramCategory, Paging paramPaging, OrderBy paramOrderBy) throws GNUOpenBusinessServiceException_Exception {
+        FindCategory paramFindCategory = new FindCategory();
+        paramFindCategory.setCategory(paramCategory);
+        paramFindCategory.setPaging(paramPaging);
+        paramFindCategory.setOrderBy(paramOrderBy);
+        FindCategoryResponse findCategoryResponse = getCategoryWebServiceImpl().findCategory(paramFindCategory, paramMetaData);
+        return findCategoryResponse.getReturn();
+    }
 
-	private CategoryWebServiceImpl getCategoryWebServiceImpl() {
+    private CategoryWebServiceImpl getCategoryWebServiceImpl() {
 
-		if (categoryWebServiceImpl == null) {
-			CategoryWebServiceImplService categoryWebServiceImplService = new CategoryWebServiceImplService(CategoryWebServiceImplService.WSDL_LOCATION);
-			categoryWebServiceImpl = categoryWebServiceImplService.getCategoryWebServiceImplPort();
-		}
+        if (categoryWebServiceImpl == null) {
+            CategoryWebServiceImplService categoryWebServiceImplService = new CategoryWebServiceImplService(CategoryWebServiceImplService.WSDL_LOCATION);
+            categoryWebServiceImpl = categoryWebServiceImplService.getCategoryWebServiceImplPort();
+        }
 
-		return categoryWebServiceImpl;
-	}
+        return categoryWebServiceImpl;
+    }
 
-	public Category merge(MetaData paramMetaData, Category paramCategory) throws GNUOpenBusinessServiceException_Exception {
-		MergeCategory paramMergeCategory = new MergeCategory();
-		paramMergeCategory.setCategory(paramCategory);
-		MergeCategoryResponse mergeCategoryResponse = getCategoryWebServiceImpl().mergeCategory(paramMergeCategory, paramMetaData);
-		return mergeCategoryResponse.getReturn();
-	}
+    public Category merge(MetaData paramMetaData, Category paramCategory) throws GNUOpenBusinessServiceException_Exception {
+        MergeCategory paramMergeCategory = new MergeCategory();
+        paramMergeCategory.setCategory(paramCategory);
+        MergeCategoryResponse mergeCategoryResponse = getCategoryWebServiceImpl().mergeCategory(paramMergeCategory, paramMetaData);
+        return mergeCategoryResponse.getReturn();
+    }
 
-	public Category persist(MetaData paramMetaData, Category paramCategory) throws GNUOpenBusinessServiceException_Exception {
-		PersistCategory paramPersistCategory = new PersistCategory();
-		paramPersistCategory.setCategory(paramCategory);
-		PersistCategoryResponse persistCategoryResponse = getCategoryWebServiceImpl().persistCategory(paramPersistCategory, paramMetaData);
-		return persistCategoryResponse.getReturn();
-	}
+    public Category persist(MetaData paramMetaData, Category paramCategory) throws GNUOpenBusinessServiceException_Exception {
+        PersistCategory paramPersistCategory = new PersistCategory();
+        paramPersistCategory.setCategory(paramCategory);
+        PersistCategoryResponse persistCategoryResponse = getCategoryWebServiceImpl().persistCategory(paramPersistCategory, paramMetaData);
+        return persistCategoryResponse.getReturn();
+    }
 
-	public Category refresh(MetaData paramMetaData, Category paramCategory) throws GNUOpenBusinessServiceException_Exception {
-		RefreshCategory paramRefresCategory = new RefreshCategory();
-		paramRefresCategory.setCategory(paramCategory);
-		RefreshCategoryResponse refreshCategoryResponse = getCategoryWebServiceImpl().refreshCategory(paramRefresCategory, paramMetaData);
-		return refreshCategoryResponse.getReturn();
-	}
+    public Category refresh(MetaData paramMetaData, Category paramCategory) throws GNUOpenBusinessServiceException_Exception {
+        RefreshCategory paramRefresCategory = new RefreshCategory();
+        paramRefresCategory.setCategory(paramCategory);
+        RefreshCategoryResponse refreshCategoryResponse = getCategoryWebServiceImpl().refreshCategory(paramRefresCategory, paramMetaData);
+        return refreshCategoryResponse.getReturn();
+    }
 
-	public void remove(MetaData paramMetaData, Category paramCategory) throws GNUOpenBusinessServiceException_Exception {
-		RemoveCategory paramRemoveCategory = new RemoveCategory();
-		paramRemoveCategory.setCategory(paramCategory);
-		getCategoryWebServiceImpl().removeCategory(paramRemoveCategory, paramMetaData);
-	}
+    public void remove(MetaData paramMetaData, Category paramCategory) throws GNUOpenBusinessServiceException_Exception {
+        RemoveCategory paramRemoveCategory = new RemoveCategory();
+        paramRemoveCategory.setCategory(paramCategory);
+        getCategoryWebServiceImpl().removeCategory(paramRemoveCategory, paramMetaData);
+    }
 }

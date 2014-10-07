@@ -1,4 +1,3 @@
-
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
@@ -7,11 +6,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for findSetting complex type.
+ * <p>
+ * Java class for findSetting complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="findSetting">
@@ -30,17 +31,11 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "findSetting", propOrder = {
-    "setting",
-    "paging",
-    "orderBy"
-})
-public class FindSetting
-    implements Serializable
-{
+@XmlType(name = "findSetting", propOrder = { "setting", "paging", "orderBy" })
+public class FindSetting implements Serializable {
 
     private static final long serialVersionUID = -4006986678186195865L;
-	@XmlElement(name = "Setting")
+    @XmlElement(name = "Setting")
     protected Setting setting;
     protected Paging paging;
     protected OrderBy orderBy;
@@ -48,10 +43,8 @@ public class FindSetting
     /**
      * Gets the value of the setting property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Setting }
-     *     
+     * @return possible object is {@link Setting }
+     * 
      */
     public Setting getSetting() {
         return setting;
@@ -61,9 +54,8 @@ public class FindSetting
      * Sets the value of the setting property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link Setting }
-     *     
+     *            allowed object is {@link Setting }
+     * 
      */
     public void setSetting(Setting value) {
         this.setting = value;
@@ -72,10 +64,8 @@ public class FindSetting
     /**
      * Gets the value of the paging property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Paging }
-     *     
+     * @return possible object is {@link Paging }
+     * 
      */
     public Paging getPaging() {
         return paging;
@@ -85,9 +75,8 @@ public class FindSetting
      * Sets the value of the paging property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link Paging }
-     *     
+     *            allowed object is {@link Paging }
+     * 
      */
     public void setPaging(Paging value) {
         this.paging = value;
@@ -96,10 +85,8 @@ public class FindSetting
     /**
      * Gets the value of the orderBy property.
      * 
-     * @return
-     *     possible object is
-     *     {@link OrderBy }
-     *     
+     * @return possible object is {@link OrderBy }
+     * 
      */
     public OrderBy getOrderBy() {
         return orderBy;
@@ -109,9 +96,8 @@ public class FindSetting
      * Sets the value of the orderBy property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link OrderBy }
-     *     
+     *            allowed object is {@link OrderBy }
+     * 
      */
     public void setOrderBy(OrderBy value) {
         this.orderBy = value;

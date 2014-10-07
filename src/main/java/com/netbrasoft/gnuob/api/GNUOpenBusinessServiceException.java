@@ -1,4 +1,3 @@
-
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
@@ -6,11 +5,13 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for GNUOpenBusinessServiceException complex type.
+ * <p>
+ * Java class for GNUOpenBusinessServiceException complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="GNUOpenBusinessServiceException">
@@ -27,23 +28,17 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "GNUOpenBusinessServiceException", propOrder = {
-    "message"
-})
-public class GNUOpenBusinessServiceException
-    implements Serializable
-{
+@XmlType(name = "GNUOpenBusinessServiceException", propOrder = { "message" })
+public class GNUOpenBusinessServiceException implements Serializable {
 
     private static final long serialVersionUID = -5099137019892563470L;
-	protected String message;
+    protected String message;
 
     /**
      * Gets the value of the message property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getMessage() {
         return message;
@@ -53,9 +48,8 @@ public class GNUOpenBusinessServiceException
      * Sets the value of the message property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setMessage(String value) {
         this.message = value;

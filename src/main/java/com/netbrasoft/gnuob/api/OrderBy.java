@@ -1,20 +1,21 @@
-
 package com.netbrasoft.gnuob.api;
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for orderBy.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
+ * Java class for orderBy.
+ * 
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
+ * <p>
+ * 
  * <pre>
  * &lt;simpleType name="orderBy">
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
  *     &lt;enumeration value="RECOMMENDED"/>
- *     &lt;enumeration value="TOP_RATED"/>
  *     &lt;enumeration value="HIGHEST_DISCOUNT"/>
  *     &lt;enumeration value="LOWEST_DISCOUNT"/>
  *     &lt;enumeration value="HIGHEST_PRICE"/>
@@ -36,20 +37,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlEnum
 public enum OrderBy {
 
-    RECOMMENDED,
-    TOP_RATED,
-    HIGHEST_DISCOUNT,
-    LOWEST_DISCOUNT,
-    HIGHEST_PRICE,
-    LOWEST_PRICE,
-    HIGHEST_RATING,
-    LOWEST_RATING,
-    BESTSELLERS,
-    LATEST_COLLECTION,
-    TITLE_A_Z,
-    TITLE_Z_A,
-    POSITION_A_Z,
-    NONE;
+    RECOMMENDED, HIGHEST_DISCOUNT, LOWEST_DISCOUNT, HIGHEST_PRICE, LOWEST_PRICE, HIGHEST_RATING, LOWEST_RATING, BESTSELLERS, LATEST_COLLECTION, TITLE_A_Z, TITLE_Z_A, POSITION_A_Z, NONE;
 
     public String value() {
         return name();

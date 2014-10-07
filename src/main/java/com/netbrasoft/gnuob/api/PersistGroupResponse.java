@@ -1,4 +1,3 @@
-
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
@@ -7,11 +6,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for persistGroupResponse complex type.
+ * <p>
+ * Java class for persistGroupResponse complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="persistGroupResponse">
@@ -28,24 +29,18 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "persistGroupResponse", propOrder = {
-    "_return"
-})
-public class PersistGroupResponse
-    implements Serializable
-{
+@XmlType(name = "persistGroupResponse", propOrder = { "_return" })
+public class PersistGroupResponse implements Serializable {
 
     private static final long serialVersionUID = -4797197456119088214L;
-	@XmlElement(name = "return")
+    @XmlElement(name = "return")
     protected Group _return;
 
     /**
      * Gets the value of the return property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Group }
-     *     
+     * @return possible object is {@link Group }
+     * 
      */
     public Group getReturn() {
         return _return;
@@ -55,9 +50,8 @@ public class PersistGroupResponse
      * Sets the value of the return property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link Group }
-     *     
+     *            allowed object is {@link Group }
+     * 
      */
     public void setReturn(Group value) {
         this._return = value;

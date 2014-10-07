@@ -1,4 +1,3 @@
-
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
@@ -9,11 +8,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for offerRecord complex type.
+ * <p>
+ * Java class for offerRecord complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="offerRecord">
@@ -45,31 +46,11 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "offerRecord", propOrder = {
-    "amount",
-    "description",
-    "itemHeight",
-    "itemHeightUnit",
-    "itemLength",
-    "itemLengthUnit",
-    "itemUrl",
-    "itemWeight",
-    "itemWeightUnit",
-    "itemWidth",
-    "itemWidthUnit",
-    "name",
-    "number",
-    "product",
-    "quantity",
-    "tax"
-})
-public class OfferRecord
-    extends Type
-    implements Serializable
-{
+@XmlType(name = "offerRecord", propOrder = { "amount", "description", "itemHeight", "itemHeightUnit", "itemLength", "itemLengthUnit", "itemUrl", "itemWeight", "itemWeightUnit", "itemWidth", "itemWidthUnit", "name", "number", "product", "quantity", "tax" })
+public class OfferRecord extends Type implements Serializable {
 
     private static final long serialVersionUID = 546789756717912252L;
-	protected BigDecimal amount;
+    protected BigDecimal amount;
     protected String description;
     protected BigDecimal itemHeight;
     protected String itemHeightUnit;
@@ -90,10 +71,8 @@ public class OfferRecord
     /**
      * Gets the value of the amount property.
      * 
-     * @return
-     *     possible object is
-     *     {@link BigDecimal }
-     *     
+     * @return possible object is {@link BigDecimal }
+     * 
      */
     public BigDecimal getAmount() {
         return amount;
@@ -103,9 +82,8 @@ public class OfferRecord
      * Sets the value of the amount property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link BigDecimal }
-     *     
+     *            allowed object is {@link BigDecimal }
+     * 
      */
     public void setAmount(BigDecimal value) {
         this.amount = value;
@@ -114,10 +92,8 @@ public class OfferRecord
     /**
      * Gets the value of the description property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getDescription() {
         return description;
@@ -127,9 +103,8 @@ public class OfferRecord
      * Sets the value of the description property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setDescription(String value) {
         this.description = value;
@@ -138,10 +113,8 @@ public class OfferRecord
     /**
      * Gets the value of the itemHeight property.
      * 
-     * @return
-     *     possible object is
-     *     {@link BigDecimal }
-     *     
+     * @return possible object is {@link BigDecimal }
+     * 
      */
     public BigDecimal getItemHeight() {
         return itemHeight;
@@ -151,9 +124,8 @@ public class OfferRecord
      * Sets the value of the itemHeight property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link BigDecimal }
-     *     
+     *            allowed object is {@link BigDecimal }
+     * 
      */
     public void setItemHeight(BigDecimal value) {
         this.itemHeight = value;
@@ -162,10 +134,8 @@ public class OfferRecord
     /**
      * Gets the value of the itemHeightUnit property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getItemHeightUnit() {
         return itemHeightUnit;
@@ -175,9 +145,8 @@ public class OfferRecord
      * Sets the value of the itemHeightUnit property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setItemHeightUnit(String value) {
         this.itemHeightUnit = value;
@@ -186,10 +155,8 @@ public class OfferRecord
     /**
      * Gets the value of the itemLength property.
      * 
-     * @return
-     *     possible object is
-     *     {@link BigDecimal }
-     *     
+     * @return possible object is {@link BigDecimal }
+     * 
      */
     public BigDecimal getItemLength() {
         return itemLength;
@@ -199,9 +166,8 @@ public class OfferRecord
      * Sets the value of the itemLength property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link BigDecimal }
-     *     
+     *            allowed object is {@link BigDecimal }
+     * 
      */
     public void setItemLength(BigDecimal value) {
         this.itemLength = value;
@@ -210,10 +176,8 @@ public class OfferRecord
     /**
      * Gets the value of the itemLengthUnit property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getItemLengthUnit() {
         return itemLengthUnit;
@@ -223,9 +187,8 @@ public class OfferRecord
      * Sets the value of the itemLengthUnit property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setItemLengthUnit(String value) {
         this.itemLengthUnit = value;
@@ -234,10 +197,8 @@ public class OfferRecord
     /**
      * Gets the value of the itemUrl property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getItemUrl() {
         return itemUrl;
@@ -247,9 +208,8 @@ public class OfferRecord
      * Sets the value of the itemUrl property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setItemUrl(String value) {
         this.itemUrl = value;
@@ -258,10 +218,8 @@ public class OfferRecord
     /**
      * Gets the value of the itemWeight property.
      * 
-     * @return
-     *     possible object is
-     *     {@link BigDecimal }
-     *     
+     * @return possible object is {@link BigDecimal }
+     * 
      */
     public BigDecimal getItemWeight() {
         return itemWeight;
@@ -271,9 +229,8 @@ public class OfferRecord
      * Sets the value of the itemWeight property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link BigDecimal }
-     *     
+     *            allowed object is {@link BigDecimal }
+     * 
      */
     public void setItemWeight(BigDecimal value) {
         this.itemWeight = value;
@@ -282,10 +239,8 @@ public class OfferRecord
     /**
      * Gets the value of the itemWeightUnit property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getItemWeightUnit() {
         return itemWeightUnit;
@@ -295,9 +250,8 @@ public class OfferRecord
      * Sets the value of the itemWeightUnit property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setItemWeightUnit(String value) {
         this.itemWeightUnit = value;
@@ -306,10 +260,8 @@ public class OfferRecord
     /**
      * Gets the value of the itemWidth property.
      * 
-     * @return
-     *     possible object is
-     *     {@link BigDecimal }
-     *     
+     * @return possible object is {@link BigDecimal }
+     * 
      */
     public BigDecimal getItemWidth() {
         return itemWidth;
@@ -319,9 +271,8 @@ public class OfferRecord
      * Sets the value of the itemWidth property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link BigDecimal }
-     *     
+     *            allowed object is {@link BigDecimal }
+     * 
      */
     public void setItemWidth(BigDecimal value) {
         this.itemWidth = value;
@@ -330,10 +281,8 @@ public class OfferRecord
     /**
      * Gets the value of the itemWidthUnit property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getItemWidthUnit() {
         return itemWidthUnit;
@@ -343,9 +292,8 @@ public class OfferRecord
      * Sets the value of the itemWidthUnit property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setItemWidthUnit(String value) {
         this.itemWidthUnit = value;
@@ -354,10 +302,8 @@ public class OfferRecord
     /**
      * Gets the value of the name property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getName() {
         return name;
@@ -367,9 +313,8 @@ public class OfferRecord
      * Sets the value of the name property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setName(String value) {
         this.name = value;
@@ -378,10 +323,8 @@ public class OfferRecord
     /**
      * Gets the value of the number property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getNumber() {
         return number;
@@ -391,9 +334,8 @@ public class OfferRecord
      * Sets the value of the number property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setNumber(String value) {
         this.number = value;
@@ -402,10 +344,8 @@ public class OfferRecord
     /**
      * Gets the value of the product property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Product }
-     *     
+     * @return possible object is {@link Product }
+     * 
      */
     public Product getProduct() {
         return product;
@@ -415,9 +355,8 @@ public class OfferRecord
      * Sets the value of the product property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link Product }
-     *     
+     *            allowed object is {@link Product }
+     * 
      */
     public void setProduct(Product value) {
         this.product = value;
@@ -426,10 +365,8 @@ public class OfferRecord
     /**
      * Gets the value of the quantity property.
      * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
+     * @return possible object is {@link BigInteger }
+     * 
      */
     public BigInteger getQuantity() {
         return quantity;
@@ -439,9 +376,8 @@ public class OfferRecord
      * Sets the value of the quantity property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
+     *            allowed object is {@link BigInteger }
+     * 
      */
     public void setQuantity(BigInteger value) {
         this.quantity = value;
@@ -450,10 +386,8 @@ public class OfferRecord
     /**
      * Gets the value of the tax property.
      * 
-     * @return
-     *     possible object is
-     *     {@link BigDecimal }
-     *     
+     * @return possible object is {@link BigDecimal }
+     * 
      */
     public BigDecimal getTax() {
         return tax;
@@ -463,9 +397,8 @@ public class OfferRecord
      * Sets the value of the tax property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link BigDecimal }
-     *     
+     *            allowed object is {@link BigDecimal }
+     * 
      */
     public void setTax(BigDecimal value) {
         this.tax = value;

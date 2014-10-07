@@ -1,4 +1,3 @@
-
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
@@ -6,11 +5,13 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for paging complex type.
+ * <p>
+ * Java class for paging complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="paging">
@@ -28,16 +29,11 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "paging", propOrder = {
-    "first",
-    "max"
-})
-public class Paging
-    implements Serializable
-{
+@XmlType(name = "paging", propOrder = { "first", "max" })
+public class Paging implements Serializable {
 
     private static final long serialVersionUID = -3371605179175461095L;
-	protected int first;
+    protected int first;
     protected int max;
 
     /**

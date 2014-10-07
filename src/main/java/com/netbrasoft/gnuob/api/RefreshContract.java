@@ -1,4 +1,3 @@
-
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
@@ -6,11 +5,13 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for refreshContract complex type.
+ * <p>
+ * Java class for refreshContract complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="refreshContract">
@@ -27,23 +28,17 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "refreshContract", propOrder = {
-    "contract"
-})
-public class RefreshContract
-    implements Serializable
-{
+@XmlType(name = "refreshContract", propOrder = { "contract" })
+public class RefreshContract implements Serializable {
 
     private static final long serialVersionUID = 5390825567701739167L;
-	protected Contract contract;
+    protected Contract contract;
 
     /**
      * Gets the value of the contract property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Contract }
-     *     
+     * @return possible object is {@link Contract }
+     * 
      */
     public Contract getContract() {
         return contract;
@@ -53,9 +48,8 @@ public class RefreshContract
      * Sets the value of the contract property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link Contract }
-     *     
+     *            allowed object is {@link Contract }
+     * 
      */
     public void setContract(Contract value) {
         this.contract = value;

@@ -1,4 +1,3 @@
-
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
@@ -7,11 +6,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for countOfferResponse complex type.
+ * <p>
+ * Java class for countOfferResponse complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="countOfferResponse">
@@ -28,15 +29,11 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "countOfferResponse", propOrder = {
-    "_return"
-})
-public class CountOfferResponse
-    implements Serializable
-{
+@XmlType(name = "countOfferResponse", propOrder = { "_return" })
+public class CountOfferResponse implements Serializable {
 
     private static final long serialVersionUID = 5156973138410203161L;
-	@XmlElement(name = "return")
+    @XmlElement(name = "return")
     protected long _return;
 
     /**
