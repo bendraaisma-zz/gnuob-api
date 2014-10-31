@@ -23,6 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="amount" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="discount" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         &lt;element name="itemHeight" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         &lt;element name="itemHeightUnit" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="itemLength" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
@@ -47,13 +48,14 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "orderRecord", propOrder = { "amount", "description", "itemHeight", "itemHeightUnit", "itemLength", "itemLengthUnit", "itemUrl", "itemWeight", "itemWeightUnit", "itemWidth", "itemWidthUnit", "name", "number", "product", "quantity",
-        "shippingCost", "tax" })
+@XmlType(name = "orderRecord", propOrder = { "amount", "description", "discount", "itemHeight", "itemHeightUnit", "itemLength", "itemLengthUnit", "itemUrl", "itemWeight", "itemWeightUnit", "itemWidth", "itemWidthUnit", "name", "number", "product",
+        "quantity", "shippingCost", "tax" })
 public class OrderRecord extends Type implements Serializable {
 
-    private static final long serialVersionUID = -839571434110384569L;
+    private static final long serialVersionUID = 9062000751971754884L;
     protected BigDecimal amount;
     protected String description;
+    protected BigDecimal discount;
     protected BigDecimal itemHeight;
     protected String itemHeightUnit;
     protected BigDecimal itemLength;
@@ -111,6 +113,27 @@ public class OrderRecord extends Type implements Serializable {
      */
     public void setDescription(String value) {
         this.description = value;
+    }
+
+    /**
+     * Gets the value of the discount property.
+     * 
+     * @return possible object is {@link BigDecimal }
+     * 
+     */
+    public BigDecimal getDiscount() {
+        return discount;
+    }
+
+    /**
+     * Sets the value of the discount property.
+     * 
+     * @param value
+     *            allowed object is {@link BigDecimal }
+     * 
+     */
+    public void setDiscount(BigDecimal value) {
+        this.discount = value;
     }
 
     /**

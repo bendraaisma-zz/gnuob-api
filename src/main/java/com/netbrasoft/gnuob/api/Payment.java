@@ -2,6 +2,7 @@ package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -24,6 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="feeAmount" type="{http://www.w3.org/2001/XMLSchema}decimal"/>
  *         &lt;element name="grossAmount" type="{http://www.w3.org/2001/XMLSchema}decimal"/>
  *         &lt;element name="holdDecision" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="installmentCount" type="{http://www.w3.org/2001/XMLSchema}integer" minOccurs="0"/>
  *         &lt;element name="paymentDate" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="paymentRequestId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="paymentStatus" type="{http://www.w3.org/2001/XMLSchema}string"/>
@@ -46,11 +48,11 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "payment", propOrder = { "exchangeRate", "feeAmount", "grossAmount", "holdDecision", "paymentDate", "paymentRequestId", "paymentStatus", "paymentType", "pendingReason", "protectionEligibilityType", "reasonCode", "settleAmount", "storeId",
-        "taxAmount", "terminalId", "transactionId", "transactionType" })
+@XmlType(name = "payment", propOrder = { "exchangeRate", "feeAmount", "grossAmount", "holdDecision", "installmentCount", "paymentDate", "paymentRequestId", "paymentStatus", "paymentType", "pendingReason", "protectionEligibilityType", "reasonCode",
+        "settleAmount", "storeId", "taxAmount", "terminalId", "transactionId", "transactionType" })
 public class Payment extends Type implements Serializable {
 
-    private static final long serialVersionUID = 1770691786544144736L;
+    private static final long serialVersionUID = -2673551817717408435L;
     @XmlElement(required = true)
     protected String exchangeRate;
     @XmlElement(required = true)
@@ -58,6 +60,7 @@ public class Payment extends Type implements Serializable {
     @XmlElement(required = true)
     protected BigDecimal grossAmount;
     protected String holdDecision;
+    protected BigInteger installmentCount;
     @XmlElement(required = true)
     protected String paymentDate;
     protected String paymentRequestId;
@@ -163,6 +166,27 @@ public class Payment extends Type implements Serializable {
      */
     public void setHoldDecision(String value) {
         this.holdDecision = value;
+    }
+
+    /**
+     * Gets the value of the installmentCount property.
+     * 
+     * @return possible object is {@link BigInteger }
+     * 
+     */
+    public BigInteger getInstallmentCount() {
+        return installmentCount;
+    }
+
+    /**
+     * Sets the value of the installmentCount property.
+     * 
+     * @param value
+     *            allowed object is {@link BigInteger }
+     * 
+     */
+    public void setInstallmentCount(BigInteger value) {
+        this.installmentCount = value;
     }
 
     /**

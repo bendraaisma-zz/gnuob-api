@@ -22,10 +22,11 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;extension base="{http://gnuob.netbrasoft.com/}access">
  *       &lt;sequence>
- *         &lt;element name="billingAgreementID" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="billingAgreementId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="checkoutStatus" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="contract" type="{http://gnuob.netbrasoft.com/}contract"/>
  *         &lt;element name="custom" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="discountTotal" type="{http://www.w3.org/2001/XMLSchema}decimal"/>
  *         &lt;element name="extraAmount" type="{http://www.w3.org/2001/XMLSchema}decimal"/>
  *         &lt;element name="giftMessage" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="giftMessageEnable" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -59,16 +60,18 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "order", propOrder = { "billingAgreementID", "checkoutStatus", "contract", "custom", "extraAmount", "giftMessage", "giftMessageEnable", "giftReceiptEnable", "giftWrapAmount", "giftWrapEnable", "giftWrapName", "handlingTotal",
-        "insuranceOptionOffered", "insuranceTotal", "invoice", "itemTotal", "note", "noteText", "orderDescription", "orderId", "orderTotal", "records", "shipment", "shippingDiscount", "shippingTotal", "taxTotal", "token", "transactionId" })
+@XmlType(name = "order", propOrder = { "billingAgreementId", "checkoutStatus", "contract", "custom", "discountTotal", "extraAmount", "giftMessage", "giftMessageEnable", "giftReceiptEnable", "giftWrapAmount", "giftWrapEnable", "giftWrapName",
+        "handlingTotal", "insuranceOptionOffered", "insuranceTotal", "invoice", "itemTotal", "note", "noteText", "orderDescription", "orderId", "orderTotal", "records", "shipment", "shippingDiscount", "shippingTotal", "taxTotal", "token", "transactionId" })
 public class Order extends Access implements Serializable {
 
-    private static final long serialVersionUID = 7374050086006397995L;
-    protected String billingAgreementID;
+    private static final long serialVersionUID = 1031985133967723299L;
+    protected String billingAgreementId;
     protected String checkoutStatus;
     @XmlElement(required = true)
     protected Contract contract;
     protected String custom;
+    @XmlElement(required = true)
+    protected BigDecimal discountTotal;
     @XmlElement(required = true)
     protected BigDecimal extraAmount;
     protected String giftMessage;
@@ -104,24 +107,24 @@ public class Order extends Access implements Serializable {
     protected String transactionId;
 
     /**
-     * Gets the value of the billingAgreementID property.
+     * Gets the value of the billingAgreementId property.
      * 
      * @return possible object is {@link String }
      * 
      */
-    public String getBillingAgreementID() {
-        return billingAgreementID;
+    public String getBillingAgreementId() {
+        return billingAgreementId;
     }
 
     /**
-     * Sets the value of the billingAgreementID property.
+     * Sets the value of the billingAgreementId property.
      * 
      * @param value
      *            allowed object is {@link String }
      * 
      */
-    public void setBillingAgreementID(String value) {
-        this.billingAgreementID = value;
+    public void setBillingAgreementId(String value) {
+        this.billingAgreementId = value;
     }
 
     /**
@@ -185,6 +188,27 @@ public class Order extends Access implements Serializable {
      */
     public void setCustom(String value) {
         this.custom = value;
+    }
+
+    /**
+     * Gets the value of the discountTotal property.
+     * 
+     * @return possible object is {@link BigDecimal }
+     * 
+     */
+    public BigDecimal getDiscountTotal() {
+        return discountTotal;
+    }
+
+    /**
+     * Sets the value of the discountTotal property.
+     * 
+     * @param value
+     *            allowed object is {@link BigDecimal }
+     * 
+     */
+    public void setDiscountTotal(BigDecimal value) {
+        this.discountTotal = value;
     }
 
     /**

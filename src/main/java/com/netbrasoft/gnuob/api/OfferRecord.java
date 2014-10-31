@@ -23,6 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="amount" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="discount" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         &lt;element name="itemHeight" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         &lt;element name="itemHeightUnit" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="itemLength" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
@@ -36,6 +37,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="number" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="product" type="{http://gnuob.netbrasoft.com/}product" minOccurs="0"/>
  *         &lt;element name="quantity" type="{http://www.w3.org/2001/XMLSchema}integer"/>
+ *         &lt;element name="shippingCost" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         &lt;element name="tax" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
@@ -46,12 +48,14 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "offerRecord", propOrder = { "amount", "description", "itemHeight", "itemHeightUnit", "itemLength", "itemLengthUnit", "itemUrl", "itemWeight", "itemWeightUnit", "itemWidth", "itemWidthUnit", "name", "number", "product", "quantity", "tax" })
+@XmlType(name = "offerRecord", propOrder = { "amount", "description", "discount", "itemHeight", "itemHeightUnit", "itemLength", "itemLengthUnit", "itemUrl", "itemWeight", "itemWeightUnit", "itemWidth", "itemWidthUnit", "name", "number", "product",
+        "quantity", "shippingCost", "tax" })
 public class OfferRecord extends Type implements Serializable {
 
-    private static final long serialVersionUID = 546789756717912252L;
+    private static final long serialVersionUID = -1918743261053599987L;
     protected BigDecimal amount;
     protected String description;
+    protected BigDecimal discount;
     protected BigDecimal itemHeight;
     protected String itemHeightUnit;
     protected BigDecimal itemLength;
@@ -66,6 +70,7 @@ public class OfferRecord extends Type implements Serializable {
     protected Product product;
     @XmlElement(required = true)
     protected BigInteger quantity;
+    protected BigDecimal shippingCost;
     protected BigDecimal tax;
 
     /**
@@ -108,6 +113,27 @@ public class OfferRecord extends Type implements Serializable {
      */
     public void setDescription(String value) {
         this.description = value;
+    }
+
+    /**
+     * Gets the value of the discount property.
+     * 
+     * @return possible object is {@link BigDecimal }
+     * 
+     */
+    public BigDecimal getDiscount() {
+        return discount;
+    }
+
+    /**
+     * Sets the value of the discount property.
+     * 
+     * @param value
+     *            allowed object is {@link BigDecimal }
+     * 
+     */
+    public void setDiscount(BigDecimal value) {
+        this.discount = value;
     }
 
     /**
@@ -381,6 +407,27 @@ public class OfferRecord extends Type implements Serializable {
      */
     public void setQuantity(BigInteger value) {
         this.quantity = value;
+    }
+
+    /**
+     * Gets the value of the shippingCost property.
+     * 
+     * @return possible object is {@link BigDecimal }
+     * 
+     */
+    public BigDecimal getShippingCost() {
+        return shippingCost;
+    }
+
+    /**
+     * Sets the value of the shippingCost property.
+     * 
+     * @param value
+     *            allowed object is {@link BigDecimal }
+     * 
+     */
+    public void setShippingCost(BigDecimal value) {
+        this.shippingCost = value;
     }
 
     /**

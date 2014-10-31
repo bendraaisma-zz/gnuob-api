@@ -21,4 +21,9 @@
 		</configuration>
 	</container>
 
+	<extension qualifier="webdriver">
+		<property name="browser">chrome</property>
+		<property name="chromeDriverBinary">/home/bernard/Tools/chromedriver/chromedriver</property>
+	</extension>
+
 </arquillian>

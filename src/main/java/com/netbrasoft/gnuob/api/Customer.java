@@ -25,6 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="contactPhone" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="dateOfBirth" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="firstName" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="friendlyName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="lastName" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="middleName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="payer" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -44,11 +45,11 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "customer", propOrder = { "adress", "buyerEmail", "buyerMarketingEmail", "contactPhone", "dateOfBirth", "firstName", "lastName", "middleName", "payer", "payerBusiness", "payerId", "payerStatus", "salutation", "suffix", "taxId",
-        "taxIdType" })
+@XmlType(name = "customer", propOrder = { "adress", "buyerEmail", "buyerMarketingEmail", "contactPhone", "dateOfBirth", "firstName", "friendlyName", "lastName", "middleName", "payer", "payerBusiness", "payerId", "payerStatus", "salutation", "suffix",
+        "taxId", "taxIdType" })
 public class Customer extends Access implements Serializable {
 
-    private static final long serialVersionUID = -1923104916371931945L;
+    private static final long serialVersionUID = 4840006901780745581L;
     @XmlElement(required = true)
     protected Address adress;
     @XmlElement(required = true)
@@ -59,6 +60,7 @@ public class Customer extends Access implements Serializable {
     protected String dateOfBirth;
     @XmlElement(required = true)
     protected String firstName;
+    protected String friendlyName;
     @XmlElement(required = true)
     protected String lastName;
     protected String middleName;
@@ -195,6 +197,27 @@ public class Customer extends Access implements Serializable {
      */
     public void setFirstName(String value) {
         this.firstName = value;
+    }
+
+    /**
+     * Gets the value of the friendlyName property.
+     * 
+     * @return possible object is {@link String }
+     * 
+     */
+    public String getFriendlyName() {
+        return friendlyName;
+    }
+
+    /**
+     * Sets the value of the friendlyName property.
+     * 
+     * @param value
+     *            allowed object is {@link String }
+     * 
+     */
+    public void setFriendlyName(String value) {
+        this.friendlyName = value;
     }
 
     /**
