@@ -26,13 +26,13 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="bestsellers" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="contents" type="{http://gnuob.netbrasoft.com/}content" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="discount" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *         &lt;element name="discount" type="{http://www.w3.org/2001/XMLSchema}decimal"/>
  *         &lt;element name="itemHeight" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         &lt;element name="itemHeightUnit" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="itemLength" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         &lt;element name="itemLengthUnit" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="itemUrl" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="itemWeight" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *         &lt;element name="itemWeight" type="{http://www.w3.org/2001/XMLSchema}decimal"/>
  *         &lt;element name="itemWeightUnit" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="itemWidth" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         &lt;element name="itemWidthUnit" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -66,12 +66,14 @@ public class Product extends Access implements Serializable {
     protected List<Content> contents;
     @XmlElement(required = true)
     protected String description;
+    @XmlElement(required = true)
     protected BigDecimal discount;
     protected BigDecimal itemHeight;
     protected String itemHeightUnit;
     protected BigDecimal itemLength;
     protected String itemLengthUnit;
     protected String itemUrl;
+    @XmlElement(required = true)
     protected BigDecimal itemWeight;
     protected String itemWeightUnit;
     protected BigDecimal itemWidth;

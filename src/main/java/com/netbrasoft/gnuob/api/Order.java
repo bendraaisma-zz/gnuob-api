@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="checkoutStatus" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="contract" type="{http://gnuob.netbrasoft.com/}contract"/>
  *         &lt;element name="custom" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="discountTotal" type="{http://www.w3.org/2001/XMLSchema}decimal"/>
+ *         &lt;element name="discountTotal" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         &lt;element name="extraAmount" type="{http://www.w3.org/2001/XMLSchema}decimal"/>
  *         &lt;element name="giftMessage" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="giftMessageEnable" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -45,9 +45,9 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="orderId" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="orderTotal" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         &lt;element name="records" type="{http://gnuob.netbrasoft.com/}orderRecord" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="shipment" type="{http://gnuob.netbrasoft.com/}shipment"/>
+ *         &lt;element name="shipment" type="{http://gnuob.netbrasoft.com/}shipment" minOccurs="0"/>
  *         &lt;element name="shippingDiscount" type="{http://www.w3.org/2001/XMLSchema}decimal"/>
- *         &lt;element name="shippingTotal" type="{http://www.w3.org/2001/XMLSchema}decimal"/>
+ *         &lt;element name="shippingTotal" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         &lt;element name="taxTotal" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         &lt;element name="token" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="transactionId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -70,7 +70,6 @@ public class Order extends Access implements Serializable {
     @XmlElement(required = true)
     protected Contract contract;
     protected String custom;
-    @XmlElement(required = true)
     protected BigDecimal discountTotal;
     @XmlElement(required = true)
     protected BigDecimal extraAmount;
@@ -96,11 +95,9 @@ public class Order extends Access implements Serializable {
     protected BigDecimal orderTotal;
     @XmlElement(nillable = true)
     protected List<OrderRecord> records;
-    @XmlElement(required = true)
     protected Shipment shipment;
     @XmlElement(required = true)
     protected BigDecimal shippingDiscount;
-    @XmlElement(required = true)
     protected BigDecimal shippingTotal;
     protected BigDecimal taxTotal;
     protected String token;

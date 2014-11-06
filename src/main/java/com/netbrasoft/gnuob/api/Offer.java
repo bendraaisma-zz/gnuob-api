@@ -23,17 +23,17 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;extension base="{http://gnuob.netbrasoft.com/}access">
  *       &lt;sequence>
  *         &lt;element name="contract" type="{http://gnuob.netbrasoft.com/}contract"/>
- *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="discountTotal" type="{http://www.w3.org/2001/XMLSchema}decimal"/>
- *         &lt;element name="extraAmount" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *         &lt;element name="discountTotal" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *         &lt;element name="extraAmount" type="{http://www.w3.org/2001/XMLSchema}decimal"/>
  *         &lt;element name="handlingTotal" type="{http://www.w3.org/2001/XMLSchema}decimal"/>
  *         &lt;element name="insuranceTotal" type="{http://www.w3.org/2001/XMLSchema}decimal"/>
  *         &lt;element name="itemTotal" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *         &lt;element name="offerDescription" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="offerId" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="offerTotal" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         &lt;element name="records" type="{http://gnuob.netbrasoft.com/}offerRecord" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="shippingDiscount" type="{http://www.w3.org/2001/XMLSchema}decimal"/>
- *         &lt;element name="shippingTotal" type="{http://www.w3.org/2001/XMLSchema}decimal"/>
+ *         &lt;element name="shippingTotal" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         &lt;element name="taxTotal" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
@@ -44,22 +44,21 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "offer", propOrder = { "contract", "description", "discountTotal", "extraAmount", "handlingTotal", "insuranceTotal", "itemTotal", "offerId", "offerTotal", "records", "shippingDiscount", "shippingTotal", "taxTotal" })
+@XmlType(name = "offer", propOrder = { "contract", "discountTotal", "extraAmount", "handlingTotal", "insuranceTotal", "itemTotal", "offerDescription", "offerId", "offerTotal", "records", "shippingDiscount", "shippingTotal", "taxTotal" })
 public class Offer extends Access implements Serializable {
 
-    private static final long serialVersionUID = -8407829631191139645L;
+    private static final long serialVersionUID = 8096103625270800523L;
     @XmlElement(required = true)
     protected Contract contract;
-    @XmlElement(required = true)
-    protected String description;
-    @XmlElement(required = true)
     protected BigDecimal discountTotal;
+    @XmlElement(required = true)
     protected BigDecimal extraAmount;
     @XmlElement(required = true)
     protected BigDecimal handlingTotal;
     @XmlElement(required = true)
     protected BigDecimal insuranceTotal;
     protected BigDecimal itemTotal;
+    protected String offerDescription;
     @XmlElement(required = true)
     protected String offerId;
     protected BigDecimal offerTotal;
@@ -67,7 +66,6 @@ public class Offer extends Access implements Serializable {
     protected List<OfferRecord> records;
     @XmlElement(required = true)
     protected BigDecimal shippingDiscount;
-    @XmlElement(required = true)
     protected BigDecimal shippingTotal;
     protected BigDecimal taxTotal;
 
@@ -90,27 +88,6 @@ public class Offer extends Access implements Serializable {
      */
     public void setContract(Contract value) {
         this.contract = value;
-    }
-
-    /**
-     * Gets the value of the description property.
-     * 
-     * @return possible object is {@link String }
-     * 
-     */
-    public String getDescription() {
-        return description;
-    }
-
-    /**
-     * Sets the value of the description property.
-     * 
-     * @param value
-     *            allowed object is {@link String }
-     * 
-     */
-    public void setDescription(String value) {
-        this.description = value;
     }
 
     /**
@@ -216,6 +193,27 @@ public class Offer extends Access implements Serializable {
      */
     public void setItemTotal(BigDecimal value) {
         this.itemTotal = value;
+    }
+
+    /**
+     * Gets the value of the offerDescription property.
+     * 
+     * @return possible object is {@link String }
+     * 
+     */
+    public String getOfferDescription() {
+        return offerDescription;
+    }
+
+    /**
+     * Sets the value of the offerDescription property.
+     * 
+     * @param value
+     *            allowed object is {@link String }
+     * 
+     */
+    public void setOfferDescription(String value) {
+        this.offerDescription = value;
     }
 
     /**

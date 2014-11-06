@@ -24,6 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="contents" type="{http://gnuob.netbrasoft.com/}content" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="position" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="subCategories" type="{http://gnuob.netbrasoft.com/}subCategory" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
@@ -34,14 +35,15 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "category", propOrder = { "contents", "description", "name", "subCategories" })
+@XmlType(name = "category", propOrder = { "contents", "description", "name", "position", "subCategories" })
 public class Category extends Access implements Serializable {
 
-    private static final long serialVersionUID = 4383780275328734530L;
+    private static final long serialVersionUID = -2820813057083809036L;
     @XmlElement(nillable = true)
     protected List<Content> contents;
     protected String description;
     protected String name;
+    protected Integer position;
     @XmlElement(nillable = true)
     protected List<SubCategory> subCategories;
 
@@ -114,6 +116,27 @@ public class Category extends Access implements Serializable {
      */
     public void setName(String value) {
         this.name = value;
+    }
+
+    /**
+     * Gets the value of the position property.
+     * 
+     * @return possible object is {@link Integer }
+     * 
+     */
+    public Integer getPosition() {
+        return position;
+    }
+
+    /**
+     * Sets the value of the position property.
+     * 
+     * @param value
+     *            allowed object is {@link Integer }
+     * 
+     */
+    public void setPosition(Integer value) {
+        this.position = value;
     }
 
     /**

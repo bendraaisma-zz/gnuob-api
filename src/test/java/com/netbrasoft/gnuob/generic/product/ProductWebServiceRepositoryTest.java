@@ -58,6 +58,7 @@ public class ProductWebServiceRepositoryTest {
         product.setRating(randomGenerator.nextInt());
         product.setBestsellers(randomGenerator.nextBoolean());
         product.setShippingCost(BigDecimal.ZERO);
+        product.setItemWeight(BigDecimal.ZERO);
 
         Stock stock = new Stock();
         stock.setMaxQuantity(BigInteger.valueOf(100));
@@ -87,7 +88,7 @@ public class ProductWebServiceRepositoryTest {
         paging.setMax(-1);
 
         SubCategory subCategory = new SubCategory();
-        subCategory.setName(product.getSubCategories().get(0).getName());
+        subCategory.setName(product.getSubCategories().iterator().next().getName());
 
         Product product = new Product();
         product.getSubCategories().add(subCategory);

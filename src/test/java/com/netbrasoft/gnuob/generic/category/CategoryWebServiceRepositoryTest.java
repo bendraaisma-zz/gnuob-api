@@ -1,9 +1,8 @@
 package com.netbrasoft.gnuob.generic.category;
 
-import java.util.Iterator;
 import java.util.List;
-
-import javax.activation.DataHandler;
+import java.util.Random;
+import java.util.UUID;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -14,7 +13,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.netbrasoft.gnuob.api.Category;
-import com.netbrasoft.gnuob.api.Content;
 import com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException_Exception;
 import com.netbrasoft.gnuob.api.MetaData;
 import com.netbrasoft.gnuob.api.OrderBy;
@@ -31,108 +29,112 @@ public class CategoryWebServiceRepositoryTest {
         return Utils.createDeployment();
     }
 
-    private MetaData paramMetaData = null;
-    private CategoryWebServiceRepository categoryWebServiceRepository;
-
-    @Test
-    public void createNewCategoryAndFindByCategoryName() throws GNUOpenBusinessServiceException_Exception {
-        Category paramCategorySport = getParamCategorySport();
-
-        paramCategorySport = categoryWebServiceRepository.persist(paramMetaData, paramCategorySport);
-        paramCategorySport.getSubCategories().clear();
-
-        Paging paging = new Paging();
-        paging.setFirst(0);
-        paging.setMax(2);
-
-        List<Category> categories = categoryWebServiceRepository.find(paramMetaData, paramCategorySport, paging, OrderBy.NONE);
-
-        Assert.assertFalse(categories.isEmpty());
-
-        paramCategorySport = categories.get(0);
-
-        Assert.assertTrue(paramCategorySport.getSubCategories().size() == 4);
-    }
-
-    @Test
-    public void createNewCategoryAndOrderSubCategoriesByPostion() throws GNUOpenBusinessServiceException_Exception {
-        SubCategory subCategoryWinterSport;
-        SubCategory subCategoryZomerSport;
-        SubCategory subCategoryLenteSport;
-        SubCategory subCategoryHerfstSport;
-        Category paramCategorySport = getParamCategorySport();
-
-        paramCategorySport = categoryWebServiceRepository.persist(paramMetaData, paramCategorySport);
-
-        Iterator<SubCategory> iterable = paramCategorySport.getSubCategories().iterator();
-
-        Assert.assertEquals("ZomerSport", iterable.next().getName());
-        Assert.assertEquals("HerfstSport", iterable.next().getName());
-        Assert.assertEquals("WinterSport", iterable.next().getName());
-        Assert.assertEquals("LenteSport", iterable.next().getName());
-
-        iterable = paramCategorySport.getSubCategories().iterator();
-
-        subCategoryZomerSport = iterable.next();
-        subCategoryHerfstSport = iterable.next();
-        subCategoryWinterSport = iterable.next();
-        subCategoryLenteSport = iterable.next();
-
-        paramCategorySport.getSubCategories().clear();
-
-        paramCategorySport.getSubCategories().add(subCategoryLenteSport);
-        paramCategorySport.getSubCategories().add(subCategoryWinterSport);
-        paramCategorySport.getSubCategories().add(subCategoryHerfstSport);
-        paramCategorySport.getSubCategories().add(subCategoryZomerSport);
-
-        paramCategorySport = categoryWebServiceRepository.merge(paramMetaData, paramCategorySport);
-
-        iterable = paramCategorySport.getSubCategories().iterator();
-
-        Assert.assertEquals("LenteSport", iterable.next().getName());
-        Assert.assertEquals("WinterSport", iterable.next().getName());
-        Assert.assertEquals("HerfstSport", iterable.next().getName());
-        Assert.assertEquals("ZomerSport", iterable.next().getName());
-    }
-
-    private Category getParamCategorySport() {
-        Category paramCategorySport = new Category();
-        SubCategory subCategoryWinterSport = new SubCategory();
-        SubCategory subCategoryZomerSport = new SubCategory();
-        SubCategory subCategoryLenteSport = new SubCategory();
-        SubCategory subCategoryHerfstSport = new SubCategory();
-
-        Content content = new Content();
-        content.setFormat("pdf");
-        content.setName("Document");
-        content.setContent(new DataHandler(new String("dfd").getBytes(), "application/octet-stream"));
-
-        paramCategorySport.setName("Sport");
-        paramCategorySport.setDescription("Sport artikelen");
-        paramCategorySport.getContents().add(content);
-
-        subCategoryWinterSport.setName("WinterSport");
-        subCategoryWinterSport.setDescription("WinterSport");
-
-        subCategoryZomerSport.setName("ZomerSport");
-        subCategoryZomerSport.setDescription("ZomerSport");
-
-        subCategoryLenteSport.setName("LenteSport");
-        subCategoryLenteSport.setDescription("LenteSport");
-
-        subCategoryHerfstSport.setName("HerfstSport");
-        subCategoryHerfstSport.setDescription("HerfstSport");
-
-        paramCategorySport.getSubCategories().add(subCategoryZomerSport);
-        paramCategorySport.getSubCategories().add(subCategoryHerfstSport);
-        paramCategorySport.getSubCategories().add(subCategoryWinterSport);
-        paramCategorySport.getSubCategories().add(subCategoryLenteSport);
-        return paramCategorySport;
-    }
+    private CategoryWebServiceRepository categoryWebServiceRepository = new CategoryWebServiceRepository();
+    private MetaData metaData = null;
+    private Category category = null;
+    private SubCategory subCategory = null;
 
     @Before
-    public void init() {
-        paramMetaData = Utils.paramMetaData();
-        categoryWebServiceRepository = new CategoryWebServiceRepository();
+    public void testBefore() {
+        new Random();
+
+        metaData = new MetaData();
+        category = new Category();
+        subCategory = new SubCategory();
+
+        metaData.setUser("administrator");
+        metaData.setPassword("administrator");
+        metaData.setSite("www.netbrasoft.com");
+
+        category.setName(UUID.randomUUID().toString());
+        category.setDescription(UUID.randomUUID().toString());
+
+        subCategory.setName(UUID.randomUUID().toString());
+        subCategory.setDescription(UUID.randomUUID().toString());
+
+        category.getSubCategories().add(subCategory);
+    }
+
+    @Test
+    public void testFindBySubCategoryName() throws GNUOpenBusinessServiceException_Exception {
+        String categoryName = category.getName();
+        String categoryDescription = category.getDescription();
+
+        Category persistCategory = categoryWebServiceRepository.persist(metaData, category);
+
+        Paging paging = new Paging();
+
+        paging.setFirst(-1);
+        paging.setMax(-1);
+
+        SubCategory subCategory = new SubCategory();
+        subCategory.setName(persistCategory.getSubCategories().iterator().next().getName());
+
+        Category category = new Category();
+        category.getSubCategories().add(subCategory);
+
+        List<Category> findCategories = categoryWebServiceRepository.find(metaData, category, paging, OrderBy.NONE);
+
+        Assert.assertTrue("Find categories has no value bigger than 1.", findCategories.size() == 1);
+
+        Category findCategory = findCategories.iterator().next();
+
+        Assert.assertTrue("Category id has no value bigger than zero.", findCategory.getId() > 0);
+        Assert.assertEquals("Category name is not equal.", categoryName, findCategory.getName());
+        Assert.assertEquals("Category description is not equal.", categoryDescription, findCategory.getDescription());
+    }
+
+    @Test
+    public void testMergeProduct() throws GNUOpenBusinessServiceException_Exception {
+        String categoryName = UUID.randomUUID().toString();
+        String categoryDescription = UUID.randomUUID().toString();
+
+        Category persistCategory = categoryWebServiceRepository.persist(metaData, category);
+
+        persistCategory.setName(categoryName);
+        persistCategory.setDescription(categoryDescription);
+
+        Category mergeCategory = categoryWebServiceRepository.merge(metaData, persistCategory);
+
+        Assert.assertTrue("Category id has no value bigger than zero.", mergeCategory.getId() > 0);
+        Assert.assertEquals("Category name is not equal.", categoryName, mergeCategory.getName());
+        Assert.assertEquals("Category description is not equal.", categoryDescription, mergeCategory.getDescription());
+
+        Assert.assertTrue("Category contains 1 subCategory", category.getSubCategories().size() == 1);
+    }
+
+    @Test
+    public void testPersistCategory() throws GNUOpenBusinessServiceException_Exception {
+        String categoryName = category.getName();
+        String categoryDescription = category.getDescription();
+
+        Category persistCategory = categoryWebServiceRepository.persist(metaData, category);
+
+        Assert.assertTrue("Category id has no value bigger than zero.", persistCategory.getId() > 0);
+        Assert.assertEquals("Category name is not equal.", categoryName, persistCategory.getName());
+        Assert.assertEquals("Category description is not equal.", categoryDescription, persistCategory.getDescription());
+
+        Assert.assertTrue("Category contains 1 subCategory", category.getSubCategories().size() == 1);
+    }
+
+    @Test
+    public void testRemoveProduct() throws GNUOpenBusinessServiceException_Exception {
+        Category persistCategory = categoryWebServiceRepository.persist(metaData, category);
+        categoryWebServiceRepository.remove(metaData, persistCategory);
+
+        Category findCategory = categoryWebServiceRepository.find(metaData, category);
+
+        Assert.assertNull("Category is found.", findCategory);
+    }
+
+    // @Test()
+    public void testTotalNumberOfCategories() throws GNUOpenBusinessServiceException_Exception {
+        Paging paging = new Paging();
+        paging.setFirst(-1);
+        paging.setMax(-1);
+
+        List<Category> findCategories = categoryWebServiceRepository.find(metaData, new Category(), paging, OrderBy.NONE);
+
+        Assert.assertTrue("Find categories has no value bigger than 3.", findCategories.size() == 3);
     }
 }

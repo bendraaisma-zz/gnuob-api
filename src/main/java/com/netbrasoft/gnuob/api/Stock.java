@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -19,9 +20,9 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;extension base="{http://gnuob.netbrasoft.com/}type">
  *       &lt;sequence>
- *         &lt;element name="maxQuantity" type="{http://www.w3.org/2001/XMLSchema}integer" minOccurs="0"/>
- *         &lt;element name="minQuantity" type="{http://www.w3.org/2001/XMLSchema}integer" minOccurs="0"/>
- *         &lt;element name="quantity" type="{http://www.w3.org/2001/XMLSchema}integer" minOccurs="0"/>
+ *         &lt;element name="maxQuantity" type="{http://www.w3.org/2001/XMLSchema}integer"/>
+ *         &lt;element name="minQuantity" type="{http://www.w3.org/2001/XMLSchema}integer"/>
+ *         &lt;element name="quantity" type="{http://www.w3.org/2001/XMLSchema}integer"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -35,8 +36,11 @@ import javax.xml.bind.annotation.XmlType;
 public class Stock extends Type implements Serializable {
 
     private static final long serialVersionUID = 1370554796617371872L;
+    @XmlElement(required = true)
     protected BigInteger maxQuantity;
+    @XmlElement(required = true)
     protected BigInteger minQuantity;
+    @XmlElement(required = true)
     protected BigInteger quantity;
 
     /**

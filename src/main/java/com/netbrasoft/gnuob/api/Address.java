@@ -3,6 +3,7 @@ package com.netbrasoft.gnuob.api;
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -18,18 +19,18 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;extension base="{http://gnuob.netbrasoft.com/}type">
  *       &lt;sequence>
- *         &lt;element name="cityName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="cityName" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="complement" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="country" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="country" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="countryName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="district" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="internationalStateAndCity" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="internationalStreet" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="number" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="number" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="phone" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="postalCode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="stateOrProvince" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="street1" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="postalCode" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="stateOrProvince" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="street1" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="street2" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
@@ -44,17 +45,23 @@ import javax.xml.bind.annotation.XmlType;
 public class Address extends Type implements Serializable {
 
     private static final long serialVersionUID = 6926594235185558246L;
+    @XmlElement(required = true)
     protected String cityName;
     protected String complement;
+    @XmlElement(required = true)
     protected String country;
     protected String countryName;
     protected String district;
     protected String internationalStateAndCity;
     protected String internationalStreet;
+    @XmlElement(required = true)
     protected String number;
     protected String phone;
+    @XmlElement(required = true)
     protected String postalCode;
+    @XmlElement(required = true)
     protected String stateOrProvince;
+    @XmlElement(required = true)
     protected String street1;
     protected String street2;
 

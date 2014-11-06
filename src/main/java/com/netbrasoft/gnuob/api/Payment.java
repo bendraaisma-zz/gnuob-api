@@ -21,21 +21,21 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;extension base="{http://gnuob.netbrasoft.com/}type">
  *       &lt;sequence>
- *         &lt;element name="exchangeRate" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="feeAmount" type="{http://www.w3.org/2001/XMLSchema}decimal"/>
+ *         &lt;element name="exchangeRate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="feeAmount" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         &lt;element name="grossAmount" type="{http://www.w3.org/2001/XMLSchema}decimal"/>
  *         &lt;element name="holdDecision" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="installmentCount" type="{http://www.w3.org/2001/XMLSchema}integer" minOccurs="0"/>
- *         &lt;element name="paymentDate" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="paymentDate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="paymentRequestId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="paymentStatus" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="paymentType" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="pendingReason" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="protectionEligibilityType" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="reasonCode" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="pendingReason" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="protectionEligibilityType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="reasonCode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="settleAmount" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         &lt;element name="storeId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="taxAmount" type="{http://www.w3.org/2001/XMLSchema}decimal"/>
+ *         &lt;element name="taxAmount" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         &lt;element name="terminalId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="transactionId" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="transactionType" type="{http://www.w3.org/2001/XMLSchema}string"/>
@@ -53,30 +53,23 @@ import javax.xml.bind.annotation.XmlType;
 public class Payment extends Type implements Serializable {
 
     private static final long serialVersionUID = -2673551817717408435L;
-    @XmlElement(required = true)
     protected String exchangeRate;
-    @XmlElement(required = true)
     protected BigDecimal feeAmount;
     @XmlElement(required = true)
     protected BigDecimal grossAmount;
     protected String holdDecision;
     protected BigInteger installmentCount;
-    @XmlElement(required = true)
     protected String paymentDate;
     protected String paymentRequestId;
     @XmlElement(required = true)
     protected String paymentStatus;
     @XmlElement(required = true)
     protected String paymentType;
-    @XmlElement(required = true)
     protected String pendingReason;
-    @XmlElement(required = true)
     protected String protectionEligibilityType;
-    @XmlElement(required = true)
     protected String reasonCode;
     protected BigDecimal settleAmount;
     protected String storeId;
-    @XmlElement(required = true)
     protected BigDecimal taxAmount;
     protected String terminalId;
     @XmlElement(required = true)

@@ -13,7 +13,6 @@ import com.netbrasoft.gnuob.api.FindCategory;
 import com.netbrasoft.gnuob.api.FindCategoryById;
 import com.netbrasoft.gnuob.api.FindCategoryByIdResponse;
 import com.netbrasoft.gnuob.api.FindCategoryResponse;
-import com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException_Exception;
 import com.netbrasoft.gnuob.api.MergeCategory;
 import com.netbrasoft.gnuob.api.MergeCategoryResponse;
 import com.netbrasoft.gnuob.api.MetaData;
@@ -34,14 +33,14 @@ public class CategoryWebServiceRepository {
 
     }
 
-    public long count(MetaData paramMetaData, Category paramCategory) throws GNUOpenBusinessServiceException_Exception {
+    public long count(MetaData paramMetaData, Category paramCategory) {
         CountCategory paramCountCategory = new CountCategory();
         paramCountCategory.setCategory(paramCategory);
         CountCategoryResponse countCategoryResponse = getCategoryWebServiceImpl().countCategory(paramCountCategory, paramMetaData);
         return countCategoryResponse.getReturn();
     }
 
-    public Category find(MetaData paramMetaData, Category paramCategory) throws GNUOpenBusinessServiceException_Exception {
+    public Category find(MetaData paramMetaData, Category paramCategory) {
         FindCategoryById paramFindCategoryById = new FindCategoryById();
         paramFindCategoryById.setCategory(paramCategory);
         FindCategoryByIdResponse findCategoryByIdResponse = getCategoryWebServiceImpl().findCategoryById(paramFindCategoryById, paramMetaData);
@@ -49,7 +48,7 @@ public class CategoryWebServiceRepository {
 
     }
 
-    public List<Category> find(MetaData paramMetaData, Category paramCategory, Paging paramPaging, OrderBy paramOrderBy) throws GNUOpenBusinessServiceException_Exception {
+    public List<Category> find(MetaData paramMetaData, Category paramCategory, Paging paramPaging, OrderBy paramOrderBy) {
         FindCategory paramFindCategory = new FindCategory();
         paramFindCategory.setCategory(paramCategory);
         paramFindCategory.setPaging(paramPaging);
@@ -68,28 +67,28 @@ public class CategoryWebServiceRepository {
         return categoryWebServiceImpl;
     }
 
-    public Category merge(MetaData paramMetaData, Category paramCategory) throws GNUOpenBusinessServiceException_Exception {
+    public Category merge(MetaData paramMetaData, Category paramCategory) {
         MergeCategory paramMergeCategory = new MergeCategory();
         paramMergeCategory.setCategory(paramCategory);
         MergeCategoryResponse mergeCategoryResponse = getCategoryWebServiceImpl().mergeCategory(paramMergeCategory, paramMetaData);
         return mergeCategoryResponse.getReturn();
     }
 
-    public Category persist(MetaData paramMetaData, Category paramCategory) throws GNUOpenBusinessServiceException_Exception {
+    public Category persist(MetaData paramMetaData, Category paramCategory) {
         PersistCategory paramPersistCategory = new PersistCategory();
         paramPersistCategory.setCategory(paramCategory);
         PersistCategoryResponse persistCategoryResponse = getCategoryWebServiceImpl().persistCategory(paramPersistCategory, paramMetaData);
         return persistCategoryResponse.getReturn();
     }
 
-    public Category refresh(MetaData paramMetaData, Category paramCategory) throws GNUOpenBusinessServiceException_Exception {
+    public Category refresh(MetaData paramMetaData, Category paramCategory) {
         RefreshCategory paramRefresCategory = new RefreshCategory();
         paramRefresCategory.setCategory(paramCategory);
         RefreshCategoryResponse refreshCategoryResponse = getCategoryWebServiceImpl().refreshCategory(paramRefresCategory, paramMetaData);
         return refreshCategoryResponse.getReturn();
     }
 
-    public void remove(MetaData paramMetaData, Category paramCategory) throws GNUOpenBusinessServiceException_Exception {
+    public void remove(MetaData paramMetaData, Category paramCategory) {
         RemoveCategory paramRemoveCategory = new RemoveCategory();
         paramRemoveCategory.setCategory(paramCategory);
         getCategoryWebServiceImpl().removeCategory(paramRemoveCategory, paramMetaData);

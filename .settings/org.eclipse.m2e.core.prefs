@@ -1,4 +1,4 @@
-activeProfiles=default, jboss-public-repository, sonar, arq-jbossas-managed
+activeProfiles=arq-jbossas-managed, sonar
 eclipse.preferences.version=1
 resolveWorkspaceProjects=true
 version=1
