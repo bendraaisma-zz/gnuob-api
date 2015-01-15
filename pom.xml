@@ -4,7 +4,7 @@
 
 	<groupId>com.netbrasoft.gnuob</groupId>
 	<artifactId>gnuob-api</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>GNU Open Business Platform</name>
 	<description>GNU Open Business Platform is a open source business framework</description>
@@ -22,8 +22,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<version.jar.plugin>2.5</version.jar.plugin>
 		<version.springframework.plugin>4.1.0.RELEASE</version.springframework.plugin>
-		<version.wicket.plugin>7.0.0-M4</version.wicket.plugin>
+		<version.wicket.plugin>7.0.0-M5</version.wicket.plugin>
 		<version.surefire.plugin>2.10</version.surefire.plugin>
+		<javasimon.version>4.0.1</javasimon.version>
 
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -100,6 +101,13 @@
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-extensions</artifactId>
 			<version>${version.wicket.plugin}</version>
+			<scope>compile</scope>
+		</dependency>
+		<!-- Core JAR is absolutely necessary to use Simons (Stopwatch, etc.) -->
+		<dependency>
+			<groupId>org.javasimon</groupId>
+			<artifactId>javasimon-core</artifactId>
+			<version>${javasimon.version}</version>
 			<scope>compile</scope>
 		</dependency>
 	</dependencies>

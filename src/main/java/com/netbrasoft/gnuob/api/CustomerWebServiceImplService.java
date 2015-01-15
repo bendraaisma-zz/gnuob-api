@@ -23,7 +23,7 @@ public class CustomerWebServiceImplService extends Service {
     static {
         URL url = null;
         try {
-            url = new URL("http://localhost:8080/gnuob-soap/CustomerWebServiceImpl?wsdl");
+            url = new URL(System.getProperty("gnuob.customer.site","http://localhost:8080/gnuob-soap/CustomerWebServiceImpl?wsdl"));
         } catch (MalformedURLException e) {
             java.util.logging.Logger.getLogger(CustomerWebServiceImplService.class.getName()).log(java.util.logging.Level.INFO, "Can not initialize the default wsdl from {0}", "http://localhost:8080/gnuob-soap/CustomerWebServiceImpl?wsdl");
         }

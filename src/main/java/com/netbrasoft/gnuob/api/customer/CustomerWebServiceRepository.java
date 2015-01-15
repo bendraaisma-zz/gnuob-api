@@ -2,6 +2,7 @@ package com.netbrasoft.gnuob.api.customer;
 
 import java.util.List;
 
+import org.javasimon.aop.Monitored;
 import org.springframework.stereotype.Repository;
 
 import com.netbrasoft.gnuob.api.CountCustomer;
@@ -13,7 +14,6 @@ import com.netbrasoft.gnuob.api.FindCustomer;
 import com.netbrasoft.gnuob.api.FindCustomerById;
 import com.netbrasoft.gnuob.api.FindCustomerByIdResponse;
 import com.netbrasoft.gnuob.api.FindCustomerResponse;
-import com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException_Exception;
 import com.netbrasoft.gnuob.api.MergeCustomer;
 import com.netbrasoft.gnuob.api.MergeCustomerResponse;
 import com.netbrasoft.gnuob.api.MetaData;
@@ -24,72 +24,86 @@ import com.netbrasoft.gnuob.api.PersistCustomerResponse;
 import com.netbrasoft.gnuob.api.RefreshCustomer;
 import com.netbrasoft.gnuob.api.RefreshCustomerResponse;
 import com.netbrasoft.gnuob.api.RemoveCustomer;
+import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 
+@Monitored
 @Repository("CustomerWebServiceRepository")
-public class CustomerWebServiceRepository {
+public class CustomerWebServiceRepository<C extends Customer> implements GenericTypeWebServiceRepository<C> {
 
-    private CustomerWebServiceImpl customerWebServiceImpl;
+   private CustomerWebServiceImpl customerWebServiceImpl;
 
-    public CustomerWebServiceRepository() {
-    }
+   public CustomerWebServiceRepository() {
+   }
 
-    public long count(MetaData paramMetaData, Customer paramCustomer) throws GNUOpenBusinessServiceException_Exception {
-        CountCustomer paramCountCustomer = new CountCustomer();
-        paramCountCustomer.setCustomer(paramCustomer);
-        CountCustomerResponse countCustomerResponse = getCustomerWebServiceImpl().countCustomer(paramCountCustomer, paramMetaData);
-        return countCustomerResponse.getReturn();
-    }
+   @Override
+   public long count(MetaData paramMetaData, C paramCustomer) {
+      CountCustomer paramCountCustomer = new CountCustomer();
+      paramCountCustomer.setCustomer(paramCustomer);
+      CountCustomerResponse countCustomerResponse = getCustomerWebServiceImpl().countCustomer(paramCountCustomer, paramMetaData);
+      return countCustomerResponse.getReturn();
+   }
 
-    public Customer find(MetaData paramMetaData, Customer paramCustomer) throws GNUOpenBusinessServiceException_Exception {
-        FindCustomerById paramFindCustomerById = new FindCustomerById();
-        paramFindCustomerById.setCustomer(paramCustomer);
-        FindCustomerByIdResponse findCustomerByIdResponse = getCustomerWebServiceImpl().findCustomerById(paramFindCustomerById, paramMetaData);
-        return findCustomerByIdResponse.getReturn();
+   @SuppressWarnings("unchecked")
+   @Override
+   public C find(MetaData paramMetaData, C paramCustomer) {
+      FindCustomerById paramFindCustomerById = new FindCustomerById();
+      paramFindCustomerById.setCustomer(paramCustomer);
+      FindCustomerByIdResponse findCustomerByIdResponse = getCustomerWebServiceImpl().findCustomerById(paramFindCustomerById, paramMetaData);
+      return (C) findCustomerByIdResponse.getReturn();
 
-    }
+   }
 
-    public List<Customer> find(MetaData paramMetaData, Customer paramCustomer, Paging paramPaging, OrderBy paramOrderBy) throws GNUOpenBusinessServiceException_Exception {
-        FindCustomer paramFindCustomer = new FindCustomer();
-        paramFindCustomer.setCustomer(paramCustomer);
-        paramFindCustomer.setPaging(paramPaging);
-        paramFindCustomer.setOrderBy(paramOrderBy);
-        FindCustomerResponse findCustomerResponse = getCustomerWebServiceImpl().findCustomer(paramFindCustomer, paramMetaData);
-        return findCustomerResponse.getReturn();
-    }
+   @SuppressWarnings("unchecked")
+   @Override
+   public List<C> find(MetaData paramMetaData, C paramCustomer, Paging paramPaging, OrderBy paramOrderBy) {
+      FindCustomer paramFindCustomer = new FindCustomer();
+      paramFindCustomer.setCustomer(paramCustomer);
+      paramFindCustomer.setPaging(paramPaging);
+      paramFindCustomer.setOrderBy(paramOrderBy);
+      FindCustomerResponse findCustomerResponse = getCustomerWebServiceImpl().findCustomer(paramFindCustomer, paramMetaData);
+      return (List<C>) findCustomerResponse.getReturn();
+   }
 
-    private CustomerWebServiceImpl getCustomerWebServiceImpl() {
-        if (customerWebServiceImpl == null) {
-            CustomerWebServiceImplService customerWebServiceImplService = new CustomerWebServiceImplService(CustomerWebServiceImplService.WSDL_LOCATION);
-            customerWebServiceImpl = customerWebServiceImplService.getCustomerWebServiceImplPort();
-        }
+   private CustomerWebServiceImpl getCustomerWebServiceImpl() {
+      if (customerWebServiceImpl == null) {
+         CustomerWebServiceImplService customerWebServiceImplService = new CustomerWebServiceImplService(CustomerWebServiceImplService.WSDL_LOCATION);
+         customerWebServiceImpl = customerWebServiceImplService.getCustomerWebServiceImplPort();
+      }
 
-        return customerWebServiceImpl;
-    }
+      return customerWebServiceImpl;
+   }
 
-    public Customer merge(MetaData paramMetaData, Customer paramCustomer) throws GNUOpenBusinessServiceException_Exception {
-        MergeCustomer paramMergeCustomer = new MergeCustomer();
-        paramMergeCustomer.setCustomer(paramCustomer);
-        MergeCustomerResponse mergeCustomerResponse = getCustomerWebServiceImpl().mergeCustomer(paramMergeCustomer, paramMetaData);
-        return mergeCustomerResponse.getReturn();
-    }
+   @SuppressWarnings("unchecked")
+   @Override
+   public C merge(MetaData paramMetaData, C paramCustomer) {
+      MergeCustomer paramMergeCustomer = new MergeCustomer();
+      paramMergeCustomer.setCustomer(paramCustomer);
+      MergeCustomerResponse mergeCustomerResponse = getCustomerWebServiceImpl().mergeCustomer(paramMergeCustomer, paramMetaData);
+      return (C) mergeCustomerResponse.getReturn();
+   }
 
-    public Customer persist(MetaData paramMetaData, Customer paramCustomer) throws GNUOpenBusinessServiceException_Exception {
-        PersistCustomer paramPersistCustomer = new PersistCustomer();
-        paramPersistCustomer.setCustomer(paramCustomer);
-        PersistCustomerResponse persistCustomerResponse = getCustomerWebServiceImpl().persistCustomer(paramPersistCustomer, paramMetaData);
-        return persistCustomerResponse.getReturn();
-    }
+   @SuppressWarnings("unchecked")
+   @Override
+   public C persist(MetaData paramMetaData, C paramCustomer) {
+      PersistCustomer paramPersistCustomer = new PersistCustomer();
+      paramPersistCustomer.setCustomer(paramCustomer);
+      PersistCustomerResponse persistCustomerResponse = getCustomerWebServiceImpl().persistCustomer(paramPersistCustomer, paramMetaData);
+      return (C) persistCustomerResponse.getReturn();
+   }
 
-    public Customer refresh(MetaData paramMetaData, Customer paramCustomer) throws GNUOpenBusinessServiceException_Exception {
-        RefreshCustomer paramRefresCustomer = new RefreshCustomer();
-        paramRefresCustomer.setCustomer(paramCustomer);
-        RefreshCustomerResponse refresCustomerResponse = getCustomerWebServiceImpl().refreshCustomer(paramRefresCustomer, paramMetaData);
-        return refresCustomerResponse.getReturn();
-    }
+   @SuppressWarnings("unchecked")
+   @Override
+   public C refresh(MetaData paramMetaData, C paramCustomer) {
+      RefreshCustomer paramRefresCustomer = new RefreshCustomer();
+      paramRefresCustomer.setCustomer(paramCustomer);
+      RefreshCustomerResponse refresCustomerResponse = getCustomerWebServiceImpl().refreshCustomer(paramRefresCustomer, paramMetaData);
+      return (C) refresCustomerResponse.getReturn();
+   }
 
-    public void remove(MetaData paramMetaData, Customer paramCustomer) throws GNUOpenBusinessServiceException_Exception {
-        RemoveCustomer paramRemoveCustomer = new RemoveCustomer();
-        paramRemoveCustomer.setCustomer(paramCustomer);
-        getCustomerWebServiceImpl().removeCustomer(paramRemoveCustomer, paramMetaData);
-    }
+   @Override
+   public void remove(MetaData paramMetaData, C paramCustomer) {
+      RemoveCustomer paramRemoveCustomer = new RemoveCustomer();
+      paramRemoveCustomer.setCustomer(paramCustomer);
+      getCustomerWebServiceImpl().removeCustomer(paramRemoveCustomer, paramMetaData);
+   }
 }

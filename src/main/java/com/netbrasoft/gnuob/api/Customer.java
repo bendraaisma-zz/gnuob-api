@@ -45,13 +45,13 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "customer", propOrder = { "adress", "buyerEmail", "buyerMarketingEmail", "contactPhone", "dateOfBirth", "firstName", "friendlyName", "lastName", "middleName", "payer", "payerBusiness", "payerId", "payerStatus", "salutation", "suffix",
+@XmlType(name = "customer", propOrder = { "address", "buyerEmail", "buyerMarketingEmail", "contactPhone", "dateOfBirth", "firstName", "friendlyName", "lastName", "middleName", "payer", "payerBusiness", "payerId", "payerStatus", "salutation", "suffix",
         "taxId", "taxIdType" })
 public class Customer extends Access implements Serializable {
 
     private static final long serialVersionUID = 4840006901780745581L;
     @XmlElement(required = true)
-    protected Address adress;
+    protected Address address;
     @XmlElement(required = true)
     protected String buyerEmail;
     protected String buyerMarketingEmail;
@@ -79,8 +79,8 @@ public class Customer extends Access implements Serializable {
      * @return possible object is {@link Address }
      * 
      */
-    public Address getAdress() {
-        return adress;
+    public Address getAddress() {
+        return address;
     }
 
     /**
@@ -90,8 +90,8 @@ public class Customer extends Access implements Serializable {
      *            allowed object is {@link Address }
      * 
      */
-    public void setAdress(Address value) {
-        this.adress = value;
+    public void setAddress(Address value) {
+        this.address = value;
     }
 
     /**
