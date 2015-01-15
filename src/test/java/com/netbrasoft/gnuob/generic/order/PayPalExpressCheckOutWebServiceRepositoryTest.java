@@ -37,18 +37,18 @@ import com.netbrasoft.gnuob.generic.utils.Utils;
 
 @RunWith(Arquillian.class)
 public class PayPalExpressCheckOutWebServiceRepositoryTest {
-   
+
    @Deployment(testable = false)
    public static Archive<?> createDeployment() {
       return Utils.createDeployment();
    }
-   
+
    @Drone
    private WebDriver driver;
-   
-   private ProductWebServiceRepository productWebServiceRepository = new ProductWebServiceRepository();
-   private OrderWebServiceRepository orderWebServiceRepository = new OrderWebServiceRepository();
-   private PayPalExpressCheckOutWebServiceRepository payPalExpressCheckOutWebServiceRepository = new PayPalExpressCheckOutWebServiceRepository();
+
+   private ProductWebServiceRepository<Product> productWebServiceRepository = new ProductWebServiceRepository<Product>();
+   private OrderWebServiceRepository<Order> orderWebServiceRepository = new OrderWebServiceRepository<Order>();
+   private PayPalExpressCheckOutWebServiceRepository<Order> payPalExpressCheckOutWebServiceRepository = new PayPalExpressCheckOutWebServiceRepository<Order>();
    private MetaData metaData = null;
    private Customer customer = null;
    private Contract contract = null;
@@ -57,11 +57,11 @@ public class PayPalExpressCheckOutWebServiceRepositoryTest {
    private Order order = null;
    private Invoice invoice = null;
    private Shipment shipment = null;
-   
+
    @Before
    public void testBefore() {
       Random randomGenerator = new Random();
-      
+
       metaData = new MetaData();
       customer = new Customer();
       address = new Address();
@@ -70,26 +70,26 @@ public class PayPalExpressCheckOutWebServiceRepositoryTest {
       order = new Order();
       invoice = new Invoice();
       shipment = new Shipment();
-      
+
       metaData.setUser("administrator");
       metaData.setPassword("administrator");
       metaData.setSite("www.netbrasoft.com");
-      
+
       address.setCityName(UUID.randomUUID().toString());
       address.setStreet1(UUID.randomUUID().toString());
       address.setNumber("815");
       address.setCountry("BR");
       address.setStateOrProvince("Espirito Santo");
       address.setPostalCode("29072-230");
-      
+
       customer.setFirstName("Bernard Arjan");
       customer.setLastName("Draaisma");
       customer.setBuyerEmail("MRzEPsqD@netbrasoft.com");
       customer.setAdress(address);
       customer.setDateOfBirth("2014-12-31");
-      
+
       contract.setCustomer(customer);
-      
+
       product.setName(UUID.randomUUID().toString());
       product.setDescription(UUID.randomUUID().toString());
       product.setNumber(UUID.randomUUID().toString());
@@ -102,25 +102,25 @@ public class PayPalExpressCheckOutWebServiceRepositoryTest {
       product.setShippingCost(BigDecimal.valueOf(7.95));
       product.setItemWeight(BigDecimal.ONE);
       product.setItemWeightUnit("Kg");
-      
+
       Stock stock = new Stock();
       stock.setMaxQuantity(BigInteger.valueOf(100));
       stock.setMinQuantity(BigInteger.ZERO);
       stock.setQuantity(BigInteger.valueOf(30));
-      
+
       product.setStock(stock);
-      
+
       SubCategory subCategory = new SubCategory();
       subCategory.setName(UUID.randomUUID().toString());
       subCategory.setDescription(UUID.randomUUID().toString());
-      
+
       product.getSubCategories().add(subCategory);
-      
+
       invoice.setAddress(address);
-      
+
       shipment.setShipmentType("NOT_SPECIFIED");
       shipment.setAddress(address);
-      
+
       order.setInsuranceTotal(BigDecimal.ZERO);
       order.setHandlingTotal(BigDecimal.ZERO);
       order.setExtraAmount(BigDecimal.ZERO);
@@ -129,35 +129,36 @@ public class PayPalExpressCheckOutWebServiceRepositoryTest {
       order.setInvoice(invoice);
       order.setShipment(shipment);
    }
-   
+
    @Test
    public void testPersistOrderAndDoCheckOut() throws GNUOpenBusinessServiceException_Exception, InterruptedException {
       String productName = product.getName();
       String productDescription = product.getDescription();
-      
+
       Product persistProduct = productWebServiceRepository.persist(metaData, product);
-      
+
       Assert.assertTrue("Product id has no value bigger than zero.", persistProduct.getId() > 0);
       Assert.assertEquals("Product name is not equal.", productName, persistProduct.getName());
       Assert.assertEquals("Product description is not equal.", productDescription, persistProduct.getDescription());
-      
+
       OrderRecord orderRecord = new OrderRecord();
       orderRecord.setQuantity(BigInteger.ONE);
       orderRecord.setProduct(persistProduct);
-      
+
       order.getRecords().add(orderRecord);
       Order persistOrder = orderWebServiceRepository.persist(metaData, order);
-      
+
       Assert.assertTrue("Order id has no value bigger than zero.", persistOrder.getId() > 0);
-      
+
       Order checkoutOrder = payPalExpressCheckOutWebServiceRepository.doCheckout(metaData, persistOrder);
       checkoutOrder = orderWebServiceRepository.find(metaData, checkoutOrder);
-      
+
       Assert.assertNotNull("Order token has no value.", checkoutOrder.getToken());
-      
+
       WebDriverWait webDriverWait = new WebDriverWait(driver, 60);
-      
-      driver.get("https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=" + checkoutOrder.getToken());
+
+      driver.get("https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token="
+            + checkoutOrder.getToken());
       webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("loadLogin")));
       driver.findElement(By.id("loadLogin")).click();
       webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("login_password")));
@@ -165,22 +166,23 @@ public class PayPalExpressCheckOutWebServiceRepositoryTest {
       driver.findElement(By.id("submitLogin")).click();
       webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("continue_abovefold")));
       driver.findElement(By.id("continue_abovefold")).click();
-      
+
       Thread.sleep(10000);
-      
+
       checkoutOrder.getContract().getCustomer().setPayerId(driver.getTitle().split("PayerID=")[1].split(" ")[0]);
       Assert.assertNotNull("Customer payer id has no value.", checkoutOrder.getContract().getCustomer().getPayerId());
-      
+
       driver.close();
-      
+
       Order checkoutDetailsOrder = payPalExpressCheckOutWebServiceRepository.doCheckoutDetails(metaData, checkoutOrder);
       checkoutDetailsOrder = orderWebServiceRepository.find(metaData, checkoutDetailsOrder);
-      
-      Order checkoutPaymentOrder = payPalExpressCheckOutWebServiceRepository.doCheckoutPayment(metaData, checkoutDetailsOrder);
+
+      Order checkoutPaymentOrder = payPalExpressCheckOutWebServiceRepository.doCheckoutPayment(metaData,
+            checkoutDetailsOrder);
       checkoutPaymentOrder = orderWebServiceRepository.find(metaData, checkoutPaymentOrder);
-      
+
       Assert.assertNotNull("Order transaction id has no value.", checkoutPaymentOrder.getTransactionId());
-      
+
    }
-   
+
 }

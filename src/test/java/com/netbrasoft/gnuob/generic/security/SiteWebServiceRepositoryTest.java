@@ -29,7 +29,7 @@ public class SiteWebServiceRepositoryTest {
       return Utils.createDeployment();
    }
 
-   private SiteWebServiceRepository siteWebServiceRepository = new SiteWebServiceRepository();
+   private SiteWebServiceRepository<Site> siteWebServiceRepository = new SiteWebServiceRepository<Site>();
    private MetaData metaData = null;
    private User user = null;
    private Group group = null;
@@ -112,7 +112,10 @@ public class SiteWebServiceRepositoryTest {
       try {
          siteWebServiceRepository.persist(metaData, site);
       } catch (Exception e) {
-         Assert.assertEquals("Exception message is not equal.", "com.netbrasoft.gnuob.exception.GNUOpenBusinessServiceException: Given site [NO_ACCESS_SITE] doesn't have the right access, verify that the given site has access", e.getMessage());
+         Assert.assertEquals(
+               "Exception message is not equal.",
+               "com.netbrasoft.gnuob.exception.GNUOpenBusinessServiceException: Given site [NO_ACCESS_SITE] doesn't have the right access, verify that the given site has access",
+               e.getMessage());
       }
    }
 
@@ -125,7 +128,9 @@ public class SiteWebServiceRepositoryTest {
       try {
          siteWebServiceRepository.persist(metaData, site);
       } catch (SOAPFaultException e) {
-         Assert.assertEquals("Exception message is not equal.", "com.netbrasoft.gnuob.exception.GNUOpenBusinessServiceException: Given user [guest] doesn't have the right access to create this entity object, verify that the given user has access",
+         Assert.assertEquals(
+               "Exception message is not equal.",
+               "com.netbrasoft.gnuob.exception.GNUOpenBusinessServiceException: Given user [guest] doesn't have the right access to create this entity object, verify that the given user has access",
                e.getMessage());
       }
    }
@@ -139,8 +144,10 @@ public class SiteWebServiceRepositoryTest {
       try {
          siteWebServiceRepository.persist(metaData, site);
       } catch (SOAPFaultException e) {
-         Assert.assertEquals("Exception message is not equal.",
-               "com.netbrasoft.gnuob.exception.GNUOpenBusinessServiceException: Given user [manager] doesn't have the right access for site [www.cheirodeflor.nl], verify that the given user have access to the site", e.getMessage());
+         Assert.assertEquals(
+               "Exception message is not equal.",
+               "com.netbrasoft.gnuob.exception.GNUOpenBusinessServiceException: Given user [manager] doesn't have the right access for site [www.cheirodeflor.nl], verify that the given user have access to the site",
+               e.getMessage());
       }
    }
 
@@ -151,7 +158,10 @@ public class SiteWebServiceRepositoryTest {
       try {
          siteWebServiceRepository.persist(metaData, site);
       } catch (Exception e) {
-         Assert.assertEquals("Exception message is not equal.", "com.netbrasoft.gnuob.exception.GNUOpenBusinessServiceException: Given user [NO_ACCESS_USER] doesn't have the right access, verify that the given user has access", e.getMessage());
+         Assert.assertEquals(
+               "Exception message is not equal.",
+               "com.netbrasoft.gnuob.exception.GNUOpenBusinessServiceException: Given user [NO_ACCESS_USER] doesn't have the right access, verify that the given user has access",
+               e.getMessage());
       }
    }
 
@@ -183,7 +193,8 @@ public class SiteWebServiceRepositoryTest {
    }
 
    @Test
-   public void testRemoveUserWithGroupAndSiteButOtherUserHasNoRightToDelete() throws GNUOpenBusinessServiceException_Exception {
+   public void testRemoveUserWithGroupAndSiteButOtherUserHasNoRightToDelete()
+         throws GNUOpenBusinessServiceException_Exception {
       metaData.setUser("manager");
       metaData.setPassword("manager");
 
@@ -195,7 +206,9 @@ public class SiteWebServiceRepositoryTest {
       try {
          siteWebServiceRepository.remove(metaData, persistSite);
       } catch (Exception e) {
-         Assert.assertEquals("Exception message is not equal.", "com.netbrasoft.gnuob.exception.GNUOpenBusinessServiceException: Given user [employee] doesn't have the right access to delete this entity object, verify that the given user has access",
+         Assert.assertEquals(
+               "Exception message is not equal.",
+               "com.netbrasoft.gnuob.exception.GNUOpenBusinessServiceException: Given user [employee] doesn't have the right access to delete this entity object, verify that the given user has access",
                e.getMessage());
       }
 

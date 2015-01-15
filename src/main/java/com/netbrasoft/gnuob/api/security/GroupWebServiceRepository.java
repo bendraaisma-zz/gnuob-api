@@ -2,6 +2,7 @@ package com.netbrasoft.gnuob.api.security;
 
 import java.util.List;
 
+import org.javasimon.aop.Monitored;
 import org.springframework.stereotype.Repository;
 
 import com.netbrasoft.gnuob.api.CountGroup;
@@ -10,7 +11,6 @@ import com.netbrasoft.gnuob.api.FindGroup;
 import com.netbrasoft.gnuob.api.FindGroupById;
 import com.netbrasoft.gnuob.api.FindGroupByIdResponse;
 import com.netbrasoft.gnuob.api.FindGroupResponse;
-import com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException_Exception;
 import com.netbrasoft.gnuob.api.Group;
 import com.netbrasoft.gnuob.api.GroupWebServiceImpl;
 import com.netbrasoft.gnuob.api.GroupWebServiceImplService;
@@ -24,72 +24,89 @@ import com.netbrasoft.gnuob.api.PersistGroupResponse;
 import com.netbrasoft.gnuob.api.RefreshGroup;
 import com.netbrasoft.gnuob.api.RefreshGroupResponse;
 import com.netbrasoft.gnuob.api.RemoveGroup;
+import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 
+@Monitored
 @Repository("GroupWebServiceRepository")
-public class GroupWebServiceRepository {
+public class GroupWebServiceRepository<G extends Group> implements GenericTypeWebServiceRepository<G> {
 
-    private GroupWebServiceImpl groupWebServiceImpl;
+   private GroupWebServiceImpl groupWebServiceImpl;
 
-    public GroupWebServiceRepository() {
-    }
+   public GroupWebServiceRepository() {
+   }
 
-    public long count(MetaData paramMetaData, Group paramGroup) throws GNUOpenBusinessServiceException_Exception {
-        CountGroup paramCountGroup = new CountGroup();
-        paramCountGroup.setGroup(paramGroup);
-        CountGroupResponse countGroupResponse = getGroupWebServiceImpl().countGroup(paramCountGroup, paramMetaData);
-        return countGroupResponse.getReturn();
-    }
+   @Override
+   public long count(MetaData paramMetaData, G paramGroup) {
+      CountGroup paramCountGroup = new CountGroup();
+      paramCountGroup.setGroup(paramGroup);
+      CountGroupResponse countGroupResponse = getGroupWebServiceImpl().countGroup(paramCountGroup, paramMetaData);
+      return countGroupResponse.getReturn();
+   }
 
-    public Group find(MetaData paramMetaData, Group paramGroup) throws GNUOpenBusinessServiceException_Exception {
-        FindGroupById paramFindGroupById = new FindGroupById();
-        paramFindGroupById.setGroup(paramGroup);
-        FindGroupByIdResponse findGroupByIdResponse = getGroupWebServiceImpl().findGroupById(paramFindGroupById, paramMetaData);
-        return findGroupByIdResponse.getReturn();
+   @SuppressWarnings("unchecked")
+   @Override
+   public G find(MetaData paramMetaData, G paramGroup) {
+      FindGroupById paramFindGroupById = new FindGroupById();
+      paramFindGroupById.setGroup(paramGroup);
+      FindGroupByIdResponse findGroupByIdResponse = getGroupWebServiceImpl().findGroupById(paramFindGroupById,
+            paramMetaData);
+      return (G) findGroupByIdResponse.getReturn();
 
-    }
+   }
 
-    public List<Group> find(MetaData paramMetaData, Group paramGroup, Paging paramPaging, OrderBy paramOrderBy) throws GNUOpenBusinessServiceException_Exception {
-        FindGroup paramFindGroup = new FindGroup();
-        paramFindGroup.setGroup(paramGroup);
-        paramFindGroup.setPaging(paramPaging);
-        paramFindGroup.setOrderBy(paramOrderBy);
-        FindGroupResponse findGroupResponse = getGroupWebServiceImpl().findGroup(paramFindGroup, paramMetaData);
-        return findGroupResponse.getReturn();
-    }
+   @SuppressWarnings("unchecked")
+   @Override
+   public List<G> find(MetaData paramMetaData, G paramGroup, Paging paramPaging, OrderBy paramOrderBy) {
+      FindGroup paramFindGroup = new FindGroup();
+      paramFindGroup.setGroup(paramGroup);
+      paramFindGroup.setPaging(paramPaging);
+      paramFindGroup.setOrderBy(paramOrderBy);
+      FindGroupResponse findGroupResponse = getGroupWebServiceImpl().findGroup(paramFindGroup, paramMetaData);
+      return (List<G>) findGroupResponse.getReturn();
+   }
 
-    private GroupWebServiceImpl getGroupWebServiceImpl() {
-        if (groupWebServiceImpl == null) {
-            GroupWebServiceImplService groupWebServiceImplService = new GroupWebServiceImplService(GroupWebServiceImplService.WSDL_LOCATION);
-            groupWebServiceImpl = groupWebServiceImplService.getGroupWebServiceImplPort();
-        }
+   private GroupWebServiceImpl getGroupWebServiceImpl() {
+      if (groupWebServiceImpl == null) {
+         GroupWebServiceImplService groupWebServiceImplService = new GroupWebServiceImplService(
+               GroupWebServiceImplService.WSDL_LOCATION);
+         groupWebServiceImpl = groupWebServiceImplService.getGroupWebServiceImplPort();
+      }
 
-        return groupWebServiceImpl;
-    }
+      return groupWebServiceImpl;
+   }
 
-    public Group merge(MetaData paramMetaData, Group paramGroup) throws GNUOpenBusinessServiceException_Exception {
-        MergeGroup paramMergeGroup = new MergeGroup();
-        paramMergeGroup.setGroup(paramGroup);
-        MergeGroupResponse mergeGroupResponse = getGroupWebServiceImpl().mergeGroup(paramMergeGroup, paramMetaData);
-        return mergeGroupResponse.getReturn();
-    }
+   @SuppressWarnings("unchecked")
+   @Override
+   public G merge(MetaData paramMetaData, G paramGroup) {
+      MergeGroup paramMergeGroup = new MergeGroup();
+      paramMergeGroup.setGroup(paramGroup);
+      MergeGroupResponse mergeGroupResponse = getGroupWebServiceImpl().mergeGroup(paramMergeGroup, paramMetaData);
+      return (G) mergeGroupResponse.getReturn();
+   }
 
-    public Group persist(MetaData paramMetaData, Group paramGroup) throws GNUOpenBusinessServiceException_Exception {
-        PersistGroup paramPersistGroup = new PersistGroup();
-        paramPersistGroup.setGroup(paramGroup);
-        PersistGroupResponse persistGroupResponse = getGroupWebServiceImpl().persistGroup(paramPersistGroup, paramMetaData);
-        return persistGroupResponse.getReturn();
-    }
+   @SuppressWarnings("unchecked")
+   @Override
+   public G persist(MetaData paramMetaData, G paramGroup) {
+      PersistGroup paramPersistGroup = new PersistGroup();
+      paramPersistGroup.setGroup(paramGroup);
+      PersistGroupResponse persistGroupResponse = getGroupWebServiceImpl().persistGroup(paramPersistGroup,
+            paramMetaData);
+      return (G) persistGroupResponse.getReturn();
+   }
 
-    public Group refresh(MetaData paramMetaData, Group paramGroup) throws GNUOpenBusinessServiceException_Exception {
-        RefreshGroup paramRefresGroup = new RefreshGroup();
-        paramRefresGroup.setGroup(paramGroup);
-        RefreshGroupResponse refresGroupResponse = getGroupWebServiceImpl().refreshGroup(paramRefresGroup, paramMetaData);
-        return refresGroupResponse.getReturn();
-    }
+   @SuppressWarnings("unchecked")
+   @Override
+   public G refresh(MetaData paramMetaData, G paramGroup) {
+      RefreshGroup paramRefresGroup = new RefreshGroup();
+      paramRefresGroup.setGroup(paramGroup);
+      RefreshGroupResponse refresGroupResponse = getGroupWebServiceImpl().refreshGroup(paramRefresGroup, paramMetaData);
+      return (G) refresGroupResponse.getReturn();
+   }
 
-    public void remove(MetaData paramMetaData, Group paramGroup) throws GNUOpenBusinessServiceException_Exception {
-        RemoveGroup paramRemoveGroup = new RemoveGroup();
-        paramRemoveGroup.setGroup(paramGroup);
-        getGroupWebServiceImpl().removeGroup(paramRemoveGroup, paramMetaData);
-    }
+   @Override
+   public void remove(MetaData paramMetaData, G paramGroup) {
+      RemoveGroup paramRemoveGroup = new RemoveGroup();
+      paramRemoveGroup.setGroup(paramGroup);
+      getGroupWebServiceImpl().removeGroup(paramRemoveGroup, paramMetaData);
+   }
 }

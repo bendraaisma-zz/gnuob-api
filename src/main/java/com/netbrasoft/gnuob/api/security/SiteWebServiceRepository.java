@@ -2,6 +2,7 @@ package com.netbrasoft.gnuob.api.security;
 
 import java.util.List;
 
+import org.javasimon.aop.Monitored;
 import org.springframework.stereotype.Repository;
 
 import com.netbrasoft.gnuob.api.CountSite;
@@ -10,7 +11,6 @@ import com.netbrasoft.gnuob.api.FindSite;
 import com.netbrasoft.gnuob.api.FindSiteById;
 import com.netbrasoft.gnuob.api.FindSiteByIdResponse;
 import com.netbrasoft.gnuob.api.FindSiteResponse;
-import com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException_Exception;
 import com.netbrasoft.gnuob.api.MergeSite;
 import com.netbrasoft.gnuob.api.MergeSiteResponse;
 import com.netbrasoft.gnuob.api.MetaData;
@@ -24,72 +24,88 @@ import com.netbrasoft.gnuob.api.RemoveSite;
 import com.netbrasoft.gnuob.api.Site;
 import com.netbrasoft.gnuob.api.SiteWebServiceImpl;
 import com.netbrasoft.gnuob.api.SiteWebServiceImplService;
+import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 
+@Monitored
 @Repository("SiteWebServiceRepository")
-public class SiteWebServiceRepository {
+public class SiteWebServiceRepository<S extends Site> implements GenericTypeWebServiceRepository<S> {
 
-    private SiteWebServiceImpl siteWebServiceImpl;
+   private SiteWebServiceImpl siteWebServiceImpl;
 
-    public SiteWebServiceRepository() {
-    }
+   public SiteWebServiceRepository() {
+   }
 
-    public long count(MetaData paramMetaData, Site paramSite) throws GNUOpenBusinessServiceException_Exception {
-        CountSite paramCountSite = new CountSite();
-        paramCountSite.setSite(paramSite);
-        CountSiteResponse countSiteResponse = getSiteWebServiceImpl().countSite(paramCountSite, paramMetaData);
-        return countSiteResponse.getReturn();
-    }
+   @Override
+   public long count(MetaData paramMetaData, S paramSite) {
+      CountSite paramCountSite = new CountSite();
+      paramCountSite.setSite(paramSite);
+      CountSiteResponse countSiteResponse = getSiteWebServiceImpl().countSite(paramCountSite, paramMetaData);
+      return countSiteResponse.getReturn();
+   }
 
-    public Site find(MetaData paramMetaData, Site paramSite) throws GNUOpenBusinessServiceException_Exception {
-        FindSiteById paramFindSiteById = new FindSiteById();
-        paramFindSiteById.setSite(paramSite);
-        FindSiteByIdResponse findSiteByIdResponse = getSiteWebServiceImpl().findSiteById(paramFindSiteById, paramMetaData);
-        return findSiteByIdResponse.getReturn();
+   @SuppressWarnings("unchecked")
+   @Override
+   public S find(MetaData paramMetaData, S paramSite) {
+      FindSiteById paramFindSiteById = new FindSiteById();
+      paramFindSiteById.setSite(paramSite);
+      FindSiteByIdResponse findSiteByIdResponse = getSiteWebServiceImpl()
+            .findSiteById(paramFindSiteById, paramMetaData);
+      return (S) findSiteByIdResponse.getReturn();
 
-    }
+   }
 
-    public List<Site> find(MetaData paramMetaData, Site paramSite, Paging paramPaging, OrderBy paramOrderBy) throws GNUOpenBusinessServiceException_Exception {
-        FindSite paramFindSite = new FindSite();
-        paramFindSite.setSite(paramSite);
-        paramFindSite.setPaging(paramPaging);
-        paramFindSite.setOrderBy(paramOrderBy);
-        FindSiteResponse findSiteResponse = getSiteWebServiceImpl().findSite(paramFindSite, paramMetaData);
-        return findSiteResponse.getReturn();
-    }
+   @SuppressWarnings("unchecked")
+   @Override
+   public List<S> find(MetaData paramMetaData, S paramSite, Paging paramPaging, OrderBy paramOrderBy) {
+      FindSite paramFindSite = new FindSite();
+      paramFindSite.setSite(paramSite);
+      paramFindSite.setPaging(paramPaging);
+      paramFindSite.setOrderBy(paramOrderBy);
+      FindSiteResponse findSiteResponse = getSiteWebServiceImpl().findSite(paramFindSite, paramMetaData);
+      return (List<S>) findSiteResponse.getReturn();
+   }
 
-    private SiteWebServiceImpl getSiteWebServiceImpl() {
-        if (siteWebServiceImpl == null) {
-            SiteWebServiceImplService siteWebServiceImplService = new SiteWebServiceImplService(SiteWebServiceImplService.WSDL_LOCATION);
-            siteWebServiceImpl = siteWebServiceImplService.getSiteWebServiceImplPort();
-        }
+   private SiteWebServiceImpl getSiteWebServiceImpl() {
+      if (siteWebServiceImpl == null) {
+         SiteWebServiceImplService siteWebServiceImplService = new SiteWebServiceImplService(
+               SiteWebServiceImplService.WSDL_LOCATION);
+         siteWebServiceImpl = siteWebServiceImplService.getSiteWebServiceImplPort();
+      }
 
-        return siteWebServiceImpl;
-    }
+      return siteWebServiceImpl;
+   }
 
-    public Site merge(MetaData paramMetaData, Site paramSite) throws GNUOpenBusinessServiceException_Exception {
-        MergeSite paramMergeSite = new MergeSite();
-        paramMergeSite.setSite(paramSite);
-        MergeSiteResponse mergeSiteResponse = getSiteWebServiceImpl().mergeSite(paramMergeSite, paramMetaData);
-        return mergeSiteResponse.getReturn();
-    }
+   @SuppressWarnings("unchecked")
+   @Override
+   public S merge(MetaData paramMetaData, S paramSite) {
+      MergeSite paramMergeSite = new MergeSite();
+      paramMergeSite.setSite(paramSite);
+      MergeSiteResponse mergeSiteResponse = getSiteWebServiceImpl().mergeSite(paramMergeSite, paramMetaData);
+      return (S) mergeSiteResponse.getReturn();
+   }
 
-    public Site persist(MetaData paramMetaData, Site paramSite) throws GNUOpenBusinessServiceException_Exception {
-        PersistSite paramPersistSite = new PersistSite();
-        paramPersistSite.setSite(paramSite);
-        PersistSiteResponse persistSiteResponse = getSiteWebServiceImpl().persistSite(paramPersistSite, paramMetaData);
-        return persistSiteResponse.getReturn();
-    }
+   @SuppressWarnings("unchecked")
+   @Override
+   public S persist(MetaData paramMetaData, S paramSite) {
+      PersistSite paramPersistSite = new PersistSite();
+      paramPersistSite.setSite(paramSite);
+      PersistSiteResponse persistSiteResponse = getSiteWebServiceImpl().persistSite(paramPersistSite, paramMetaData);
+      return (S) persistSiteResponse.getReturn();
+   }
 
-    public Site refresh(MetaData paramMetaData, Site paramSite) throws GNUOpenBusinessServiceException_Exception {
-        RefreshSite paramRefresSite = new RefreshSite();
-        paramRefresSite.setSite(paramSite);
-        RefreshSiteResponse refresSiteResponse = getSiteWebServiceImpl().refreshSite(paramRefresSite, paramMetaData);
-        return refresSiteResponse.getReturn();
-    }
+   @SuppressWarnings("unchecked")
+   @Override
+   public S refresh(MetaData paramMetaData, S paramSite) {
+      RefreshSite paramRefresSite = new RefreshSite();
+      paramRefresSite.setSite(paramSite);
+      RefreshSiteResponse refresSiteResponse = getSiteWebServiceImpl().refreshSite(paramRefresSite, paramMetaData);
+      return (S) refresSiteResponse.getReturn();
+   }
 
-    public void remove(MetaData paramMetaData, Site paramSite) throws GNUOpenBusinessServiceException_Exception {
-        RemoveSite paramRemoveSite = new RemoveSite();
-        paramRemoveSite.setSite(paramSite);
-        getSiteWebServiceImpl().removeSite(paramRemoveSite, paramMetaData);
-    }
+   @Override
+   public void remove(MetaData paramMetaData, S paramSite) {
+      RemoveSite paramRemoveSite = new RemoveSite();
+      paramRemoveSite.setSite(paramSite);
+      getSiteWebServiceImpl().removeSite(paramRemoveSite, paramMetaData);
+   }
 }

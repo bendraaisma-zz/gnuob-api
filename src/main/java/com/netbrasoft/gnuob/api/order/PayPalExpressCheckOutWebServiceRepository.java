@@ -1,5 +1,6 @@
 package com.netbrasoft.gnuob.api.order;
 
+import org.javasimon.aop.Monitored;
 import org.springframework.stereotype.Repository;
 
 import com.netbrasoft.gnuob.api.DoCheckout;
@@ -8,47 +9,58 @@ import com.netbrasoft.gnuob.api.DoCheckoutDetailsResponse;
 import com.netbrasoft.gnuob.api.DoCheckoutPayment;
 import com.netbrasoft.gnuob.api.DoCheckoutPaymentResponse;
 import com.netbrasoft.gnuob.api.DoCheckoutResponse;
-import com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException_Exception;
 import com.netbrasoft.gnuob.api.MetaData;
 import com.netbrasoft.gnuob.api.Order;
 import com.netbrasoft.gnuob.api.PayPalExpressCheckOutWebServiceImpl;
 import com.netbrasoft.gnuob.api.PayPalExpressCheckOutWebServiceImplService;
 
+@Monitored
 @Repository("PayPalExpressCheckOutWebServiceRepository")
-public class PayPalExpressCheckOutWebServiceRepository {
+public class PayPalExpressCheckOutWebServiceRepository<O extends Order> implements CheckoutWebServiceRepository<O> {
 
-    private PayPalExpressCheckOutWebServiceImpl payPalExpressCheckOutWebServiceImpl = null;
+   private PayPalExpressCheckOutWebServiceImpl payPalExpressCheckOutWebServiceImpl = null;
 
-    public PayPalExpressCheckOutWebServiceRepository() {
-    }
+   public PayPalExpressCheckOutWebServiceRepository() {
+   }
 
-    public Order doCheckout(MetaData paramMetaData, Order paramOrder) throws GNUOpenBusinessServiceException_Exception {
-        DoCheckout paramDoCheckout = new DoCheckout();
-        paramDoCheckout.setOrder(paramOrder);
-        DoCheckoutResponse doCheckoutResponse = getPayPalExpressCheckOutWebServiceImpl().doCheckout(paramDoCheckout, paramMetaData);
-        return doCheckoutResponse.getReturn();
-    }
+   @SuppressWarnings("unchecked")
+   @Override
+   public O doCheckout(MetaData paramMetaData, O paramOrder) {
+      DoCheckout paramDoCheckout = new DoCheckout();
+      paramDoCheckout.setOrder(paramOrder);
+      DoCheckoutResponse doCheckoutResponse = getPayPalExpressCheckOutWebServiceImpl().doCheckout(paramDoCheckout,
+            paramMetaData);
+      return (O) doCheckoutResponse.getReturn();
+   }
 
-    public Order doCheckoutDetails(MetaData paramMetaData, Order paramOrder) throws GNUOpenBusinessServiceException_Exception {
-        DoCheckoutDetails paramDoCheckoutDetails = new DoCheckoutDetails();
-        paramDoCheckoutDetails.setOrder(paramOrder);
-        DoCheckoutDetailsResponse doCheckoutDetailsResponse = getPayPalExpressCheckOutWebServiceImpl().doCheckoutDetails(paramDoCheckoutDetails, paramMetaData);
-        return doCheckoutDetailsResponse.getReturn();
-    }
+   @SuppressWarnings("unchecked")
+   @Override
+   public O doCheckoutDetails(MetaData paramMetaData, O paramOrder) {
+      DoCheckoutDetails paramDoCheckoutDetails = new DoCheckoutDetails();
+      paramDoCheckoutDetails.setOrder(paramOrder);
+      DoCheckoutDetailsResponse doCheckoutDetailsResponse = getPayPalExpressCheckOutWebServiceImpl().doCheckoutDetails(
+            paramDoCheckoutDetails, paramMetaData);
+      return (O) doCheckoutDetailsResponse.getReturn();
+   }
 
-    public Order doCheckoutPayment(MetaData paramMetaData, Order paramOrder) throws GNUOpenBusinessServiceException_Exception {
-        DoCheckoutPayment paramDoCheckoutPayment = new DoCheckoutPayment();
-        paramDoCheckoutPayment.setOrder(paramOrder);
-        DoCheckoutPaymentResponse doCheckoutPaymentResponse = getPayPalExpressCheckOutWebServiceImpl().doCheckoutPayment(paramDoCheckoutPayment, paramMetaData);
-        return doCheckoutPaymentResponse.getReturn();
-    }
+   @SuppressWarnings("unchecked")
+   @Override
+   public O doCheckoutPayment(MetaData paramMetaData, O paramOrder) {
+      DoCheckoutPayment paramDoCheckoutPayment = new DoCheckoutPayment();
+      paramDoCheckoutPayment.setOrder(paramOrder);
+      DoCheckoutPaymentResponse doCheckoutPaymentResponse = getPayPalExpressCheckOutWebServiceImpl().doCheckoutPayment(
+            paramDoCheckoutPayment, paramMetaData);
+      return (O) doCheckoutPaymentResponse.getReturn();
+   }
 
-    private PayPalExpressCheckOutWebServiceImpl getPayPalExpressCheckOutWebServiceImpl() {
-        if (payPalExpressCheckOutWebServiceImpl == null) {
-            PayPalExpressCheckOutWebServiceImplService payPalExpressCheckOutWebServiceImplService = new PayPalExpressCheckOutWebServiceImplService(PayPalExpressCheckOutWebServiceImplService.WSDL_LOCATION);
-            payPalExpressCheckOutWebServiceImpl = payPalExpressCheckOutWebServiceImplService.getPayPalExpressCheckOutWebServiceImplPort();
-        }
+   private PayPalExpressCheckOutWebServiceImpl getPayPalExpressCheckOutWebServiceImpl() {
+      if (payPalExpressCheckOutWebServiceImpl == null) {
+         PayPalExpressCheckOutWebServiceImplService payPalExpressCheckOutWebServiceImplService = new PayPalExpressCheckOutWebServiceImplService(
+               PayPalExpressCheckOutWebServiceImplService.WSDL_LOCATION);
+         payPalExpressCheckOutWebServiceImpl = payPalExpressCheckOutWebServiceImplService
+               .getPayPalExpressCheckOutWebServiceImplPort();
+      }
 
-        return payPalExpressCheckOutWebServiceImpl;
-    }
+      return payPalExpressCheckOutWebServiceImpl;
+   }
 }

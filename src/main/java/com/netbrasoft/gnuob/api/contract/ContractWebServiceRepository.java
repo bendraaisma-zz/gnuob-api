@@ -2,6 +2,7 @@ package com.netbrasoft.gnuob.api.contract;
 
 import java.util.List;
 
+import org.javasimon.aop.Monitored;
 import org.springframework.stereotype.Repository;
 
 import com.netbrasoft.gnuob.api.Contract;
@@ -13,7 +14,6 @@ import com.netbrasoft.gnuob.api.FindContract;
 import com.netbrasoft.gnuob.api.FindContractById;
 import com.netbrasoft.gnuob.api.FindContractByIdResponse;
 import com.netbrasoft.gnuob.api.FindContractResponse;
-import com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException_Exception;
 import com.netbrasoft.gnuob.api.MergeContract;
 import com.netbrasoft.gnuob.api.MergeContractResponse;
 import com.netbrasoft.gnuob.api.MetaData;
@@ -24,72 +24,93 @@ import com.netbrasoft.gnuob.api.PersistContractResponse;
 import com.netbrasoft.gnuob.api.RefreshContract;
 import com.netbrasoft.gnuob.api.RefreshContractResponse;
 import com.netbrasoft.gnuob.api.RemoveContract;
+import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 
+@Monitored
 @Repository("ContractWebServiceRepository")
-public class ContractWebServiceRepository {
+public class ContractWebServiceRepository<C extends Contract> implements GenericTypeWebServiceRepository<C> {
 
-    private ContractWebServiceImpl contractWebServiceImpl;
+   private ContractWebServiceImpl contractWebServiceImpl;
 
-    public ContractWebServiceRepository() {
-    }
+   public ContractWebServiceRepository() {
+   }
 
-    public long count(MetaData paramMetaData, Contract paramContract) throws GNUOpenBusinessServiceException_Exception {
-        CountContract paramCountContract = new CountContract();
-        paramCountContract.setContract(paramContract);
-        CountContractResponse countContractResponse = getContractWebServiceImpl().countContract(paramCountContract, paramMetaData);
-        return countContractResponse.getReturn();
-    }
+   @Override
+   public long count(MetaData paramMetaData, C paramContract) {
+      CountContract paramCountContract = new CountContract();
+      paramCountContract.setContract(paramContract);
+      CountContractResponse countContractResponse = getContractWebServiceImpl().countContract(paramCountContract,
+            paramMetaData);
+      return countContractResponse.getReturn();
+   }
 
-    public Contract find(MetaData paramMetaData, Contract paramContract) throws GNUOpenBusinessServiceException_Exception {
-        FindContractById paramFindContractById = new FindContractById();
-        paramFindContractById.setContract(paramContract);
-        FindContractByIdResponse findContractByIdResponse = getContractWebServiceImpl().findContractById(paramFindContractById, paramMetaData);
-        return findContractByIdResponse.getReturn();
+   @SuppressWarnings("unchecked")
+   @Override
+   public C find(MetaData paramMetaData, C paramContract) {
+      FindContractById paramFindContractById = new FindContractById();
+      paramFindContractById.setContract(paramContract);
+      FindContractByIdResponse findContractByIdResponse = getContractWebServiceImpl().findContractById(
+            paramFindContractById, paramMetaData);
+      return (C) findContractByIdResponse.getReturn();
 
-    }
+   }
 
-    public List<Contract> find(MetaData paramMetaData, Contract paramContract, Paging paramPaging, OrderBy paramOrderBy) throws GNUOpenBusinessServiceException_Exception {
-        FindContract paramFindContract = new FindContract();
-        paramFindContract.setContract(paramContract);
-        paramFindContract.setPaging(paramPaging);
-        paramFindContract.setOrderBy(paramOrderBy);
-        FindContractResponse findContractResponse = getContractWebServiceImpl().findContract(paramFindContract, paramMetaData);
-        return findContractResponse.getReturn();
-    }
+   @SuppressWarnings("unchecked")
+   @Override
+   public List<C> find(MetaData paramMetaData, C paramContract, Paging paramPaging, OrderBy paramOrderBy) {
+      FindContract paramFindContract = new FindContract();
+      paramFindContract.setContract(paramContract);
+      paramFindContract.setPaging(paramPaging);
+      paramFindContract.setOrderBy(paramOrderBy);
+      FindContractResponse findContractResponse = getContractWebServiceImpl().findContract(paramFindContract,
+            paramMetaData);
+      return (List<C>) findContractResponse.getReturn();
+   }
 
-    private ContractWebServiceImpl getContractWebServiceImpl() {
-        if (contractWebServiceImpl == null) {
-            ContractWebServiceImplService contractWebServiceImplService = new ContractWebServiceImplService(ContractWebServiceImplService.WSDL_LOCATION);
-            contractWebServiceImpl = contractWebServiceImplService.getContractWebServiceImplPort();
-        }
+   private ContractWebServiceImpl getContractWebServiceImpl() {
+      if (contractWebServiceImpl == null) {
+         ContractWebServiceImplService contractWebServiceImplService = new ContractWebServiceImplService(
+               ContractWebServiceImplService.WSDL_LOCATION);
+         contractWebServiceImpl = contractWebServiceImplService.getContractWebServiceImplPort();
+      }
 
-        return contractWebServiceImpl;
-    }
+      return contractWebServiceImpl;
+   }
 
-    public Contract merge(MetaData paramMetaData, Contract paramContract) throws GNUOpenBusinessServiceException_Exception {
-        MergeContract paramMergeContract = new MergeContract();
-        paramMergeContract.setContract(paramContract);
-        MergeContractResponse mergeContractResponse = getContractWebServiceImpl().mergeContract(paramMergeContract, paramMetaData);
-        return mergeContractResponse.getReturn();
-    }
+   @SuppressWarnings("unchecked")
+   @Override
+   public C merge(MetaData paramMetaData, C paramContract) {
+      MergeContract paramMergeContract = new MergeContract();
+      paramMergeContract.setContract(paramContract);
+      MergeContractResponse mergeContractResponse = getContractWebServiceImpl().mergeContract(paramMergeContract,
+            paramMetaData);
+      return (C) mergeContractResponse.getReturn();
+   }
 
-    public Contract persist(MetaData paramMetaData, Contract paramContract) throws GNUOpenBusinessServiceException_Exception {
-        PersistContract paramPersistContract = new PersistContract();
-        paramPersistContract.setContract(paramContract);
-        PersistContractResponse persistContractResponse = getContractWebServiceImpl().persistContract(paramPersistContract, paramMetaData);
-        return persistContractResponse.getReturn();
-    }
+   @SuppressWarnings("unchecked")
+   @Override
+   public C persist(MetaData paramMetaData, C paramContract) {
+      PersistContract paramPersistContract = new PersistContract();
+      paramPersistContract.setContract(paramContract);
+      PersistContractResponse persistContractResponse = getContractWebServiceImpl().persistContract(
+            paramPersistContract, paramMetaData);
+      return (C) persistContractResponse.getReturn();
+   }
 
-    public Contract refresh(MetaData paramMetaData, Contract paramContract) throws GNUOpenBusinessServiceException_Exception {
-        RefreshContract paramRefresContract = new RefreshContract();
-        paramRefresContract.setContract(paramContract);
-        RefreshContractResponse refresContractResponse = getContractWebServiceImpl().refreshContract(paramRefresContract, paramMetaData);
-        return refresContractResponse.getReturn();
-    }
+   @SuppressWarnings("unchecked")
+   @Override
+   public C refresh(MetaData paramMetaData, C paramContract) {
+      RefreshContract paramRefresContract = new RefreshContract();
+      paramRefresContract.setContract(paramContract);
+      RefreshContractResponse refresContractResponse = getContractWebServiceImpl().refreshContract(paramRefresContract,
+            paramMetaData);
+      return (C) refresContractResponse.getReturn();
+   }
 
-    public void remove(MetaData paramMetaData, Contract paramContract) throws GNUOpenBusinessServiceException_Exception {
-        RemoveContract paramRemoveContract = new RemoveContract();
-        paramRemoveContract.setContract(paramContract);
-        getContractWebServiceImpl().removeContract(paramRemoveContract, paramMetaData);
-    }
+   @Override
+   public void remove(MetaData paramMetaData, C paramContract) {
+      RemoveContract paramRemoveContract = new RemoveContract();
+      paramRemoveContract.setContract(paramContract);
+      getContractWebServiceImpl().removeContract(paramRemoveContract, paramMetaData);
+   }
 }

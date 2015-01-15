@@ -2,6 +2,7 @@ package com.netbrasoft.gnuob.api.product;
 
 import java.util.List;
 
+import org.javasimon.aop.Monitored;
 import org.springframework.stereotype.Repository;
 
 import com.netbrasoft.gnuob.api.CountProduct;
@@ -10,7 +11,6 @@ import com.netbrasoft.gnuob.api.FindProduct;
 import com.netbrasoft.gnuob.api.FindProductById;
 import com.netbrasoft.gnuob.api.FindProductByIdResponse;
 import com.netbrasoft.gnuob.api.FindProductResponse;
-import com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException_Exception;
 import com.netbrasoft.gnuob.api.MergeProduct;
 import com.netbrasoft.gnuob.api.MergeProductResponse;
 import com.netbrasoft.gnuob.api.MetaData;
@@ -24,73 +24,93 @@ import com.netbrasoft.gnuob.api.ProductWebServiceImplService;
 import com.netbrasoft.gnuob.api.RefreshProduct;
 import com.netbrasoft.gnuob.api.RefreshProductResponse;
 import com.netbrasoft.gnuob.api.RemoveProduct;
+import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 
+@Monitored
 @Repository("ProductWebServiceRepository")
-public class ProductWebServiceRepository {
+public class ProductWebServiceRepository<P extends Product> implements GenericTypeWebServiceRepository<P> {
 
-    private ProductWebServiceImpl productWebServiceImpl;
+   private ProductWebServiceImpl productWebServiceImpl;
 
-    public ProductWebServiceRepository() {
-    }
+   public ProductWebServiceRepository() {
+   }
 
-    public long count(MetaData paramMetaData, Product paramProduct) throws GNUOpenBusinessServiceException_Exception {
-        CountProduct paramCountProduct = new CountProduct();
-        paramCountProduct.setProduct(paramProduct);
-        CountProductResponse countProductResponse = getProductWebServiceImpl().countProduct(paramCountProduct, paramMetaData);
-        return countProductResponse.getReturn();
-    }
+   @Override
+   public long count(MetaData paramMetaData, P paramProduct) {
+      CountProduct paramCountProduct = new CountProduct();
+      paramCountProduct.setProduct(paramProduct);
+      CountProductResponse countProductResponse = getProductWebServiceImpl().countProduct(paramCountProduct,
+            paramMetaData);
+      return countProductResponse.getReturn();
+   }
 
-    public Product find(MetaData paramMetaData, Product paramProduct) throws GNUOpenBusinessServiceException_Exception {
-        FindProductById paramFindProductById = new FindProductById();
-        paramFindProductById.setProduct(paramProduct);
-        FindProductByIdResponse findProductByIdResponse = getProductWebServiceImpl().findProductById(paramFindProductById, paramMetaData);
-        return findProductByIdResponse.getReturn();
+   @SuppressWarnings("unchecked")
+   @Override
+   public P find(MetaData paramMetaData, P paramProduct) {
+      FindProductById paramFindProductById = new FindProductById();
+      paramFindProductById.setProduct(paramProduct);
+      FindProductByIdResponse findProductByIdResponse = getProductWebServiceImpl().findProductById(
+            paramFindProductById, paramMetaData);
+      return (P) findProductByIdResponse.getReturn();
 
-    }
+   }
 
-    public List<Product> find(MetaData paramMetaData, Product paramProduct, Paging paramPaging, OrderBy paramOrderBy) throws GNUOpenBusinessServiceException_Exception {
-        FindProduct paramFindProduct = new FindProduct();
-        paramFindProduct.setProduct(paramProduct);
-        paramFindProduct.setPaging(paramPaging);
-        paramFindProduct.setOrderBy(paramOrderBy);
-        FindProductResponse findProductResponse = getProductWebServiceImpl().findProduct(paramFindProduct, paramMetaData);
+   @SuppressWarnings("unchecked")
+   @Override
+   public List<P> find(MetaData paramMetaData, P paramProduct, Paging paramPaging, OrderBy paramOrderBy) {
+      FindProduct paramFindProduct = new FindProduct();
+      paramFindProduct.setProduct(paramProduct);
+      paramFindProduct.setPaging(paramPaging);
+      paramFindProduct.setOrderBy(paramOrderBy);
+      FindProductResponse findProductResponse = getProductWebServiceImpl().findProduct(paramFindProduct, paramMetaData);
 
-        return findProductResponse.getReturn();
-    }
+      return (List<P>) findProductResponse.getReturn();
+   }
 
-    private ProductWebServiceImpl getProductWebServiceImpl() {
-        if (productWebServiceImpl == null) {
-            ProductWebServiceImplService productWebServiceImplService = new ProductWebServiceImplService(ProductWebServiceImplService.WSDL_LOCATION);
-            productWebServiceImpl = productWebServiceImplService.getProductWebServiceImplPort();
-        }
+   private ProductWebServiceImpl getProductWebServiceImpl() {
+      if (productWebServiceImpl == null) {
+         ProductWebServiceImplService productWebServiceImplService = new ProductWebServiceImplService(
+               ProductWebServiceImplService.WSDL_LOCATION);
+         productWebServiceImpl = productWebServiceImplService.getProductWebServiceImplPort();
+      }
 
-        return productWebServiceImpl;
-    }
+      return productWebServiceImpl;
+   }
 
-    public Product merge(MetaData paramMetaData, Product paramProduct) throws GNUOpenBusinessServiceException_Exception {
-        MergeProduct paramMergeProduct = new MergeProduct();
-        paramMergeProduct.setProduct(paramProduct);
-        MergeProductResponse mergeProductResponse = getProductWebServiceImpl().mergeProduct(paramMergeProduct, paramMetaData);
-        return mergeProductResponse.getReturn();
-    }
+   @SuppressWarnings("unchecked")
+   @Override
+   public P merge(MetaData paramMetaData, P paramProduct) {
+      MergeProduct paramMergeProduct = new MergeProduct();
+      paramMergeProduct.setProduct(paramProduct);
+      MergeProductResponse mergeProductResponse = getProductWebServiceImpl().mergeProduct(paramMergeProduct,
+            paramMetaData);
+      return (P) mergeProductResponse.getReturn();
+   }
 
-    public Product persist(MetaData paramMetaData, Product paramProduct) throws GNUOpenBusinessServiceException_Exception {
-        PersistProduct paramPersistProduct = new PersistProduct();
-        paramPersistProduct.setProduct(paramProduct);
-        PersistProductResponse persistProductResponse = getProductWebServiceImpl().persistProduct(paramPersistProduct, paramMetaData);
-        return persistProductResponse.getReturn();
-    }
+   @SuppressWarnings("unchecked")
+   @Override
+   public P persist(MetaData paramMetaData, P paramProduct) {
+      PersistProduct paramPersistProduct = new PersistProduct();
+      paramPersistProduct.setProduct(paramProduct);
+      PersistProductResponse persistProductResponse = getProductWebServiceImpl().persistProduct(paramPersistProduct,
+            paramMetaData);
+      return (P) persistProductResponse.getReturn();
+   }
 
-    public Product refresh(MetaData paramMetaData, Product paramProduct) throws GNUOpenBusinessServiceException_Exception {
-        RefreshProduct paramRefresProduct = new RefreshProduct();
-        paramRefresProduct.setProduct(paramProduct);
-        RefreshProductResponse refresProductResponse = getProductWebServiceImpl().refreshProduct(paramRefresProduct, paramMetaData);
-        return refresProductResponse.getReturn();
-    }
+   @SuppressWarnings("unchecked")
+   @Override
+   public P refresh(MetaData paramMetaData, P paramProduct) {
+      RefreshProduct paramRefresProduct = new RefreshProduct();
+      paramRefresProduct.setProduct(paramProduct);
+      RefreshProductResponse refresProductResponse = getProductWebServiceImpl().refreshProduct(paramRefresProduct,
+            paramMetaData);
+      return (P) refresProductResponse.getReturn();
+   }
 
-    public void remove(MetaData paramMetaData, Product paramProduct) throws GNUOpenBusinessServiceException_Exception {
-        RemoveProduct paramRemoveProduct = new RemoveProduct();
-        paramRemoveProduct.setProduct(paramProduct);
-        getProductWebServiceImpl().removeProduct(paramRemoveProduct, paramMetaData);
-    }
+   @Override
+   public void remove(MetaData paramMetaData, P paramProduct) {
+      RemoveProduct paramRemoveProduct = new RemoveProduct();
+      paramRemoveProduct.setProduct(paramProduct);
+      getProductWebServiceImpl().removeProduct(paramRemoveProduct, paramMetaData);
+   }
 }
