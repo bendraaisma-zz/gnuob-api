@@ -82,14 +82,17 @@ public class PagseguroCheckOutWebServiceRepositoryTest {
       address.setStateOrProvince("ES");
       address.setPostalCode("29072-230");
 
+      customer.setActive(true);
       customer.setFirstName("Bernard Arjan");
       customer.setLastName("Draaisma");
       customer.setBuyerEmail("c77487489899036884556@sandbox.pagseguro.com.br");
       customer.setAddress(address);
       customer.setDateOfBirth("2014-12-31");
 
+      contract.setActive(true);
       contract.setCustomer(customer);
 
+      product.setActive(true);
       product.setName(UUID.randomUUID().toString());
       product.setDescription(UUID.randomUUID().toString());
       product.setNumber(UUID.randomUUID().toString());
@@ -120,6 +123,7 @@ public class PagseguroCheckOutWebServiceRepositoryTest {
       shipment.setShipmentType("NOT_SPECIFIED");
       shipment.setAddress(address);
 
+      order.setActive(true);
       order.setInsuranceTotal(BigDecimal.ZERO);
       order.setHandlingTotal(BigDecimal.ZERO);
       order.setExtraAmount(BigDecimal.ZERO);

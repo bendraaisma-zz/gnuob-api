@@ -35,7 +35,7 @@
 			<dependency>
 				<groupId>org.wildfly.bom</groupId>
 				<artifactId>jboss-javaee-7.0-with-all</artifactId>
-				<version>8.1.0.Final</version>
+				<version>8.2.0.Final</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -119,7 +119,17 @@
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>${version.jar.plugin}</version>
 				<configuration>
-					<useDefaultManifestFile>true</useDefaultManifestFile>
+					<archive>
+						<manifestEntries>
+							<mode>development</mode>
+							<url>${project.url}</url>
+							<dependencies>org.apache.cxf services,org.apache.cxf.impl</dependencies>
+						</manifestEntries>
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+						</manifest>
+					</archive>
 				</configuration>
 			</plugin>
 		</plugins>

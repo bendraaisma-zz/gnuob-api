@@ -19,6 +19,7 @@ public abstract class AbstractGenericTypeDataProvider<T extends Type> extends So
    private static final long serialVersionUID = -7323826275199384990L;
 
    private static final String LATEST_COLLECTION_PROPERTY = "latestCollection";
+
    private static final String POSITION_PROPERTY = "position";
    private static final String BESTSELLER_PROPERTY = "bestseller";
    private static final String DISCOUNT_PROPERTY = "discount";
@@ -27,8 +28,8 @@ public abstract class AbstractGenericTypeDataProvider<T extends Type> extends So
    private static final String AMOUNT_PROPERTY = "amount";
    private static final String NAME_PROPERTY = "name";
    private static final String NONE_PROPERTY = "none";
-
    private T type;
+
    private OrderBy orderBy;
    protected MetaData metaData;
 
@@ -90,7 +91,6 @@ public abstract class AbstractGenericTypeDataProvider<T extends Type> extends So
          orderBy = OrderBy.LATEST_COLLECTION;
          break;
       default:
-         orderBy = OrderBy.NONE;
          break;
       }
 
@@ -154,6 +154,11 @@ public abstract class AbstractGenericTypeDataProvider<T extends Type> extends So
       } catch (SOAPFaultException e) {
          throw new GNUOpenBusinessApplicationException(e.getMessage(), e);
       }
+   }
+
+   @Override
+   public void setOrderBy(OrderBy orderBy) {
+      this.orderBy = orderBy;
    }
 
    @Override
