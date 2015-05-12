@@ -42,7 +42,7 @@ public class GroupWebServiceRepositoryTest {
       site = new Site();
 
       metaData.setUser("administrator");
-      metaData.setPassword("administrator");
+      metaData.setPassword("134F9CB98B4E06A3:1000:EF0C9781F43513CA207AEDBB032333901C7CCB0D");
       metaData.setSite("www.netbrasoft.com");
 
       user.setName(UUID.randomUUID().toString());
@@ -132,8 +132,7 @@ public class GroupWebServiceRepositoryTest {
    }
 
    @Test
-   public void testRemoveUserWithGroupAndGroupButOtherUserHasNoRightToDelete()
-         throws GNUOpenBusinessServiceException_Exception {
+   public void testRemoveUserWithGroupAndGroupButOtherUserHasNoRightToDelete() throws GNUOpenBusinessServiceException_Exception {
       metaData.setUser("manager");
       metaData.setPassword("manager");
 
@@ -145,9 +144,7 @@ public class GroupWebServiceRepositoryTest {
       try {
          groupWebServiceRepository.remove(metaData, persistGroup);
       } catch (Exception e) {
-         Assert.assertEquals(
-               "Exception message is not equal.",
-               "com.netbrasoft.gnuob.exception.GNUOpenBusinessServiceException: Given user [employee] doesn't have the right access to delete this entity object, verify that the given user has access",
+         Assert.assertEquals("Exception message is not equal.", "com.netbrasoft.gnuob.exception.GNUOpenBusinessServiceException: Given user [employee] doesn't have the right access to delete this entity object, verify that the given user has access",
                e.getMessage());
       }
 
