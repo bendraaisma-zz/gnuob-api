@@ -43,7 +43,7 @@ public class ProductWebServiceRepositoryTest {
       metaData = new MetaData();
 
       metaData.setUser("administrator");
-      metaData.setPassword("134F9CB98B4E06A3:1000:EF0C9781F43513CA207AEDBB032333901C7CCB0D");
+      metaData.setPassword("administrator");
       metaData.setSite("www.netbrasoft.com");
 
       product = new Product();

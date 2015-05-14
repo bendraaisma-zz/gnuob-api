@@ -20,6 +20,8 @@ import com.netbrasoft.gnuob.api.User;
 import com.netbrasoft.gnuob.api.security.UserWebServiceRepository;
 import com.netbrasoft.gnuob.generic.utils.Utils;
 
+import de.rtner.security.auth.spi.SimplePBKDF2;
+
 @RunWith(Arquillian.class)
 public class UserWebServiceRepositoryTest {
 
@@ -42,7 +44,7 @@ public class UserWebServiceRepositoryTest {
       site = new Site();
 
       metaData.setUser("administrator");
-      metaData.setPassword("134F9CB98B4E06A3:1000:EF0C9781F43513CA207AEDBB032333901C7CCB0D");
+      metaData.setPassword("administrator");
       metaData.setSite("www.netbrasoft.com");
 
       user.setName(UUID.randomUUID().toString());
@@ -82,7 +84,7 @@ public class UserWebServiceRepositoryTest {
       Assert.assertTrue("User id has no value bigger than zero.", findUser.getId() > 0);
       Assert.assertEquals("User name is not equal.", userName, findUser.getName());
       Assert.assertEquals("User description is not equal.", userDescription, findUser.getDescription());
-      Assert.assertEquals("User password is not equal.", userPassword, findUser.getPassword());
+      Assert.assertTrue("User password is not correct.", new SimplePBKDF2().verifyKeyFormatted(findUser.getPassword(), userPassword));
       Assert.assertEquals("User access is not equal.", userAccess, findUser.getAccess());
 
       Assert.assertTrue("User is not assigned to a group.", !findUser.getGroups().isEmpty());
@@ -131,7 +133,7 @@ public class UserWebServiceRepositoryTest {
       Assert.assertTrue("User id has no value bigger than zero.", mergeUser.getId() > 0);
       Assert.assertEquals("User name is not equal.", userName, mergeUser.getName());
       Assert.assertEquals("User description is not equal.", userDescription, mergeUser.getDescription());
-      Assert.assertEquals("User password is not equal.", userPassword, mergeUser.getPassword());
+      Assert.assertTrue("User password is not correct.", new SimplePBKDF2().verifyKeyFormatted(mergeUser.getPassword(), userPassword));
 
       Assert.assertTrue("User is not assigned to a group.", !mergeUser.getGroups().isEmpty());
 
@@ -187,7 +189,7 @@ public class UserWebServiceRepositoryTest {
       Assert.assertTrue("User id has no value bigger than zero.", mergeUser.getId() > 0);
       Assert.assertEquals("User name is not equal.", userName, mergeUser.getName());
       Assert.assertEquals("User description is not equal.", userDescription, mergeUser.getDescription());
-      Assert.assertEquals("User password is not equal.", userPassword, mergeUser.getPassword());
+      Assert.assertTrue("User password is not correct.", new SimplePBKDF2().verifyKeyFormatted(mergeUser.getPassword(), userPassword));
 
       Assert.assertTrue("User is not assigned to a group.", !mergeUser.getGroups().isEmpty());
 
@@ -223,7 +225,7 @@ public class UserWebServiceRepositoryTest {
       Assert.assertTrue("User id has no value bigger than zero.", persistUser.getId() > 0);
       Assert.assertEquals("User name is not equal.", userName, persistUser.getName());
       Assert.assertEquals("User description is not equal.", userDescription, persistUser.getDescription());
-      Assert.assertEquals("User password is not equal.", userPassword, persistUser.getPassword());
+      Assert.assertTrue("User password is not correct.", new SimplePBKDF2().verifyKeyFormatted(persistUser.getPassword(), userPassword));
       Assert.assertEquals("User rule is not equal.", userRule, persistUser.getAccess());
 
       Assert.assertTrue("User is not assigned to a group.", !persistUser.getGroups().isEmpty());
@@ -272,7 +274,7 @@ public class UserWebServiceRepositoryTest {
       Assert.assertTrue("User id has no value bigger than zero.", refreshUser.getId() > 0);
       Assert.assertEquals("User name is not equal.", userName, refreshUser.getName());
       Assert.assertEquals("User description is not equal.", userDescription, refreshUser.getDescription());
-      Assert.assertEquals("User password is not equal.", userPassword, refreshUser.getPassword());
+      Assert.assertTrue("User password is not correct.", new SimplePBKDF2().verifyKeyFormatted(refreshUser.getPassword(), userPassword));
 
       Assert.assertTrue("User is not assigned to a group.", !refreshUser.getGroups().isEmpty());
 

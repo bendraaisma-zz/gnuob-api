@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.netbrasoft.gnuob</groupId>
@@ -22,9 +23,11 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<version.jar.plugin>2.5</version.jar.plugin>
 		<version.springframework.plugin>4.1.0.RELEASE</version.springframework.plugin>
-		<version.wicket.plugin>7.0.0-M5</version.wicket.plugin>
+		<version.wicket.plugin>7.0.0-SNAPSHOT</version.wicket.plugin>
 		<version.surefire.plugin>2.10</version.surefire.plugin>
 		<javasimon.version>4.0.1</javasimon.version>
+		<version.PBKDF2>1.1.0</version.PBKDF2>
+		<version.picketbox>4.0.21.Final</version.picketbox>
 
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -57,6 +60,9 @@
 	</dependencyManagement>
 
 	<dependencies>
+
+		<!-- JBOSS Etc. -->
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -86,11 +92,22 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.jboss.shrinkwrap.resolver</groupId>
+			<artifactId>shrinkwrap-resolver-impl-maven</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- SPRING -->
+
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>${version.springframework.plugin}</version>
 			<scope>compile</scope>
 		</dependency>
+
+		<!-- WICKET -->
+
 		<dependency>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-core</artifactId>
@@ -103,12 +120,29 @@
 			<version>${version.wicket.plugin}</version>
 			<scope>compile</scope>
 		</dependency>
-		<!-- Core JAR is absolutely necessary to use Simons (Stopwatch, etc.) -->
+
+		<!-- SIMON -->
+
 		<dependency>
 			<groupId>org.javasimon</groupId>
 			<artifactId>javasimon-core</artifactId>
 			<version>${javasimon.version}</version>
 			<scope>compile</scope>
+		</dependency>
+
+		<!-- UTILS -->
+
+		<dependency>
+			<groupId>org.picketbox</groupId>
+			<artifactId>picketbox</artifactId>
+			<version>${version.picketbox}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>de.rtner</groupId>
+			<artifactId>PBKDF2</artifactId>
+			<version>${version.PBKDF2}</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
@@ -137,8 +171,10 @@
 
 	<profiles>
 		<profile>
-			<!-- The default profile skips all tests, though you can tune it to run just unit tests based on a custom pattern -->
-			<!-- Seperate profiles are provided for running all tests, including Arquillian tests that execute in the specified container -->
+			<!-- The default profile skips all tests, though you can tune it to run 
+				just unit tests based on a custom pattern -->
+			<!-- Seperate profiles are provided for running all tests, including Arquillian 
+				tests that execute in the specified container -->
 			<id>default</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
@@ -156,8 +192,10 @@
 			</build>
 		</profile>
 		<profile>
-			<!-- An optional Arquillian testing profile that executes tests in your JBoss EAP instance -->
-			<!-- This profile will start a new JBoss EAP instance, and execute the test, shutting it down when done -->
+			<!-- An optional Arquillian testing profile that executes tests in your 
+				JBoss EAP instance -->
+			<!-- This profile will start a new JBoss EAP instance, and execute the 
+				test, shutting it down when done -->
 			<!-- Run with: mvn clean test -Parq-jbossas-managed -->
 			<id>arq-jbossas-managed</id>
 			<dependencies>
