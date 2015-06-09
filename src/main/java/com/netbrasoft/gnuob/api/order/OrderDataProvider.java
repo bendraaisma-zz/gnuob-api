@@ -11,7 +11,7 @@ import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 
 @Monitored
 @Controller("OrderDataProvider")
-public class OrderDataProvider<O extends Order> extends AbstractGenericTypeDataProvider<O>implements OrderCheckoutDataProvider<O> {
+public class OrderDataProvider<O extends Order> extends AbstractGenericTypeDataProvider<O>implements GenericOrderCheckoutDataProvider<O> {
 
    public enum CheckOut {
       PAY_PAL, PAGSEGURO;
@@ -69,10 +69,16 @@ public class OrderDataProvider<O extends Order> extends AbstractGenericTypeDataP
    }
 
    @Override
+   public CheckOut getCheckOut() {
+      return checkOut;
+   }
+
+   @Override
    public GenericTypeWebServiceRepository<O> getGenericTypeWebServiceRepository() {
       return orderWebServiceRepository;
    }
 
+   @Override
    public void setCheckOut(CheckOut checkOut) {
       this.checkOut = checkOut;
    }
