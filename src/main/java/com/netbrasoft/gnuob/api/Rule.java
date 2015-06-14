@@ -1,3 +1,4 @@
+
 package com.netbrasoft.gnuob.api;
 
 import javax.xml.bind.annotation.XmlEnum;
@@ -13,15 +14,15 @@ import javax.xml.bind.annotation.XmlType;
  * <p>
  * 
  * <pre>
- * &lt;simpleType name="rule">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="CREATE_ACCESS"/>
- *     &lt;enumeration value="READ_ACCESS"/>
- *     &lt;enumeration value="UPDATE_ACCESS"/>
- *     &lt;enumeration value="DELETE_ACCESS"/>
- *     &lt;enumeration value="NONE_ACCESS"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="rule"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="CREATE_ACCESS"/&gt;
+ *     &lt;enumeration value="READ_ACCESS"/&gt;
+ *     &lt;enumeration value="UPDATE_ACCESS"/&gt;
+ *     &lt;enumeration value="DELETE_ACCESS"/&gt;
+ *     &lt;enumeration value="NONE_ACCESS"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */
@@ -29,14 +30,14 @@ import javax.xml.bind.annotation.XmlType;
 @XmlEnum
 public enum Rule {
 
-    CREATE_ACCESS, READ_ACCESS, UPDATE_ACCESS, DELETE_ACCESS, NONE_ACCESS;
+   CREATE_ACCESS, READ_ACCESS, UPDATE_ACCESS, DELETE_ACCESS, NONE_ACCESS;
 
-    public String value() {
-        return name();
-    }
+   public String value() {
+      return name();
+   }
 
-    public static Rule fromValue(String v) {
-        return valueOf(v);
-    }
+   public static Rule fromValue(String v) {
+      return valueOf(v);
+   }
 
 }

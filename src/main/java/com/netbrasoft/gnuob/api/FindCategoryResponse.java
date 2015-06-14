@@ -1,3 +1,4 @@
+
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
@@ -17,15 +18,15 @@ import javax.xml.bind.annotation.XmlType;
  * this class.
  * 
  * <pre>
- * &lt;complexType name="findCategoryResponse">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="return" type="{http://gnuob.netbrasoft.com/}category" maxOccurs="unbounded" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="findCategoryResponse"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="return" type="{http://gnuob.netbrasoft.com/}category" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -34,37 +35,36 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "findCategoryResponse", propOrder = { "_return" })
 public class FindCategoryResponse implements Serializable {
 
-    private static final long serialVersionUID = 8998950372095066355L;
-    @XmlElement(name = "return")
-    protected List<Category> _return;
+   @XmlElement(name = "return")
+   protected List<Category> _return;
 
-    /**
-     * Gets the value of the return property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list, not a
-     * snapshot. Therefore any modification you make to the returned list will
-     * be present inside the JAXB object. This is why there is not a
-     * <CODE>set</CODE> method for the return property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * 
-     * <pre>
-     * getReturn().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list {@link Category }
-     * 
-     * 
-     */
-    public List<Category> getReturn() {
-        if (_return == null) {
-            _return = new ArrayList<Category>();
-        }
-        return this._return;
-    }
+   /**
+    * Gets the value of the return property.
+    * 
+    * <p>
+    * This accessor method returns a reference to the live list, not a snapshot.
+    * Therefore any modification you make to the returned list will be present
+    * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+    * for the return property.
+    * 
+    * <p>
+    * For example, to add a new item, do as follows:
+    * 
+    * <pre>
+    * getReturn().add(newItem);
+    * </pre>
+    * 
+    * 
+    * <p>
+    * Objects of the following type(s) are allowed in the list {@link Category }
+    * 
+    * 
+    */
+   public List<Category> getReturn() {
+      if (_return == null) {
+         _return = new ArrayList<Category>();
+      }
+      return this._return;
+   }
 
 }

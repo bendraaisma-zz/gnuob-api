@@ -1,3 +1,4 @@
+
 package com.netbrasoft.gnuob.api;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -14,15 +15,15 @@ import javax.xml.bind.annotation.XmlType;
  * this class.
  * 
  * <pre>
- * &lt;complexType name="countCustomerResponse">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="return" type="{http://www.w3.org/2001/XMLSchema}long"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="countCustomerResponse"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="return" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -31,23 +32,23 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "countCustomerResponse", propOrder = { "_return" })
 public class CountCustomerResponse {
 
-    @XmlElement(name = "return")
-    protected long _return;
+   @XmlElement(name = "return")
+   protected long _return;
 
-    /**
-     * Gets the value of the return property.
-     * 
-     */
-    public long getReturn() {
-        return _return;
-    }
+   /**
+    * Gets the value of the return property.
+    * 
+    */
+   public long getReturn() {
+      return _return;
+   }
 
-    /**
-     * Sets the value of the return property.
-     * 
-     */
-    public void setReturn(long value) {
-        this._return = value;
-    }
+   /**
+    * Sets the value of the return property.
+    * 
+    */
+   public void setReturn(long value) {
+      this._return = value;
+   }
 
 }

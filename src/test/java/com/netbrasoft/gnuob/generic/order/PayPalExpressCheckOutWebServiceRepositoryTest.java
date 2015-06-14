@@ -97,8 +97,8 @@ public class PayPalExpressCheckOutWebServiceRepositoryTest {
       product.setDescription(UUID.randomUUID().toString());
       product.setNumber(UUID.randomUUID().toString());
       product.setAmount(BigDecimal.valueOf(10.00));
-      product.setTax(BigDecimal.ZERO);
-      product.setDiscount(BigDecimal.ZERO);
+      product.setTax(BigDecimal.valueOf(2.75));
+      product.setDiscount(BigDecimal.ONE);
       product.setRecommended(randomGenerator.nextBoolean());
       product.setRating(randomGenerator.nextInt());
       product.setBestsellers(randomGenerator.nextBoolean());
@@ -125,10 +125,9 @@ public class PayPalExpressCheckOutWebServiceRepositoryTest {
       shipment.setAddress(address);
 
       order.setActive(true);
-      order.setInsuranceTotal(BigDecimal.ZERO);
-      order.setHandlingTotal(BigDecimal.ZERO);
-      order.setExtraAmount(BigDecimal.ZERO);
-      order.setShippingDiscount(BigDecimal.ZERO);
+      order.setInsuranceTotal(BigDecimal.valueOf(3.99));
+      order.setHandlingTotal(BigDecimal.valueOf(0.63));
+      order.setShippingDiscount(BigDecimal.ONE);
       order.setContract(contract);
       order.setInvoice(invoice);
       order.setShipment(shipment);
@@ -184,7 +183,7 @@ public class PayPalExpressCheckOutWebServiceRepositoryTest {
       checkoutPaymentOrder = orderWebServiceRepository.find(metaData, checkoutPaymentOrder);
 
       Assert.assertNotNull("Order transaction id has no value.", checkoutPaymentOrder.getTransactionId());
-
+      Assert.assertEquals(BigDecimal.valueOf(23.32), checkoutPaymentOrder.getOrderTotal());
    }
 
 }

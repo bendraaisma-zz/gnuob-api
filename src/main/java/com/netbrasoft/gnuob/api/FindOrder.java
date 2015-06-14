@@ -1,8 +1,10 @@
+
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -14,17 +16,17 @@ import javax.xml.bind.annotation.XmlType;
  * this class.
  * 
  * <pre>
- * &lt;complexType name="findOrder">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="order" type="{http://gnuob.netbrasoft.com/}order" minOccurs="0"/>
- *         &lt;element name="paging" type="{http://gnuob.netbrasoft.com/}paging" minOccurs="0"/>
- *         &lt;element name="orderBy" type="{http://gnuob.netbrasoft.com/}orderBy" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="findOrder"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="order" type="{http://gnuob.netbrasoft.com/}order" minOccurs="0"/&gt;
+ *         &lt;element name="paging" type="{http://gnuob.netbrasoft.com/}paging" minOccurs="0"/&gt;
+ *         &lt;element name="orderBy" type="{http://gnuob.netbrasoft.com/}orderBy" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -33,72 +35,72 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "findOrder", propOrder = { "order", "paging", "orderBy" })
 public class FindOrder implements Serializable {
 
-    private static final long serialVersionUID = -171702213835553452L;
-    protected Order order;
-    protected Paging paging;
-    protected OrderBy orderBy;
+   protected Order order;
+   protected Paging paging;
+   @XmlSchemaType(name = "string")
+   protected OrderBy orderBy;
 
-    /**
-     * Gets the value of the order property.
-     * 
-     * @return possible object is {@link Order }
-     * 
-     */
-    public Order getOrder() {
-        return order;
-    }
+   /**
+    * Gets the value of the order property.
+    * 
+    * @return possible object is {@link Order }
+    * 
+    */
+   public Order getOrder() {
+      return order;
+   }
 
-    /**
-     * Sets the value of the order property.
-     * 
-     * @param value
-     *            allowed object is {@link Order }
-     * 
-     */
-    public void setOrder(Order value) {
-        this.order = value;
-    }
+   /**
+    * Sets the value of the order property.
+    * 
+    * @param value
+    *           allowed object is {@link Order }
+    * 
+    */
+   public void setOrder(Order value) {
+      this.order = value;
+   }
 
-    /**
-     * Gets the value of the paging property.
-     * 
-     * @return possible object is {@link Paging }
-     * 
-     */
-    public Paging getPaging() {
-        return paging;
-    }
+   /**
+    * Gets the value of the paging property.
+    * 
+    * @return possible object is {@link Paging }
+    * 
+    */
+   public Paging getPaging() {
+      return paging;
+   }
 
-    /**
-     * Sets the value of the paging property.
-     * 
-     * @param value
-     *            allowed object is {@link Paging }
-     * 
-     */
-    public void setPaging(Paging value) {
-        this.paging = value;
-    }
+   /**
+    * Sets the value of the paging property.
+    * 
+    * @param value
+    *           allowed object is {@link Paging }
+    * 
+    */
+   public void setPaging(Paging value) {
+      this.paging = value;
+   }
 
-    /**
-     * Gets the value of the orderBy property.
-     * 
-     * @return possible object is {@link OrderBy }
-     * 
-     */
-    public OrderBy getOrderBy() {
-        return orderBy;
-    }
+   /**
+    * Gets the value of the orderBy property.
+    * 
+    * @return possible object is {@link OrderBy }
+    * 
+    */
+   public OrderBy getOrderBy() {
+      return orderBy;
+   }
 
-    /**
-     * Sets the value of the orderBy property.
-     * 
-     * @param value
-     *            allowed object is {@link OrderBy }
-     * 
-     */
-    public void setOrderBy(OrderBy value) {
-        this.orderBy = value;
-    }
+   /**
+    * Sets the value of the orderBy property.
+    * 
+    * @param value
+    *           allowed object is {@link OrderBy }
+    * 
+    */
+   public void setOrderBy(OrderBy value) {
+      this.orderBy = value;
+   }
 
 }

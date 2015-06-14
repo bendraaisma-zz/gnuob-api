@@ -1,3 +1,4 @@
+
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
@@ -14,14 +15,14 @@ import javax.xml.bind.annotation.XmlType;
  * this class.
  * 
  * <pre>
- * &lt;complexType name="removeGroupResponse">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="removeGroupResponse"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -29,7 +30,5 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "removeGroupResponse")
 public class RemoveGroupResponse implements Serializable {
-
-    private static final long serialVersionUID = 1480339914189775863L;
 
 }

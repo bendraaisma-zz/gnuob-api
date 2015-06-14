@@ -1,3 +1,4 @@
+
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
@@ -15,16 +16,16 @@ import javax.xml.bind.annotation.XmlType;
  * this class.
  * 
  * <pre>
- * &lt;complexType name="contract">
- *   &lt;complexContent>
- *     &lt;extension base="{http://gnuob.netbrasoft.com/}access">
- *       &lt;sequence>
- *         &lt;element name="contractId" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="customer" type="{http://gnuob.netbrasoft.com/}customer"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="contract"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://gnuob.netbrasoft.com/}access"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="contractId" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="customer" type="{http://gnuob.netbrasoft.com/}customer"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -33,52 +34,51 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "contract", propOrder = { "contractId", "customer" })
 public class Contract extends Access implements Serializable {
 
-    private static final long serialVersionUID = 1063097896490794439L;
-    @XmlElement(required = true)
-    protected String contractId;
-    @XmlElement(required = true)
-    protected Customer customer;
+   @XmlElement(required = true)
+   protected String contractId;
+   @XmlElement(required = true)
+   protected Customer customer;
 
-    /**
-     * Gets the value of the contractId property.
-     * 
-     * @return possible object is {@link String }
-     * 
-     */
-    public String getContractId() {
-        return contractId;
-    }
+   /**
+    * Gets the value of the contractId property.
+    * 
+    * @return possible object is {@link String }
+    * 
+    */
+   public String getContractId() {
+      return contractId;
+   }
 
-    /**
-     * Sets the value of the contractId property.
-     * 
-     * @param value
-     *            allowed object is {@link String }
-     * 
-     */
-    public void setContractId(String value) {
-        this.contractId = value;
-    }
+   /**
+    * Sets the value of the contractId property.
+    * 
+    * @param value
+    *           allowed object is {@link String }
+    * 
+    */
+   public void setContractId(String value) {
+      this.contractId = value;
+   }
 
-    /**
-     * Gets the value of the customer property.
-     * 
-     * @return possible object is {@link Customer }
-     * 
-     */
-    public Customer getCustomer() {
-        return customer;
-    }
+   /**
+    * Gets the value of the customer property.
+    * 
+    * @return possible object is {@link Customer }
+    * 
+    */
+   public Customer getCustomer() {
+      return customer;
+   }
 
-    /**
-     * Sets the value of the customer property.
-     * 
-     * @param value
-     *            allowed object is {@link Customer }
-     * 
-     */
-    public void setCustomer(Customer value) {
-        this.customer = value;
-    }
+   /**
+    * Sets the value of the customer property.
+    * 
+    * @param value
+    *           allowed object is {@link Customer }
+    * 
+    */
+   public void setCustomer(Customer value) {
+      this.customer = value;
+   }
 
 }

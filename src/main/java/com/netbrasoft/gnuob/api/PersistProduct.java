@@ -1,3 +1,4 @@
+
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
@@ -14,15 +15,15 @@ import javax.xml.bind.annotation.XmlType;
  * this class.
  * 
  * <pre>
- * &lt;complexType name="persistProduct">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="product" type="{http://gnuob.netbrasoft.com/}product" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="persistProduct"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="product" type="{http://gnuob.netbrasoft.com/}product" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -31,28 +32,27 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "persistProduct", propOrder = { "product" })
 public class PersistProduct implements Serializable {
 
-    private static final long serialVersionUID = -390434822928798841L;
-    protected Product product;
+   protected Product product;
 
-    /**
-     * Gets the value of the product property.
-     * 
-     * @return possible object is {@link Product }
-     * 
-     */
-    public Product getProduct() {
-        return product;
-    }
+   /**
+    * Gets the value of the product property.
+    * 
+    * @return possible object is {@link Product }
+    * 
+    */
+   public Product getProduct() {
+      return product;
+   }
 
-    /**
-     * Sets the value of the product property.
-     * 
-     * @param value
-     *            allowed object is {@link Product }
-     * 
-     */
-    public void setProduct(Product value) {
-        this.product = value;
-    }
+   /**
+    * Sets the value of the product property.
+    * 
+    * @param value
+    *           allowed object is {@link Product }
+    * 
+    */
+   public void setProduct(Product value) {
+      this.product = value;
+   }
 
 }

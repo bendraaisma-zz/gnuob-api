@@ -1,3 +1,4 @@
+
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
@@ -14,15 +15,15 @@ import javax.xml.bind.annotation.XmlType;
  * this class.
  * 
  * <pre>
- * &lt;complexType name="refreshOrder">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="order" type="{http://gnuob.netbrasoft.com/}order" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="refreshOrder"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="order" type="{http://gnuob.netbrasoft.com/}order" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -31,28 +32,27 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "refreshOrder", propOrder = { "order" })
 public class RefreshOrder implements Serializable {
 
-    private static final long serialVersionUID = -3918183465211424106L;
-    protected Order order;
+   protected Order order;
 
-    /**
-     * Gets the value of the order property.
-     * 
-     * @return possible object is {@link Order }
-     * 
-     */
-    public Order getOrder() {
-        return order;
-    }
+   /**
+    * Gets the value of the order property.
+    * 
+    * @return possible object is {@link Order }
+    * 
+    */
+   public Order getOrder() {
+      return order;
+   }
 
-    /**
-     * Sets the value of the order property.
-     * 
-     * @param value
-     *            allowed object is {@link Order }
-     * 
-     */
-    public void setOrder(Order value) {
-        this.order = value;
-    }
+   /**
+    * Sets the value of the order property.
+    * 
+    * @param value
+    *           allowed object is {@link Order }
+    * 
+    */
+   public void setOrder(Order value) {
+      this.order = value;
+   }
 
 }

@@ -1,3 +1,4 @@
+
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
@@ -15,15 +16,15 @@ import javax.xml.bind.annotation.XmlType;
  * this class.
  * 
  * <pre>
- * &lt;complexType name="mergeContentResponse">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="return" type="{http://gnuob.netbrasoft.com/}content" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="mergeContentResponse"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="return" type="{http://gnuob.netbrasoft.com/}content" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -32,29 +33,28 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "mergeContentResponse", propOrder = { "_return" })
 public class MergeContentResponse implements Serializable {
 
-    private static final long serialVersionUID = -3127018263889216772L;
-    @XmlElement(name = "return")
-    protected Content _return;
+   @XmlElement(name = "return")
+   protected Content _return;
 
-    /**
-     * Gets the value of the return property.
-     * 
-     * @return possible object is {@link Content }
-     * 
-     */
-    public Content getReturn() {
-        return _return;
-    }
+   /**
+    * Gets the value of the return property.
+    * 
+    * @return possible object is {@link Content }
+    * 
+    */
+   public Content getReturn() {
+      return _return;
+   }
 
-    /**
-     * Sets the value of the return property.
-     * 
-     * @param value
-     *            allowed object is {@link Content }
-     * 
-     */
-    public void setReturn(Content value) {
-        this._return = value;
-    }
+   /**
+    * Sets the value of the return property.
+    * 
+    * @param value
+    *           allowed object is {@link Content }
+    * 
+    */
+   public void setReturn(Content value) {
+      this._return = value;
+   }
 
 }
