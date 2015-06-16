@@ -7,13 +7,11 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
- * <p>
- * Java class for findSiteByIdResponse complex type.
+ * <p>Java class for findSiteByIdResponse complex type.
  * 
- * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="findSiteByIdResponse"&gt;
@@ -30,31 +28,38 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "findSiteByIdResponse", propOrder = { "_return" })
-public class FindSiteByIdResponse implements Serializable {
+@XmlType(name = "findSiteByIdResponse", propOrder = {
+    "_return"
+})
+public class FindSiteByIdResponse
+    implements Serializable
+{
 
-   @XmlElement(name = "return")
-   protected Site _return;
+    @XmlElement(name = "return")
+    protected Site _return;
 
-   /**
-    * Gets the value of the return property.
-    * 
-    * @return possible object is {@link Site }
-    * 
-    */
-   public Site getReturn() {
-      return _return;
-   }
+    /**
+     * Gets the value of the return property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Site }
+     *     
+     */
+    public Site getReturn() {
+        return _return;
+    }
 
-   /**
-    * Sets the value of the return property.
-    * 
-    * @param value
-    *           allowed object is {@link Site }
-    * 
-    */
-   public void setReturn(Site value) {
-      this._return = value;
-   }
+    /**
+     * Sets the value of the return property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Site }
+     *     
+     */
+    public void setReturn(Site value) {
+        this._return = value;
+    }
 
 }

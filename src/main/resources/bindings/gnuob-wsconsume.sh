@@ -4,7 +4,6 @@
 /home/bernard/Tools/wildfly-9.0.0.CR1/bin/wsconsume.sh -b gnuob-paypal-service-binding.xml -k -p com.netbrasoft.gnuob.api -s /home/bernard/Projects/gnuob/gnuob-api/src/main/java -n http://localhost:8080/gnuob-soap/PayPalExpressCheckOutWebServiceImpl?wsdl
 /home/bernard/Tools/wildfly-9.0.0.CR1/bin/wsconsume.sh -b gnuob-pagseguro-service-binding.xml -k -p com.netbrasoft.gnuob.api -s /home/bernard/Projects/gnuob/gnuob-api/src/main/java -n http://localhost:8080/gnuob-soap/PagseguroCheckOutWebServiceImpl?wsdl
 /home/bernard/Tools/wildfly-9.0.0.CR1/bin/wsconsume.sh -b gnuob-category-service-binding.xml -k -p com.netbrasoft.gnuob.api -s /home/bernard/Projects/gnuob/gnuob-api/src/main/java -n http://localhost:8080/gnuob-soap/CategoryWebServiceImpl?wsdl
-/home/bernard/Tools/wildfly-9.0.0.CR1/bin/wsconsume.sh -b gnuob-content-service-binding.xml -k -p com.netbrasoft.gnuob.api -s /home/bernard/Projects/gnuob/gnuob-api/src/main/java -n http://localhost:8080/gnuob-soap/ContentWebServiceImpl?wsdl
 /home/bernard/Tools/wildfly-9.0.0.CR1/bin/wsconsume.sh -b gnuob-contract-service-binding.xml -k -p com.netbrasoft.gnuob.api -s /home/bernard/Projects/gnuob/gnuob-api/src/main/java -n http://localhost:8080/gnuob-soap/ContractWebServiceImpl?wsdl
 /home/bernard/Tools/wildfly-9.0.0.CR1/bin/wsconsume.sh -b gnuob-customer-service-binding.xml -k -p com.netbrasoft.gnuob.api -s /home/bernard/Projects/gnuob/gnuob-api/src/main/java -n http://localhost:8080/gnuob-soap/CustomerWebServiceImpl?wsdl
 /home/bernard/Tools/wildfly-9.0.0.CR1/bin/wsconsume.sh -b gnuob-offer-service-binding.xml -k -p com.netbrasoft.gnuob.api -s /home/bernard/Projects/gnuob/gnuob-api/src/main/java -n http://localhost:8080/gnuob-soap/OfferWebServiceImpl?wsdl
@@ -12,4 +11,5 @@
 /home/bernard/Tools/wildfly-9.0.0.CR1/bin/wsconsume.sh -b gnuob-group-service-binding.xml -k -p com.netbrasoft.gnuob.api -s /home/bernard/Projects/gnuob/gnuob-api/src/main/java -n http://localhost:8080/gnuob-soap/GroupWebServiceImpl?wsdl
 /home/bernard/Tools/wildfly-9.0.0.CR1/bin/wsconsume.sh -b gnuob-site-service-binding.xml -k -p com.netbrasoft.gnuob.api -s /home/bernard/Projects/gnuob/gnuob-api/src/main/java -n http://localhost:8080/gnuob-soap/SiteWebServiceImpl?wsdl
 /home/bernard/Tools/wildfly-9.0.0.CR1/bin/wsconsume.sh -b gnuob-setting-service-binding.xml -k -p com.netbrasoft.gnuob.api -s /home/bernard/Projects/gnuob/gnuob-api/src/main/java -n http://localhost:8080/gnuob-soap/SettingWebServiceImpl?wsdl
+/home/bernard/Tools/wildfly-9.0.0.CR1/bin/wsconsume.sh -b gnuob-content-service-binding.xml -k -p com.netbrasoft.gnuob.api -s /home/bernard/Projects/gnuob/gnuob-api/src/main/java -n http://localhost:8080/gnuob-soap/ContentWebServiceImpl?wsdl
 rm -Rf output

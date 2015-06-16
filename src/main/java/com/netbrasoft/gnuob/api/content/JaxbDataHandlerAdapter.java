@@ -10,7 +10,7 @@ import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
-public class JaxbDataHandlerAdapter extends XmlAdapter<DataHandler, byte[]> {
+public class JaxbDataHandlerAdapter extends XmlAdapter<DataHandler, String> {
 
    class ByteArrayDataSource implements DataSource {
 
@@ -42,21 +42,21 @@ public class JaxbDataHandlerAdapter extends XmlAdapter<DataHandler, byte[]> {
    }
 
    @Override
-   public DataHandler marshal(byte[] bytes) throws Exception {
+   public DataHandler marshal(String bytes) throws Exception {
 
       if (bytes != null) {
-         return new DataHandler(new ByteArrayDataSource(bytes));
+         return new DataHandler(new ByteArrayDataSource(bytes.getBytes()));
       }
       return null;
    }
 
    @Override
-   public byte[] unmarshal(DataHandler dataHandler) throws Exception {
+   public String unmarshal(DataHandler dataHandler) throws Exception {
       if (dataHandler != null) {
          ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
          dataHandler.writeTo(byteArrayOutputStream);
-         return byteArrayOutputStream.toByteArray();
+         return new String(byteArrayOutputStream.toByteArray());
       }
-      return new byte[0];
+      return new String();
    }
 }

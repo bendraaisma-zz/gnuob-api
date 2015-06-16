@@ -21,10 +21,6 @@ public class GNUOpenBusinessServiceException_Exception extends Exception {
       super(message);
    }
 
-   public GNUOpenBusinessServiceException_Exception(String message, Throwable cause) {
-      super(message, cause);
-   }
-
    public GNUOpenBusinessServiceException_Exception(String message, com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException gnuOpenBusinessServiceException) {
       super(message);
       this.gnuOpenBusinessServiceException = gnuOpenBusinessServiceException;
@@ -33,6 +29,10 @@ public class GNUOpenBusinessServiceException_Exception extends Exception {
    public GNUOpenBusinessServiceException_Exception(String message, com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException gnuOpenBusinessServiceException, Throwable cause) {
       super(message, cause);
       this.gnuOpenBusinessServiceException = gnuOpenBusinessServiceException;
+   }
+
+   public GNUOpenBusinessServiceException_Exception(String message, Throwable cause) {
+      super(message, cause);
    }
 
    public com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException getFaultInfo() {
