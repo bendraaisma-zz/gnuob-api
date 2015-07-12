@@ -22,7 +22,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<version.jar.plugin>2.5</version.jar.plugin>
 		<version.springframework.plugin>4.1.0.RELEASE</version.springframework.plugin>
-		<version.wicket.plugin>7.0.0-SNAPSHOT</version.wicket.plugin>
+		<version.wicket.plugin>7.0.0-M6</version.wicket.plugin>
 		<version.surefire.plugin>2.10</version.surefire.plugin>
 		<version.javasimon>4.0.1</version.javasimon>
 		<version.PBKDF2>1.1.0</version.PBKDF2>
@@ -39,7 +39,7 @@
 			<dependency>
 				<groupId>org.wildfly.bom</groupId>
 				<artifactId>jboss-javaee-7.0-wildfly-with-tools</artifactId>
-				<version>9.0.0.CR2</version>
+				<version>9.0.0.Final</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
