@@ -43,6 +43,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="maxTotal" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/&gt;
  *         &lt;element name="note" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="noteText" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="notificationId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="orderDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="orderDescription" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="orderId" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
@@ -84,6 +85,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "maxTotal",
     "note",
     "noteText",
+    "notificationId",
     "orderDate",
     "orderDescription",
     "orderId",
@@ -126,6 +128,7 @@ public class Order
     protected BigDecimal maxTotal;
     protected String note;
     protected String noteText;
+    protected String notificationId;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar orderDate;
     protected String orderDescription;
@@ -620,6 +623,30 @@ public class Order
      */
     public void setNoteText(String value) {
         this.noteText = value;
+    }
+
+    /**
+     * Gets the value of the notificationId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getNotificationId() {
+        return notificationId;
+    }
+
+    /**
+     * Sets the value of the notificationId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setNotificationId(String value) {
+        this.notificationId = value;
     }
 
     /**

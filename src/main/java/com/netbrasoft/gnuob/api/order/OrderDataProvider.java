@@ -55,17 +55,41 @@ public class OrderDataProvider<O extends Order> extends AbstractGenericTypeDataP
    @Override
    public O doCheckoutDetails(O paramOrder) {
       if (checkOut == CheckOut.PAGSEGURO) {
-         return pagseguroCheckoutWebServiceRepository.doCheckout(metaData, paramOrder);
+         return pagseguroCheckoutWebServiceRepository.doCheckoutDetails(metaData, paramOrder);
       }
-      return payPalExpressCheckoutWebServiceRepository.doCheckout(metaData, paramOrder);
+      return payPalExpressCheckoutWebServiceRepository.doCheckoutDetails(metaData, paramOrder);
    }
 
    @Override
    public O doCheckoutPayment(O paramOrder) {
       if (checkOut == CheckOut.PAGSEGURO) {
-         return pagseguroCheckoutWebServiceRepository.doCheckout(metaData, paramOrder);
+         return pagseguroCheckoutWebServiceRepository.doCheckoutPayment(metaData, paramOrder);
       }
-      return payPalExpressCheckoutWebServiceRepository.doCheckout(metaData, paramOrder);
+      return payPalExpressCheckoutWebServiceRepository.doCheckoutPayment(metaData, paramOrder);
+   }
+
+   @Override
+   public O doNotification(O paramOrder) {
+      if (checkOut == CheckOut.PAGSEGURO) {
+         return pagseguroCheckoutWebServiceRepository.doNotification(metaData, paramOrder);
+      }
+      return payPalExpressCheckoutWebServiceRepository.doNotification(metaData, paramOrder);
+   }
+
+   @Override
+   public O doRefundTransaction(O paramOrder) {
+      if (checkOut == CheckOut.PAGSEGURO) {
+         return pagseguroCheckoutWebServiceRepository.doRefundTransaction(metaData, paramOrder);
+      }
+      return payPalExpressCheckoutWebServiceRepository.doRefundTransaction(metaData, paramOrder);
+   }
+
+   @Override
+   public O doTransactionDetails(O paramOrder) {
+      if (checkOut == CheckOut.PAGSEGURO) {
+         return pagseguroCheckoutWebServiceRepository.doTransactionDetails(metaData, paramOrder);
+      }
+      return payPalExpressCheckoutWebServiceRepository.doTransactionDetails(metaData, paramOrder);
    }
 
    @Override

@@ -12,6 +12,12 @@ public interface GenericOrderCheckoutDataProvider<O extends Order> extends Gener
 
    O doCheckoutPayment(O paramOrder);
 
+   O doNotification(O paramOrder);
+
+   O doRefundTransaction(O paramOrder);
+
+   O doTransactionDetails(O paramOrder);
+
    CheckOut getCheckOut();
 
    void setCheckOut(CheckOut checkOut);
