@@ -14,6 +14,7 @@ import com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException_Exception;
 import com.netbrasoft.gnuob.api.Group;
 import com.netbrasoft.gnuob.api.MetaData;
 import com.netbrasoft.gnuob.api.Permission;
+import com.netbrasoft.gnuob.api.Role;
 import com.netbrasoft.gnuob.api.Rule;
 import com.netbrasoft.gnuob.api.Site;
 import com.netbrasoft.gnuob.api.User;
@@ -30,7 +31,7 @@ public class UserWebServiceRepositoryTest {
       return Utils.createDeployment();
    }
 
-   private UserWebServiceRepository<User> userWebServiceRepository = new UserWebServiceRepository<User>();
+   private final UserWebServiceRepository<User> userWebServiceRepository = new UserWebServiceRepository<User>();
    private MetaData metaData = null;
    private User user = null;
    private Group group = null;
@@ -50,7 +51,7 @@ public class UserWebServiceRepositoryTest {
       user.setName(UUID.randomUUID().toString());
       user.setDescription(UUID.randomUUID().toString());
       user.setPassword(UUID.randomUUID().toString());
-      user.setRole(UUID.randomUUID().toString());
+      user.getRoles().add(Role.ADMINISTRATOR);
       user.setAccess(Rule.NONE_ACCESS);
 
       group.setName(UUID.randomUUID().toString());
@@ -65,19 +66,19 @@ public class UserWebServiceRepositoryTest {
 
    @Test
    public void testFindUserWithGroupAndSite() throws GNUOpenBusinessServiceException_Exception {
-      String userName = user.getName();
-      String userDescription = user.getDescription();
-      String userPassword = user.getPassword();
-      String groupName = group.getName();
-      String groupDescription = group.getDescription();
-      String siteName = site.getName();
-      String siteDescription = site.getDescription();
+      final String userName = user.getName();
+      final String userDescription = user.getDescription();
+      final String userPassword = user.getPassword();
+      final String groupName = group.getName();
+      final String groupDescription = group.getDescription();
+      final String siteName = site.getName();
+      final String siteDescription = site.getDescription();
 
-      Rule userAccess = user.getAccess();
+      final Rule userAccess = user.getAccess();
 
-      User persistUser = userWebServiceRepository.persist(metaData, user);
+      final User persistUser = userWebServiceRepository.persist(metaData, user);
 
-      User findUser = userWebServiceRepository.find(metaData, persistUser);
+      final User findUser = userWebServiceRepository.find(metaData, persistUser);
 
       Assert.assertNotNull("User is not found.", findUser);
 
@@ -89,7 +90,7 @@ public class UserWebServiceRepositoryTest {
 
       Assert.assertTrue("User is not assigned to a group.", !findUser.getGroups().isEmpty());
 
-      Group newGroup = findUser.getGroups().iterator().next();
+      final Group newGroup = findUser.getGroups().iterator().next();
 
       Assert.assertTrue("Group id has no value bigger than zero.", newGroup.getId() > 0);
       Assert.assertEquals("Group name is not equal.", groupName, newGroup.getName());
@@ -97,7 +98,7 @@ public class UserWebServiceRepositoryTest {
 
       Assert.assertTrue("User is not assigned to a site.", !findUser.getSites().isEmpty());
 
-      Site newSite = findUser.getSites().iterator().next();
+      final Site newSite = findUser.getSites().iterator().next();
 
       Assert.assertTrue("Site id has no value bigger than zero.", newSite.getId() > 0);
       Assert.assertEquals("Site name is not equal.", siteName, newSite.getName());
@@ -106,17 +107,17 @@ public class UserWebServiceRepositoryTest {
 
    @Test
    public void testMergeUserWithGroupAndSite() throws GNUOpenBusinessServiceException_Exception {
-      String userName = UUID.randomUUID().toString();
-      String userDescription = UUID.randomUUID().toString();
-      String userPassword = UUID.randomUUID().toString();
-      String groupName = UUID.randomUUID().toString();
-      String groupDescription = UUID.randomUUID().toString();
-      String siteName = UUID.randomUUID().toString();
-      String siteDescription = UUID.randomUUID().toString();
+      final String userName = UUID.randomUUID().toString();
+      final String userDescription = UUID.randomUUID().toString();
+      final String userPassword = UUID.randomUUID().toString();
+      final String groupName = UUID.randomUUID().toString();
+      final String groupDescription = UUID.randomUUID().toString();
+      final String siteName = UUID.randomUUID().toString();
+      final String siteDescription = UUID.randomUUID().toString();
 
-      User persistUser = userWebServiceRepository.persist(metaData, user);
-      Group persistGroup = persistUser.getGroups().iterator().next();
-      Site persistSite = persistUser.getSites().iterator().next();
+      final User persistUser = userWebServiceRepository.persist(metaData, user);
+      final Group persistGroup = persistUser.getGroups().iterator().next();
+      final Site persistSite = persistUser.getSites().iterator().next();
 
       persistUser.setName(userName);
       persistUser.setDescription(userDescription);
@@ -128,7 +129,7 @@ public class UserWebServiceRepositoryTest {
       persistSite.setName(siteName);
       persistSite.setDescription(siteDescription);
 
-      User mergeUser = userWebServiceRepository.merge(metaData, persistUser);
+      final User mergeUser = userWebServiceRepository.merge(metaData, persistUser);
 
       Assert.assertTrue("User id has no value bigger than zero.", mergeUser.getId() > 0);
       Assert.assertEquals("User name is not equal.", userName, mergeUser.getName());
@@ -137,7 +138,7 @@ public class UserWebServiceRepositoryTest {
 
       Assert.assertTrue("User is not assigned to a group.", !mergeUser.getGroups().isEmpty());
 
-      Group mergeGroup = mergeUser.getGroups().iterator().next();
+      final Group mergeGroup = mergeUser.getGroups().iterator().next();
 
       Assert.assertTrue("Group id has no value bigger than zero.", mergeGroup.getId() > 0);
       Assert.assertEquals("Group name is not equal.", groupName, mergeGroup.getName());
@@ -145,7 +146,7 @@ public class UserWebServiceRepositoryTest {
 
       Assert.assertTrue("User is not assigned to a site.", !mergeUser.getSites().isEmpty());
 
-      Site mergeSite = mergeUser.getSites().iterator().next();
+      final Site mergeSite = mergeUser.getSites().iterator().next();
 
       Assert.assertTrue("Site id has no value bigger than zero.", mergeSite.getId() > 0);
       Assert.assertEquals("Site name is not equal.", siteName, mergeSite.getName());
@@ -154,22 +155,22 @@ public class UserWebServiceRepositoryTest {
 
    @Test
    public void testMergeUserWithGroupAndSiteWhereOthersHasUpdateAccess() throws GNUOpenBusinessServiceException_Exception {
-      String userName = UUID.randomUUID().toString();
-      String userDescription = UUID.randomUUID().toString();
-      String userPassword = UUID.randomUUID().toString();
-      String groupName = UUID.randomUUID().toString();
-      String groupDescription = UUID.randomUUID().toString();
-      String siteName = UUID.randomUUID().toString();
-      String siteDescription = UUID.randomUUID().toString();
+      final String userName = UUID.randomUUID().toString();
+      final String userDescription = UUID.randomUUID().toString();
+      final String userPassword = UUID.randomUUID().toString();
+      final String groupName = UUID.randomUUID().toString();
+      final String groupDescription = UUID.randomUUID().toString();
+      final String siteName = UUID.randomUUID().toString();
+      final String siteDescription = UUID.randomUUID().toString();
 
       user.setPermission(new Permission());
       user.getPermission().setOwner(Rule.NONE_ACCESS);
       user.getPermission().setGroup(Rule.NONE_ACCESS);
       user.getPermission().setOthers(Rule.UPDATE_ACCESS);
 
-      User persistUser = userWebServiceRepository.persist(metaData, user);
-      Group persistGroup = persistUser.getGroups().iterator().next();
-      Site persistSite = persistUser.getSites().iterator().next();
+      final User persistUser = userWebServiceRepository.persist(metaData, user);
+      final Group persistGroup = persistUser.getGroups().iterator().next();
+      final Site persistSite = persistUser.getSites().iterator().next();
 
       persistUser.setName(userName);
       persistUser.setDescription(userDescription);
@@ -184,7 +185,7 @@ public class UserWebServiceRepositoryTest {
       metaData.setUser("manager");
       metaData.setPassword("manager");
 
-      User mergeUser = userWebServiceRepository.merge(metaData, persistUser);
+      final User mergeUser = userWebServiceRepository.merge(metaData, persistUser);
 
       Assert.assertTrue("User id has no value bigger than zero.", mergeUser.getId() > 0);
       Assert.assertEquals("User name is not equal.", userName, mergeUser.getName());
@@ -193,7 +194,7 @@ public class UserWebServiceRepositoryTest {
 
       Assert.assertTrue("User is not assigned to a group.", !mergeUser.getGroups().isEmpty());
 
-      Group mergeGroup = mergeUser.getGroups().iterator().next();
+      final Group mergeGroup = mergeUser.getGroups().iterator().next();
 
       Assert.assertTrue("Group id has no value bigger than zero.", mergeGroup.getId() > 0);
       Assert.assertEquals("Group name is not equal.", groupName, mergeGroup.getName());
@@ -201,7 +202,7 @@ public class UserWebServiceRepositoryTest {
 
       Assert.assertTrue("User is not assigned to a site.", !mergeUser.getSites().isEmpty());
 
-      Site mergeSite = mergeUser.getSites().iterator().next();
+      final Site mergeSite = mergeUser.getSites().iterator().next();
 
       Assert.assertTrue("Site id has no value bigger than zero.", mergeSite.getId() > 0);
       Assert.assertEquals("Site name is not equal.", siteName, mergeSite.getName());
@@ -210,17 +211,17 @@ public class UserWebServiceRepositoryTest {
 
    @Test
    public void testPersistUserWithGroupAndSite() throws GNUOpenBusinessServiceException_Exception {
-      String userName = user.getName();
-      String userDescription = user.getDescription();
-      String userPassword = user.getPassword();
-      String groupName = group.getName();
-      String groupDescription = group.getDescription();
-      String siteName = site.getName();
-      String siteDescription = site.getDescription();
+      final String userName = user.getName();
+      final String userDescription = user.getDescription();
+      final String userPassword = user.getPassword();
+      final String groupName = group.getName();
+      final String groupDescription = group.getDescription();
+      final String siteName = site.getName();
+      final String siteDescription = site.getDescription();
 
-      Rule userRule = user.getAccess();
+      final Rule userRule = user.getAccess();
 
-      User persistUser = userWebServiceRepository.persist(metaData, user);
+      final User persistUser = userWebServiceRepository.persist(metaData, user);
 
       Assert.assertTrue("User id has no value bigger than zero.", persistUser.getId() > 0);
       Assert.assertEquals("User name is not equal.", userName, persistUser.getName());
@@ -230,7 +231,7 @@ public class UserWebServiceRepositoryTest {
 
       Assert.assertTrue("User is not assigned to a group.", !persistUser.getGroups().isEmpty());
 
-      Group newGroup = persistUser.getGroups().iterator().next();
+      final Group newGroup = persistUser.getGroups().iterator().next();
 
       Assert.assertTrue("Group id has no value bigger than zero.", newGroup.getId() > 0);
       Assert.assertEquals("Group name is not equal.", groupName, newGroup.getName());
@@ -238,7 +239,7 @@ public class UserWebServiceRepositoryTest {
 
       Assert.assertTrue("User is not assigned to a site.", !persistUser.getSites().isEmpty());
 
-      Site newSite = persistUser.getSites().iterator().next();
+      final Site newSite = persistUser.getSites().iterator().next();
 
       Assert.assertTrue("Site id has no value bigger than zero.", newSite.getId() > 0);
       Assert.assertEquals("Site name is not equal.", siteName, newSite.getName());
@@ -247,17 +248,17 @@ public class UserWebServiceRepositoryTest {
 
    @Test
    public void testRefreshUserWithGroupAndSite() throws GNUOpenBusinessServiceException_Exception {
-      User persistUser = userWebServiceRepository.persist(metaData, user);
-      Group persistGroup = persistUser.getGroups().iterator().next();
-      Site persistSite = persistUser.getSites().iterator().next();
+      final User persistUser = userWebServiceRepository.persist(metaData, user);
+      final Group persistGroup = persistUser.getGroups().iterator().next();
+      final Site persistSite = persistUser.getSites().iterator().next();
 
-      String userName = user.getName();
-      String userDescription = user.getDescription();
-      String userPassword = user.getPassword();
-      String groupName = group.getName();
-      String groupDescription = group.getDescription();
-      String siteName = site.getName();
-      String siteDescription = site.getDescription();
+      final String userName = user.getName();
+      final String userDescription = user.getDescription();
+      final String userPassword = user.getPassword();
+      final String groupName = group.getName();
+      final String groupDescription = group.getDescription();
+      final String siteName = site.getName();
+      final String siteDescription = site.getDescription();
 
       persistUser.setName(UUID.randomUUID().toString());
       persistUser.setDescription(UUID.randomUUID().toString());
@@ -269,7 +270,7 @@ public class UserWebServiceRepositoryTest {
       persistSite.setName(UUID.randomUUID().toString());
       persistSite.setDescription(UUID.randomUUID().toString());
 
-      User refreshUser = userWebServiceRepository.refresh(metaData, persistUser);
+      final User refreshUser = userWebServiceRepository.refresh(metaData, persistUser);
 
       Assert.assertTrue("User id has no value bigger than zero.", refreshUser.getId() > 0);
       Assert.assertEquals("User name is not equal.", userName, refreshUser.getName());
@@ -278,7 +279,7 @@ public class UserWebServiceRepositoryTest {
 
       Assert.assertTrue("User is not assigned to a group.", !refreshUser.getGroups().isEmpty());
 
-      Group refreshGroup = refreshUser.getGroups().iterator().next();
+      final Group refreshGroup = refreshUser.getGroups().iterator().next();
 
       Assert.assertTrue("Group id has no value bigger than zero.", refreshGroup.getId() > 0);
       Assert.assertEquals("Group name is not equal.", groupName, refreshGroup.getName());
@@ -286,7 +287,7 @@ public class UserWebServiceRepositoryTest {
 
       Assert.assertTrue("User is not assigned to a site.", !refreshUser.getSites().isEmpty());
 
-      Site refreshSite = refreshUser.getSites().iterator().next();
+      final Site refreshSite = refreshUser.getSites().iterator().next();
 
       Assert.assertTrue("Site id has no value bigger than zero.", refreshSite.getId() > 0);
       Assert.assertEquals("Site name is not equal.", siteName, refreshSite.getName());
@@ -295,10 +296,10 @@ public class UserWebServiceRepositoryTest {
 
    @Test
    public void testRemoveUserWithGroupAndSite() throws GNUOpenBusinessServiceException_Exception {
-      User persistUser = userWebServiceRepository.persist(metaData, user);
+      final User persistUser = userWebServiceRepository.persist(metaData, user);
       userWebServiceRepository.remove(metaData, persistUser);
 
-      User findUser = userWebServiceRepository.find(metaData, persistUser);
+      final User findUser = userWebServiceRepository.find(metaData, persistUser);
 
       Assert.assertNull("User is found.", findUser);
    }
@@ -376,14 +377,14 @@ public class UserWebServiceRepositoryTest {
       metaData.setUser("manager");
       metaData.setPassword("manager");
 
-      User persistUser = userWebServiceRepository.persist(metaData, user);
+      final User persistUser = userWebServiceRepository.persist(metaData, user);
 
       metaData.setUser("employee");
       metaData.setPassword("employee");
 
       try {
          userWebServiceRepository.remove(metaData, persistUser);
-      } catch (Exception e) {
+      } catch (final Exception e) {
          Assert.assertEquals("Exception message is not equal.", "com.netbrasoft.gnuob.exception.GNUOpenBusinessServiceException: Given user [employee] doesn't have the right access to delete this entity object, verify that the given user has access",
                e.getMessage());
       }
@@ -391,7 +392,7 @@ public class UserWebServiceRepositoryTest {
       metaData.setUser("manager");
       metaData.setPassword("manager");
 
-      User findUser = userWebServiceRepository.find(metaData, persistUser);
+      final User findUser = userWebServiceRepository.find(metaData, persistUser);
 
       Assert.assertNotNull("User is not found.", findUser);
    }

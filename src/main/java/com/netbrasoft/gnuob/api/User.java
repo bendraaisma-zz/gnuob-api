@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="groups" type="{http://gnuob.netbrasoft.com/}group" maxOccurs="unbounded" minOccurs="0"/&gt;
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="role" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="roles" type="{http://gnuob.netbrasoft.com/}role" maxOccurs="unbounded" minOccurs="0"/&gt;
  *         &lt;element name="sites" type="{http://gnuob.netbrasoft.com/}site" maxOccurs="unbounded" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/extension&gt;
@@ -43,7 +43,7 @@ import javax.xml.bind.annotation.XmlType;
     "groups",
     "name",
     "password",
-    "role",
+    "roles",
     "sites"
 })
 public class User
@@ -60,8 +60,9 @@ public class User
     protected String name;
     @XmlElement(required = true)
     protected String password;
-    @XmlElement(required = true)
-    protected String role;
+    @XmlElement(nillable = true)
+    @XmlSchemaType(name = "string")
+    protected List<Role> roles;
     @XmlElement(nillable = true)
     protected List<Site> sites;
 
@@ -191,27 +192,32 @@ public class User
     }
 
     /**
-     * Gets the value of the role property.
+     * Gets the value of the roles property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getRole() {
-        return role;
-    }
-
-    /**
-     * Sets the value of the role property.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the roles property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getRoles().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Role }
+     * 
+     * 
      */
-    public void setRole(String value) {
-        this.role = value;
+    public List<Role> getRoles() {
+        if (roles == null) {
+            roles = new ArrayList<Role>();
+        }
+        return this.roles;
     }
 
     /**
