@@ -1,5 +1,9 @@
 package com.netbrasoft.gnuob.generic.order;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Random;
@@ -9,7 +13,6 @@ import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,6 +38,7 @@ import com.netbrasoft.gnuob.api.order.PagseguroCheckOutWebServiceRepository;
 import com.netbrasoft.gnuob.api.product.ProductWebServiceRepository;
 import com.netbrasoft.gnuob.generic.utils.Utils;
 
+
 @RunWith(Arquillian.class)
 public class PagseguroCheckOutWebServiceRepositoryTest {
 
@@ -46,9 +50,9 @@ public class PagseguroCheckOutWebServiceRepositoryTest {
    @Drone
    private WebDriver driver;
 
-   private ProductWebServiceRepository<Product> productWebServiceRepository = new ProductWebServiceRepository<Product>();
-   private OrderWebServiceRepository<Order> orderWebServiceRepository = new OrderWebServiceRepository<Order>();
-   private PagseguroCheckOutWebServiceRepository<Order> pagseguroCheckOutWebServiceRepository = new PagseguroCheckOutWebServiceRepository<Order>();
+   private final ProductWebServiceRepository<Product> productWebServiceRepository = new ProductWebServiceRepository<Product>();
+   private final OrderWebServiceRepository<Order> orderWebServiceRepository = new OrderWebServiceRepository<Order>();
+   private final PagseguroCheckOutWebServiceRepository<Order> pagseguroCheckOutWebServiceRepository = new PagseguroCheckOutWebServiceRepository<Order>();
    private MetaData metaData = null;
    private Customer customer = null;
    private Contract contract = null;
@@ -60,7 +64,7 @@ public class PagseguroCheckOutWebServiceRepositoryTest {
 
    @Before
    public void testBefore() {
-      Random randomGenerator = new Random();
+      final Random randomGenerator = new Random();
 
       metaData = new MetaData();
       customer = new Customer();
@@ -106,14 +110,14 @@ public class PagseguroCheckOutWebServiceRepositoryTest {
       product.setItemWeight(BigDecimal.ONE);
       product.setItemWeightUnit("Kg");
 
-      Stock stock = new Stock();
+      final Stock stock = new Stock();
       stock.setMaxQuantity(BigInteger.valueOf(100));
       stock.setMinQuantity(BigInteger.ZERO);
       stock.setQuantity(BigInteger.valueOf(30));
 
       product.setStock(stock);
 
-      SubCategory subCategory = new SubCategory();
+      final SubCategory subCategory = new SubCategory();
       subCategory.setName(UUID.randomUUID().toString());
       subCategory.setDescription(UUID.randomUUID().toString());
 
@@ -135,31 +139,31 @@ public class PagseguroCheckOutWebServiceRepositoryTest {
 
    @Test
    public void testPersistOrderAndDoCheckOut() throws GNUOpenBusinessServiceException_Exception, InterruptedException {
-      String productName = product.getName();
-      String productDescription = product.getDescription();
+      final String productName = product.getName();
+      final String productDescription = product.getDescription();
 
-      Product persistProduct = productWebServiceRepository.persist(metaData, product);
+      final Product persistProduct = productWebServiceRepository.persist(metaData, product);
 
-      Assert.assertTrue("Product id has no value bigger than zero.", persistProduct.getId() > 0);
-      Assert.assertEquals("Product name is not equal.", productName, persistProduct.getName());
-      Assert.assertEquals("Product description is not equal.", productDescription, persistProduct.getDescription());
+      assertTrue("Product id has no value bigger than zero.", persistProduct.getId() > 0);
+      assertEquals("Product name is not equal.", productName, persistProduct.getName());
+      assertEquals("Product description is not equal.", productDescription, persistProduct.getDescription());
 
-      OrderRecord orderRecord = new OrderRecord();
+      final OrderRecord orderRecord = new OrderRecord();
       orderRecord.setQuantity(BigInteger.ONE);
       orderRecord.setProduct(persistProduct);
 
       order.getRecords().add(orderRecord);
 
-      Order persistOrder = orderWebServiceRepository.persist(metaData, order);
+      final Order persistOrder = orderWebServiceRepository.persist(metaData, order);
 
-      Assert.assertTrue("Order id has no value bigger than zero.", persistOrder.getId() > 0);
+      assertTrue("Order id has no value bigger than zero.", persistOrder.getId() > 0);
 
       Order checkoutOrder = pagseguroCheckOutWebServiceRepository.doCheckout(metaData, persistOrder);
       checkoutOrder = orderWebServiceRepository.find(metaData, checkoutOrder);
 
-      Assert.assertNotNull("Order token has no value.", checkoutOrder.getToken());
+      assertNotNull("Order token has no value.", checkoutOrder.getToken());
 
-      WebDriverWait webDriverWait = new WebDriverWait(driver, 60);
+      final WebDriverWait webDriverWait = new WebDriverWait(driver, 60);
 
       driver.get("https://sandbox.pagseguro.uol.com.br/v2/checkout/payment.html?code=" + checkoutOrder.getToken());
       driver.findElement(By.id("senderPassword")).sendKeys("pC4u57FT8060Cw7d");
@@ -177,7 +181,7 @@ public class PagseguroCheckOutWebServiceRepositoryTest {
       Thread.sleep(5000);
 
       checkoutOrder.setTransactionId(driver.getTitle().split("transaction_id=")[1].split(" ")[0]);
-      Assert.assertNotNull("Order transaction id has no value.", checkoutOrder.getTransactionId());
+      assertNotNull("Order transaction id has no value.", checkoutOrder.getTransactionId());
 
       driver.close();
 
@@ -187,7 +191,7 @@ public class PagseguroCheckOutWebServiceRepositoryTest {
       Order checkoutPaymentOrder = pagseguroCheckOutWebServiceRepository.doCheckoutPayment(metaData, checkoutDetailsOrder);
       checkoutPaymentOrder = orderWebServiceRepository.find(metaData, checkoutPaymentOrder);
 
-      Assert.assertNotNull("Order transaction id has no value.", checkoutPaymentOrder.getTransactionId());
-      Assert.assertEquals(BigDecimal.valueOf(23.32), checkoutPaymentOrder.getOrderTotal());
+      assertNotNull("Order transaction id has no value.", checkoutPaymentOrder.getTransactionId());
+      assertEquals(BigDecimal.valueOf(23.32), checkoutPaymentOrder.getOrderTotal());
    }
 }
