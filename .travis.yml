@@ -1,0 +1,10 @@
+language: java
+jdk: oraclejdk8
+deploy:
+  provider: releases
+  api_key:
+    secure: mmG+tr5fmrNrQ8b0PBsXxL2D1V5qmWs07iNq04VVW3muzWIOaMj66Y6ZJJUGeYbweXL38nkaQUkwug8h3sb/iA1p8AbovBCMv6IAeXntOMxDvXl0G814xVkt5htp4OGraEfejmh9wctldMVZePhOLaVMNKsX08Gcu5zN3mBfmEw+mEoq/IUR3KPH1/7Nvaj+Um3w88cziC7v6X4Y9Ii1mGBXXVJQvGlcS+L89mUY8JeZ6udS/87PHx0tUy6fdexQPwcZl2Om1uGM1G2Qz/EwCjZJOerNow7yx8ng84ntpOUwKUV7CuUi0ZCMMu84R89sTVQAIv9jVwlS9cPqw7LXOGOFlmwIGI7MYMZ+SPoiOruaq5AJPrqnFgRipUTiGWZD23/LUux4iH0byihcg7ELTzTuaDUwnfw+WPojw+V6rW63V/svLn512Zbtr8NV673srED7KTn9d3zIpf41Qpdjktc5uHqK6zxdHPgzpd+L7BBfifoJH7XH0NG5FKMcfB3cB3KN5QKP85YgH8rWSD0yOZMTmK9xRLcibPCy5LPCxif0ZyxH9BRWMuIsoWhJla90ndnfzkkfDxwPdahbDnWegRWzLPCZDB8dDXbeFtj0giAMMr6VhRBGQr6ANlVBjKPdOo8XY2aO+WeSwrT3dew9b/kjVBuAPSN5ph78CxL9UDE=
+  file: target/gnuob-api.jar
+  skip_cleanup: true
+  on:
+    tags: true
