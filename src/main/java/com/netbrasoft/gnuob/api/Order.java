@@ -24,6 +24,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *     &lt;extension base="{http://gnuob.netbrasoft.com/}access"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="billingAgreementId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="checkout" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="checkoutStatus" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="contract" type="{http://gnuob.netbrasoft.com/}contract"/&gt;
  *         &lt;element name="custom" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
@@ -36,6 +37,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="giftWrapEnable" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/&gt;
  *         &lt;element name="giftWrapName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="handlingTotal" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
+ *         &lt;element name="host" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="insuranceOptionOffered" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/&gt;
  *         &lt;element name="insuranceTotal" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
  *         &lt;element name="invoice" type="{http://gnuob.netbrasoft.com/}invoice"/&gt;
@@ -66,6 +68,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "order", propOrder = {
     "billingAgreementId",
+    "checkout",
     "checkoutStatus",
     "contract",
     "custom",
@@ -78,6 +81,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "giftWrapEnable",
     "giftWrapName",
     "handlingTotal",
+    "host",
     "insuranceOptionOffered",
     "insuranceTotal",
     "invoice",
@@ -104,6 +108,7 @@ public class Order
 {
 
     protected String billingAgreementId;
+    protected String checkout;
     protected String checkoutStatus;
     @XmlElement(required = true)
     protected Contract contract;
@@ -119,6 +124,8 @@ public class Order
     protected String giftWrapName;
     @XmlElement(required = true)
     protected BigDecimal handlingTotal;
+    @XmlElement(required = true)
+    protected String host;
     protected Boolean insuranceOptionOffered;
     @XmlElement(required = true)
     protected BigDecimal insuranceTotal;
@@ -167,6 +174,30 @@ public class Order
      */
     public void setBillingAgreementId(String value) {
         this.billingAgreementId = value;
+    }
+
+    /**
+     * Gets the value of the checkout property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCheckout() {
+        return checkout;
+    }
+
+    /**
+     * Sets the value of the checkout property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCheckout(String value) {
+        this.checkout = value;
     }
 
     /**
@@ -455,6 +486,30 @@ public class Order
      */
     public void setHandlingTotal(BigDecimal value) {
         this.handlingTotal = value;
+    }
+
+    /**
+     * Gets the value of the host property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getHost() {
+        return host;
+    }
+
+    /**
+     * Sets the value of the host property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setHost(String value) {
+        this.host = value;
     }
 
     /**
