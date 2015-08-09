@@ -16,7 +16,7 @@ public class UserDataProvider<U extends User> extends AbstractGenericTypeDataPro
    private static final long serialVersionUID = -8167982674192813819L;
 
    @Resource(name = "UserWebServiceRepository")
-   private GenericTypeWebServiceRepository<U> userWebServiceRepository;
+   private transient GenericTypeWebServiceRepository<U> userWebServiceRepository;
 
    @SuppressWarnings("unchecked")
    public UserDataProvider() {

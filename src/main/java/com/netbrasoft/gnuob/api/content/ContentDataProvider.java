@@ -16,7 +16,7 @@ public class ContentDataProvider<C extends Content> extends AbstractGenericTypeD
    private static final long serialVersionUID = -7147810111952342412L;
 
    @Resource(name = "ContentWebServiceRepository")
-   private GenericTypeWebServiceRepository<C> contentWebServiceRepository;
+   private transient GenericTypeWebServiceRepository<C> contentWebServiceRepository;
 
    @SuppressWarnings("unchecked")
    public ContentDataProvider() {

@@ -39,8 +39,7 @@ public class CustomerWebServiceRepository<C extends Customer> implements Generic
    public long count(MetaData paramMetaData, C paramCustomer) {
       CountCustomer paramCountCustomer = new CountCustomer();
       paramCountCustomer.setCustomer(paramCustomer);
-      CountCustomerResponse countCustomerResponse = getCustomerWebServiceImpl().countCustomer(paramCountCustomer,
-            paramMetaData);
+      CountCustomerResponse countCustomerResponse = getCustomerWebServiceImpl().countCustomer(paramCountCustomer, paramMetaData);
       return countCustomerResponse.getReturn();
    }
 
@@ -49,8 +48,7 @@ public class CustomerWebServiceRepository<C extends Customer> implements Generic
    public C find(MetaData paramMetaData, C paramCustomer) {
       FindCustomerById paramFindCustomerById = new FindCustomerById();
       paramFindCustomerById.setCustomer(paramCustomer);
-      FindCustomerByIdResponse findCustomerByIdResponse = getCustomerWebServiceImpl().findCustomerById(
-            paramFindCustomerById, paramMetaData);
+      FindCustomerByIdResponse findCustomerByIdResponse = getCustomerWebServiceImpl().findCustomerById(paramFindCustomerById, paramMetaData);
       return (C) findCustomerByIdResponse.getReturn();
 
    }
@@ -62,15 +60,13 @@ public class CustomerWebServiceRepository<C extends Customer> implements Generic
       paramFindCustomer.setCustomer(paramCustomer);
       paramFindCustomer.setPaging(paramPaging);
       paramFindCustomer.setOrderBy(paramOrderBy);
-      FindCustomerResponse findCustomerResponse = getCustomerWebServiceImpl().findCustomer(paramFindCustomer,
-            paramMetaData);
+      FindCustomerResponse findCustomerResponse = getCustomerWebServiceImpl().findCustomer(paramFindCustomer, paramMetaData);
       return (List<C>) findCustomerResponse.getReturn();
    }
 
    private CustomerWebServiceImpl getCustomerWebServiceImpl() {
       if (customerWebServiceImpl == null) {
-         CustomerWebServiceImplService customerWebServiceImplService = new CustomerWebServiceImplService(
-               CustomerWebServiceImplService.WSDL_LOCATION);
+         CustomerWebServiceImplService customerWebServiceImplService = new CustomerWebServiceImplService(CustomerWebServiceImplService.WSDL_LOCATION);
          customerWebServiceImpl = customerWebServiceImplService.getCustomerWebServiceImplPort();
       }
 
@@ -82,8 +78,7 @@ public class CustomerWebServiceRepository<C extends Customer> implements Generic
    public C merge(MetaData paramMetaData, C paramCustomer) {
       MergeCustomer paramMergeCustomer = new MergeCustomer();
       paramMergeCustomer.setCustomer(paramCustomer);
-      MergeCustomerResponse mergeCustomerResponse = getCustomerWebServiceImpl().mergeCustomer(paramMergeCustomer,
-            paramMetaData);
+      MergeCustomerResponse mergeCustomerResponse = getCustomerWebServiceImpl().mergeCustomer(paramMergeCustomer, paramMetaData);
       return (C) mergeCustomerResponse.getReturn();
    }
 
@@ -92,8 +87,7 @@ public class CustomerWebServiceRepository<C extends Customer> implements Generic
    public C persist(MetaData paramMetaData, C paramCustomer) {
       PersistCustomer paramPersistCustomer = new PersistCustomer();
       paramPersistCustomer.setCustomer(paramCustomer);
-      PersistCustomerResponse persistCustomerResponse = getCustomerWebServiceImpl().persistCustomer(
-            paramPersistCustomer, paramMetaData);
+      PersistCustomerResponse persistCustomerResponse = getCustomerWebServiceImpl().persistCustomer(paramPersistCustomer, paramMetaData);
       return (C) persistCustomerResponse.getReturn();
    }
 
@@ -102,8 +96,7 @@ public class CustomerWebServiceRepository<C extends Customer> implements Generic
    public C refresh(MetaData paramMetaData, C paramCustomer) {
       RefreshCustomer paramRefresCustomer = new RefreshCustomer();
       paramRefresCustomer.setCustomer(paramCustomer);
-      RefreshCustomerResponse refresCustomerResponse = getCustomerWebServiceImpl().refreshCustomer(paramRefresCustomer,
-            paramMetaData);
+      RefreshCustomerResponse refresCustomerResponse = getCustomerWebServiceImpl().refreshCustomer(paramRefresCustomer, paramMetaData);
       return (C) refresCustomerResponse.getReturn();
    }
 

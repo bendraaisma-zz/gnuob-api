@@ -16,7 +16,7 @@ public class ProductDataProvider<P extends Product> extends AbstractGenericTypeD
    private static final long serialVersionUID = -8167982674192813819L;
 
    @Resource(name = "ProductWebServiceRepository")
-   private GenericTypeWebServiceRepository<P> productWebServiceRepository;
+   private transient GenericTypeWebServiceRepository<P> productWebServiceRepository;
 
    @SuppressWarnings("unchecked")
    public ProductDataProvider() {

@@ -16,7 +16,7 @@ public class ContractDataProvider<C extends Contract> extends AbstractGenericTyp
    private static final long serialVersionUID = -7147810111954265342L;
 
    @Resource(name = "ContractWebServiceRepository")
-   private GenericTypeWebServiceRepository<C> contractWebServiceRepository;
+   private transient GenericTypeWebServiceRepository<C> contractWebServiceRepository;
 
    @SuppressWarnings("unchecked")
    public ContractDataProvider() {

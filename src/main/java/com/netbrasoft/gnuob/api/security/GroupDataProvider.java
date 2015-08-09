@@ -16,7 +16,7 @@ public class GroupDataProvider<G extends Group> extends AbstractGenericTypeDataP
    private static final long serialVersionUID = -8167982674192813819L;
 
    @Resource(name = "GroupWebServiceRepository")
-   private GenericTypeWebServiceRepository<G> groupWebServiceRepository;
+   private transient GenericTypeWebServiceRepository<G> groupWebServiceRepository;
 
    @SuppressWarnings("unchecked")
    public GroupDataProvider() {

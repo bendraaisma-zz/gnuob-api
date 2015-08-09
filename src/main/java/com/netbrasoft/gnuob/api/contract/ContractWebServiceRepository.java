@@ -39,8 +39,7 @@ public class ContractWebServiceRepository<C extends Contract> implements Generic
    public long count(MetaData paramMetaData, C paramContract) {
       CountContract paramCountContract = new CountContract();
       paramCountContract.setContract(paramContract);
-      CountContractResponse countContractResponse = getContractWebServiceImpl().countContract(paramCountContract,
-            paramMetaData);
+      CountContractResponse countContractResponse = getContractWebServiceImpl().countContract(paramCountContract, paramMetaData);
       return countContractResponse.getReturn();
    }
 
@@ -49,8 +48,7 @@ public class ContractWebServiceRepository<C extends Contract> implements Generic
    public C find(MetaData paramMetaData, C paramContract) {
       FindContractById paramFindContractById = new FindContractById();
       paramFindContractById.setContract(paramContract);
-      FindContractByIdResponse findContractByIdResponse = getContractWebServiceImpl().findContractById(
-            paramFindContractById, paramMetaData);
+      FindContractByIdResponse findContractByIdResponse = getContractWebServiceImpl().findContractById(paramFindContractById, paramMetaData);
       return (C) findContractByIdResponse.getReturn();
 
    }
@@ -62,15 +60,13 @@ public class ContractWebServiceRepository<C extends Contract> implements Generic
       paramFindContract.setContract(paramContract);
       paramFindContract.setPaging(paramPaging);
       paramFindContract.setOrderBy(paramOrderBy);
-      FindContractResponse findContractResponse = getContractWebServiceImpl().findContract(paramFindContract,
-            paramMetaData);
+      FindContractResponse findContractResponse = getContractWebServiceImpl().findContract(paramFindContract, paramMetaData);
       return (List<C>) findContractResponse.getReturn();
    }
 
    private ContractWebServiceImpl getContractWebServiceImpl() {
       if (contractWebServiceImpl == null) {
-         ContractWebServiceImplService contractWebServiceImplService = new ContractWebServiceImplService(
-               ContractWebServiceImplService.WSDL_LOCATION);
+         ContractWebServiceImplService contractWebServiceImplService = new ContractWebServiceImplService(ContractWebServiceImplService.WSDL_LOCATION);
          contractWebServiceImpl = contractWebServiceImplService.getContractWebServiceImplPort();
       }
 
@@ -82,8 +78,7 @@ public class ContractWebServiceRepository<C extends Contract> implements Generic
    public C merge(MetaData paramMetaData, C paramContract) {
       MergeContract paramMergeContract = new MergeContract();
       paramMergeContract.setContract(paramContract);
-      MergeContractResponse mergeContractResponse = getContractWebServiceImpl().mergeContract(paramMergeContract,
-            paramMetaData);
+      MergeContractResponse mergeContractResponse = getContractWebServiceImpl().mergeContract(paramMergeContract, paramMetaData);
       return (C) mergeContractResponse.getReturn();
    }
 
@@ -92,8 +87,7 @@ public class ContractWebServiceRepository<C extends Contract> implements Generic
    public C persist(MetaData paramMetaData, C paramContract) {
       PersistContract paramPersistContract = new PersistContract();
       paramPersistContract.setContract(paramContract);
-      PersistContractResponse persistContractResponse = getContractWebServiceImpl().persistContract(
-            paramPersistContract, paramMetaData);
+      PersistContractResponse persistContractResponse = getContractWebServiceImpl().persistContract(paramPersistContract, paramMetaData);
       return (C) persistContractResponse.getReturn();
    }
 
@@ -102,8 +96,7 @@ public class ContractWebServiceRepository<C extends Contract> implements Generic
    public C refresh(MetaData paramMetaData, C paramContract) {
       RefreshContract paramRefresContract = new RefreshContract();
       paramRefresContract.setContract(paramContract);
-      RefreshContractResponse refresContractResponse = getContractWebServiceImpl().refreshContract(paramRefresContract,
-            paramMetaData);
+      RefreshContractResponse refresContractResponse = getContractWebServiceImpl().refreshContract(paramRefresContract, paramMetaData);
       return (C) refresContractResponse.getReturn();
    }
 

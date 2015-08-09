@@ -16,7 +16,7 @@ public class CustomerDataProvider<C extends Customer> extends AbstractGenericTyp
    private static final long serialVersionUID = -7147810111954264232L;
 
    @Resource(name = "CustomerWebServiceRepository")
-   private GenericTypeWebServiceRepository<C> customerWebServiceRepository;
+   private transient GenericTypeWebServiceRepository<C> customerWebServiceRepository;
 
    @SuppressWarnings("unchecked")
    public CustomerDataProvider() {

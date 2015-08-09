@@ -1,27 +1,25 @@
+
 package com.netbrasoft.gnuob.api;
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
- * <p>
- * Java class for operation.
+ * <p>Java class for operation.
  * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
- * <p>
- * 
  * <pre>
- * &lt;simpleType name="operation">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="CREATE"/>
- *     &lt;enumeration value="READ"/>
- *     &lt;enumeration value="UPDATE"/>
- *     &lt;enumeration value="DELETE"/>
- *     &lt;enumeration value="NONE"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="operation"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="CREATE"/&gt;
+ *     &lt;enumeration value="READ"/&gt;
+ *     &lt;enumeration value="UPDATE"/&gt;
+ *     &lt;enumeration value="DELETE"/&gt;
+ *     &lt;enumeration value="NONE"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */
@@ -29,7 +27,11 @@ import javax.xml.bind.annotation.XmlType;
 @XmlEnum
 public enum Operation {
 
-    CREATE, READ, UPDATE, DELETE, NONE;
+    CREATE,
+    READ,
+    UPDATE,
+    DELETE,
+    NONE;
 
     public String value() {
         return name();

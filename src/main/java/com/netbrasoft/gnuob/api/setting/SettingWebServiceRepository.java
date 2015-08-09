@@ -39,8 +39,7 @@ public class SettingWebServiceRepository<S extends Setting> implements GenericTy
    public long count(MetaData paramMetaData, S paramSetting) {
       CountSetting paramCountSetting = new CountSetting();
       paramCountSetting.setSetting(paramSetting);
-      CountSettingResponse countSettingResponse = getSettingWebServiceImpl().countSetting(paramCountSetting,
-            paramMetaData);
+      CountSettingResponse countSettingResponse = getSettingWebServiceImpl().countSetting(paramCountSetting, paramMetaData);
       return countSettingResponse.getReturn();
    }
 
@@ -49,8 +48,7 @@ public class SettingWebServiceRepository<S extends Setting> implements GenericTy
    public S find(MetaData paramMetaData, S paramSetting) {
       FindSettingById paramFindSettingById = new FindSettingById();
       paramFindSettingById.setSetting(paramSetting);
-      FindSettingByIdResponse findSettingByIdResponse = getSettingWebServiceImpl().findSettingById(
-            paramFindSettingById, paramMetaData);
+      FindSettingByIdResponse findSettingByIdResponse = getSettingWebServiceImpl().findSettingById(paramFindSettingById, paramMetaData);
       return (S) findSettingByIdResponse.getReturn();
 
    }
@@ -68,8 +66,7 @@ public class SettingWebServiceRepository<S extends Setting> implements GenericTy
 
    private SettingWebServiceImpl getSettingWebServiceImpl() {
       if (settingWebServiceImpl == null) {
-         SettingWebServiceImplService settingWebServiceImplService = new SettingWebServiceImplService(
-               SettingWebServiceImplService.WSDL_LOCATION);
+         SettingWebServiceImplService settingWebServiceImplService = new SettingWebServiceImplService(SettingWebServiceImplService.WSDL_LOCATION);
          settingWebServiceImpl = settingWebServiceImplService.getSettingWebServiceImplPort();
       }
 
@@ -81,8 +78,7 @@ public class SettingWebServiceRepository<S extends Setting> implements GenericTy
    public S merge(MetaData paramMetaData, S paramSetting) {
       MergeSetting paramMergeSetting = new MergeSetting();
       paramMergeSetting.setSetting(paramSetting);
-      MergeSettingResponse mergeSettingResponse = getSettingWebServiceImpl().mergeSetting(paramMergeSetting,
-            paramMetaData);
+      MergeSettingResponse mergeSettingResponse = getSettingWebServiceImpl().mergeSetting(paramMergeSetting, paramMetaData);
       return (S) mergeSettingResponse.getReturn();
    }
 
@@ -91,8 +87,7 @@ public class SettingWebServiceRepository<S extends Setting> implements GenericTy
    public S persist(MetaData paramMetaData, S paramSetting) {
       PersistSetting paramPersistSetting = new PersistSetting();
       paramPersistSetting.setSetting(paramSetting);
-      PersistSettingResponse persistSettingResponse = getSettingWebServiceImpl().persistSetting(paramPersistSetting,
-            paramMetaData);
+      PersistSettingResponse persistSettingResponse = getSettingWebServiceImpl().persistSetting(paramPersistSetting, paramMetaData);
       return (S) persistSettingResponse.getReturn();
    }
 
@@ -101,8 +96,7 @@ public class SettingWebServiceRepository<S extends Setting> implements GenericTy
    public S refresh(MetaData paramMetaData, S paramSetting) {
       RefreshSetting paramRefresSetting = new RefreshSetting();
       paramRefresSetting.setSetting(paramSetting);
-      RefreshSettingResponse refresSettingResponse = getSettingWebServiceImpl().refreshSetting(paramRefresSetting,
-            paramMetaData);
+      RefreshSettingResponse refresSettingResponse = getSettingWebServiceImpl().refreshSetting(paramRefresSetting, paramMetaData);
       return (S) refresSettingResponse.getReturn();
    }
 

@@ -16,7 +16,7 @@ public class SettingDataProvider<S extends Setting> extends AbstractGenericTypeD
    private static final long serialVersionUID = -919053464359522143L;
 
    @Resource(name = "SettingWebServiceRepository")
-   private GenericTypeWebServiceRepository<S> settingWebServiceRepository;
+   private transient GenericTypeWebServiceRepository<S> settingWebServiceRepository;
 
    @SuppressWarnings("unchecked")
    public SettingDataProvider() {

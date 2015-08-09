@@ -48,8 +48,7 @@ public class GroupWebServiceRepository<G extends Group> implements GenericTypeWe
    public G find(MetaData paramMetaData, G paramGroup) {
       FindGroupById paramFindGroupById = new FindGroupById();
       paramFindGroupById.setGroup(paramGroup);
-      FindGroupByIdResponse findGroupByIdResponse = getGroupWebServiceImpl().findGroupById(paramFindGroupById,
-            paramMetaData);
+      FindGroupByIdResponse findGroupByIdResponse = getGroupWebServiceImpl().findGroupById(paramFindGroupById, paramMetaData);
       return (G) findGroupByIdResponse.getReturn();
 
    }
@@ -67,8 +66,7 @@ public class GroupWebServiceRepository<G extends Group> implements GenericTypeWe
 
    private GroupWebServiceImpl getGroupWebServiceImpl() {
       if (groupWebServiceImpl == null) {
-         GroupWebServiceImplService groupWebServiceImplService = new GroupWebServiceImplService(
-               GroupWebServiceImplService.WSDL_LOCATION);
+         GroupWebServiceImplService groupWebServiceImplService = new GroupWebServiceImplService(GroupWebServiceImplService.WSDL_LOCATION);
          groupWebServiceImpl = groupWebServiceImplService.getGroupWebServiceImplPort();
       }
 
@@ -89,8 +87,7 @@ public class GroupWebServiceRepository<G extends Group> implements GenericTypeWe
    public G persist(MetaData paramMetaData, G paramGroup) {
       PersistGroup paramPersistGroup = new PersistGroup();
       paramPersistGroup.setGroup(paramGroup);
-      PersistGroupResponse persistGroupResponse = getGroupWebServiceImpl().persistGroup(paramPersistGroup,
-            paramMetaData);
+      PersistGroupResponse persistGroupResponse = getGroupWebServiceImpl().persistGroup(paramPersistGroup, paramMetaData);
       return (G) persistGroupResponse.getReturn();
    }
 

@@ -39,8 +39,7 @@ public class ProductWebServiceRepository<P extends Product> implements GenericTy
    public long count(MetaData paramMetaData, P paramProduct) {
       CountProduct paramCountProduct = new CountProduct();
       paramCountProduct.setProduct(paramProduct);
-      CountProductResponse countProductResponse = getProductWebServiceImpl().countProduct(paramCountProduct,
-            paramMetaData);
+      CountProductResponse countProductResponse = getProductWebServiceImpl().countProduct(paramCountProduct, paramMetaData);
       return countProductResponse.getReturn();
    }
 
@@ -49,8 +48,7 @@ public class ProductWebServiceRepository<P extends Product> implements GenericTy
    public P find(MetaData paramMetaData, P paramProduct) {
       FindProductById paramFindProductById = new FindProductById();
       paramFindProductById.setProduct(paramProduct);
-      FindProductByIdResponse findProductByIdResponse = getProductWebServiceImpl().findProductById(
-            paramFindProductById, paramMetaData);
+      FindProductByIdResponse findProductByIdResponse = getProductWebServiceImpl().findProductById(paramFindProductById, paramMetaData);
       return (P) findProductByIdResponse.getReturn();
 
    }
@@ -69,8 +67,7 @@ public class ProductWebServiceRepository<P extends Product> implements GenericTy
 
    private ProductWebServiceImpl getProductWebServiceImpl() {
       if (productWebServiceImpl == null) {
-         ProductWebServiceImplService productWebServiceImplService = new ProductWebServiceImplService(
-               ProductWebServiceImplService.WSDL_LOCATION);
+         ProductWebServiceImplService productWebServiceImplService = new ProductWebServiceImplService(ProductWebServiceImplService.WSDL_LOCATION);
          productWebServiceImpl = productWebServiceImplService.getProductWebServiceImplPort();
       }
 
@@ -82,8 +79,7 @@ public class ProductWebServiceRepository<P extends Product> implements GenericTy
    public P merge(MetaData paramMetaData, P paramProduct) {
       MergeProduct paramMergeProduct = new MergeProduct();
       paramMergeProduct.setProduct(paramProduct);
-      MergeProductResponse mergeProductResponse = getProductWebServiceImpl().mergeProduct(paramMergeProduct,
-            paramMetaData);
+      MergeProductResponse mergeProductResponse = getProductWebServiceImpl().mergeProduct(paramMergeProduct, paramMetaData);
       return (P) mergeProductResponse.getReturn();
    }
 
@@ -92,8 +88,7 @@ public class ProductWebServiceRepository<P extends Product> implements GenericTy
    public P persist(MetaData paramMetaData, P paramProduct) {
       PersistProduct paramPersistProduct = new PersistProduct();
       paramPersistProduct.setProduct(paramProduct);
-      PersistProductResponse persistProductResponse = getProductWebServiceImpl().persistProduct(paramPersistProduct,
-            paramMetaData);
+      PersistProductResponse persistProductResponse = getProductWebServiceImpl().persistProduct(paramPersistProduct, paramMetaData);
       return (P) persistProductResponse.getReturn();
    }
 
@@ -102,8 +97,7 @@ public class ProductWebServiceRepository<P extends Product> implements GenericTy
    public P refresh(MetaData paramMetaData, P paramProduct) {
       RefreshProduct paramRefresProduct = new RefreshProduct();
       paramRefresProduct.setProduct(paramProduct);
-      RefreshProductResponse refresProductResponse = getProductWebServiceImpl().refreshProduct(paramRefresProduct,
-            paramMetaData);
+      RefreshProductResponse refresProductResponse = getProductWebServiceImpl().refreshProduct(paramRefresProduct, paramMetaData);
       return (P) refresProductResponse.getReturn();
    }
 

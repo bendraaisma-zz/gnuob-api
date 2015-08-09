@@ -48,8 +48,7 @@ public class OrderWebServiceRepository<O extends Order> implements GenericTypeWe
    public O find(MetaData paramMetaData, O paramOrder) {
       FindOrderById paramFindOrderById = new FindOrderById();
       paramFindOrderById.setOrder(paramOrder);
-      FindOrderByIdResponse findOrderByIdResponse = getOrderWebServiceImpl().findOrderById(paramFindOrderById,
-            paramMetaData);
+      FindOrderByIdResponse findOrderByIdResponse = getOrderWebServiceImpl().findOrderById(paramFindOrderById, paramMetaData);
       return (O) findOrderByIdResponse.getReturn();
    }
 
@@ -66,8 +65,7 @@ public class OrderWebServiceRepository<O extends Order> implements GenericTypeWe
 
    private OrderWebServiceImpl getOrderWebServiceImpl() {
       if (orderWebServiceImpl == null) {
-         OrderWebServiceImplService orderWebServiceImplService = new OrderWebServiceImplService(
-               OrderWebServiceImplService.WSDL_LOCATION);
+         OrderWebServiceImplService orderWebServiceImplService = new OrderWebServiceImplService(OrderWebServiceImplService.WSDL_LOCATION);
          orderWebServiceImpl = orderWebServiceImplService.getOrderWebServiceImplPort();
       }
       return orderWebServiceImpl;
@@ -87,8 +85,7 @@ public class OrderWebServiceRepository<O extends Order> implements GenericTypeWe
    public O persist(MetaData paramMetaData, O paramOrder) {
       PersistOrder paramPersistOrder = new PersistOrder();
       paramPersistOrder.setOrder(paramOrder);
-      PersistOrderResponse persistOrderResponse = getOrderWebServiceImpl().persistOrder(paramPersistOrder,
-            paramMetaData);
+      PersistOrderResponse persistOrderResponse = getOrderWebServiceImpl().persistOrder(paramPersistOrder, paramMetaData);
       return (O) persistOrderResponse.getReturn();
    }
 
@@ -97,8 +94,7 @@ public class OrderWebServiceRepository<O extends Order> implements GenericTypeWe
    public O refresh(MetaData paramMetaData, O paramOrder) {
       RefreshOrder paramRefreshOrder = new RefreshOrder();
       paramRefreshOrder.setOrder(paramOrder);
-      RefreshOrderResponse refreshOrderResponse = getOrderWebServiceImpl().refreshOrder(paramRefreshOrder,
-            paramMetaData);
+      RefreshOrderResponse refreshOrderResponse = getOrderWebServiceImpl().refreshOrder(paramRefreshOrder, paramMetaData);
       return (O) refreshOrderResponse.getReturn();
    }
 

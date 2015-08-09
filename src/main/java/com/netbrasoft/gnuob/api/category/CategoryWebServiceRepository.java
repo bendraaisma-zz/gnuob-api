@@ -40,8 +40,7 @@ public class CategoryWebServiceRepository<C extends Category> implements Generic
    public long count(MetaData paramMetaData, C paramCategory) {
       CountCategory paramCountCategory = new CountCategory();
       paramCountCategory.setCategory(paramCategory);
-      CountCategoryResponse countCategoryResponse = getCategoryWebServiceImpl().countCategory(paramCountCategory,
-            paramMetaData);
+      CountCategoryResponse countCategoryResponse = getCategoryWebServiceImpl().countCategory(paramCountCategory, paramMetaData);
       return countCategoryResponse.getReturn();
    }
 
@@ -50,8 +49,7 @@ public class CategoryWebServiceRepository<C extends Category> implements Generic
    public C find(MetaData paramMetaData, C paramCategory) {
       FindCategoryById paramFindCategoryById = new FindCategoryById();
       paramFindCategoryById.setCategory(paramCategory);
-      FindCategoryByIdResponse findCategoryByIdResponse = getCategoryWebServiceImpl().findCategoryById(
-            paramFindCategoryById, paramMetaData);
+      FindCategoryByIdResponse findCategoryByIdResponse = getCategoryWebServiceImpl().findCategoryById(paramFindCategoryById, paramMetaData);
       return (C) findCategoryByIdResponse.getReturn();
 
    }
@@ -63,16 +61,14 @@ public class CategoryWebServiceRepository<C extends Category> implements Generic
       paramFindCategory.setCategory(paramCategory);
       paramFindCategory.setPaging(paramPaging);
       paramFindCategory.setOrderBy(paramOrderBy);
-      FindCategoryResponse findCategoryResponse = getCategoryWebServiceImpl().findCategory(paramFindCategory,
-            paramMetaData);
+      FindCategoryResponse findCategoryResponse = getCategoryWebServiceImpl().findCategory(paramFindCategory, paramMetaData);
       return (List<C>) findCategoryResponse.getReturn();
    }
 
    private CategoryWebServiceImpl getCategoryWebServiceImpl() {
 
       if (categoryWebServiceImpl == null) {
-         CategoryWebServiceImplService categoryWebServiceImplService = new CategoryWebServiceImplService(
-               CategoryWebServiceImplService.WSDL_LOCATION);
+         CategoryWebServiceImplService categoryWebServiceImplService = new CategoryWebServiceImplService(CategoryWebServiceImplService.WSDL_LOCATION);
          categoryWebServiceImpl = categoryWebServiceImplService.getCategoryWebServiceImplPort();
       }
 
@@ -84,8 +80,7 @@ public class CategoryWebServiceRepository<C extends Category> implements Generic
    public C merge(MetaData paramMetaData, C paramCategory) {
       MergeCategory paramMergeCategory = new MergeCategory();
       paramMergeCategory.setCategory(paramCategory);
-      MergeCategoryResponse mergeCategoryResponse = getCategoryWebServiceImpl().mergeCategory(paramMergeCategory,
-            paramMetaData);
+      MergeCategoryResponse mergeCategoryResponse = getCategoryWebServiceImpl().mergeCategory(paramMergeCategory, paramMetaData);
       return (C) mergeCategoryResponse.getReturn();
    }
 
@@ -94,8 +89,7 @@ public class CategoryWebServiceRepository<C extends Category> implements Generic
    public C persist(MetaData paramMetaData, C paramCategory) {
       PersistCategory paramPersistCategory = new PersistCategory();
       paramPersistCategory.setCategory(paramCategory);
-      PersistCategoryResponse persistCategoryResponse = getCategoryWebServiceImpl().persistCategory(
-            paramPersistCategory, paramMetaData);
+      PersistCategoryResponse persistCategoryResponse = getCategoryWebServiceImpl().persistCategory(paramPersistCategory, paramMetaData);
       return (C) persistCategoryResponse.getReturn();
    }
 
@@ -104,8 +98,7 @@ public class CategoryWebServiceRepository<C extends Category> implements Generic
    public C refresh(MetaData paramMetaData, C paramCategory) {
       RefreshCategory paramRefresCategory = new RefreshCategory();
       paramRefresCategory.setCategory(paramCategory);
-      RefreshCategoryResponse refreshCategoryResponse = getCategoryWebServiceImpl().refreshCategory(
-            paramRefresCategory, paramMetaData);
+      RefreshCategoryResponse refreshCategoryResponse = getCategoryWebServiceImpl().refreshCategory(paramRefresCategory, paramMetaData);
       return (C) refreshCategoryResponse.getReturn();
    }
 

@@ -48,8 +48,7 @@ public class OfferWebServiceRepository<O extends Offer> implements GenericTypeWe
    public O find(MetaData paramMetaData, O paramOffer) {
       FindOfferById paramFindOfferById = new FindOfferById();
       paramFindOfferById.setOffer(paramOffer);
-      FindOfferByIdResponse findOfferByIdResponse = getOfferWebServiceImpl().findOfferById(paramFindOfferById,
-            paramMetaData);
+      FindOfferByIdResponse findOfferByIdResponse = getOfferWebServiceImpl().findOfferById(paramFindOfferById, paramMetaData);
       return (O) findOfferByIdResponse.getReturn();
 
    }
@@ -67,8 +66,7 @@ public class OfferWebServiceRepository<O extends Offer> implements GenericTypeWe
 
    private OfferWebServiceImpl getOfferWebServiceImpl() {
       if (offerWebServiceImpl == null) {
-         OfferWebServiceImplService offerWebServiceImplService = new OfferWebServiceImplService(
-               OfferWebServiceImplService.WSDL_LOCATION);
+         OfferWebServiceImplService offerWebServiceImplService = new OfferWebServiceImplService(OfferWebServiceImplService.WSDL_LOCATION);
          offerWebServiceImpl = offerWebServiceImplService.getOfferWebServiceImplPort();
       }
       return offerWebServiceImpl;
@@ -88,8 +86,7 @@ public class OfferWebServiceRepository<O extends Offer> implements GenericTypeWe
    public O persist(MetaData paramMetaData, O paramOffer) {
       PersistOffer paramPersistOffer = new PersistOffer();
       paramPersistOffer.setOffer(paramOffer);
-      PersistOfferResponse persistOfferResponse = getOfferWebServiceImpl().persistOffer(paramPersistOffer,
-            paramMetaData);
+      PersistOfferResponse persistOfferResponse = getOfferWebServiceImpl().persistOffer(paramPersistOffer, paramMetaData);
       return (O) persistOfferResponse.getReturn();
    }
 

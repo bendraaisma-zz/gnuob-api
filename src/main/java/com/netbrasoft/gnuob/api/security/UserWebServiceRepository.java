@@ -48,8 +48,7 @@ public class UserWebServiceRepository<U extends User> implements GenericTypeWebS
    public U find(MetaData paramMetaData, U paramUser) {
       FindUserById paramFindUserById = new FindUserById();
       paramFindUserById.setUser(paramUser);
-      FindUserByIdResponse findUserByIdResponse = getUserWebServiceImpl()
-            .findUserById(paramFindUserById, paramMetaData);
+      FindUserByIdResponse findUserByIdResponse = getUserWebServiceImpl().findUserById(paramFindUserById, paramMetaData);
       return (U) findUserByIdResponse.getReturn();
 
    }
@@ -67,8 +66,7 @@ public class UserWebServiceRepository<U extends User> implements GenericTypeWebS
 
    private UserWebServiceImpl getUserWebServiceImpl() {
       if (userWebServiceImpl == null) {
-         UserWebServiceImplService userWebServiceImplService = new UserWebServiceImplService(
-               UserWebServiceImplService.WSDL_LOCATION);
+         UserWebServiceImplService userWebServiceImplService = new UserWebServiceImplService(UserWebServiceImplService.WSDL_LOCATION);
          userWebServiceImpl = userWebServiceImplService.getUserWebServiceImplPort();
       }
 

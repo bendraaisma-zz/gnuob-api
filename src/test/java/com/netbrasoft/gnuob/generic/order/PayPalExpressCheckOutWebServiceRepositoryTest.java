@@ -82,20 +82,23 @@ public class PayPalExpressCheckOutWebServiceRepositoryTest {
       address.setStateOrProvince("Espirito Santo");
       address.setPostalCode("29072-230");
 
+      customer.setActive(true);
       customer.setFirstName("Bernard Arjan");
       customer.setLastName("Draaisma");
       customer.setBuyerEmail("MRzEPsqD@netbrasoft.com");
-      customer.setAdress(address);
+      customer.setAddress(address);
       customer.setDateOfBirth("2014-12-31");
 
+      contract.setActive(true);
       contract.setCustomer(customer);
 
+      product.setActive(true);
       product.setName(UUID.randomUUID().toString());
       product.setDescription(UUID.randomUUID().toString());
       product.setNumber(UUID.randomUUID().toString());
       product.setAmount(BigDecimal.valueOf(10.00));
-      product.setTax(BigDecimal.ZERO);
-      product.setDiscount(BigDecimal.ZERO);
+      product.setTax(BigDecimal.valueOf(2.75));
+      product.setDiscount(BigDecimal.ONE);
       product.setRecommended(randomGenerator.nextBoolean());
       product.setRating(randomGenerator.nextInt());
       product.setBestsellers(randomGenerator.nextBoolean());
@@ -121,10 +124,10 @@ public class PayPalExpressCheckOutWebServiceRepositoryTest {
       shipment.setShipmentType("NOT_SPECIFIED");
       shipment.setAddress(address);
 
-      order.setInsuranceTotal(BigDecimal.ZERO);
-      order.setHandlingTotal(BigDecimal.ZERO);
-      order.setExtraAmount(BigDecimal.ZERO);
-      order.setShippingDiscount(BigDecimal.ZERO);
+      order.setActive(true);
+      order.setInsuranceTotal(BigDecimal.valueOf(3.99));
+      order.setHandlingTotal(BigDecimal.valueOf(0.63));
+      order.setShippingDiscount(BigDecimal.ONE);
       order.setContract(contract);
       order.setInvoice(invoice);
       order.setShipment(shipment);
@@ -157,8 +160,7 @@ public class PayPalExpressCheckOutWebServiceRepositoryTest {
 
       WebDriverWait webDriverWait = new WebDriverWait(driver, 60);
 
-      driver.get("https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token="
-            + checkoutOrder.getToken());
+      driver.get("https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=" + checkoutOrder.getToken());
       webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("loadLogin")));
       driver.findElement(By.id("loadLogin")).click();
       webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("login_password")));
@@ -177,12 +179,11 @@ public class PayPalExpressCheckOutWebServiceRepositoryTest {
       Order checkoutDetailsOrder = payPalExpressCheckOutWebServiceRepository.doCheckoutDetails(metaData, checkoutOrder);
       checkoutDetailsOrder = orderWebServiceRepository.find(metaData, checkoutDetailsOrder);
 
-      Order checkoutPaymentOrder = payPalExpressCheckOutWebServiceRepository.doCheckoutPayment(metaData,
-            checkoutDetailsOrder);
+      Order checkoutPaymentOrder = payPalExpressCheckOutWebServiceRepository.doCheckoutPayment(metaData, checkoutDetailsOrder);
       checkoutPaymentOrder = orderWebServiceRepository.find(metaData, checkoutPaymentOrder);
 
       Assert.assertNotNull("Order transaction id has no value.", checkoutPaymentOrder.getTransactionId());
-
+      Assert.assertEquals(BigDecimal.valueOf(23.32), checkoutPaymentOrder.getOrderTotal());
    }
 
 }

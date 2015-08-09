@@ -39,8 +39,7 @@ public class ContentWebServiceRepository<C extends Content> implements GenericTy
    public long count(MetaData paramMetaData, C paramContent) {
       CountContent paramCountContent = new CountContent();
       paramCountContent.setContent(paramContent);
-      CountContentResponse countContentResponse = getContentWebServiceImpl().countContent(paramCountContent,
-            paramMetaData);
+      CountContentResponse countContentResponse = getContentWebServiceImpl().countContent(paramCountContent, paramMetaData);
       return countContentResponse.getReturn();
    }
 
@@ -49,8 +48,7 @@ public class ContentWebServiceRepository<C extends Content> implements GenericTy
    public C find(MetaData paramMetaData, C paramContent) {
       FindContentById paramFindContentById = new FindContentById();
       paramFindContentById.setContent(paramContent);
-      FindContentByIdResponse findContentByIdResponse = getContentWebServiceImpl().findContentById(
-            paramFindContentById, paramMetaData);
+      FindContentByIdResponse findContentByIdResponse = getContentWebServiceImpl().findContentById(paramFindContentById, paramMetaData);
       return (C) findContentByIdResponse.getReturn();
 
    }
@@ -68,8 +66,7 @@ public class ContentWebServiceRepository<C extends Content> implements GenericTy
 
    private ContentWebServiceImpl getContentWebServiceImpl() {
       if (contentWebServiceImpl == null) {
-         ContentWebServiceImplService contentWebServiceImplService = new ContentWebServiceImplService(
-               ContentWebServiceImplService.WSDL_LOCATION);
+         ContentWebServiceImplService contentWebServiceImplService = new ContentWebServiceImplService(ContentWebServiceImplService.WSDL_LOCATION);
          contentWebServiceImpl = contentWebServiceImplService.getContentWebServiceImplPort();
       }
       return contentWebServiceImpl;
@@ -80,8 +77,7 @@ public class ContentWebServiceRepository<C extends Content> implements GenericTy
    public C merge(MetaData paramMetaData, C paramContent) {
       MergeContent paramMergeContent = new MergeContent();
       paramMergeContent.setContent(paramContent);
-      MergeContentResponse mergeContentResponse = getContentWebServiceImpl().mergeContent(paramMergeContent,
-            paramMetaData);
+      MergeContentResponse mergeContentResponse = getContentWebServiceImpl().mergeContent(paramMergeContent, paramMetaData);
       return (C) mergeContentResponse.getReturn();
    }
 
@@ -90,8 +86,7 @@ public class ContentWebServiceRepository<C extends Content> implements GenericTy
    public C persist(MetaData paramMetaData, C paramContent) {
       PersistContent paramPersistContent = new PersistContent();
       paramPersistContent.setContent(paramContent);
-      PersistContentResponse persistContentResponse = getContentWebServiceImpl().persistContent(paramPersistContent,
-            paramMetaData);
+      PersistContentResponse persistContentResponse = getContentWebServiceImpl().persistContent(paramPersistContent, paramMetaData);
       return (C) persistContentResponse.getReturn();
    }
 
@@ -100,8 +95,7 @@ public class ContentWebServiceRepository<C extends Content> implements GenericTy
    public C refresh(MetaData paramMetaData, C paramContent) {
       RefreshContent paramRefresContent = new RefreshContent();
       paramRefresContent.setContent(paramContent);
-      RefreshContentResponse refresContentResponse = getContentWebServiceImpl().refreshContent(paramRefresContent,
-            paramMetaData);
+      RefreshContentResponse refresContentResponse = getContentWebServiceImpl().refreshContent(paramRefresContent, paramMetaData);
       return (C) refresContentResponse.getReturn();
    }
 

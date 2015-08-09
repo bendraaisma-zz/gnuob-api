@@ -48,8 +48,7 @@ public class SiteWebServiceRepository<S extends Site> implements GenericTypeWebS
    public S find(MetaData paramMetaData, S paramSite) {
       FindSiteById paramFindSiteById = new FindSiteById();
       paramFindSiteById.setSite(paramSite);
-      FindSiteByIdResponse findSiteByIdResponse = getSiteWebServiceImpl()
-            .findSiteById(paramFindSiteById, paramMetaData);
+      FindSiteByIdResponse findSiteByIdResponse = getSiteWebServiceImpl().findSiteById(paramFindSiteById, paramMetaData);
       return (S) findSiteByIdResponse.getReturn();
 
    }
@@ -67,8 +66,7 @@ public class SiteWebServiceRepository<S extends Site> implements GenericTypeWebS
 
    private SiteWebServiceImpl getSiteWebServiceImpl() {
       if (siteWebServiceImpl == null) {
-         SiteWebServiceImplService siteWebServiceImplService = new SiteWebServiceImplService(
-               SiteWebServiceImplService.WSDL_LOCATION);
+         SiteWebServiceImplService siteWebServiceImplService = new SiteWebServiceImplService(SiteWebServiceImplService.WSDL_LOCATION);
          siteWebServiceImpl = siteWebServiceImplService.getSiteWebServiceImplPort();
       }
 

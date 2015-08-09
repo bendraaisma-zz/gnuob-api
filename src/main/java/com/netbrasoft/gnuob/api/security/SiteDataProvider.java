@@ -16,7 +16,7 @@ public class SiteDataProvider<S extends Site> extends AbstractGenericTypeDataPro
    private static final long serialVersionUID = -8167982674192813819L;
 
    @Resource(name = "SiteWebServiceRepository")
-   private GenericTypeWebServiceRepository<S> siteWebServiceRepository;
+   private transient GenericTypeWebServiceRepository<S> siteWebServiceRepository;
 
    @SuppressWarnings("unchecked")
    public SiteDataProvider() {

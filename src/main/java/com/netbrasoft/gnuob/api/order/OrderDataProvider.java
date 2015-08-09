@@ -11,8 +11,7 @@ import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 
 @Monitored
 @Controller("OrderDataProvider")
-public class OrderDataProvider<O extends Order> extends AbstractGenericTypeDataProvider<O> implements
-      OrderCheckoutDataProvider<O> {
+public class OrderDataProvider<O extends Order> extends AbstractGenericTypeDataProvider<O>implements GenericOrderCheckoutDataProvider<O> {
 
    public enum CheckOut {
       PAY_PAL, PAGSEGURO;
@@ -29,13 +28,13 @@ public class OrderDataProvider<O extends Order> extends AbstractGenericTypeDataP
    private static final long serialVersionUID = 1434788743241708993L;
 
    @Resource(name = "OrderWebServiceRepository")
-   private GenericTypeWebServiceRepository<O> orderWebServiceRepository;
+   private transient GenericTypeWebServiceRepository<O> orderWebServiceRepository;
 
    @Resource(name = "PayPalExpressCheckOutWebServiceRepository")
-   private CheckoutWebServiceRepository<O> payPalExpressCheckoutWebServiceRepository;
+   private transient CheckoutWebServiceRepository<O> payPalExpressCheckoutWebServiceRepository;
 
    @Resource(name = "PagseguroCheckOutWebServiceRepository")
-   private CheckoutWebServiceRepository<O> pagseguroCheckoutWebServiceRepository;
+   private transient CheckoutWebServiceRepository<O> pagseguroCheckoutWebServiceRepository;
 
    private CheckOut checkOut;
 
@@ -47,32 +46,55 @@ public class OrderDataProvider<O extends Order> extends AbstractGenericTypeDataP
 
    @Override
    public O doCheckout(O paramOrder) {
-      switch (checkOut) {
-      case PAGSEGURO:
+      if (checkOut == CheckOut.PAGSEGURO) {
          return pagseguroCheckoutWebServiceRepository.doCheckout(metaData, paramOrder);
-      default:
-         return payPalExpressCheckoutWebServiceRepository.doCheckout(metaData, paramOrder);
       }
+      return payPalExpressCheckoutWebServiceRepository.doCheckout(metaData, paramOrder);
    }
 
    @Override
    public O doCheckoutDetails(O paramOrder) {
-      switch (checkOut) {
-      case PAGSEGURO:
+      if (checkOut == CheckOut.PAGSEGURO) {
          return pagseguroCheckoutWebServiceRepository.doCheckoutDetails(metaData, paramOrder);
-      default:
-         return payPalExpressCheckoutWebServiceRepository.doCheckoutDetails(metaData, paramOrder);
       }
+      return payPalExpressCheckoutWebServiceRepository.doCheckoutDetails(metaData, paramOrder);
    }
 
    @Override
    public O doCheckoutPayment(O paramOrder) {
-      switch (checkOut) {
-      case PAGSEGURO:
+      if (checkOut == CheckOut.PAGSEGURO) {
          return pagseguroCheckoutWebServiceRepository.doCheckoutPayment(metaData, paramOrder);
-      default:
-         return payPalExpressCheckoutWebServiceRepository.doCheckoutPayment(metaData, paramOrder);
       }
+      return payPalExpressCheckoutWebServiceRepository.doCheckoutPayment(metaData, paramOrder);
+   }
+
+   @Override
+   public O doNotification(O paramOrder) {
+      if (checkOut == CheckOut.PAGSEGURO) {
+         return pagseguroCheckoutWebServiceRepository.doNotification(metaData, paramOrder);
+      }
+      return payPalExpressCheckoutWebServiceRepository.doNotification(metaData, paramOrder);
+   }
+
+   @Override
+   public O doRefundTransaction(O paramOrder) {
+      if (checkOut == CheckOut.PAGSEGURO) {
+         return pagseguroCheckoutWebServiceRepository.doRefundTransaction(metaData, paramOrder);
+      }
+      return payPalExpressCheckoutWebServiceRepository.doRefundTransaction(metaData, paramOrder);
+   }
+
+   @Override
+   public O doTransactionDetails(O paramOrder) {
+      if (checkOut == CheckOut.PAGSEGURO) {
+         return pagseguroCheckoutWebServiceRepository.doTransactionDetails(metaData, paramOrder);
+      }
+      return payPalExpressCheckoutWebServiceRepository.doTransactionDetails(metaData, paramOrder);
+   }
+
+   @Override
+   public CheckOut getCheckOut() {
+      return checkOut;
    }
 
    @Override
@@ -80,6 +102,7 @@ public class OrderDataProvider<O extends Order> extends AbstractGenericTypeDataP
       return orderWebServiceRepository;
    }
 
+   @Override
    public void setCheckOut(CheckOut checkOut) {
       this.checkOut = checkOut;
    }

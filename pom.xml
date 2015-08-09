@@ -4,7 +4,7 @@
 
 	<groupId>com.netbrasoft.gnuob</groupId>
 	<artifactId>gnuob-api</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>GNU Open Business Platform</name>
 	<description>GNU Open Business Platform is a open source business framework</description>
@@ -21,10 +21,14 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<version.jar.plugin>2.5</version.jar.plugin>
-		<version.springframework.plugin>4.1.0.RELEASE</version.springframework.plugin>
-		<version.wicket.plugin>7.0.0-M5</version.wicket.plugin>
-		<version.surefire.plugin>2.10</version.surefire.plugin>
-		<javasimon.version>4.0.1</javasimon.version>
+		<version.springframework.plugin>4.1.7.RELEASE</version.springframework.plugin>
+		<version.wicket.plugin>7.0.0</version.wicket.plugin>
+		<version.surefire.plugin>2.17</version.surefire.plugin>
+		<version.javasimon>4.0.1</version.javasimon>
+		<version.PBKDF2>1.1.0</version.PBKDF2>
+		<version.picketbox>4.9.2.Final</version.picketbox>
+		<version.mockito-all>1.9.5</version.mockito-all>
+		<version.graphene-webdriver>2.0.3.Final</version.graphene-webdriver>
 
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -34,22 +38,22 @@
 		<dependencies>
 			<dependency>
 				<groupId>org.wildfly.bom</groupId>
-				<artifactId>jboss-javaee-7.0-with-all</artifactId>
-				<version>8.1.0.Final</version>
+				<artifactId>jboss-javaee-7.0-wildfly-with-tools</artifactId>
+				<version>9.0.1.Final</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.arquillian</groupId>
+				<artifactId>arquillian-bom</artifactId>
+				<version>1.1.8.Final</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.jboss.arquillian.extension</groupId>
 				<artifactId>arquillian-drone-bom</artifactId>
-				<version>1.3.1.Final</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.jboss.arquillian.selenium</groupId>
-				<artifactId>selenium-bom</artifactId>
-				<version>2.43.1</version>
+				<version>1.3.0.Final</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -57,40 +61,39 @@
 	</dependencyManagement>
 
 	<dependencies>
+
+		<!-- JBOSS Etc. -->
+
+		<dependency>
+			<groupId>org.jboss.arquillian.graphene</groupId>
+			<artifactId>graphene-webdriver</artifactId>
+			<type>pom</type>
+			<scope>test</scope>
+		</dependency>
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-all</artifactId>
-			<version>1.9.5</version>
-			<scope>test</scope>
-		</dependency>
+
 		<dependency>
 			<groupId>org.jboss.arquillian.junit</groupId>
 			<artifactId>arquillian-junit-container</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.jboss.arquillian.protocol</groupId>
-			<artifactId>arquillian-protocol-servlet</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.arquillian.graphene</groupId>
-			<artifactId>graphene-webdriver</artifactId>
-			<version>2.0.3.Final</version>
-			<type>pom</type>
-			<scope>test</scope>
-		</dependency>
+
+		<!-- SPRING -->
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>${version.springframework.plugin}</version>
 			<scope>compile</scope>
 		</dependency>
+
+		<!-- WICKET -->
+
 		<dependency>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-core</artifactId>
@@ -103,12 +106,29 @@
 			<version>${version.wicket.plugin}</version>
 			<scope>compile</scope>
 		</dependency>
-		<!-- Core JAR is absolutely necessary to use Simons (Stopwatch, etc.) -->
+
+		<!-- SIMON -->
+
 		<dependency>
 			<groupId>org.javasimon</groupId>
 			<artifactId>javasimon-core</artifactId>
-			<version>${javasimon.version}</version>
+			<version>${version.javasimon}</version>
 			<scope>compile</scope>
+		</dependency>
+
+		<!-- UTILS -->
+
+		<dependency>
+			<groupId>org.picketbox</groupId>
+			<artifactId>picketbox</artifactId>
+			<version>${version.picketbox}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>de.rtner</groupId>
+			<artifactId>PBKDF2</artifactId>
+			<version>${version.PBKDF2}</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
@@ -119,7 +139,17 @@
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>${version.jar.plugin}</version>
 				<configuration>
-					<useDefaultManifestFile>true</useDefaultManifestFile>
+					<archive>
+						<manifestEntries>
+							<mode>development</mode>
+							<url>${project.url}</url>
+							<dependencies>org.apache.cxf services,org.apache.cxf.impl</dependencies>
+						</manifestEntries>
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+						</manifest>
+					</archive>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -152,7 +182,7 @@
 			<id>arq-jbossas-managed</id>
 			<dependencies>
 				<dependency>
-					<groupId>org.wildfly</groupId>
+					<groupId>org.wildfly.arquillian</groupId>
 					<artifactId>wildfly-arquillian-container-remote</artifactId>
 					<scope>test</scope>
 				</dependency>
@@ -178,4 +208,8 @@
 		</profile>
 	</profiles>
 
+	<organization>
+		<name>Netbrasoft</name>
+		<url>www.netbrasoft.com</url>
+	</organization>
 </project>

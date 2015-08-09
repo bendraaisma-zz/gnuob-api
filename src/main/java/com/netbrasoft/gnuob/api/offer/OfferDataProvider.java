@@ -16,7 +16,7 @@ public class OfferDataProvider<C extends Offer> extends AbstractGenericTypeDataP
    private static final long serialVersionUID = -1570846724067511139L;
 
    @Resource(name = "OfferWebServiceRepository")
-   private GenericTypeWebServiceRepository<C> offerWebServiceRepository;
+   private transient GenericTypeWebServiceRepository<C> offerWebServiceRepository;
 
    @SuppressWarnings("unchecked")
    public OfferDataProvider() {

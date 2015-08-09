@@ -13,6 +13,7 @@ import org.junit.runner.RunWith;
 import com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException_Exception;
 import com.netbrasoft.gnuob.api.Group;
 import com.netbrasoft.gnuob.api.MetaData;
+import com.netbrasoft.gnuob.api.Role;
 import com.netbrasoft.gnuob.api.Rule;
 import com.netbrasoft.gnuob.api.Site;
 import com.netbrasoft.gnuob.api.User;
@@ -27,7 +28,7 @@ public class GroupWebServiceRepositoryTest {
       return Utils.createDeployment();
    }
 
-   private GroupWebServiceRepository<Group> groupWebServiceRepository = new GroupWebServiceRepository<Group>();
+   private final GroupWebServiceRepository<Group> groupWebServiceRepository = new GroupWebServiceRepository<Group>();
 
    private MetaData metaData = null;
    private User user = null;
@@ -48,7 +49,7 @@ public class GroupWebServiceRepositoryTest {
       user.setName(UUID.randomUUID().toString());
       user.setDescription(UUID.randomUUID().toString());
       user.setPassword(UUID.randomUUID().toString());
-      user.setRole(UUID.randomUUID().toString());
+      user.getRoles().add(Role.ADMINISTRATOR);
       user.setAccess(Rule.NONE_ACCESS);
 
       group.setName(UUID.randomUUID().toString());
@@ -63,12 +64,12 @@ public class GroupWebServiceRepositoryTest {
 
    @Test
    public void testFindGroup() throws GNUOpenBusinessServiceException_Exception {
-      String groupName = group.getName();
-      String groupDescription = group.getDescription();
+      final String groupName = group.getName();
+      final String groupDescription = group.getDescription();
 
-      Group persistGroup = groupWebServiceRepository.persist(metaData, group);
+      final Group persistGroup = groupWebServiceRepository.persist(metaData, group);
 
-      Group findGroup = groupWebServiceRepository.find(metaData, persistGroup);
+      final Group findGroup = groupWebServiceRepository.find(metaData, persistGroup);
 
       Assert.assertTrue("Group id has no value bigger than zero.", findGroup.getId() > 0);
       Assert.assertEquals("Group name is not equal.", groupName, findGroup.getName());
@@ -77,15 +78,15 @@ public class GroupWebServiceRepositoryTest {
 
    @Test
    public void testMergeGroup() throws GNUOpenBusinessServiceException_Exception {
-      String groupName = UUID.randomUUID().toString();
-      String groupDescription = UUID.randomUUID().toString();
+      final String groupName = UUID.randomUUID().toString();
+      final String groupDescription = UUID.randomUUID().toString();
 
-      Group persistGroup = groupWebServiceRepository.persist(metaData, group);
+      final Group persistGroup = groupWebServiceRepository.persist(metaData, group);
 
       persistGroup.setName(groupName);
       persistGroup.setDescription(groupDescription);
 
-      Group mergeGroup = groupWebServiceRepository.merge(metaData, persistGroup);
+      final Group mergeGroup = groupWebServiceRepository.merge(metaData, persistGroup);
 
       Assert.assertTrue("Group id has no value bigger than zero.", mergeGroup.getId() > 0);
       Assert.assertEquals("Group name is not equal.", groupName, mergeGroup.getName());
@@ -94,10 +95,10 @@ public class GroupWebServiceRepositoryTest {
 
    @Test
    public void testPersistGroup() throws GNUOpenBusinessServiceException_Exception {
-      String groupName = group.getName();
-      String groupDescription = group.getDescription();
+      final String groupName = group.getName();
+      final String groupDescription = group.getDescription();
 
-      Group persistGroup = groupWebServiceRepository.persist(metaData, group);
+      final Group persistGroup = groupWebServiceRepository.persist(metaData, group);
 
       Assert.assertTrue("Group id has no value bigger than zero.", persistGroup.getId() > 0);
       Assert.assertEquals("Group name is not equal.", groupName, persistGroup.getName());
@@ -106,15 +107,15 @@ public class GroupWebServiceRepositoryTest {
 
    @Test
    public void testRefreshGroup() throws GNUOpenBusinessServiceException_Exception {
-      Group persistGroup = groupWebServiceRepository.persist(metaData, group);
+      final Group persistGroup = groupWebServiceRepository.persist(metaData, group);
 
-      String groupName = group.getName();
-      String groupDescription = group.getDescription();
+      final String groupName = group.getName();
+      final String groupDescription = group.getDescription();
 
       persistGroup.setName(UUID.randomUUID().toString());
       persistGroup.setDescription(UUID.randomUUID().toString());
 
-      Group refreshGroup = groupWebServiceRepository.refresh(metaData, persistGroup);
+      final Group refreshGroup = groupWebServiceRepository.refresh(metaData, persistGroup);
 
       Assert.assertTrue("Group id has no value bigger than zero.", refreshGroup.getId() > 0);
       Assert.assertEquals("Group name is not equal.", groupName, refreshGroup.getName());
@@ -123,38 +124,35 @@ public class GroupWebServiceRepositoryTest {
 
    @Test
    public void testRemoveGroup() throws GNUOpenBusinessServiceException_Exception {
-      Group persistGroup = groupWebServiceRepository.persist(metaData, group);
+      final Group persistGroup = groupWebServiceRepository.persist(metaData, group);
       groupWebServiceRepository.remove(metaData, persistGroup);
 
-      Group findGroup = groupWebServiceRepository.find(metaData, persistGroup);
+      final Group findGroup = groupWebServiceRepository.find(metaData, persistGroup);
 
       Assert.assertNull("Group is found.", findGroup);
    }
 
    @Test
-   public void testRemoveUserWithGroupAndGroupButOtherUserHasNoRightToDelete()
-         throws GNUOpenBusinessServiceException_Exception {
+   public void testRemoveUserWithGroupAndGroupButOtherUserHasNoRightToDelete() throws GNUOpenBusinessServiceException_Exception {
       metaData.setUser("manager");
       metaData.setPassword("manager");
 
-      Group persistGroup = groupWebServiceRepository.persist(metaData, group);
+      final Group persistGroup = groupWebServiceRepository.persist(metaData, group);
 
       metaData.setUser("employee");
       metaData.setPassword("employee");
 
       try {
          groupWebServiceRepository.remove(metaData, persistGroup);
-      } catch (Exception e) {
-         Assert.assertEquals(
-               "Exception message is not equal.",
-               "com.netbrasoft.gnuob.exception.GNUOpenBusinessServiceException: Given user [employee] doesn't have the right access to delete this entity object, verify that the given user has access",
+      } catch (final Exception e) {
+         Assert.assertEquals("Exception message is not equal.", "com.netbrasoft.gnuob.exception.GNUOpenBusinessServiceException: Given user [employee] doesn't have the right access to delete this entity object, verify that the given user has access",
                e.getMessage());
       }
 
       metaData.setUser("manager");
       metaData.setPassword("manager");
 
-      Group findGroup = groupWebServiceRepository.find(metaData, persistGroup);
+      final Group findGroup = groupWebServiceRepository.find(metaData, persistGroup);
 
       Assert.assertNotNull("Group is not found.", findGroup);
    }

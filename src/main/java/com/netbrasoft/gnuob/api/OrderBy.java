@@ -1,35 +1,33 @@
+
 package com.netbrasoft.gnuob.api;
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
- * <p>
- * Java class for orderBy.
+ * <p>Java class for orderBy.
  * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
- * <p>
- * 
  * <pre>
- * &lt;simpleType name="orderBy">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="RECOMMENDED"/>
- *     &lt;enumeration value="HIGHEST_DISCOUNT"/>
- *     &lt;enumeration value="LOWEST_DISCOUNT"/>
- *     &lt;enumeration value="HIGHEST_PRICE"/>
- *     &lt;enumeration value="LOWEST_PRICE"/>
- *     &lt;enumeration value="HIGHEST_RATING"/>
- *     &lt;enumeration value="LOWEST_RATING"/>
- *     &lt;enumeration value="BESTSELLERS"/>
- *     &lt;enumeration value="LATEST_COLLECTION"/>
- *     &lt;enumeration value="TITLE_A_Z"/>
- *     &lt;enumeration value="TITLE_Z_A"/>
- *     &lt;enumeration value="POSITION_A_Z"/>
- *     &lt;enumeration value="NONE"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="orderBy"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="RECOMMENDED"/&gt;
+ *     &lt;enumeration value="HIGHEST_DISCOUNT"/&gt;
+ *     &lt;enumeration value="LOWEST_DISCOUNT"/&gt;
+ *     &lt;enumeration value="HIGHEST_PRICE"/&gt;
+ *     &lt;enumeration value="LOWEST_PRICE"/&gt;
+ *     &lt;enumeration value="HIGHEST_RATING"/&gt;
+ *     &lt;enumeration value="LOWEST_RATING"/&gt;
+ *     &lt;enumeration value="BESTSELLERS"/&gt;
+ *     &lt;enumeration value="LATEST_COLLECTION"/&gt;
+ *     &lt;enumeration value="TITLE_A_Z"/&gt;
+ *     &lt;enumeration value="TITLE_Z_A"/&gt;
+ *     &lt;enumeration value="POSITION_A_Z"/&gt;
+ *     &lt;enumeration value="NONE"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */
@@ -37,7 +35,19 @@ import javax.xml.bind.annotation.XmlType;
 @XmlEnum
 public enum OrderBy {
 
-    RECOMMENDED, HIGHEST_DISCOUNT, LOWEST_DISCOUNT, HIGHEST_PRICE, LOWEST_PRICE, HIGHEST_RATING, LOWEST_RATING, BESTSELLERS, LATEST_COLLECTION, TITLE_A_Z, TITLE_Z_A, POSITION_A_Z, NONE;
+    RECOMMENDED,
+    HIGHEST_DISCOUNT,
+    LOWEST_DISCOUNT,
+    HIGHEST_PRICE,
+    LOWEST_PRICE,
+    HIGHEST_RATING,
+    LOWEST_RATING,
+    BESTSELLERS,
+    LATEST_COLLECTION,
+    TITLE_A_Z,
+    TITLE_Z_A,
+    POSITION_A_Z,
+    NONE;
 
     public String value() {
         return name();

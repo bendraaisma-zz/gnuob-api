@@ -14,12 +14,12 @@ import com.netbrasoft.gnuob.api.OrderBy;
 import com.netbrasoft.gnuob.api.Paging;
 import com.netbrasoft.gnuob.api.Type;
 
-public abstract class AbstractGenericTypeDataProvider<T extends Type> extends SortableDataProvider<T, String> implements
-      GenericTypeDataProvider<T> {
+public abstract class AbstractGenericTypeDataProvider<T extends Type> extends SortableDataProvider<T, String>implements GenericTypeDataProvider<T> {
 
    private static final long serialVersionUID = -7323826275199384990L;
 
    private static final String LATEST_COLLECTION_PROPERTY = "latestCollection";
+
    private static final String POSITION_PROPERTY = "position";
    private static final String BESTSELLER_PROPERTY = "bestseller";
    private static final String DISCOUNT_PROPERTY = "discount";
@@ -28,8 +28,8 @@ public abstract class AbstractGenericTypeDataProvider<T extends Type> extends So
    private static final String AMOUNT_PROPERTY = "amount";
    private static final String NAME_PROPERTY = "name";
    private static final String NONE_PROPERTY = "none";
-
    private T type;
+
    private OrderBy orderBy;
    protected MetaData metaData;
 
@@ -50,11 +50,11 @@ public abstract class AbstractGenericTypeDataProvider<T extends Type> extends So
    }
 
    @Override
-   public T findById() {
+   public T findById(T type) {
       try {
          return getGenericTypeWebServiceRepository().find(metaData, type);
       } catch (SOAPFaultException e) {
-         throw new RuntimeException(e.getMessage(), e);
+         throw new GNUOpenBusinessApplicationException(e.getMessage(), e);
       }
    }
 
@@ -91,7 +91,6 @@ public abstract class AbstractGenericTypeDataProvider<T extends Type> extends So
          orderBy = OrderBy.LATEST_COLLECTION;
          break;
       default:
-         orderBy = OrderBy.NONE;
          break;
       }
 
@@ -112,16 +111,16 @@ public abstract class AbstractGenericTypeDataProvider<T extends Type> extends So
 
          return getGenericTypeWebServiceRepository().find(metaData, type, paramPaging, getOrderBy()).iterator();
       } catch (SOAPFaultException e) {
-         throw new RuntimeException(e.getMessage(), e);
+         throw new GNUOpenBusinessApplicationException(e.getMessage(), e);
       }
    }
 
    @Override
-   public T merge() {
+   public T merge(T type) {
       try {
          return getGenericTypeWebServiceRepository().merge(metaData, type);
       } catch (SOAPFaultException e) {
-         throw new RuntimeException(e.getMessage(), e);
+         throw new GNUOpenBusinessApplicationException(e.getMessage(), e);
       }
    }
 
@@ -131,30 +130,35 @@ public abstract class AbstractGenericTypeDataProvider<T extends Type> extends So
    }
 
    @Override
-   public T persist() {
+   public T persist(T type) {
       try {
          return getGenericTypeWebServiceRepository().persist(metaData, type);
       } catch (SOAPFaultException e) {
-         throw new RuntimeException(e.getMessage(), e);
+         throw new GNUOpenBusinessApplicationException(e.getMessage(), e);
       }
    }
 
    @Override
-   public T refresh() {
+   public T refresh(T type) {
       try {
          return getGenericTypeWebServiceRepository().refresh(metaData, type);
       } catch (SOAPFaultException e) {
-         throw new RuntimeException(e.getMessage(), e);
+         throw new GNUOpenBusinessApplicationException(e.getMessage(), e);
       }
    }
 
    @Override
-   public void remove() {
+   public void remove(T type) {
       try {
          getGenericTypeWebServiceRepository().remove(metaData, type);
       } catch (SOAPFaultException e) {
-         throw new RuntimeException(e.getMessage(), e);
+         throw new GNUOpenBusinessApplicationException(e.getMessage(), e);
       }
+   }
+
+   @Override
+   public void setOrderBy(OrderBy orderBy) {
+      this.orderBy = orderBy;
    }
 
    @Override
@@ -182,7 +186,7 @@ public abstract class AbstractGenericTypeDataProvider<T extends Type> extends So
       try {
          return getGenericTypeWebServiceRepository().count(metaData, type);
       } catch (SOAPFaultException e) {
-         throw new RuntimeException(e.getMessage(), e);
+         throw new GNUOpenBusinessApplicationException(e.getMessage(), e);
       }
    }
 }
