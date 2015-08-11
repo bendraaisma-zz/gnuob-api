@@ -6,11 +6,13 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for persistContent complex type.
+ * <p>
+ * Java class for persistContent complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="persistContent"&gt;
@@ -27,37 +29,30 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "persistContent", propOrder = {
-    "content"
-})
-public class PersistContent
-    implements Serializable
-{
+@XmlType(name = "persistContent", propOrder = { "content" })
+public class PersistContent implements Serializable {
 
-    protected Content content;
+   protected Content content;
 
-    /**
-     * Gets the value of the content property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Content }
-     *     
-     */
-    public Content getContent() {
-        return content;
-    }
+   /**
+    * Gets the value of the content property.
+    * 
+    * @return possible object is {@link Content }
+    * 
+    */
+   public Content getContent() {
+      return content;
+   }
 
-    /**
-     * Sets the value of the content property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Content }
-     *     
-     */
-    public void setContent(Content value) {
-        this.content = value;
-    }
+   /**
+    * Sets the value of the content property.
+    * 
+    * @param value
+    *           allowed object is {@link Content }
+    * 
+    */
+   public void setContent(Content value) {
+      this.content = value;
+   }
 
 }

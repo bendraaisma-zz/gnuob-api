@@ -7,11 +7,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for findCategory complex type.
+ * <p>
+ * Java class for findCategory complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="findCategory"&gt;
@@ -30,90 +32,75 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "findCategory", propOrder = {
-    "category",
-    "paging",
-    "orderBy"
-})
-public class FindCategory
-    implements Serializable
-{
+@XmlType(name = "findCategory", propOrder = { "category", "paging", "orderBy" })
+public class FindCategory implements Serializable {
 
-    protected Category category;
-    protected Paging paging;
-    @XmlSchemaType(name = "string")
-    protected OrderBy orderBy;
+   protected Category category;
+   protected Paging paging;
+   @XmlSchemaType(name = "string")
+   protected OrderBy orderBy;
 
-    /**
-     * Gets the value of the category property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Category }
-     *     
-     */
-    public Category getCategory() {
-        return category;
-    }
+   /**
+    * Gets the value of the category property.
+    * 
+    * @return possible object is {@link Category }
+    * 
+    */
+   public Category getCategory() {
+      return category;
+   }
 
-    /**
-     * Sets the value of the category property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Category }
-     *     
-     */
-    public void setCategory(Category value) {
-        this.category = value;
-    }
+   /**
+    * Sets the value of the category property.
+    * 
+    * @param value
+    *           allowed object is {@link Category }
+    * 
+    */
+   public void setCategory(Category value) {
+      this.category = value;
+   }
 
-    /**
-     * Gets the value of the paging property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Paging }
-     *     
-     */
-    public Paging getPaging() {
-        return paging;
-    }
+   /**
+    * Gets the value of the paging property.
+    * 
+    * @return possible object is {@link Paging }
+    * 
+    */
+   public Paging getPaging() {
+      return paging;
+   }
 
-    /**
-     * Sets the value of the paging property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Paging }
-     *     
-     */
-    public void setPaging(Paging value) {
-        this.paging = value;
-    }
+   /**
+    * Sets the value of the paging property.
+    * 
+    * @param value
+    *           allowed object is {@link Paging }
+    * 
+    */
+   public void setPaging(Paging value) {
+      this.paging = value;
+   }
 
-    /**
-     * Gets the value of the orderBy property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link OrderBy }
-     *     
-     */
-    public OrderBy getOrderBy() {
-        return orderBy;
-    }
+   /**
+    * Gets the value of the orderBy property.
+    * 
+    * @return possible object is {@link OrderBy }
+    * 
+    */
+   public OrderBy getOrderBy() {
+      return orderBy;
+   }
 
-    /**
-     * Sets the value of the orderBy property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link OrderBy }
-     *     
-     */
-    public void setOrderBy(OrderBy value) {
-        this.orderBy = value;
-    }
+   /**
+    * Sets the value of the orderBy property.
+    * 
+    * @param value
+    *           allowed object is {@link OrderBy }
+    * 
+    */
+   public void setOrderBy(OrderBy value) {
+      this.orderBy = value;
+   }
 
 }

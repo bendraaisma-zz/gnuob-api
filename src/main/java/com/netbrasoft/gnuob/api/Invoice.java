@@ -9,11 +9,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for invoice complex type.
+ * <p>
+ * Java class for invoice complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="invoice"&gt;
@@ -32,96 +34,83 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "invoice", propOrder = {
-    "address",
-    "invoiceId",
-    "payments"
-})
-public class Invoice
-    extends Type
-    implements Serializable
-{
+@XmlType(name = "invoice", propOrder = { "address", "invoiceId", "payments" })
+public class Invoice extends Type implements Serializable {
 
-    @XmlElement(required = true)
-    protected Address address;
-    protected String invoiceId;
-    protected List<Payment> payments;
+   @XmlElement(required = true)
+   protected Address address;
+   protected String invoiceId;
+   protected List<Payment> payments;
 
-    /**
-     * Gets the value of the address property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Address }
-     *     
-     */
-    public Address getAddress() {
-        return address;
-    }
+   /**
+    * Gets the value of the address property.
+    * 
+    * @return possible object is {@link Address }
+    * 
+    */
+   public Address getAddress() {
+      return address;
+   }
 
-    /**
-     * Sets the value of the address property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Address }
-     *     
-     */
-    public void setAddress(Address value) {
-        this.address = value;
-    }
+   /**
+    * Sets the value of the address property.
+    * 
+    * @param value
+    *           allowed object is {@link Address }
+    * 
+    */
+   public void setAddress(Address value) {
+      this.address = value;
+   }
 
-    /**
-     * Gets the value of the invoiceId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getInvoiceId() {
-        return invoiceId;
-    }
+   /**
+    * Gets the value of the invoiceId property.
+    * 
+    * @return possible object is {@link String }
+    * 
+    */
+   public String getInvoiceId() {
+      return invoiceId;
+   }
 
-    /**
-     * Sets the value of the invoiceId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setInvoiceId(String value) {
-        this.invoiceId = value;
-    }
+   /**
+    * Sets the value of the invoiceId property.
+    * 
+    * @param value
+    *           allowed object is {@link String }
+    * 
+    */
+   public void setInvoiceId(String value) {
+      this.invoiceId = value;
+   }
 
-    /**
-     * Gets the value of the payments property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the payments property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getPayments().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Payment }
-     * 
-     * 
-     */
-    public List<Payment> getPayments() {
-        if (payments == null) {
-            payments = new ArrayList<Payment>();
-        }
-        return this.payments;
-    }
+   /**
+    * Gets the value of the payments property.
+    * 
+    * <p>
+    * This accessor method returns a reference to the live list, not a snapshot.
+    * Therefore any modification you make to the returned list will be present
+    * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+    * for the payments property.
+    * 
+    * <p>
+    * For example, to add a new item, do as follows:
+    * 
+    * <pre>
+    * getPayments().add(newItem);
+    * </pre>
+    * 
+    * 
+    * <p>
+    * Objects of the following type(s) are allowed in the list {@link Payment }
+    * 
+    * 
+    */
+   public List<Payment> getPayments() {
+      if (payments == null) {
+         payments = new ArrayList<Payment>();
+      }
+      return this.payments;
+   }
 
 }

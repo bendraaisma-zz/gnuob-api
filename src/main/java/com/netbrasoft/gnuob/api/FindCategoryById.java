@@ -6,11 +6,13 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for findCategoryById complex type.
+ * <p>
+ * Java class for findCategoryById complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="findCategoryById"&gt;
@@ -27,37 +29,30 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "findCategoryById", propOrder = {
-    "category"
-})
-public class FindCategoryById
-    implements Serializable
-{
+@XmlType(name = "findCategoryById", propOrder = { "category" })
+public class FindCategoryById implements Serializable {
 
-    protected Category category;
+   protected Category category;
 
-    /**
-     * Gets the value of the category property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Category }
-     *     
-     */
-    public Category getCategory() {
-        return category;
-    }
+   /**
+    * Gets the value of the category property.
+    * 
+    * @return possible object is {@link Category }
+    * 
+    */
+   public Category getCategory() {
+      return category;
+   }
 
-    /**
-     * Sets the value of the category property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Category }
-     *     
-     */
-    public void setCategory(Category value) {
-        this.category = value;
-    }
+   /**
+    * Sets the value of the category property.
+    * 
+    * @param value
+    *           allowed object is {@link Category }
+    * 
+    */
+   public void setCategory(Category value) {
+      this.category = value;
+   }
 
 }
