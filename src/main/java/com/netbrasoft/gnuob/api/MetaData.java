@@ -7,13 +7,11 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
- * <p>
- * Java class for metaData complex type.
+ * <p>Java class for metaData complex type.
  * 
- * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="metaData"&gt;
@@ -32,77 +30,96 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "metaData", propOrder = { "site", "user", "password" })
-public class MetaData implements Serializable {
+@XmlType(name = "metaData", propOrder = {
+    "site",
+    "user",
+    "password"
+})
+public class MetaData
+    implements Serializable
+{
 
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 794925098677765323L;
    @XmlElement(required = true)
-   protected String site;
-   @XmlElement(required = true)
-   protected String user;
-   @XmlElement(required = true)
-   protected String password;
+    protected String site;
+    @XmlElement(required = true)
+    protected String user;
+    @XmlElement(required = true)
+    protected String password;
 
-   /**
-    * Gets the value of the site property.
-    * 
-    * @return possible object is {@link String }
-    * 
-    */
-   public String getSite() {
-      return site;
-   }
+    /**
+     * Gets the value of the site property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSite() {
+        return site;
+    }
 
-   /**
-    * Sets the value of the site property.
-    * 
-    * @param value
-    *           allowed object is {@link String }
-    * 
-    */
-   public void setSite(String value) {
-      this.site = value;
-   }
+    /**
+     * Sets the value of the site property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSite(String value) {
+        this.site = value;
+    }
 
-   /**
-    * Gets the value of the user property.
-    * 
-    * @return possible object is {@link String }
-    * 
-    */
-   public String getUser() {
-      return user;
-   }
+    /**
+     * Gets the value of the user property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getUser() {
+        return user;
+    }
 
-   /**
-    * Sets the value of the user property.
-    * 
-    * @param value
-    *           allowed object is {@link String }
-    * 
-    */
-   public void setUser(String value) {
-      this.user = value;
-   }
+    /**
+     * Sets the value of the user property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setUser(String value) {
+        this.user = value;
+    }
 
-   /**
-    * Gets the value of the password property.
-    * 
-    * @return possible object is {@link String }
-    * 
-    */
-   public String getPassword() {
-      return password;
-   }
+    /**
+     * Gets the value of the password property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPassword() {
+        return password;
+    }
 
-   /**
-    * Sets the value of the password property.
-    * 
-    * @param value
-    *           allowed object is {@link String }
-    * 
-    */
-   public void setPassword(String value) {
-      this.password = value;
-   }
+    /**
+     * Sets the value of the password property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPassword(String value) {
+        this.password = value;
+    }
 
 }

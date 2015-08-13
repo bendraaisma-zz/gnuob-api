@@ -6,13 +6,11 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
- * <p>
- * Java class for removeGroup complex type.
+ * <p>Java class for removeGroup complex type.
  * 
- * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="removeGroup"&gt;
@@ -29,30 +27,41 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "removeGroup", propOrder = { "group" })
-public class RemoveGroup implements Serializable {
+@XmlType(name = "removeGroup", propOrder = {
+    "group"
+})
+public class RemoveGroup
+    implements Serializable
+{
 
+    /**
+    * 
+    */
+   private static final long serialVersionUID = -1217335018544815646L;
    protected Group group;
 
-   /**
-    * Gets the value of the group property.
-    * 
-    * @return possible object is {@link Group }
-    * 
-    */
-   public Group getGroup() {
-      return group;
-   }
+    /**
+     * Gets the value of the group property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Group }
+     *     
+     */
+    public Group getGroup() {
+        return group;
+    }
 
-   /**
-    * Sets the value of the group property.
-    * 
-    * @param value
-    *           allowed object is {@link Group }
-    * 
-    */
-   public void setGroup(Group value) {
-      this.group = value;
-   }
+    /**
+     * Sets the value of the group property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Group }
+     *     
+     */
+    public void setGroup(Group value) {
+        this.group = value;
+    }
 
 }

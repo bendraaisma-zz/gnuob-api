@@ -6,13 +6,11 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
- * <p>
- * Java class for persistCustomerResponse complex type.
+ * <p>Java class for persistCustomerResponse complex type.
  * 
- * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="persistCustomerResponse"&gt;
@@ -29,31 +27,36 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "persistCustomerResponse", propOrder = { "_return" })
+@XmlType(name = "persistCustomerResponse", propOrder = {
+    "_return"
+})
 public class PersistCustomerResponse {
 
-   @XmlElement(name = "return")
-   protected Customer _return;
+    @XmlElement(name = "return")
+    protected Customer _return;
 
-   /**
-    * Gets the value of the return property.
-    * 
-    * @return possible object is {@link Customer }
-    * 
-    */
-   public Customer getReturn() {
-      return _return;
-   }
+    /**
+     * Gets the value of the return property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Customer }
+     *     
+     */
+    public Customer getReturn() {
+        return _return;
+    }
 
-   /**
-    * Sets the value of the return property.
-    * 
-    * @param value
-    *           allowed object is {@link Customer }
-    * 
-    */
-   public void setReturn(Customer value) {
-      this._return = value;
-   }
+    /**
+     * Sets the value of the return property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Customer }
+     *     
+     */
+    public void setReturn(Customer value) {
+        this._return = value;
+    }
 
 }

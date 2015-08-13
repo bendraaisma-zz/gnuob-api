@@ -6,13 +6,11 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
- * <p>
- * Java class for mergeOffer complex type.
+ * <p>Java class for mergeOffer complex type.
  * 
- * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="mergeOffer"&gt;
@@ -29,30 +27,41 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "mergeOffer", propOrder = { "offer" })
-public class MergeOffer implements Serializable {
+@XmlType(name = "mergeOffer", propOrder = {
+    "offer"
+})
+public class MergeOffer
+    implements Serializable
+{
 
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 4225651745288407782L;
    protected Offer offer;
 
-   /**
-    * Gets the value of the offer property.
-    * 
-    * @return possible object is {@link Offer }
-    * 
-    */
-   public Offer getOffer() {
-      return offer;
-   }
+    /**
+     * Gets the value of the offer property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Offer }
+     *     
+     */
+    public Offer getOffer() {
+        return offer;
+    }
 
-   /**
-    * Sets the value of the offer property.
-    * 
-    * @param value
-    *           allowed object is {@link Offer }
-    * 
-    */
-   public void setOffer(Offer value) {
-      this.offer = value;
-   }
+    /**
+     * Sets the value of the offer property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Offer }
+     *     
+     */
+    public void setOffer(Offer value) {
+        this.offer = value;
+    }
 
 }

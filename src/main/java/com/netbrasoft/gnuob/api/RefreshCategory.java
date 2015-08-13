@@ -6,13 +6,11 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
- * <p>
- * Java class for refreshCategory complex type.
+ * <p>Java class for refreshCategory complex type.
  * 
- * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="refreshCategory"&gt;
@@ -29,30 +27,41 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "refreshCategory", propOrder = { "category" })
-public class RefreshCategory implements Serializable {
+@XmlType(name = "refreshCategory", propOrder = {
+    "category"
+})
+public class RefreshCategory
+    implements Serializable
+{
 
+    /**
+    * 
+    */
+   private static final long serialVersionUID = -6464310127212765569L;
    protected Category category;
 
-   /**
-    * Gets the value of the category property.
-    * 
-    * @return possible object is {@link Category }
-    * 
-    */
-   public Category getCategory() {
-      return category;
-   }
+    /**
+     * Gets the value of the category property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Category }
+     *     
+     */
+    public Category getCategory() {
+        return category;
+    }
 
-   /**
-    * Sets the value of the category property.
-    * 
-    * @param value
-    *           allowed object is {@link Category }
-    * 
-    */
-   public void setCategory(Category value) {
-      this.category = value;
-   }
+    /**
+     * Sets the value of the category property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Category }
+     *     
+     */
+    public void setCategory(Category value) {
+        this.category = value;
+    }
 
 }
