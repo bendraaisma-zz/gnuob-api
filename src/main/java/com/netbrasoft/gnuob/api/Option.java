@@ -7,13 +7,11 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
- * <p>
- * Java class for option complex type.
+ * <p>Java class for option complex type.
  * 
- * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="option"&gt;
@@ -32,70 +30,87 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "option", propOrder = { "description", "disabled", "value" })
-public class Option extends Type implements Serializable {
+@XmlType(name = "option", propOrder = {
+    "description",
+    "disabled",
+    "value"
+})
+public class Option
+    extends Type
+    implements Serializable
+{
 
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 3130008815178093889L;
    protected String description;
-   protected boolean disabled;
-   @XmlElement(required = true)
-   protected String value;
+    protected boolean disabled;
+    @XmlElement(required = true)
+    protected String value;
 
-   /**
-    * Gets the value of the description property.
-    * 
-    * @return possible object is {@link String }
-    * 
-    */
-   public String getDescription() {
-      return description;
-   }
+    /**
+     * Gets the value of the description property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDescription() {
+        return description;
+    }
 
-   /**
-    * Sets the value of the description property.
-    * 
-    * @param value
-    *           allowed object is {@link String }
-    * 
-    */
-   public void setDescription(String value) {
-      this.description = value;
-   }
+    /**
+     * Sets the value of the description property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDescription(String value) {
+        this.description = value;
+    }
 
-   /**
-    * Gets the value of the disabled property.
-    * 
-    */
-   public boolean isDisabled() {
-      return disabled;
-   }
+    /**
+     * Gets the value of the disabled property.
+     * 
+     */
+    public boolean isDisabled() {
+        return disabled;
+    }
 
-   /**
-    * Sets the value of the disabled property.
-    * 
-    */
-   public void setDisabled(boolean value) {
-      this.disabled = value;
-   }
+    /**
+     * Sets the value of the disabled property.
+     * 
+     */
+    public void setDisabled(boolean value) {
+        this.disabled = value;
+    }
 
-   /**
-    * Gets the value of the value property.
-    * 
-    * @return possible object is {@link String }
-    * 
-    */
-   public String getValue() {
-      return value;
-   }
+    /**
+     * Gets the value of the value property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getValue() {
+        return value;
+    }
 
-   /**
-    * Sets the value of the value property.
-    * 
-    * @param value
-    *           allowed object is {@link String }
-    * 
-    */
-   public void setValue(String value) {
-      this.value = value;
-   }
+    /**
+     * Sets the value of the value property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setValue(String value) {
+        this.value = value;
+    }
 
 }

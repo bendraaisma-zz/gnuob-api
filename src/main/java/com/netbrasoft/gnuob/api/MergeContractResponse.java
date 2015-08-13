@@ -7,13 +7,11 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
- * <p>
- * Java class for mergeContractResponse complex type.
+ * <p>Java class for mergeContractResponse complex type.
  * 
- * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="mergeContractResponse"&gt;
@@ -30,31 +28,42 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "mergeContractResponse", propOrder = { "_return" })
-public class MergeContractResponse implements Serializable {
+@XmlType(name = "mergeContractResponse", propOrder = {
+    "_return"
+})
+public class MergeContractResponse
+    implements Serializable
+{
 
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 9028278093358681923L;
    @XmlElement(name = "return")
-   protected Contract _return;
+    protected Contract _return;
 
-   /**
-    * Gets the value of the return property.
-    * 
-    * @return possible object is {@link Contract }
-    * 
-    */
-   public Contract getReturn() {
-      return _return;
-   }
+    /**
+     * Gets the value of the return property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Contract }
+     *     
+     */
+    public Contract getReturn() {
+        return _return;
+    }
 
-   /**
-    * Sets the value of the return property.
-    * 
-    * @param value
-    *           allowed object is {@link Contract }
-    * 
-    */
-   public void setReturn(Contract value) {
-      this._return = value;
-   }
+    /**
+     * Sets the value of the return property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Contract }
+     *     
+     */
+    public void setReturn(Contract value) {
+        this._return = value;
+    }
 
 }

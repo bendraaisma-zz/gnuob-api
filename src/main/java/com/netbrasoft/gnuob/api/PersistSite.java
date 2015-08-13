@@ -6,13 +6,11 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
- * <p>
- * Java class for persistSite complex type.
+ * <p>Java class for persistSite complex type.
  * 
- * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="persistSite"&gt;
@@ -29,30 +27,41 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "persistSite", propOrder = { "site" })
-public class PersistSite implements Serializable {
+@XmlType(name = "persistSite", propOrder = {
+    "site"
+})
+public class PersistSite
+    implements Serializable
+{
 
+    /**
+    * 
+    */
+   private static final long serialVersionUID = -554755412136525801L;
    protected Site site;
 
-   /**
-    * Gets the value of the site property.
-    * 
-    * @return possible object is {@link Site }
-    * 
-    */
-   public Site getSite() {
-      return site;
-   }
+    /**
+     * Gets the value of the site property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Site }
+     *     
+     */
+    public Site getSite() {
+        return site;
+    }
 
-   /**
-    * Sets the value of the site property.
-    * 
-    * @param value
-    *           allowed object is {@link Site }
-    * 
-    */
-   public void setSite(Site value) {
-      this.site = value;
-   }
+    /**
+     * Sets the value of the site property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Site }
+     *     
+     */
+    public void setSite(Site value) {
+        this.site = value;
+    }
 
 }

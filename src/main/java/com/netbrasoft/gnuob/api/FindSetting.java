@@ -8,13 +8,11 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
- * <p>
- * Java class for findSetting complex type.
+ * <p>Java class for findSetting complex type.
  * 
- * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="findSetting"&gt;
@@ -33,76 +31,95 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "findSetting", propOrder = { "setting", "paging", "orderBy" })
-public class FindSetting implements Serializable {
+@XmlType(name = "findSetting", propOrder = {
+    "setting",
+    "paging",
+    "orderBy"
+})
+public class FindSetting
+    implements Serializable
+{
 
+    /**
+    * 
+    */
+   private static final long serialVersionUID = -4006986678186195865L;
    @XmlElement(name = "Setting")
-   protected Setting setting;
-   protected Paging paging;
-   @XmlSchemaType(name = "string")
-   protected OrderBy orderBy;
+    protected Setting setting;
+    protected Paging paging;
+    @XmlSchemaType(name = "string")
+    protected OrderBy orderBy;
 
-   /**
-    * Gets the value of the setting property.
-    * 
-    * @return possible object is {@link Setting }
-    * 
-    */
-   public Setting getSetting() {
-      return setting;
-   }
+    /**
+     * Gets the value of the setting property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Setting }
+     *     
+     */
+    public Setting getSetting() {
+        return setting;
+    }
 
-   /**
-    * Sets the value of the setting property.
-    * 
-    * @param value
-    *           allowed object is {@link Setting }
-    * 
-    */
-   public void setSetting(Setting value) {
-      this.setting = value;
-   }
+    /**
+     * Sets the value of the setting property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Setting }
+     *     
+     */
+    public void setSetting(Setting value) {
+        this.setting = value;
+    }
 
-   /**
-    * Gets the value of the paging property.
-    * 
-    * @return possible object is {@link Paging }
-    * 
-    */
-   public Paging getPaging() {
-      return paging;
-   }
+    /**
+     * Gets the value of the paging property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Paging }
+     *     
+     */
+    public Paging getPaging() {
+        return paging;
+    }
 
-   /**
-    * Sets the value of the paging property.
-    * 
-    * @param value
-    *           allowed object is {@link Paging }
-    * 
-    */
-   public void setPaging(Paging value) {
-      this.paging = value;
-   }
+    /**
+     * Sets the value of the paging property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Paging }
+     *     
+     */
+    public void setPaging(Paging value) {
+        this.paging = value;
+    }
 
-   /**
-    * Gets the value of the orderBy property.
-    * 
-    * @return possible object is {@link OrderBy }
-    * 
-    */
-   public OrderBy getOrderBy() {
-      return orderBy;
-   }
+    /**
+     * Gets the value of the orderBy property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link OrderBy }
+     *     
+     */
+    public OrderBy getOrderBy() {
+        return orderBy;
+    }
 
-   /**
-    * Sets the value of the orderBy property.
-    * 
-    * @param value
-    *           allowed object is {@link OrderBy }
-    * 
-    */
-   public void setOrderBy(OrderBy value) {
-      this.orderBy = value;
-   }
+    /**
+     * Sets the value of the orderBy property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link OrderBy }
+     *     
+     */
+    public void setOrderBy(OrderBy value) {
+        this.orderBy = value;
+    }
 
 }

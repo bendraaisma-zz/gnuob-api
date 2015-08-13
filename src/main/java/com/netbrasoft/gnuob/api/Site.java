@@ -7,13 +7,11 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
- * <p>
- * Java class for site complex type.
+ * <p>Java class for site complex type.
  * 
- * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="site"&gt;
@@ -31,53 +29,69 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "site", propOrder = { "description", "name" })
-public class Site extends Access implements Serializable {
+@XmlType(name = "site", propOrder = {
+    "description",
+    "name"
+})
+public class Site
+    extends Access
+    implements Serializable
+{
 
+    /**
+    * 
+    */
+   private static final long serialVersionUID = -8281449739009994034L;
    protected String description;
-   @XmlElement(required = true)
-   protected String name;
+    @XmlElement(required = true)
+    protected String name;
 
-   /**
-    * Gets the value of the description property.
-    * 
-    * @return possible object is {@link String }
-    * 
-    */
-   public String getDescription() {
-      return description;
-   }
+    /**
+     * Gets the value of the description property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDescription() {
+        return description;
+    }
 
-   /**
-    * Sets the value of the description property.
-    * 
-    * @param value
-    *           allowed object is {@link String }
-    * 
-    */
-   public void setDescription(String value) {
-      this.description = value;
-   }
+    /**
+     * Sets the value of the description property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDescription(String value) {
+        this.description = value;
+    }
 
-   /**
-    * Gets the value of the name property.
-    * 
-    * @return possible object is {@link String }
-    * 
-    */
-   public String getName() {
-      return name;
-   }
+    /**
+     * Gets the value of the name property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getName() {
+        return name;
+    }
 
-   /**
-    * Sets the value of the name property.
-    * 
-    * @param value
-    *           allowed object is {@link String }
-    * 
-    */
-   public void setName(String value) {
-      this.name = value;
-   }
+    /**
+     * Sets the value of the name property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setName(String value) {
+        this.name = value;
+    }
 
 }

@@ -7,13 +7,11 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
- * <p>
- * Java class for doRefundTransactionResponse complex type.
+ * <p>Java class for doRefundTransactionResponse complex type.
  * 
- * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="doRefundTransactionResponse"&gt;
@@ -30,31 +28,42 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "doRefundTransactionResponse", propOrder = { "_return" })
-public class DoRefundTransactionResponse implements Serializable {
+@XmlType(name = "doRefundTransactionResponse", propOrder = {
+    "_return"
+})
+public class DoRefundTransactionResponse
+    implements Serializable
+{
 
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 3801782956129361052L;
    @XmlElement(name = "return")
-   protected Order _return;
+    protected Order _return;
 
-   /**
-    * Gets the value of the return property.
-    * 
-    * @return possible object is {@link Order }
-    * 
-    */
-   public Order getReturn() {
-      return _return;
-   }
+    /**
+     * Gets the value of the return property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Order }
+     *     
+     */
+    public Order getReturn() {
+        return _return;
+    }
 
-   /**
-    * Sets the value of the return property.
-    * 
-    * @param value
-    *           allowed object is {@link Order }
-    * 
-    */
-   public void setReturn(Order value) {
-      this._return = value;
-   }
+    /**
+     * Sets the value of the return property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Order }
+     *     
+     */
+    public void setReturn(Order value) {
+        this._return = value;
+    }
 
 }
