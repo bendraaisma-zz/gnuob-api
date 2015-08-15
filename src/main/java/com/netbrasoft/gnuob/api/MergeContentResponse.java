@@ -35,7 +35,11 @@ public class MergeContentResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    /**
+    * 
+    */
+   private static final long serialVersionUID = -3127018263889216772L;
+   @XmlElement(name = "return")
     protected Content _return;
 
     /**

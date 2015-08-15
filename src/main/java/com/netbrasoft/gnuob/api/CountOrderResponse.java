@@ -35,7 +35,11 @@ public class CountOrderResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    /**
+    * 
+    */
+   private static final long serialVersionUID = -3395397750568173493L;
+   @XmlElement(name = "return")
     protected long _return;
 
     /**

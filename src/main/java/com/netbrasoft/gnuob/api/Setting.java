@@ -40,7 +40,11 @@ public class Setting
     implements Serializable
 {
 
-    @XmlElement(required = true)
+    /**
+    * 
+    */
+   private static final long serialVersionUID = -7118864738532294629L;
+   @XmlElement(required = true)
     protected String property;
     @XmlElement(required = true)
     protected String value;

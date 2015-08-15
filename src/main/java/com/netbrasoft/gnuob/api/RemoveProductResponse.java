@@ -31,5 +31,10 @@ public class RemoveProductResponse
     implements Serializable
 {
 
+   /**
+    * 
+    */
+   private static final long serialVersionUID = 6655696959200023132L;
+
 
 }

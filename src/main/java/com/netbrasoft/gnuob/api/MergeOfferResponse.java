@@ -35,7 +35,11 @@ public class MergeOfferResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 1845402611089253703L;
+   @XmlElement(name = "return")
     protected Offer _return;
 
     /**

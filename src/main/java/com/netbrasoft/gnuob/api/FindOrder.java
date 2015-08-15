@@ -39,7 +39,11 @@ public class FindOrder
     implements Serializable
 {
 
-    protected Order order;
+    /**
+    * 
+    */
+   private static final long serialVersionUID = -171702213835553452L;
+   protected Order order;
     protected Paging paging;
     @XmlSchemaType(name = "string")
     protected OrderBy orderBy;

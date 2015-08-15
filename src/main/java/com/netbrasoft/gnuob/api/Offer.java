@@ -65,7 +65,11 @@ public class Offer
     implements Serializable
 {
 
-    @XmlElement(required = true)
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 1781297976035638791L;
+   @XmlElement(required = true)
     protected Contract contract;
     protected BigDecimal discountTotal;
     @XmlElement(required = true)

@@ -35,7 +35,11 @@ public class PersistOfferResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    /**
+    * 
+    */
+   private static final long serialVersionUID = -292381031913899482L;
+   @XmlElement(name = "return")
     protected Offer _return;
 
     /**

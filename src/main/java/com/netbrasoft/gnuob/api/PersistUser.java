@@ -34,7 +34,11 @@ public class PersistUser
     implements Serializable
 {
 
-    protected User user;
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 1173666680398218172L;
+   protected User user;
 
     /**
      * Gets the value of the user property.

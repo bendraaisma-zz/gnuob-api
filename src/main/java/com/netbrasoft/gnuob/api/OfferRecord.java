@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="number" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="option" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="product" type="{http://gnuob.netbrasoft.com/}product" minOccurs="0"/&gt;
+ *         &lt;element name="productNumber" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="quantity" type="{http://www.w3.org/2001/XMLSchema}integer"/&gt;
  *         &lt;element name="shippingCost" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/&gt;
  *         &lt;element name="tax" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/&gt;
@@ -65,6 +66,7 @@ import javax.xml.bind.annotation.XmlType;
     "number",
     "option",
     "product",
+    "productNumber",
     "quantity",
     "shippingCost",
     "tax"
@@ -74,7 +76,11 @@ public class OfferRecord
     implements Serializable
 {
 
-    protected BigDecimal amount;
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 5970363843898862970L;
+   protected BigDecimal amount;
     protected String description;
     protected BigDecimal discount;
     protected BigDecimal itemHeight;
@@ -90,6 +96,7 @@ public class OfferRecord
     protected String number;
     protected String option;
     protected Product product;
+    protected String productNumber;
     @XmlElement(required = true)
     protected BigInteger quantity;
     protected BigDecimal shippingCost;
@@ -477,6 +484,30 @@ public class OfferRecord
      */
     public void setProduct(Product value) {
         this.product = value;
+    }
+
+    /**
+     * Gets the value of the productNumber property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getProductNumber() {
+        return productNumber;
+    }
+
+    /**
+     * Sets the value of the productNumber property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setProductNumber(String value) {
+        this.productNumber = value;
     }
 
     /**

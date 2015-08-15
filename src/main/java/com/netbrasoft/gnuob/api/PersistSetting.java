@@ -35,7 +35,11 @@ public class PersistSetting
     implements Serializable
 {
 
-    @XmlElement(name = "Setting")
+    /**
+    * 
+    */
+   private static final long serialVersionUID = -1121795633722526405L;
+   @XmlElement(name = "Setting")
     protected Setting setting;
 
     /**

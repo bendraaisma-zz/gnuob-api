@@ -39,7 +39,11 @@ public class FindProduct
     implements Serializable
 {
 
-    protected Product product;
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 9031365656524104536L;
+   protected Product product;
     protected Paging paging;
     @XmlSchemaType(name = "string")
     protected OrderBy orderBy;

@@ -51,7 +51,11 @@ public class User
     implements Serializable
 {
 
-    @XmlSchemaType(name = "string")
+    /**
+    * 
+    */
+   private static final long serialVersionUID = -7570215774738268437L;
+   @XmlSchemaType(name = "string")
     protected Rule access;
     protected String description;
     @XmlElement(nillable = true)

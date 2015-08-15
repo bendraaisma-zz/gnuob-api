@@ -35,7 +35,11 @@ public class PersistCategoryResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 4750005035870308483L;
+   @XmlElement(name = "return")
     protected Category _return;
 
     /**

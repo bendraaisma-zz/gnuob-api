@@ -37,7 +37,11 @@ public class FindCategoryResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 8998950372095066355L;
+   @XmlElement(name = "return")
     protected List<Category> _return;
 
     /**

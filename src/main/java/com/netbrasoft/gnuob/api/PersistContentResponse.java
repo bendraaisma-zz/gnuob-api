@@ -35,7 +35,11 @@ public class PersistContentResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 4324941560496130519L;
+   @XmlElement(name = "return")
     protected Content _return;
 
     /**

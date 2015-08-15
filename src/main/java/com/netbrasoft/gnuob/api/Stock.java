@@ -41,7 +41,11 @@ public class Stock
     implements Serializable
 {
 
-    @XmlElement(required = true)
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 1370554796617371872L;
+   @XmlElement(required = true)
     protected BigInteger maxQuantity;
     @XmlElement(required = true)
     protected BigInteger minQuantity;

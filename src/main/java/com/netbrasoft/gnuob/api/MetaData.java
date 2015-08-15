@@ -39,7 +39,11 @@ public class MetaData
     implements Serializable
 {
 
-    @XmlElement(required = true)
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 794925098677765323L;
+   @XmlElement(required = true)
     protected String site;
     @XmlElement(required = true)
     protected String user;

@@ -3,6 +3,7 @@ package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
 
+import javax.activation.DataHandler;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -41,7 +42,11 @@ public class Content
     implements Serializable
 {
 
-    @XmlElement(required = true)
+    /**
+    * 
+    */
+   private static final long serialVersionUID = -5806711934105531574L;
+   @XmlElement(required = true)
     protected byte[] content;
     @XmlElement(required = true)
     protected String format;
@@ -53,7 +58,7 @@ public class Content
      *
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link DataHandler }
      *
      */
     public byte[] getContent() {
@@ -89,7 +94,7 @@ public class Content
      *
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link DataHandler }
      *
      */
     public void setContent(byte[] value) {

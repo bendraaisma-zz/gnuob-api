@@ -35,7 +35,11 @@ public class PersistUserResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 4325798080558705876L;
+   @XmlElement(name = "return")
     protected User _return;
 
     /**

@@ -40,7 +40,11 @@ public class Option
     implements Serializable
 {
 
-    protected String description;
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 3130008815178093889L;
+   protected String description;
     protected boolean disabled;
     @XmlElement(required = true)
     protected String value;

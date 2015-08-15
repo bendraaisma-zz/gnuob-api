@@ -35,7 +35,11 @@ public class MergeGroupResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 4991495210879338555L;
+   @XmlElement(name = "return")
     protected Group _return;
 
     /**

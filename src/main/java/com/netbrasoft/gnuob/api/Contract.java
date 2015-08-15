@@ -38,7 +38,11 @@ public class Contract
     implements Serializable
 {
 
-    @XmlElement(required = true)
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 1063097896490794439L;
+   @XmlElement(required = true)
     protected String contractId;
     @XmlElement(required = true)
     protected Customer customer;

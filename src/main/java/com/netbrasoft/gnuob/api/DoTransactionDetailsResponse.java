@@ -35,7 +35,11 @@ public class DoTransactionDetailsResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 8851176818839283335L;
+   @XmlElement(name = "return")
     protected Order _return;
 
     /**

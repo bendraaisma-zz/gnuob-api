@@ -34,7 +34,11 @@ public class DoTransactionDetails
     implements Serializable
 {
 
-    protected Order order;
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 1495432293046835565L;
+   protected Order order;
 
     /**
      * Gets the value of the order property.

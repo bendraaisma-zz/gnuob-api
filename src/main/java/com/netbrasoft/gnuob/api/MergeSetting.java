@@ -35,7 +35,11 @@ public class MergeSetting
     implements Serializable
 {
 
-    @XmlElement(name = "Setting")
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 2617913420745656999L;
+   @XmlElement(name = "Setting")
     protected Setting setting;
 
     /**

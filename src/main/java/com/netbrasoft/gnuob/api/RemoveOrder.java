@@ -34,7 +34,11 @@ public class RemoveOrder
     implements Serializable
 {
 
-    protected Order order;
+    /**
+    * 
+    */
+   private static final long serialVersionUID = -788945510176547021L;
+   protected Order order;
 
     /**
      * Gets the value of the order property.

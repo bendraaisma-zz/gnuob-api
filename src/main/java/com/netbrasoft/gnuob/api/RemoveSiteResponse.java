@@ -31,5 +31,10 @@ public class RemoveSiteResponse
     implements Serializable
 {
 
+   /**
+    * 
+    */
+   private static final long serialVersionUID = -6119083136851053319L;
+
 
 }

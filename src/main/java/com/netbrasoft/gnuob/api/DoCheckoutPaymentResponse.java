@@ -35,7 +35,11 @@ public class DoCheckoutPaymentResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 7801223492119491227L;
+   @XmlElement(name = "return")
     protected Order _return;
 
     /**

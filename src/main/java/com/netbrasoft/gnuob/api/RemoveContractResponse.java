@@ -31,5 +31,10 @@ public class RemoveContractResponse
     implements Serializable
 {
 
+   /**
+    * 
+    */
+   private static final long serialVersionUID = -5005068778577721066L;
+
 
 }

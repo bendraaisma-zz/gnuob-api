@@ -41,7 +41,11 @@ public class Permission
     implements Serializable
 {
 
-    @XmlElement(required = true)
+    /**
+    * 
+    */
+   private static final long serialVersionUID = -4261671704221459886L;
+   @XmlElement(required = true)
     @XmlSchemaType(name = "string")
     protected Rule group;
     @XmlElement(required = true)

@@ -34,7 +34,11 @@ public class CountOffer
     implements Serializable
 {
 
-    protected Offer offer;
+    /**
+    * 
+    */
+   private static final long serialVersionUID = -7574061563318886159L;
+   protected Offer offer;
 
     /**
      * Gets the value of the offer property.

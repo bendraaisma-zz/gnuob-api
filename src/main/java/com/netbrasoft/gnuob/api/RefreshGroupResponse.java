@@ -35,7 +35,11 @@ public class RefreshGroupResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 7253110085453696882L;
+   @XmlElement(name = "return")
     protected Group _return;
 
     /**

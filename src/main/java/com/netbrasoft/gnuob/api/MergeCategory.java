@@ -34,7 +34,11 @@ public class MergeCategory
     implements Serializable
 {
 
-    protected Category category;
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 4108650135341710557L;
+   protected Category category;
 
     /**
      * Gets the value of the category property.

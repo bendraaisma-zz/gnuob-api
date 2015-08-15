@@ -39,7 +39,11 @@ public class FindUser
     implements Serializable
 {
 
-    protected User user;
+    /**
+    * 
+    */
+   private static final long serialVersionUID = -8910520861719848846L;
+   protected User user;
     protected Paging paging;
     @XmlSchemaType(name = "string")
     protected OrderBy orderBy;

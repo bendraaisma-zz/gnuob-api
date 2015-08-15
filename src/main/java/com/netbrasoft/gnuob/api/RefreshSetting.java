@@ -35,7 +35,11 @@ public class RefreshSetting
     implements Serializable
 {
 
-    @XmlElement(name = "Setting")
+    /**
+    * 
+    */
+   private static final long serialVersionUID = -6514224750284152052L;
+   @XmlElement(name = "Setting")
     protected Setting setting;
 
     /**

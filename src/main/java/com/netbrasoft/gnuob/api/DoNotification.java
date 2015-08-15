@@ -34,7 +34,11 @@ public class DoNotification
     implements Serializable
 {
 
-    protected Order order;
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 1707537063901260944L;
+   protected Order order;
 
     /**
      * Gets the value of the order property.

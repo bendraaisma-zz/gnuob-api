@@ -34,7 +34,11 @@ public class MergeUser
     implements Serializable
 {
 
-    protected User user;
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 2507283055549974770L;
+   protected User user;
 
     /**
      * Gets the value of the user property.

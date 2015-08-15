@@ -24,6 +24,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *     &lt;extension base="{http://gnuob.netbrasoft.com/}access"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="billingAgreementId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="checkout" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="checkoutStatus" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="contract" type="{http://gnuob.netbrasoft.com/}contract"/&gt;
  *         &lt;element name="custom" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
@@ -66,6 +67,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "order", propOrder = {
     "billingAgreementId",
+    "checkout",
     "checkoutStatus",
     "contract",
     "custom",
@@ -103,7 +105,12 @@ public class Order
     implements Serializable
 {
 
-    protected String billingAgreementId;
+    /**
+    * 
+    */
+   private static final long serialVersionUID = -8999420742879607386L;
+   protected String billingAgreementId;
+    protected String checkout;
     protected String checkoutStatus;
     @XmlElement(required = true)
     protected Contract contract;
@@ -167,6 +174,30 @@ public class Order
      */
     public void setBillingAgreementId(String value) {
         this.billingAgreementId = value;
+    }
+
+    /**
+     * Gets the value of the checkout property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCheckout() {
+        return checkout;
+    }
+
+    /**
+     * Sets the value of the checkout property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCheckout(String value) {
+        this.checkout = value;
     }
 
     /**

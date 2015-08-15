@@ -39,7 +39,11 @@ public class FindSite
     implements Serializable
 {
 
-    protected Site site;
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 3967066781040434197L;
+   protected Site site;
     protected Paging paging;
     @XmlSchemaType(name = "string")
     protected OrderBy orderBy;

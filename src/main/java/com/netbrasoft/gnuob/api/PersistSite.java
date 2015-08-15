@@ -34,7 +34,11 @@ public class PersistSite
     implements Serializable
 {
 
-    protected Site site;
+    /**
+    * 
+    */
+   private static final long serialVersionUID = -554755412136525801L;
+   protected Site site;
 
     /**
      * Gets the value of the site property.

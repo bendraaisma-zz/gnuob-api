@@ -39,7 +39,11 @@ public class FindCategory
     implements Serializable
 {
 
-    protected Category category;
+    /**
+    * 
+    */
+   private static final long serialVersionUID = -7855380685819154586L;
+   protected Category category;
     protected Paging paging;
     @XmlSchemaType(name = "string")
     protected OrderBy orderBy;

@@ -35,7 +35,11 @@ public class CountSetting
     implements Serializable
 {
 
-    @XmlElement(name = "Setting")
+    /**
+    * 
+    */
+   private static final long serialVersionUID = -4217275746340413895L;
+   @XmlElement(name = "Setting")
     protected Setting setting;
 
     /**

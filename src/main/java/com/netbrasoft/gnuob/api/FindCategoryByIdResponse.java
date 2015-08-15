@@ -35,7 +35,11 @@ public class FindCategoryByIdResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 5091356672370905344L;
+   @XmlElement(name = "return")
     protected Category _return;
 
     /**

@@ -38,7 +38,11 @@ public class Group
     implements Serializable
 {
 
-    protected String description;
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 3690075816000776825L;
+   protected String description;
     @XmlElement(required = true)
     protected String name;
 

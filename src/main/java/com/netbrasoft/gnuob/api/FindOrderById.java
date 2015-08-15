@@ -34,7 +34,11 @@ public class FindOrderById
     implements Serializable
 {
 
-    protected Order order;
+    /**
+    * 
+    */
+   private static final long serialVersionUID = -4289959542802891088L;
+   protected Order order;
 
     /**
      * Gets the value of the order property.

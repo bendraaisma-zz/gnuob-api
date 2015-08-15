@@ -34,7 +34,11 @@ public class RefreshCategory
     implements Serializable
 {
 
-    protected Category category;
+    /**
+    * 
+    */
+   private static final long serialVersionUID = -6464310127212765569L;
+   protected Category category;
 
     /**
      * Gets the value of the category property.

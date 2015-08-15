@@ -34,7 +34,11 @@ public class RefreshGroup
     implements Serializable
 {
 
-    protected Group group;
+    /**
+    * 
+    */
+   private static final long serialVersionUID = -8416089425093741351L;
+   protected Group group;
 
     /**
      * Gets the value of the group property.

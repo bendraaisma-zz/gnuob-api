@@ -34,7 +34,11 @@ public class MergeContent
     implements Serializable
 {
 
-    protected Content content;
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 6427819328670142867L;
+   protected Content content;
 
     /**
      * Gets the value of the content property.

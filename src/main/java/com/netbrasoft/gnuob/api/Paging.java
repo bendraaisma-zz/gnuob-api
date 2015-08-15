@@ -36,7 +36,11 @@ public class Paging
     implements Serializable
 {
 
-    protected int first;
+    /**
+    * 
+    */
+   private static final long serialVersionUID = -3371605179175461095L;
+   protected int first;
     protected int max;
 
     /**

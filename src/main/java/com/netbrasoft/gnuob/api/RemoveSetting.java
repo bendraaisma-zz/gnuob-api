@@ -35,7 +35,11 @@ public class RemoveSetting
     implements Serializable
 {
 
-    @XmlElement(name = "Setting")
+    /**
+    * 
+    */
+   private static final long serialVersionUID = -7917289847024037235L;
+   @XmlElement(name = "Setting")
     protected Setting setting;
 
     /**

@@ -34,7 +34,11 @@ public class RefreshContent
     implements Serializable
 {
 
-    protected Content content;
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 5850758375275705792L;
+   protected Content content;
 
     /**
      * Gets the value of the content property.

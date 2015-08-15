@@ -35,7 +35,11 @@ public class MergeSettingResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 3699937090080555114L;
+   @XmlElement(name = "return")
     protected Setting _return;
 
     /**

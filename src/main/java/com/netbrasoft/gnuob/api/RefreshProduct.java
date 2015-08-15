@@ -34,7 +34,11 @@ public class RefreshProduct
     implements Serializable
 {
 
-    protected Product product;
+    /**
+    * 
+    */
+   private static final long serialVersionUID = -5234411446818330027L;
+   protected Product product;
 
     /**
      * Gets the value of the product property.

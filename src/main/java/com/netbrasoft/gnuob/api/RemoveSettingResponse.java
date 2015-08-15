@@ -31,5 +31,10 @@ public class RemoveSettingResponse
     implements Serializable
 {
 
+   /**
+    * 
+    */
+   private static final long serialVersionUID = 5205250889902549244L;
+
 
 }

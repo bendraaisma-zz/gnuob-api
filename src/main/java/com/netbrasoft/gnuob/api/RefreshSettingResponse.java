@@ -35,7 +35,11 @@ public class RefreshSettingResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 2056694111088688050L;
+   @XmlElement(name = "return")
     protected Setting _return;
 
     /**

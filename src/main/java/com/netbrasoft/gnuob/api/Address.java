@@ -60,7 +60,11 @@ public class Address
     implements Serializable
 {
 
-    @XmlElement(required = true)
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 6926594235185558246L;
+   @XmlElement(required = true)
     protected String cityName;
     protected String complement;
     @XmlElement(required = true)

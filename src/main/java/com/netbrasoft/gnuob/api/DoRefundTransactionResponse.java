@@ -35,7 +35,11 @@ public class DoRefundTransactionResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 3801782956129361052L;
+   @XmlElement(name = "return")
     protected Order _return;
 
     /**

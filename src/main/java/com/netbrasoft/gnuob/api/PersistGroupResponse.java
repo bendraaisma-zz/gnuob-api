@@ -35,7 +35,11 @@ public class PersistGroupResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    /**
+    * 
+    */
+   private static final long serialVersionUID = -4797197456119088214L;
+   @XmlElement(name = "return")
     protected Group _return;
 
     /**

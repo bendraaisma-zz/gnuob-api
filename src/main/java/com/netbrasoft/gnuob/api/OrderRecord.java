@@ -40,6 +40,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="option" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="orderRecordId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="product" type="{http://gnuob.netbrasoft.com/}product" minOccurs="0"/&gt;
+ *         &lt;element name="productNumber" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="quantity" type="{http://www.w3.org/2001/XMLSchema}integer"/&gt;
  *         &lt;element name="shippingCost" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/&gt;
  *         &lt;element name="tax" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/&gt;
@@ -71,6 +72,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "option",
     "orderRecordId",
     "product",
+    "productNumber",
     "quantity",
     "shippingCost",
     "tax"
@@ -80,7 +82,11 @@ public class OrderRecord
     implements Serializable
 {
 
-    protected BigDecimal amount;
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 6359152081649081489L;
+   protected BigDecimal amount;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar deliveryDate;
     protected String description;
@@ -99,6 +105,7 @@ public class OrderRecord
     protected String option;
     protected String orderRecordId;
     protected Product product;
+    protected String productNumber;
     @XmlElement(required = true)
     protected BigInteger quantity;
     protected BigDecimal shippingCost;
@@ -534,6 +541,30 @@ public class OrderRecord
      */
     public void setProduct(Product value) {
         this.product = value;
+    }
+
+    /**
+     * Gets the value of the productNumber property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getProductNumber() {
+        return productNumber;
+    }
+
+    /**
+     * Sets the value of the productNumber property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setProductNumber(String value) {
+        this.productNumber = value;
     }
 
     /**

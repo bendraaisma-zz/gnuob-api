@@ -35,7 +35,11 @@ public class PersistSettingResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 2498855065570041533L;
+   @XmlElement(name = "return")
     protected Setting _return;
 
     /**

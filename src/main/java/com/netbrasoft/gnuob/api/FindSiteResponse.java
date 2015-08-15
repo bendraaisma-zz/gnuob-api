@@ -37,7 +37,11 @@ public class FindSiteResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 394748970980739858L;
+   @XmlElement(name = "return")
     protected List<Site> _return;
 
     /**

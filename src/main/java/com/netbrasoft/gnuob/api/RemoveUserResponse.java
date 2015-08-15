@@ -31,5 +31,10 @@ public class RemoveUserResponse
     implements Serializable
 {
 
+   /**
+    * 
+    */
+   private static final long serialVersionUID = -7020848275581863536L;
+
 
 }

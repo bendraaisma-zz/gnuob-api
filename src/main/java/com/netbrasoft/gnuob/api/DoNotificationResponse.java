@@ -35,7 +35,11 @@ public class DoNotificationResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 3201419464420289312L;
+   @XmlElement(name = "return")
     protected Order _return;
 
     /**

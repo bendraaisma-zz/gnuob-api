@@ -34,7 +34,11 @@ public class FindSiteById
     implements Serializable
 {
 
-    protected Site site;
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 2704708021838060414L;
+   protected Site site;
 
     /**
      * Gets the value of the site property.

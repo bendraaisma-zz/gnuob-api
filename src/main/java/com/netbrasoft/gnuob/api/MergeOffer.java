@@ -34,7 +34,11 @@ public class MergeOffer
     implements Serializable
 {
 
-    protected Offer offer;
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 4225651745288407782L;
+   protected Offer offer;
 
     /**
      * Gets the value of the offer property.

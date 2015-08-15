@@ -37,7 +37,11 @@ public class FindSettingResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 8081862418506472096L;
+   @XmlElement(name = "return")
     protected List<Setting> _return;
 
     /**

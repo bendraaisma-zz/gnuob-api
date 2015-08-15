@@ -40,7 +40,11 @@ public class FindSetting
     implements Serializable
 {
 
-    @XmlElement(name = "Setting")
+    /**
+    * 
+    */
+   private static final long serialVersionUID = -4006986678186195865L;
+   @XmlElement(name = "Setting")
     protected Setting setting;
     protected Paging paging;
     @XmlSchemaType(name = "string")

@@ -35,7 +35,11 @@ public class FindContentByIdResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 4929360142422663068L;
+   @XmlElement(name = "return")
     protected Content _return;
 
     /**

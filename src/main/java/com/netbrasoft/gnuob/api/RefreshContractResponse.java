@@ -35,7 +35,11 @@ public class RefreshContractResponse
     implements Serializable
 {
 
-    @XmlElement(name = "return")
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 5556935188634293221L;
+   @XmlElement(name = "return")
     protected Contract _return;
 
     /**

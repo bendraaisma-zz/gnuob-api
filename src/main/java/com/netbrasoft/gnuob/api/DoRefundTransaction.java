@@ -34,7 +34,11 @@ public class DoRefundTransaction
     implements Serializable
 {
 
-    protected Order order;
+    /**
+    * 
+    */
+   private static final long serialVersionUID = -7931991262910966096L;
+   protected Order order;
 
     /**
      * Gets the value of the order property.

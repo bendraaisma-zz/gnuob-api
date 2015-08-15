@@ -34,7 +34,11 @@ public class FindContractById
     implements Serializable
 {
 
-    protected Contract contract;
+    /**
+    * 
+    */
+   private static final long serialVersionUID = -7800869460675778865L;
+   protected Contract contract;
 
     /**
      * Gets the value of the contract property.

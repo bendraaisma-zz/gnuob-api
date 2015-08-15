@@ -68,7 +68,11 @@ public class Customer
     implements Serializable
 {
 
-    @XmlElement(required = true)
+    /**
+    * 
+    */
+   private static final long serialVersionUID = -6200807422974233558L;
+   @XmlElement(required = true)
     protected Address address;
     @XmlElement(required = true)
     protected String buyerEmail;

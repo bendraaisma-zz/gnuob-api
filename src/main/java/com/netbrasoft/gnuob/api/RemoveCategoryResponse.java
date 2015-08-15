@@ -31,5 +31,10 @@ public class RemoveCategoryResponse
     implements Serializable
 {
 
+   /**
+    * 
+    */
+   private static final long serialVersionUID = -3034133770786523114L;
+
 
 }

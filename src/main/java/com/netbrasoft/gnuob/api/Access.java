@@ -41,7 +41,11 @@ public abstract class Access
     implements Serializable
 {
 
-    protected boolean active;
+    /**
+    * 
+    */
+   private static final long serialVersionUID = 2356602298199152826L;
+   protected boolean active;
     protected Permission permission;
 
     /**
