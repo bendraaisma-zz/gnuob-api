@@ -26,6 +26,22 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="TITLE_Z_A"/&gt;
  *     &lt;enumeration value="POSITION_A_Z"/&gt;
  *     &lt;enumeration value="NONE"/&gt;
+ *     &lt;enumeration value="FIRST_NAME_A_Z"/&gt;
+ *     &lt;enumeration value="FIRST_NAME_Z_A"/&gt;
+ *     &lt;enumeration value="LAST_NAME_A_Z"/&gt;
+ *     &lt;enumeration value="LAST_NAME_Z_A"/&gt;
+ *     &lt;enumeration value="CONTRACT_ID_A_Z"/&gt;
+ *     &lt;enumeration value="CONTRACT_ID_Z_A"/&gt;
+ *     &lt;enumeration value="ORDER_ID_A_Z"/&gt;
+ *     &lt;enumeration value="ORDER_ID_Z_A"/&gt;
+ *     &lt;enumeration value="OFFER_ID_A_Z"/&gt;
+ *     &lt;enumeration value="OFFER_ID_Z_A"/&gt;
+ *     &lt;enumeration value="NUMBER_A_Z"/&gt;
+ *     &lt;enumeration value="NUMBER_Z_A"/&gt;
+ *     &lt;enumeration value="CREATION_A_Z"/&gt;
+ *     &lt;enumeration value="CREATION_Z_A"/&gt;
+ *     &lt;enumeration value="MODIFICATION_A_Z"/&gt;
+ *     &lt;enumeration value="MODIFICATION_Z_A"/&gt;
  *   &lt;/restriction&gt;
  * &lt;/simpleType&gt;
  * </pre>
@@ -47,7 +63,23 @@ public enum OrderBy {
     TITLE_A_Z,
     TITLE_Z_A,
     POSITION_A_Z,
-    NONE;
+    NONE,
+    FIRST_NAME_A_Z,
+    FIRST_NAME_Z_A,
+    LAST_NAME_A_Z,
+    LAST_NAME_Z_A,
+    CONTRACT_ID_A_Z,
+    CONTRACT_ID_Z_A,
+    ORDER_ID_A_Z,
+    ORDER_ID_Z_A,
+    OFFER_ID_A_Z,
+    OFFER_ID_Z_A,
+    NUMBER_A_Z,
+    NUMBER_Z_A,
+    CREATION_A_Z,
+    CREATION_Z_A,
+    MODIFICATION_A_Z,
+    MODIFICATION_Z_A;
 
     public String value() {
         return name();

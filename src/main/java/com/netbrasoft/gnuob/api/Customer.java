@@ -5,7 +5,9 @@ import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -22,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="buyerEmail" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="buyerMarketingEmail" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="contactPhone" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="dateOfBirth" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="dateOfBirth" type="{http://www.w3.org/2001/XMLSchema}dateTime"/&gt;
  *         &lt;element name="firstName" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="friendlyName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="lastName" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
@@ -71,7 +73,7 @@ public class Customer
     /**
     * 
     */
-   private static final long serialVersionUID = -6200807422974233558L;
+   private static final long serialVersionUID = -6386912469945326531L;
    @XmlElement(required = true)
     protected Address address;
     @XmlElement(required = true)
@@ -79,7 +81,8 @@ public class Customer
     protected String buyerMarketingEmail;
     protected String contactPhone;
     @XmlElement(required = true)
-    protected String dateOfBirth;
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar dateOfBirth;
     @XmlElement(required = true)
     protected String firstName;
     protected String friendlyName;
@@ -196,10 +199,10 @@ public class Customer
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public String getDateOfBirth() {
+    public XMLGregorianCalendar getDateOfBirth() {
         return dateOfBirth;
     }
 
@@ -208,10 +211,10 @@ public class Customer
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setDateOfBirth(String value) {
+    public void setDateOfBirth(XMLGregorianCalendar value) {
         this.dateOfBirth = value;
     }
 

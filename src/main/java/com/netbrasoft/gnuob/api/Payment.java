@@ -7,7 +7,9 @@ import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -25,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="grossAmount" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
  *         &lt;element name="holdDecision" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="installmentCount" type="{http://www.w3.org/2001/XMLSchema}integer" minOccurs="0"/&gt;
- *         &lt;element name="paymentDate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="paymentDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="paymentRequestId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="paymentStatus" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="paymentType" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
@@ -75,14 +77,15 @@ public class Payment
     /**
     * 
     */
-   private static final long serialVersionUID = -2673551817717408435L;
+   private static final long serialVersionUID = 2340662684512087852L;
    protected String exchangeRate;
     protected BigDecimal feeAmount;
     @XmlElement(required = true)
     protected BigDecimal grossAmount;
     protected String holdDecision;
     protected BigInteger installmentCount;
-    protected String paymentDate;
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar paymentDate;
     protected String paymentRequestId;
     @XmlElement(required = true)
     protected String paymentStatus;
@@ -225,10 +228,10 @@ public class Payment
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public String getPaymentDate() {
+    public XMLGregorianCalendar getPaymentDate() {
         return paymentDate;
     }
 
@@ -237,10 +240,10 @@ public class Payment
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setPaymentDate(String value) {
+    public void setPaymentDate(XMLGregorianCalendar value) {
         this.paymentDate = value;
     }
 

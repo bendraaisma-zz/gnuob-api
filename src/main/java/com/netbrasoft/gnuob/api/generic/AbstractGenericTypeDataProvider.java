@@ -19,7 +19,6 @@ public abstract class AbstractGenericTypeDataProvider<T extends Type> extends So
    private static final long serialVersionUID = -7323826275199384990L;
 
    private static final String LATEST_COLLECTION_PROPERTY = "latestCollection";
-
    private static final String POSITION_PROPERTY = "position";
    private static final String BESTSELLER_PROPERTY = "bestseller";
    private static final String DISCOUNT_PROPERTY = "discount";
@@ -28,6 +27,15 @@ public abstract class AbstractGenericTypeDataProvider<T extends Type> extends So
    private static final String AMOUNT_PROPERTY = "amount";
    private static final String NAME_PROPERTY = "name";
    private static final String NONE_PROPERTY = "none";
+   private static final String FIRST_NAME = "firstName";
+   private static final String LAST_NAME = "lastName";
+   private static final String CONTRACT_ID = "contractId";
+   private static final String ORDER_ID = "orderId";
+   private static final String OFFER_ID = "offerId";
+   private static final String NUMBER = "number";
+   private static final String CREATION = "creation";
+   private static final String MODIFICATION = "modification";
+
    private T type;
 
    private OrderBy orderBy;
@@ -53,7 +61,7 @@ public abstract class AbstractGenericTypeDataProvider<T extends Type> extends So
    public T findById(T type) {
       try {
          return getGenericTypeWebServiceRepository().find(metaData, type);
-      } catch (SOAPFaultException e) {
+      } catch (final SOAPFaultException e) {
          throw new GNUOpenBusinessApplicationException(e.getMessage(), e);
       }
    }
@@ -62,7 +70,7 @@ public abstract class AbstractGenericTypeDataProvider<T extends Type> extends So
 
    private OrderBy getOrderBy() {
 
-      SortParam<String> sortOrder = getSort();
+      final SortParam<String> sortOrder = getSort();
 
       switch (sortOrder.getProperty()) {
 
@@ -90,6 +98,30 @@ public abstract class AbstractGenericTypeDataProvider<T extends Type> extends So
       case LATEST_COLLECTION_PROPERTY:
          orderBy = OrderBy.LATEST_COLLECTION;
          break;
+      case FIRST_NAME:
+         orderBy = sortOrder.isAscending() ? OrderBy.FIRST_NAME_A_Z : OrderBy.FIRST_NAME_Z_A;
+         break;
+      case LAST_NAME:
+         orderBy = sortOrder.isAscending() ? OrderBy.LAST_NAME_A_Z : OrderBy.LAST_NAME_Z_A;
+         break;
+      case CONTRACT_ID:
+         orderBy = sortOrder.isAscending() ? OrderBy.CONTRACT_ID_A_Z : OrderBy.CONTRACT_ID_Z_A;
+         break;
+      case ORDER_ID:
+         orderBy = sortOrder.isAscending() ? OrderBy.ORDER_ID_A_Z : OrderBy.ORDER_ID_Z_A;
+         break;
+      case OFFER_ID:
+         orderBy = sortOrder.isAscending() ? OrderBy.OFFER_ID_A_Z : OrderBy.OFFER_ID_Z_A;
+         break;
+      case NUMBER:
+         orderBy = sortOrder.isAscending() ? OrderBy.NUMBER_A_Z : OrderBy.NUMBER_Z_A;
+         break;
+      case CREATION:
+         orderBy = sortOrder.isAscending() ? OrderBy.CREATION_A_Z : OrderBy.CREATION_Z_A;
+         break;
+      case MODIFICATION:
+         orderBy = sortOrder.isAscending() ? OrderBy.MODIFICATION_A_Z : OrderBy.MODIFICATION_Z_A;
+         break;
       default:
          break;
       }
@@ -105,12 +137,12 @@ public abstract class AbstractGenericTypeDataProvider<T extends Type> extends So
    @Override
    public Iterator<T> iterator(long first, long max) {
       try {
-         Paging paramPaging = new Paging();
+         final Paging paramPaging = new Paging();
          paramPaging.setFirst((int) first);
          paramPaging.setMax((int) max);
 
          return getGenericTypeWebServiceRepository().find(metaData, type, paramPaging, getOrderBy()).iterator();
-      } catch (SOAPFaultException e) {
+      } catch (final SOAPFaultException e) {
          throw new GNUOpenBusinessApplicationException(e.getMessage(), e);
       }
    }
@@ -119,7 +151,7 @@ public abstract class AbstractGenericTypeDataProvider<T extends Type> extends So
    public T merge(T type) {
       try {
          return getGenericTypeWebServiceRepository().merge(metaData, type);
-      } catch (SOAPFaultException e) {
+      } catch (final SOAPFaultException e) {
          throw new GNUOpenBusinessApplicationException(e.getMessage(), e);
       }
    }
@@ -133,7 +165,7 @@ public abstract class AbstractGenericTypeDataProvider<T extends Type> extends So
    public T persist(T type) {
       try {
          return getGenericTypeWebServiceRepository().persist(metaData, type);
-      } catch (SOAPFaultException e) {
+      } catch (final SOAPFaultException e) {
          throw new GNUOpenBusinessApplicationException(e.getMessage(), e);
       }
    }
@@ -142,7 +174,7 @@ public abstract class AbstractGenericTypeDataProvider<T extends Type> extends So
    public T refresh(T type) {
       try {
          return getGenericTypeWebServiceRepository().refresh(metaData, type);
-      } catch (SOAPFaultException e) {
+      } catch (final SOAPFaultException e) {
          throw new GNUOpenBusinessApplicationException(e.getMessage(), e);
       }
    }
@@ -151,7 +183,7 @@ public abstract class AbstractGenericTypeDataProvider<T extends Type> extends So
    public void remove(T type) {
       try {
          getGenericTypeWebServiceRepository().remove(metaData, type);
-      } catch (SOAPFaultException e) {
+      } catch (final SOAPFaultException e) {
          throw new GNUOpenBusinessApplicationException(e.getMessage(), e);
       }
    }
@@ -185,7 +217,7 @@ public abstract class AbstractGenericTypeDataProvider<T extends Type> extends So
    public long size() {
       try {
          return getGenericTypeWebServiceRepository().count(metaData, type);
-      } catch (SOAPFaultException e) {
+      } catch (final SOAPFaultException e) {
          throw new GNUOpenBusinessApplicationException(e.getMessage(), e);
       }
    }
