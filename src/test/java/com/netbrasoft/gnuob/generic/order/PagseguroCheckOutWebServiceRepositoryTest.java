@@ -6,8 +6,13 @@ import static org.junit.Assert.assertTrue;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Random;
 import java.util.UUID;
+
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.drone.api.annotation.Drone;
@@ -63,7 +68,7 @@ public class PagseguroCheckOutWebServiceRepositoryTest {
    private Shipment shipment = null;
 
    @Before
-   public void testBefore() {
+   public void testBefore() throws DatatypeConfigurationException {
       final Random randomGenerator = new Random();
 
       metaData = new MetaData();
@@ -91,7 +96,10 @@ public class PagseguroCheckOutWebServiceRepositoryTest {
       customer.setLastName("Draaisma");
       customer.setBuyerEmail("c77487489899036884556@sandbox.pagseguro.com.br");
       customer.setAddress(address);
-      customer.setDateOfBirth("2014-12-31");
+
+      final GregorianCalendar c = new GregorianCalendar();
+      c.setTime(new Date());
+      customer.setDateOfBirth(DatatypeFactory.newInstance().newXMLGregorianCalendar(c));
 
       contract.setActive(true);
       contract.setCustomer(customer);
