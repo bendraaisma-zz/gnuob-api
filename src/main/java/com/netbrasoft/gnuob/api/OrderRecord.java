@@ -36,7 +36,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="itemWidth" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/&gt;
  *         &lt;element name="itemWidthUnit" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="number" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="option" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="orderRecordId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="product" type="{http://gnuob.netbrasoft.com/}product" minOccurs="0"/&gt;
@@ -68,7 +67,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "itemWidth",
     "itemWidthUnit",
     "name",
-    "number",
     "option",
     "orderRecordId",
     "product",
@@ -85,7 +83,7 @@ public class OrderRecord
     /**
     * 
     */
-   private static final long serialVersionUID = 6359152081649081489L;
+   private static final long serialVersionUID = -4908413903187271022L;
    protected BigDecimal amount;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar deliveryDate;
@@ -101,7 +99,6 @@ public class OrderRecord
     protected BigDecimal itemWidth;
     protected String itemWidthUnit;
     protected String name;
-    protected String number;
     protected String option;
     protected String orderRecordId;
     protected Product product;
@@ -445,30 +442,6 @@ public class OrderRecord
      */
     public void setName(String value) {
         this.name = value;
-    }
-
-    /**
-     * Gets the value of the number property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getNumber() {
-        return number;
-    }
-
-    /**
-     * Sets the value of the number property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setNumber(String value) {
-        this.number = value;
     }
 
     /**

@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="itemWidth" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/&gt;
  *         &lt;element name="itemWidthUnit" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="number" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="offerRecordId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="option" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="product" type="{http://gnuob.netbrasoft.com/}product" minOccurs="0"/&gt;
  *         &lt;element name="productNumber" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
@@ -63,7 +63,7 @@ import javax.xml.bind.annotation.XmlType;
     "itemWidth",
     "itemWidthUnit",
     "name",
-    "number",
+    "offerRecordId",
     "option",
     "product",
     "productNumber",
@@ -79,7 +79,7 @@ public class OfferRecord
     /**
     * 
     */
-   private static final long serialVersionUID = 5970363843898862970L;
+   private static final long serialVersionUID = 4382075385184817912L;
    protected BigDecimal amount;
     protected String description;
     protected BigDecimal discount;
@@ -93,7 +93,7 @@ public class OfferRecord
     protected BigDecimal itemWidth;
     protected String itemWidthUnit;
     protected String name;
-    protected String number;
+    protected String offerRecordId;
     protected String option;
     protected Product product;
     protected String productNumber;
@@ -415,27 +415,27 @@ public class OfferRecord
     }
 
     /**
-     * Gets the value of the number property.
+     * Gets the value of the offerRecordId property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getNumber() {
-        return number;
+    public String getOfferRecordId() {
+        return offerRecordId;
     }
 
     /**
-     * Sets the value of the number property.
+     * Sets the value of the offerRecordId property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setNumber(String value) {
-        this.number = value;
+    public void setOfferRecordId(String value) {
+        this.offerRecordId = value;
     }
 
     /**

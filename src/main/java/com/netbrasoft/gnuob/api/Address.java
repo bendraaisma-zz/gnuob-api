@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="district" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="internationalStateAndCity" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="internationalStreet" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="number" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="number" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="phone" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="postalCode" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="stateOrProvince" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
@@ -73,7 +73,6 @@ public class Address
     protected String district;
     protected String internationalStateAndCity;
     protected String internationalStreet;
-    @XmlElement(required = true)
     protected String number;
     protected String phone;
     @XmlElement(required = true)
