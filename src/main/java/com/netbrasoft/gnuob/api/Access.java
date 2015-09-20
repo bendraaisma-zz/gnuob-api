@@ -7,11 +7,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for access complex type.
+ * <p>
+ * Java class for access complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="access"&gt;
@@ -29,63 +31,49 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "access", propOrder = {
-    "active",
-    "permission"
-})
-@XmlSeeAlso({
-    Content.class
-})
-public abstract class Access
-    extends Type
-    implements Serializable
-{
+@XmlType(name = "access", propOrder = { "active", "permission" })
+@XmlSeeAlso({ Content.class })
+public abstract class Access extends Type implements Serializable {
 
-    /**
-    * 
-    */
    private static final long serialVersionUID = 2356602298199152826L;
    protected boolean active;
-    protected Permission permission;
+   protected Permission permission;
 
-    /**
-     * Gets the value of the active property.
-     * 
-     */
-    public boolean isActive() {
-        return active;
-    }
+   /**
+    * Gets the value of the active property.
+    * 
+    */
+   public boolean isActive() {
+      return active;
+   }
 
-    /**
-     * Sets the value of the active property.
-     * 
-     */
-    public void setActive(boolean value) {
-        this.active = value;
-    }
+   /**
+    * Sets the value of the active property.
+    * 
+    */
+   public void setActive(boolean value) {
+      this.active = value;
+   }
 
-    /**
-     * Gets the value of the permission property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Permission }
-     *     
-     */
-    public Permission getPermission() {
-        return permission;
-    }
+   /**
+    * Gets the value of the permission property.
+    * 
+    * @return possible object is {@link Permission }
+    * 
+    */
+   public Permission getPermission() {
+      return permission;
+   }
 
-    /**
-     * Sets the value of the permission property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Permission }
-     *     
-     */
-    public void setPermission(Permission value) {
-        this.permission = value;
-    }
+   /**
+    * Sets the value of the permission property.
+    * 
+    * @param value
+    *           allowed object is {@link Permission }
+    * 
+    */
+   public void setPermission(Permission value) {
+      this.permission = value;
+   }
 
 }

@@ -7,11 +7,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for refreshSiteResponse complex type.
+ * <p>
+ * Java class for refreshSiteResponse complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="refreshSiteResponse"&gt;
@@ -28,42 +30,32 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "refreshSiteResponse", propOrder = {
-    "_return"
-})
-public class RefreshSiteResponse
-    implements Serializable
-{
+@XmlType(name = "refreshSiteResponse", propOrder = { "_return" })
+public class RefreshSiteResponse implements Serializable {
 
-    /**
-    * 
-    */
    private static final long serialVersionUID = 7518389249202242545L;
    @XmlElement(name = "return")
-    protected Site _return;
+   protected Site _return;
 
-    /**
-     * Gets the value of the return property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Site }
-     *     
-     */
-    public Site getReturn() {
-        return _return;
-    }
+   /**
+    * Gets the value of the return property.
+    * 
+    * @return possible object is {@link Site }
+    * 
+    */
+   public Site getReturn() {
+      return _return;
+   }
 
-    /**
-     * Sets the value of the return property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Site }
-     *     
-     */
-    public void setReturn(Site value) {
-        this._return = value;
-    }
+   /**
+    * Sets the value of the return property.
+    * 
+    * @param value
+    *           allowed object is {@link Site }
+    * 
+    */
+   public void setReturn(Site value) {
+      this._return = value;
+   }
 
 }

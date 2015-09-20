@@ -6,11 +6,13 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for removeContract complex type.
+ * <p>
+ * Java class for removeContract complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="removeContract"&gt;
@@ -27,41 +29,31 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "removeContract", propOrder = {
-    "contract"
-})
-public class RemoveContract
-    implements Serializable
-{
+@XmlType(name = "removeContract", propOrder = { "contract" })
+public class RemoveContract implements Serializable {
 
-    /**
-    * 
-    */
    private static final long serialVersionUID = 2927809473841805665L;
    protected Contract contract;
 
-    /**
-     * Gets the value of the contract property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Contract }
-     *     
-     */
-    public Contract getContract() {
-        return contract;
-    }
+   /**
+    * Gets the value of the contract property.
+    * 
+    * @return possible object is {@link Contract }
+    * 
+    */
+   public Contract getContract() {
+      return contract;
+   }
 
-    /**
-     * Sets the value of the contract property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Contract }
-     *     
-     */
-    public void setContract(Contract value) {
-        this.contract = value;
-    }
+   /**
+    * Sets the value of the contract property.
+    * 
+    * @param value
+    *           allowed object is {@link Contract }
+    * 
+    */
+   public void setContract(Contract value) {
+      this.contract = value;
+   }
 
 }

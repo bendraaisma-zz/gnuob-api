@@ -6,11 +6,13 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for removeCategoryResponse complex type.
+ * <p>
+ * Java class for removeCategoryResponse complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="removeCategoryResponse"&gt;
@@ -27,14 +29,8 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "removeCategoryResponse")
-public class RemoveCategoryResponse
-    implements Serializable
-{
+public class RemoveCategoryResponse implements Serializable {
 
-   /**
-    * 
-    */
    private static final long serialVersionUID = -3034133770786523114L;
-
 
 }
