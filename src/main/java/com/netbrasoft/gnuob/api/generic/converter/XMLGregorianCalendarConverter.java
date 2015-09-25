@@ -1,4 +1,4 @@
-package com.netbrasoft.gnuob.api.generic;
+package com.netbrasoft.gnuob.api.generic.converter;
 
 import java.text.DateFormat;
 import java.text.ParseException;

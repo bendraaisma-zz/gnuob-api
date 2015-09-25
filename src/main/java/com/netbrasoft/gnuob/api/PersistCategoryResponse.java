@@ -7,11 +7,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for persistCategoryResponse complex type.
+ * <p>
+ * Java class for persistCategoryResponse complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="persistCategoryResponse"&gt;
@@ -28,42 +30,32 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "persistCategoryResponse", propOrder = {
-    "_return"
-})
-public class PersistCategoryResponse
-    implements Serializable
-{
+@XmlType(name = "persistCategoryResponse", propOrder = { "_return" })
+public class PersistCategoryResponse implements Serializable {
 
-    /**
-    * 
-    */
    private static final long serialVersionUID = 4750005035870308483L;
    @XmlElement(name = "return")
-    protected Category _return;
+   protected Category _return;
 
-    /**
-     * Gets the value of the return property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Category }
-     *     
-     */
-    public Category getReturn() {
-        return _return;
-    }
+   /**
+    * Gets the value of the return property.
+    * 
+    * @return possible object is {@link Category }
+    * 
+    */
+   public Category getReturn() {
+      return _return;
+   }
 
-    /**
-     * Sets the value of the return property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Category }
-     *     
-     */
-    public void setReturn(Category value) {
-        this._return = value;
-    }
+   /**
+    * Sets the value of the return property.
+    * 
+    * @param value
+    *           allowed object is {@link Category }
+    * 
+    */
+   public void setReturn(Category value) {
+      this._return = value;
+   }
 
 }

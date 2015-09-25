@@ -7,11 +7,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for refreshOrderResponse complex type.
+ * <p>
+ * Java class for refreshOrderResponse complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="refreshOrderResponse"&gt;
@@ -28,42 +30,32 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "refreshOrderResponse", propOrder = {
-    "_return"
-})
-public class RefreshOrderResponse
-    implements Serializable
-{
+@XmlType(name = "refreshOrderResponse", propOrder = { "_return" })
+public class RefreshOrderResponse implements Serializable {
 
-    /**
-    * 
-    */
    private static final long serialVersionUID = 2108729195832439398L;
    @XmlElement(name = "return")
-    protected Order _return;
+   protected Order _return;
 
-    /**
-     * Gets the value of the return property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Order }
-     *     
-     */
-    public Order getReturn() {
-        return _return;
-    }
+   /**
+    * Gets the value of the return property.
+    * 
+    * @return possible object is {@link Order }
+    * 
+    */
+   public Order getReturn() {
+      return _return;
+   }
 
-    /**
-     * Sets the value of the return property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Order }
-     *     
-     */
-    public void setReturn(Order value) {
-        this._return = value;
-    }
+   /**
+    * Sets the value of the return property.
+    * 
+    * @param value
+    *           allowed object is {@link Order }
+    * 
+    */
+   public void setReturn(Order value) {
+      this._return = value;
+   }
 
 }
