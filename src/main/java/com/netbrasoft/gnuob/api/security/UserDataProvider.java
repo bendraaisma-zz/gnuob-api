@@ -13,18 +13,18 @@ import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 @Controller("UserDataProvider")
 public class UserDataProvider<U extends User> extends AbstractGenericTypeDataProvider<U> {
 
-   private static final long serialVersionUID = -8167982674192813819L;
+  private static final long serialVersionUID = -8167982674192813819L;
 
-   @Resource(name = "UserWebServiceRepository")
-   private transient GenericTypeWebServiceRepository<U> userWebServiceRepository;
+  @Resource(name = "UserWebServiceRepository")
+  private transient GenericTypeWebServiceRepository<U> userWebServiceRepository;
 
-   @SuppressWarnings("unchecked")
-   public UserDataProvider() {
-      super((U) new User());
-   }
+  @SuppressWarnings("unchecked")
+  public UserDataProvider() {
+    super((U) new User());
+  }
 
-   @Override
-   public GenericTypeWebServiceRepository<U> getGenericTypeWebServiceRepository() {
-      return userWebServiceRepository;
-   }
+  @Override
+  public GenericTypeWebServiceRepository<U> getGenericTypeWebServiceRepository() {
+    return userWebServiceRepository;
+  }
 }

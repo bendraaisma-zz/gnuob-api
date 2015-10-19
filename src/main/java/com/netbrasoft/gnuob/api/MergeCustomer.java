@@ -10,8 +10,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for mergeCustomer complex type.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="mergeCustomer"&gt;
@@ -28,30 +27,29 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "mergeCustomer", propOrder = { "customer" })
+@XmlType(name = "mergeCustomer", propOrder = {"customer"})
 public class MergeCustomer {
 
-   protected Customer customer;
+  protected Customer customer;
 
-   /**
-    * Gets the value of the customer property.
-    * 
-    * @return possible object is {@link Customer }
-    * 
-    */
-   public Customer getCustomer() {
-      return customer;
-   }
+  /**
+   * Gets the value of the customer property.
+   * 
+   * @return possible object is {@link Customer }
+   * 
+   */
+  public Customer getCustomer() {
+    return customer;
+  }
 
-   /**
-    * Sets the value of the customer property.
-    * 
-    * @param value
-    *           allowed object is {@link Customer }
-    * 
-    */
-   public void setCustomer(Customer value) {
-      this.customer = value;
-   }
+  /**
+   * Sets the value of the customer property.
+   * 
+   * @param value allowed object is {@link Customer }
+   * 
+   */
+  public void setCustomer(Customer value) {
+    this.customer = value;
+  }
 
 }

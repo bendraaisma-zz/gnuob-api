@@ -15,8 +15,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for user complex type.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="user"&gt;
@@ -39,194 +38,187 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "user", propOrder = { "access", "description", "groups", "name", "password", "roles", "sites" })
+@XmlType(name = "user", propOrder = {"access", "description", "groups", "name", "password", "roles", "sites"})
 public class User extends Access implements Serializable {
 
-   private static final long serialVersionUID = -7570215774738268437L;
-   @XmlSchemaType(name = "string")
-   protected Rule access;
-   protected String description;
-   @XmlElement(nillable = true)
-   protected List<Group> groups;
-   @XmlElement(required = true)
-   protected String name;
-   @XmlElement(required = true)
-   protected String password;
-   @XmlElement(nillable = true)
-   @XmlSchemaType(name = "string")
-   protected List<Role> roles;
-   @XmlElement(nillable = true)
-   protected List<Site> sites;
+  private static final long serialVersionUID = -7570215774738268437L;
+  @XmlSchemaType(name = "string")
+  protected Rule access;
+  protected String description;
+  @XmlElement(nillable = true)
+  protected List<Group> groups;
+  @XmlElement(required = true)
+  protected String name;
+  @XmlElement(required = true)
+  protected String password;
+  @XmlElement(nillable = true)
+  @XmlSchemaType(name = "string")
+  protected List<Role> roles;
+  @XmlElement(nillable = true)
+  protected List<Site> sites;
 
-   /**
-    * Gets the value of the access property.
-    * 
-    * @return possible object is {@link Rule }
-    * 
-    */
-   public Rule getAccess() {
-      return access;
-   }
+  /**
+   * Gets the value of the access property.
+   * 
+   * @return possible object is {@link Rule }
+   * 
+   */
+  public Rule getAccess() {
+    return access;
+  }
 
-   /**
-    * Sets the value of the access property.
-    * 
-    * @param value
-    *           allowed object is {@link Rule }
-    * 
-    */
-   public void setAccess(Rule value) {
-      this.access = value;
-   }
+  /**
+   * Sets the value of the access property.
+   * 
+   * @param value allowed object is {@link Rule }
+   * 
+   */
+  public void setAccess(Rule value) {
+    this.access = value;
+  }
 
-   /**
-    * Gets the value of the description property.
-    * 
-    * @return possible object is {@link String }
-    * 
-    */
-   public String getDescription() {
-      return description;
-   }
+  /**
+   * Gets the value of the description property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getDescription() {
+    return description;
+  }
 
-   /**
-    * Sets the value of the description property.
-    * 
-    * @param value
-    *           allowed object is {@link String }
-    * 
-    */
-   public void setDescription(String value) {
-      this.description = value;
-   }
+  /**
+   * Sets the value of the description property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setDescription(String value) {
+    this.description = value;
+  }
 
-   /**
-    * Gets the value of the groups property.
-    * 
-    * <p>
-    * This accessor method returns a reference to the live list, not a snapshot.
-    * Therefore any modification you make to the returned list will be present
-    * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
-    * for the groups property.
-    * 
-    * <p>
-    * For example, to add a new item, do as follows:
-    * 
-    * <pre>
-    * getGroups().add(newItem);
-    * </pre>
-    * 
-    * 
-    * <p>
-    * Objects of the following type(s) are allowed in the list {@link Group }
-    * 
-    * 
-    */
-   public List<Group> getGroups() {
-      if (groups == null) {
-         groups = new ArrayList<Group>();
-      }
-      return this.groups;
-   }
+  /**
+   * Gets the value of the groups property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot. Therefore any
+   * modification you make to the returned list will be present inside the JAXB object. This is why
+   * there is not a <CODE>set</CODE> method for the groups property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getGroups().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list {@link Group }
+   * 
+   * 
+   */
+  public List<Group> getGroups() {
+    if (groups == null) {
+      groups = new ArrayList<Group>();
+    }
+    return this.groups;
+  }
 
-   /**
-    * Gets the value of the name property.
-    * 
-    * @return possible object is {@link String }
-    * 
-    */
-   public String getName() {
-      return name;
-   }
+  /**
+   * Gets the value of the name property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getName() {
+    return name;
+  }
 
-   /**
-    * Sets the value of the name property.
-    * 
-    * @param value
-    *           allowed object is {@link String }
-    * 
-    */
-   public void setName(String value) {
-      this.name = value;
-   }
+  /**
+   * Sets the value of the name property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setName(String value) {
+    this.name = value;
+  }
 
-   /**
-    * Gets the value of the password property.
-    * 
-    * @return possible object is {@link String }
-    * 
-    */
-   public String getPassword() {
-      return password;
-   }
+  /**
+   * Gets the value of the password property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getPassword() {
+    return password;
+  }
 
-   /**
-    * Sets the value of the password property.
-    * 
-    * @param value
-    *           allowed object is {@link String }
-    * 
-    */
-   public void setPassword(String value) {
-      this.password = value;
-   }
+  /**
+   * Sets the value of the password property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setPassword(String value) {
+    this.password = value;
+  }
 
-   /**
-    * Gets the value of the roles property.
-    * 
-    * <p>
-    * This accessor method returns a reference to the live list, not a snapshot.
-    * Therefore any modification you make to the returned list will be present
-    * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
-    * for the roles property.
-    * 
-    * <p>
-    * For example, to add a new item, do as follows:
-    * 
-    * <pre>
-    * getRoles().add(newItem);
-    * </pre>
-    * 
-    * 
-    * <p>
-    * Objects of the following type(s) are allowed in the list {@link Role }
-    * 
-    * 
-    */
-   public List<Role> getRoles() {
-      if (roles == null) {
-         roles = new ArrayList<Role>();
-      }
-      return this.roles;
-   }
+  /**
+   * Gets the value of the roles property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot. Therefore any
+   * modification you make to the returned list will be present inside the JAXB object. This is why
+   * there is not a <CODE>set</CODE> method for the roles property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getRoles().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list {@link Role }
+   * 
+   * 
+   */
+  public List<Role> getRoles() {
+    if (roles == null) {
+      roles = new ArrayList<Role>();
+    }
+    return this.roles;
+  }
 
-   /**
-    * Gets the value of the sites property.
-    * 
-    * <p>
-    * This accessor method returns a reference to the live list, not a snapshot.
-    * Therefore any modification you make to the returned list will be present
-    * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
-    * for the sites property.
-    * 
-    * <p>
-    * For example, to add a new item, do as follows:
-    * 
-    * <pre>
-    * getSites().add(newItem);
-    * </pre>
-    * 
-    * 
-    * <p>
-    * Objects of the following type(s) are allowed in the list {@link Site }
-    * 
-    * 
-    */
-   public List<Site> getSites() {
-      if (sites == null) {
-         sites = new ArrayList<Site>();
-      }
-      return this.sites;
-   }
+  /**
+   * Gets the value of the sites property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot. Therefore any
+   * modification you make to the returned list will be present inside the JAXB object. This is why
+   * there is not a <CODE>set</CODE> method for the sites property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getSites().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list {@link Site }
+   * 
+   * 
+   */
+  public List<Site> getSites() {
+    if (sites == null) {
+      sites = new ArrayList<Site>();
+    }
+    return this.sites;
+  }
 
 }

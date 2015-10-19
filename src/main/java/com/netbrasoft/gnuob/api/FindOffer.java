@@ -12,8 +12,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for findOffer complex type.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="findOffer"&gt;
@@ -32,76 +31,73 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "findOffer", propOrder = { "offer", "paging", "orderBy" })
+@XmlType(name = "findOffer", propOrder = {"offer", "paging", "orderBy"})
 public class FindOffer implements Serializable {
 
-   private static final long serialVersionUID = 7583630229443284808L;
-   protected Offer offer;
-   protected Paging paging;
-   @XmlSchemaType(name = "string")
-   protected OrderBy orderBy;
+  private static final long serialVersionUID = 7583630229443284808L;
+  protected Offer offer;
+  protected Paging paging;
+  @XmlSchemaType(name = "string")
+  protected OrderBy orderBy;
 
-   /**
-    * Gets the value of the offer property.
-    * 
-    * @return possible object is {@link Offer }
-    * 
-    */
-   public Offer getOffer() {
-      return offer;
-   }
+  /**
+   * Gets the value of the offer property.
+   * 
+   * @return possible object is {@link Offer }
+   * 
+   */
+  public Offer getOffer() {
+    return offer;
+  }
 
-   /**
-    * Sets the value of the offer property.
-    * 
-    * @param value
-    *           allowed object is {@link Offer }
-    * 
-    */
-   public void setOffer(Offer value) {
-      this.offer = value;
-   }
+  /**
+   * Sets the value of the offer property.
+   * 
+   * @param value allowed object is {@link Offer }
+   * 
+   */
+  public void setOffer(Offer value) {
+    this.offer = value;
+  }
 
-   /**
-    * Gets the value of the paging property.
-    * 
-    * @return possible object is {@link Paging }
-    * 
-    */
-   public Paging getPaging() {
-      return paging;
-   }
+  /**
+   * Gets the value of the paging property.
+   * 
+   * @return possible object is {@link Paging }
+   * 
+   */
+  public Paging getPaging() {
+    return paging;
+  }
 
-   /**
-    * Sets the value of the paging property.
-    * 
-    * @param value
-    *           allowed object is {@link Paging }
-    * 
-    */
-   public void setPaging(Paging value) {
-      this.paging = value;
-   }
+  /**
+   * Sets the value of the paging property.
+   * 
+   * @param value allowed object is {@link Paging }
+   * 
+   */
+  public void setPaging(Paging value) {
+    this.paging = value;
+  }
 
-   /**
-    * Gets the value of the orderBy property.
-    * 
-    * @return possible object is {@link OrderBy }
-    * 
-    */
-   public OrderBy getOrderBy() {
-      return orderBy;
-   }
+  /**
+   * Gets the value of the orderBy property.
+   * 
+   * @return possible object is {@link OrderBy }
+   * 
+   */
+  public OrderBy getOrderBy() {
+    return orderBy;
+  }
 
-   /**
-    * Sets the value of the orderBy property.
-    * 
-    * @param value
-    *           allowed object is {@link OrderBy }
-    * 
-    */
-   public void setOrderBy(OrderBy value) {
-      this.orderBy = value;
-   }
+  /**
+   * Sets the value of the orderBy property.
+   * 
+   * @param value allowed object is {@link OrderBy }
+   * 
+   */
+  public void setOrderBy(OrderBy value) {
+    this.orderBy = value;
+  }
 
 }

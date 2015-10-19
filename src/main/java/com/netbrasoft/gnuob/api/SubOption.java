@@ -9,18 +9,19 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>
- * Java class for group complex type.
+ * Java class for subOption complex type.
  * 
  * <p>
  * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="group"&gt;
+ * &lt;complexType name="subOption"&gt;
  *   &lt;complexContent&gt;
- *     &lt;extension base="{http://gnuob.netbrasoft.com/}access"&gt;
+ *     &lt;extension base="{http://gnuob.netbrasoft.com/}type"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="disabled" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
+ *         &lt;element name="value" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
@@ -30,13 +31,15 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "group", propOrder = {"description", "name"})
-public class Group extends Access implements Serializable {
+@XmlType(name = "subOption", propOrder = {"description", "disabled", "value"})
+public class SubOption extends Type implements Serializable {
 
-  private static final long serialVersionUID = 3690075816000776825L;
-  protected String description;
+  private static final long serialVersionUID = 2931331205095873721L;
   @XmlElement(required = true)
-  protected String name;
+  protected String description;
+  protected boolean disabled;
+  @XmlElement(required = true)
+  protected String value;
 
   /**
    * Gets the value of the description property.
@@ -59,23 +62,39 @@ public class Group extends Access implements Serializable {
   }
 
   /**
-   * Gets the value of the name property.
+   * Gets the value of the disabled property.
+   * 
+   */
+  public boolean isDisabled() {
+    return disabled;
+  }
+
+  /**
+   * Sets the value of the disabled property.
+   * 
+   */
+  public void setDisabled(boolean value) {
+    this.disabled = value;
+  }
+
+  /**
+   * Gets the value of the value property.
    * 
    * @return possible object is {@link String }
    * 
    */
-  public String getName() {
-    return name;
+  public String getValue() {
+    return value;
   }
 
   /**
-   * Sets the value of the name property.
+   * Sets the value of the value property.
    * 
    * @param value allowed object is {@link String }
    * 
    */
-  public void setName(String value) {
-    this.name = value;
+  public void setValue(String value) {
+    this.value = value;
   }
 
 }

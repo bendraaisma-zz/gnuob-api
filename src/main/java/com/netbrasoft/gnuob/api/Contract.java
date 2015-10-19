@@ -12,8 +12,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for contract complex type.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="contract"&gt;
@@ -31,55 +30,53 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "contract", propOrder = { "contractId", "customer" })
+@XmlType(name = "contract", propOrder = {"contractId", "customer"})
 public class Contract extends Access implements Serializable {
 
-   private static final long serialVersionUID = 1063097896490794439L;
-   @XmlElement(required = true)
-   protected String contractId;
-   @XmlElement(required = true)
-   protected Customer customer;
+  private static final long serialVersionUID = 1063097896490794439L;
+  @XmlElement(required = true)
+  protected String contractId;
+  @XmlElement(required = true)
+  protected Customer customer;
 
-   /**
-    * Gets the value of the contractId property.
-    * 
-    * @return possible object is {@link String }
-    * 
-    */
-   public String getContractId() {
-      return contractId;
-   }
+  /**
+   * Gets the value of the contractId property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getContractId() {
+    return contractId;
+  }
 
-   /**
-    * Sets the value of the contractId property.
-    * 
-    * @param value
-    *           allowed object is {@link String }
-    * 
-    */
-   public void setContractId(String value) {
-      this.contractId = value;
-   }
+  /**
+   * Sets the value of the contractId property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setContractId(String value) {
+    this.contractId = value;
+  }
 
-   /**
-    * Gets the value of the customer property.
-    * 
-    * @return possible object is {@link Customer }
-    * 
-    */
-   public Customer getCustomer() {
-      return customer;
-   }
+  /**
+   * Gets the value of the customer property.
+   * 
+   * @return possible object is {@link Customer }
+   * 
+   */
+  public Customer getCustomer() {
+    return customer;
+  }
 
-   /**
-    * Sets the value of the customer property.
-    * 
-    * @param value
-    *           allowed object is {@link Customer }
-    * 
-    */
-   public void setCustomer(Customer value) {
-      this.customer = value;
-   }
+  /**
+   * Sets the value of the customer property.
+   * 
+   * @param value allowed object is {@link Customer }
+   * 
+   */
+  public void setCustomer(Customer value) {
+    this.customer = value;
+  }
 
 }

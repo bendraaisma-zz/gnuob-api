@@ -13,18 +13,18 @@ import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 @Controller("CategoryDataProvider")
 public class CategoryDataProvider<C extends Category> extends AbstractGenericTypeDataProvider<C> {
 
-   private static final long serialVersionUID = -7147813111234260412L;
+  private static final long serialVersionUID = -7147813111234260412L;
 
-   @Resource(name = "CategoryWebServiceRepository")
-   private transient GenericTypeWebServiceRepository<C> categoryWebServiceRepository;
+  @Resource(name = "CategoryWebServiceRepository")
+  private transient GenericTypeWebServiceRepository<C> categoryWebServiceRepository;
 
-   @SuppressWarnings("unchecked")
-   public CategoryDataProvider() {
-      super((C) new Category());
-   }
+  @SuppressWarnings("unchecked")
+  public CategoryDataProvider() {
+    super((C) new Category());
+  }
 
-   @Override
-   public GenericTypeWebServiceRepository<C> getGenericTypeWebServiceRepository() {
-      return categoryWebServiceRepository;
-   }
+  @Override
+  public GenericTypeWebServiceRepository<C> getGenericTypeWebServiceRepository() {
+    return categoryWebServiceRepository;
+  }
 }

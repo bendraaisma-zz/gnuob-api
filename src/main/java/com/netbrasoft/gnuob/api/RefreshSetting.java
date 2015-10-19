@@ -12,8 +12,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for refreshSetting complex type.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="refreshSetting"&gt;
@@ -30,32 +29,31 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "refreshSetting", propOrder = { "setting" })
+@XmlType(name = "refreshSetting", propOrder = {"setting"})
 public class RefreshSetting implements Serializable {
 
-   private static final long serialVersionUID = -6514224750284152052L;
-   @XmlElement(name = "Setting")
-   protected Setting setting;
+  private static final long serialVersionUID = -6514224750284152052L;
+  @XmlElement(name = "Setting")
+  protected Setting setting;
 
-   /**
-    * Gets the value of the setting property.
-    * 
-    * @return possible object is {@link Setting }
-    * 
-    */
-   public Setting getSetting() {
-      return setting;
-   }
+  /**
+   * Gets the value of the setting property.
+   * 
+   * @return possible object is {@link Setting }
+   * 
+   */
+  public Setting getSetting() {
+    return setting;
+  }
 
-   /**
-    * Sets the value of the setting property.
-    * 
-    * @param value
-    *           allowed object is {@link Setting }
-    * 
-    */
-   public void setSetting(Setting value) {
-      this.setting = value;
-   }
+  /**
+   * Sets the value of the setting property.
+   * 
+   * @param value allowed object is {@link Setting }
+   * 
+   */
+  public void setSetting(Setting value) {
+    this.setting = value;
+  }
 
 }

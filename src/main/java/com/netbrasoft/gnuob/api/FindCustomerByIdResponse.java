@@ -11,8 +11,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for findCustomerByIdResponse complex type.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="findCustomerByIdResponse"&gt;
@@ -29,31 +28,30 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "findCustomerByIdResponse", propOrder = { "_return" })
+@XmlType(name = "findCustomerByIdResponse", propOrder = {"_return"})
 public class FindCustomerByIdResponse {
 
-   @XmlElement(name = "return")
-   protected Customer _return;
+  @XmlElement(name = "return")
+  protected Customer _return;
 
-   /**
-    * Gets the value of the return property.
-    * 
-    * @return possible object is {@link Customer }
-    * 
-    */
-   public Customer getReturn() {
-      return _return;
-   }
+  /**
+   * Gets the value of the return property.
+   * 
+   * @return possible object is {@link Customer }
+   * 
+   */
+  public Customer getReturn() {
+    return _return;
+  }
 
-   /**
-    * Sets the value of the return property.
-    * 
-    * @param value
-    *           allowed object is {@link Customer }
-    * 
-    */
-   public void setReturn(Customer value) {
-      this._return = value;
-   }
+  /**
+   * Sets the value of the return property.
+   * 
+   * @param value allowed object is {@link Customer }
+   * 
+   */
+  public void setReturn(Customer value) {
+    this._return = value;
+  }
 
 }

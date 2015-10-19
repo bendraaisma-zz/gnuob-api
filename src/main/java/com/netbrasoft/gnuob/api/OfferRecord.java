@@ -16,8 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for offerRecord complex type.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="offerRecord"&gt;
@@ -54,482 +53,461 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "offerRecord", propOrder = { "amount", "description", "discount", "itemHeight", "itemHeightUnit", "itemLength", "itemLengthUnit", "itemUrl", "itemWeight", "itemWeightUnit", "itemWidth", "itemWidthUnit", "name", "offerRecordId", "option",
-      "options", "product", "productNumber", "quantity", "shippingCost", "tax" })
+@XmlType(name = "offerRecord", propOrder = {"amount", "description", "discount", "itemHeight", "itemHeightUnit", "itemLength", "itemLengthUnit", "itemUrl", "itemWeight",
+    "itemWeightUnit", "itemWidth", "itemWidthUnit", "name", "offerRecordId", "option", "options", "product", "productNumber", "quantity", "shippingCost", "tax"})
 public class OfferRecord extends Type implements Serializable {
 
-   private static final long serialVersionUID = -2873801090025432419L;
-   protected BigDecimal amount;
-   protected String description;
-   protected BigDecimal discount;
-   protected BigDecimal itemHeight;
-   protected String itemHeightUnit;
-   protected BigDecimal itemLength;
-   protected String itemLengthUnit;
-   protected String itemUrl;
-   protected BigDecimal itemWeight;
-   protected String itemWeightUnit;
-   protected BigDecimal itemWidth;
-   protected String itemWidthUnit;
-   protected String name;
-   protected String offerRecordId;
-   protected String option;
-   @XmlElement(nillable = true)
-   protected List<Option> options;
-   protected Product product;
-   protected String productNumber;
-   @XmlElement(required = true)
-   protected BigInteger quantity;
-   protected BigDecimal shippingCost;
-   protected BigDecimal tax;
+  private static final long serialVersionUID = -2873801090025432419L;
+  protected BigDecimal amount;
+  protected String description;
+  protected BigDecimal discount;
+  protected BigDecimal itemHeight;
+  protected String itemHeightUnit;
+  protected BigDecimal itemLength;
+  protected String itemLengthUnit;
+  protected String itemUrl;
+  protected BigDecimal itemWeight;
+  protected String itemWeightUnit;
+  protected BigDecimal itemWidth;
+  protected String itemWidthUnit;
+  protected String name;
+  protected String offerRecordId;
+  protected String option;
+  @XmlElement(nillable = true)
+  protected List<Option> options;
+  protected Product product;
+  protected String productNumber;
+  @XmlElement(required = true)
+  protected BigInteger quantity;
+  protected BigDecimal shippingCost;
+  protected BigDecimal tax;
 
-   /**
-    * Gets the value of the amount property.
-    * 
-    * @return possible object is {@link BigDecimal }
-    * 
-    */
-   public BigDecimal getAmount() {
-      return amount;
-   }
+  /**
+   * Gets the value of the amount property.
+   * 
+   * @return possible object is {@link BigDecimal }
+   * 
+   */
+  public BigDecimal getAmount() {
+    return amount;
+  }
 
-   /**
-    * Sets the value of the amount property.
-    * 
-    * @param value
-    *           allowed object is {@link BigDecimal }
-    * 
-    */
-   public void setAmount(BigDecimal value) {
-      this.amount = value;
-   }
+  /**
+   * Sets the value of the amount property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setAmount(BigDecimal value) {
+    this.amount = value;
+  }
 
-   /**
-    * Gets the value of the description property.
-    * 
-    * @return possible object is {@link String }
-    * 
-    */
-   public String getDescription() {
-      return description;
-   }
+  /**
+   * Gets the value of the description property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getDescription() {
+    return description;
+  }
 
-   /**
-    * Sets the value of the description property.
-    * 
-    * @param value
-    *           allowed object is {@link String }
-    * 
-    */
-   public void setDescription(String value) {
-      this.description = value;
-   }
+  /**
+   * Sets the value of the description property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setDescription(String value) {
+    this.description = value;
+  }
 
-   /**
-    * Gets the value of the discount property.
-    * 
-    * @return possible object is {@link BigDecimal }
-    * 
-    */
-   public BigDecimal getDiscount() {
-      return discount;
-   }
+  /**
+   * Gets the value of the discount property.
+   * 
+   * @return possible object is {@link BigDecimal }
+   * 
+   */
+  public BigDecimal getDiscount() {
+    return discount;
+  }
 
-   /**
-    * Sets the value of the discount property.
-    * 
-    * @param value
-    *           allowed object is {@link BigDecimal }
-    * 
-    */
-   public void setDiscount(BigDecimal value) {
-      this.discount = value;
-   }
+  /**
+   * Sets the value of the discount property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setDiscount(BigDecimal value) {
+    this.discount = value;
+  }
 
-   /**
-    * Gets the value of the itemHeight property.
-    * 
-    * @return possible object is {@link BigDecimal }
-    * 
-    */
-   public BigDecimal getItemHeight() {
-      return itemHeight;
-   }
+  /**
+   * Gets the value of the itemHeight property.
+   * 
+   * @return possible object is {@link BigDecimal }
+   * 
+   */
+  public BigDecimal getItemHeight() {
+    return itemHeight;
+  }
 
-   /**
-    * Sets the value of the itemHeight property.
-    * 
-    * @param value
-    *           allowed object is {@link BigDecimal }
-    * 
-    */
-   public void setItemHeight(BigDecimal value) {
-      this.itemHeight = value;
-   }
+  /**
+   * Sets the value of the itemHeight property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setItemHeight(BigDecimal value) {
+    this.itemHeight = value;
+  }
 
-   /**
-    * Gets the value of the itemHeightUnit property.
-    * 
-    * @return possible object is {@link String }
-    * 
-    */
-   public String getItemHeightUnit() {
-      return itemHeightUnit;
-   }
+  /**
+   * Gets the value of the itemHeightUnit property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getItemHeightUnit() {
+    return itemHeightUnit;
+  }
 
-   /**
-    * Sets the value of the itemHeightUnit property.
-    * 
-    * @param value
-    *           allowed object is {@link String }
-    * 
-    */
-   public void setItemHeightUnit(String value) {
-      this.itemHeightUnit = value;
-   }
+  /**
+   * Sets the value of the itemHeightUnit property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setItemHeightUnit(String value) {
+    this.itemHeightUnit = value;
+  }
 
-   /**
-    * Gets the value of the itemLength property.
-    * 
-    * @return possible object is {@link BigDecimal }
-    * 
-    */
-   public BigDecimal getItemLength() {
-      return itemLength;
-   }
+  /**
+   * Gets the value of the itemLength property.
+   * 
+   * @return possible object is {@link BigDecimal }
+   * 
+   */
+  public BigDecimal getItemLength() {
+    return itemLength;
+  }
 
-   /**
-    * Sets the value of the itemLength property.
-    * 
-    * @param value
-    *           allowed object is {@link BigDecimal }
-    * 
-    */
-   public void setItemLength(BigDecimal value) {
-      this.itemLength = value;
-   }
+  /**
+   * Sets the value of the itemLength property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setItemLength(BigDecimal value) {
+    this.itemLength = value;
+  }
 
-   /**
-    * Gets the value of the itemLengthUnit property.
-    * 
-    * @return possible object is {@link String }
-    * 
-    */
-   public String getItemLengthUnit() {
-      return itemLengthUnit;
-   }
+  /**
+   * Gets the value of the itemLengthUnit property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getItemLengthUnit() {
+    return itemLengthUnit;
+  }
 
-   /**
-    * Sets the value of the itemLengthUnit property.
-    * 
-    * @param value
-    *           allowed object is {@link String }
-    * 
-    */
-   public void setItemLengthUnit(String value) {
-      this.itemLengthUnit = value;
-   }
+  /**
+   * Sets the value of the itemLengthUnit property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setItemLengthUnit(String value) {
+    this.itemLengthUnit = value;
+  }
 
-   /**
-    * Gets the value of the itemUrl property.
-    * 
-    * @return possible object is {@link String }
-    * 
-    */
-   public String getItemUrl() {
-      return itemUrl;
-   }
+  /**
+   * Gets the value of the itemUrl property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getItemUrl() {
+    return itemUrl;
+  }
 
-   /**
-    * Sets the value of the itemUrl property.
-    * 
-    * @param value
-    *           allowed object is {@link String }
-    * 
-    */
-   public void setItemUrl(String value) {
-      this.itemUrl = value;
-   }
+  /**
+   * Sets the value of the itemUrl property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setItemUrl(String value) {
+    this.itemUrl = value;
+  }
 
-   /**
-    * Gets the value of the itemWeight property.
-    * 
-    * @return possible object is {@link BigDecimal }
-    * 
-    */
-   public BigDecimal getItemWeight() {
-      return itemWeight;
-   }
+  /**
+   * Gets the value of the itemWeight property.
+   * 
+   * @return possible object is {@link BigDecimal }
+   * 
+   */
+  public BigDecimal getItemWeight() {
+    return itemWeight;
+  }
 
-   /**
-    * Sets the value of the itemWeight property.
-    * 
-    * @param value
-    *           allowed object is {@link BigDecimal }
-    * 
-    */
-   public void setItemWeight(BigDecimal value) {
-      this.itemWeight = value;
-   }
+  /**
+   * Sets the value of the itemWeight property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setItemWeight(BigDecimal value) {
+    this.itemWeight = value;
+  }
 
-   /**
-    * Gets the value of the itemWeightUnit property.
-    * 
-    * @return possible object is {@link String }
-    * 
-    */
-   public String getItemWeightUnit() {
-      return itemWeightUnit;
-   }
+  /**
+   * Gets the value of the itemWeightUnit property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getItemWeightUnit() {
+    return itemWeightUnit;
+  }
 
-   /**
-    * Sets the value of the itemWeightUnit property.
-    * 
-    * @param value
-    *           allowed object is {@link String }
-    * 
-    */
-   public void setItemWeightUnit(String value) {
-      this.itemWeightUnit = value;
-   }
+  /**
+   * Sets the value of the itemWeightUnit property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setItemWeightUnit(String value) {
+    this.itemWeightUnit = value;
+  }
 
-   /**
-    * Gets the value of the itemWidth property.
-    * 
-    * @return possible object is {@link BigDecimal }
-    * 
-    */
-   public BigDecimal getItemWidth() {
-      return itemWidth;
-   }
+  /**
+   * Gets the value of the itemWidth property.
+   * 
+   * @return possible object is {@link BigDecimal }
+   * 
+   */
+  public BigDecimal getItemWidth() {
+    return itemWidth;
+  }
 
-   /**
-    * Sets the value of the itemWidth property.
-    * 
-    * @param value
-    *           allowed object is {@link BigDecimal }
-    * 
-    */
-   public void setItemWidth(BigDecimal value) {
-      this.itemWidth = value;
-   }
+  /**
+   * Sets the value of the itemWidth property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setItemWidth(BigDecimal value) {
+    this.itemWidth = value;
+  }
 
-   /**
-    * Gets the value of the itemWidthUnit property.
-    * 
-    * @return possible object is {@link String }
-    * 
-    */
-   public String getItemWidthUnit() {
-      return itemWidthUnit;
-   }
+  /**
+   * Gets the value of the itemWidthUnit property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getItemWidthUnit() {
+    return itemWidthUnit;
+  }
 
-   /**
-    * Sets the value of the itemWidthUnit property.
-    * 
-    * @param value
-    *           allowed object is {@link String }
-    * 
-    */
-   public void setItemWidthUnit(String value) {
-      this.itemWidthUnit = value;
-   }
+  /**
+   * Sets the value of the itemWidthUnit property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setItemWidthUnit(String value) {
+    this.itemWidthUnit = value;
+  }
 
-   /**
-    * Gets the value of the name property.
-    * 
-    * @return possible object is {@link String }
-    * 
-    */
-   public String getName() {
-      return name;
-   }
+  /**
+   * Gets the value of the name property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getName() {
+    return name;
+  }
 
-   /**
-    * Sets the value of the name property.
-    * 
-    * @param value
-    *           allowed object is {@link String }
-    * 
-    */
-   public void setName(String value) {
-      this.name = value;
-   }
+  /**
+   * Sets the value of the name property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setName(String value) {
+    this.name = value;
+  }
 
-   /**
-    * Gets the value of the offerRecordId property.
-    * 
-    * @return possible object is {@link String }
-    * 
-    */
-   public String getOfferRecordId() {
-      return offerRecordId;
-   }
+  /**
+   * Gets the value of the offerRecordId property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getOfferRecordId() {
+    return offerRecordId;
+  }
 
-   /**
-    * Sets the value of the offerRecordId property.
-    * 
-    * @param value
-    *           allowed object is {@link String }
-    * 
-    */
-   public void setOfferRecordId(String value) {
-      this.offerRecordId = value;
-   }
+  /**
+   * Sets the value of the offerRecordId property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setOfferRecordId(String value) {
+    this.offerRecordId = value;
+  }
 
-   /**
-    * Gets the value of the option property.
-    * 
-    * @return possible object is {@link String }
-    * 
-    */
-   public String getOption() {
-      return option;
-   }
+  /**
+   * Gets the value of the option property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getOption() {
+    return option;
+  }
 
-   /**
-    * Sets the value of the option property.
-    * 
-    * @param value
-    *           allowed object is {@link String }
-    * 
-    */
-   public void setOption(String value) {
-      this.option = value;
-   }
+  /**
+   * Sets the value of the option property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setOption(String value) {
+    this.option = value;
+  }
 
-   /**
-    * Gets the value of the options property.
-    * 
-    * <p>
-    * This accessor method returns a reference to the live list, not a snapshot.
-    * Therefore any modification you make to the returned list will be present
-    * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
-    * for the options property.
-    * 
-    * <p>
-    * For example, to add a new item, do as follows:
-    * 
-    * <pre>
-    * getOptions().add(newItem);
-    * </pre>
-    * 
-    * 
-    * <p>
-    * Objects of the following type(s) are allowed in the list {@link Option }
-    * 
-    * 
-    */
-   public List<Option> getOptions() {
-      if (options == null) {
-         options = new ArrayList<Option>();
-      }
-      return this.options;
-   }
+  /**
+   * Gets the value of the options property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot. Therefore any
+   * modification you make to the returned list will be present inside the JAXB object. This is why
+   * there is not a <CODE>set</CODE> method for the options property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getOptions().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list {@link Option }
+   * 
+   * 
+   */
+  public List<Option> getOptions() {
+    if (options == null) {
+      options = new ArrayList<Option>();
+    }
+    return this.options;
+  }
 
-   /**
-    * Gets the value of the product property.
-    * 
-    * @return possible object is {@link Product }
-    * 
-    */
-   public Product getProduct() {
-      return product;
-   }
+  /**
+   * Gets the value of the product property.
+   * 
+   * @return possible object is {@link Product }
+   * 
+   */
+  public Product getProduct() {
+    return product;
+  }
 
-   /**
-    * Sets the value of the product property.
-    * 
-    * @param value
-    *           allowed object is {@link Product }
-    * 
-    */
-   public void setProduct(Product value) {
-      this.product = value;
-   }
+  /**
+   * Sets the value of the product property.
+   * 
+   * @param value allowed object is {@link Product }
+   * 
+   */
+  public void setProduct(Product value) {
+    this.product = value;
+  }
 
-   /**
-    * Gets the value of the productNumber property.
-    * 
-    * @return possible object is {@link String }
-    * 
-    */
-   public String getProductNumber() {
-      return productNumber;
-   }
+  /**
+   * Gets the value of the productNumber property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getProductNumber() {
+    return productNumber;
+  }
 
-   /**
-    * Sets the value of the productNumber property.
-    * 
-    * @param value
-    *           allowed object is {@link String }
-    * 
-    */
-   public void setProductNumber(String value) {
-      this.productNumber = value;
-   }
+  /**
+   * Sets the value of the productNumber property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setProductNumber(String value) {
+    this.productNumber = value;
+  }
 
-   /**
-    * Gets the value of the quantity property.
-    * 
-    * @return possible object is {@link BigInteger }
-    * 
-    */
-   public BigInteger getQuantity() {
-      return quantity;
-   }
+  /**
+   * Gets the value of the quantity property.
+   * 
+   * @return possible object is {@link BigInteger }
+   * 
+   */
+  public BigInteger getQuantity() {
+    return quantity;
+  }
 
-   /**
-    * Sets the value of the quantity property.
-    * 
-    * @param value
-    *           allowed object is {@link BigInteger }
-    * 
-    */
-   public void setQuantity(BigInteger value) {
-      this.quantity = value;
-   }
+  /**
+   * Sets the value of the quantity property.
+   * 
+   * @param value allowed object is {@link BigInteger }
+   * 
+   */
+  public void setQuantity(BigInteger value) {
+    this.quantity = value;
+  }
 
-   /**
-    * Gets the value of the shippingCost property.
-    * 
-    * @return possible object is {@link BigDecimal }
-    * 
-    */
-   public BigDecimal getShippingCost() {
-      return shippingCost;
-   }
+  /**
+   * Gets the value of the shippingCost property.
+   * 
+   * @return possible object is {@link BigDecimal }
+   * 
+   */
+  public BigDecimal getShippingCost() {
+    return shippingCost;
+  }
 
-   /**
-    * Sets the value of the shippingCost property.
-    * 
-    * @param value
-    *           allowed object is {@link BigDecimal }
-    * 
-    */
-   public void setShippingCost(BigDecimal value) {
-      this.shippingCost = value;
-   }
+  /**
+   * Sets the value of the shippingCost property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setShippingCost(BigDecimal value) {
+    this.shippingCost = value;
+  }
 
-   /**
-    * Gets the value of the tax property.
-    * 
-    * @return possible object is {@link BigDecimal }
-    * 
-    */
-   public BigDecimal getTax() {
-      return tax;
-   }
+  /**
+   * Gets the value of the tax property.
+   * 
+   * @return possible object is {@link BigDecimal }
+   * 
+   */
+  public BigDecimal getTax() {
+    return tax;
+  }
 
-   /**
-    * Sets the value of the tax property.
-    * 
-    * @param value
-    *           allowed object is {@link BigDecimal }
-    * 
-    */
-   public void setTax(BigDecimal value) {
-      this.tax = value;
-   }
+  /**
+   * Sets the value of the tax property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setTax(BigDecimal value) {
+    this.tax = value;
+  }
 
 }

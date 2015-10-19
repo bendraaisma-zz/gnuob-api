@@ -11,8 +11,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for doCheckout complex type.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="doCheckout"&gt;
@@ -29,31 +28,30 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "doCheckout", propOrder = { "order" })
+@XmlType(name = "doCheckout", propOrder = {"order"})
 public class DoCheckout implements Serializable {
 
-   private static final long serialVersionUID = 3929374843223010794L;
-   protected Order order;
+  private static final long serialVersionUID = 3929374843223010794L;
+  protected Order order;
 
-   /**
-    * Gets the value of the order property.
-    * 
-    * @return possible object is {@link Order }
-    * 
-    */
-   public Order getOrder() {
-      return order;
-   }
+  /**
+   * Gets the value of the order property.
+   * 
+   * @return possible object is {@link Order }
+   * 
+   */
+  public Order getOrder() {
+    return order;
+  }
 
-   /**
-    * Sets the value of the order property.
-    * 
-    * @param value
-    *           allowed object is {@link Order }
-    * 
-    */
-   public void setOrder(Order value) {
-      this.order = value;
-   }
+  /**
+   * Sets the value of the order property.
+   * 
+   * @param value allowed object is {@link Order }
+   * 
+   */
+  public void setOrder(Order value) {
+    this.order = value;
+  }
 
 }

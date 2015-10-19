@@ -11,8 +11,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for removeCategoryResponse complex type.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="removeCategoryResponse"&gt;
@@ -31,6 +30,6 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "removeCategoryResponse")
 public class RemoveCategoryResponse implements Serializable {
 
-   private static final long serialVersionUID = -3034133770786523114L;
+  private static final long serialVersionUID = -3034133770786523114L;
 
 }

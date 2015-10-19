@@ -11,8 +11,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for findOfferById complex type.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="findOfferById"&gt;
@@ -29,31 +28,30 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "findOfferById", propOrder = { "offer" })
+@XmlType(name = "findOfferById", propOrder = {"offer"})
 public class FindOfferById implements Serializable {
 
-   private static final long serialVersionUID = -4709741510794022070L;
-   protected Offer offer;
+  private static final long serialVersionUID = -4709741510794022070L;
+  protected Offer offer;
 
-   /**
-    * Gets the value of the offer property.
-    * 
-    * @return possible object is {@link Offer }
-    * 
-    */
-   public Offer getOffer() {
-      return offer;
-   }
+  /**
+   * Gets the value of the offer property.
+   * 
+   * @return possible object is {@link Offer }
+   * 
+   */
+  public Offer getOffer() {
+    return offer;
+  }
 
-   /**
-    * Sets the value of the offer property.
-    * 
-    * @param value
-    *           allowed object is {@link Offer }
-    * 
-    */
-   public void setOffer(Offer value) {
-      this.offer = value;
-   }
+  /**
+   * Sets the value of the offer property.
+   * 
+   * @param value allowed object is {@link Offer }
+   * 
+   */
+  public void setOffer(Offer value) {
+    this.offer = value;
+  }
 
 }

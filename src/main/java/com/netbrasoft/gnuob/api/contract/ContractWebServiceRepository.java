@@ -30,80 +30,79 @@ import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 @Repository("ContractWebServiceRepository")
 public class ContractWebServiceRepository<C extends Contract> implements GenericTypeWebServiceRepository<C> {
 
-   private ContractWebServiceImpl contractWebServiceImpl;
+  private ContractWebServiceImpl contractWebServiceImpl;
 
-   public ContractWebServiceRepository() {
-   }
+  public ContractWebServiceRepository() {}
 
-   @Override
-   public long count(MetaData paramMetaData, C paramContract) {
-      CountContract paramCountContract = new CountContract();
-      paramCountContract.setContract(paramContract);
-      CountContractResponse countContractResponse = getContractWebServiceImpl().countContract(paramCountContract, paramMetaData);
-      return countContractResponse.getReturn();
-   }
+  @Override
+  public long count(MetaData paramMetaData, C paramContract) {
+    final CountContract paramCountContract = new CountContract();
+    paramCountContract.setContract(paramContract);
+    final CountContractResponse countContractResponse = getContractWebServiceImpl().countContract(paramCountContract, paramMetaData);
+    return countContractResponse.getReturn();
+  }
 
-   @SuppressWarnings("unchecked")
-   @Override
-   public C find(MetaData paramMetaData, C paramContract) {
-      FindContractById paramFindContractById = new FindContractById();
-      paramFindContractById.setContract(paramContract);
-      FindContractByIdResponse findContractByIdResponse = getContractWebServiceImpl().findContractById(paramFindContractById, paramMetaData);
-      return (C) findContractByIdResponse.getReturn();
+  @SuppressWarnings("unchecked")
+  @Override
+  public C find(MetaData paramMetaData, C paramContract) {
+    final FindContractById paramFindContractById = new FindContractById();
+    paramFindContractById.setContract(paramContract);
+    final FindContractByIdResponse findContractByIdResponse = getContractWebServiceImpl().findContractById(paramFindContractById, paramMetaData);
+    return (C) findContractByIdResponse.getReturn();
 
-   }
+  }
 
-   @SuppressWarnings("unchecked")
-   @Override
-   public List<C> find(MetaData paramMetaData, C paramContract, Paging paramPaging, OrderBy paramOrderBy) {
-      FindContract paramFindContract = new FindContract();
-      paramFindContract.setContract(paramContract);
-      paramFindContract.setPaging(paramPaging);
-      paramFindContract.setOrderBy(paramOrderBy);
-      FindContractResponse findContractResponse = getContractWebServiceImpl().findContract(paramFindContract, paramMetaData);
-      return (List<C>) findContractResponse.getReturn();
-   }
+  @SuppressWarnings("unchecked")
+  @Override
+  public List<C> find(MetaData paramMetaData, C paramContract, Paging paramPaging, OrderBy paramOrderBy) {
+    final FindContract paramFindContract = new FindContract();
+    paramFindContract.setContract(paramContract);
+    paramFindContract.setPaging(paramPaging);
+    paramFindContract.setOrderBy(paramOrderBy);
+    final FindContractResponse findContractResponse = getContractWebServiceImpl().findContract(paramFindContract, paramMetaData);
+    return (List<C>) findContractResponse.getReturn();
+  }
 
-   private ContractWebServiceImpl getContractWebServiceImpl() {
-      if (contractWebServiceImpl == null) {
-         ContractWebServiceImplService contractWebServiceImplService = new ContractWebServiceImplService(ContractWebServiceImplService.WSDL_LOCATION);
-         contractWebServiceImpl = contractWebServiceImplService.getContractWebServiceImplPort();
-      }
+  private ContractWebServiceImpl getContractWebServiceImpl() {
+    if (contractWebServiceImpl == null) {
+      final ContractWebServiceImplService contractWebServiceImplService = new ContractWebServiceImplService(ContractWebServiceImplService.WSDL_LOCATION);
+      contractWebServiceImpl = contractWebServiceImplService.getContractWebServiceImplPort();
+    }
 
-      return contractWebServiceImpl;
-   }
+    return contractWebServiceImpl;
+  }
 
-   @SuppressWarnings("unchecked")
-   @Override
-   public C merge(MetaData paramMetaData, C paramContract) {
-      MergeContract paramMergeContract = new MergeContract();
-      paramMergeContract.setContract(paramContract);
-      MergeContractResponse mergeContractResponse = getContractWebServiceImpl().mergeContract(paramMergeContract, paramMetaData);
-      return (C) mergeContractResponse.getReturn();
-   }
+  @SuppressWarnings("unchecked")
+  @Override
+  public C merge(MetaData paramMetaData, C paramContract) {
+    final MergeContract paramMergeContract = new MergeContract();
+    paramMergeContract.setContract(paramContract);
+    final MergeContractResponse mergeContractResponse = getContractWebServiceImpl().mergeContract(paramMergeContract, paramMetaData);
+    return (C) mergeContractResponse.getReturn();
+  }
 
-   @SuppressWarnings("unchecked")
-   @Override
-   public C persist(MetaData paramMetaData, C paramContract) {
-      PersistContract paramPersistContract = new PersistContract();
-      paramPersistContract.setContract(paramContract);
-      PersistContractResponse persistContractResponse = getContractWebServiceImpl().persistContract(paramPersistContract, paramMetaData);
-      return (C) persistContractResponse.getReturn();
-   }
+  @SuppressWarnings("unchecked")
+  @Override
+  public C persist(MetaData paramMetaData, C paramContract) {
+    final PersistContract paramPersistContract = new PersistContract();
+    paramPersistContract.setContract(paramContract);
+    final PersistContractResponse persistContractResponse = getContractWebServiceImpl().persistContract(paramPersistContract, paramMetaData);
+    return (C) persistContractResponse.getReturn();
+  }
 
-   @SuppressWarnings("unchecked")
-   @Override
-   public C refresh(MetaData paramMetaData, C paramContract) {
-      RefreshContract paramRefresContract = new RefreshContract();
-      paramRefresContract.setContract(paramContract);
-      RefreshContractResponse refresContractResponse = getContractWebServiceImpl().refreshContract(paramRefresContract, paramMetaData);
-      return (C) refresContractResponse.getReturn();
-   }
+  @SuppressWarnings("unchecked")
+  @Override
+  public C refresh(MetaData paramMetaData, C paramContract) {
+    final RefreshContract paramRefresContract = new RefreshContract();
+    paramRefresContract.setContract(paramContract);
+    final RefreshContractResponse refresContractResponse = getContractWebServiceImpl().refreshContract(paramRefresContract, paramMetaData);
+    return (C) refresContractResponse.getReturn();
+  }
 
-   @Override
-   public void remove(MetaData paramMetaData, C paramContract) {
-      RemoveContract paramRemoveContract = new RemoveContract();
-      paramRemoveContract.setContract(paramContract);
-      getContractWebServiceImpl().removeContract(paramRemoveContract, paramMetaData);
-   }
+  @Override
+  public void remove(MetaData paramMetaData, C paramContract) {
+    final RemoveContract paramRemoveContract = new RemoveContract();
+    paramRemoveContract.setContract(paramContract);
+    getContractWebServiceImpl().removeContract(paramRemoveContract, paramMetaData);
+  }
 }
