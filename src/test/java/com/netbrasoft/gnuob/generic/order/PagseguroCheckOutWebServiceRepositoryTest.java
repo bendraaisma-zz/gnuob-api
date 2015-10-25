@@ -47,159 +47,159 @@ import com.netbrasoft.gnuob.generic.utils.Utils;
 @RunWith(Arquillian.class)
 public class PagseguroCheckOutWebServiceRepositoryTest {
 
-   @Deployment(testable = false)
-   public static Archive<?> createDeployment() {
-      return Utils.createDeployment();
-   }
+  @Deployment(testable = false)
+  public static Archive<?> createDeployment() {
+    return Utils.createDeployment();
+  }
 
-   @Drone
-   private WebDriver driver;
+  @Drone
+  private WebDriver driver;
 
-   private final ProductWebServiceRepository<Product> productWebServiceRepository = new ProductWebServiceRepository<Product>();
-   private final OrderWebServiceRepository<Order> orderWebServiceRepository = new OrderWebServiceRepository<Order>();
-   private final PagseguroCheckOutWebServiceRepository<Order> pagseguroCheckOutWebServiceRepository = new PagseguroCheckOutWebServiceRepository<Order>();
-   private MetaData metaData = null;
-   private Customer customer = null;
-   private Contract contract = null;
-   private Address address = null;
-   private Product product = null;
-   private Order order = null;
-   private Invoice invoice = null;
-   private Shipment shipment = null;
+  private final ProductWebServiceRepository<Product> productWebServiceRepository = new ProductWebServiceRepository<Product>();
+  private final OrderWebServiceRepository<Order> orderWebServiceRepository = new OrderWebServiceRepository<Order>();
+  private final PagseguroCheckOutWebServiceRepository<Order> pagseguroCheckOutWebServiceRepository = new PagseguroCheckOutWebServiceRepository<Order>();
+  private MetaData metaData = null;
+  private Customer customer = null;
+  private Contract contract = null;
+  private Address address = null;
+  private Product product = null;
+  private Order order = null;
+  private Invoice invoice = null;
+  private Shipment shipment = null;
 
-   @Before
-   public void testBefore() throws DatatypeConfigurationException {
-      final Random randomGenerator = new Random();
+  @Before
+  public void testBefore() throws DatatypeConfigurationException {
+    final Random randomGenerator = new Random();
 
-      metaData = new MetaData();
-      customer = new Customer();
-      address = new Address();
-      contract = new Contract();
-      product = new Product();
-      order = new Order();
-      invoice = new Invoice();
-      shipment = new Shipment();
+    metaData = new MetaData();
+    customer = new Customer();
+    address = new Address();
+    contract = new Contract();
+    product = new Product();
+    order = new Order();
+    invoice = new Invoice();
+    shipment = new Shipment();
 
-      metaData.setUser("administrator");
-      metaData.setPassword("administrator");
-      metaData.setSite("www.netbrasoft.com");
+    metaData.setUser("administrator");
+    metaData.setPassword("administrator");
+    metaData.setSite("www.netbrasoft.com");
 
-      address.setCityName(UUID.randomUUID().toString());
-      address.setStreet1(UUID.randomUUID().toString());
-      address.setNumber("815");
-      address.setCountry("BR");
-      address.setStateOrProvince("ES");
-      address.setPostalCode("29072-230");
+    address.setCityName(UUID.randomUUID().toString());
+    address.setStreet1(UUID.randomUUID().toString());
+    address.setNumber("815");
+    address.setCountry("BR");
+    address.setStateOrProvince("ES");
+    address.setPostalCode("29072-230");
 
-      customer.setActive(true);
-      customer.setFirstName("Bernard Arjan");
-      customer.setLastName("Draaisma");
-      customer.setBuyerEmail("c77487489899036884556@sandbox.pagseguro.com.br");
-      customer.setAddress(address);
+    customer.setActive(true);
+    customer.setFirstName("Bernard Arjan");
+    customer.setLastName("Draaisma");
+    customer.setBuyerEmail("c77487489899036884556@sandbox.pagseguro.com.br");
+    customer.setAddress(address);
 
-      final GregorianCalendar c = new GregorianCalendar();
-      c.setTime(new Date());
-      customer.setDateOfBirth(DatatypeFactory.newInstance().newXMLGregorianCalendar(c));
+    final GregorianCalendar c = new GregorianCalendar();
+    c.setTime(new Date());
+    customer.setDateOfBirth(DatatypeFactory.newInstance().newXMLGregorianCalendar(c));
 
-      contract.setActive(true);
-      contract.setCustomer(customer);
+    contract.setActive(true);
+    contract.setCustomer(customer);
 
-      product.setActive(true);
-      product.setName(UUID.randomUUID().toString());
-      product.setDescription(UUID.randomUUID().toString());
-      product.setNumber(UUID.randomUUID().toString());
-      product.setAmount(BigDecimal.valueOf(10.00));
-      product.setTax(BigDecimal.valueOf(2.75));
-      product.setDiscount(BigDecimal.ONE);
-      product.setRecommended(randomGenerator.nextBoolean());
-      product.setRating(randomGenerator.nextInt());
-      product.setBestsellers(randomGenerator.nextBoolean());
-      product.setShippingCost(BigDecimal.valueOf(7.95));
-      product.setItemWeight(BigDecimal.ONE);
-      product.setItemWeightUnit("Kg");
+    product.setActive(true);
+    product.setName(UUID.randomUUID().toString());
+    product.setDescription(UUID.randomUUID().toString());
+    product.setNumber(UUID.randomUUID().toString());
+    product.setAmount(BigDecimal.valueOf(10.00));
+    product.setTax(BigDecimal.valueOf(2.75));
+    product.setDiscount(BigDecimal.ONE);
+    product.setRecommended(randomGenerator.nextBoolean());
+    product.setRating(randomGenerator.nextInt());
+    product.setBestsellers(randomGenerator.nextBoolean());
+    product.setShippingCost(BigDecimal.valueOf(7.95));
+    product.setItemWeight(BigDecimal.ONE);
+    product.setItemWeightUnit("Kg");
 
-      final Stock stock = new Stock();
-      stock.setMaxQuantity(BigInteger.valueOf(100));
-      stock.setMinQuantity(BigInteger.ZERO);
-      stock.setQuantity(BigInteger.valueOf(30));
+    final Stock stock = new Stock();
+    stock.setMaxQuantity(BigInteger.valueOf(100));
+    stock.setMinQuantity(BigInteger.ZERO);
+    stock.setQuantity(BigInteger.valueOf(30));
 
-      product.setStock(stock);
+    product.setStock(stock);
 
-      final SubCategory subCategory = new SubCategory();
-      subCategory.setName(UUID.randomUUID().toString());
-      subCategory.setDescription(UUID.randomUUID().toString());
+    final SubCategory subCategory = new SubCategory();
+    subCategory.setName(UUID.randomUUID().toString());
+    subCategory.setDescription(UUID.randomUUID().toString());
 
-      product.getSubCategories().add(subCategory);
+    product.getSubCategories().add(subCategory);
 
-      invoice.setAddress(address);
+    invoice.setAddress(address);
 
-      shipment.setShipmentType("NOT_SPECIFIED");
-      shipment.setAddress(address);
+    shipment.setShipmentType("NOT_SPECIFIED");
+    shipment.setAddress(address);
 
-      order.setActive(true);
-      order.setInsuranceTotal(BigDecimal.valueOf(3.99));
-      order.setHandlingTotal(BigDecimal.valueOf(0.63));
-      order.setShippingDiscount(BigDecimal.ONE);
-      order.setContract(contract);
-      order.setInvoice(invoice);
-      order.setShipment(shipment);
-   }
+    order.setActive(true);
+    order.setInsuranceTotal(BigDecimal.valueOf(3.99));
+    order.setHandlingTotal(BigDecimal.valueOf(0.63));
+    order.setShippingDiscount(BigDecimal.ONE);
+    order.setContract(contract);
+    order.setInvoice(invoice);
+    order.setShipment(shipment);
+  }
 
-   @Test
-   public void testPersistOrderAndDoCheckOut() throws GNUOpenBusinessServiceException_Exception, InterruptedException {
-      final String productName = product.getName();
-      final String productDescription = product.getDescription();
+  @Test
+  public void testPersistOrderAndDoCheckOut() throws GNUOpenBusinessServiceException_Exception, InterruptedException {
+    final String productName = product.getName();
+    final String productDescription = product.getDescription();
 
-      final Product persistProduct = productWebServiceRepository.persist(metaData, product);
+    final Product persistProduct = productWebServiceRepository.persist(metaData, product);
 
-      assertTrue("Product id has no value bigger than zero.", persistProduct.getId() > 0);
-      assertEquals("Product name is not equal.", productName, persistProduct.getName());
-      assertEquals("Product description is not equal.", productDescription, persistProduct.getDescription());
+    assertTrue("Product id has no value bigger than zero.", persistProduct.getId() > 0);
+    assertEquals("Product name is not equal.", productName, persistProduct.getName());
+    assertEquals("Product description is not equal.", productDescription, persistProduct.getDescription());
 
-      final OrderRecord orderRecord = new OrderRecord();
-      orderRecord.setQuantity(BigInteger.ONE);
-      orderRecord.setProduct(persistProduct);
+    final OrderRecord orderRecord = new OrderRecord();
+    orderRecord.setQuantity(BigInteger.ONE);
+    orderRecord.setProduct(persistProduct);
 
-      order.getRecords().add(orderRecord);
+    order.getRecords().add(orderRecord);
 
-      final Order persistOrder = orderWebServiceRepository.persist(metaData, order);
+    final Order persistOrder = orderWebServiceRepository.persist(metaData, order);
 
-      assertTrue("Order id has no value bigger than zero.", persistOrder.getId() > 0);
+    assertTrue("Order id has no value bigger than zero.", persistOrder.getId() > 0);
 
-      Order checkoutOrder = pagseguroCheckOutWebServiceRepository.doCheckout(metaData, persistOrder);
-      checkoutOrder = orderWebServiceRepository.find(metaData, checkoutOrder);
+    Order checkoutOrder = pagseguroCheckOutWebServiceRepository.doCheckout(metaData, persistOrder);
+    checkoutOrder = orderWebServiceRepository.find(metaData, checkoutOrder);
 
-      assertNotNull("Order token has no value.", checkoutOrder.getToken());
+    assertNotNull("Order token has no value.", checkoutOrder.getToken());
 
-      final WebDriverWait webDriverWait = new WebDriverWait(driver, 60);
+    final WebDriverWait webDriverWait = new WebDriverWait(driver, 60);
 
-      driver.get("https://sandbox.pagseguro.uol.com.br/v2/checkout/payment.html?code=" + checkoutOrder.getToken());
-      driver.findElement(By.id("senderPassword")).sendKeys("pC4u57FT8060Cw7d");
-      driver.findElement(By.tagName("button")).click();
-      driver.findElement(By.id("creditCardCVV_wallet")).sendKeys("123");
-      driver.findElement(By.id("walletInstallmentQuantity")).findElements(By.tagName("option")).get(1).click();
-      driver.findElement(By.id("walletHolderCPF")).sendKeys("553.887.423-00");
-      driver.findElement(By.id("walletHolderBornDate")).sendKeys("20/05/1980");
-      driver.findElement(By.id("senderCPF")).sendKeys("553.887.423-00");
-      driver.findElement(By.id("continueToPayment")).click();
+    driver.get("https://sandbox.pagseguro.uol.com.br/v2/checkout/payment.html?code=" + checkoutOrder.getToken());
+    driver.findElement(By.id("senderPassword")).sendKeys("pC4u57FT8060Cw7d");
+    driver.findElement(By.tagName("button")).click();
+    driver.findElement(By.id("creditCardCVV_wallet")).sendKeys("123");
+    driver.findElement(By.id("walletInstallmentQuantity")).findElements(By.tagName("option")).get(1).click();
+    driver.findElement(By.id("walletHolderCPF")).sendKeys("553.887.423-00");
+    driver.findElement(By.id("walletHolderBornDate")).sendKeys("20/05/1980");
+    driver.findElement(By.id("senderCPF")).sendKeys("553.887.423-00");
+    driver.findElement(By.id("continueToPayment")).click();
 
-      webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("backToShop")));
-      driver.findElement(By.id("backToShop")).click();
+    webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("backToShop")));
+    driver.findElement(By.id("backToShop")).click();
 
-      Thread.sleep(5000);
+    Thread.sleep(5000);
 
-      checkoutOrder.setTransactionId(driver.getTitle().split("transaction_id=")[1].split(" ")[0]);
-      assertNotNull("Order transaction id has no value.", checkoutOrder.getTransactionId());
+    checkoutOrder.setTransactionId(driver.getTitle().split("transaction_id=")[1].split(" ")[0]);
+    assertNotNull("Order transaction id has no value.", checkoutOrder.getTransactionId());
 
-      driver.close();
+    driver.close();
 
-      Order checkoutDetailsOrder = pagseguroCheckOutWebServiceRepository.doCheckoutDetails(metaData, checkoutOrder);
-      checkoutDetailsOrder = orderWebServiceRepository.find(metaData, checkoutDetailsOrder);
+    Order checkoutDetailsOrder = pagseguroCheckOutWebServiceRepository.doCheckoutDetails(metaData, checkoutOrder);
+    checkoutDetailsOrder = orderWebServiceRepository.find(metaData, checkoutDetailsOrder);
 
-      Order checkoutPaymentOrder = pagseguroCheckOutWebServiceRepository.doCheckoutPayment(metaData, checkoutDetailsOrder);
-      checkoutPaymentOrder = orderWebServiceRepository.find(metaData, checkoutPaymentOrder);
+    Order checkoutPaymentOrder = pagseguroCheckOutWebServiceRepository.doCheckoutPayment(metaData, checkoutDetailsOrder);
+    checkoutPaymentOrder = orderWebServiceRepository.find(metaData, checkoutPaymentOrder);
 
-      assertNotNull("Order transaction id has no value.", checkoutPaymentOrder.getTransactionId());
-      assertEquals(BigDecimal.valueOf(23.32), checkoutPaymentOrder.getOrderTotal());
-   }
+    assertNotNull("Order transaction id has no value.", checkoutPaymentOrder.getTransactionId());
+    assertEquals(BigDecimal.valueOf(23.32), checkoutPaymentOrder.getOrderTotal());
+  }
 }

@@ -9,8 +9,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for rule.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * <p>
  * 
  * <pre>
@@ -30,14 +29,14 @@ import javax.xml.bind.annotation.XmlType;
 @XmlEnum
 public enum Rule {
 
-   CREATE_ACCESS, READ_ACCESS, UPDATE_ACCESS, DELETE_ACCESS, NONE_ACCESS;
+  CREATE_ACCESS, READ_ACCESS, UPDATE_ACCESS, DELETE_ACCESS, NONE_ACCESS;
 
-   public String value() {
-      return name();
-   }
+  public String value() {
+    return name();
+  }
 
-   public static Rule fromValue(String v) {
-      return valueOf(v);
-   }
+  public static Rule fromValue(String v) {
+    return valueOf(v);
+  }
 
 }

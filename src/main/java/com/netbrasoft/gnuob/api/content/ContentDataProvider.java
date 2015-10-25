@@ -13,18 +13,18 @@ import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 @Controller("ContentDataProvider")
 public class ContentDataProvider<C extends Content> extends AbstractGenericTypeDataProvider<C> {
 
-   private static final long serialVersionUID = -7147810111952342412L;
+  private static final long serialVersionUID = -7147810111952342412L;
 
-   @Resource(name = "ContentWebServiceRepository")
-   private transient GenericTypeWebServiceRepository<C> contentWebServiceRepository;
+  @Resource(name = "ContentWebServiceRepository")
+  private transient GenericTypeWebServiceRepository<C> contentWebServiceRepository;
 
-   @SuppressWarnings("unchecked")
-   public ContentDataProvider() {
-      super((C) new Content());
-   }
+  @SuppressWarnings("unchecked")
+  public ContentDataProvider() {
+    super((C) new Content());
+  }
 
-   @Override
-   public GenericTypeWebServiceRepository<C> getGenericTypeWebServiceRepository() {
-      return contentWebServiceRepository;
-   }
+  @Override
+  public GenericTypeWebServiceRepository<C> getGenericTypeWebServiceRepository() {
+    return contentWebServiceRepository;
+  }
 }

@@ -11,8 +11,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for removeUser complex type.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="removeUser"&gt;
@@ -29,31 +28,30 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "removeUser", propOrder = { "user" })
+@XmlType(name = "removeUser", propOrder = {"user"})
 public class RemoveUser implements Serializable {
 
-   private static final long serialVersionUID = 9218982907040199335L;
-   protected User user;
+  private static final long serialVersionUID = 9218982907040199335L;
+  protected User user;
 
-   /**
-    * Gets the value of the user property.
-    * 
-    * @return possible object is {@link User }
-    * 
-    */
-   public User getUser() {
-      return user;
-   }
+  /**
+   * Gets the value of the user property.
+   * 
+   * @return possible object is {@link User }
+   * 
+   */
+  public User getUser() {
+    return user;
+  }
 
-   /**
-    * Sets the value of the user property.
-    * 
-    * @param value
-    *           allowed object is {@link User }
-    * 
-    */
-   public void setUser(User value) {
-      this.user = value;
-   }
+  /**
+   * Sets the value of the user property.
+   * 
+   * @param value allowed object is {@link User }
+   * 
+   */
+  public void setUser(User value) {
+    this.user = value;
+  }
 
 }

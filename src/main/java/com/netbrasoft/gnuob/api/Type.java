@@ -13,8 +13,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for type complex type.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="type"&gt;
@@ -33,45 +32,45 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "type")
-@XmlSeeAlso({ Permission.class, Access.class })
+@XmlSeeAlso({Permission.class, Access.class})
 public abstract class Type implements Serializable {
 
-   private static final long serialVersionUID = 7946172752307429119L;
-   @XmlAttribute(name = "id", required = true)
-   protected long id;
-   @XmlAttribute(name = "version", required = true)
-   protected int version;
+  private static final long serialVersionUID = 7946172752307429119L;
+  @XmlAttribute(name = "id", required = true)
+  protected long id;
+  @XmlAttribute(name = "version", required = true)
+  protected int version;
 
-   /**
-    * Gets the value of the id property.
-    * 
-    */
-   public long getId() {
-      return id;
-   }
+  /**
+   * Gets the value of the id property.
+   * 
+   */
+  public long getId() {
+    return id;
+  }
 
-   /**
-    * Sets the value of the id property.
-    * 
-    */
-   public void setId(long value) {
-      this.id = value;
-   }
+  /**
+   * Sets the value of the id property.
+   * 
+   */
+  public void setId(long value) {
+    this.id = value;
+  }
 
-   /**
-    * Gets the value of the version property.
-    * 
-    */
-   public int getVersion() {
-      return version;
-   }
+  /**
+   * Gets the value of the version property.
+   * 
+   */
+  public int getVersion() {
+    return version;
+  }
 
-   /**
-    * Sets the value of the version property.
-    * 
-    */
-   public void setVersion(int value) {
-      this.version = value;
-   }
+  /**
+   * Sets the value of the version property.
+   * 
+   */
+  public void setVersion(int value) {
+    this.version = value;
+  }
 
 }

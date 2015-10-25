@@ -11,8 +11,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for findContractById complex type.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="findContractById"&gt;
@@ -29,31 +28,30 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "findContractById", propOrder = { "contract" })
+@XmlType(name = "findContractById", propOrder = {"contract"})
 public class FindContractById implements Serializable {
 
-   private static final long serialVersionUID = -7800869460675778865L;
-   protected Contract contract;
+  private static final long serialVersionUID = -7800869460675778865L;
+  protected Contract contract;
 
-   /**
-    * Gets the value of the contract property.
-    * 
-    * @return possible object is {@link Contract }
-    * 
-    */
-   public Contract getContract() {
-      return contract;
-   }
+  /**
+   * Gets the value of the contract property.
+   * 
+   * @return possible object is {@link Contract }
+   * 
+   */
+  public Contract getContract() {
+    return contract;
+  }
 
-   /**
-    * Sets the value of the contract property.
-    * 
-    * @param value
-    *           allowed object is {@link Contract }
-    * 
-    */
-   public void setContract(Contract value) {
-      this.contract = value;
-   }
+  /**
+   * Sets the value of the contract property.
+   * 
+   * @param value allowed object is {@link Contract }
+   * 
+   */
+  public void setContract(Contract value) {
+    this.contract = value;
+  }
 
 }

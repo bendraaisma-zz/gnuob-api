@@ -12,8 +12,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for countContentResponse complex type.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="countContentResponse"&gt;
@@ -30,27 +29,27 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "countContentResponse", propOrder = { "_return" })
+@XmlType(name = "countContentResponse", propOrder = {"_return"})
 public class CountContentResponse implements Serializable {
 
-   private static final long serialVersionUID = 5839928030346272717L;
-   @XmlElement(name = "return")
-   protected long _return;
+  private static final long serialVersionUID = 5839928030346272717L;
+  @XmlElement(name = "return")
+  protected long _return;
 
-   /**
-    * Gets the value of the return property.
-    * 
-    */
-   public long getReturn() {
-      return _return;
-   }
+  /**
+   * Gets the value of the return property.
+   * 
+   */
+  public long getReturn() {
+    return _return;
+  }
 
-   /**
-    * Sets the value of the return property.
-    * 
-    */
-   public void setReturn(long value) {
-      this._return = value;
-   }
+  /**
+   * Sets the value of the return property.
+   * 
+   */
+  public void setReturn(long value) {
+    this._return = value;
+  }
 
 }

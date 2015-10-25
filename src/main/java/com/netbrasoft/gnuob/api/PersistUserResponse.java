@@ -12,8 +12,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for persistUserResponse complex type.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="persistUserResponse"&gt;
@@ -30,32 +29,31 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "persistUserResponse", propOrder = { "_return" })
+@XmlType(name = "persistUserResponse", propOrder = {"_return"})
 public class PersistUserResponse implements Serializable {
 
-   private static final long serialVersionUID = 4325798080558705876L;
-   @XmlElement(name = "return")
-   protected User _return;
+  private static final long serialVersionUID = 4325798080558705876L;
+  @XmlElement(name = "return")
+  protected User _return;
 
-   /**
-    * Gets the value of the return property.
-    * 
-    * @return possible object is {@link User }
-    * 
-    */
-   public User getReturn() {
-      return _return;
-   }
+  /**
+   * Gets the value of the return property.
+   * 
+   * @return possible object is {@link User }
+   * 
+   */
+  public User getReturn() {
+    return _return;
+  }
 
-   /**
-    * Sets the value of the return property.
-    * 
-    * @param value
-    *           allowed object is {@link User }
-    * 
-    */
-   public void setReturn(User value) {
-      this._return = value;
-   }
+  /**
+   * Sets the value of the return property.
+   * 
+   * @param value allowed object is {@link User }
+   * 
+   */
+  public void setReturn(User value) {
+    this._return = value;
+  }
 
 }

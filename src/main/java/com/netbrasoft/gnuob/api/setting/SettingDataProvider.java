@@ -13,18 +13,18 @@ import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 @Controller("SettingDataProvider")
 public class SettingDataProvider<S extends Setting> extends AbstractGenericTypeDataProvider<S> {
 
-   private static final long serialVersionUID = -919053464359522143L;
+  private static final long serialVersionUID = -919053464359522143L;
 
-   @Resource(name = "SettingWebServiceRepository")
-   private transient GenericTypeWebServiceRepository<S> settingWebServiceRepository;
+  @Resource(name = "SettingWebServiceRepository")
+  private transient GenericTypeWebServiceRepository<S> settingWebServiceRepository;
 
-   @SuppressWarnings("unchecked")
-   public SettingDataProvider() {
-      super((S) new Setting());
-   }
+  @SuppressWarnings("unchecked")
+  public SettingDataProvider() {
+    super((S) new Setting());
+  }
 
-   @Override
-   public GenericTypeWebServiceRepository<S> getGenericTypeWebServiceRepository() {
-      return settingWebServiceRepository;
-   }
+  @Override
+  public GenericTypeWebServiceRepository<S> getGenericTypeWebServiceRepository() {
+    return settingWebServiceRepository;
+  }
 }

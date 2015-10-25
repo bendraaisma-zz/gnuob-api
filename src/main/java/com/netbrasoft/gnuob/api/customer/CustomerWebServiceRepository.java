@@ -30,80 +30,79 @@ import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 @Repository("CustomerWebServiceRepository")
 public class CustomerWebServiceRepository<C extends Customer> implements GenericTypeWebServiceRepository<C> {
 
-   private CustomerWebServiceImpl customerWebServiceImpl;
+  private CustomerWebServiceImpl customerWebServiceImpl;
 
-   public CustomerWebServiceRepository() {
-   }
+  public CustomerWebServiceRepository() {}
 
-   @Override
-   public long count(MetaData paramMetaData, C paramCustomer) {
-      CountCustomer paramCountCustomer = new CountCustomer();
-      paramCountCustomer.setCustomer(paramCustomer);
-      CountCustomerResponse countCustomerResponse = getCustomerWebServiceImpl().countCustomer(paramCountCustomer, paramMetaData);
-      return countCustomerResponse.getReturn();
-   }
+  @Override
+  public long count(MetaData paramMetaData, C paramCustomer) {
+    final CountCustomer paramCountCustomer = new CountCustomer();
+    paramCountCustomer.setCustomer(paramCustomer);
+    final CountCustomerResponse countCustomerResponse = getCustomerWebServiceImpl().countCustomer(paramCountCustomer, paramMetaData);
+    return countCustomerResponse.getReturn();
+  }
 
-   @SuppressWarnings("unchecked")
-   @Override
-   public C find(MetaData paramMetaData, C paramCustomer) {
-      FindCustomerById paramFindCustomerById = new FindCustomerById();
-      paramFindCustomerById.setCustomer(paramCustomer);
-      FindCustomerByIdResponse findCustomerByIdResponse = getCustomerWebServiceImpl().findCustomerById(paramFindCustomerById, paramMetaData);
-      return (C) findCustomerByIdResponse.getReturn();
+  @SuppressWarnings("unchecked")
+  @Override
+  public C find(MetaData paramMetaData, C paramCustomer) {
+    final FindCustomerById paramFindCustomerById = new FindCustomerById();
+    paramFindCustomerById.setCustomer(paramCustomer);
+    final FindCustomerByIdResponse findCustomerByIdResponse = getCustomerWebServiceImpl().findCustomerById(paramFindCustomerById, paramMetaData);
+    return (C) findCustomerByIdResponse.getReturn();
 
-   }
+  }
 
-   @SuppressWarnings("unchecked")
-   @Override
-   public List<C> find(MetaData paramMetaData, C paramCustomer, Paging paramPaging, OrderBy paramOrderBy) {
-      FindCustomer paramFindCustomer = new FindCustomer();
-      paramFindCustomer.setCustomer(paramCustomer);
-      paramFindCustomer.setPaging(paramPaging);
-      paramFindCustomer.setOrderBy(paramOrderBy);
-      FindCustomerResponse findCustomerResponse = getCustomerWebServiceImpl().findCustomer(paramFindCustomer, paramMetaData);
-      return (List<C>) findCustomerResponse.getReturn();
-   }
+  @SuppressWarnings("unchecked")
+  @Override
+  public List<C> find(MetaData paramMetaData, C paramCustomer, Paging paramPaging, OrderBy paramOrderBy) {
+    final FindCustomer paramFindCustomer = new FindCustomer();
+    paramFindCustomer.setCustomer(paramCustomer);
+    paramFindCustomer.setPaging(paramPaging);
+    paramFindCustomer.setOrderBy(paramOrderBy);
+    final FindCustomerResponse findCustomerResponse = getCustomerWebServiceImpl().findCustomer(paramFindCustomer, paramMetaData);
+    return (List<C>) findCustomerResponse.getReturn();
+  }
 
-   private CustomerWebServiceImpl getCustomerWebServiceImpl() {
-      if (customerWebServiceImpl == null) {
-         CustomerWebServiceImplService customerWebServiceImplService = new CustomerWebServiceImplService(CustomerWebServiceImplService.WSDL_LOCATION);
-         customerWebServiceImpl = customerWebServiceImplService.getCustomerWebServiceImplPort();
-      }
+  private CustomerWebServiceImpl getCustomerWebServiceImpl() {
+    if (customerWebServiceImpl == null) {
+      final CustomerWebServiceImplService customerWebServiceImplService = new CustomerWebServiceImplService(CustomerWebServiceImplService.WSDL_LOCATION);
+      customerWebServiceImpl = customerWebServiceImplService.getCustomerWebServiceImplPort();
+    }
 
-      return customerWebServiceImpl;
-   }
+    return customerWebServiceImpl;
+  }
 
-   @SuppressWarnings("unchecked")
-   @Override
-   public C merge(MetaData paramMetaData, C paramCustomer) {
-      MergeCustomer paramMergeCustomer = new MergeCustomer();
-      paramMergeCustomer.setCustomer(paramCustomer);
-      MergeCustomerResponse mergeCustomerResponse = getCustomerWebServiceImpl().mergeCustomer(paramMergeCustomer, paramMetaData);
-      return (C) mergeCustomerResponse.getReturn();
-   }
+  @SuppressWarnings("unchecked")
+  @Override
+  public C merge(MetaData paramMetaData, C paramCustomer) {
+    final MergeCustomer paramMergeCustomer = new MergeCustomer();
+    paramMergeCustomer.setCustomer(paramCustomer);
+    final MergeCustomerResponse mergeCustomerResponse = getCustomerWebServiceImpl().mergeCustomer(paramMergeCustomer, paramMetaData);
+    return (C) mergeCustomerResponse.getReturn();
+  }
 
-   @SuppressWarnings("unchecked")
-   @Override
-   public C persist(MetaData paramMetaData, C paramCustomer) {
-      PersistCustomer paramPersistCustomer = new PersistCustomer();
-      paramPersistCustomer.setCustomer(paramCustomer);
-      PersistCustomerResponse persistCustomerResponse = getCustomerWebServiceImpl().persistCustomer(paramPersistCustomer, paramMetaData);
-      return (C) persistCustomerResponse.getReturn();
-   }
+  @SuppressWarnings("unchecked")
+  @Override
+  public C persist(MetaData paramMetaData, C paramCustomer) {
+    final PersistCustomer paramPersistCustomer = new PersistCustomer();
+    paramPersistCustomer.setCustomer(paramCustomer);
+    final PersistCustomerResponse persistCustomerResponse = getCustomerWebServiceImpl().persistCustomer(paramPersistCustomer, paramMetaData);
+    return (C) persistCustomerResponse.getReturn();
+  }
 
-   @SuppressWarnings("unchecked")
-   @Override
-   public C refresh(MetaData paramMetaData, C paramCustomer) {
-      RefreshCustomer paramRefresCustomer = new RefreshCustomer();
-      paramRefresCustomer.setCustomer(paramCustomer);
-      RefreshCustomerResponse refresCustomerResponse = getCustomerWebServiceImpl().refreshCustomer(paramRefresCustomer, paramMetaData);
-      return (C) refresCustomerResponse.getReturn();
-   }
+  @SuppressWarnings("unchecked")
+  @Override
+  public C refresh(MetaData paramMetaData, C paramCustomer) {
+    final RefreshCustomer paramRefresCustomer = new RefreshCustomer();
+    paramRefresCustomer.setCustomer(paramCustomer);
+    final RefreshCustomerResponse refresCustomerResponse = getCustomerWebServiceImpl().refreshCustomer(paramRefresCustomer, paramMetaData);
+    return (C) refresCustomerResponse.getReturn();
+  }
 
-   @Override
-   public void remove(MetaData paramMetaData, C paramCustomer) {
-      RemoveCustomer paramRemoveCustomer = new RemoveCustomer();
-      paramRemoveCustomer.setCustomer(paramCustomer);
-      getCustomerWebServiceImpl().removeCustomer(paramRemoveCustomer, paramMetaData);
-   }
+  @Override
+  public void remove(MetaData paramMetaData, C paramCustomer) {
+    final RemoveCustomer paramRemoveCustomer = new RemoveCustomer();
+    paramRemoveCustomer.setCustomer(paramCustomer);
+    getCustomerWebServiceImpl().removeCustomer(paramRemoveCustomer, paramMetaData);
+  }
 }

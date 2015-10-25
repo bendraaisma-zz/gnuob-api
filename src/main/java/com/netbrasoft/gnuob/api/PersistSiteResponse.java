@@ -12,8 +12,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for persistSiteResponse complex type.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="persistSiteResponse"&gt;
@@ -30,32 +29,31 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "persistSiteResponse", propOrder = { "_return" })
+@XmlType(name = "persistSiteResponse", propOrder = {"_return"})
 public class PersistSiteResponse implements Serializable {
 
-   private static final long serialVersionUID = -4297881857323810466L;
-   @XmlElement(name = "return")
-   protected Site _return;
+  private static final long serialVersionUID = -4297881857323810466L;
+  @XmlElement(name = "return")
+  protected Site _return;
 
-   /**
-    * Gets the value of the return property.
-    * 
-    * @return possible object is {@link Site }
-    * 
-    */
-   public Site getReturn() {
-      return _return;
-   }
+  /**
+   * Gets the value of the return property.
+   * 
+   * @return possible object is {@link Site }
+   * 
+   */
+  public Site getReturn() {
+    return _return;
+  }
 
-   /**
-    * Sets the value of the return property.
-    * 
-    * @param value
-    *           allowed object is {@link Site }
-    * 
-    */
-   public void setReturn(Site value) {
-      this._return = value;
-   }
+  /**
+   * Sets the value of the return property.
+   * 
+   * @param value allowed object is {@link Site }
+   * 
+   */
+  public void setReturn(Site value) {
+    this._return = value;
+  }
 
 }

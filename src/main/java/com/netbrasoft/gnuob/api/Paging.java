@@ -11,8 +11,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for paging complex type.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="paging"&gt;
@@ -30,43 +29,43 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "paging", propOrder = { "first", "max" })
+@XmlType(name = "paging", propOrder = {"first", "max"})
 public class Paging implements Serializable {
 
-   private static final long serialVersionUID = -3371605179175461095L;
-   protected int first;
-   protected int max;
+  private static final long serialVersionUID = -3371605179175461095L;
+  protected int first;
+  protected int max;
 
-   /**
-    * Gets the value of the first property.
-    * 
-    */
-   public int getFirst() {
-      return first;
-   }
+  /**
+   * Gets the value of the first property.
+   * 
+   */
+  public int getFirst() {
+    return first;
+  }
 
-   /**
-    * Sets the value of the first property.
-    * 
-    */
-   public void setFirst(int value) {
-      this.first = value;
-   }
+  /**
+   * Sets the value of the first property.
+   * 
+   */
+  public void setFirst(int value) {
+    this.first = value;
+  }
 
-   /**
-    * Gets the value of the max property.
-    * 
-    */
-   public int getMax() {
-      return max;
-   }
+  /**
+   * Gets the value of the max property.
+   * 
+   */
+  public int getMax() {
+    return max;
+  }
 
-   /**
-    * Sets the value of the max property.
-    * 
-    */
-   public void setMax(int value) {
-      this.max = value;
-   }
+  /**
+   * Sets the value of the max property.
+   * 
+   */
+  public void setMax(int value) {
+    this.max = value;
+  }
 
 }
