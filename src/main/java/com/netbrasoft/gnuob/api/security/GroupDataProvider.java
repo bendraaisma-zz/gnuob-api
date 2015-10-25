@@ -13,18 +13,18 @@ import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 @Controller("GroupDataProvider")
 public class GroupDataProvider<G extends Group> extends AbstractGenericTypeDataProvider<G> {
 
-   private static final long serialVersionUID = -8167982674192813819L;
+  private static final long serialVersionUID = -8167982674192813819L;
 
-   @Resource(name = "GroupWebServiceRepository")
-   private transient GenericTypeWebServiceRepository<G> groupWebServiceRepository;
+  @Resource(name = "GroupWebServiceRepository")
+  private transient GenericTypeWebServiceRepository<G> groupWebServiceRepository;
 
-   @SuppressWarnings("unchecked")
-   public GroupDataProvider() {
-      super((G) new Group());
-   }
+  @SuppressWarnings("unchecked")
+  public GroupDataProvider() {
+    super((G) new Group());
+  }
 
-   @Override
-   public GenericTypeWebServiceRepository<G> getGenericTypeWebServiceRepository() {
-      return groupWebServiceRepository;
-   }
+  @Override
+  public GenericTypeWebServiceRepository<G> getGenericTypeWebServiceRepository() {
+    return groupWebServiceRepository;
+  }
 }

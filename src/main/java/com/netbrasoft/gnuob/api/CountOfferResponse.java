@@ -12,8 +12,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for countOfferResponse complex type.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="countOfferResponse"&gt;
@@ -30,27 +29,27 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "countOfferResponse", propOrder = { "_return" })
+@XmlType(name = "countOfferResponse", propOrder = {"_return"})
 public class CountOfferResponse implements Serializable {
 
-   private static final long serialVersionUID = 5156973138410203161L;
-   @XmlElement(name = "return")
-   protected long _return;
+  private static final long serialVersionUID = 5156973138410203161L;
+  @XmlElement(name = "return")
+  protected long _return;
 
-   /**
-    * Gets the value of the return property.
-    * 
-    */
-   public long getReturn() {
-      return _return;
-   }
+  /**
+   * Gets the value of the return property.
+   * 
+   */
+  public long getReturn() {
+    return _return;
+  }
 
-   /**
-    * Sets the value of the return property.
-    * 
-    */
-   public void setReturn(long value) {
-      this._return = value;
-   }
+  /**
+   * Sets the value of the return property.
+   * 
+   */
+  public void setReturn(long value) {
+    this._return = value;
+  }
 
 }

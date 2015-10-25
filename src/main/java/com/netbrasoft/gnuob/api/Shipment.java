@@ -12,8 +12,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for shipment complex type.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="shipment"&gt;
@@ -31,54 +30,52 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "shipment", propOrder = { "address", "shipmentType" })
+@XmlType(name = "shipment", propOrder = {"address", "shipmentType"})
 public class Shipment extends Type implements Serializable {
 
-   private static final long serialVersionUID = -166684490965353205L;
-   @XmlElement(required = true)
-   protected Address address;
-   protected String shipmentType;
+  private static final long serialVersionUID = -166684490965353205L;
+  @XmlElement(required = true)
+  protected Address address;
+  protected String shipmentType;
 
-   /**
-    * Gets the value of the address property.
-    * 
-    * @return possible object is {@link Address }
-    * 
-    */
-   public Address getAddress() {
-      return address;
-   }
+  /**
+   * Gets the value of the address property.
+   * 
+   * @return possible object is {@link Address }
+   * 
+   */
+  public Address getAddress() {
+    return address;
+  }
 
-   /**
-    * Sets the value of the address property.
-    * 
-    * @param value
-    *           allowed object is {@link Address }
-    * 
-    */
-   public void setAddress(Address value) {
-      this.address = value;
-   }
+  /**
+   * Sets the value of the address property.
+   * 
+   * @param value allowed object is {@link Address }
+   * 
+   */
+  public void setAddress(Address value) {
+    this.address = value;
+  }
 
-   /**
-    * Gets the value of the shipmentType property.
-    * 
-    * @return possible object is {@link String }
-    * 
-    */
-   public String getShipmentType() {
-      return shipmentType;
-   }
+  /**
+   * Gets the value of the shipmentType property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getShipmentType() {
+    return shipmentType;
+  }
 
-   /**
-    * Sets the value of the shipmentType property.
-    * 
-    * @param value
-    *           allowed object is {@link String }
-    * 
-    */
-   public void setShipmentType(String value) {
-      this.shipmentType = value;
-   }
+  /**
+   * Sets the value of the shipmentType property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setShipmentType(String value) {
+    this.shipmentType = value;
+  }
 
 }

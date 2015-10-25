@@ -12,8 +12,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for findProductByIdResponse complex type.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="findProductByIdResponse"&gt;
@@ -30,32 +29,31 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "findProductByIdResponse", propOrder = { "_return" })
+@XmlType(name = "findProductByIdResponse", propOrder = {"_return"})
 public class FindProductByIdResponse implements Serializable {
 
-   private static final long serialVersionUID = 8084014704076549561L;
-   @XmlElement(name = "return")
-   protected Product _return;
+  private static final long serialVersionUID = 8084014704076549561L;
+  @XmlElement(name = "return")
+  protected Product _return;
 
-   /**
-    * Gets the value of the return property.
-    * 
-    * @return possible object is {@link Product }
-    * 
-    */
-   public Product getReturn() {
-      return _return;
-   }
+  /**
+   * Gets the value of the return property.
+   * 
+   * @return possible object is {@link Product }
+   * 
+   */
+  public Product getReturn() {
+    return _return;
+  }
 
-   /**
-    * Sets the value of the return property.
-    * 
-    * @param value
-    *           allowed object is {@link Product }
-    * 
-    */
-   public void setReturn(Product value) {
-      this._return = value;
-   }
+  /**
+   * Sets the value of the return property.
+   * 
+   * @param value allowed object is {@link Product }
+   * 
+   */
+  public void setReturn(Product value) {
+    this._return = value;
+  }
 
 }

@@ -7,25 +7,25 @@ import com.netbrasoft.gnuob.api.OrderBy;
 
 public interface GenericTypeDataProvider<T> extends IDataProvider<T>, ISortableDataProvider<T, String> {
 
-   T findById(T type);
+  T findById(T type);
 
-   T getType();
+  T getType();
 
-   T merge(T type);
+  T merge(T type);
 
-   T persist(T type);
+  T persist(T type);
 
-   T refresh(T type);
+  T refresh(T type);
 
-   void remove(T type);
+  void remove(T type);
 
-   void setOrderBy(OrderBy orderBy);
+  void setOrderBy(OrderBy orderBy);
 
-   void setPassword(String password);
+  void setPassword(String password);
 
-   void setSite(String site);
+  void setSite(String site);
 
-   void setType(T type);
+  void setType(T type);
 
-   void setUser(String user);
+  void setUser(String user);
 }

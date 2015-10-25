@@ -6,19 +6,19 @@ import com.netbrasoft.gnuob.api.order.OrderDataProvider.CheckOut;
 
 public interface GenericOrderCheckoutDataProvider<O extends Order> extends GenericTypeDataProvider<O> {
 
-   O doCheckout(O paramOrder);
+  O doCheckout(O paramOrder);
 
-   O doCheckoutDetails(O paramOrder);
+  O doCheckoutDetails(O paramOrder);
 
-   O doCheckoutPayment(O paramOrder);
+  O doCheckoutPayment(O paramOrder);
 
-   O doNotification(O paramOrder);
+  O doNotification(O paramOrder);
 
-   O doRefundTransaction(O paramOrder);
+  O doRefundTransaction(O paramOrder);
 
-   O doTransactionDetails(O paramOrder);
+  O doTransactionDetails(O paramOrder);
 
-   CheckOut getCheckOut();
+  CheckOut getCheckOut();
 
-   void setCheckOut(CheckOut checkOut);
+  void setCheckOut(CheckOut checkOut);
 }

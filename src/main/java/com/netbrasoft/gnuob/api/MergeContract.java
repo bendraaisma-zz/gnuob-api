@@ -11,8 +11,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for mergeContract complex type.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="mergeContract"&gt;
@@ -29,31 +28,30 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "mergeContract", propOrder = { "contract" })
+@XmlType(name = "mergeContract", propOrder = {"contract"})
 public class MergeContract implements Serializable {
 
-   private static final long serialVersionUID = -647424693923924453L;
-   protected Contract contract;
+  private static final long serialVersionUID = -647424693923924453L;
+  protected Contract contract;
 
-   /**
-    * Gets the value of the contract property.
-    * 
-    * @return possible object is {@link Contract }
-    * 
-    */
-   public Contract getContract() {
-      return contract;
-   }
+  /**
+   * Gets the value of the contract property.
+   * 
+   * @return possible object is {@link Contract }
+   * 
+   */
+  public Contract getContract() {
+    return contract;
+  }
 
-   /**
-    * Sets the value of the contract property.
-    * 
-    * @param value
-    *           allowed object is {@link Contract }
-    * 
-    */
-   public void setContract(Contract value) {
-      this.contract = value;
-   }
+  /**
+   * Sets the value of the contract property.
+   * 
+   * @param value allowed object is {@link Contract }
+   * 
+   */
+  public void setContract(Contract value) {
+    this.contract = value;
+  }
 
 }

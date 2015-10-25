@@ -14,8 +14,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for findUserResponse complex type.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="findUserResponse"&gt;
@@ -32,40 +31,39 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "findUserResponse", propOrder = { "_return" })
+@XmlType(name = "findUserResponse", propOrder = {"_return"})
 public class FindUserResponse implements Serializable {
 
-   private static final long serialVersionUID = 8509198622694324219L;
-   @XmlElement(name = "return")
-   protected List<User> _return;
+  private static final long serialVersionUID = 8509198622694324219L;
+  @XmlElement(name = "return")
+  protected List<User> _return;
 
-   /**
-    * Gets the value of the return property.
-    * 
-    * <p>
-    * This accessor method returns a reference to the live list, not a snapshot.
-    * Therefore any modification you make to the returned list will be present
-    * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
-    * for the return property.
-    * 
-    * <p>
-    * For example, to add a new item, do as follows:
-    * 
-    * <pre>
-    * getReturn().add(newItem);
-    * </pre>
-    * 
-    * 
-    * <p>
-    * Objects of the following type(s) are allowed in the list {@link User }
-    * 
-    * 
-    */
-   public List<User> getReturn() {
-      if (_return == null) {
-         _return = new ArrayList<User>();
-      }
-      return this._return;
-   }
+  /**
+   * Gets the value of the return property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot. Therefore any
+   * modification you make to the returned list will be present inside the JAXB object. This is why
+   * there is not a <CODE>set</CODE> method for the return property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getReturn().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list {@link User }
+   * 
+   * 
+   */
+  public List<User> getReturn() {
+    if (_return == null) {
+      _return = new ArrayList<User>();
+    }
+    return this._return;
+  }
 
 }

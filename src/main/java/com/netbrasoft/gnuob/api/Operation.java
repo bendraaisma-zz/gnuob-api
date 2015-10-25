@@ -9,8 +9,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for operation.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * <p>
  * 
  * <pre>
@@ -30,14 +29,14 @@ import javax.xml.bind.annotation.XmlType;
 @XmlEnum
 public enum Operation {
 
-   CREATE, READ, UPDATE, DELETE, NONE;
+  CREATE, READ, UPDATE, DELETE, NONE;
 
-   public String value() {
-      return name();
-   }
+  public String value() {
+    return name();
+  }
 
-   public static Operation fromValue(String v) {
-      return valueOf(v);
-   }
+  public static Operation fromValue(String v) {
+    return valueOf(v);
+  }
 
 }

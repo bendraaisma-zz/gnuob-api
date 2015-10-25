@@ -11,8 +11,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for countGroup complex type.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="countGroup"&gt;
@@ -29,31 +28,30 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "countGroup", propOrder = { "group" })
+@XmlType(name = "countGroup", propOrder = {"group"})
 public class CountGroup implements Serializable {
 
-   private static final long serialVersionUID = 7218106099419334885L;
-   protected Group group;
+  private static final long serialVersionUID = 7218106099419334885L;
+  protected Group group;
 
-   /**
-    * Gets the value of the group property.
-    * 
-    * @return possible object is {@link Group }
-    * 
-    */
-   public Group getGroup() {
-      return group;
-   }
+  /**
+   * Gets the value of the group property.
+   * 
+   * @return possible object is {@link Group }
+   * 
+   */
+  public Group getGroup() {
+    return group;
+  }
 
-   /**
-    * Sets the value of the group property.
-    * 
-    * @param value
-    *           allowed object is {@link Group }
-    * 
-    */
-   public void setGroup(Group value) {
-      this.group = value;
-   }
+  /**
+   * Sets the value of the group property.
+   * 
+   * @param value allowed object is {@link Group }
+   * 
+   */
+  public void setGroup(Group value) {
+    this.group = value;
+  }
 
 }

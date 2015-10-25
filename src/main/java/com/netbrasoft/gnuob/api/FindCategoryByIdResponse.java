@@ -12,8 +12,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for findCategoryByIdResponse complex type.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="findCategoryByIdResponse"&gt;
@@ -30,32 +29,31 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "findCategoryByIdResponse", propOrder = { "_return" })
+@XmlType(name = "findCategoryByIdResponse", propOrder = {"_return"})
 public class FindCategoryByIdResponse implements Serializable {
 
-   private static final long serialVersionUID = 5091356672370905344L;
-   @XmlElement(name = "return")
-   protected Category _return;
+  private static final long serialVersionUID = 5091356672370905344L;
+  @XmlElement(name = "return")
+  protected Category _return;
 
-   /**
-    * Gets the value of the return property.
-    * 
-    * @return possible object is {@link Category }
-    * 
-    */
-   public Category getReturn() {
-      return _return;
-   }
+  /**
+   * Gets the value of the return property.
+   * 
+   * @return possible object is {@link Category }
+   * 
+   */
+  public Category getReturn() {
+    return _return;
+  }
 
-   /**
-    * Sets the value of the return property.
-    * 
-    * @param value
-    *           allowed object is {@link Category }
-    * 
-    */
-   public void setReturn(Category value) {
-      this._return = value;
-   }
+  /**
+   * Sets the value of the return property.
+   * 
+   * @param value allowed object is {@link Category }
+   * 
+   */
+  public void setReturn(Category value) {
+    this._return = value;
+  }
 
 }

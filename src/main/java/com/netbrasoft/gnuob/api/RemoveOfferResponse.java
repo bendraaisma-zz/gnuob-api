@@ -11,8 +11,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for removeOfferResponse complex type.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="removeOfferResponse"&gt;
@@ -31,6 +30,6 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "removeOfferResponse")
 public class RemoveOfferResponse implements Serializable {
 
-   private static final long serialVersionUID = -3199069599061676769L;
+  private static final long serialVersionUID = -3199069599061676769L;
 
 }

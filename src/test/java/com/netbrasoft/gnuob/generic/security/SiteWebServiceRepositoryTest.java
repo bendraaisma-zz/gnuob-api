@@ -25,186 +25,193 @@ import com.netbrasoft.gnuob.generic.utils.Utils;
 @RunWith(Arquillian.class)
 public class SiteWebServiceRepositoryTest {
 
-   @Deployment
-   public static Archive<?> createDeployment() {
-      return Utils.createDeployment();
-   }
+  @Deployment
+  public static Archive<?> createDeployment() {
+    return Utils.createDeployment();
+  }
 
-   private final SiteWebServiceRepository<Site> siteWebServiceRepository = new SiteWebServiceRepository<Site>();
-   private MetaData metaData = null;
-   private User user = null;
-   private Group group = null;
-   private Site site = null;
+  private final SiteWebServiceRepository<Site> siteWebServiceRepository = new SiteWebServiceRepository<Site>();
+  private MetaData metaData = null;
+  private User user = null;
+  private Group group = null;
+  private Site site = null;
 
-   @Before
-   public void testBefore() {
-      metaData = new MetaData();
-      user = new User();
-      group = new Group();
-      site = new Site();
+  @Before
+  public void testBefore() {
+    metaData = new MetaData();
+    user = new User();
+    group = new Group();
+    site = new Site();
 
-      metaData.setUser("administrator");
-      metaData.setPassword("administrator");
-      metaData.setSite("www.netbrasoft.com");
+    metaData.setUser("administrator");
+    metaData.setPassword("administrator");
+    metaData.setSite("www.netbrasoft.com");
 
-      user.setName(UUID.randomUUID().toString());
-      user.setDescription(UUID.randomUUID().toString());
-      user.setPassword(UUID.randomUUID().toString());
-      user.getRoles().add(Role.ADMINISTRATOR);
-      user.setAccess(Rule.NONE_ACCESS);
+    user.setName(UUID.randomUUID().toString());
+    user.setDescription(UUID.randomUUID().toString());
+    user.setPassword(UUID.randomUUID().toString());
+    user.getRoles().add(Role.ADMINISTRATOR);
+    user.setAccess(Rule.NONE_ACCESS);
 
-      group.setName(UUID.randomUUID().toString());
-      group.setDescription(UUID.randomUUID().toString());
+    group.setName(UUID.randomUUID().toString());
+    group.setDescription(UUID.randomUUID().toString());
 
-      site.setName(UUID.randomUUID().toString());
-      site.setDescription(UUID.randomUUID().toString());
+    site.setName(UUID.randomUUID().toString());
+    site.setDescription(UUID.randomUUID().toString());
 
-      user.getGroups().add(group);
-      user.getSites().add(site);
-   }
+    user.getGroups().add(group);
+    user.getSites().add(site);
+  }
 
-   @Test
-   public void testFindSite() throws GNUOpenBusinessServiceException_Exception {
-      final String siteName = site.getName();
-      final String siteDescription = site.getDescription();
+  @Test
+  public void testFindSite() throws GNUOpenBusinessServiceException_Exception {
+    final String siteName = site.getName();
+    final String siteDescription = site.getDescription();
 
-      final Site persistSite = siteWebServiceRepository.persist(metaData, site);
+    final Site persistSite = siteWebServiceRepository.persist(metaData, site);
 
-      final Site findSite = siteWebServiceRepository.find(metaData, persistSite);
+    final Site findSite = siteWebServiceRepository.find(metaData, persistSite);
 
-      Assert.assertTrue("Site id has no value bigger than zero.", findSite.getId() > 0);
-      Assert.assertEquals("Site name is not equal.", siteName, findSite.getName());
-      Assert.assertEquals("Site description is not equal.", siteDescription, findSite.getDescription());
-   }
+    Assert.assertTrue("Site id has no value bigger than zero.", findSite.getId() > 0);
+    Assert.assertEquals("Site name is not equal.", siteName, findSite.getName());
+    Assert.assertEquals("Site description is not equal.", siteDescription, findSite.getDescription());
+  }
 
-   @Test
-   public void testMergeSite() throws GNUOpenBusinessServiceException_Exception {
-      final String siteName = UUID.randomUUID().toString();
-      final String siteDescription = UUID.randomUUID().toString();
+  @Test
+  public void testMergeSite() throws GNUOpenBusinessServiceException_Exception {
+    final String siteName = UUID.randomUUID().toString();
+    final String siteDescription = UUID.randomUUID().toString();
 
-      final Site persistSite = siteWebServiceRepository.persist(metaData, site);
+    final Site persistSite = siteWebServiceRepository.persist(metaData, site);
 
-      persistSite.setName(siteName);
-      persistSite.setDescription(siteDescription);
+    persistSite.setName(siteName);
+    persistSite.setDescription(siteDescription);
 
-      final Site mergeSite = siteWebServiceRepository.merge(metaData, persistSite);
+    final Site mergeSite = siteWebServiceRepository.merge(metaData, persistSite);
 
-      Assert.assertTrue("Site id has no value bigger than zero.", mergeSite.getId() > 0);
-      Assert.assertEquals("Site name is not equal.", siteName, mergeSite.getName());
-      Assert.assertEquals("Site description is not equal.", siteDescription, mergeSite.getDescription());
-   }
+    Assert.assertTrue("Site id has no value bigger than zero.", mergeSite.getId() > 0);
+    Assert.assertEquals("Site name is not equal.", siteName, mergeSite.getName());
+    Assert.assertEquals("Site description is not equal.", siteDescription, mergeSite.getDescription());
+  }
 
-   @Test
-   public void testPersistSite() throws GNUOpenBusinessServiceException_Exception {
-      final String siteName = site.getName();
-      final String siteDescription = site.getDescription();
+  @Test
+  public void testPersistSite() throws GNUOpenBusinessServiceException_Exception {
+    final String siteName = site.getName();
+    final String siteDescription = site.getDescription();
 
-      final Site persistSite = siteWebServiceRepository.persist(metaData, site);
+    final Site persistSite = siteWebServiceRepository.persist(metaData, site);
 
-      Assert.assertTrue("Site id has no value bigger than zero.", persistSite.getId() > 0);
-      Assert.assertEquals("Site name is not equal.", siteName, persistSite.getName());
-      Assert.assertEquals("Site description is not equal.", siteDescription, persistSite.getDescription());
-   }
+    Assert.assertTrue("Site id has no value bigger than zero.", persistSite.getId() > 0);
+    Assert.assertEquals("Site name is not equal.", siteName, persistSite.getName());
+    Assert.assertEquals("Site description is not equal.", siteDescription, persistSite.getDescription());
+  }
 
-   @Test
-   public void testPersistSiteWithSiteThatDoesNotExist() throws GNUOpenBusinessServiceException_Exception {
-      metaData.setSite("NO_ACCESS_SITE");
+  @Test
+  public void testPersistSiteWithSiteThatDoesNotExist() throws GNUOpenBusinessServiceException_Exception {
+    metaData.setSite("NO_ACCESS_SITE");
 
-      try {
-         siteWebServiceRepository.persist(metaData, site);
-      } catch (final Exception e) {
-         Assert.assertEquals("Exception message is not equal.", "com.netbrasoft.gnuob.exception.GNUOpenBusinessServiceException: Given site [NO_ACCESS_SITE] doesn't have the right access, verify that the given site has access", e.getMessage());
-      }
-   }
+    try {
+      siteWebServiceRepository.persist(metaData, site);
+    } catch (final Exception e) {
+      Assert.assertEquals("Exception message is not equal.",
+          "com.netbrasoft.gnuob.exception.GNUOpenBusinessServiceException: Given site [NO_ACCESS_SITE] doesn't have the right access, verify that the given site has access",
+          e.getMessage());
+    }
+  }
 
-   @Test
-   public void testPersistSiteWithUserThatHasNoCreateAccess() throws GNUOpenBusinessServiceException_Exception {
-      metaData.setUser("guest");
-      metaData.setPassword("guest");
-      metaData.setSite("www.netbrasoft.com");
+  @Test
+  public void testPersistSiteWithUserThatHasNoCreateAccess() throws GNUOpenBusinessServiceException_Exception {
+    metaData.setUser("guest");
+    metaData.setPassword("guest");
+    metaData.setSite("www.netbrasoft.com");
 
-      try {
-         siteWebServiceRepository.persist(metaData, site);
-      } catch (final SOAPFaultException e) {
-         Assert.assertEquals("Exception message is not equal.", "com.netbrasoft.gnuob.exception.GNUOpenBusinessServiceException: Given user [guest] doesn't have the right access to create this entity object, verify that the given user has access",
-               e.getMessage());
-      }
-   }
+    try {
+      siteWebServiceRepository.persist(metaData, site);
+    } catch (final SOAPFaultException e) {
+      Assert.assertEquals("Exception message is not equal.",
+          "com.netbrasoft.gnuob.exception.GNUOpenBusinessServiceException: Given user [guest] doesn't have the right access to create this entity object, verify that the given user has access",
+          e.getMessage());
+    }
+  }
 
-   @Test
-   public void testPersistSiteWithUserThatHaveNoAccessToTheSite() throws GNUOpenBusinessServiceException_Exception {
-      metaData.setUser("manager");
-      metaData.setPassword("manager");
-      metaData.setSite("www.cheirodeflor.nl");
+  @Test
+  public void testPersistSiteWithUserThatHaveNoAccessToTheSite() throws GNUOpenBusinessServiceException_Exception {
+    metaData.setUser("manager");
+    metaData.setPassword("manager");
+    metaData.setSite("www.cheirodeflor.nl");
 
-      try {
-         siteWebServiceRepository.persist(metaData, site);
-      } catch (final SOAPFaultException e) {
-         Assert.assertEquals("Exception message is not equal.",
-               "com.netbrasoft.gnuob.exception.GNUOpenBusinessServiceException: Given user [manager] doesn't have the right access for site [www.cheirodeflor.nl], verify that the given user have access to the site", e.getMessage());
-      }
-   }
+    try {
+      siteWebServiceRepository.persist(metaData, site);
+    } catch (final SOAPFaultException e) {
+      Assert.assertEquals("Exception message is not equal.",
+          "com.netbrasoft.gnuob.exception.GNUOpenBusinessServiceException: Given user [manager] doesn't have the right access for site [www.cheirodeflor.nl], verify that the given user have access to the site",
+          e.getMessage());
+    }
+  }
 
-   @Test
-   public void testPersistSiteWithUserThatThatDoesNotExist() throws GNUOpenBusinessServiceException_Exception {
-      metaData.setUser("NO_ACCESS_USER");
+  @Test
+  public void testPersistSiteWithUserThatThatDoesNotExist() throws GNUOpenBusinessServiceException_Exception {
+    metaData.setUser("NO_ACCESS_USER");
 
-      try {
-         siteWebServiceRepository.persist(metaData, site);
-      } catch (final Exception e) {
-         Assert.assertEquals("Exception message is not equal.", "com.netbrasoft.gnuob.exception.GNUOpenBusinessServiceException: Given user [NO_ACCESS_USER] doesn't have the right access, verify that the given user has access", e.getMessage());
-      }
-   }
+    try {
+      siteWebServiceRepository.persist(metaData, site);
+    } catch (final Exception e) {
+      Assert.assertEquals("Exception message is not equal.",
+          "com.netbrasoft.gnuob.exception.GNUOpenBusinessServiceException: Given user [NO_ACCESS_USER] doesn't have the right access, verify that the given user has access",
+          e.getMessage());
+    }
+  }
 
-   @Test
-   public void testRefreshSite() throws GNUOpenBusinessServiceException_Exception {
-      final Site persistSite = siteWebServiceRepository.persist(metaData, site);
+  @Test
+  public void testRefreshSite() throws GNUOpenBusinessServiceException_Exception {
+    final Site persistSite = siteWebServiceRepository.persist(metaData, site);
 
-      final String siteName = site.getName();
-      final String siteDescription = site.getDescription();
+    final String siteName = site.getName();
+    final String siteDescription = site.getDescription();
 
-      persistSite.setName(UUID.randomUUID().toString());
-      persistSite.setDescription(UUID.randomUUID().toString());
+    persistSite.setName(UUID.randomUUID().toString());
+    persistSite.setDescription(UUID.randomUUID().toString());
 
-      final Site refreshSite = siteWebServiceRepository.refresh(metaData, persistSite);
+    final Site refreshSite = siteWebServiceRepository.refresh(metaData, persistSite);
 
-      Assert.assertTrue("Site id has no value bigger than zero.", refreshSite.getId() > 0);
-      Assert.assertEquals("Site name is not equal.", siteName, refreshSite.getName());
-      Assert.assertEquals("Site description is not equal.", siteDescription, refreshSite.getDescription());
-   }
+    Assert.assertTrue("Site id has no value bigger than zero.", refreshSite.getId() > 0);
+    Assert.assertEquals("Site name is not equal.", siteName, refreshSite.getName());
+    Assert.assertEquals("Site description is not equal.", siteDescription, refreshSite.getDescription());
+  }
 
-   @Test
-   public void testRemoveSite() throws GNUOpenBusinessServiceException_Exception {
-      final Site persistSite = siteWebServiceRepository.persist(metaData, site);
+  @Test
+  public void testRemoveSite() throws GNUOpenBusinessServiceException_Exception {
+    final Site persistSite = siteWebServiceRepository.persist(metaData, site);
+    siteWebServiceRepository.remove(metaData, persistSite);
+
+    final Site findSite = siteWebServiceRepository.find(metaData, persistSite);
+
+    Assert.assertNull("Site is found.", findSite);
+  }
+
+  @Test
+  public void testRemoveUserWithGroupAndSiteButOtherUserHasNoRightToDelete() throws GNUOpenBusinessServiceException_Exception {
+    metaData.setUser("manager");
+    metaData.setPassword("manager");
+
+    final Site persistSite = siteWebServiceRepository.persist(metaData, site);
+
+    metaData.setUser("employee");
+    metaData.setPassword("employee");
+
+    try {
       siteWebServiceRepository.remove(metaData, persistSite);
+    } catch (final Exception e) {
+      Assert.assertEquals("Exception message is not equal.",
+          "com.netbrasoft.gnuob.exception.GNUOpenBusinessServiceException: Given user [employee] doesn't have the right access to delete this entity object, verify that the given user has access",
+          e.getMessage());
+    }
 
-      final Site findSite = siteWebServiceRepository.find(metaData, persistSite);
+    metaData.setUser("manager");
+    metaData.setPassword("manager");
 
-      Assert.assertNull("Site is found.", findSite);
-   }
+    final Site findSite = siteWebServiceRepository.find(metaData, persistSite);
 
-   @Test
-   public void testRemoveUserWithGroupAndSiteButOtherUserHasNoRightToDelete() throws GNUOpenBusinessServiceException_Exception {
-      metaData.setUser("manager");
-      metaData.setPassword("manager");
-
-      final Site persistSite = siteWebServiceRepository.persist(metaData, site);
-
-      metaData.setUser("employee");
-      metaData.setPassword("employee");
-
-      try {
-         siteWebServiceRepository.remove(metaData, persistSite);
-      } catch (final Exception e) {
-         Assert.assertEquals("Exception message is not equal.", "com.netbrasoft.gnuob.exception.GNUOpenBusinessServiceException: Given user [employee] doesn't have the right access to delete this entity object, verify that the given user has access",
-               e.getMessage());
-      }
-
-      metaData.setUser("manager");
-      metaData.setPassword("manager");
-
-      final Site findSite = siteWebServiceRepository.find(metaData, persistSite);
-
-      Assert.assertNotNull("Site is not found.", findSite);
-   }
+    Assert.assertNotNull("Site is not found.", findSite);
+  }
 }

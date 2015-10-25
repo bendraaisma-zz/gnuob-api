@@ -9,8 +9,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for orderBy.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * <p>
  * 
  * <pre>
@@ -54,14 +53,14 @@ import javax.xml.bind.annotation.XmlType;
 @XmlEnum
 public enum OrderBy {
 
-   RECOMMENDED, HIGHEST_DISCOUNT, LOWEST_DISCOUNT, HIGHEST_PRICE, LOWEST_PRICE, HIGHEST_RATING, LOWEST_RATING, BESTSELLERS, LATEST_COLLECTION, TITLE_A_Z, TITLE_Z_A, POSITION_A_Z, NONE, FIRST_NAME_A_Z, FIRST_NAME_Z_A, LAST_NAME_A_Z, LAST_NAME_Z_A, CONTRACT_ID_A_Z, CONTRACT_ID_Z_A, ORDER_ID_A_Z, ORDER_ID_Z_A, OFFER_ID_A_Z, OFFER_ID_Z_A, NUMBER_A_Z, NUMBER_Z_A, CREATION_A_Z, CREATION_Z_A, MODIFICATION_A_Z, MODIFICATION_Z_A;
+  RECOMMENDED, HIGHEST_DISCOUNT, LOWEST_DISCOUNT, HIGHEST_PRICE, LOWEST_PRICE, HIGHEST_RATING, LOWEST_RATING, BESTSELLERS, LATEST_COLLECTION, TITLE_A_Z, TITLE_Z_A, POSITION_A_Z, NONE, FIRST_NAME_A_Z, FIRST_NAME_Z_A, LAST_NAME_A_Z, LAST_NAME_Z_A, CONTRACT_ID_A_Z, CONTRACT_ID_Z_A, ORDER_ID_A_Z, ORDER_ID_Z_A, OFFER_ID_A_Z, OFFER_ID_Z_A, NUMBER_A_Z, NUMBER_Z_A, CREATION_A_Z, CREATION_Z_A, MODIFICATION_A_Z, MODIFICATION_Z_A;
 
-   public String value() {
-      return name();
-   }
+  public String value() {
+    return name();
+  }
 
-   public static OrderBy fromValue(String v) {
-      return valueOf(v);
-   }
+  public static OrderBy fromValue(String v) {
+    return valueOf(v);
+  }
 
 }

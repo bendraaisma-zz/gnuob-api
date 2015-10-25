@@ -30,79 +30,78 @@ import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 @Repository("ContentWebServiceRepository")
 public class ContentWebServiceRepository<C extends Content> implements GenericTypeWebServiceRepository<C> {
 
-   private ContentWebServiceImpl contentWebServiceImpl;
+  private ContentWebServiceImpl contentWebServiceImpl;
 
-   public ContentWebServiceRepository() {
-   }
+  public ContentWebServiceRepository() {}
 
-   @Override
-   public long count(MetaData paramMetaData, C paramContent) {
-      CountContent paramCountContent = new CountContent();
-      paramCountContent.setContent(paramContent);
-      CountContentResponse countContentResponse = getContentWebServiceImpl().countContent(paramCountContent, paramMetaData);
-      return countContentResponse.getReturn();
-   }
+  @Override
+  public long count(MetaData paramMetaData, C paramContent) {
+    final CountContent paramCountContent = new CountContent();
+    paramCountContent.setContent(paramContent);
+    final CountContentResponse countContentResponse = getContentWebServiceImpl().countContent(paramCountContent, paramMetaData);
+    return countContentResponse.getReturn();
+  }
 
-   @SuppressWarnings("unchecked")
-   @Override
-   public C find(MetaData paramMetaData, C paramContent) {
-      FindContentById paramFindContentById = new FindContentById();
-      paramFindContentById.setContent(paramContent);
-      FindContentByIdResponse findContentByIdResponse = getContentWebServiceImpl().findContentById(paramFindContentById, paramMetaData);
-      return (C) findContentByIdResponse.getReturn();
+  @SuppressWarnings("unchecked")
+  @Override
+  public C find(MetaData paramMetaData, C paramContent) {
+    final FindContentById paramFindContentById = new FindContentById();
+    paramFindContentById.setContent(paramContent);
+    final FindContentByIdResponse findContentByIdResponse = getContentWebServiceImpl().findContentById(paramFindContentById, paramMetaData);
+    return (C) findContentByIdResponse.getReturn();
 
-   }
+  }
 
-   @SuppressWarnings("unchecked")
-   @Override
-   public List<C> find(MetaData paramMetaData, C paramContent, Paging paramPaging, OrderBy paramOrderBy) {
-      FindContent paramFindContent = new FindContent();
-      paramFindContent.setContent(paramContent);
-      paramFindContent.setPaging(paramPaging);
-      paramFindContent.setOrderBy(paramOrderBy);
-      FindContentResponse findContentResponse = getContentWebServiceImpl().findContent(paramFindContent, paramMetaData);
-      return (List<C>) findContentResponse.getReturn();
-   }
+  @SuppressWarnings("unchecked")
+  @Override
+  public List<C> find(MetaData paramMetaData, C paramContent, Paging paramPaging, OrderBy paramOrderBy) {
+    final FindContent paramFindContent = new FindContent();
+    paramFindContent.setContent(paramContent);
+    paramFindContent.setPaging(paramPaging);
+    paramFindContent.setOrderBy(paramOrderBy);
+    final FindContentResponse findContentResponse = getContentWebServiceImpl().findContent(paramFindContent, paramMetaData);
+    return (List<C>) findContentResponse.getReturn();
+  }
 
-   private ContentWebServiceImpl getContentWebServiceImpl() {
-      if (contentWebServiceImpl == null) {
-         ContentWebServiceImplService contentWebServiceImplService = new ContentWebServiceImplService(ContentWebServiceImplService.WSDL_LOCATION);
-         contentWebServiceImpl = contentWebServiceImplService.getContentWebServiceImplPort();
-      }
-      return contentWebServiceImpl;
-   }
+  private ContentWebServiceImpl getContentWebServiceImpl() {
+    if (contentWebServiceImpl == null) {
+      final ContentWebServiceImplService contentWebServiceImplService = new ContentWebServiceImplService(ContentWebServiceImplService.WSDL_LOCATION);
+      contentWebServiceImpl = contentWebServiceImplService.getContentWebServiceImplPort();
+    }
+    return contentWebServiceImpl;
+  }
 
-   @SuppressWarnings("unchecked")
-   @Override
-   public C merge(MetaData paramMetaData, C paramContent) {
-      MergeContent paramMergeContent = new MergeContent();
-      paramMergeContent.setContent(paramContent);
-      MergeContentResponse mergeContentResponse = getContentWebServiceImpl().mergeContent(paramMergeContent, paramMetaData);
-      return (C) mergeContentResponse.getReturn();
-   }
+  @SuppressWarnings("unchecked")
+  @Override
+  public C merge(MetaData paramMetaData, C paramContent) {
+    final MergeContent paramMergeContent = new MergeContent();
+    paramMergeContent.setContent(paramContent);
+    final MergeContentResponse mergeContentResponse = getContentWebServiceImpl().mergeContent(paramMergeContent, paramMetaData);
+    return (C) mergeContentResponse.getReturn();
+  }
 
-   @SuppressWarnings("unchecked")
-   @Override
-   public C persist(MetaData paramMetaData, C paramContent) {
-      PersistContent paramPersistContent = new PersistContent();
-      paramPersistContent.setContent(paramContent);
-      PersistContentResponse persistContentResponse = getContentWebServiceImpl().persistContent(paramPersistContent, paramMetaData);
-      return (C) persistContentResponse.getReturn();
-   }
+  @SuppressWarnings("unchecked")
+  @Override
+  public C persist(MetaData paramMetaData, C paramContent) {
+    final PersistContent paramPersistContent = new PersistContent();
+    paramPersistContent.setContent(paramContent);
+    final PersistContentResponse persistContentResponse = getContentWebServiceImpl().persistContent(paramPersistContent, paramMetaData);
+    return (C) persistContentResponse.getReturn();
+  }
 
-   @SuppressWarnings("unchecked")
-   @Override
-   public C refresh(MetaData paramMetaData, C paramContent) {
-      RefreshContent paramRefresContent = new RefreshContent();
-      paramRefresContent.setContent(paramContent);
-      RefreshContentResponse refresContentResponse = getContentWebServiceImpl().refreshContent(paramRefresContent, paramMetaData);
-      return (C) refresContentResponse.getReturn();
-   }
+  @SuppressWarnings("unchecked")
+  @Override
+  public C refresh(MetaData paramMetaData, C paramContent) {
+    final RefreshContent paramRefresContent = new RefreshContent();
+    paramRefresContent.setContent(paramContent);
+    final RefreshContentResponse refresContentResponse = getContentWebServiceImpl().refreshContent(paramRefresContent, paramMetaData);
+    return (C) refresContentResponse.getReturn();
+  }
 
-   @Override
-   public void remove(MetaData paramMetaData, C paramContent) {
-      RemoveContent paramRemoveContent = new RemoveContent();
-      paramRemoveContent.setContent(paramContent);
-      getContentWebServiceImpl().removeContent(paramRemoveContent, paramMetaData);
-   }
+  @Override
+  public void remove(MetaData paramMetaData, C paramContent) {
+    final RemoveContent paramRemoveContent = new RemoveContent();
+    paramRemoveContent.setContent(paramContent);
+    getContentWebServiceImpl().removeContent(paramRemoveContent, paramMetaData);
+  }
 }

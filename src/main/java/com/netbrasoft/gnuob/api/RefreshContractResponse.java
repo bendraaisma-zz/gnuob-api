@@ -12,8 +12,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for refreshContractResponse complex type.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="refreshContractResponse"&gt;
@@ -30,32 +29,31 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "refreshContractResponse", propOrder = { "_return" })
+@XmlType(name = "refreshContractResponse", propOrder = {"_return"})
 public class RefreshContractResponse implements Serializable {
 
-   private static final long serialVersionUID = 5556935188634293221L;
-   @XmlElement(name = "return")
-   protected Contract _return;
+  private static final long serialVersionUID = 5556935188634293221L;
+  @XmlElement(name = "return")
+  protected Contract _return;
 
-   /**
-    * Gets the value of the return property.
-    * 
-    * @return possible object is {@link Contract }
-    * 
-    */
-   public Contract getReturn() {
-      return _return;
-   }
+  /**
+   * Gets the value of the return property.
+   * 
+   * @return possible object is {@link Contract }
+   * 
+   */
+  public Contract getReturn() {
+    return _return;
+  }
 
-   /**
-    * Sets the value of the return property.
-    * 
-    * @param value
-    *           allowed object is {@link Contract }
-    * 
-    */
-   public void setReturn(Contract value) {
-      this._return = value;
-   }
+  /**
+   * Sets the value of the return property.
+   * 
+   * @param value allowed object is {@link Contract }
+   * 
+   */
+  public void setReturn(Contract value) {
+    this._return = value;
+  }
 
 }

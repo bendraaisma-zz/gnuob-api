@@ -12,8 +12,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for mergeSetting complex type.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="mergeSetting"&gt;
@@ -30,32 +29,31 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "mergeSetting", propOrder = { "setting" })
+@XmlType(name = "mergeSetting", propOrder = {"setting"})
 public class MergeSetting implements Serializable {
 
-   private static final long serialVersionUID = 2617913420745656999L;
-   @XmlElement(name = "Setting")
-   protected Setting setting;
+  private static final long serialVersionUID = 2617913420745656999L;
+  @XmlElement(name = "Setting")
+  protected Setting setting;
 
-   /**
-    * Gets the value of the setting property.
-    * 
-    * @return possible object is {@link Setting }
-    * 
-    */
-   public Setting getSetting() {
-      return setting;
-   }
+  /**
+   * Gets the value of the setting property.
+   * 
+   * @return possible object is {@link Setting }
+   * 
+   */
+  public Setting getSetting() {
+    return setting;
+  }
 
-   /**
-    * Sets the value of the setting property.
-    * 
-    * @param value
-    *           allowed object is {@link Setting }
-    * 
-    */
-   public void setSetting(Setting value) {
-      this.setting = value;
-   }
+  /**
+   * Sets the value of the setting property.
+   * 
+   * @param value allowed object is {@link Setting }
+   * 
+   */
+  public void setSetting(Setting value) {
+    this.setting = value;
+  }
 
 }

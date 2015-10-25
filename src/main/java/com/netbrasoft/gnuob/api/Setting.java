@@ -12,8 +12,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for Setting complex type.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="Setting"&gt;
@@ -32,77 +31,74 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Setting", propOrder = { "property", "value", "description" })
+@XmlType(name = "Setting", propOrder = {"property", "value", "description"})
 public class Setting extends Access implements Serializable {
 
-   private static final long serialVersionUID = -7118864738532294629L;
-   @XmlElement(required = true)
-   protected String property;
-   @XmlElement(required = true)
-   protected String value;
-   protected String description;
+  private static final long serialVersionUID = -7118864738532294629L;
+  @XmlElement(required = true)
+  protected String property;
+  @XmlElement(required = true)
+  protected String value;
+  protected String description;
 
-   /**
-    * Gets the value of the property property.
-    * 
-    * @return possible object is {@link String }
-    * 
-    */
-   public String getProperty() {
-      return property;
-   }
+  /**
+   * Gets the value of the property property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getProperty() {
+    return property;
+  }
 
-   /**
-    * Sets the value of the property property.
-    * 
-    * @param value
-    *           allowed object is {@link String }
-    * 
-    */
-   public void setProperty(String value) {
-      this.property = value;
-   }
+  /**
+   * Sets the value of the property property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setProperty(String value) {
+    this.property = value;
+  }
 
-   /**
-    * Gets the value of the value property.
-    * 
-    * @return possible object is {@link String }
-    * 
-    */
-   public String getValue() {
-      return value;
-   }
+  /**
+   * Gets the value of the value property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getValue() {
+    return value;
+  }
 
-   /**
-    * Sets the value of the value property.
-    * 
-    * @param value
-    *           allowed object is {@link String }
-    * 
-    */
-   public void setValue(String value) {
-      this.value = value;
-   }
+  /**
+   * Sets the value of the value property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setValue(String value) {
+    this.value = value;
+  }
 
-   /**
-    * Gets the value of the description property.
-    * 
-    * @return possible object is {@link String }
-    * 
-    */
-   public String getDescription() {
-      return description;
-   }
+  /**
+   * Gets the value of the description property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getDescription() {
+    return description;
+  }
 
-   /**
-    * Sets the value of the description property.
-    * 
-    * @param value
-    *           allowed object is {@link String }
-    * 
-    */
-   public void setDescription(String value) {
-      this.description = value;
-   }
+  /**
+   * Sets the value of the description property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setDescription(String value) {
+    this.description = value;
+  }
 
 }

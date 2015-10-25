@@ -12,8 +12,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for findGroupByIdResponse complex type.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="findGroupByIdResponse"&gt;
@@ -30,32 +29,31 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "findGroupByIdResponse", propOrder = { "_return" })
+@XmlType(name = "findGroupByIdResponse", propOrder = {"_return"})
 public class FindGroupByIdResponse implements Serializable {
 
-   private static final long serialVersionUID = 4677446218396128190L;
-   @XmlElement(name = "return")
-   protected Group _return;
+  private static final long serialVersionUID = 4677446218396128190L;
+  @XmlElement(name = "return")
+  protected Group _return;
 
-   /**
-    * Gets the value of the return property.
-    * 
-    * @return possible object is {@link Group }
-    * 
-    */
-   public Group getReturn() {
-      return _return;
-   }
+  /**
+   * Gets the value of the return property.
+   * 
+   * @return possible object is {@link Group }
+   * 
+   */
+  public Group getReturn() {
+    return _return;
+  }
 
-   /**
-    * Sets the value of the return property.
-    * 
-    * @param value
-    *           allowed object is {@link Group }
-    * 
-    */
-   public void setReturn(Group value) {
-      this._return = value;
-   }
+  /**
+   * Sets the value of the return property.
+   * 
+   * @param value allowed object is {@link Group }
+   * 
+   */
+  public void setReturn(Group value) {
+    this._return = value;
+  }
 
 }

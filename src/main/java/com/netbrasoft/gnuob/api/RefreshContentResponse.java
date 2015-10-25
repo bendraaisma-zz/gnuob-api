@@ -12,8 +12,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for refreshContentResponse complex type.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="refreshContentResponse"&gt;
@@ -30,32 +29,31 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "refreshContentResponse", propOrder = { "_return" })
+@XmlType(name = "refreshContentResponse", propOrder = {"_return"})
 public class RefreshContentResponse implements Serializable {
 
-   private static final long serialVersionUID = 3936328265580030581L;
-   @XmlElement(name = "return")
-   protected Content _return;
+  private static final long serialVersionUID = 3936328265580030581L;
+  @XmlElement(name = "return")
+  protected Content _return;
 
-   /**
-    * Gets the value of the return property.
-    * 
-    * @return possible object is {@link Content }
-    * 
-    */
-   public Content getReturn() {
-      return _return;
-   }
+  /**
+   * Gets the value of the return property.
+   * 
+   * @return possible object is {@link Content }
+   * 
+   */
+  public Content getReturn() {
+    return _return;
+  }
 
-   /**
-    * Sets the value of the return property.
-    * 
-    * @param value
-    *           allowed object is {@link Content }
-    * 
-    */
-   public void setReturn(Content value) {
-      this._return = value;
-   }
+  /**
+   * Sets the value of the return property.
+   * 
+   * @param value allowed object is {@link Content }
+   * 
+   */
+  public void setReturn(Content value) {
+    this._return = value;
+  }
 
 }

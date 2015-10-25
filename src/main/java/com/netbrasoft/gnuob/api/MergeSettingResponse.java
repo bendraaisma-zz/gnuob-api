@@ -12,8 +12,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for mergeSettingResponse complex type.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="mergeSettingResponse"&gt;
@@ -30,32 +29,31 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "mergeSettingResponse", propOrder = { "_return" })
+@XmlType(name = "mergeSettingResponse", propOrder = {"_return"})
 public class MergeSettingResponse implements Serializable {
 
-   private static final long serialVersionUID = 3699937090080555114L;
-   @XmlElement(name = "return")
-   protected Setting _return;
+  private static final long serialVersionUID = 3699937090080555114L;
+  @XmlElement(name = "return")
+  protected Setting _return;
 
-   /**
-    * Gets the value of the return property.
-    * 
-    * @return possible object is {@link Setting }
-    * 
-    */
-   public Setting getReturn() {
-      return _return;
-   }
+  /**
+   * Gets the value of the return property.
+   * 
+   * @return possible object is {@link Setting }
+   * 
+   */
+  public Setting getReturn() {
+    return _return;
+  }
 
-   /**
-    * Sets the value of the return property.
-    * 
-    * @param value
-    *           allowed object is {@link Setting }
-    * 
-    */
-   public void setReturn(Setting value) {
-      this._return = value;
-   }
+  /**
+   * Sets the value of the return property.
+   * 
+   * @param value allowed object is {@link Setting }
+   * 
+   */
+  public void setReturn(Setting value) {
+    this._return = value;
+  }
 
 }

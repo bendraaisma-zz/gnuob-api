@@ -11,8 +11,7 @@ import javax.xml.bind.annotation.XmlType;
  * Java class for mergeOrder complex type.
  * 
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="mergeOrder"&gt;
@@ -29,31 +28,30 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "mergeOrder", propOrder = { "order" })
+@XmlType(name = "mergeOrder", propOrder = {"order"})
 public class MergeOrder implements Serializable {
 
-   private static final long serialVersionUID = 6824108726319765663L;
-   protected Order order;
+  private static final long serialVersionUID = 6824108726319765663L;
+  protected Order order;
 
-   /**
-    * Gets the value of the order property.
-    * 
-    * @return possible object is {@link Order }
-    * 
-    */
-   public Order getOrder() {
-      return order;
-   }
+  /**
+   * Gets the value of the order property.
+   * 
+   * @return possible object is {@link Order }
+   * 
+   */
+  public Order getOrder() {
+    return order;
+  }
 
-   /**
-    * Sets the value of the order property.
-    * 
-    * @param value
-    *           allowed object is {@link Order }
-    * 
-    */
-   public void setOrder(Order value) {
-      this.order = value;
-   }
+  /**
+   * Sets the value of the order property.
+   * 
+   * @param value allowed object is {@link Order }
+   * 
+   */
+  public void setOrder(Order value) {
+    this.order = value;
+  }
 
 }
