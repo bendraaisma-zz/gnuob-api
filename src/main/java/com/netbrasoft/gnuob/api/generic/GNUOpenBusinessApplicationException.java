@@ -33,7 +33,7 @@ public class GNUOpenBusinessApplicationException extends RuntimeException {
    * @param message the detail message. The detail message is saved for later retrieval by the
    *        {@link #getMessage()} method.
    */
-  public GNUOpenBusinessApplicationException(String message) {
+  public GNUOpenBusinessApplicationException(final String message) {
     super(message);
   }
 
@@ -50,7 +50,7 @@ public class GNUOpenBusinessApplicationException extends RuntimeException {
    *        unknown.)
    * @since 1.4
    */
-  public GNUOpenBusinessApplicationException(String message, Throwable cause) {
+  public GNUOpenBusinessApplicationException(final String message, final Throwable cause) {
     super(message, cause);
   }
 
@@ -65,7 +65,7 @@ public class GNUOpenBusinessApplicationException extends RuntimeException {
    *        unknown.)
    * @since 1.4
    */
-  public GNUOpenBusinessApplicationException(Throwable cause) {
+  public GNUOpenBusinessApplicationException(final Throwable cause) {
     super(cause);
   }
 }

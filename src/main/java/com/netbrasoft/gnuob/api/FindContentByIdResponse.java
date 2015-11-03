@@ -2,18 +2,20 @@
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
  * <p>
  * Java class for findContentByIdResponse complex type.
- * 
+ *
  * <p>
  * The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="findContentByIdResponse"&gt;
  *   &lt;complexContent&gt;
@@ -25,8 +27,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "findContentByIdResponse", propOrder = {"_return"})
@@ -52,7 +54,7 @@ public class FindContentByIdResponse implements Serializable {
    * @param value allowed object is {@link Content }
    * 
    */
-  public void setReturn(Content value) {
+  public void setReturn(final Content value) {
     this._return = value;
   }
 

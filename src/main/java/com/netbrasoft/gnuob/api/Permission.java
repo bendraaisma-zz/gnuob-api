@@ -2,23 +2,25 @@
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
  * <p>
  * Java class for permission complex type.
- * 
+ *
  * <p>
  * The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="permission"&gt;
  *   &lt;complexContent&gt;
- *     &lt;extension base="{http://gnuob.netbrasoft.com/}type"&gt;
+ *     &lt;extension base="{http://gnuob.netbrasoft.com/}abstractType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="group" type="{http://gnuob.netbrasoft.com/}rule"/&gt;
  *         &lt;element name="others" type="{http://gnuob.netbrasoft.com/}rule"/&gt;
@@ -28,12 +30,12 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "permission", propOrder = {"group", "others", "owner"})
-public class Permission extends Type implements Serializable {
+public class Permission extends AbstractType implements Serializable {
 
   private static final long serialVersionUID = -4261671704221459886L;
   @XmlElement(required = true)
@@ -57,16 +59,6 @@ public class Permission extends Type implements Serializable {
   }
 
   /**
-   * Sets the value of the group property.
-   * 
-   * @param value allowed object is {@link Rule }
-   * 
-   */
-  public void setGroup(Rule value) {
-    this.group = value;
-  }
-
-  /**
    * Gets the value of the others property.
    * 
    * @return possible object is {@link Rule }
@@ -74,16 +66,6 @@ public class Permission extends Type implements Serializable {
    */
   public Rule getOthers() {
     return others;
-  }
-
-  /**
-   * Sets the value of the others property.
-   * 
-   * @param value allowed object is {@link Rule }
-   * 
-   */
-  public void setOthers(Rule value) {
-    this.others = value;
   }
 
   /**
@@ -97,12 +79,32 @@ public class Permission extends Type implements Serializable {
   }
 
   /**
+   * Sets the value of the group property.
+   * 
+   * @param value allowed object is {@link Rule }
+   * 
+   */
+  public void setGroup(final Rule value) {
+    this.group = value;
+  }
+
+  /**
+   * Sets the value of the others property.
+   * 
+   * @param value allowed object is {@link Rule }
+   * 
+   */
+  public void setOthers(final Rule value) {
+    this.others = value;
+  }
+
+  /**
    * Sets the value of the owner property.
    * 
    * @param value allowed object is {@link Rule }
    * 
    */
-  public void setOwner(Rule value) {
+  public void setOwner(final Rule value) {
     this.owner = value;
   }
 

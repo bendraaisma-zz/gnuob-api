@@ -10,12 +10,14 @@ import com.netbrasoft.gnuob.api.generic.AbstractGenericTypeDataProvider;
 import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 
 @Monitored
-@Controller("CustomerDataProvider")
+@Controller(CustomerDataProvider.CUSTOMER_DATA_PROVIDER_NAME)
 public class CustomerDataProvider<C extends Customer> extends AbstractGenericTypeDataProvider<C> {
+
+  public static final String CUSTOMER_DATA_PROVIDER_NAME = "CustomerDataProvider";
 
   private static final long serialVersionUID = -7147810111954264232L;
 
-  @Resource(name = "CustomerWebServiceRepository")
+  @Resource(name = CustomerWebServiceRepository.CUSTOMER_WEB_SERVICE_REPOSITORY_NAME)
   private transient GenericTypeWebServiceRepository<C> customerWebServiceRepository;
 
   @SuppressWarnings("unchecked")

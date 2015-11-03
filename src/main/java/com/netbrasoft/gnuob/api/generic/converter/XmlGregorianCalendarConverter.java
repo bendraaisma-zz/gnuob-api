@@ -18,7 +18,7 @@ public class XmlGregorianCalendarConverter implements IConverter<XMLGregorianCal
   private static final long serialVersionUID = -5566238811480030646L;
 
   @Override
-  public XMLGregorianCalendar convertToObject(String value, Locale locale) {
+  public XMLGregorianCalendar convertToObject(final String value, final Locale locale) {
     try {
       final GregorianCalendar gregorianCalendar = new GregorianCalendar();
       gregorianCalendar.setTime(DateFormat.getDateInstance(DateFormat.SHORT, locale).parse(value));
@@ -30,7 +30,7 @@ public class XmlGregorianCalendarConverter implements IConverter<XMLGregorianCal
   }
 
   @Override
-  public String convertToString(XMLGregorianCalendar value, Locale locale) {
+  public String convertToString(final XMLGregorianCalendar value, final Locale locale) {
     return new SimpleDateFormat("dd-MM-YYYY").format(value.toGregorianCalendar().getTime());
   }
 }

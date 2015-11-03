@@ -4,10 +4,11 @@ package com.netbrasoft.gnuob.api;
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
  * <p>
  * Java class for role.
- * 
+ *
  * <p>
  * The following schema fragment specifies the expected content contained within this class.
  * <p>
@@ -22,7 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/restriction&gt;
  * &lt;/simpleType&gt;
  * </pre>
- * 
+ *
  */
 @XmlType(name = "role")
 @XmlEnum
@@ -30,12 +31,12 @@ public enum Role {
 
   ADMINISTRATOR, MANAGER, EMPLOYEE, GUEST;
 
-  public String value() {
-    return name();
+  public static Role fromValue(final String v) {
+    return valueOf(v);
   }
 
-  public static Role fromValue(String v) {
-    return valueOf(v);
+  public String value() {
+    return name();
   }
 
 }

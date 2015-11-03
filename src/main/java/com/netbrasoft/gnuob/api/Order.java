@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -12,17 +13,18 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
 
+
 /**
  * <p>
  * Java class for order complex type.
- * 
+ *
  * <p>
  * The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="order"&gt;
  *   &lt;complexContent&gt;
- *     &lt;extension base="{http://gnuob.netbrasoft.com/}access"&gt;
+ *     &lt;extension base="{http://gnuob.netbrasoft.com/}abstractAccess"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="billingAgreementId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="checkout" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
@@ -62,16 +64,16 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "order",
-    propOrder = {"billingAgreementId", "checkout", "checkoutStatus", "contract", "custom", "discountTotal", "extraAmount", "giftMessage", "giftMessageEnable",
-        "giftReceiptEnable", "giftWrapAmount", "giftWrapEnable", "giftWrapName", "handlingTotal", "insuranceOptionOffered", "insuranceTotal", "invoice", "itemTotal",
-        "maxTotal", "note", "noteText", "notificationId", "orderDate", "orderDescription", "orderId", "orderTotal", "records", "shipment", "shippingDiscount", "shippingTotal",
-        "taxTotal", "token", "transactionId"})
-public class Order extends Access implements Serializable {
+    propOrder = {"billingAgreementId", "checkout", "checkoutStatus", "contract", "custom", "discountTotal", "extraAmount", "giftMessage", "giftMessageEnable", "giftReceiptEnable",
+        "giftWrapAmount", "giftWrapEnable", "giftWrapName", "handlingTotal", "insuranceOptionOffered", "insuranceTotal", "invoice", "itemTotal", "maxTotal", "note", "noteText",
+        "notificationId", "orderDate", "orderDescription", "orderId", "orderTotal", "records", "shipment", "shippingDiscount", "shippingTotal", "taxTotal", "token",
+        "transactionId"})
+public class Order extends AbstractAccess implements Serializable {
 
   private static final long serialVersionUID = -8999420742879607386L;
   protected String billingAgreementId;
@@ -128,16 +130,6 @@ public class Order extends Access implements Serializable {
   }
 
   /**
-   * Sets the value of the billingAgreementId property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setBillingAgreementId(String value) {
-    this.billingAgreementId = value;
-  }
-
-  /**
    * Gets the value of the checkout property.
    * 
    * @return possible object is {@link String }
@@ -145,16 +137,6 @@ public class Order extends Access implements Serializable {
    */
   public String getCheckout() {
     return checkout;
-  }
-
-  /**
-   * Sets the value of the checkout property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setCheckout(String value) {
-    this.checkout = value;
   }
 
   /**
@@ -168,16 +150,6 @@ public class Order extends Access implements Serializable {
   }
 
   /**
-   * Sets the value of the checkoutStatus property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setCheckoutStatus(String value) {
-    this.checkoutStatus = value;
-  }
-
-  /**
    * Gets the value of the contract property.
    * 
    * @return possible object is {@link Contract }
@@ -185,16 +157,6 @@ public class Order extends Access implements Serializable {
    */
   public Contract getContract() {
     return contract;
-  }
-
-  /**
-   * Sets the value of the contract property.
-   * 
-   * @param value allowed object is {@link Contract }
-   * 
-   */
-  public void setContract(Contract value) {
-    this.contract = value;
   }
 
   /**
@@ -208,16 +170,6 @@ public class Order extends Access implements Serializable {
   }
 
   /**
-   * Sets the value of the custom property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setCustom(String value) {
-    this.custom = value;
-  }
-
-  /**
    * Gets the value of the discountTotal property.
    * 
    * @return possible object is {@link BigDecimal }
@@ -225,16 +177,6 @@ public class Order extends Access implements Serializable {
    */
   public BigDecimal getDiscountTotal() {
     return discountTotal;
-  }
-
-  /**
-   * Sets the value of the discountTotal property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setDiscountTotal(BigDecimal value) {
-    this.discountTotal = value;
   }
 
   /**
@@ -248,16 +190,6 @@ public class Order extends Access implements Serializable {
   }
 
   /**
-   * Sets the value of the extraAmount property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setExtraAmount(BigDecimal value) {
-    this.extraAmount = value;
-  }
-
-  /**
    * Gets the value of the giftMessage property.
    * 
    * @return possible object is {@link String }
@@ -265,56 +197,6 @@ public class Order extends Access implements Serializable {
    */
   public String getGiftMessage() {
     return giftMessage;
-  }
-
-  /**
-   * Sets the value of the giftMessage property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setGiftMessage(String value) {
-    this.giftMessage = value;
-  }
-
-  /**
-   * Gets the value of the giftMessageEnable property.
-   * 
-   * @return possible object is {@link Boolean }
-   * 
-   */
-  public Boolean isGiftMessageEnable() {
-    return giftMessageEnable;
-  }
-
-  /**
-   * Sets the value of the giftMessageEnable property.
-   * 
-   * @param value allowed object is {@link Boolean }
-   * 
-   */
-  public void setGiftMessageEnable(Boolean value) {
-    this.giftMessageEnable = value;
-  }
-
-  /**
-   * Gets the value of the giftReceiptEnable property.
-   * 
-   * @return possible object is {@link Boolean }
-   * 
-   */
-  public Boolean isGiftReceiptEnable() {
-    return giftReceiptEnable;
-  }
-
-  /**
-   * Sets the value of the giftReceiptEnable property.
-   * 
-   * @param value allowed object is {@link Boolean }
-   * 
-   */
-  public void setGiftReceiptEnable(Boolean value) {
-    this.giftReceiptEnable = value;
   }
 
   /**
@@ -328,36 +210,6 @@ public class Order extends Access implements Serializable {
   }
 
   /**
-   * Sets the value of the giftWrapAmount property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setGiftWrapAmount(BigDecimal value) {
-    this.giftWrapAmount = value;
-  }
-
-  /**
-   * Gets the value of the giftWrapEnable property.
-   * 
-   * @return possible object is {@link Boolean }
-   * 
-   */
-  public Boolean isGiftWrapEnable() {
-    return giftWrapEnable;
-  }
-
-  /**
-   * Sets the value of the giftWrapEnable property.
-   * 
-   * @param value allowed object is {@link Boolean }
-   * 
-   */
-  public void setGiftWrapEnable(Boolean value) {
-    this.giftWrapEnable = value;
-  }
-
-  /**
    * Gets the value of the giftWrapName property.
    * 
    * @return possible object is {@link String }
@@ -365,16 +217,6 @@ public class Order extends Access implements Serializable {
    */
   public String getGiftWrapName() {
     return giftWrapName;
-  }
-
-  /**
-   * Sets the value of the giftWrapName property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setGiftWrapName(String value) {
-    this.giftWrapName = value;
   }
 
   /**
@@ -388,36 +230,6 @@ public class Order extends Access implements Serializable {
   }
 
   /**
-   * Sets the value of the handlingTotal property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setHandlingTotal(BigDecimal value) {
-    this.handlingTotal = value;
-  }
-
-  /**
-   * Gets the value of the insuranceOptionOffered property.
-   * 
-   * @return possible object is {@link Boolean }
-   * 
-   */
-  public Boolean isInsuranceOptionOffered() {
-    return insuranceOptionOffered;
-  }
-
-  /**
-   * Sets the value of the insuranceOptionOffered property.
-   * 
-   * @param value allowed object is {@link Boolean }
-   * 
-   */
-  public void setInsuranceOptionOffered(Boolean value) {
-    this.insuranceOptionOffered = value;
-  }
-
-  /**
    * Gets the value of the insuranceTotal property.
    * 
    * @return possible object is {@link BigDecimal }
@@ -425,16 +237,6 @@ public class Order extends Access implements Serializable {
    */
   public BigDecimal getInsuranceTotal() {
     return insuranceTotal;
-  }
-
-  /**
-   * Sets the value of the insuranceTotal property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setInsuranceTotal(BigDecimal value) {
-    this.insuranceTotal = value;
   }
 
   /**
@@ -448,16 +250,6 @@ public class Order extends Access implements Serializable {
   }
 
   /**
-   * Sets the value of the invoice property.
-   * 
-   * @param value allowed object is {@link Invoice }
-   * 
-   */
-  public void setInvoice(Invoice value) {
-    this.invoice = value;
-  }
-
-  /**
    * Gets the value of the itemTotal property.
    * 
    * @return possible object is {@link BigDecimal }
@@ -465,16 +257,6 @@ public class Order extends Access implements Serializable {
    */
   public BigDecimal getItemTotal() {
     return itemTotal;
-  }
-
-  /**
-   * Sets the value of the itemTotal property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setItemTotal(BigDecimal value) {
-    this.itemTotal = value;
   }
 
   /**
@@ -488,16 +270,6 @@ public class Order extends Access implements Serializable {
   }
 
   /**
-   * Sets the value of the maxTotal property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setMaxTotal(BigDecimal value) {
-    this.maxTotal = value;
-  }
-
-  /**
    * Gets the value of the note property.
    * 
    * @return possible object is {@link String }
@@ -505,16 +277,6 @@ public class Order extends Access implements Serializable {
    */
   public String getNote() {
     return note;
-  }
-
-  /**
-   * Sets the value of the note property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setNote(String value) {
-    this.note = value;
   }
 
   /**
@@ -528,16 +290,6 @@ public class Order extends Access implements Serializable {
   }
 
   /**
-   * Sets the value of the noteText property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setNoteText(String value) {
-    this.noteText = value;
-  }
-
-  /**
    * Gets the value of the notificationId property.
    * 
    * @return possible object is {@link String }
@@ -545,16 +297,6 @@ public class Order extends Access implements Serializable {
    */
   public String getNotificationId() {
     return notificationId;
-  }
-
-  /**
-   * Sets the value of the notificationId property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setNotificationId(String value) {
-    this.notificationId = value;
   }
 
   /**
@@ -568,16 +310,6 @@ public class Order extends Access implements Serializable {
   }
 
   /**
-   * Sets the value of the orderDate property.
-   * 
-   * @param value allowed object is {@link XMLGregorianCalendar }
-   * 
-   */
-  public void setOrderDate(XMLGregorianCalendar value) {
-    this.orderDate = value;
-  }
-
-  /**
    * Gets the value of the orderDescription property.
    * 
    * @return possible object is {@link String }
@@ -585,16 +317,6 @@ public class Order extends Access implements Serializable {
    */
   public String getOrderDescription() {
     return orderDescription;
-  }
-
-  /**
-   * Sets the value of the orderDescription property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setOrderDescription(String value) {
-    this.orderDescription = value;
   }
 
   /**
@@ -608,16 +330,6 @@ public class Order extends Access implements Serializable {
   }
 
   /**
-   * Sets the value of the orderId property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setOrderId(String value) {
-    this.orderId = value;
-  }
-
-  /**
    * Gets the value of the orderTotal property.
    * 
    * @return possible object is {@link BigDecimal }
@@ -625,16 +337,6 @@ public class Order extends Access implements Serializable {
    */
   public BigDecimal getOrderTotal() {
     return orderTotal;
-  }
-
-  /**
-   * Sets the value of the orderTotal property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setOrderTotal(BigDecimal value) {
-    this.orderTotal = value;
   }
 
   /**
@@ -676,16 +378,6 @@ public class Order extends Access implements Serializable {
   }
 
   /**
-   * Sets the value of the shipment property.
-   * 
-   * @param value allowed object is {@link Shipment }
-   * 
-   */
-  public void setShipment(Shipment value) {
-    this.shipment = value;
-  }
-
-  /**
    * Gets the value of the shippingDiscount property.
    * 
    * @return possible object is {@link BigDecimal }
@@ -693,16 +385,6 @@ public class Order extends Access implements Serializable {
    */
   public BigDecimal getShippingDiscount() {
     return shippingDiscount;
-  }
-
-  /**
-   * Sets the value of the shippingDiscount property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setShippingDiscount(BigDecimal value) {
-    this.shippingDiscount = value;
   }
 
   /**
@@ -716,16 +398,6 @@ public class Order extends Access implements Serializable {
   }
 
   /**
-   * Sets the value of the shippingTotal property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setShippingTotal(BigDecimal value) {
-    this.shippingTotal = value;
-  }
-
-  /**
    * Gets the value of the taxTotal property.
    * 
    * @return possible object is {@link BigDecimal }
@@ -733,16 +405,6 @@ public class Order extends Access implements Serializable {
    */
   public BigDecimal getTaxTotal() {
     return taxTotal;
-  }
-
-  /**
-   * Sets the value of the taxTotal property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setTaxTotal(BigDecimal value) {
-    this.taxTotal = value;
   }
 
   /**
@@ -756,16 +418,6 @@ public class Order extends Access implements Serializable {
   }
 
   /**
-   * Sets the value of the token property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setToken(String value) {
-    this.token = value;
-  }
-
-  /**
    * Gets the value of the transactionId property.
    * 
    * @return possible object is {@link String }
@@ -776,12 +428,362 @@ public class Order extends Access implements Serializable {
   }
 
   /**
+   * Gets the value of the giftMessageEnable property.
+   * 
+   * @return possible object is {@link Boolean }
+   * 
+   */
+  public Boolean isGiftMessageEnable() {
+    return giftMessageEnable;
+  }
+
+  /**
+   * Gets the value of the giftReceiptEnable property.
+   * 
+   * @return possible object is {@link Boolean }
+   * 
+   */
+  public Boolean isGiftReceiptEnable() {
+    return giftReceiptEnable;
+  }
+
+  /**
+   * Gets the value of the giftWrapEnable property.
+   * 
+   * @return possible object is {@link Boolean }
+   * 
+   */
+  public Boolean isGiftWrapEnable() {
+    return giftWrapEnable;
+  }
+
+  /**
+   * Gets the value of the insuranceOptionOffered property.
+   * 
+   * @return possible object is {@link Boolean }
+   * 
+   */
+  public Boolean isInsuranceOptionOffered() {
+    return insuranceOptionOffered;
+  }
+
+  /**
+   * Sets the value of the billingAgreementId property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setBillingAgreementId(final String value) {
+    this.billingAgreementId = value;
+  }
+
+  /**
+   * Sets the value of the checkout property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setCheckout(final String value) {
+    this.checkout = value;
+  }
+
+  /**
+   * Sets the value of the checkoutStatus property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setCheckoutStatus(final String value) {
+    this.checkoutStatus = value;
+  }
+
+  /**
+   * Sets the value of the contract property.
+   * 
+   * @param value allowed object is {@link Contract }
+   * 
+   */
+  public void setContract(final Contract value) {
+    this.contract = value;
+  }
+
+  /**
+   * Sets the value of the custom property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setCustom(final String value) {
+    this.custom = value;
+  }
+
+  /**
+   * Sets the value of the discountTotal property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setDiscountTotal(final BigDecimal value) {
+    this.discountTotal = value;
+  }
+
+  /**
+   * Sets the value of the extraAmount property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setExtraAmount(final BigDecimal value) {
+    this.extraAmount = value;
+  }
+
+  /**
+   * Sets the value of the giftMessage property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setGiftMessage(final String value) {
+    this.giftMessage = value;
+  }
+
+  /**
+   * Sets the value of the giftMessageEnable property.
+   * 
+   * @param value allowed object is {@link Boolean }
+   * 
+   */
+  public void setGiftMessageEnable(final Boolean value) {
+    this.giftMessageEnable = value;
+  }
+
+  /**
+   * Sets the value of the giftReceiptEnable property.
+   * 
+   * @param value allowed object is {@link Boolean }
+   * 
+   */
+  public void setGiftReceiptEnable(final Boolean value) {
+    this.giftReceiptEnable = value;
+  }
+
+  /**
+   * Sets the value of the giftWrapAmount property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setGiftWrapAmount(final BigDecimal value) {
+    this.giftWrapAmount = value;
+  }
+
+  /**
+   * Sets the value of the giftWrapEnable property.
+   * 
+   * @param value allowed object is {@link Boolean }
+   * 
+   */
+  public void setGiftWrapEnable(final Boolean value) {
+    this.giftWrapEnable = value;
+  }
+
+  /**
+   * Sets the value of the giftWrapName property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setGiftWrapName(final String value) {
+    this.giftWrapName = value;
+  }
+
+  /**
+   * Sets the value of the handlingTotal property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setHandlingTotal(final BigDecimal value) {
+    this.handlingTotal = value;
+  }
+
+  /**
+   * Sets the value of the insuranceOptionOffered property.
+   * 
+   * @param value allowed object is {@link Boolean }
+   * 
+   */
+  public void setInsuranceOptionOffered(final Boolean value) {
+    this.insuranceOptionOffered = value;
+  }
+
+  /**
+   * Sets the value of the insuranceTotal property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setInsuranceTotal(final BigDecimal value) {
+    this.insuranceTotal = value;
+  }
+
+  /**
+   * Sets the value of the invoice property.
+   * 
+   * @param value allowed object is {@link Invoice }
+   * 
+   */
+  public void setInvoice(final Invoice value) {
+    this.invoice = value;
+  }
+
+  /**
+   * Sets the value of the itemTotal property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setItemTotal(final BigDecimal value) {
+    this.itemTotal = value;
+  }
+
+  /**
+   * Sets the value of the maxTotal property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setMaxTotal(final BigDecimal value) {
+    this.maxTotal = value;
+  }
+
+  /**
+   * Sets the value of the note property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setNote(final String value) {
+    this.note = value;
+  }
+
+  /**
+   * Sets the value of the noteText property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setNoteText(final String value) {
+    this.noteText = value;
+  }
+
+  /**
+   * Sets the value of the notificationId property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setNotificationId(final String value) {
+    this.notificationId = value;
+  }
+
+  /**
+   * Sets the value of the orderDate property.
+   * 
+   * @param value allowed object is {@link XMLGregorianCalendar }
+   * 
+   */
+  public void setOrderDate(final XMLGregorianCalendar value) {
+    this.orderDate = value;
+  }
+
+  /**
+   * Sets the value of the orderDescription property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setOrderDescription(final String value) {
+    this.orderDescription = value;
+  }
+
+  /**
+   * Sets the value of the orderId property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setOrderId(final String value) {
+    this.orderId = value;
+  }
+
+  /**
+   * Sets the value of the orderTotal property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setOrderTotal(final BigDecimal value) {
+    this.orderTotal = value;
+  }
+
+  /**
+   * Sets the value of the shipment property.
+   * 
+   * @param value allowed object is {@link Shipment }
+   * 
+   */
+  public void setShipment(final Shipment value) {
+    this.shipment = value;
+  }
+
+  /**
+   * Sets the value of the shippingDiscount property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setShippingDiscount(final BigDecimal value) {
+    this.shippingDiscount = value;
+  }
+
+  /**
+   * Sets the value of the shippingTotal property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setShippingTotal(final BigDecimal value) {
+    this.shippingTotal = value;
+  }
+
+  /**
+   * Sets the value of the taxTotal property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setTaxTotal(final BigDecimal value) {
+    this.taxTotal = value;
+  }
+
+  /**
+   * Sets the value of the token property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setToken(final String value) {
+    this.token = value;
+  }
+
+  /**
    * Sets the value of the transactionId property.
    * 
    * @param value allowed object is {@link String }
    * 
    */
-  public void setTransactionId(String value) {
+  public void setTransactionId(final String value) {
     this.transactionId = value;
   }
 

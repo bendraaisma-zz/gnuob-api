@@ -4,10 +4,11 @@ package com.netbrasoft.gnuob.api;
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
  * <p>
  * Java class for rule.
- * 
+ *
  * <p>
  * The following schema fragment specifies the expected content contained within this class.
  * <p>
@@ -23,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/restriction&gt;
  * &lt;/simpleType&gt;
  * </pre>
- * 
+ *
  */
 @XmlType(name = "rule")
 @XmlEnum
@@ -31,12 +32,12 @@ public enum Rule {
 
   CREATE_ACCESS, READ_ACCESS, UPDATE_ACCESS, DELETE_ACCESS, NONE_ACCESS;
 
-  public String value() {
-    return name();
+  public static Rule fromValue(final String v) {
+    return valueOf(v);
   }
 
-  public static Rule fromValue(String v) {
-    return valueOf(v);
+  public String value() {
+    return name();
   }
 
 }

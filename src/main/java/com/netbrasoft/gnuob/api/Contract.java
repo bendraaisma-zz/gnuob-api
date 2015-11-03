@@ -2,22 +2,24 @@
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
  * <p>
  * Java class for contract complex type.
- * 
+ *
  * <p>
  * The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="contract"&gt;
  *   &lt;complexContent&gt;
- *     &lt;extension base="{http://gnuob.netbrasoft.com/}access"&gt;
+ *     &lt;extension base="{http://gnuob.netbrasoft.com/}abstractAccess"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="contractId" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="customer" type="{http://gnuob.netbrasoft.com/}customer"/&gt;
@@ -26,12 +28,12 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "contract", propOrder = {"contractId", "customer"})
-public class Contract extends Access implements Serializable {
+public class Contract extends AbstractAccess implements Serializable {
 
   private static final long serialVersionUID = 1063097896490794439L;
   @XmlElement(required = true)
@@ -50,16 +52,6 @@ public class Contract extends Access implements Serializable {
   }
 
   /**
-   * Sets the value of the contractId property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setContractId(String value) {
-    this.contractId = value;
-  }
-
-  /**
    * Gets the value of the customer property.
    * 
    * @return possible object is {@link Customer }
@@ -70,12 +62,22 @@ public class Contract extends Access implements Serializable {
   }
 
   /**
+   * Sets the value of the contractId property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setContractId(final String value) {
+    this.contractId = value;
+  }
+
+  /**
    * Sets the value of the customer property.
    * 
    * @param value allowed object is {@link Customer }
    * 
    */
-  public void setCustomer(Customer value) {
+  public void setCustomer(final Customer value) {
     this.customer = value;
   }
 

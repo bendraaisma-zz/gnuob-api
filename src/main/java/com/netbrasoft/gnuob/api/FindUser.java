@@ -2,18 +2,20 @@
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
  * <p>
  * Java class for findUser complex type.
- * 
+ *
  * <p>
  * The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="findUser"&gt;
  *   &lt;complexContent&gt;
@@ -27,8 +29,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "findUser", propOrder = {"user", "paging", "orderBy"})
@@ -41,23 +43,13 @@ public class FindUser implements Serializable {
   protected OrderBy orderBy;
 
   /**
-   * Gets the value of the user property.
+   * Gets the value of the orderBy property.
    * 
-   * @return possible object is {@link User }
-   * 
-   */
-  public User getUser() {
-    return user;
-  }
-
-  /**
-   * Sets the value of the user property.
-   * 
-   * @param value allowed object is {@link User }
+   * @return possible object is {@link OrderBy }
    * 
    */
-  public void setUser(User value) {
-    this.user = value;
+  public OrderBy getOrderBy() {
+    return orderBy;
   }
 
   /**
@@ -71,23 +63,13 @@ public class FindUser implements Serializable {
   }
 
   /**
-   * Sets the value of the paging property.
+   * Gets the value of the user property.
    * 
-   * @param value allowed object is {@link Paging }
-   * 
-   */
-  public void setPaging(Paging value) {
-    this.paging = value;
-  }
-
-  /**
-   * Gets the value of the orderBy property.
-   * 
-   * @return possible object is {@link OrderBy }
+   * @return possible object is {@link User }
    * 
    */
-  public OrderBy getOrderBy() {
-    return orderBy;
+  public User getUser() {
+    return user;
   }
 
   /**
@@ -96,8 +78,28 @@ public class FindUser implements Serializable {
    * @param value allowed object is {@link OrderBy }
    * 
    */
-  public void setOrderBy(OrderBy value) {
+  public void setOrderBy(final OrderBy value) {
     this.orderBy = value;
+  }
+
+  /**
+   * Sets the value of the paging property.
+   * 
+   * @param value allowed object is {@link Paging }
+   * 
+   */
+  public void setPaging(final Paging value) {
+    this.paging = value;
+  }
+
+  /**
+   * Sets the value of the user property.
+   * 
+   * @param value allowed object is {@link User }
+   * 
+   */
+  public void setUser(final User value) {
+    this.user = value;
   }
 
 }

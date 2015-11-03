@@ -2,17 +2,19 @@
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
  * <p>
  * Java class for persistProduct complex type.
- * 
+ *
  * <p>
  * The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="persistProduct"&gt;
  *   &lt;complexContent&gt;
@@ -24,8 +26,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "persistProduct", propOrder = {"product"})
@@ -50,7 +52,7 @@ public class PersistProduct implements Serializable {
    * @param value allowed object is {@link Product }
    * 
    */
-  public void setProduct(Product value) {
+  public void setProduct(final Product value) {
     this.product = value;
   }
 

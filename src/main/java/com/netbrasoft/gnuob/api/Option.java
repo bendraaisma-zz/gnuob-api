@@ -4,22 +4,24 @@ package com.netbrasoft.gnuob.api;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
  * <p>
  * Java class for option complex type.
- * 
+ *
  * <p>
  * The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="option"&gt;
  *   &lt;complexContent&gt;
- *     &lt;extension base="{http://gnuob.netbrasoft.com/}type"&gt;
+ *     &lt;extension base="{http://gnuob.netbrasoft.com/}abstractType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="disabled" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
@@ -31,12 +33,12 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "option", propOrder = {"description", "disabled", "position", "subOptions", "value"})
-public class Option extends Type implements Serializable {
+public class Option extends AbstractType implements Serializable {
 
   private static final long serialVersionUID = 7319276393449800429L;
   @XmlElement(required = true)
@@ -59,32 +61,6 @@ public class Option extends Type implements Serializable {
   }
 
   /**
-   * Sets the value of the description property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setDescription(String value) {
-    this.description = value;
-  }
-
-  /**
-   * Gets the value of the disabled property.
-   * 
-   */
-  public boolean isDisabled() {
-    return disabled;
-  }
-
-  /**
-   * Sets the value of the disabled property.
-   * 
-   */
-  public void setDisabled(boolean value) {
-    this.disabled = value;
-  }
-
-  /**
    * Gets the value of the position property.
    * 
    * @return possible object is {@link Integer }
@@ -92,16 +68,6 @@ public class Option extends Type implements Serializable {
    */
   public Integer getPosition() {
     return position;
-  }
-
-  /**
-   * Sets the value of the position property.
-   * 
-   * @param value allowed object is {@link Integer }
-   * 
-   */
-  public void setPosition(Integer value) {
-    this.position = value;
   }
 
   /**
@@ -143,12 +109,48 @@ public class Option extends Type implements Serializable {
   }
 
   /**
+   * Gets the value of the disabled property.
+   * 
+   */
+  public boolean isDisabled() {
+    return disabled;
+  }
+
+  /**
+   * Sets the value of the description property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setDescription(final String value) {
+    this.description = value;
+  }
+
+  /**
+   * Sets the value of the disabled property.
+   * 
+   */
+  public void setDisabled(final boolean value) {
+    this.disabled = value;
+  }
+
+  /**
+   * Sets the value of the position property.
+   * 
+   * @param value allowed object is {@link Integer }
+   * 
+   */
+  public void setPosition(final Integer value) {
+    this.position = value;
+  }
+
+  /**
    * Sets the value of the value property.
    * 
    * @param value allowed object is {@link String }
    * 
    */
-  public void setValue(String value) {
+  public void setValue(final String value) {
     this.value = value;
   }
 

@@ -27,15 +27,19 @@ import com.netbrasoft.gnuob.api.RemoveContent;
 import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 
 @Monitored
-@Repository("ContentWebServiceRepository")
+@Repository(ContentWebServiceRepository.CONTENT_WEB_SERVICE_REPOSITORY_NAME)
 public class ContentWebServiceRepository<C extends Content> implements GenericTypeWebServiceRepository<C> {
+
+  public static final String CONTENT_WEB_SERVICE_REPOSITORY_NAME = "ContentWebServiceRepository";
 
   private ContentWebServiceImpl contentWebServiceImpl;
 
-  public ContentWebServiceRepository() {}
+  public ContentWebServiceRepository() {
+    // Empty constructor.
+  }
 
   @Override
-  public long count(MetaData paramMetaData, C paramContent) {
+  public long count(final MetaData paramMetaData, final C paramContent) {
     final CountContent paramCountContent = new CountContent();
     paramCountContent.setContent(paramContent);
     final CountContentResponse countContentResponse = getContentWebServiceImpl().countContent(paramCountContent, paramMetaData);
@@ -44,7 +48,7 @@ public class ContentWebServiceRepository<C extends Content> implements GenericTy
 
   @SuppressWarnings("unchecked")
   @Override
-  public C find(MetaData paramMetaData, C paramContent) {
+  public C find(final MetaData paramMetaData, final C paramContent) {
     final FindContentById paramFindContentById = new FindContentById();
     paramFindContentById.setContent(paramContent);
     final FindContentByIdResponse findContentByIdResponse = getContentWebServiceImpl().findContentById(paramFindContentById, paramMetaData);
@@ -54,7 +58,7 @@ public class ContentWebServiceRepository<C extends Content> implements GenericTy
 
   @SuppressWarnings("unchecked")
   @Override
-  public List<C> find(MetaData paramMetaData, C paramContent, Paging paramPaging, OrderBy paramOrderBy) {
+  public List<C> find(final MetaData paramMetaData, final C paramContent, final Paging paramPaging, final OrderBy paramOrderBy) {
     final FindContent paramFindContent = new FindContent();
     paramFindContent.setContent(paramContent);
     paramFindContent.setPaging(paramPaging);
@@ -73,7 +77,7 @@ public class ContentWebServiceRepository<C extends Content> implements GenericTy
 
   @SuppressWarnings("unchecked")
   @Override
-  public C merge(MetaData paramMetaData, C paramContent) {
+  public C merge(final MetaData paramMetaData, final C paramContent) {
     final MergeContent paramMergeContent = new MergeContent();
     paramMergeContent.setContent(paramContent);
     final MergeContentResponse mergeContentResponse = getContentWebServiceImpl().mergeContent(paramMergeContent, paramMetaData);
@@ -82,7 +86,7 @@ public class ContentWebServiceRepository<C extends Content> implements GenericTy
 
   @SuppressWarnings("unchecked")
   @Override
-  public C persist(MetaData paramMetaData, C paramContent) {
+  public C persist(final MetaData paramMetaData, final C paramContent) {
     final PersistContent paramPersistContent = new PersistContent();
     paramPersistContent.setContent(paramContent);
     final PersistContentResponse persistContentResponse = getContentWebServiceImpl().persistContent(paramPersistContent, paramMetaData);
@@ -91,7 +95,7 @@ public class ContentWebServiceRepository<C extends Content> implements GenericTy
 
   @SuppressWarnings("unchecked")
   @Override
-  public C refresh(MetaData paramMetaData, C paramContent) {
+  public C refresh(final MetaData paramMetaData, final C paramContent) {
     final RefreshContent paramRefresContent = new RefreshContent();
     paramRefresContent.setContent(paramContent);
     final RefreshContentResponse refresContentResponse = getContentWebServiceImpl().refreshContent(paramRefresContent, paramMetaData);
@@ -99,7 +103,7 @@ public class ContentWebServiceRepository<C extends Content> implements GenericTy
   }
 
   @Override
-  public void remove(MetaData paramMetaData, C paramContent) {
+  public void remove(final MetaData paramMetaData, final C paramContent) {
     final RemoveContent paramRemoveContent = new RemoveContent();
     paramRemoveContent.setContent(paramContent);
     getContentWebServiceImpl().removeContent(paramRemoveContent, paramMetaData);

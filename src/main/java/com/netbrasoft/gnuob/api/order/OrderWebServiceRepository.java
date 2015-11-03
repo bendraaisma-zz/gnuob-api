@@ -27,15 +27,19 @@ import com.netbrasoft.gnuob.api.RemoveOrder;
 import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 
 @Monitored
-@Repository("OrderWebServiceRepository")
+@Repository(OrderWebServiceRepository.ORDER_WEB_SERVICE_REPOSITORY_NAME)
 public class OrderWebServiceRepository<O extends Order> implements GenericTypeWebServiceRepository<O> {
+
+  protected static final String ORDER_WEB_SERVICE_REPOSITORY_NAME = "OrderWebServiceRepository";
 
   private OrderWebServiceImpl orderWebServiceImpl;
 
-  public OrderWebServiceRepository() {}
+  public OrderWebServiceRepository() {
+    // Empty constructor.
+  }
 
   @Override
-  public long count(MetaData paramMetaData, O paramOrder) {
+  public long count(final MetaData paramMetaData, final O paramOrder) {
     final CountOrder paramCountOrder = new CountOrder();
     paramCountOrder.setOrder(paramOrder);
     final CountOrderResponse countOrderResponse = getOrderWebServiceImpl().countOrder(paramCountOrder, paramMetaData);
@@ -44,7 +48,7 @@ public class OrderWebServiceRepository<O extends Order> implements GenericTypeWe
 
   @SuppressWarnings("unchecked")
   @Override
-  public O find(MetaData paramMetaData, O paramOrder) {
+  public O find(final MetaData paramMetaData, final O paramOrder) {
     final FindOrderById paramFindOrderById = new FindOrderById();
     paramFindOrderById.setOrder(paramOrder);
     final FindOrderByIdResponse findOrderByIdResponse = getOrderWebServiceImpl().findOrderById(paramFindOrderById, paramMetaData);
@@ -53,7 +57,7 @@ public class OrderWebServiceRepository<O extends Order> implements GenericTypeWe
 
   @SuppressWarnings("unchecked")
   @Override
-  public List<O> find(MetaData paramMetaData, O paramOrder, Paging paramPaging, OrderBy paramOrderBy) {
+  public List<O> find(final MetaData paramMetaData, final O paramOrder, final Paging paramPaging, final OrderBy paramOrderBy) {
     final FindOrder paramFindOrder = new FindOrder();
     paramFindOrder.setOrder(paramOrder);
     paramFindOrder.setPaging(paramPaging);
@@ -72,7 +76,7 @@ public class OrderWebServiceRepository<O extends Order> implements GenericTypeWe
 
   @SuppressWarnings("unchecked")
   @Override
-  public O merge(MetaData paramMetaData, O paramOrder) {
+  public O merge(final MetaData paramMetaData, final O paramOrder) {
     final MergeOrder paramMergeOrder = new MergeOrder();
     paramMergeOrder.setOrder(paramOrder);
     final MergeOrderResponse mergeOrderResponse = getOrderWebServiceImpl().mergeOrder(paramMergeOrder, paramMetaData);
@@ -81,7 +85,7 @@ public class OrderWebServiceRepository<O extends Order> implements GenericTypeWe
 
   @SuppressWarnings("unchecked")
   @Override
-  public O persist(MetaData paramMetaData, O paramOrder) {
+  public O persist(final MetaData paramMetaData, final O paramOrder) {
     final PersistOrder paramPersistOrder = new PersistOrder();
     paramPersistOrder.setOrder(paramOrder);
     final PersistOrderResponse persistOrderResponse = getOrderWebServiceImpl().persistOrder(paramPersistOrder, paramMetaData);
@@ -90,7 +94,7 @@ public class OrderWebServiceRepository<O extends Order> implements GenericTypeWe
 
   @SuppressWarnings("unchecked")
   @Override
-  public O refresh(MetaData paramMetaData, O paramOrder) {
+  public O refresh(final MetaData paramMetaData, final O paramOrder) {
     final RefreshOrder paramRefreshOrder = new RefreshOrder();
     paramRefreshOrder.setOrder(paramOrder);
     final RefreshOrderResponse refreshOrderResponse = getOrderWebServiceImpl().refreshOrder(paramRefreshOrder, paramMetaData);
@@ -98,7 +102,7 @@ public class OrderWebServiceRepository<O extends Order> implements GenericTypeWe
   }
 
   @Override
-  public void remove(MetaData paramMetaData, O paramOrder) {
+  public void remove(final MetaData paramMetaData, final O paramOrder) {
     final RemoveOrder paramRemoveOrder = new RemoveOrder();
     paramRemoveOrder.setOrder(paramOrder);
     getOrderWebServiceImpl().removeOrder(paramRemoveOrder, paramMetaData);

@@ -27,15 +27,19 @@ import com.netbrasoft.gnuob.api.RemoveGroup;
 import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 
 @Monitored
-@Repository("GroupWebServiceRepository")
+@Repository(GroupWebServiceRepository.GROUP_WEB_SERVICE_REPOSITORY_NAME)
 public class GroupWebServiceRepository<G extends Group> implements GenericTypeWebServiceRepository<G> {
+
+  protected static final String GROUP_WEB_SERVICE_REPOSITORY_NAME = "GroupWebServiceRepository";
 
   private GroupWebServiceImpl groupWebServiceImpl;
 
-  public GroupWebServiceRepository() {}
+  public GroupWebServiceRepository() {
+    // Empty constructor.
+  }
 
   @Override
-  public long count(MetaData paramMetaData, G paramGroup) {
+  public long count(final MetaData paramMetaData, final G paramGroup) {
     final CountGroup paramCountGroup = new CountGroup();
     paramCountGroup.setGroup(paramGroup);
     final CountGroupResponse countGroupResponse = getGroupWebServiceImpl().countGroup(paramCountGroup, paramMetaData);
@@ -44,7 +48,7 @@ public class GroupWebServiceRepository<G extends Group> implements GenericTypeWe
 
   @SuppressWarnings("unchecked")
   @Override
-  public G find(MetaData paramMetaData, G paramGroup) {
+  public G find(final MetaData paramMetaData, final G paramGroup) {
     final FindGroupById paramFindGroupById = new FindGroupById();
     paramFindGroupById.setGroup(paramGroup);
     final FindGroupByIdResponse findGroupByIdResponse = getGroupWebServiceImpl().findGroupById(paramFindGroupById, paramMetaData);
@@ -54,7 +58,7 @@ public class GroupWebServiceRepository<G extends Group> implements GenericTypeWe
 
   @SuppressWarnings("unchecked")
   @Override
-  public List<G> find(MetaData paramMetaData, G paramGroup, Paging paramPaging, OrderBy paramOrderBy) {
+  public List<G> find(final MetaData paramMetaData, final G paramGroup, final Paging paramPaging, final OrderBy paramOrderBy) {
     final FindGroup paramFindGroup = new FindGroup();
     paramFindGroup.setGroup(paramGroup);
     paramFindGroup.setPaging(paramPaging);
@@ -74,7 +78,7 @@ public class GroupWebServiceRepository<G extends Group> implements GenericTypeWe
 
   @SuppressWarnings("unchecked")
   @Override
-  public G merge(MetaData paramMetaData, G paramGroup) {
+  public G merge(final MetaData paramMetaData, final G paramGroup) {
     final MergeGroup paramMergeGroup = new MergeGroup();
     paramMergeGroup.setGroup(paramGroup);
     final MergeGroupResponse mergeGroupResponse = getGroupWebServiceImpl().mergeGroup(paramMergeGroup, paramMetaData);
@@ -83,7 +87,7 @@ public class GroupWebServiceRepository<G extends Group> implements GenericTypeWe
 
   @SuppressWarnings("unchecked")
   @Override
-  public G persist(MetaData paramMetaData, G paramGroup) {
+  public G persist(final MetaData paramMetaData, final G paramGroup) {
     final PersistGroup paramPersistGroup = new PersistGroup();
     paramPersistGroup.setGroup(paramGroup);
     final PersistGroupResponse persistGroupResponse = getGroupWebServiceImpl().persistGroup(paramPersistGroup, paramMetaData);
@@ -92,7 +96,7 @@ public class GroupWebServiceRepository<G extends Group> implements GenericTypeWe
 
   @SuppressWarnings("unchecked")
   @Override
-  public G refresh(MetaData paramMetaData, G paramGroup) {
+  public G refresh(final MetaData paramMetaData, final G paramGroup) {
     final RefreshGroup paramRefresGroup = new RefreshGroup();
     paramRefresGroup.setGroup(paramGroup);
     final RefreshGroupResponse refresGroupResponse = getGroupWebServiceImpl().refreshGroup(paramRefresGroup, paramMetaData);
@@ -100,7 +104,7 @@ public class GroupWebServiceRepository<G extends Group> implements GenericTypeWe
   }
 
   @Override
-  public void remove(MetaData paramMetaData, G paramGroup) {
+  public void remove(final MetaData paramMetaData, final G paramGroup) {
     final RemoveGroup paramRemoveGroup = new RemoveGroup();
     paramRemoveGroup.setGroup(paramGroup);
     getGroupWebServiceImpl().removeGroup(paramRemoveGroup, paramMetaData);

@@ -2,18 +2,20 @@
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
  * <p>
  * Java class for findContract complex type.
- * 
+ *
  * <p>
  * The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="findContract"&gt;
  *   &lt;complexContent&gt;
@@ -27,8 +29,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "findContract", propOrder = {"contract", "paging", "orderBy"})
@@ -51,13 +53,13 @@ public class FindContract implements Serializable {
   }
 
   /**
-   * Sets the value of the contract property.
+   * Gets the value of the orderBy property.
    * 
-   * @param value allowed object is {@link Contract }
+   * @return possible object is {@link OrderBy }
    * 
    */
-  public void setContract(Contract value) {
-    this.contract = value;
+  public OrderBy getOrderBy() {
+    return orderBy;
   }
 
   /**
@@ -71,23 +73,13 @@ public class FindContract implements Serializable {
   }
 
   /**
-   * Sets the value of the paging property.
+   * Sets the value of the contract property.
    * 
-   * @param value allowed object is {@link Paging }
-   * 
-   */
-  public void setPaging(Paging value) {
-    this.paging = value;
-  }
-
-  /**
-   * Gets the value of the orderBy property.
-   * 
-   * @return possible object is {@link OrderBy }
+   * @param value allowed object is {@link Contract }
    * 
    */
-  public OrderBy getOrderBy() {
-    return orderBy;
+  public void setContract(final Contract value) {
+    this.contract = value;
   }
 
   /**
@@ -96,8 +88,18 @@ public class FindContract implements Serializable {
    * @param value allowed object is {@link OrderBy }
    * 
    */
-  public void setOrderBy(OrderBy value) {
+  public void setOrderBy(final OrderBy value) {
     this.orderBy = value;
+  }
+
+  /**
+   * Sets the value of the paging property.
+   * 
+   * @param value allowed object is {@link Paging }
+   * 
+   */
+  public void setPaging(final Paging value) {
+    this.paging = value;
   }
 
 }

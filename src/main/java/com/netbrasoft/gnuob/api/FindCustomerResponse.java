@@ -1,20 +1,23 @@
 
 package com.netbrasoft.gnuob.api;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
  * <p>
  * Java class for findCustomerResponse complex type.
- * 
+ *
  * <p>
  * The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="findCustomerResponse"&gt;
  *   &lt;complexContent&gt;
@@ -26,13 +29,14 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "findCustomerResponse", propOrder = {"_return"})
-public class FindCustomerResponse {
+public class FindCustomerResponse implements Serializable {
 
+  private static final long serialVersionUID = 6733609650727095903L;
   @XmlElement(name = "return")
   protected List<Customer> _return;
 

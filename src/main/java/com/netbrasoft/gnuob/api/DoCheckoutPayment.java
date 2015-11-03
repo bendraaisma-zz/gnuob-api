@@ -2,17 +2,19 @@
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
  * <p>
  * Java class for doCheckoutPayment complex type.
- * 
+ *
  * <p>
  * The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="doCheckoutPayment"&gt;
  *   &lt;complexContent&gt;
@@ -24,8 +26,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "doCheckoutPayment", propOrder = {"order"})
@@ -50,7 +52,7 @@ public class DoCheckoutPayment implements Serializable {
    * @param value allowed object is {@link Order }
    * 
    */
-  public void setOrder(Order value) {
+  public void setOrder(final Order value) {
     this.order = value;
   }
 

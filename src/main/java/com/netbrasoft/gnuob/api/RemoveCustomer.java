@@ -1,17 +1,20 @@
 
 package com.netbrasoft.gnuob.api;
 
+import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
  * <p>
  * Java class for removeCustomer complex type.
- * 
+ *
  * <p>
  * The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="removeCustomer"&gt;
  *   &lt;complexContent&gt;
@@ -23,13 +26,14 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "removeCustomer", propOrder = {"customer"})
-public class RemoveCustomer {
+public class RemoveCustomer implements Serializable {
 
+  private static final long serialVersionUID = 1206221732753251807L;
   protected Customer customer;
 
   /**
@@ -48,7 +52,7 @@ public class RemoveCustomer {
    * @param value allowed object is {@link Customer }
    * 
    */
-  public void setCustomer(Customer value) {
+  public void setCustomer(final Customer value) {
     this.customer = value;
   }
 

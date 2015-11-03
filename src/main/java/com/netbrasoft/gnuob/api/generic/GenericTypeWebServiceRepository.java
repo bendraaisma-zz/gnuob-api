@@ -8,17 +8,17 @@ import com.netbrasoft.gnuob.api.Paging;
 
 public interface GenericTypeWebServiceRepository<T> {
 
-  long count(MetaData paramMetaData, T paramType);
+  long count(MetaData MetaData, T type);
 
-  T find(MetaData paramMetaData, T paramType);
+  T find(MetaData MetaData, T type);
 
-  List<T> find(MetaData paramMetaData, T paramType, Paging paramPaging, OrderBy paramOrderBy);
+  List<T> find(MetaData MetaData, T type, Paging paramPaging, OrderBy paramOrderBy);
 
-  T merge(MetaData paramMetaData, T paramType);
+  T merge(MetaData MetaData, T type);
 
-  T persist(MetaData paramMetaData, T paramType);
+  T persist(MetaData MetaData, T type);
 
-  T refresh(MetaData paramMetaData, T paramType);
+  T refresh(MetaData MetaData, T type);
 
-  void remove(MetaData paramMetaData, T paramType);
+  void remove(MetaData MetaData, T type);
 }

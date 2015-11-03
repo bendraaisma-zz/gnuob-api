@@ -27,15 +27,19 @@ import com.netbrasoft.gnuob.api.RemoveCategory;
 import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 
 @Monitored
-@Repository("CategoryWebServiceRepository")
+@Repository(CategoryWebServiceRepository.CATEGORY_WEB_SERVICE_REPOSITORY_NAME)
 public class CategoryWebServiceRepository<C extends Category> implements GenericTypeWebServiceRepository<C> {
+
+  public static final String CATEGORY_WEB_SERVICE_REPOSITORY_NAME = "CategoryWebServiceRepository";
 
   private CategoryWebServiceImpl categoryWebServiceImpl = null;
 
-  public CategoryWebServiceRepository() {}
+  public CategoryWebServiceRepository() {
+    // Empty constructor.
+  }
 
   @Override
-  public long count(MetaData paramMetaData, C paramCategory) {
+  public long count(final MetaData paramMetaData, final C paramCategory) {
     final CountCategory paramCountCategory = new CountCategory();
     paramCountCategory.setCategory(paramCategory);
     final CountCategoryResponse countCategoryResponse = getCategoryWebServiceImpl().countCategory(paramCountCategory, paramMetaData);
@@ -44,7 +48,7 @@ public class CategoryWebServiceRepository<C extends Category> implements Generic
 
   @Override
   @SuppressWarnings("unchecked")
-  public C find(MetaData paramMetaData, C paramCategory) {
+  public C find(final MetaData paramMetaData, final C paramCategory) {
     final FindCategoryById paramFindCategoryById = new FindCategoryById();
     paramFindCategoryById.setCategory(paramCategory);
     final FindCategoryByIdResponse findCategoryByIdResponse = getCategoryWebServiceImpl().findCategoryById(paramFindCategoryById, paramMetaData);
@@ -54,7 +58,7 @@ public class CategoryWebServiceRepository<C extends Category> implements Generic
 
   @Override
   @SuppressWarnings("unchecked")
-  public List<C> find(MetaData paramMetaData, C paramCategory, Paging paramPaging, OrderBy paramOrderBy) {
+  public List<C> find(final MetaData paramMetaData, final C paramCategory, final Paging paramPaging, final OrderBy paramOrderBy) {
     final FindCategory paramFindCategory = new FindCategory();
     paramFindCategory.setCategory(paramCategory);
     paramFindCategory.setPaging(paramPaging);
@@ -75,7 +79,7 @@ public class CategoryWebServiceRepository<C extends Category> implements Generic
 
   @Override
   @SuppressWarnings("unchecked")
-  public C merge(MetaData paramMetaData, C paramCategory) {
+  public C merge(final MetaData paramMetaData, final C paramCategory) {
     final MergeCategory paramMergeCategory = new MergeCategory();
     paramMergeCategory.setCategory(paramCategory);
     final MergeCategoryResponse mergeCategoryResponse = getCategoryWebServiceImpl().mergeCategory(paramMergeCategory, paramMetaData);
@@ -84,7 +88,7 @@ public class CategoryWebServiceRepository<C extends Category> implements Generic
 
   @Override
   @SuppressWarnings("unchecked")
-  public C persist(MetaData paramMetaData, C paramCategory) {
+  public C persist(final MetaData paramMetaData, final C paramCategory) {
     final PersistCategory paramPersistCategory = new PersistCategory();
     paramPersistCategory.setCategory(paramCategory);
     final PersistCategoryResponse persistCategoryResponse = getCategoryWebServiceImpl().persistCategory(paramPersistCategory, paramMetaData);
@@ -93,7 +97,7 @@ public class CategoryWebServiceRepository<C extends Category> implements Generic
 
   @Override
   @SuppressWarnings("unchecked")
-  public C refresh(MetaData paramMetaData, C paramCategory) {
+  public C refresh(final MetaData paramMetaData, final C paramCategory) {
     final RefreshCategory paramRefresCategory = new RefreshCategory();
     paramRefresCategory.setCategory(paramCategory);
     final RefreshCategoryResponse refreshCategoryResponse = getCategoryWebServiceImpl().refreshCategory(paramRefresCategory, paramMetaData);
@@ -101,7 +105,7 @@ public class CategoryWebServiceRepository<C extends Category> implements Generic
   }
 
   @Override
-  public void remove(MetaData paramMetaData, C paramCategory) {
+  public void remove(final MetaData paramMetaData, final C paramCategory) {
     final RemoveCategory paramRemoveCategory = new RemoveCategory();
     paramRemoveCategory.setCategory(paramCategory);
     getCategoryWebServiceImpl().removeCategory(paramRemoveCategory, paramMetaData);

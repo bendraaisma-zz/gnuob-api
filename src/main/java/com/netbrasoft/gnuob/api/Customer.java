@@ -10,6 +10,7 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
 
+
 /**
  * <p>
  * Java class for customer complex type.
@@ -20,13 +21,13 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * <pre>
  * &lt;complexType name="customer"&gt;
  *   &lt;complexContent&gt;
- *     &lt;extension base="{http://gnuob.netbrasoft.com/}access"&gt;
+ *     &lt;extension base="{http://gnuob.netbrasoft.com/}abstractAccess"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="address" type="{http://gnuob.netbrasoft.com/}address"/&gt;
  *         &lt;element name="buyerEmail" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="buyerMarketingEmail" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="contactPhone" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="dateOfBirth" type="{http://www.w3.org/2001/XMLSchema}dateTime"/&gt;
+ *         &lt;element name="dateOfBirth" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="firstName" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="friendlyName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="lastName" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
@@ -50,7 +51,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "customer", propOrder = {"address", "buyerEmail", "buyerMarketingEmail", "contactPhone", "dateOfBirth", "firstName", "friendlyName", "lastName", "middleName",
     "payer", "payerBusiness", "payerId", "payerStatus", "salutation", "suffix", "taxId", "taxIdType"})
-public class Customer extends Access implements Serializable {
+public class Customer extends AbstractAccess implements Serializable {
 
   private static final long serialVersionUID = -6386912469945326531L;
   @XmlElement(required = true)
@@ -78,9 +79,9 @@ public class Customer extends Access implements Serializable {
 
   /**
    * Gets the value of the address property.
-   *
+   * 
    * @return possible object is {@link Address }
-   *
+   * 
    */
   public Address getAddress() {
     return address;
@@ -88,9 +89,9 @@ public class Customer extends Access implements Serializable {
 
   /**
    * Gets the value of the buyerEmail property.
-   *
+   * 
    * @return possible object is {@link String }
-   *
+   * 
    */
   public String getBuyerEmail() {
     return buyerEmail;
@@ -98,9 +99,9 @@ public class Customer extends Access implements Serializable {
 
   /**
    * Gets the value of the buyerMarketingEmail property.
-   *
+   * 
    * @return possible object is {@link String }
-   *
+   * 
    */
   public String getBuyerMarketingEmail() {
     return buyerMarketingEmail;
@@ -108,9 +109,9 @@ public class Customer extends Access implements Serializable {
 
   /**
    * Gets the value of the contactPhone property.
-   *
+   * 
    * @return possible object is {@link String }
-   *
+   * 
    */
   public String getContactPhone() {
     return contactPhone;
@@ -118,9 +119,9 @@ public class Customer extends Access implements Serializable {
 
   /**
    * Gets the value of the dateOfBirth property.
-   *
+   * 
    * @return possible object is {@link XMLGregorianCalendar }
-   *
+   * 
    */
   public XMLGregorianCalendar getDateOfBirth() {
     return dateOfBirth;
@@ -128,9 +129,9 @@ public class Customer extends Access implements Serializable {
 
   /**
    * Gets the value of the firstName property.
-   *
+   * 
    * @return possible object is {@link String }
-   *
+   * 
    */
   public String getFirstName() {
     return firstName;
@@ -138,9 +139,9 @@ public class Customer extends Access implements Serializable {
 
   /**
    * Gets the value of the friendlyName property.
-   *
+   * 
    * @return possible object is {@link String }
-   *
+   * 
    */
   public String getFriendlyName() {
     return friendlyName;
@@ -148,9 +149,9 @@ public class Customer extends Access implements Serializable {
 
   /**
    * Gets the value of the lastName property.
-   *
+   * 
    * @return possible object is {@link String }
-   *
+   * 
    */
   public String getLastName() {
     return lastName;
@@ -158,9 +159,9 @@ public class Customer extends Access implements Serializable {
 
   /**
    * Gets the value of the middleName property.
-   *
+   * 
    * @return possible object is {@link String }
-   *
+   * 
    */
   public String getMiddleName() {
     return middleName;
@@ -168,9 +169,9 @@ public class Customer extends Access implements Serializable {
 
   /**
    * Gets the value of the payer property.
-   *
+   * 
    * @return possible object is {@link String }
-   *
+   * 
    */
   public String getPayer() {
     return payer;
@@ -178,9 +179,9 @@ public class Customer extends Access implements Serializable {
 
   /**
    * Gets the value of the payerBusiness property.
-   *
+   * 
    * @return possible object is {@link String }
-   *
+   * 
    */
   public String getPayerBusiness() {
     return payerBusiness;
@@ -188,9 +189,9 @@ public class Customer extends Access implements Serializable {
 
   /**
    * Gets the value of the payerId property.
-   *
+   * 
    * @return possible object is {@link String }
-   *
+   * 
    */
   public String getPayerId() {
     return payerId;
@@ -198,9 +199,9 @@ public class Customer extends Access implements Serializable {
 
   /**
    * Gets the value of the payerStatus property.
-   *
+   * 
    * @return possible object is {@link String }
-   *
+   * 
    */
   public String getPayerStatus() {
     return payerStatus;
@@ -208,9 +209,9 @@ public class Customer extends Access implements Serializable {
 
   /**
    * Gets the value of the salutation property.
-   *
+   * 
    * @return possible object is {@link String }
-   *
+   * 
    */
   public String getSalutation() {
     return salutation;
@@ -218,9 +219,9 @@ public class Customer extends Access implements Serializable {
 
   /**
    * Gets the value of the suffix property.
-   *
+   * 
    * @return possible object is {@link String }
-   *
+   * 
    */
   public String getSuffix() {
     return suffix;
@@ -228,9 +229,9 @@ public class Customer extends Access implements Serializable {
 
   /**
    * Gets the value of the taxId property.
-   *
+   * 
    * @return possible object is {@link String }
-   *
+   * 
    */
   public String getTaxId() {
     return taxId;
@@ -238,9 +239,9 @@ public class Customer extends Access implements Serializable {
 
   /**
    * Gets the value of the taxIdType property.
-   *
+   * 
    * @return possible object is {@link String }
-   *
+   * 
    */
   public String getTaxIdType() {
     return taxIdType;
@@ -248,171 +249,171 @@ public class Customer extends Access implements Serializable {
 
   /**
    * Sets the value of the address property.
-   *
+   * 
    * @param value allowed object is {@link Address }
-   *
+   * 
    */
-  public void setAddress(Address value) {
+  public void setAddress(final Address value) {
     this.address = value;
   }
 
   /**
    * Sets the value of the buyerEmail property.
-   *
+   * 
    * @param value allowed object is {@link String }
-   *
+   * 
    */
-  public void setBuyerEmail(String value) {
+  public void setBuyerEmail(final String value) {
     this.buyerEmail = value;
   }
 
   /**
    * Sets the value of the buyerMarketingEmail property.
-   *
+   * 
    * @param value allowed object is {@link String }
-   *
+   * 
    */
-  public void setBuyerMarketingEmail(String value) {
+  public void setBuyerMarketingEmail(final String value) {
     this.buyerMarketingEmail = value;
   }
 
   /**
    * Sets the value of the contactPhone property.
-   *
+   * 
    * @param value allowed object is {@link String }
-   *
+   * 
    */
-  public void setContactPhone(String value) {
+  public void setContactPhone(final String value) {
     this.contactPhone = value;
   }
 
   /**
    * Sets the value of the dateOfBirth property.
-   *
+   * 
    * @param value allowed object is {@link XMLGregorianCalendar }
-   *
+   * 
    */
-  public void setDateOfBirth(XMLGregorianCalendar value) {
+  public void setDateOfBirth(final XMLGregorianCalendar value) {
     this.dateOfBirth = value;
   }
 
   /**
    * Sets the value of the firstName property.
-   *
+   * 
    * @param value allowed object is {@link String }
-   *
+   * 
    */
-  public void setFirstName(String value) {
+  public void setFirstName(final String value) {
     this.firstName = value;
   }
 
   /**
    * Sets the value of the friendlyName property.
-   *
+   * 
    * @param value allowed object is {@link String }
-   *
+   * 
    */
-  public void setFriendlyName(String value) {
+  public void setFriendlyName(final String value) {
     this.friendlyName = value;
   }
 
   /**
    * Sets the value of the lastName property.
-   *
+   * 
    * @param value allowed object is {@link String }
-   *
+   * 
    */
-  public void setLastName(String value) {
+  public void setLastName(final String value) {
     this.lastName = value;
   }
 
   /**
    * Sets the value of the middleName property.
-   *
+   * 
    * @param value allowed object is {@link String }
-   *
+   * 
    */
-  public void setMiddleName(String value) {
+  public void setMiddleName(final String value) {
     this.middleName = value;
   }
 
   /**
    * Sets the value of the payer property.
-   *
+   * 
    * @param value allowed object is {@link String }
-   *
+   * 
    */
-  public void setPayer(String value) {
+  public void setPayer(final String value) {
     this.payer = value;
   }
 
   /**
    * Sets the value of the payerBusiness property.
-   *
+   * 
    * @param value allowed object is {@link String }
-   *
+   * 
    */
-  public void setPayerBusiness(String value) {
+  public void setPayerBusiness(final String value) {
     this.payerBusiness = value;
   }
 
   /**
    * Sets the value of the payerId property.
-   *
+   * 
    * @param value allowed object is {@link String }
-   *
+   * 
    */
-  public void setPayerId(String value) {
+  public void setPayerId(final String value) {
     this.payerId = value;
   }
 
   /**
    * Sets the value of the payerStatus property.
-   *
+   * 
    * @param value allowed object is {@link String }
-   *
+   * 
    */
-  public void setPayerStatus(String value) {
+  public void setPayerStatus(final String value) {
     this.payerStatus = value;
   }
 
   /**
    * Sets the value of the salutation property.
-   *
+   * 
    * @param value allowed object is {@link String }
-   *
+   * 
    */
-  public void setSalutation(String value) {
+  public void setSalutation(final String value) {
     this.salutation = value;
   }
 
   /**
    * Sets the value of the suffix property.
-   *
+   * 
    * @param value allowed object is {@link String }
-   *
+   * 
    */
-  public void setSuffix(String value) {
+  public void setSuffix(final String value) {
     this.suffix = value;
   }
 
   /**
    * Sets the value of the taxId property.
-   *
+   * 
    * @param value allowed object is {@link String }
-   *
+   * 
    */
-  public void setTaxId(String value) {
+  public void setTaxId(final String value) {
     this.taxId = value;
   }
 
   /**
    * Sets the value of the taxIdType property.
-   *
+   * 
    * @param value allowed object is {@link String }
-   *
+   * 
    */
-  public void setTaxIdType(String value) {
+  public void setTaxIdType(final String value) {
     this.taxIdType = value;
   }
 

@@ -4,25 +4,27 @@ package com.netbrasoft.gnuob.api;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
  * <p>
  * Java class for category complex type.
- * 
+ *
  * <p>
  * The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="category"&gt;
  *   &lt;complexContent&gt;
- *     &lt;extension base="{http://gnuob.netbrasoft.com/}access"&gt;
+ *     &lt;extension base="{http://gnuob.netbrasoft.com/}abstractAccess"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="contents" type="{http://gnuob.netbrasoft.com/}content" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="position" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="subCategories" type="{http://gnuob.netbrasoft.com/}subCategory" maxOccurs="unbounded" minOccurs="0"/&gt;
@@ -31,16 +33,17 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "category", propOrder = {"contents", "description", "name", "position", "subCategories"})
-public class Category extends Access implements Serializable {
+public class Category extends AbstractAccess implements Serializable {
 
   private static final long serialVersionUID = -2820813057083809036L;
   @XmlElement(nillable = true)
   protected List<Content> contents;
+  @XmlElement(required = true)
   protected String description;
   @XmlElement(required = true)
   protected String name;
@@ -87,16 +90,6 @@ public class Category extends Access implements Serializable {
   }
 
   /**
-   * Sets the value of the description property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setDescription(String value) {
-    this.description = value;
-  }
-
-  /**
    * Gets the value of the name property.
    * 
    * @return possible object is {@link String }
@@ -107,16 +100,6 @@ public class Category extends Access implements Serializable {
   }
 
   /**
-   * Sets the value of the name property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setName(String value) {
-    this.name = value;
-  }
-
-  /**
    * Gets the value of the position property.
    * 
    * @return possible object is {@link Integer }
@@ -124,16 +107,6 @@ public class Category extends Access implements Serializable {
    */
   public Integer getPosition() {
     return position;
-  }
-
-  /**
-   * Sets the value of the position property.
-   * 
-   * @param value allowed object is {@link Integer }
-   * 
-   */
-  public void setPosition(Integer value) {
-    this.position = value;
   }
 
   /**
@@ -162,6 +135,36 @@ public class Category extends Access implements Serializable {
       subCategories = new ArrayList<SubCategory>();
     }
     return this.subCategories;
+  }
+
+  /**
+   * Sets the value of the description property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setDescription(final String value) {
+    this.description = value;
+  }
+
+  /**
+   * Sets the value of the name property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setName(final String value) {
+    this.name = value;
+  }
+
+  /**
+   * Sets the value of the position property.
+   * 
+   * @param value allowed object is {@link Integer }
+   * 
+   */
+  public void setPosition(final Integer value) {
+    this.position = value;
   }
 
 }

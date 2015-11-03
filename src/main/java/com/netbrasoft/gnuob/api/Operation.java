@@ -4,10 +4,11 @@ package com.netbrasoft.gnuob.api;
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
  * <p>
  * Java class for operation.
- * 
+ *
  * <p>
  * The following schema fragment specifies the expected content contained within this class.
  * <p>
@@ -23,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/restriction&gt;
  * &lt;/simpleType&gt;
  * </pre>
- * 
+ *
  */
 @XmlType(name = "operation")
 @XmlEnum
@@ -31,12 +32,12 @@ public enum Operation {
 
   CREATE, READ, UPDATE, DELETE, NONE;
 
-  public String value() {
-    return name();
+  public static Operation fromValue(final String v) {
+    return valueOf(v);
   }
 
-  public static Operation fromValue(String v) {
-    return valueOf(v);
+  public String value() {
+    return name();
   }
 
 }

@@ -17,21 +17,22 @@ public class GNUOpenBusinessServiceException_Exception extends Exception {
     super();
   }
 
-  public GNUOpenBusinessServiceException_Exception(String message) {
+  public GNUOpenBusinessServiceException_Exception(final String message) {
     super(message);
   }
 
-  public GNUOpenBusinessServiceException_Exception(String message, com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException gnuOpenBusinessServiceException) {
+  public GNUOpenBusinessServiceException_Exception(final String message, final com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException gnuOpenBusinessServiceException) {
     super(message);
     this.gnuOpenBusinessServiceException = gnuOpenBusinessServiceException;
   }
 
-  public GNUOpenBusinessServiceException_Exception(String message, com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException gnuOpenBusinessServiceException, Throwable cause) {
+  public GNUOpenBusinessServiceException_Exception(final String message, final com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException gnuOpenBusinessServiceException,
+      final Throwable cause) {
     super(message, cause);
     this.gnuOpenBusinessServiceException = gnuOpenBusinessServiceException;
   }
 
-  public GNUOpenBusinessServiceException_Exception(String message, Throwable cause) {
+  public GNUOpenBusinessServiceException_Exception(final String message, final Throwable cause) {
     super(message, cause);
   }
 

@@ -32,19 +32,19 @@ public class ProductWebServiceRepositoryTest {
     return Utils.createDeployment();
   }
 
-  private ProductWebServiceRepository<Product> productWebServiceRepository = new ProductWebServiceRepository<Product>();
+  private final ProductWebServiceRepository<Product> productWebServiceRepository = new ProductWebServiceRepository<Product>();
   private MetaData metaData = null;
   private Product product = null;
 
   @Before
   public void testBefore() {
-    Random randomGenerator = new Random();
+    final Random randomGenerator = new Random();
 
     metaData = new MetaData();
 
     metaData.setUser("administrator");
     metaData.setPassword("administrator");
-    metaData.setSite("www.netbrasoft.com");
+    metaData.setSite("localhost");
 
     product = new Product();
 
@@ -60,14 +60,14 @@ public class ProductWebServiceRepositoryTest {
     product.setShippingCost(BigDecimal.ZERO);
     product.setItemWeight(BigDecimal.ZERO);
 
-    Stock stock = new Stock();
+    final Stock stock = new Stock();
     stock.setMaxQuantity(BigInteger.valueOf(100));
     stock.setMinQuantity(BigInteger.ZERO);
     stock.setQuantity(BigInteger.valueOf(30));
 
     product.setStock(stock);
 
-    SubCategory subCategory = new SubCategory();
+    final SubCategory subCategory = new SubCategory();
 
     subCategory.setName(UUID.randomUUID().toString());
     subCategory.setDescription(UUID.randomUUID().toString());
@@ -77,27 +77,27 @@ public class ProductWebServiceRepositoryTest {
 
   @Test
   public void testFindProductBySubCategoryName() throws GNUOpenBusinessServiceException_Exception {
-    String productName = product.getName();
-    String productDescription = product.getDescription();
+    final String productName = product.getName();
+    final String productDescription = product.getDescription();
 
     productWebServiceRepository.persist(metaData, product);
 
-    Paging paging = new Paging();
+    final Paging paging = new Paging();
 
     paging.setFirst(-1);
     paging.setMax(-1);
 
-    SubCategory subCategory = new SubCategory();
+    final SubCategory subCategory = new SubCategory();
     subCategory.setName(product.getSubCategories().iterator().next().getName());
 
-    Product product = new Product();
+    final Product product = new Product();
     product.getSubCategories().add(subCategory);
 
-    List<Product> findProducts = productWebServiceRepository.find(metaData, product, paging, OrderBy.NONE);
+    final List<Product> findProducts = productWebServiceRepository.find(metaData, product, paging, OrderBy.NONE);
 
     Assert.assertTrue("Find products has no value bigger than 1.", findProducts.size() == 1);
 
-    Product findProduct = findProducts.iterator().next();
+    final Product findProduct = findProducts.iterator().next();
 
     Assert.assertTrue("Product id has no value bigger than zero.", findProduct.getId() > 0);
     Assert.assertEquals("Product name is not equal.", productName, findProduct.getName());
@@ -106,15 +106,15 @@ public class ProductWebServiceRepositoryTest {
 
   @Test
   public void testMergeProduct() throws GNUOpenBusinessServiceException_Exception {
-    String productName = UUID.randomUUID().toString();
-    String productDescription = UUID.randomUUID().toString();
+    final String productName = UUID.randomUUID().toString();
+    final String productDescription = UUID.randomUUID().toString();
 
-    Product persistProduct = productWebServiceRepository.persist(metaData, product);
+    final Product persistProduct = productWebServiceRepository.persist(metaData, product);
 
     persistProduct.setName(productName);
     persistProduct.setDescription(productDescription);
 
-    Product mergeProduct = productWebServiceRepository.merge(metaData, persistProduct);
+    final Product mergeProduct = productWebServiceRepository.merge(metaData, persistProduct);
 
     Assert.assertTrue("Product id has no value bigger than zero.", mergeProduct.getId() > 0);
     Assert.assertEquals("Product name is not equal.", productName, mergeProduct.getName());
@@ -123,10 +123,10 @@ public class ProductWebServiceRepositoryTest {
 
   @Test
   public void testPersistProduct() throws GNUOpenBusinessServiceException_Exception {
-    String productName = product.getName();
-    String productDescription = product.getDescription();
+    final String productName = product.getName();
+    final String productDescription = product.getDescription();
 
-    Product persistProduct = productWebServiceRepository.persist(metaData, product);
+    final Product persistProduct = productWebServiceRepository.persist(metaData, product);
 
     Assert.assertTrue("Product id has no value bigger than zero.", persistProduct.getId() > 0);
     Assert.assertEquals("Product name is not equal.", productName, persistProduct.getName());
@@ -135,10 +135,10 @@ public class ProductWebServiceRepositoryTest {
 
   @Test
   public void testRemoveProduct() throws GNUOpenBusinessServiceException_Exception {
-    Product persistProduct = productWebServiceRepository.persist(metaData, product);
+    final Product persistProduct = productWebServiceRepository.persist(metaData, product);
     productWebServiceRepository.remove(metaData, persistProduct);
 
-    Product findProduct = productWebServiceRepository.find(metaData, product);
+    final Product findProduct = productWebServiceRepository.find(metaData, product);
 
     Assert.assertNull("Product is found.", findProduct);
   }

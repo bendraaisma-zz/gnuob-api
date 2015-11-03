@@ -27,15 +27,19 @@ import com.netbrasoft.gnuob.api.SiteWebServiceImplService;
 import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 
 @Monitored
-@Repository("SiteWebServiceRepository")
+@Repository(SiteWebServiceRepository.SITE_WEB_SERVICE_REPOSITORY_NAME)
 public class SiteWebServiceRepository<S extends Site> implements GenericTypeWebServiceRepository<S> {
+
+  protected static final String SITE_WEB_SERVICE_REPOSITORY_NAME = "SiteWebServiceRepository";
 
   private SiteWebServiceImpl siteWebServiceImpl;
 
-  public SiteWebServiceRepository() {}
+  public SiteWebServiceRepository() {
+    // Empty constructor.
+  }
 
   @Override
-  public long count(MetaData paramMetaData, S paramSite) {
+  public long count(final MetaData paramMetaData, final S paramSite) {
     final CountSite paramCountSite = new CountSite();
     paramCountSite.setSite(paramSite);
     final CountSiteResponse countSiteResponse = getSiteWebServiceImpl().countSite(paramCountSite, paramMetaData);
@@ -44,7 +48,7 @@ public class SiteWebServiceRepository<S extends Site> implements GenericTypeWebS
 
   @SuppressWarnings("unchecked")
   @Override
-  public S find(MetaData paramMetaData, S paramSite) {
+  public S find(final MetaData paramMetaData, final S paramSite) {
     final FindSiteById paramFindSiteById = new FindSiteById();
     paramFindSiteById.setSite(paramSite);
     final FindSiteByIdResponse findSiteByIdResponse = getSiteWebServiceImpl().findSiteById(paramFindSiteById, paramMetaData);
@@ -54,7 +58,7 @@ public class SiteWebServiceRepository<S extends Site> implements GenericTypeWebS
 
   @SuppressWarnings("unchecked")
   @Override
-  public List<S> find(MetaData paramMetaData, S paramSite, Paging paramPaging, OrderBy paramOrderBy) {
+  public List<S> find(final MetaData paramMetaData, final S paramSite, final Paging paramPaging, final OrderBy paramOrderBy) {
     final FindSite paramFindSite = new FindSite();
     paramFindSite.setSite(paramSite);
     paramFindSite.setPaging(paramPaging);
@@ -74,7 +78,7 @@ public class SiteWebServiceRepository<S extends Site> implements GenericTypeWebS
 
   @SuppressWarnings("unchecked")
   @Override
-  public S merge(MetaData paramMetaData, S paramSite) {
+  public S merge(final MetaData paramMetaData, final S paramSite) {
     final MergeSite paramMergeSite = new MergeSite();
     paramMergeSite.setSite(paramSite);
     final MergeSiteResponse mergeSiteResponse = getSiteWebServiceImpl().mergeSite(paramMergeSite, paramMetaData);
@@ -83,7 +87,7 @@ public class SiteWebServiceRepository<S extends Site> implements GenericTypeWebS
 
   @SuppressWarnings("unchecked")
   @Override
-  public S persist(MetaData paramMetaData, S paramSite) {
+  public S persist(final MetaData paramMetaData, final S paramSite) {
     final PersistSite paramPersistSite = new PersistSite();
     paramPersistSite.setSite(paramSite);
     final PersistSiteResponse persistSiteResponse = getSiteWebServiceImpl().persistSite(paramPersistSite, paramMetaData);
@@ -92,7 +96,7 @@ public class SiteWebServiceRepository<S extends Site> implements GenericTypeWebS
 
   @SuppressWarnings("unchecked")
   @Override
-  public S refresh(MetaData paramMetaData, S paramSite) {
+  public S refresh(final MetaData paramMetaData, final S paramSite) {
     final RefreshSite paramRefresSite = new RefreshSite();
     paramRefresSite.setSite(paramSite);
     final RefreshSiteResponse refresSiteResponse = getSiteWebServiceImpl().refreshSite(paramRefresSite, paramMetaData);
@@ -100,7 +104,7 @@ public class SiteWebServiceRepository<S extends Site> implements GenericTypeWebS
   }
 
   @Override
-  public void remove(MetaData paramMetaData, S paramSite) {
+  public void remove(final MetaData paramMetaData, final S paramSite) {
     final RemoveSite paramRemoveSite = new RemoveSite();
     paramRemoveSite.setSite(paramSite);
     getSiteWebServiceImpl().removeSite(paramRemoveSite, paramMetaData);

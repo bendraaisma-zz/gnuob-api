@@ -2,17 +2,19 @@
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
  * <p>
  * Java class for paging complex type.
- * 
+ *
  * <p>
  * The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="paging"&gt;
  *   &lt;complexContent&gt;
@@ -25,8 +27,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "paging", propOrder = {"first", "max"})
@@ -45,14 +47,6 @@ public class Paging implements Serializable {
   }
 
   /**
-   * Sets the value of the first property.
-   * 
-   */
-  public void setFirst(int value) {
-    this.first = value;
-  }
-
-  /**
    * Gets the value of the max property.
    * 
    */
@@ -61,10 +55,18 @@ public class Paging implements Serializable {
   }
 
   /**
+   * Sets the value of the first property.
+   * 
+   */
+  public void setFirst(final int value) {
+    this.first = value;
+  }
+
+  /**
    * Sets the value of the max property.
    * 
    */
-  public void setMax(int value) {
+  public void setMax(final int value) {
     this.max = value;
   }
 
