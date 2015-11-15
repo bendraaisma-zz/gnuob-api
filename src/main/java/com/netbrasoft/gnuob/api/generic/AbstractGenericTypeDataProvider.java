@@ -69,6 +69,7 @@ public abstract class AbstractGenericTypeDataProvider<T extends AbstractType> ex
   private T type;
 
   private OrderBy orderBy;
+
   protected MetaData metaData;
 
   public AbstractGenericTypeDataProvider(final OrderBy orderBy, final T type) {
