@@ -26,7 +26,7 @@
       <version.wicket.plugin>7.0.0</version.wicket.plugin>
       <version.surefire.plugin>2.17</version.surefire.plugin>
       <version.javasimon>4.0.1</version.javasimon>
-      <version.PBKDF2>1.1.0</version.PBKDF2>
+      <version.PBKDF2>1.1.1</version.PBKDF2>
       <version.picketbox>4.9.3.Final</version.picketbox>
       <version.mockito-all>1.9.5</version.mockito-all>
       <version.graphene-webdriver>2.0.3.Final</version.graphene-webdriver>
@@ -161,10 +161,10 @@
             </plugins>
          </build>
       </profile>
-      <profile>
-         <!-- An optional Arquillian testing profile that executes tests in your JBoss EAP instance -->
-         <!-- This profile will start a new JBoss EAP instance, and execute the test, shutting it down when done -->
-         <!-- Run with: mvn clean test -Parq-jbossas-managed -->
+      <!-- <profile>
+         An optional Arquillian testing profile that executes tests in your JBoss EAP instance
+         This profile will start a new JBoss EAP instance, and execute the test, shutting it down when done
+         Run with: mvn clean test -Parq-jbossas-managed
          <id>arq-jbossas-managed</id>
          <dependencies>
             <dependency>
@@ -173,7 +173,7 @@
                <scope>test</scope>
             </dependency>
          </dependencies>
-      </profile>
+      </profile> -->
    </profiles>
 
    <organization>
