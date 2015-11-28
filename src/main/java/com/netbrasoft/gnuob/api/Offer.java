@@ -5,22 +5,24 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
  * <p>
  * Java class for offer complex type.
- * 
+ *
  * <p>
  * The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="offer"&gt;
  *   &lt;complexContent&gt;
- *     &lt;extension base="{http://gnuob.netbrasoft.com/}access"&gt;
+ *     &lt;extension base="{http://gnuob.netbrasoft.com/}abstractAccess"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="contract" type="{http://gnuob.netbrasoft.com/}contract"/&gt;
  *         &lt;element name="discountTotal" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/&gt;
@@ -41,13 +43,13 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "offer", propOrder = {"contract", "discountTotal", "extraAmount", "handlingTotal", "insuranceTotal", "itemTotal", "maxTotal", "offerDescription", "offerId",
     "offerTotal", "records", "shippingDiscount", "shippingTotal", "taxTotal"})
-public class Offer extends Access implements Serializable {
+public class Offer extends AbstractAccess implements Serializable {
 
   private static final long serialVersionUID = 1781297976035638791L;
   @XmlElement(required = true)
@@ -83,16 +85,6 @@ public class Offer extends Access implements Serializable {
   }
 
   /**
-   * Sets the value of the contract property.
-   * 
-   * @param value allowed object is {@link Contract }
-   * 
-   */
-  public void setContract(Contract value) {
-    this.contract = value;
-  }
-
-  /**
    * Gets the value of the discountTotal property.
    * 
    * @return possible object is {@link BigDecimal }
@@ -100,16 +92,6 @@ public class Offer extends Access implements Serializable {
    */
   public BigDecimal getDiscountTotal() {
     return discountTotal;
-  }
-
-  /**
-   * Sets the value of the discountTotal property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setDiscountTotal(BigDecimal value) {
-    this.discountTotal = value;
   }
 
   /**
@@ -123,16 +105,6 @@ public class Offer extends Access implements Serializable {
   }
 
   /**
-   * Sets the value of the extraAmount property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setExtraAmount(BigDecimal value) {
-    this.extraAmount = value;
-  }
-
-  /**
    * Gets the value of the handlingTotal property.
    * 
    * @return possible object is {@link BigDecimal }
@@ -140,16 +112,6 @@ public class Offer extends Access implements Serializable {
    */
   public BigDecimal getHandlingTotal() {
     return handlingTotal;
-  }
-
-  /**
-   * Sets the value of the handlingTotal property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setHandlingTotal(BigDecimal value) {
-    this.handlingTotal = value;
   }
 
   /**
@@ -163,16 +125,6 @@ public class Offer extends Access implements Serializable {
   }
 
   /**
-   * Sets the value of the insuranceTotal property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setInsuranceTotal(BigDecimal value) {
-    this.insuranceTotal = value;
-  }
-
-  /**
    * Gets the value of the itemTotal property.
    * 
    * @return possible object is {@link BigDecimal }
@@ -180,16 +132,6 @@ public class Offer extends Access implements Serializable {
    */
   public BigDecimal getItemTotal() {
     return itemTotal;
-  }
-
-  /**
-   * Sets the value of the itemTotal property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setItemTotal(BigDecimal value) {
-    this.itemTotal = value;
   }
 
   /**
@@ -203,16 +145,6 @@ public class Offer extends Access implements Serializable {
   }
 
   /**
-   * Sets the value of the maxTotal property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setMaxTotal(BigDecimal value) {
-    this.maxTotal = value;
-  }
-
-  /**
    * Gets the value of the offerDescription property.
    * 
    * @return possible object is {@link String }
@@ -220,16 +152,6 @@ public class Offer extends Access implements Serializable {
    */
   public String getOfferDescription() {
     return offerDescription;
-  }
-
-  /**
-   * Sets the value of the offerDescription property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setOfferDescription(String value) {
-    this.offerDescription = value;
   }
 
   /**
@@ -243,16 +165,6 @@ public class Offer extends Access implements Serializable {
   }
 
   /**
-   * Sets the value of the offerId property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setOfferId(String value) {
-    this.offerId = value;
-  }
-
-  /**
    * Gets the value of the offerTotal property.
    * 
    * @return possible object is {@link BigDecimal }
@@ -260,16 +172,6 @@ public class Offer extends Access implements Serializable {
    */
   public BigDecimal getOfferTotal() {
     return offerTotal;
-  }
-
-  /**
-   * Sets the value of the offerTotal property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setOfferTotal(BigDecimal value) {
-    this.offerTotal = value;
   }
 
   /**
@@ -311,16 +213,6 @@ public class Offer extends Access implements Serializable {
   }
 
   /**
-   * Sets the value of the shippingDiscount property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setShippingDiscount(BigDecimal value) {
-    this.shippingDiscount = value;
-  }
-
-  /**
    * Gets the value of the shippingTotal property.
    * 
    * @return possible object is {@link BigDecimal }
@@ -328,16 +220,6 @@ public class Offer extends Access implements Serializable {
    */
   public BigDecimal getShippingTotal() {
     return shippingTotal;
-  }
-
-  /**
-   * Sets the value of the shippingTotal property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setShippingTotal(BigDecimal value) {
-    this.shippingTotal = value;
   }
 
   /**
@@ -351,12 +233,132 @@ public class Offer extends Access implements Serializable {
   }
 
   /**
+   * Sets the value of the contract property.
+   * 
+   * @param value allowed object is {@link Contract }
+   * 
+   */
+  public void setContract(final Contract value) {
+    this.contract = value;
+  }
+
+  /**
+   * Sets the value of the discountTotal property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setDiscountTotal(final BigDecimal value) {
+    this.discountTotal = value;
+  }
+
+  /**
+   * Sets the value of the extraAmount property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setExtraAmount(final BigDecimal value) {
+    this.extraAmount = value;
+  }
+
+  /**
+   * Sets the value of the handlingTotal property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setHandlingTotal(final BigDecimal value) {
+    this.handlingTotal = value;
+  }
+
+  /**
+   * Sets the value of the insuranceTotal property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setInsuranceTotal(final BigDecimal value) {
+    this.insuranceTotal = value;
+  }
+
+  /**
+   * Sets the value of the itemTotal property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setItemTotal(final BigDecimal value) {
+    this.itemTotal = value;
+  }
+
+  /**
+   * Sets the value of the maxTotal property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setMaxTotal(final BigDecimal value) {
+    this.maxTotal = value;
+  }
+
+  /**
+   * Sets the value of the offerDescription property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setOfferDescription(final String value) {
+    this.offerDescription = value;
+  }
+
+  /**
+   * Sets the value of the offerId property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setOfferId(final String value) {
+    this.offerId = value;
+  }
+
+  /**
+   * Sets the value of the offerTotal property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setOfferTotal(final BigDecimal value) {
+    this.offerTotal = value;
+  }
+
+  /**
+   * Sets the value of the shippingDiscount property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setShippingDiscount(final BigDecimal value) {
+    this.shippingDiscount = value;
+  }
+
+  /**
+   * Sets the value of the shippingTotal property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setShippingTotal(final BigDecimal value) {
+    this.shippingTotal = value;
+  }
+
+  /**
    * Sets the value of the taxTotal property.
    * 
    * @param value allowed object is {@link BigDecimal }
    * 
    */
-  public void setTaxTotal(BigDecimal value) {
+  public void setTaxTotal(final BigDecimal value) {
     this.taxTotal = value;
   }
 

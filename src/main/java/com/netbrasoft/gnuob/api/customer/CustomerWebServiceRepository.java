@@ -27,15 +27,19 @@ import com.netbrasoft.gnuob.api.RemoveCustomer;
 import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 
 @Monitored
-@Repository("CustomerWebServiceRepository")
+@Repository(CustomerWebServiceRepository.CUSTOMER_WEB_SERVICE_REPOSITORY_NAME)
 public class CustomerWebServiceRepository<C extends Customer> implements GenericTypeWebServiceRepository<C> {
+
+  protected static final String CUSTOMER_WEB_SERVICE_REPOSITORY_NAME = "CustomerWebServiceRepository";
 
   private CustomerWebServiceImpl customerWebServiceImpl;
 
-  public CustomerWebServiceRepository() {}
+  public CustomerWebServiceRepository() {
+    // Empty constructor.
+  }
 
   @Override
-  public long count(MetaData paramMetaData, C paramCustomer) {
+  public long count(final MetaData paramMetaData, final C paramCustomer) {
     final CountCustomer paramCountCustomer = new CountCustomer();
     paramCountCustomer.setCustomer(paramCustomer);
     final CountCustomerResponse countCustomerResponse = getCustomerWebServiceImpl().countCustomer(paramCountCustomer, paramMetaData);
@@ -44,7 +48,7 @@ public class CustomerWebServiceRepository<C extends Customer> implements Generic
 
   @SuppressWarnings("unchecked")
   @Override
-  public C find(MetaData paramMetaData, C paramCustomer) {
+  public C find(final MetaData paramMetaData, final C paramCustomer) {
     final FindCustomerById paramFindCustomerById = new FindCustomerById();
     paramFindCustomerById.setCustomer(paramCustomer);
     final FindCustomerByIdResponse findCustomerByIdResponse = getCustomerWebServiceImpl().findCustomerById(paramFindCustomerById, paramMetaData);
@@ -54,7 +58,7 @@ public class CustomerWebServiceRepository<C extends Customer> implements Generic
 
   @SuppressWarnings("unchecked")
   @Override
-  public List<C> find(MetaData paramMetaData, C paramCustomer, Paging paramPaging, OrderBy paramOrderBy) {
+  public List<C> find(final MetaData paramMetaData, final C paramCustomer, final Paging paramPaging, final OrderBy paramOrderBy) {
     final FindCustomer paramFindCustomer = new FindCustomer();
     paramFindCustomer.setCustomer(paramCustomer);
     paramFindCustomer.setPaging(paramPaging);
@@ -74,7 +78,7 @@ public class CustomerWebServiceRepository<C extends Customer> implements Generic
 
   @SuppressWarnings("unchecked")
   @Override
-  public C merge(MetaData paramMetaData, C paramCustomer) {
+  public C merge(final MetaData paramMetaData, final C paramCustomer) {
     final MergeCustomer paramMergeCustomer = new MergeCustomer();
     paramMergeCustomer.setCustomer(paramCustomer);
     final MergeCustomerResponse mergeCustomerResponse = getCustomerWebServiceImpl().mergeCustomer(paramMergeCustomer, paramMetaData);
@@ -83,7 +87,7 @@ public class CustomerWebServiceRepository<C extends Customer> implements Generic
 
   @SuppressWarnings("unchecked")
   @Override
-  public C persist(MetaData paramMetaData, C paramCustomer) {
+  public C persist(final MetaData paramMetaData, final C paramCustomer) {
     final PersistCustomer paramPersistCustomer = new PersistCustomer();
     paramPersistCustomer.setCustomer(paramCustomer);
     final PersistCustomerResponse persistCustomerResponse = getCustomerWebServiceImpl().persistCustomer(paramPersistCustomer, paramMetaData);
@@ -92,7 +96,7 @@ public class CustomerWebServiceRepository<C extends Customer> implements Generic
 
   @SuppressWarnings("unchecked")
   @Override
-  public C refresh(MetaData paramMetaData, C paramCustomer) {
+  public C refresh(final MetaData paramMetaData, final C paramCustomer) {
     final RefreshCustomer paramRefresCustomer = new RefreshCustomer();
     paramRefresCustomer.setCustomer(paramCustomer);
     final RefreshCustomerResponse refresCustomerResponse = getCustomerWebServiceImpl().refreshCustomer(paramRefresCustomer, paramMetaData);
@@ -100,7 +104,7 @@ public class CustomerWebServiceRepository<C extends Customer> implements Generic
   }
 
   @Override
-  public void remove(MetaData paramMetaData, C paramCustomer) {
+  public void remove(final MetaData paramMetaData, final C paramCustomer) {
     final RemoveCustomer paramRemoveCustomer = new RemoveCustomer();
     paramRemoveCustomer.setCustomer(paramCustomer);
     getCustomerWebServiceImpl().removeCustomer(paramRemoveCustomer, paramMetaData);

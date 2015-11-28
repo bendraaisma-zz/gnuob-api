@@ -27,15 +27,19 @@ import com.netbrasoft.gnuob.api.RemoveProduct;
 import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 
 @Monitored
-@Repository("ProductWebServiceRepository")
+@Repository(ProductWebServiceRepository.PRODUCT_WEB_SERVICE_REPOSITORY_NAME)
 public class ProductWebServiceRepository<P extends Product> implements GenericTypeWebServiceRepository<P> {
+
+  public static final String PRODUCT_WEB_SERVICE_REPOSITORY_NAME = "ProductWebServiceRepository";
 
   private ProductWebServiceImpl productWebServiceImpl;
 
-  public ProductWebServiceRepository() {}
+  public ProductWebServiceRepository() {
+    // Empty constructor.
+  }
 
   @Override
-  public long count(MetaData paramMetaData, P paramProduct) {
+  public long count(final MetaData paramMetaData, final P paramProduct) {
     final CountProduct paramCountProduct = new CountProduct();
     paramCountProduct.setProduct(paramProduct);
     final CountProductResponse countProductResponse = getProductWebServiceImpl().countProduct(paramCountProduct, paramMetaData);
@@ -44,7 +48,7 @@ public class ProductWebServiceRepository<P extends Product> implements GenericTy
 
   @SuppressWarnings("unchecked")
   @Override
-  public P find(MetaData paramMetaData, P paramProduct) {
+  public P find(final MetaData paramMetaData, final P paramProduct) {
     final FindProductById paramFindProductById = new FindProductById();
     paramFindProductById.setProduct(paramProduct);
     final FindProductByIdResponse findProductByIdResponse = getProductWebServiceImpl().findProductById(paramFindProductById, paramMetaData);
@@ -54,7 +58,7 @@ public class ProductWebServiceRepository<P extends Product> implements GenericTy
 
   @SuppressWarnings("unchecked")
   @Override
-  public List<P> find(MetaData paramMetaData, P paramProduct, Paging paramPaging, OrderBy paramOrderBy) {
+  public List<P> find(final MetaData paramMetaData, final P paramProduct, final Paging paramPaging, final OrderBy paramOrderBy) {
     final FindProduct paramFindProduct = new FindProduct();
     paramFindProduct.setProduct(paramProduct);
     paramFindProduct.setPaging(paramPaging);
@@ -75,7 +79,7 @@ public class ProductWebServiceRepository<P extends Product> implements GenericTy
 
   @SuppressWarnings("unchecked")
   @Override
-  public P merge(MetaData paramMetaData, P paramProduct) {
+  public P merge(final MetaData paramMetaData, final P paramProduct) {
     final MergeProduct paramMergeProduct = new MergeProduct();
     paramMergeProduct.setProduct(paramProduct);
     final MergeProductResponse mergeProductResponse = getProductWebServiceImpl().mergeProduct(paramMergeProduct, paramMetaData);
@@ -84,7 +88,7 @@ public class ProductWebServiceRepository<P extends Product> implements GenericTy
 
   @SuppressWarnings("unchecked")
   @Override
-  public P persist(MetaData paramMetaData, P paramProduct) {
+  public P persist(final MetaData paramMetaData, final P paramProduct) {
     final PersistProduct paramPersistProduct = new PersistProduct();
     paramPersistProduct.setProduct(paramProduct);
     final PersistProductResponse persistProductResponse = getProductWebServiceImpl().persistProduct(paramPersistProduct, paramMetaData);
@@ -93,7 +97,7 @@ public class ProductWebServiceRepository<P extends Product> implements GenericTy
 
   @SuppressWarnings("unchecked")
   @Override
-  public P refresh(MetaData paramMetaData, P paramProduct) {
+  public P refresh(final MetaData paramMetaData, final P paramProduct) {
     final RefreshProduct paramRefresProduct = new RefreshProduct();
     paramRefresProduct.setProduct(paramProduct);
     final RefreshProductResponse refresProductResponse = getProductWebServiceImpl().refreshProduct(paramRefresProduct, paramMetaData);
@@ -101,7 +105,7 @@ public class ProductWebServiceRepository<P extends Product> implements GenericTy
   }
 
   @Override
-  public void remove(MetaData paramMetaData, P paramProduct) {
+  public void remove(final MetaData paramMetaData, final P paramProduct) {
     final RemoveProduct paramRemoveProduct = new RemoveProduct();
     paramRemoveProduct.setProduct(paramProduct);
     getProductWebServiceImpl().removeProduct(paramRemoveProduct, paramMetaData);

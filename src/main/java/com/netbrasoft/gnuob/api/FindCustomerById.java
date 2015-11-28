@@ -1,17 +1,20 @@
 
 package com.netbrasoft.gnuob.api;
 
+import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
  * <p>
  * Java class for findCustomerById complex type.
- * 
+ *
  * <p>
  * The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="findCustomerById"&gt;
  *   &lt;complexContent&gt;
@@ -23,13 +26,14 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "findCustomerById", propOrder = {"customer"})
-public class FindCustomerById {
+public class FindCustomerById implements Serializable {
 
+  private static final long serialVersionUID = 2753208731968072868L;
   protected Customer customer;
 
   /**
@@ -48,7 +52,7 @@ public class FindCustomerById {
    * @param value allowed object is {@link Customer }
    * 
    */
-  public void setCustomer(Customer value) {
+  public void setCustomer(final Customer value) {
     this.customer = value;
   }
 

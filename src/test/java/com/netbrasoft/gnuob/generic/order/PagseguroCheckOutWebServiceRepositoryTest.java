@@ -82,7 +82,7 @@ public class PagseguroCheckOutWebServiceRepositoryTest {
 
     metaData.setUser("administrator");
     metaData.setPassword("administrator");
-    metaData.setSite("www.netbrasoft.com");
+    metaData.setSite("localhost");
 
     address.setCityName(UUID.randomUUID().toString());
     address.setStreet1(UUID.randomUUID().toString());

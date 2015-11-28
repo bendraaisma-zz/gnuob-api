@@ -27,15 +27,19 @@ import com.netbrasoft.gnuob.api.RemoveContract;
 import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 
 @Monitored
-@Repository("ContractWebServiceRepository")
+@Repository(ContractWebServiceRepository.CONTRACT_WEB_SERVICE_REPOSITORY_NAME)
 public class ContractWebServiceRepository<C extends Contract> implements GenericTypeWebServiceRepository<C> {
+
+  protected static final String CONTRACT_WEB_SERVICE_REPOSITORY_NAME = "ContractWebServiceRepository";
 
   private ContractWebServiceImpl contractWebServiceImpl;
 
-  public ContractWebServiceRepository() {}
+  public ContractWebServiceRepository() {
+    // Empty constructor.
+  }
 
   @Override
-  public long count(MetaData paramMetaData, C paramContract) {
+  public long count(final MetaData paramMetaData, final C paramContract) {
     final CountContract paramCountContract = new CountContract();
     paramCountContract.setContract(paramContract);
     final CountContractResponse countContractResponse = getContractWebServiceImpl().countContract(paramCountContract, paramMetaData);
@@ -44,7 +48,7 @@ public class ContractWebServiceRepository<C extends Contract> implements Generic
 
   @SuppressWarnings("unchecked")
   @Override
-  public C find(MetaData paramMetaData, C paramContract) {
+  public C find(final MetaData paramMetaData, final C paramContract) {
     final FindContractById paramFindContractById = new FindContractById();
     paramFindContractById.setContract(paramContract);
     final FindContractByIdResponse findContractByIdResponse = getContractWebServiceImpl().findContractById(paramFindContractById, paramMetaData);
@@ -54,7 +58,7 @@ public class ContractWebServiceRepository<C extends Contract> implements Generic
 
   @SuppressWarnings("unchecked")
   @Override
-  public List<C> find(MetaData paramMetaData, C paramContract, Paging paramPaging, OrderBy paramOrderBy) {
+  public List<C> find(final MetaData paramMetaData, final C paramContract, final Paging paramPaging, final OrderBy paramOrderBy) {
     final FindContract paramFindContract = new FindContract();
     paramFindContract.setContract(paramContract);
     paramFindContract.setPaging(paramPaging);
@@ -74,7 +78,7 @@ public class ContractWebServiceRepository<C extends Contract> implements Generic
 
   @SuppressWarnings("unchecked")
   @Override
-  public C merge(MetaData paramMetaData, C paramContract) {
+  public C merge(final MetaData paramMetaData, final C paramContract) {
     final MergeContract paramMergeContract = new MergeContract();
     paramMergeContract.setContract(paramContract);
     final MergeContractResponse mergeContractResponse = getContractWebServiceImpl().mergeContract(paramMergeContract, paramMetaData);
@@ -83,7 +87,7 @@ public class ContractWebServiceRepository<C extends Contract> implements Generic
 
   @SuppressWarnings("unchecked")
   @Override
-  public C persist(MetaData paramMetaData, C paramContract) {
+  public C persist(final MetaData paramMetaData, final C paramContract) {
     final PersistContract paramPersistContract = new PersistContract();
     paramPersistContract.setContract(paramContract);
     final PersistContractResponse persistContractResponse = getContractWebServiceImpl().persistContract(paramPersistContract, paramMetaData);
@@ -92,7 +96,7 @@ public class ContractWebServiceRepository<C extends Contract> implements Generic
 
   @SuppressWarnings("unchecked")
   @Override
-  public C refresh(MetaData paramMetaData, C paramContract) {
+  public C refresh(final MetaData paramMetaData, final C paramContract) {
     final RefreshContract paramRefresContract = new RefreshContract();
     paramRefresContract.setContract(paramContract);
     final RefreshContractResponse refresContractResponse = getContractWebServiceImpl().refreshContract(paramRefresContract, paramMetaData);
@@ -100,7 +104,7 @@ public class ContractWebServiceRepository<C extends Contract> implements Generic
   }
 
   @Override
-  public void remove(MetaData paramMetaData, C paramContract) {
+  public void remove(final MetaData paramMetaData, final C paramContract) {
     final RemoveContract paramRemoveContract = new RemoveContract();
     paramRemoveContract.setContract(paramContract);
     getContractWebServiceImpl().removeContract(paramRemoveContract, paramMetaData);

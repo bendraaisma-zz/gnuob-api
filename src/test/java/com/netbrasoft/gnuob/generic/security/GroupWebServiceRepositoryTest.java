@@ -44,7 +44,7 @@ public class GroupWebServiceRepositoryTest {
 
     metaData.setUser("administrator");
     metaData.setPassword("administrator");
-    metaData.setSite("www.netbrasoft.com");
+    metaData.setSite("localhost");
 
     user.setName(UUID.randomUUID().toString());
     user.setDescription(UUID.randomUUID().toString());

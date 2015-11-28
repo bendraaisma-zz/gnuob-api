@@ -2,22 +2,24 @@
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
  * <p>
  * Java class for subOption complex type.
- * 
+ *
  * <p>
  * The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="subOption"&gt;
  *   &lt;complexContent&gt;
- *     &lt;extension base="{http://gnuob.netbrasoft.com/}type"&gt;
+ *     &lt;extension base="{http://gnuob.netbrasoft.com/}abstractType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="disabled" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
@@ -27,12 +29,12 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "subOption", propOrder = {"description", "disabled", "value"})
-public class SubOption extends Type implements Serializable {
+public class SubOption extends AbstractType implements Serializable {
 
   private static final long serialVersionUID = 2931331205095873721L;
   @XmlElement(required = true)
@@ -52,13 +54,13 @@ public class SubOption extends Type implements Serializable {
   }
 
   /**
-   * Sets the value of the description property.
+   * Gets the value of the value property.
    * 
-   * @param value allowed object is {@link String }
+   * @return possible object is {@link String }
    * 
    */
-  public void setDescription(String value) {
-    this.description = value;
+  public String getValue() {
+    return value;
   }
 
   /**
@@ -70,21 +72,21 @@ public class SubOption extends Type implements Serializable {
   }
 
   /**
-   * Sets the value of the disabled property.
+   * Sets the value of the description property.
+   * 
+   * @param value allowed object is {@link String }
    * 
    */
-  public void setDisabled(boolean value) {
-    this.disabled = value;
+  public void setDescription(final String value) {
+    this.description = value;
   }
 
   /**
-   * Gets the value of the value property.
-   * 
-   * @return possible object is {@link String }
+   * Sets the value of the disabled property.
    * 
    */
-  public String getValue() {
-    return value;
+  public void setDisabled(final boolean value) {
+    this.disabled = value;
   }
 
   /**
@@ -93,7 +95,7 @@ public class SubOption extends Type implements Serializable {
    * @param value allowed object is {@link String }
    * 
    */
-  public void setValue(String value) {
+  public void setValue(final String value) {
     this.value = value;
   }
 

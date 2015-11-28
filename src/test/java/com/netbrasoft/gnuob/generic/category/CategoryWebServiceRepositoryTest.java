@@ -29,7 +29,7 @@ public class CategoryWebServiceRepositoryTest {
     return Utils.createDeployment();
   }
 
-  private CategoryWebServiceRepository<Category> categoryWebServiceRepository = new CategoryWebServiceRepository<Category>();
+  private final CategoryWebServiceRepository<Category> categoryWebServiceRepository = new CategoryWebServiceRepository<Category>();
   private MetaData metaData = null;
   private Category category = null;
   private SubCategory subCategory = null;
@@ -44,7 +44,7 @@ public class CategoryWebServiceRepositoryTest {
 
     metaData.setUser("administrator");
     metaData.setPassword("administrator");
-    metaData.setSite("www.netbrasoft.com");
+    metaData.setSite("localhost");
 
     category.setName(UUID.randomUUID().toString());
     category.setDescription(UUID.randomUUID().toString());
@@ -57,27 +57,27 @@ public class CategoryWebServiceRepositoryTest {
 
   @Test
   public void testFindBySubCategoryName() throws GNUOpenBusinessServiceException_Exception {
-    String categoryName = category.getName();
-    String categoryDescription = category.getDescription();
+    final String categoryName = category.getName();
+    final String categoryDescription = category.getDescription();
 
-    Category persistCategory = categoryWebServiceRepository.persist(metaData, category);
+    final Category persistCategory = categoryWebServiceRepository.persist(metaData, category);
 
-    Paging paging = new Paging();
+    final Paging paging = new Paging();
 
     paging.setFirst(-1);
     paging.setMax(-1);
 
-    SubCategory subCategory = new SubCategory();
+    final SubCategory subCategory = new SubCategory();
     subCategory.setName(persistCategory.getSubCategories().iterator().next().getName());
 
-    Category category = new Category();
+    final Category category = new Category();
     category.getSubCategories().add(subCategory);
 
-    List<Category> findCategories = categoryWebServiceRepository.find(metaData, category, paging, OrderBy.NONE);
+    final List<Category> findCategories = categoryWebServiceRepository.find(metaData, category, paging, OrderBy.NONE);
 
     Assert.assertTrue("Find categories has no value bigger than 1.", findCategories.size() == 1);
 
-    Category findCategory = findCategories.iterator().next();
+    final Category findCategory = findCategories.iterator().next();
 
     Assert.assertTrue("Category id has no value bigger than zero.", findCategory.getId() > 0);
     Assert.assertEquals("Category name is not equal.", categoryName, findCategory.getName());
@@ -86,15 +86,15 @@ public class CategoryWebServiceRepositoryTest {
 
   @Test
   public void testMergeProduct() throws GNUOpenBusinessServiceException_Exception {
-    String categoryName = UUID.randomUUID().toString();
-    String categoryDescription = UUID.randomUUID().toString();
+    final String categoryName = UUID.randomUUID().toString();
+    final String categoryDescription = UUID.randomUUID().toString();
 
-    Category persistCategory = categoryWebServiceRepository.persist(metaData, category);
+    final Category persistCategory = categoryWebServiceRepository.persist(metaData, category);
 
     persistCategory.setName(categoryName);
     persistCategory.setDescription(categoryDescription);
 
-    Category mergeCategory = categoryWebServiceRepository.merge(metaData, persistCategory);
+    final Category mergeCategory = categoryWebServiceRepository.merge(metaData, persistCategory);
 
     Assert.assertTrue("Category id has no value bigger than zero.", mergeCategory.getId() > 0);
     Assert.assertEquals("Category name is not equal.", categoryName, mergeCategory.getName());
@@ -105,10 +105,10 @@ public class CategoryWebServiceRepositoryTest {
 
   @Test
   public void testPersistCategory() throws GNUOpenBusinessServiceException_Exception {
-    String categoryName = category.getName();
-    String categoryDescription = category.getDescription();
+    final String categoryName = category.getName();
+    final String categoryDescription = category.getDescription();
 
-    Category persistCategory = categoryWebServiceRepository.persist(metaData, category);
+    final Category persistCategory = categoryWebServiceRepository.persist(metaData, category);
 
     Assert.assertTrue("Category id has no value bigger than zero.", persistCategory.getId() > 0);
     Assert.assertEquals("Category name is not equal.", categoryName, persistCategory.getName());
@@ -119,21 +119,21 @@ public class CategoryWebServiceRepositoryTest {
 
   @Test
   public void testRemoveProduct() throws GNUOpenBusinessServiceException_Exception {
-    Category persistCategory = categoryWebServiceRepository.persist(metaData, category);
+    final Category persistCategory = categoryWebServiceRepository.persist(metaData, category);
     categoryWebServiceRepository.remove(metaData, persistCategory);
 
-    Category findCategory = categoryWebServiceRepository.find(metaData, category);
+    final Category findCategory = categoryWebServiceRepository.find(metaData, category);
 
     Assert.assertNull("Category is found.", findCategory);
   }
 
   // @Test()
   public void testTotalNumberOfCategories() throws GNUOpenBusinessServiceException_Exception {
-    Paging paging = new Paging();
+    final Paging paging = new Paging();
     paging.setFirst(-1);
     paging.setMax(-1);
 
-    List<Category> findCategories = categoryWebServiceRepository.find(metaData, new Category(), paging, OrderBy.NONE);
+    final List<Category> findCategories = categoryWebServiceRepository.find(metaData, new Category(), paging, OrderBy.NONE);
 
     Assert.assertTrue("Find categories has no value bigger than 3.", findCategories.size() == 3);
   }

@@ -4,43 +4,47 @@ package com.netbrasoft.gnuob.api;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
  * <p>
  * Java class for subCategory complex type.
- * 
+ *
  * <p>
  * The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="subCategory"&gt;
  *   &lt;complexContent&gt;
- *     &lt;extension base="{http://gnuob.netbrasoft.com/}type"&gt;
+ *     &lt;extension base="{http://gnuob.netbrasoft.com/}abstractType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="contents" type="{http://gnuob.netbrasoft.com/}content" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="subCategories" type="{http://gnuob.netbrasoft.com/}subCategory" maxOccurs="unbounded" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "subCategory", propOrder = {"contents", "description", "name", "subCategories"})
-public class SubCategory extends Type implements Serializable {
+public class SubCategory extends AbstractType implements Serializable {
 
   private static final long serialVersionUID = -922048094693030261L;
   @XmlElement(nillable = true)
   protected List<Content> contents;
+  @XmlElement(required = true)
   protected String description;
+  @XmlElement(required = true)
   protected String name;
   @XmlElement(nillable = true)
   protected List<SubCategory> subCategories;
@@ -84,16 +88,6 @@ public class SubCategory extends Type implements Serializable {
   }
 
   /**
-   * Sets the value of the description property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setDescription(String value) {
-    this.description = value;
-  }
-
-  /**
    * Gets the value of the name property.
    * 
    * @return possible object is {@link String }
@@ -101,16 +95,6 @@ public class SubCategory extends Type implements Serializable {
    */
   public String getName() {
     return name;
-  }
-
-  /**
-   * Sets the value of the name property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setName(String value) {
-    this.name = value;
   }
 
   /**
@@ -139,6 +123,26 @@ public class SubCategory extends Type implements Serializable {
       subCategories = new ArrayList<SubCategory>();
     }
     return this.subCategories;
+  }
+
+  /**
+   * Sets the value of the description property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setDescription(final String value) {
+    this.description = value;
+  }
+
+  /**
+   * Sets the value of the name property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setName(final String value) {
+    this.name = value;
   }
 
 }

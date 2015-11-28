@@ -10,14 +10,14 @@ import com.netbrasoft.gnuob.api.generic.AbstractGenericTypeDataProvider;
 import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 
 @Monitored
-@Controller("OrderDataProvider")
+@Controller(OrderDataProvider.ORDER_DATA_PROVIDER_NAME)
 public class OrderDataProvider<O extends Order> extends AbstractGenericTypeDataProvider<O> implements GenericOrderCheckoutDataProvider<O> {
 
   public enum CheckOut {
     PAY_PAL, PAGSEGURO;
 
-    public static CheckOut fromValue(String v) {
-      return valueOf(v);
+    public static CheckOut fromValue(final String value) {
+      return valueOf(value);
     }
 
     public String value() {
@@ -25,15 +25,17 @@ public class OrderDataProvider<O extends Order> extends AbstractGenericTypeDataP
     }
   }
 
+  public static final String ORDER_DATA_PROVIDER_NAME = "OrderDataProvider";
+
   private static final long serialVersionUID = 1434788743241708993L;
 
-  @Resource(name = "OrderWebServiceRepository")
+  @Resource(name = OrderWebServiceRepository.ORDER_WEB_SERVICE_REPOSITORY_NAME)
   private transient GenericTypeWebServiceRepository<O> orderWebServiceRepository;
 
-  @Resource(name = "PayPalExpressCheckOutWebServiceRepository")
+  @Resource(name = PayPalExpressCheckOutWebServiceRepository.PAY_PAL_EXPRESS_CHECK_OUT_WEB_SERVICE_REPOSITORY_NAME)
   private transient CheckoutWebServiceRepository<O> payPalExpressCheckoutWebServiceRepository;
 
-  @Resource(name = "PagseguroCheckOutWebServiceRepository")
+  @Resource(name = PagseguroCheckOutWebServiceRepository.PAGSEGURO_CHECK_OUT_WEB_SERVICE_REPOSITORY)
   private transient CheckoutWebServiceRepository<O> pagseguroCheckoutWebServiceRepository;
 
   private CheckOut checkOut;
@@ -45,7 +47,7 @@ public class OrderDataProvider<O extends Order> extends AbstractGenericTypeDataP
   }
 
   @Override
-  public O doCheckout(O paramOrder) {
+  public O doCheckout(final O paramOrder) {
     if (checkOut == CheckOut.PAGSEGURO) {
       return pagseguroCheckoutWebServiceRepository.doCheckout(metaData, paramOrder);
     }
@@ -53,7 +55,7 @@ public class OrderDataProvider<O extends Order> extends AbstractGenericTypeDataP
   }
 
   @Override
-  public O doCheckoutDetails(O paramOrder) {
+  public O doCheckoutDetails(final O paramOrder) {
     if (checkOut == CheckOut.PAGSEGURO) {
       return pagseguroCheckoutWebServiceRepository.doCheckoutDetails(metaData, paramOrder);
     }
@@ -61,7 +63,7 @@ public class OrderDataProvider<O extends Order> extends AbstractGenericTypeDataP
   }
 
   @Override
-  public O doCheckoutPayment(O paramOrder) {
+  public O doCheckoutPayment(final O paramOrder) {
     if (checkOut == CheckOut.PAGSEGURO) {
       return pagseguroCheckoutWebServiceRepository.doCheckoutPayment(metaData, paramOrder);
     }
@@ -69,7 +71,7 @@ public class OrderDataProvider<O extends Order> extends AbstractGenericTypeDataP
   }
 
   @Override
-  public O doNotification(O paramOrder) {
+  public O doNotification(final O paramOrder) {
     if (checkOut == CheckOut.PAGSEGURO) {
       return pagseguroCheckoutWebServiceRepository.doNotification(metaData, paramOrder);
     }
@@ -77,7 +79,7 @@ public class OrderDataProvider<O extends Order> extends AbstractGenericTypeDataP
   }
 
   @Override
-  public O doRefundTransaction(O paramOrder) {
+  public O doRefundTransaction(final O paramOrder) {
     if (checkOut == CheckOut.PAGSEGURO) {
       return pagseguroCheckoutWebServiceRepository.doRefundTransaction(metaData, paramOrder);
     }
@@ -85,7 +87,7 @@ public class OrderDataProvider<O extends Order> extends AbstractGenericTypeDataP
   }
 
   @Override
-  public O doTransactionDetails(O paramOrder) {
+  public O doTransactionDetails(final O paramOrder) {
     if (checkOut == CheckOut.PAGSEGURO) {
       return pagseguroCheckoutWebServiceRepository.doTransactionDetails(metaData, paramOrder);
     }
@@ -103,7 +105,7 @@ public class OrderDataProvider<O extends Order> extends AbstractGenericTypeDataP
   }
 
   @Override
-  public void setCheckOut(CheckOut checkOut) {
+  public void setCheckOut(final CheckOut checkOut) {
     this.checkOut = checkOut;
   }
 }

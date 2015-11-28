@@ -10,12 +10,12 @@ public class ByteArrayConverter implements IConverter<byte[]> {
   private static final long serialVersionUID = 6630478538421382400L;
 
   @Override
-  public byte[] convertToObject(String value, Locale locale) throws ConversionException {
+  public byte[] convertToObject(final String value, final Locale locale) throws ConversionException {
     return value != null ? value.getBytes() : null;
   }
 
   @Override
-  public String convertToString(byte[] value, Locale locale) {
+  public String convertToString(final byte[] value, final Locale locale) {
     return value != null ? new String(value) : null;
   }
 }

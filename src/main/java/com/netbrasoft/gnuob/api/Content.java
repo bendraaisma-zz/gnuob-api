@@ -9,6 +9,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
  * <p>
  * Java class for content complex type.
@@ -19,7 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="content"&gt;
  *   &lt;complexContent&gt;
- *     &lt;extension base="{http://gnuob.netbrasoft.com/}access"&gt;
+ *     &lt;extension base="{http://gnuob.netbrasoft.com/}abstractAccess"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="content" type="{http://www.w3.org/2001/XMLSchema}base64Binary"/&gt;
  *         &lt;element name="format" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
@@ -34,7 +35,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "content", propOrder = {"content", "format", "name"})
-public class Content extends Access implements Serializable {
+public class Content extends AbstractAccess implements Serializable {
 
   private static final long serialVersionUID = -5806711934105531574L;
   @XmlElement(required = true)
@@ -46,9 +47,9 @@ public class Content extends Access implements Serializable {
 
   /**
    * Gets the value of the content property.
-   * 
+   *
    * @return possible object is {@link DataHandler }
-   * 
+   *
    */
   public byte[] getContent() {
     return content;
@@ -56,9 +57,9 @@ public class Content extends Access implements Serializable {
 
   /**
    * Gets the value of the format property.
-   * 
+   *
    * @return possible object is {@link String }
-   * 
+   *
    */
   public String getFormat() {
     return format;
@@ -66,9 +67,9 @@ public class Content extends Access implements Serializable {
 
   /**
    * Gets the value of the name property.
-   * 
+   *
    * @return possible object is {@link String }
-   * 
+   *
    */
   public String getName() {
     return name;
@@ -76,31 +77,31 @@ public class Content extends Access implements Serializable {
 
   /**
    * Sets the value of the content property.
-   * 
+   *
    * @param value allowed object is {@link DataHandler }
-   * 
+   *
    */
-  public void setContent(byte[] value) {
+  public void setContent(final byte[] value) {
     this.content = value;
   }
 
   /**
    * Sets the value of the format property.
-   * 
+   *
    * @param value allowed object is {@link String }
-   * 
+   *
    */
-  public void setFormat(String value) {
+  public void setFormat(final String value) {
     this.format = value;
   }
 
   /**
    * Sets the value of the name property.
-   * 
+   *
    * @param value allowed object is {@link String }
-   * 
+   *
    */
-  public void setName(String value) {
+  public void setName(final String value) {
     this.name = value;
   }
 

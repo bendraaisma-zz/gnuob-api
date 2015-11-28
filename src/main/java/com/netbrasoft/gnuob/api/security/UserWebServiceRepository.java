@@ -27,15 +27,19 @@ import com.netbrasoft.gnuob.api.UserWebServiceImplService;
 import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 
 @Monitored
-@Repository("UserWebServiceRepository")
+@Repository(UserWebServiceRepository.USER_WEB_SERVICE_REPOSITORY_NAME)
 public class UserWebServiceRepository<U extends User> implements GenericTypeWebServiceRepository<U> {
+
+  protected static final String USER_WEB_SERVICE_REPOSITORY_NAME = "UserWebServiceRepository";
 
   private UserWebServiceImpl userWebServiceImpl;
 
-  public UserWebServiceRepository() {}
+  public UserWebServiceRepository() {
+    // Empty constructor.
+  }
 
   @Override
-  public long count(MetaData paramMetaData, U paramUser) {
+  public long count(final MetaData paramMetaData, final U paramUser) {
     final CountUser paramCountUser = new CountUser();
     paramCountUser.setUser(paramUser);
     final CountUserResponse countUserResponse = getUserWebServiceImpl().countUser(paramCountUser, paramMetaData);
@@ -44,7 +48,7 @@ public class UserWebServiceRepository<U extends User> implements GenericTypeWebS
 
   @SuppressWarnings("unchecked")
   @Override
-  public U find(MetaData paramMetaData, U paramUser) {
+  public U find(final MetaData paramMetaData, final U paramUser) {
     final FindUserById paramFindUserById = new FindUserById();
     paramFindUserById.setUser(paramUser);
     final FindUserByIdResponse findUserByIdResponse = getUserWebServiceImpl().findUserById(paramFindUserById, paramMetaData);
@@ -54,7 +58,7 @@ public class UserWebServiceRepository<U extends User> implements GenericTypeWebS
 
   @SuppressWarnings("unchecked")
   @Override
-  public List<U> find(MetaData paramMetaData, U paramUser, Paging paramPaging, OrderBy paramOrderBy) {
+  public List<U> find(final MetaData paramMetaData, final U paramUser, final Paging paramPaging, final OrderBy paramOrderBy) {
     final FindUser paramFindUser = new FindUser();
     paramFindUser.setUser(paramUser);
     paramFindUser.setPaging(paramPaging);
@@ -74,7 +78,7 @@ public class UserWebServiceRepository<U extends User> implements GenericTypeWebS
 
   @SuppressWarnings("unchecked")
   @Override
-  public U merge(MetaData paramMetaData, U paramUser) {
+  public U merge(final MetaData paramMetaData, final U paramUser) {
     final MergeUser paramMergeUser = new MergeUser();
     paramMergeUser.setUser(paramUser);
     final MergeUserResponse mergeUserResponse = getUserWebServiceImpl().mergeUser(paramMergeUser, paramMetaData);
@@ -83,7 +87,7 @@ public class UserWebServiceRepository<U extends User> implements GenericTypeWebS
 
   @SuppressWarnings("unchecked")
   @Override
-  public U persist(MetaData paramMetaData, U paramUser) {
+  public U persist(final MetaData paramMetaData, final U paramUser) {
     final PersistUser paramPersistUser = new PersistUser();
     paramPersistUser.setUser(paramUser);
     final PersistUserResponse persistUserResponse = getUserWebServiceImpl().persistUser(paramPersistUser, paramMetaData);
@@ -92,7 +96,7 @@ public class UserWebServiceRepository<U extends User> implements GenericTypeWebS
 
   @SuppressWarnings("unchecked")
   @Override
-  public U refresh(MetaData paramMetaData, U paramUser) {
+  public U refresh(final MetaData paramMetaData, final U paramUser) {
     final RefreshUser paramRefresUser = new RefreshUser();
     paramRefresUser.setUser(paramUser);
     final RefreshUserResponse refresUserResponse = getUserWebServiceImpl().refreshUser(paramRefresUser, paramMetaData);
@@ -100,7 +104,7 @@ public class UserWebServiceRepository<U extends User> implements GenericTypeWebS
   }
 
   @Override
-  public void remove(MetaData paramMetaData, U paramUser) {
+  public void remove(final MetaData paramMetaData, final U paramUser) {
     final RemoveUser paramRemoveUser = new RemoveUser();
     paramRemoveUser.setUser(paramUser);
     getUserWebServiceImpl().removeUser(paramRemoveUser, paramMetaData);

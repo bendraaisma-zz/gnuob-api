@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -13,17 +14,18 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
 
+
 /**
  * <p>
  * Java class for orderRecord complex type.
- * 
+ *
  * <p>
  * The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="orderRecord"&gt;
  *   &lt;complexContent&gt;
- *     &lt;extension base="{http://gnuob.netbrasoft.com/}type"&gt;
+ *     &lt;extension base="{http://gnuob.netbrasoft.com/}abstractType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="amount" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/&gt;
  *         &lt;element name="deliveryDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
@@ -52,13 +54,13 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "orderRecord", propOrder = {"amount", "deliveryDate", "description", "discount", "itemHeight", "itemHeightUnit", "itemLength", "itemLengthUnit", "itemUrl",
     "itemWeight", "itemWeightUnit", "itemWidth", "itemWidthUnit", "name", "option", "options", "orderRecordId", "product", "productNumber", "quantity", "shippingCost", "tax"})
-public class OrderRecord extends Type implements Serializable {
+public class OrderRecord extends AbstractType implements Serializable {
 
   private static final long serialVersionUID = -190204486628324389L;
   protected BigDecimal amount;
@@ -98,16 +100,6 @@ public class OrderRecord extends Type implements Serializable {
   }
 
   /**
-   * Sets the value of the amount property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setAmount(BigDecimal value) {
-    this.amount = value;
-  }
-
-  /**
    * Gets the value of the deliveryDate property.
    * 
    * @return possible object is {@link XMLGregorianCalendar }
@@ -115,16 +107,6 @@ public class OrderRecord extends Type implements Serializable {
    */
   public XMLGregorianCalendar getDeliveryDate() {
     return deliveryDate;
-  }
-
-  /**
-   * Sets the value of the deliveryDate property.
-   * 
-   * @param value allowed object is {@link XMLGregorianCalendar }
-   * 
-   */
-  public void setDeliveryDate(XMLGregorianCalendar value) {
-    this.deliveryDate = value;
   }
 
   /**
@@ -138,16 +120,6 @@ public class OrderRecord extends Type implements Serializable {
   }
 
   /**
-   * Sets the value of the description property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setDescription(String value) {
-    this.description = value;
-  }
-
-  /**
    * Gets the value of the discount property.
    * 
    * @return possible object is {@link BigDecimal }
@@ -155,16 +127,6 @@ public class OrderRecord extends Type implements Serializable {
    */
   public BigDecimal getDiscount() {
     return discount;
-  }
-
-  /**
-   * Sets the value of the discount property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setDiscount(BigDecimal value) {
-    this.discount = value;
   }
 
   /**
@@ -178,16 +140,6 @@ public class OrderRecord extends Type implements Serializable {
   }
 
   /**
-   * Sets the value of the itemHeight property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setItemHeight(BigDecimal value) {
-    this.itemHeight = value;
-  }
-
-  /**
    * Gets the value of the itemHeightUnit property.
    * 
    * @return possible object is {@link String }
@@ -195,16 +147,6 @@ public class OrderRecord extends Type implements Serializable {
    */
   public String getItemHeightUnit() {
     return itemHeightUnit;
-  }
-
-  /**
-   * Sets the value of the itemHeightUnit property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setItemHeightUnit(String value) {
-    this.itemHeightUnit = value;
   }
 
   /**
@@ -218,16 +160,6 @@ public class OrderRecord extends Type implements Serializable {
   }
 
   /**
-   * Sets the value of the itemLength property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setItemLength(BigDecimal value) {
-    this.itemLength = value;
-  }
-
-  /**
    * Gets the value of the itemLengthUnit property.
    * 
    * @return possible object is {@link String }
@@ -235,16 +167,6 @@ public class OrderRecord extends Type implements Serializable {
    */
   public String getItemLengthUnit() {
     return itemLengthUnit;
-  }
-
-  /**
-   * Sets the value of the itemLengthUnit property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setItemLengthUnit(String value) {
-    this.itemLengthUnit = value;
   }
 
   /**
@@ -258,16 +180,6 @@ public class OrderRecord extends Type implements Serializable {
   }
 
   /**
-   * Sets the value of the itemUrl property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setItemUrl(String value) {
-    this.itemUrl = value;
-  }
-
-  /**
    * Gets the value of the itemWeight property.
    * 
    * @return possible object is {@link BigDecimal }
@@ -275,16 +187,6 @@ public class OrderRecord extends Type implements Serializable {
    */
   public BigDecimal getItemWeight() {
     return itemWeight;
-  }
-
-  /**
-   * Sets the value of the itemWeight property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setItemWeight(BigDecimal value) {
-    this.itemWeight = value;
   }
 
   /**
@@ -298,16 +200,6 @@ public class OrderRecord extends Type implements Serializable {
   }
 
   /**
-   * Sets the value of the itemWeightUnit property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setItemWeightUnit(String value) {
-    this.itemWeightUnit = value;
-  }
-
-  /**
    * Gets the value of the itemWidth property.
    * 
    * @return possible object is {@link BigDecimal }
@@ -315,16 +207,6 @@ public class OrderRecord extends Type implements Serializable {
    */
   public BigDecimal getItemWidth() {
     return itemWidth;
-  }
-
-  /**
-   * Sets the value of the itemWidth property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setItemWidth(BigDecimal value) {
-    this.itemWidth = value;
   }
 
   /**
@@ -338,16 +220,6 @@ public class OrderRecord extends Type implements Serializable {
   }
 
   /**
-   * Sets the value of the itemWidthUnit property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setItemWidthUnit(String value) {
-    this.itemWidthUnit = value;
-  }
-
-  /**
    * Gets the value of the name property.
    * 
    * @return possible object is {@link String }
@@ -358,16 +230,6 @@ public class OrderRecord extends Type implements Serializable {
   }
 
   /**
-   * Sets the value of the name property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setName(String value) {
-    this.name = value;
-  }
-
-  /**
    * Gets the value of the option property.
    * 
    * @return possible object is {@link String }
@@ -375,16 +237,6 @@ public class OrderRecord extends Type implements Serializable {
    */
   public String getOption() {
     return option;
-  }
-
-  /**
-   * Sets the value of the option property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setOption(String value) {
-    this.option = value;
   }
 
   /**
@@ -426,16 +278,6 @@ public class OrderRecord extends Type implements Serializable {
   }
 
   /**
-   * Sets the value of the orderRecordId property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setOrderRecordId(String value) {
-    this.orderRecordId = value;
-  }
-
-  /**
    * Gets the value of the product property.
    * 
    * @return possible object is {@link Product }
@@ -443,16 +285,6 @@ public class OrderRecord extends Type implements Serializable {
    */
   public Product getProduct() {
     return product;
-  }
-
-  /**
-   * Sets the value of the product property.
-   * 
-   * @param value allowed object is {@link Product }
-   * 
-   */
-  public void setProduct(Product value) {
-    this.product = value;
   }
 
   /**
@@ -466,16 +298,6 @@ public class OrderRecord extends Type implements Serializable {
   }
 
   /**
-   * Sets the value of the productNumber property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setProductNumber(String value) {
-    this.productNumber = value;
-  }
-
-  /**
    * Gets the value of the quantity property.
    * 
    * @return possible object is {@link BigInteger }
@@ -483,16 +305,6 @@ public class OrderRecord extends Type implements Serializable {
    */
   public BigInteger getQuantity() {
     return quantity;
-  }
-
-  /**
-   * Sets the value of the quantity property.
-   * 
-   * @param value allowed object is {@link BigInteger }
-   * 
-   */
-  public void setQuantity(BigInteger value) {
-    this.quantity = value;
   }
 
   /**
@@ -506,16 +318,6 @@ public class OrderRecord extends Type implements Serializable {
   }
 
   /**
-   * Sets the value of the shippingCost property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setShippingCost(BigDecimal value) {
-    this.shippingCost = value;
-  }
-
-  /**
    * Gets the value of the tax property.
    * 
    * @return possible object is {@link BigDecimal }
@@ -526,12 +328,212 @@ public class OrderRecord extends Type implements Serializable {
   }
 
   /**
+   * Sets the value of the amount property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setAmount(final BigDecimal value) {
+    this.amount = value;
+  }
+
+  /**
+   * Sets the value of the deliveryDate property.
+   * 
+   * @param value allowed object is {@link XMLGregorianCalendar }
+   * 
+   */
+  public void setDeliveryDate(final XMLGregorianCalendar value) {
+    this.deliveryDate = value;
+  }
+
+  /**
+   * Sets the value of the description property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setDescription(final String value) {
+    this.description = value;
+  }
+
+  /**
+   * Sets the value of the discount property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setDiscount(final BigDecimal value) {
+    this.discount = value;
+  }
+
+  /**
+   * Sets the value of the itemHeight property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setItemHeight(final BigDecimal value) {
+    this.itemHeight = value;
+  }
+
+  /**
+   * Sets the value of the itemHeightUnit property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setItemHeightUnit(final String value) {
+    this.itemHeightUnit = value;
+  }
+
+  /**
+   * Sets the value of the itemLength property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setItemLength(final BigDecimal value) {
+    this.itemLength = value;
+  }
+
+  /**
+   * Sets the value of the itemLengthUnit property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setItemLengthUnit(final String value) {
+    this.itemLengthUnit = value;
+  }
+
+  /**
+   * Sets the value of the itemUrl property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setItemUrl(final String value) {
+    this.itemUrl = value;
+  }
+
+  /**
+   * Sets the value of the itemWeight property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setItemWeight(final BigDecimal value) {
+    this.itemWeight = value;
+  }
+
+  /**
+   * Sets the value of the itemWeightUnit property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setItemWeightUnit(final String value) {
+    this.itemWeightUnit = value;
+  }
+
+  /**
+   * Sets the value of the itemWidth property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setItemWidth(final BigDecimal value) {
+    this.itemWidth = value;
+  }
+
+  /**
+   * Sets the value of the itemWidthUnit property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setItemWidthUnit(final String value) {
+    this.itemWidthUnit = value;
+  }
+
+  /**
+   * Sets the value of the name property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setName(final String value) {
+    this.name = value;
+  }
+
+  /**
+   * Sets the value of the option property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setOption(final String value) {
+    this.option = value;
+  }
+
+  /**
+   * Sets the value of the orderRecordId property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setOrderRecordId(final String value) {
+    this.orderRecordId = value;
+  }
+
+  /**
+   * Sets the value of the product property.
+   * 
+   * @param value allowed object is {@link Product }
+   * 
+   */
+  public void setProduct(final Product value) {
+    this.product = value;
+  }
+
+  /**
+   * Sets the value of the productNumber property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setProductNumber(final String value) {
+    this.productNumber = value;
+  }
+
+  /**
+   * Sets the value of the quantity property.
+   * 
+   * @param value allowed object is {@link BigInteger }
+   * 
+   */
+  public void setQuantity(final BigInteger value) {
+    this.quantity = value;
+  }
+
+  /**
+   * Sets the value of the shippingCost property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setShippingCost(final BigDecimal value) {
+    this.shippingCost = value;
+  }
+
+  /**
    * Sets the value of the tax property.
    * 
    * @param value allowed object is {@link BigDecimal }
    * 
    */
-  public void setTax(BigDecimal value) {
+  public void setTax(final BigDecimal value) {
     this.tax = value;
   }
 

@@ -27,15 +27,19 @@ import com.netbrasoft.gnuob.api.SettingWebServiceImplService;
 import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 
 @Monitored
-@Repository("SettingWebServiceRepository")
+@Repository(SettingWebServiceRepository.SETTING_WEB_SERVICE_REPOSITORY_NAME)
 public class SettingWebServiceRepository<S extends Setting> implements GenericTypeWebServiceRepository<S> {
+
+  protected static final String SETTING_WEB_SERVICE_REPOSITORY_NAME = "SettingWebServiceRepository";
 
   private SettingWebServiceImpl settingWebServiceImpl;
 
-  public SettingWebServiceRepository() {}
+  public SettingWebServiceRepository() {
+    // Empty constructor.
+  }
 
   @Override
-  public long count(MetaData paramMetaData, S paramSetting) {
+  public long count(final MetaData paramMetaData, final S paramSetting) {
     final CountSetting paramCountSetting = new CountSetting();
     paramCountSetting.setSetting(paramSetting);
     final CountSettingResponse countSettingResponse = getSettingWebServiceImpl().countSetting(paramCountSetting, paramMetaData);
@@ -44,7 +48,7 @@ public class SettingWebServiceRepository<S extends Setting> implements GenericTy
 
   @SuppressWarnings("unchecked")
   @Override
-  public S find(MetaData paramMetaData, S paramSetting) {
+  public S find(final MetaData paramMetaData, final S paramSetting) {
     final FindSettingById paramFindSettingById = new FindSettingById();
     paramFindSettingById.setSetting(paramSetting);
     final FindSettingByIdResponse findSettingByIdResponse = getSettingWebServiceImpl().findSettingById(paramFindSettingById, paramMetaData);
@@ -54,7 +58,7 @@ public class SettingWebServiceRepository<S extends Setting> implements GenericTy
 
   @SuppressWarnings("unchecked")
   @Override
-  public List<S> find(MetaData paramMetaData, S paramSetting, Paging paramPaging, OrderBy paramOrderBy) {
+  public List<S> find(final MetaData paramMetaData, final S paramSetting, final Paging paramPaging, final OrderBy paramOrderBy) {
     final FindSetting paramFindSetting = new FindSetting();
     paramFindSetting.setSetting(paramSetting);
     paramFindSetting.setPaging(paramPaging);
@@ -74,7 +78,7 @@ public class SettingWebServiceRepository<S extends Setting> implements GenericTy
 
   @SuppressWarnings("unchecked")
   @Override
-  public S merge(MetaData paramMetaData, S paramSetting) {
+  public S merge(final MetaData paramMetaData, final S paramSetting) {
     final MergeSetting paramMergeSetting = new MergeSetting();
     paramMergeSetting.setSetting(paramSetting);
     final MergeSettingResponse mergeSettingResponse = getSettingWebServiceImpl().mergeSetting(paramMergeSetting, paramMetaData);
@@ -83,7 +87,7 @@ public class SettingWebServiceRepository<S extends Setting> implements GenericTy
 
   @SuppressWarnings("unchecked")
   @Override
-  public S persist(MetaData paramMetaData, S paramSetting) {
+  public S persist(final MetaData paramMetaData, final S paramSetting) {
     final PersistSetting paramPersistSetting = new PersistSetting();
     paramPersistSetting.setSetting(paramSetting);
     final PersistSettingResponse persistSettingResponse = getSettingWebServiceImpl().persistSetting(paramPersistSetting, paramMetaData);
@@ -92,7 +96,7 @@ public class SettingWebServiceRepository<S extends Setting> implements GenericTy
 
   @SuppressWarnings("unchecked")
   @Override
-  public S refresh(MetaData paramMetaData, S paramSetting) {
+  public S refresh(final MetaData paramMetaData, final S paramSetting) {
     final RefreshSetting paramRefresSetting = new RefreshSetting();
     paramRefresSetting.setSetting(paramSetting);
     final RefreshSettingResponse refresSettingResponse = getSettingWebServiceImpl().refreshSetting(paramRefresSetting, paramMetaData);
@@ -100,7 +104,7 @@ public class SettingWebServiceRepository<S extends Setting> implements GenericTy
   }
 
   @Override
-  public void remove(MetaData paramMetaData, S paramSetting) {
+  public void remove(final MetaData paramMetaData, final S paramSetting) {
     final RemoveSetting paramRemoveSetting = new RemoveSetting();
     paramRemoveSetting.setSetting(paramSetting);
     getSettingWebServiceImpl().removeSetting(paramRemoveSetting, paramMetaData);

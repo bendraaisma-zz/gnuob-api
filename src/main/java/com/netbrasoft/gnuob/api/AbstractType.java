@@ -2,21 +2,23 @@
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
  * <p>
- * Java class for type complex type.
- * 
+ * Java class for abstractType complex type.
+ *
  * <p>
  * The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
- * &lt;complexType name="type"&gt;
+ * &lt;complexType name="abstractType"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
@@ -27,15 +29,15 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "type")
-@XmlSeeAlso({Permission.class, Access.class})
-public abstract class Type implements Serializable {
+@XmlType(name = "abstractType")
+@XmlSeeAlso({PostalCode.class})
+public abstract class AbstractType implements Serializable {
 
-  private static final long serialVersionUID = 7946172752307429119L;
+  private static final long serialVersionUID = -4033595339462106336L;
   @XmlAttribute(name = "id", required = true)
   protected long id;
   @XmlAttribute(name = "version", required = true)
@@ -50,14 +52,6 @@ public abstract class Type implements Serializable {
   }
 
   /**
-   * Sets the value of the id property.
-   * 
-   */
-  public void setId(long value) {
-    this.id = value;
-  }
-
-  /**
    * Gets the value of the version property.
    * 
    */
@@ -66,10 +60,18 @@ public abstract class Type implements Serializable {
   }
 
   /**
+   * Sets the value of the id property.
+   * 
+   */
+  public void setId(final long value) {
+    this.id = value;
+  }
+
+  /**
    * Sets the value of the version property.
    * 
    */
-  public void setVersion(int value) {
+  public void setVersion(final int value) {
     this.version = value;
   }
 

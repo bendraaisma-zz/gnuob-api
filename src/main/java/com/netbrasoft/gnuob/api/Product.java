@@ -5,22 +5,24 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
  * <p>
  * Java class for product complex type.
- * 
+ *
  * <p>
  * The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="product"&gt;
  *   &lt;complexContent&gt;
- *     &lt;extension base="{http://gnuob.netbrasoft.com/}access"&gt;
+ *     &lt;extension base="{http://gnuob.netbrasoft.com/}abstractAccess"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="amount" type="{http://www.w3.org/2001/XMLSchema}decimal"/&gt;
  *         &lt;element name="bestsellers" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/&gt;
@@ -51,15 +53,14 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "product",
     propOrder = {"amount", "bestsellers", "contents", "description", "discount", "itemHeight", "itemHeightUnit", "itemLength", "itemLengthUnit", "itemUrl", "itemWeight",
-        "itemWeightUnit", "itemWidth", "itemWidthUnit", "latestCollection", "name", "number", "options", "rating", "recommended", "shippingCost", "stock", "subCategories",
-        "tax"})
-public class Product extends Access implements Serializable {
+        "itemWeightUnit", "itemWidth", "itemWidthUnit", "latestCollection", "name", "number", "options", "rating", "recommended", "shippingCost", "stock", "subCategories", "tax"})
+public class Product extends AbstractAccess implements Serializable {
 
   private static final long serialVersionUID = -8465879898146696012L;
   @XmlElement(required = true)
@@ -110,36 +111,6 @@ public class Product extends Access implements Serializable {
   }
 
   /**
-   * Sets the value of the amount property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setAmount(BigDecimal value) {
-    this.amount = value;
-  }
-
-  /**
-   * Gets the value of the bestsellers property.
-   * 
-   * @return possible object is {@link Boolean }
-   * 
-   */
-  public Boolean isBestsellers() {
-    return bestsellers;
-  }
-
-  /**
-   * Sets the value of the bestsellers property.
-   * 
-   * @param value allowed object is {@link Boolean }
-   * 
-   */
-  public void setBestsellers(Boolean value) {
-    this.bestsellers = value;
-  }
-
-  /**
    * Gets the value of the contents property.
    * 
    * <p>
@@ -178,16 +149,6 @@ public class Product extends Access implements Serializable {
   }
 
   /**
-   * Sets the value of the description property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setDescription(String value) {
-    this.description = value;
-  }
-
-  /**
    * Gets the value of the discount property.
    * 
    * @return possible object is {@link BigDecimal }
@@ -195,16 +156,6 @@ public class Product extends Access implements Serializable {
    */
   public BigDecimal getDiscount() {
     return discount;
-  }
-
-  /**
-   * Sets the value of the discount property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setDiscount(BigDecimal value) {
-    this.discount = value;
   }
 
   /**
@@ -218,16 +169,6 @@ public class Product extends Access implements Serializable {
   }
 
   /**
-   * Sets the value of the itemHeight property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setItemHeight(BigDecimal value) {
-    this.itemHeight = value;
-  }
-
-  /**
    * Gets the value of the itemHeightUnit property.
    * 
    * @return possible object is {@link String }
@@ -235,16 +176,6 @@ public class Product extends Access implements Serializable {
    */
   public String getItemHeightUnit() {
     return itemHeightUnit;
-  }
-
-  /**
-   * Sets the value of the itemHeightUnit property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setItemHeightUnit(String value) {
-    this.itemHeightUnit = value;
   }
 
   /**
@@ -258,16 +189,6 @@ public class Product extends Access implements Serializable {
   }
 
   /**
-   * Sets the value of the itemLength property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setItemLength(BigDecimal value) {
-    this.itemLength = value;
-  }
-
-  /**
    * Gets the value of the itemLengthUnit property.
    * 
    * @return possible object is {@link String }
@@ -275,16 +196,6 @@ public class Product extends Access implements Serializable {
    */
   public String getItemLengthUnit() {
     return itemLengthUnit;
-  }
-
-  /**
-   * Sets the value of the itemLengthUnit property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setItemLengthUnit(String value) {
-    this.itemLengthUnit = value;
   }
 
   /**
@@ -298,16 +209,6 @@ public class Product extends Access implements Serializable {
   }
 
   /**
-   * Sets the value of the itemUrl property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setItemUrl(String value) {
-    this.itemUrl = value;
-  }
-
-  /**
    * Gets the value of the itemWeight property.
    * 
    * @return possible object is {@link BigDecimal }
@@ -315,16 +216,6 @@ public class Product extends Access implements Serializable {
    */
   public BigDecimal getItemWeight() {
     return itemWeight;
-  }
-
-  /**
-   * Sets the value of the itemWeight property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setItemWeight(BigDecimal value) {
-    this.itemWeight = value;
   }
 
   /**
@@ -338,16 +229,6 @@ public class Product extends Access implements Serializable {
   }
 
   /**
-   * Sets the value of the itemWeightUnit property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setItemWeightUnit(String value) {
-    this.itemWeightUnit = value;
-  }
-
-  /**
    * Gets the value of the itemWidth property.
    * 
    * @return possible object is {@link BigDecimal }
@@ -355,16 +236,6 @@ public class Product extends Access implements Serializable {
    */
   public BigDecimal getItemWidth() {
     return itemWidth;
-  }
-
-  /**
-   * Sets the value of the itemWidth property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setItemWidth(BigDecimal value) {
-    this.itemWidth = value;
   }
 
   /**
@@ -378,36 +249,6 @@ public class Product extends Access implements Serializable {
   }
 
   /**
-   * Sets the value of the itemWidthUnit property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setItemWidthUnit(String value) {
-    this.itemWidthUnit = value;
-  }
-
-  /**
-   * Gets the value of the latestCollection property.
-   * 
-   * @return possible object is {@link Boolean }
-   * 
-   */
-  public Boolean isLatestCollection() {
-    return latestCollection;
-  }
-
-  /**
-   * Sets the value of the latestCollection property.
-   * 
-   * @param value allowed object is {@link Boolean }
-   * 
-   */
-  public void setLatestCollection(Boolean value) {
-    this.latestCollection = value;
-  }
-
-  /**
    * Gets the value of the name property.
    * 
    * @return possible object is {@link String }
@@ -418,16 +259,6 @@ public class Product extends Access implements Serializable {
   }
 
   /**
-   * Sets the value of the name property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setName(String value) {
-    this.name = value;
-  }
-
-  /**
    * Gets the value of the number property.
    * 
    * @return possible object is {@link String }
@@ -435,16 +266,6 @@ public class Product extends Access implements Serializable {
    */
   public String getNumber() {
     return number;
-  }
-
-  /**
-   * Sets the value of the number property.
-   * 
-   * @param value allowed object is {@link String }
-   * 
-   */
-  public void setNumber(String value) {
-    this.number = value;
   }
 
   /**
@@ -486,36 +307,6 @@ public class Product extends Access implements Serializable {
   }
 
   /**
-   * Sets the value of the rating property.
-   * 
-   * @param value allowed object is {@link Integer }
-   * 
-   */
-  public void setRating(Integer value) {
-    this.rating = value;
-  }
-
-  /**
-   * Gets the value of the recommended property.
-   * 
-   * @return possible object is {@link Boolean }
-   * 
-   */
-  public Boolean isRecommended() {
-    return recommended;
-  }
-
-  /**
-   * Sets the value of the recommended property.
-   * 
-   * @param value allowed object is {@link Boolean }
-   * 
-   */
-  public void setRecommended(Boolean value) {
-    this.recommended = value;
-  }
-
-  /**
    * Gets the value of the shippingCost property.
    * 
    * @return possible object is {@link BigDecimal }
@@ -526,16 +317,6 @@ public class Product extends Access implements Serializable {
   }
 
   /**
-   * Sets the value of the shippingCost property.
-   * 
-   * @param value allowed object is {@link BigDecimal }
-   * 
-   */
-  public void setShippingCost(BigDecimal value) {
-    this.shippingCost = value;
-  }
-
-  /**
    * Gets the value of the stock property.
    * 
    * @return possible object is {@link Stock }
@@ -543,16 +324,6 @@ public class Product extends Access implements Serializable {
    */
   public Stock getStock() {
     return stock;
-  }
-
-  /**
-   * Sets the value of the stock property.
-   * 
-   * @param value allowed object is {@link Stock }
-   * 
-   */
-  public void setStock(Stock value) {
-    this.stock = value;
   }
 
   /**
@@ -594,12 +365,242 @@ public class Product extends Access implements Serializable {
   }
 
   /**
+   * Gets the value of the bestsellers property.
+   * 
+   * @return possible object is {@link Boolean }
+   * 
+   */
+  public Boolean isBestsellers() {
+    return bestsellers;
+  }
+
+  /**
+   * Gets the value of the latestCollection property.
+   * 
+   * @return possible object is {@link Boolean }
+   * 
+   */
+  public Boolean isLatestCollection() {
+    return latestCollection;
+  }
+
+  /**
+   * Gets the value of the recommended property.
+   * 
+   * @return possible object is {@link Boolean }
+   * 
+   */
+  public Boolean isRecommended() {
+    return recommended;
+  }
+
+  /**
+   * Sets the value of the amount property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setAmount(final BigDecimal value) {
+    this.amount = value;
+  }
+
+  /**
+   * Sets the value of the bestsellers property.
+   * 
+   * @param value allowed object is {@link Boolean }
+   * 
+   */
+  public void setBestsellers(final Boolean value) {
+    this.bestsellers = value;
+  }
+
+  /**
+   * Sets the value of the description property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setDescription(final String value) {
+    this.description = value;
+  }
+
+  /**
+   * Sets the value of the discount property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setDiscount(final BigDecimal value) {
+    this.discount = value;
+  }
+
+  /**
+   * Sets the value of the itemHeight property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setItemHeight(final BigDecimal value) {
+    this.itemHeight = value;
+  }
+
+  /**
+   * Sets the value of the itemHeightUnit property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setItemHeightUnit(final String value) {
+    this.itemHeightUnit = value;
+  }
+
+  /**
+   * Sets the value of the itemLength property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setItemLength(final BigDecimal value) {
+    this.itemLength = value;
+  }
+
+  /**
+   * Sets the value of the itemLengthUnit property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setItemLengthUnit(final String value) {
+    this.itemLengthUnit = value;
+  }
+
+  /**
+   * Sets the value of the itemUrl property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setItemUrl(final String value) {
+    this.itemUrl = value;
+  }
+
+  /**
+   * Sets the value of the itemWeight property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setItemWeight(final BigDecimal value) {
+    this.itemWeight = value;
+  }
+
+  /**
+   * Sets the value of the itemWeightUnit property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setItemWeightUnit(final String value) {
+    this.itemWeightUnit = value;
+  }
+
+  /**
+   * Sets the value of the itemWidth property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setItemWidth(final BigDecimal value) {
+    this.itemWidth = value;
+  }
+
+  /**
+   * Sets the value of the itemWidthUnit property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setItemWidthUnit(final String value) {
+    this.itemWidthUnit = value;
+  }
+
+  /**
+   * Sets the value of the latestCollection property.
+   * 
+   * @param value allowed object is {@link Boolean }
+   * 
+   */
+  public void setLatestCollection(final Boolean value) {
+    this.latestCollection = value;
+  }
+
+  /**
+   * Sets the value of the name property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setName(final String value) {
+    this.name = value;
+  }
+
+  /**
+   * Sets the value of the number property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setNumber(final String value) {
+    this.number = value;
+  }
+
+  /**
+   * Sets the value of the rating property.
+   * 
+   * @param value allowed object is {@link Integer }
+   * 
+   */
+  public void setRating(final Integer value) {
+    this.rating = value;
+  }
+
+  /**
+   * Sets the value of the recommended property.
+   * 
+   * @param value allowed object is {@link Boolean }
+   * 
+   */
+  public void setRecommended(final Boolean value) {
+    this.recommended = value;
+  }
+
+  /**
+   * Sets the value of the shippingCost property.
+   * 
+   * @param value allowed object is {@link BigDecimal }
+   * 
+   */
+  public void setShippingCost(final BigDecimal value) {
+    this.shippingCost = value;
+  }
+
+  /**
+   * Sets the value of the stock property.
+   * 
+   * @param value allowed object is {@link Stock }
+   * 
+   */
+  public void setStock(final Stock value) {
+    this.stock = value;
+  }
+
+  /**
    * Sets the value of the tax property.
    * 
    * @param value allowed object is {@link BigDecimal }
    * 
    */
-  public void setTax(BigDecimal value) {
+  public void setTax(final BigDecimal value) {
     this.tax = value;
   }
 

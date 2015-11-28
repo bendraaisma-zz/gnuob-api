@@ -21,64 +21,68 @@ import com.netbrasoft.gnuob.api.PagseguroCheckOutWebServiceImpl;
 import com.netbrasoft.gnuob.api.PagseguroCheckOutWebServiceImplService;
 
 @Monitored
-@Repository("PagseguroCheckOutWebServiceRepository")
+@Repository(PagseguroCheckOutWebServiceRepository.PAGSEGURO_CHECK_OUT_WEB_SERVICE_REPOSITORY)
 public class PagseguroCheckOutWebServiceRepository<O extends Order> implements CheckoutWebServiceRepository<O> {
+
+  protected static final String PAGSEGURO_CHECK_OUT_WEB_SERVICE_REPOSITORY = "PagseguroCheckOutWebServiceRepository";
 
   private PagseguroCheckOutWebServiceImpl pagseguroCheckOutWebServiceImpl = null;
 
-  public PagseguroCheckOutWebServiceRepository() {}
+  public PagseguroCheckOutWebServiceRepository() {
+    // Empty constructor.
+  }
 
   @SuppressWarnings("unchecked")
   @Override
-  public O doCheckout(MetaData paramMetaData, O paramOrder) {
+  public O doCheckout(final MetaData metaData, final O order) {
     final DoCheckout paramDoCheckout = new DoCheckout();
-    paramDoCheckout.setOrder(paramOrder);
-    final DoCheckoutResponse doCheckoutResponse = getPagseguroCheckOutWebServiceImpl().doCheckout(paramDoCheckout, paramMetaData);
+    paramDoCheckout.setOrder(order);
+    final DoCheckoutResponse doCheckoutResponse = getPagseguroCheckOutWebServiceImpl().doCheckout(paramDoCheckout, metaData);
     return (O) doCheckoutResponse.getReturn();
   }
 
   @SuppressWarnings("unchecked")
   @Override
-  public O doCheckoutDetails(MetaData paramMetaData, O paramOrder) {
+  public O doCheckoutDetails(final MetaData metaData, final O order) {
     final DoCheckoutDetails paramDoCheckoutDetails = new DoCheckoutDetails();
-    paramDoCheckoutDetails.setOrder(paramOrder);
-    final DoCheckoutDetailsResponse doCheckoutDetailsResponse = getPagseguroCheckOutWebServiceImpl().doCheckoutDetails(paramDoCheckoutDetails, paramMetaData);
+    paramDoCheckoutDetails.setOrder(order);
+    final DoCheckoutDetailsResponse doCheckoutDetailsResponse = getPagseguroCheckOutWebServiceImpl().doCheckoutDetails(paramDoCheckoutDetails, metaData);
     return (O) doCheckoutDetailsResponse.getReturn();
   }
 
   @SuppressWarnings("unchecked")
   @Override
-  public O doCheckoutPayment(MetaData paramMetaData, O paramOrder) {
+  public O doCheckoutPayment(final MetaData metaData, final O order) {
     final DoCheckoutPayment paramDoCheckoutPayment = new DoCheckoutPayment();
-    paramDoCheckoutPayment.setOrder(paramOrder);
-    final DoCheckoutPaymentResponse doCheckoutPaymentResponse = getPagseguroCheckOutWebServiceImpl().doCheckoutPayment(paramDoCheckoutPayment, paramMetaData);
+    paramDoCheckoutPayment.setOrder(order);
+    final DoCheckoutPaymentResponse doCheckoutPaymentResponse = getPagseguroCheckOutWebServiceImpl().doCheckoutPayment(paramDoCheckoutPayment, metaData);
     return (O) doCheckoutPaymentResponse.getReturn();
   }
 
   @SuppressWarnings("unchecked")
   @Override
-  public O doNotification(MetaData paramMetaData, O paramOrder) {
+  public O doNotification(final MetaData metaData, final O order) {
     final DoNotification paramDoNotification = new DoNotification();
-    paramDoNotification.setOrder(paramOrder);
-    final DoNotificationResponse doNotificationResponse = getPagseguroCheckOutWebServiceImpl().doNotification(paramDoNotification, paramMetaData);
+    paramDoNotification.setOrder(order);
+    final DoNotificationResponse doNotificationResponse = getPagseguroCheckOutWebServiceImpl().doNotification(paramDoNotification, metaData);
     return (O) doNotificationResponse.getReturn();
   }
 
   @SuppressWarnings("unchecked")
   @Override
-  public O doRefundTransaction(MetaData paramMetaData, O paramOrder) {
+  public O doRefundTransaction(final MetaData metaData, final O order) {
     final DoRefundTransaction paramRefundTransaction = new DoRefundTransaction();
-    paramRefundTransaction.setOrder(paramOrder);
-    final DoRefundTransactionResponse doRefundTransactionResponse = getPagseguroCheckOutWebServiceImpl().doRefundTransaction(paramRefundTransaction, paramMetaData);
+    paramRefundTransaction.setOrder(order);
+    final DoRefundTransactionResponse doRefundTransactionResponse = getPagseguroCheckOutWebServiceImpl().doRefundTransaction(paramRefundTransaction, metaData);
     return (O) doRefundTransactionResponse.getReturn();
   }
 
   @SuppressWarnings("unchecked")
   @Override
-  public O doTransactionDetails(MetaData paramMetaData, O paramOrder) {
+  public O doTransactionDetails(final MetaData metaData, final O order) {
     final DoTransactionDetails paramDoTransactionDetails = new DoTransactionDetails();
-    paramDoTransactionDetails.setOrder(paramOrder);
-    final DoTransactionDetailsResponse doTransactionDetailsResponse = getPagseguroCheckOutWebServiceImpl().doTransactionDetails(paramDoTransactionDetails, paramMetaData);
+    paramDoTransactionDetails.setOrder(order);
+    final DoTransactionDetailsResponse doTransactionDetailsResponse = getPagseguroCheckOutWebServiceImpl().doTransactionDetails(paramDoTransactionDetails, metaData);
     return (O) doTransactionDetailsResponse.getReturn();
   }
 
