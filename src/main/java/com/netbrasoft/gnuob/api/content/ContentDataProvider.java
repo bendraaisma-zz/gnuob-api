@@ -10,21 +10,23 @@ import com.netbrasoft.gnuob.api.generic.AbstractGenericTypeDataProvider;
 import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 
 @Monitored
-@Controller("ContentDataProvider")
+@Controller(ContentDataProvider.CONTENT_DATA_PROVIDER_NAME)
 public class ContentDataProvider<C extends Content> extends AbstractGenericTypeDataProvider<C> {
 
-   private static final long serialVersionUID = -7147810111952342412L;
+  public static final String CONTENT_DATA_PROVIDER_NAME = "ContentDataProvider";
 
-   @Resource(name = "ContentWebServiceRepository")
-   private transient GenericTypeWebServiceRepository<C> contentWebServiceRepository;
+  private static final long serialVersionUID = -7147810111952342412L;
 
-   @SuppressWarnings("unchecked")
-   public ContentDataProvider() {
-      super((C) new Content());
-   }
+  @Resource(name = ContentWebServiceRepository.CONTENT_WEB_SERVICE_REPOSITORY_NAME)
+  private transient GenericTypeWebServiceRepository<C> contentWebServiceRepository;
 
-   @Override
-   public GenericTypeWebServiceRepository<C> getGenericTypeWebServiceRepository() {
-      return contentWebServiceRepository;
-   }
+  @SuppressWarnings("unchecked")
+  public ContentDataProvider() {
+    super((C) new Content());
+  }
+
+  @Override
+  public GenericTypeWebServiceRepository<C> getGenericTypeWebServiceRepository() {
+    return contentWebServiceRepository;
+  }
 }

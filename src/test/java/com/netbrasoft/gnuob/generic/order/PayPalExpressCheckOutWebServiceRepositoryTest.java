@@ -2,8 +2,13 @@ package com.netbrasoft.gnuob.generic.order;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Random;
 import java.util.UUID;
+
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.drone.api.annotation.Drone;
@@ -38,152 +43,155 @@ import com.netbrasoft.gnuob.generic.utils.Utils;
 @RunWith(Arquillian.class)
 public class PayPalExpressCheckOutWebServiceRepositoryTest {
 
-   @Deployment(testable = false)
-   public static Archive<?> createDeployment() {
-      return Utils.createDeployment();
-   }
+  @Deployment(testable = false)
+  public static Archive<?> createDeployment() {
+    return Utils.createDeployment();
+  }
 
-   @Drone
-   private WebDriver driver;
+  @Drone
+  private WebDriver driver;
 
-   private ProductWebServiceRepository<Product> productWebServiceRepository = new ProductWebServiceRepository<Product>();
-   private OrderWebServiceRepository<Order> orderWebServiceRepository = new OrderWebServiceRepository<Order>();
-   private PayPalExpressCheckOutWebServiceRepository<Order> payPalExpressCheckOutWebServiceRepository = new PayPalExpressCheckOutWebServiceRepository<Order>();
-   private MetaData metaData = null;
-   private Customer customer = null;
-   private Contract contract = null;
-   private Address address = null;
-   private Product product = null;
-   private Order order = null;
-   private Invoice invoice = null;
-   private Shipment shipment = null;
+  private final ProductWebServiceRepository<Product> productWebServiceRepository = new ProductWebServiceRepository<Product>();
+  private final OrderWebServiceRepository<Order> orderWebServiceRepository = new OrderWebServiceRepository<Order>();
+  private final PayPalExpressCheckOutWebServiceRepository<Order> payPalExpressCheckOutWebServiceRepository = new PayPalExpressCheckOutWebServiceRepository<Order>();
+  private MetaData metaData = null;
+  private Customer customer = null;
+  private Contract contract = null;
+  private Address address = null;
+  private Product product = null;
+  private Order order = null;
+  private Invoice invoice = null;
+  private Shipment shipment = null;
 
-   @Before
-   public void testBefore() {
-      Random randomGenerator = new Random();
+  @Before
+  public void testBefore() throws DatatypeConfigurationException {
+    final Random randomGenerator = new Random();
 
-      metaData = new MetaData();
-      customer = new Customer();
-      address = new Address();
-      contract = new Contract();
-      product = new Product();
-      order = new Order();
-      invoice = new Invoice();
-      shipment = new Shipment();
+    metaData = new MetaData();
+    customer = new Customer();
+    address = new Address();
+    contract = new Contract();
+    product = new Product();
+    order = new Order();
+    invoice = new Invoice();
+    shipment = new Shipment();
 
-      metaData.setUser("administrator");
-      metaData.setPassword("administrator");
-      metaData.setSite("www.netbrasoft.com");
+    metaData.setUser("administrator");
+    metaData.setPassword("administrator");
+    metaData.setSite("localhost");
 
-      address.setCityName(UUID.randomUUID().toString());
-      address.setStreet1(UUID.randomUUID().toString());
-      address.setNumber("815");
-      address.setCountry("BR");
-      address.setStateOrProvince("Espirito Santo");
-      address.setPostalCode("29072-230");
+    address.setCityName(UUID.randomUUID().toString());
+    address.setStreet1(UUID.randomUUID().toString());
+    address.setNumber("815");
+    address.setCountry("BR");
+    address.setStateOrProvince("Espirito Santo");
+    address.setPostalCode("29072-230");
 
-      customer.setActive(true);
-      customer.setFirstName("Bernard Arjan");
-      customer.setLastName("Draaisma");
-      customer.setBuyerEmail("MRzEPsqD@netbrasoft.com");
-      customer.setAddress(address);
-      customer.setDateOfBirth("2014-12-31");
+    customer.setActive(true);
+    customer.setFirstName("Bernard Arjan");
+    customer.setLastName("Draaisma");
+    customer.setBuyerEmail("MRzEPsqD@netbrasoft.com");
+    customer.setAddress(address);
 
-      contract.setActive(true);
-      contract.setCustomer(customer);
+    final GregorianCalendar c = new GregorianCalendar();
+    c.setTime(new Date());
+    customer.setDateOfBirth(DatatypeFactory.newInstance().newXMLGregorianCalendar(c));
 
-      product.setActive(true);
-      product.setName(UUID.randomUUID().toString());
-      product.setDescription(UUID.randomUUID().toString());
-      product.setNumber(UUID.randomUUID().toString());
-      product.setAmount(BigDecimal.valueOf(10.00));
-      product.setTax(BigDecimal.valueOf(2.75));
-      product.setDiscount(BigDecimal.ONE);
-      product.setRecommended(randomGenerator.nextBoolean());
-      product.setRating(randomGenerator.nextInt());
-      product.setBestsellers(randomGenerator.nextBoolean());
-      product.setShippingCost(BigDecimal.valueOf(7.95));
-      product.setItemWeight(BigDecimal.ONE);
-      product.setItemWeightUnit("Kg");
+    contract.setActive(true);
+    contract.setCustomer(customer);
 
-      Stock stock = new Stock();
-      stock.setMaxQuantity(BigInteger.valueOf(100));
-      stock.setMinQuantity(BigInteger.ZERO);
-      stock.setQuantity(BigInteger.valueOf(30));
+    product.setActive(true);
+    product.setName(UUID.randomUUID().toString());
+    product.setDescription(UUID.randomUUID().toString());
+    product.setNumber(UUID.randomUUID().toString());
+    product.setAmount(BigDecimal.valueOf(10.00));
+    product.setTax(BigDecimal.valueOf(2.75));
+    product.setDiscount(BigDecimal.ONE);
+    product.setRecommended(randomGenerator.nextBoolean());
+    product.setRating(randomGenerator.nextInt());
+    product.setBestsellers(randomGenerator.nextBoolean());
+    product.setShippingCost(BigDecimal.valueOf(7.95));
+    product.setItemWeight(BigDecimal.ONE);
+    product.setItemWeightUnit("Kg");
 
-      product.setStock(stock);
+    final Stock stock = new Stock();
+    stock.setMaxQuantity(BigInteger.valueOf(100));
+    stock.setMinQuantity(BigInteger.ZERO);
+    stock.setQuantity(BigInteger.valueOf(30));
 
-      SubCategory subCategory = new SubCategory();
-      subCategory.setName(UUID.randomUUID().toString());
-      subCategory.setDescription(UUID.randomUUID().toString());
+    product.setStock(stock);
 
-      product.getSubCategories().add(subCategory);
+    final SubCategory subCategory = new SubCategory();
+    subCategory.setName(UUID.randomUUID().toString());
+    subCategory.setDescription(UUID.randomUUID().toString());
 
-      invoice.setAddress(address);
+    product.getSubCategories().add(subCategory);
 
-      shipment.setShipmentType("NOT_SPECIFIED");
-      shipment.setAddress(address);
+    invoice.setAddress(address);
 
-      order.setActive(true);
-      order.setInsuranceTotal(BigDecimal.valueOf(3.99));
-      order.setHandlingTotal(BigDecimal.valueOf(0.63));
-      order.setShippingDiscount(BigDecimal.ONE);
-      order.setContract(contract);
-      order.setInvoice(invoice);
-      order.setShipment(shipment);
-   }
+    shipment.setShipmentType("NOT_SPECIFIED");
+    shipment.setAddress(address);
 
-   @Test
-   public void testPersistOrderAndDoCheckOut() throws GNUOpenBusinessServiceException_Exception, InterruptedException {
-      String productName = product.getName();
-      String productDescription = product.getDescription();
+    order.setActive(true);
+    order.setInsuranceTotal(BigDecimal.valueOf(3.99));
+    order.setHandlingTotal(BigDecimal.valueOf(0.63));
+    order.setShippingDiscount(BigDecimal.ONE);
+    order.setContract(contract);
+    order.setInvoice(invoice);
+    order.setShipment(shipment);
+  }
 
-      Product persistProduct = productWebServiceRepository.persist(metaData, product);
+  @Test
+  public void testPersistOrderAndDoCheckOut() throws GNUOpenBusinessServiceException_Exception, InterruptedException {
+    final String productName = product.getName();
+    final String productDescription = product.getDescription();
 
-      Assert.assertTrue("Product id has no value bigger than zero.", persistProduct.getId() > 0);
-      Assert.assertEquals("Product name is not equal.", productName, persistProduct.getName());
-      Assert.assertEquals("Product description is not equal.", productDescription, persistProduct.getDescription());
+    final Product persistProduct = productWebServiceRepository.persist(metaData, product);
 
-      OrderRecord orderRecord = new OrderRecord();
-      orderRecord.setQuantity(BigInteger.ONE);
-      orderRecord.setProduct(persistProduct);
+    Assert.assertTrue("Product id has no value bigger than zero.", persistProduct.getId() > 0);
+    Assert.assertEquals("Product name is not equal.", productName, persistProduct.getName());
+    Assert.assertEquals("Product description is not equal.", productDescription, persistProduct.getDescription());
 
-      order.getRecords().add(orderRecord);
-      Order persistOrder = orderWebServiceRepository.persist(metaData, order);
+    final OrderRecord orderRecord = new OrderRecord();
+    orderRecord.setQuantity(BigInteger.ONE);
+    orderRecord.setProduct(persistProduct);
 
-      Assert.assertTrue("Order id has no value bigger than zero.", persistOrder.getId() > 0);
+    order.getRecords().add(orderRecord);
+    final Order persistOrder = orderWebServiceRepository.persist(metaData, order);
 
-      Order checkoutOrder = payPalExpressCheckOutWebServiceRepository.doCheckout(metaData, persistOrder);
-      checkoutOrder = orderWebServiceRepository.find(metaData, checkoutOrder);
+    Assert.assertTrue("Order id has no value bigger than zero.", persistOrder.getId() > 0);
 
-      Assert.assertNotNull("Order token has no value.", checkoutOrder.getToken());
+    Order checkoutOrder = payPalExpressCheckOutWebServiceRepository.doCheckout(metaData, persistOrder);
+    checkoutOrder = orderWebServiceRepository.find(metaData, checkoutOrder);
 
-      WebDriverWait webDriverWait = new WebDriverWait(driver, 60);
+    Assert.assertNotNull("Order token has no value.", checkoutOrder.getToken());
 
-      driver.get("https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=" + checkoutOrder.getToken());
-      webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("loadLogin")));
-      driver.findElement(By.id("loadLogin")).click();
-      webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("login_password")));
-      driver.findElement(By.id("login_password")).sendKeys("MRzEPsqD");
-      driver.findElement(By.id("submitLogin")).click();
-      webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("continue_abovefold")));
-      driver.findElement(By.id("continue_abovefold")).click();
+    final WebDriverWait webDriverWait = new WebDriverWait(driver, 60);
 
-      Thread.sleep(10000);
+    driver.get("https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=" + checkoutOrder.getToken());
+    webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("loadLogin")));
+    driver.findElement(By.id("loadLogin")).click();
+    webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("login_password")));
+    driver.findElement(By.id("login_password")).sendKeys("MRzEPsqD");
+    driver.findElement(By.id("submitLogin")).click();
+    webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("continue_abovefold")));
+    driver.findElement(By.id("continue_abovefold")).click();
 
-      checkoutOrder.getContract().getCustomer().setPayerId(driver.getTitle().split("PayerID=")[1].split(" ")[0]);
-      Assert.assertNotNull("Customer payer id has no value.", checkoutOrder.getContract().getCustomer().getPayerId());
+    Thread.sleep(10000);
 
-      driver.close();
+    checkoutOrder.getContract().getCustomer().setPayerId(driver.getTitle().split("PayerID=")[1].split(" ")[0]);
+    Assert.assertNotNull("Customer payer id has no value.", checkoutOrder.getContract().getCustomer().getPayerId());
 
-      Order checkoutDetailsOrder = payPalExpressCheckOutWebServiceRepository.doCheckoutDetails(metaData, checkoutOrder);
-      checkoutDetailsOrder = orderWebServiceRepository.find(metaData, checkoutDetailsOrder);
+    driver.close();
 
-      Order checkoutPaymentOrder = payPalExpressCheckOutWebServiceRepository.doCheckoutPayment(metaData, checkoutDetailsOrder);
-      checkoutPaymentOrder = orderWebServiceRepository.find(metaData, checkoutPaymentOrder);
+    Order checkoutDetailsOrder = payPalExpressCheckOutWebServiceRepository.doCheckoutDetails(metaData, checkoutOrder);
+    checkoutDetailsOrder = orderWebServiceRepository.find(metaData, checkoutDetailsOrder);
 
-      Assert.assertNotNull("Order transaction id has no value.", checkoutPaymentOrder.getTransactionId());
-      Assert.assertEquals(BigDecimal.valueOf(23.32), checkoutPaymentOrder.getOrderTotal());
-   }
+    Order checkoutPaymentOrder = payPalExpressCheckOutWebServiceRepository.doCheckoutPayment(metaData, checkoutDetailsOrder);
+    checkoutPaymentOrder = orderWebServiceRepository.find(metaData, checkoutPaymentOrder);
+
+    Assert.assertNotNull("Order transaction id has no value.", checkoutPaymentOrder.getTransactionId());
+    Assert.assertEquals(BigDecimal.valueOf(23.32), checkoutPaymentOrder.getOrderTotal());
+  }
 
 }

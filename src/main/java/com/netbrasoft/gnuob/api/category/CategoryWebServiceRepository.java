@@ -27,85 +27,87 @@ import com.netbrasoft.gnuob.api.RemoveCategory;
 import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 
 @Monitored
-@Repository("CategoryWebServiceRepository")
+@Repository(CategoryWebServiceRepository.CATEGORY_WEB_SERVICE_REPOSITORY_NAME)
 public class CategoryWebServiceRepository<C extends Category> implements GenericTypeWebServiceRepository<C> {
 
-   private CategoryWebServiceImpl categoryWebServiceImpl = null;
+  public static final String CATEGORY_WEB_SERVICE_REPOSITORY_NAME = "CategoryWebServiceRepository";
 
-   public CategoryWebServiceRepository() {
+  private CategoryWebServiceImpl categoryWebServiceImpl = null;
 
-   }
+  public CategoryWebServiceRepository() {
+    // Empty constructor.
+  }
 
-   @Override
-   public long count(MetaData paramMetaData, C paramCategory) {
-      CountCategory paramCountCategory = new CountCategory();
-      paramCountCategory.setCategory(paramCategory);
-      CountCategoryResponse countCategoryResponse = getCategoryWebServiceImpl().countCategory(paramCountCategory, paramMetaData);
-      return countCategoryResponse.getReturn();
-   }
+  @Override
+  public long count(final MetaData paramMetaData, final C paramCategory) {
+    final CountCategory paramCountCategory = new CountCategory();
+    paramCountCategory.setCategory(paramCategory);
+    final CountCategoryResponse countCategoryResponse = getCategoryWebServiceImpl().countCategory(paramCountCategory, paramMetaData);
+    return countCategoryResponse.getReturn();
+  }
 
-   @Override
-   @SuppressWarnings("unchecked")
-   public C find(MetaData paramMetaData, C paramCategory) {
-      FindCategoryById paramFindCategoryById = new FindCategoryById();
-      paramFindCategoryById.setCategory(paramCategory);
-      FindCategoryByIdResponse findCategoryByIdResponse = getCategoryWebServiceImpl().findCategoryById(paramFindCategoryById, paramMetaData);
-      return (C) findCategoryByIdResponse.getReturn();
+  @Override
+  @SuppressWarnings("unchecked")
+  public C find(final MetaData paramMetaData, final C paramCategory) {
+    final FindCategoryById paramFindCategoryById = new FindCategoryById();
+    paramFindCategoryById.setCategory(paramCategory);
+    final FindCategoryByIdResponse findCategoryByIdResponse = getCategoryWebServiceImpl().findCategoryById(paramFindCategoryById, paramMetaData);
+    return (C) findCategoryByIdResponse.getReturn();
 
-   }
+  }
 
-   @Override
-   @SuppressWarnings("unchecked")
-   public List<C> find(MetaData paramMetaData, C paramCategory, Paging paramPaging, OrderBy paramOrderBy) {
-      FindCategory paramFindCategory = new FindCategory();
-      paramFindCategory.setCategory(paramCategory);
-      paramFindCategory.setPaging(paramPaging);
-      paramFindCategory.setOrderBy(paramOrderBy);
-      FindCategoryResponse findCategoryResponse = getCategoryWebServiceImpl().findCategory(paramFindCategory, paramMetaData);
-      return (List<C>) findCategoryResponse.getReturn();
-   }
+  @Override
+  @SuppressWarnings("unchecked")
+  public List<C> find(final MetaData paramMetaData, final C paramCategory, final Paging paramPaging, final OrderBy paramOrderBy) {
+    final FindCategory paramFindCategory = new FindCategory();
+    paramFindCategory.setCategory(paramCategory);
+    paramFindCategory.setPaging(paramPaging);
+    paramFindCategory.setOrderBy(paramOrderBy);
+    final FindCategoryResponse findCategoryResponse = getCategoryWebServiceImpl().findCategory(paramFindCategory, paramMetaData);
+    return (List<C>) findCategoryResponse.getReturn();
+  }
 
-   private CategoryWebServiceImpl getCategoryWebServiceImpl() {
+  private CategoryWebServiceImpl getCategoryWebServiceImpl() {
 
-      if (categoryWebServiceImpl == null) {
-         CategoryWebServiceImplService categoryWebServiceImplService = new CategoryWebServiceImplService(CategoryWebServiceImplService.WSDL_LOCATION);
-         categoryWebServiceImpl = categoryWebServiceImplService.getCategoryWebServiceImplPort();
-      }
+    if (categoryWebServiceImpl == null) {
+      final CategoryWebServiceImplService categoryWebServiceImplService = new CategoryWebServiceImplService(CategoryWebServiceImplService.WSDL_LOCATION);
+      categoryWebServiceImpl = categoryWebServiceImplService.getCategoryWebServiceImplPort();
+    }
 
-      return categoryWebServiceImpl;
-   }
+    return categoryWebServiceImpl;
+  }
 
-   @Override
-   @SuppressWarnings("unchecked")
-   public C merge(MetaData paramMetaData, C paramCategory) {
-      MergeCategory paramMergeCategory = new MergeCategory();
-      paramMergeCategory.setCategory(paramCategory);
-      MergeCategoryResponse mergeCategoryResponse = getCategoryWebServiceImpl().mergeCategory(paramMergeCategory, paramMetaData);
-      return (C) mergeCategoryResponse.getReturn();
-   }
+  @Override
+  @SuppressWarnings("unchecked")
+  public C merge(final MetaData paramMetaData, final C paramCategory) {
+    final MergeCategory paramMergeCategory = new MergeCategory();
+    paramMergeCategory.setCategory(paramCategory);
+    final MergeCategoryResponse mergeCategoryResponse = getCategoryWebServiceImpl().mergeCategory(paramMergeCategory, paramMetaData);
+    return (C) mergeCategoryResponse.getReturn();
+  }
 
-   @Override
-   @SuppressWarnings("unchecked")
-   public C persist(MetaData paramMetaData, C paramCategory) {
-      PersistCategory paramPersistCategory = new PersistCategory();
-      paramPersistCategory.setCategory(paramCategory);
-      PersistCategoryResponse persistCategoryResponse = getCategoryWebServiceImpl().persistCategory(paramPersistCategory, paramMetaData);
-      return (C) persistCategoryResponse.getReturn();
-   }
+  @Override
+  @SuppressWarnings("unchecked")
+  public C persist(final MetaData paramMetaData, final C paramCategory) {
+    final PersistCategory paramPersistCategory = new PersistCategory();
+    paramPersistCategory.setCategory(paramCategory);
+    final PersistCategoryResponse persistCategoryResponse = getCategoryWebServiceImpl().persistCategory(paramPersistCategory, paramMetaData);
+    return (C) persistCategoryResponse.getReturn();
+  }
 
-   @Override
-   @SuppressWarnings("unchecked")
-   public C refresh(MetaData paramMetaData, C paramCategory) {
-      RefreshCategory paramRefresCategory = new RefreshCategory();
-      paramRefresCategory.setCategory(paramCategory);
-      RefreshCategoryResponse refreshCategoryResponse = getCategoryWebServiceImpl().refreshCategory(paramRefresCategory, paramMetaData);
-      return (C) refreshCategoryResponse.getReturn();
-   }
+  @Override
+  @SuppressWarnings("unchecked")
+  public C refresh(final MetaData paramMetaData, final C paramCategory) {
+    final RefreshCategory paramRefresCategory = new RefreshCategory();
+    paramRefresCategory.setCategory(paramCategory);
+    final RefreshCategoryResponse refreshCategoryResponse = getCategoryWebServiceImpl().refreshCategory(paramRefresCategory, paramMetaData);
+    return (C) refreshCategoryResponse.getReturn();
+  }
 
-   @Override
-   public void remove(MetaData paramMetaData, C paramCategory) {
-      RemoveCategory paramRemoveCategory = new RemoveCategory();
-      paramRemoveCategory.setCategory(paramCategory);
-      getCategoryWebServiceImpl().removeCategory(paramRemoveCategory, paramMetaData);
-   }
+  @Override
+  public void remove(final MetaData paramMetaData, final C paramCategory) {
+    final RemoveCategory paramRemoveCategory = new RemoveCategory();
+    paramRemoveCategory.setCategory(paramCategory);
+    getCategoryWebServiceImpl().removeCategory(paramRemoveCategory, paramMetaData);
+  }
 }

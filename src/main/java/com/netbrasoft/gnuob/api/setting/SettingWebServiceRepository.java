@@ -27,83 +27,86 @@ import com.netbrasoft.gnuob.api.SettingWebServiceImplService;
 import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 
 @Monitored
-@Repository("SettingWebServiceRepository")
+@Repository(SettingWebServiceRepository.SETTING_WEB_SERVICE_REPOSITORY_NAME)
 public class SettingWebServiceRepository<S extends Setting> implements GenericTypeWebServiceRepository<S> {
 
-   private SettingWebServiceImpl settingWebServiceImpl;
+  protected static final String SETTING_WEB_SERVICE_REPOSITORY_NAME = "SettingWebServiceRepository";
 
-   public SettingWebServiceRepository() {
-   }
+  private SettingWebServiceImpl settingWebServiceImpl;
 
-   @Override
-   public long count(MetaData paramMetaData, S paramSetting) {
-      CountSetting paramCountSetting = new CountSetting();
-      paramCountSetting.setSetting(paramSetting);
-      CountSettingResponse countSettingResponse = getSettingWebServiceImpl().countSetting(paramCountSetting, paramMetaData);
-      return countSettingResponse.getReturn();
-   }
+  public SettingWebServiceRepository() {
+    // Empty constructor.
+  }
 
-   @SuppressWarnings("unchecked")
-   @Override
-   public S find(MetaData paramMetaData, S paramSetting) {
-      FindSettingById paramFindSettingById = new FindSettingById();
-      paramFindSettingById.setSetting(paramSetting);
-      FindSettingByIdResponse findSettingByIdResponse = getSettingWebServiceImpl().findSettingById(paramFindSettingById, paramMetaData);
-      return (S) findSettingByIdResponse.getReturn();
+  @Override
+  public long count(final MetaData paramMetaData, final S paramSetting) {
+    final CountSetting paramCountSetting = new CountSetting();
+    paramCountSetting.setSetting(paramSetting);
+    final CountSettingResponse countSettingResponse = getSettingWebServiceImpl().countSetting(paramCountSetting, paramMetaData);
+    return countSettingResponse.getReturn();
+  }
 
-   }
+  @SuppressWarnings("unchecked")
+  @Override
+  public S find(final MetaData paramMetaData, final S paramSetting) {
+    final FindSettingById paramFindSettingById = new FindSettingById();
+    paramFindSettingById.setSetting(paramSetting);
+    final FindSettingByIdResponse findSettingByIdResponse = getSettingWebServiceImpl().findSettingById(paramFindSettingById, paramMetaData);
+    return (S) findSettingByIdResponse.getReturn();
 
-   @SuppressWarnings("unchecked")
-   @Override
-   public List<S> find(MetaData paramMetaData, S paramSetting, Paging paramPaging, OrderBy paramOrderBy) {
-      FindSetting paramFindSetting = new FindSetting();
-      paramFindSetting.setSetting(paramSetting);
-      paramFindSetting.setPaging(paramPaging);
-      paramFindSetting.setOrderBy(paramOrderBy);
-      FindSettingResponse findSettingResponse = getSettingWebServiceImpl().findSetting(paramFindSetting, paramMetaData);
-      return (List<S>) findSettingResponse.getReturn();
-   }
+  }
 
-   private SettingWebServiceImpl getSettingWebServiceImpl() {
-      if (settingWebServiceImpl == null) {
-         SettingWebServiceImplService settingWebServiceImplService = new SettingWebServiceImplService(SettingWebServiceImplService.WSDL_LOCATION);
-         settingWebServiceImpl = settingWebServiceImplService.getSettingWebServiceImplPort();
-      }
+  @SuppressWarnings("unchecked")
+  @Override
+  public List<S> find(final MetaData paramMetaData, final S paramSetting, final Paging paramPaging, final OrderBy paramOrderBy) {
+    final FindSetting paramFindSetting = new FindSetting();
+    paramFindSetting.setSetting(paramSetting);
+    paramFindSetting.setPaging(paramPaging);
+    paramFindSetting.setOrderBy(paramOrderBy);
+    final FindSettingResponse findSettingResponse = getSettingWebServiceImpl().findSetting(paramFindSetting, paramMetaData);
+    return (List<S>) findSettingResponse.getReturn();
+  }
 
-      return settingWebServiceImpl;
-   }
+  private SettingWebServiceImpl getSettingWebServiceImpl() {
+    if (settingWebServiceImpl == null) {
+      final SettingWebServiceImplService settingWebServiceImplService = new SettingWebServiceImplService(SettingWebServiceImplService.WSDL_LOCATION);
+      settingWebServiceImpl = settingWebServiceImplService.getSettingWebServiceImplPort();
+    }
 
-   @SuppressWarnings("unchecked")
-   @Override
-   public S merge(MetaData paramMetaData, S paramSetting) {
-      MergeSetting paramMergeSetting = new MergeSetting();
-      paramMergeSetting.setSetting(paramSetting);
-      MergeSettingResponse mergeSettingResponse = getSettingWebServiceImpl().mergeSetting(paramMergeSetting, paramMetaData);
-      return (S) mergeSettingResponse.getReturn();
-   }
+    return settingWebServiceImpl;
+  }
 
-   @SuppressWarnings("unchecked")
-   @Override
-   public S persist(MetaData paramMetaData, S paramSetting) {
-      PersistSetting paramPersistSetting = new PersistSetting();
-      paramPersistSetting.setSetting(paramSetting);
-      PersistSettingResponse persistSettingResponse = getSettingWebServiceImpl().persistSetting(paramPersistSetting, paramMetaData);
-      return (S) persistSettingResponse.getReturn();
-   }
+  @SuppressWarnings("unchecked")
+  @Override
+  public S merge(final MetaData paramMetaData, final S paramSetting) {
+    final MergeSetting paramMergeSetting = new MergeSetting();
+    paramMergeSetting.setSetting(paramSetting);
+    final MergeSettingResponse mergeSettingResponse = getSettingWebServiceImpl().mergeSetting(paramMergeSetting, paramMetaData);
+    return (S) mergeSettingResponse.getReturn();
+  }
 
-   @SuppressWarnings("unchecked")
-   @Override
-   public S refresh(MetaData paramMetaData, S paramSetting) {
-      RefreshSetting paramRefresSetting = new RefreshSetting();
-      paramRefresSetting.setSetting(paramSetting);
-      RefreshSettingResponse refresSettingResponse = getSettingWebServiceImpl().refreshSetting(paramRefresSetting, paramMetaData);
-      return (S) refresSettingResponse.getReturn();
-   }
+  @SuppressWarnings("unchecked")
+  @Override
+  public S persist(final MetaData paramMetaData, final S paramSetting) {
+    final PersistSetting paramPersistSetting = new PersistSetting();
+    paramPersistSetting.setSetting(paramSetting);
+    final PersistSettingResponse persistSettingResponse = getSettingWebServiceImpl().persistSetting(paramPersistSetting, paramMetaData);
+    return (S) persistSettingResponse.getReturn();
+  }
 
-   @Override
-   public void remove(MetaData paramMetaData, S paramSetting) {
-      RemoveSetting paramRemoveSetting = new RemoveSetting();
-      paramRemoveSetting.setSetting(paramSetting);
-      getSettingWebServiceImpl().removeSetting(paramRemoveSetting, paramMetaData);
-   }
+  @SuppressWarnings("unchecked")
+  @Override
+  public S refresh(final MetaData paramMetaData, final S paramSetting) {
+    final RefreshSetting paramRefresSetting = new RefreshSetting();
+    paramRefresSetting.setSetting(paramSetting);
+    final RefreshSettingResponse refresSettingResponse = getSettingWebServiceImpl().refreshSetting(paramRefresSetting, paramMetaData);
+    return (S) refresSettingResponse.getReturn();
+  }
+
+  @Override
+  public void remove(final MetaData paramMetaData, final S paramSetting) {
+    final RemoveSetting paramRemoveSetting = new RemoveSetting();
+    paramRemoveSetting.setSetting(paramSetting);
+    getSettingWebServiceImpl().removeSetting(paramRemoveSetting, paramMetaData);
+  }
 }

@@ -1,6 +1,7 @@
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
@@ -8,11 +9,10 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>
  * Java class for GNUOpenBusinessServiceException complex type.
- * 
+ *
  * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
- * 
+ * The following schema fragment specifies the expected content contained within this class.
+ *
  * <pre>
  * &lt;complexType name="GNUOpenBusinessServiceException">
  *   &lt;complexContent>
@@ -24,35 +24,34 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "GNUOpenBusinessServiceException", propOrder = { "message" })
+@XmlType(name = "GNUOpenBusinessServiceException", propOrder = {"message"})
 public class GNUOpenBusinessServiceException implements Serializable {
 
-   private static final long serialVersionUID = -5099137019892563470L;
-   protected String message;
+  private static final long serialVersionUID = -5099137019892563470L;
+  protected String message;
 
-   /**
-    * Gets the value of the message property.
-    * 
-    * @return possible object is {@link String }
-    * 
-    */
-   public String getMessage() {
-      return message;
-   }
+  /**
+   * Gets the value of the message property.
+   *
+   * @return possible object is {@link String }
+   *
+   */
+  public String getMessage() {
+    return message;
+  }
 
-   /**
-    * Sets the value of the message property.
-    * 
-    * @param value
-    *           allowed object is {@link String }
-    * 
-    */
-   public void setMessage(String value) {
-      this.message = value;
-   }
+  /**
+   * Sets the value of the message property.
+   *
+   * @param value allowed object is {@link String }
+   *
+   */
+  public void setMessage(final String value) {
+    this.message = value;
+  }
 
 }

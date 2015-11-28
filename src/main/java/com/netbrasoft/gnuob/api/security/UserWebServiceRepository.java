@@ -27,83 +27,86 @@ import com.netbrasoft.gnuob.api.UserWebServiceImplService;
 import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 
 @Monitored
-@Repository("UserWebServiceRepository")
+@Repository(UserWebServiceRepository.USER_WEB_SERVICE_REPOSITORY_NAME)
 public class UserWebServiceRepository<U extends User> implements GenericTypeWebServiceRepository<U> {
 
-   private UserWebServiceImpl userWebServiceImpl;
+  protected static final String USER_WEB_SERVICE_REPOSITORY_NAME = "UserWebServiceRepository";
 
-   public UserWebServiceRepository() {
-   }
+  private UserWebServiceImpl userWebServiceImpl;
 
-   @Override
-   public long count(MetaData paramMetaData, U paramUser) {
-      CountUser paramCountUser = new CountUser();
-      paramCountUser.setUser(paramUser);
-      CountUserResponse countUserResponse = getUserWebServiceImpl().countUser(paramCountUser, paramMetaData);
-      return countUserResponse.getReturn();
-   }
+  public UserWebServiceRepository() {
+    // Empty constructor.
+  }
 
-   @SuppressWarnings("unchecked")
-   @Override
-   public U find(MetaData paramMetaData, U paramUser) {
-      FindUserById paramFindUserById = new FindUserById();
-      paramFindUserById.setUser(paramUser);
-      FindUserByIdResponse findUserByIdResponse = getUserWebServiceImpl().findUserById(paramFindUserById, paramMetaData);
-      return (U) findUserByIdResponse.getReturn();
+  @Override
+  public long count(final MetaData paramMetaData, final U paramUser) {
+    final CountUser paramCountUser = new CountUser();
+    paramCountUser.setUser(paramUser);
+    final CountUserResponse countUserResponse = getUserWebServiceImpl().countUser(paramCountUser, paramMetaData);
+    return countUserResponse.getReturn();
+  }
 
-   }
+  @SuppressWarnings("unchecked")
+  @Override
+  public U find(final MetaData paramMetaData, final U paramUser) {
+    final FindUserById paramFindUserById = new FindUserById();
+    paramFindUserById.setUser(paramUser);
+    final FindUserByIdResponse findUserByIdResponse = getUserWebServiceImpl().findUserById(paramFindUserById, paramMetaData);
+    return (U) findUserByIdResponse.getReturn();
 
-   @SuppressWarnings("unchecked")
-   @Override
-   public List<U> find(MetaData paramMetaData, U paramUser, Paging paramPaging, OrderBy paramOrderBy) {
-      FindUser paramFindUser = new FindUser();
-      paramFindUser.setUser(paramUser);
-      paramFindUser.setPaging(paramPaging);
-      paramFindUser.setOrderBy(paramOrderBy);
-      FindUserResponse findUserResponse = getUserWebServiceImpl().findUser(paramFindUser, paramMetaData);
-      return (List<U>) findUserResponse.getReturn();
-   }
+  }
 
-   private UserWebServiceImpl getUserWebServiceImpl() {
-      if (userWebServiceImpl == null) {
-         UserWebServiceImplService userWebServiceImplService = new UserWebServiceImplService(UserWebServiceImplService.WSDL_LOCATION);
-         userWebServiceImpl = userWebServiceImplService.getUserWebServiceImplPort();
-      }
+  @SuppressWarnings("unchecked")
+  @Override
+  public List<U> find(final MetaData paramMetaData, final U paramUser, final Paging paramPaging, final OrderBy paramOrderBy) {
+    final FindUser paramFindUser = new FindUser();
+    paramFindUser.setUser(paramUser);
+    paramFindUser.setPaging(paramPaging);
+    paramFindUser.setOrderBy(paramOrderBy);
+    final FindUserResponse findUserResponse = getUserWebServiceImpl().findUser(paramFindUser, paramMetaData);
+    return (List<U>) findUserResponse.getReturn();
+  }
 
-      return userWebServiceImpl;
-   }
+  private UserWebServiceImpl getUserWebServiceImpl() {
+    if (userWebServiceImpl == null) {
+      final UserWebServiceImplService userWebServiceImplService = new UserWebServiceImplService(UserWebServiceImplService.WSDL_LOCATION);
+      userWebServiceImpl = userWebServiceImplService.getUserWebServiceImplPort();
+    }
 
-   @SuppressWarnings("unchecked")
-   @Override
-   public U merge(MetaData paramMetaData, U paramUser) {
-      MergeUser paramMergeUser = new MergeUser();
-      paramMergeUser.setUser(paramUser);
-      MergeUserResponse mergeUserResponse = getUserWebServiceImpl().mergeUser(paramMergeUser, paramMetaData);
-      return (U) mergeUserResponse.getReturn();
-   }
+    return userWebServiceImpl;
+  }
 
-   @SuppressWarnings("unchecked")
-   @Override
-   public U persist(MetaData paramMetaData, U paramUser) {
-      PersistUser paramPersistUser = new PersistUser();
-      paramPersistUser.setUser(paramUser);
-      PersistUserResponse persistUserResponse = getUserWebServiceImpl().persistUser(paramPersistUser, paramMetaData);
-      return (U) persistUserResponse.getReturn();
-   }
+  @SuppressWarnings("unchecked")
+  @Override
+  public U merge(final MetaData paramMetaData, final U paramUser) {
+    final MergeUser paramMergeUser = new MergeUser();
+    paramMergeUser.setUser(paramUser);
+    final MergeUserResponse mergeUserResponse = getUserWebServiceImpl().mergeUser(paramMergeUser, paramMetaData);
+    return (U) mergeUserResponse.getReturn();
+  }
 
-   @SuppressWarnings("unchecked")
-   @Override
-   public U refresh(MetaData paramMetaData, U paramUser) {
-      RefreshUser paramRefresUser = new RefreshUser();
-      paramRefresUser.setUser(paramUser);
-      RefreshUserResponse refresUserResponse = getUserWebServiceImpl().refreshUser(paramRefresUser, paramMetaData);
-      return (U) refresUserResponse.getReturn();
-   }
+  @SuppressWarnings("unchecked")
+  @Override
+  public U persist(final MetaData paramMetaData, final U paramUser) {
+    final PersistUser paramPersistUser = new PersistUser();
+    paramPersistUser.setUser(paramUser);
+    final PersistUserResponse persistUserResponse = getUserWebServiceImpl().persistUser(paramPersistUser, paramMetaData);
+    return (U) persistUserResponse.getReturn();
+  }
 
-   @Override
-   public void remove(MetaData paramMetaData, U paramUser) {
-      RemoveUser paramRemoveUser = new RemoveUser();
-      paramRemoveUser.setUser(paramUser);
-      getUserWebServiceImpl().removeUser(paramRemoveUser, paramMetaData);
-   }
+  @SuppressWarnings("unchecked")
+  @Override
+  public U refresh(final MetaData paramMetaData, final U paramUser) {
+    final RefreshUser paramRefresUser = new RefreshUser();
+    paramRefresUser.setUser(paramUser);
+    final RefreshUserResponse refresUserResponse = getUserWebServiceImpl().refreshUser(paramRefresUser, paramMetaData);
+    return (U) refresUserResponse.getReturn();
+  }
+
+  @Override
+  public void remove(final MetaData paramMetaData, final U paramUser) {
+    final RemoveUser paramRemoveUser = new RemoveUser();
+    paramRemoveUser.setUser(paramUser);
+    getUserWebServiceImpl().removeUser(paramRemoveUser, paramMetaData);
+  }
 }

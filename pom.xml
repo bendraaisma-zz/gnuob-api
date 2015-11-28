@@ -1,202 +1,183 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+   <modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.netbrasoft</groupId>
-	<artifactId>gnuob-api</artifactId>
-	<version>0.0.3-SNAPSHOT</version>
-	<packaging>jar</packaging>
-	<name>GNU Open Business Platform</name>
-	<description>GNU Open Business Platform is a open source business framework</description>
+   <groupId>com.netbrasoft</groupId>
+   <artifactId>gnuob-api</artifactId>
+   <version>0.0.8-SNAPSHOT</version>
+   <packaging>jar</packaging>
+   <name>GNU Open Business Platform Application Programming Interface</name>
+   <description>GNU Open Business Platform is a open source business framework</description>
 
-	<url>https://github.com/bendraaisma/gnuob-api</url>
-	
-	<licenses>
-		<license>
-			<name>Apache License, Version 2.0</name>
-			<distribution>repo</distribution>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
-		</license>
-	</licenses>
+   <url>https://github.com/bendraaisma/gnuob-api</url>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<version.jar.plugin>2.5</version.jar.plugin>
-		<version.springframework.plugin>4.1.7.RELEASE</version.springframework.plugin>
-		<version.wicket.plugin>7.0.0</version.wicket.plugin>
-		<version.surefire.plugin>2.17</version.surefire.plugin>
-		<version.javasimon>4.0.1</version.javasimon>
-		<version.PBKDF2>1.1.0</version.PBKDF2>
-		<version.picketbox>4.9.2.Final</version.picketbox>
-		<version.mockito-all>1.9.5</version.mockito-all>
-		<version.graphene-webdriver>2.0.3.Final</version.graphene-webdriver>
+   <licenses>
+      <license>
+         <name>Apache License, Version 2.0</name>
+         <distribution>repo</distribution>
+         <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+      </license>
+   </licenses>
 
-		<maven.compiler.target>1.8</maven.compiler.target>
-		<maven.compiler.source>1.8</maven.compiler.source>
-	</properties>
+   <properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <version.jar.plugin>2.5</version.jar.plugin>
+      <version.springframework.plugin>4.1.7.RELEASE</version.springframework.plugin>
+      <version.wicket.plugin>7.0.0</version.wicket.plugin>
+      <version.surefire.plugin>2.17</version.surefire.plugin>
+      <version.javasimon>4.0.1</version.javasimon>
+      <version.PBKDF2>1.1.0</version.PBKDF2>
+      <version.picketbox>4.9.3.Final</version.picketbox>
+      <version.mockito-all>1.9.5</version.mockito-all>
+      <version.graphene-webdriver>2.0.3.Final</version.graphene-webdriver>
+      <maven.compiler.target>1.8</maven.compiler.target>
+      <maven.compiler.source>1.8</maven.compiler.source>
+   </properties>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.wildfly.bom</groupId>
-				<artifactId>jboss-javaee-7.0-wildfly-with-tools</artifactId>
-				<version>9.0.1.Final</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+   <dependencyManagement>
+      <dependencies>
+         <dependency>
+            <groupId>org.wildfly.bom</groupId>
+            <artifactId>jboss-javaee-7.0-wildfly-with-tools</artifactId>
+            <version>9.0.1.Final</version>
+            <type>pom</type>
+            <scope>import</scope>
+         </dependency>
+      </dependencies>
+   </dependencyManagement>
 
-	<dependencies>
+   <dependencies>
 
-		<!-- JBOSS Etc. -->
+      <!-- JBOSS Etc. -->
 
-		<dependency>
-			<groupId>org.jboss.arquillian.graphene</groupId>
-			<artifactId>graphene-webdriver</artifactId>
-			<type>pom</type>
-			<scope>test</scope>
-		</dependency>
+      <dependency>
+         <groupId>org.jboss.arquillian.graphene</groupId>
+         <artifactId>graphene-webdriver</artifactId>
+         <type>pom</type>
+         <scope>test</scope>
+      </dependency>
 
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
+      <dependency>
+         <groupId>junit</groupId>
+         <artifactId>junit</artifactId>
+         <scope>test</scope>
+      </dependency>
 
-		<dependency>
-			<groupId>org.jboss.arquillian.junit</groupId>
-			<artifactId>arquillian-junit-container</artifactId>
-			<scope>test</scope>
-		</dependency>
+      <dependency>
+         <groupId>org.jboss.arquillian.junit</groupId>
+         <artifactId>arquillian-junit-container</artifactId>
+         <scope>test</scope>
+      </dependency>
 
-		<!-- SPRING -->
+      <!-- SPRING -->
 
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>${version.springframework.plugin}</version>
-			<scope>compile</scope>
-		</dependency>
+      <dependency>
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-context</artifactId>
+         <version>${version.springframework.plugin}</version>
+         <scope>compile</scope>
+      </dependency>
 
-		<!-- WICKET -->
+      <!-- WICKET -->
 
-		<dependency>
-			<groupId>org.apache.wicket</groupId>
-			<artifactId>wicket-core</artifactId>
-			<version>${version.wicket.plugin}</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.wicket</groupId>
-			<artifactId>wicket-extensions</artifactId>
-			<version>${version.wicket.plugin}</version>
-			<scope>compile</scope>
-		</dependency>
+      <dependency>
+         <groupId>org.apache.wicket</groupId>
+         <artifactId>wicket-core</artifactId>
+         <version>${version.wicket.plugin}</version>
+         <scope>compile</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.apache.wicket</groupId>
+         <artifactId>wicket-extensions</artifactId>
+         <version>${version.wicket.plugin}</version>
+         <scope>compile</scope>
+      </dependency>
 
-		<!-- SIMON -->
+      <!-- SIMON -->
 
-		<dependency>
-			<groupId>org.javasimon</groupId>
-			<artifactId>javasimon-core</artifactId>
-			<version>${version.javasimon}</version>
-			<scope>compile</scope>
-		</dependency>
+      <dependency>
+         <groupId>org.javasimon</groupId>
+         <artifactId>javasimon-core</artifactId>
+         <version>${version.javasimon}</version>
+         <scope>compile</scope>
+      </dependency>
 
-		<!-- UTILS -->
+      <!-- UTILS -->
 
-		<dependency>
-			<groupId>org.picketbox</groupId>
-			<artifactId>picketbox</artifactId>
-			<version>${version.picketbox}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>de.rtner</groupId>
-			<artifactId>PBKDF2</artifactId>
-			<version>${version.PBKDF2}</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+      <dependency>
+         <groupId>org.picketbox</groupId>
+         <artifactId>picketbox</artifactId>
+         <version>${version.picketbox}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>de.rtner</groupId>
+         <artifactId>PBKDF2</artifactId>
+         <version>${version.PBKDF2}</version>
+         <scope>test</scope>
+      </dependency>
+   </dependencies>
 
-	<build>
-		<finalName>${project.artifactId}</finalName>
-		<plugins>
-			<plugin>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>${version.jar.plugin}</version>
-				<configuration>
-					<archive>
-						<manifestEntries>
-							<mode>development</mode>
-							<url>${project.url}</url>
-							<dependencies>org.apache.cxf services,org.apache.cxf.impl</dependencies>
-						</manifestEntries>
-						<manifest>
-							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-						</manifest>
-					</archive>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+   <build>
+      <finalName>${project.artifactId}</finalName>
+      <plugins>
+         <plugin>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>${version.jar.plugin}</version>
+            <configuration>
+               <archive>
+                  <manifestEntries>
+                     <mode>development</mode>
+                     <url>${project.url}</url>
+                     <dependencies>org.apache.cxf services,org.apache.cxf.impl</dependencies>
+                  </manifestEntries>
+                  <manifest>
+                     <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                     <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                  </manifest>
+               </archive>
+            </configuration>
+         </plugin>
+      </plugins>
+   </build>
 
-	<profiles>
-		<profile>
-			<!-- The default profile skips all tests, though you can tune it to run just unit tests based on a custom pattern -->
-			<!-- Seperate profiles are provided for running all tests, including Arquillian tests that execute in the specified container -->
-			<id>default</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<build>
-				<plugins>
-					<plugin>
-						<artifactId>maven-surefire-plugin</artifactId>
-						<version>${version.surefire.plugin}</version>
-						<configuration>
-							<skip>true</skip>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		<profile>
-			<!-- An optional Arquillian testing profile that executes tests in your JBoss EAP instance -->
-			<!-- This profile will start a new JBoss EAP instance, and execute the test, shutting it down when done -->
-			<!-- Run with: mvn clean test -Parq-jbossas-managed -->
-			<id>arq-jbossas-managed</id>
-			<dependencies>
-				<dependency>
-					<groupId>org.wildfly.arquillian</groupId>
-					<artifactId>wildfly-arquillian-container-remote</artifactId>
-					<scope>test</scope>
-				</dependency>
-			</dependencies>
-		</profile>
-		<profile>
-			<id>sonar</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<sonar.jdbc.url>
-					jdbc:mysql://localhost:3306/sonar?useUnicode=true&amp;characterEncoding=utf8
-				</sonar.jdbc.url>
-				<sonar.jdbc.username>sonar</sonar.jdbc.username>
-				<sonar.jdbc.password>sonar</sonar.jdbc.password>
+   <profiles>
+      <profile>
+         <!-- The default profile skips all tests, though you can tune it to run just unit tests based on a custom pattern -->
+         <!-- Seperate profiles are provided for running all tests, including Arquillian tests that execute in the specified container -->
+         <id>default</id>
+         <activation>
+            <activeByDefault>true</activeByDefault>
+         </activation>
+         <build>
+            <plugins>
+               <plugin>
+                  <artifactId>maven-surefire-plugin</artifactId>
+                  <version>${version.surefire.plugin}</version>
+                  <configuration>
+                     <skip>true</skip>
+                  </configuration>
+               </plugin>
+            </plugins>
+         </build>
+      </profile>
+      <profile>
+         <!-- An optional Arquillian testing profile that executes tests in your JBoss EAP instance -->
+         <!-- This profile will start a new JBoss EAP instance, and execute the test, shutting it down when done -->
+         <!-- Run with: mvn clean test -Parq-jbossas-managed -->
+         <id>arq-jbossas-managed</id>
+         <dependencies>
+            <dependency>
+               <groupId>org.wildfly.arquillian</groupId>
+               <artifactId>wildfly-arquillian-container-remote</artifactId>
+               <scope>test</scope>
+            </dependency>
+         </dependencies>
+      </profile>
+   </profiles>
 
-				<!-- Optional URL to server. Default value is http://localhost:9000 -->
-				<sonar.host.url>
-					http://localhost:9000
-				</sonar.host.url>
-			</properties>
-		</profile>
-	</profiles>
-
-	<organization>
-		<name>Netbrasoft</name>
-		<url>www.netbrasoft.com</url>
-	</organization>
+   <organization>
+      <name>Netbrasoft</name>
+      <url>www.netbrasoft.com</url>
+   </organization>
 </project>

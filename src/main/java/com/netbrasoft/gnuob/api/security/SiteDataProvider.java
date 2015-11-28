@@ -10,21 +10,23 @@ import com.netbrasoft.gnuob.api.generic.AbstractGenericTypeDataProvider;
 import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 
 @Monitored
-@Controller("SiteDataProvider")
+@Controller(SiteDataProvider.SITE_DATA_PROVIDER_NAME)
 public class SiteDataProvider<S extends Site> extends AbstractGenericTypeDataProvider<S> {
 
-   private static final long serialVersionUID = -8167982674192813819L;
+  public static final String SITE_DATA_PROVIDER_NAME = "SiteDataProvider";
 
-   @Resource(name = "SiteWebServiceRepository")
-   private transient GenericTypeWebServiceRepository<S> siteWebServiceRepository;
+  private static final long serialVersionUID = -8167982674192813819L;
 
-   @SuppressWarnings("unchecked")
-   public SiteDataProvider() {
-      super((S) new Site());
-   }
+  @Resource(name = SiteWebServiceRepository.SITE_WEB_SERVICE_REPOSITORY_NAME)
+  private transient GenericTypeWebServiceRepository<S> siteWebServiceRepository;
 
-   @Override
-   public GenericTypeWebServiceRepository<S> getGenericTypeWebServiceRepository() {
-      return siteWebServiceRepository;
-   }
+  @SuppressWarnings("unchecked")
+  public SiteDataProvider() {
+    super((S) new Site());
+  }
+
+  @Override
+  public GenericTypeWebServiceRepository<S> getGenericTypeWebServiceRepository() {
+    return siteWebServiceRepository;
+  }
 }

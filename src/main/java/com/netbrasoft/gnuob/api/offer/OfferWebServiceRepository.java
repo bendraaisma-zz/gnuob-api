@@ -27,82 +27,85 @@ import com.netbrasoft.gnuob.api.RemoveOffer;
 import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 
 @Monitored
-@Repository("OfferWebServiceRepository")
+@Repository(OfferWebServiceRepository.OFFER_WEB_SERVICE_REPOSITORY_NAME)
 public class OfferWebServiceRepository<O extends Offer> implements GenericTypeWebServiceRepository<O> {
 
-   private OfferWebServiceImpl offerWebServiceImpl;
+  protected static final String OFFER_WEB_SERVICE_REPOSITORY_NAME = "OfferWebServiceRepository";
 
-   public OfferWebServiceRepository() {
-   }
+  private OfferWebServiceImpl offerWebServiceImpl;
 
-   @Override
-   public long count(MetaData paramMetaData, O paramOffer) {
-      CountOffer paramCountOffer = new CountOffer();
-      paramCountOffer.setOffer(paramOffer);
-      CountOfferResponse countOfferResponse = getOfferWebServiceImpl().countOffer(paramCountOffer, paramMetaData);
-      return countOfferResponse.getReturn();
-   }
+  public OfferWebServiceRepository() {
+    // Empty constructor.
+  }
 
-   @SuppressWarnings("unchecked")
-   @Override
-   public O find(MetaData paramMetaData, O paramOffer) {
-      FindOfferById paramFindOfferById = new FindOfferById();
-      paramFindOfferById.setOffer(paramOffer);
-      FindOfferByIdResponse findOfferByIdResponse = getOfferWebServiceImpl().findOfferById(paramFindOfferById, paramMetaData);
-      return (O) findOfferByIdResponse.getReturn();
+  @Override
+  public long count(final MetaData paramMetaData, final O paramOffer) {
+    final CountOffer paramCountOffer = new CountOffer();
+    paramCountOffer.setOffer(paramOffer);
+    final CountOfferResponse countOfferResponse = getOfferWebServiceImpl().countOffer(paramCountOffer, paramMetaData);
+    return countOfferResponse.getReturn();
+  }
 
-   }
+  @SuppressWarnings("unchecked")
+  @Override
+  public O find(final MetaData paramMetaData, final O paramOffer) {
+    final FindOfferById paramFindOfferById = new FindOfferById();
+    paramFindOfferById.setOffer(paramOffer);
+    final FindOfferByIdResponse findOfferByIdResponse = getOfferWebServiceImpl().findOfferById(paramFindOfferById, paramMetaData);
+    return (O) findOfferByIdResponse.getReturn();
 
-   @SuppressWarnings("unchecked")
-   @Override
-   public List<O> find(MetaData paramMetaData, O paramOffer, Paging paramPaging, OrderBy paramOrderBy) {
-      FindOffer paramFindOffer = new FindOffer();
-      paramFindOffer.setOffer(paramOffer);
-      paramFindOffer.setPaging(paramPaging);
-      paramFindOffer.setOrderBy(paramOrderBy);
-      FindOfferResponse findOfferResponse = getOfferWebServiceImpl().findOffer(paramFindOffer, paramMetaData);
-      return (List<O>) findOfferResponse.getReturn();
-   }
+  }
 
-   private OfferWebServiceImpl getOfferWebServiceImpl() {
-      if (offerWebServiceImpl == null) {
-         OfferWebServiceImplService offerWebServiceImplService = new OfferWebServiceImplService(OfferWebServiceImplService.WSDL_LOCATION);
-         offerWebServiceImpl = offerWebServiceImplService.getOfferWebServiceImplPort();
-      }
-      return offerWebServiceImpl;
-   }
+  @SuppressWarnings("unchecked")
+  @Override
+  public List<O> find(final MetaData paramMetaData, final O paramOffer, final Paging paramPaging, final OrderBy paramOrderBy) {
+    final FindOffer paramFindOffer = new FindOffer();
+    paramFindOffer.setOffer(paramOffer);
+    paramFindOffer.setPaging(paramPaging);
+    paramFindOffer.setOrderBy(paramOrderBy);
+    final FindOfferResponse findOfferResponse = getOfferWebServiceImpl().findOffer(paramFindOffer, paramMetaData);
+    return (List<O>) findOfferResponse.getReturn();
+  }
 
-   @SuppressWarnings("unchecked")
-   @Override
-   public O merge(MetaData paramMetaData, O paramOffer) {
-      MergeOffer paramMergeOffer = new MergeOffer();
-      paramMergeOffer.setOffer(paramOffer);
-      MergeOfferResponse mergeOfferResponse = getOfferWebServiceImpl().mergeOffer(paramMergeOffer, paramMetaData);
-      return (O) mergeOfferResponse.getReturn();
-   }
+  private OfferWebServiceImpl getOfferWebServiceImpl() {
+    if (offerWebServiceImpl == null) {
+      final OfferWebServiceImplService offerWebServiceImplService = new OfferWebServiceImplService(OfferWebServiceImplService.WSDL_LOCATION);
+      offerWebServiceImpl = offerWebServiceImplService.getOfferWebServiceImplPort();
+    }
+    return offerWebServiceImpl;
+  }
 
-   @SuppressWarnings("unchecked")
-   @Override
-   public O persist(MetaData paramMetaData, O paramOffer) {
-      PersistOffer paramPersistOffer = new PersistOffer();
-      paramPersistOffer.setOffer(paramOffer);
-      PersistOfferResponse persistOfferResponse = getOfferWebServiceImpl().persistOffer(paramPersistOffer, paramMetaData);
-      return (O) persistOfferResponse.getReturn();
-   }
+  @SuppressWarnings("unchecked")
+  @Override
+  public O merge(final MetaData paramMetaData, final O paramOffer) {
+    final MergeOffer paramMergeOffer = new MergeOffer();
+    paramMergeOffer.setOffer(paramOffer);
+    final MergeOfferResponse mergeOfferResponse = getOfferWebServiceImpl().mergeOffer(paramMergeOffer, paramMetaData);
+    return (O) mergeOfferResponse.getReturn();
+  }
 
-   @SuppressWarnings("unchecked")
-   @Override
-   public O refresh(MetaData paramMetaData, O paramOffer) {
-      RefreshOffer paramRefresOffer = new RefreshOffer();
-      paramRefresOffer.setOffer(paramOffer);
-      RefreshOfferResponse refresOfferResponse = getOfferWebServiceImpl().refreshOffer(paramRefresOffer, paramMetaData);
-      return (O) refresOfferResponse.getReturn();
-   }
+  @SuppressWarnings("unchecked")
+  @Override
+  public O persist(final MetaData paramMetaData, final O paramOffer) {
+    final PersistOffer paramPersistOffer = new PersistOffer();
+    paramPersistOffer.setOffer(paramOffer);
+    final PersistOfferResponse persistOfferResponse = getOfferWebServiceImpl().persistOffer(paramPersistOffer, paramMetaData);
+    return (O) persistOfferResponse.getReturn();
+  }
 
-   @Override
-   public void remove(MetaData paramMetaData, O paramOffer) {
-      RemoveOffer paramRemoveOffer = new RemoveOffer();
-      paramRemoveOffer.setOffer(paramOffer);
-      getOfferWebServiceImpl().removeOffer(paramRemoveOffer, paramMetaData);
-   }
+  @SuppressWarnings("unchecked")
+  @Override
+  public O refresh(final MetaData paramMetaData, final O paramOffer) {
+    final RefreshOffer paramRefresOffer = new RefreshOffer();
+    paramRefresOffer.setOffer(paramOffer);
+    final RefreshOfferResponse refresOfferResponse = getOfferWebServiceImpl().refreshOffer(paramRefresOffer, paramMetaData);
+    return (O) refresOfferResponse.getReturn();
+  }
+
+  @Override
+  public void remove(final MetaData paramMetaData, final O paramOffer) {
+    final RemoveOffer paramRemoveOffer = new RemoveOffer();
+    paramRemoveOffer.setOffer(paramOffer);
+    getOfferWebServiceImpl().removeOffer(paramRemoveOffer, paramMetaData);
+  }
 }

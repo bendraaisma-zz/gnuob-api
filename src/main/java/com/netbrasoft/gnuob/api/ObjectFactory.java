@@ -8,372 +8,341 @@ import javax.xml.namespace.QName;
 
 
 /**
- * This object contains factory methods for each 
- * Java content interface and Java element interface 
- * generated in the com.netbrasoft.gnuob.api package. 
- * <p>An ObjectFactory allows you to programatically 
- * construct new instances of the Java representation 
- * for XML content. The Java representation of XML 
- * content can consist of schema derived interfaces 
- * and classes representing the binding of schema 
- * type definitions, element declarations and model 
- * groups.  Factory methods for each of these are 
- * provided in this class.
- * 
+ * This object contains factory methods for each Java content interface and Java element interface
+ * generated in the com.netbrasoft.gnuob.api package.
+ * <p>
+ * An ObjectFactory allows you to programatically construct new instances of the Java representation
+ * for XML content. The Java representation of XML content can consist of schema derived interfaces
+ * and classes representing the binding of schema type definitions, element declarations and model
+ * groups. Factory methods for each of these are provided in this class.
+ *
  */
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _Content_QNAME = new QName("http://gnuob.netbrasoft.com/", "Content");
-    private final static QName _OrderBy_QNAME = new QName("http://gnuob.netbrasoft.com/", "OrderBy");
-    private final static QName _Paging_QNAME = new QName("http://gnuob.netbrasoft.com/", "Paging");
-    private final static QName _Permission_QNAME = new QName("http://gnuob.netbrasoft.com/", "Permission");
-    private final static QName _Rule_QNAME = new QName("http://gnuob.netbrasoft.com/", "Rule");
-    private final static QName _CountContent_QNAME = new QName("http://gnuob.netbrasoft.com/", "countContent");
-    private final static QName _CountContentResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "countContentResponse");
-    private final static QName _FindContent_QNAME = new QName("http://gnuob.netbrasoft.com/", "findContent");
-    private final static QName _FindContentById_QNAME = new QName("http://gnuob.netbrasoft.com/", "findContentById");
-    private final static QName _FindContentByIdResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "findContentByIdResponse");
-    private final static QName _FindContentResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "findContentResponse");
-    private final static QName _MergeContent_QNAME = new QName("http://gnuob.netbrasoft.com/", "mergeContent");
-    private final static QName _MergeContentResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "mergeContentResponse");
-    private final static QName _MetaData_QNAME = new QName("http://gnuob.netbrasoft.com/", "metaData");
-    private final static QName _PersistContent_QNAME = new QName("http://gnuob.netbrasoft.com/", "persistContent");
-    private final static QName _PersistContentResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "persistContentResponse");
-    private final static QName _RefreshContent_QNAME = new QName("http://gnuob.netbrasoft.com/", "refreshContent");
-    private final static QName _RefreshContentResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "refreshContentResponse");
-    private final static QName _RemoveContent_QNAME = new QName("http://gnuob.netbrasoft.com/", "removeContent");
-    private final static QName _RemoveContentResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "removeContentResponse");
+  private final static QName _OrderBy_QNAME = new QName("http://gnuob.netbrasoft.com/", "OrderBy");
+  private final static QName _Paging_QNAME = new QName("http://gnuob.netbrasoft.com/", "Paging");
+  private final static QName _PostalCode_QNAME = new QName("http://gnuob.netbrasoft.com/", "PostalCode");
+  private final static QName _CountPostalCode_QNAME = new QName("http://gnuob.netbrasoft.com/", "countPostalCode");
+  private final static QName _CountPostalCodeResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "countPostalCodeResponse");
+  private final static QName _FindPostalCode_QNAME = new QName("http://gnuob.netbrasoft.com/", "findPostalCode");
+  private final static QName _FindPostalCodeById_QNAME = new QName("http://gnuob.netbrasoft.com/", "findPostalCodeById");
+  private final static QName _FindPostalCodeByIdResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "findPostalCodeByIdResponse");
+  private final static QName _FindPostalCodeResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "findPostalCodeResponse");
+  private final static QName _MergePostalCode_QNAME = new QName("http://gnuob.netbrasoft.com/", "mergePostalCode");
+  private final static QName _MergePostalCodeResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "mergePostalCodeResponse");
+  private final static QName _MetaData_QNAME = new QName("http://gnuob.netbrasoft.com/", "metaData");
+  private final static QName _PersistPostalCode_QNAME = new QName("http://gnuob.netbrasoft.com/", "persistPostalCode");
+  private final static QName _PersistPostalCodeResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "persistPostalCodeResponse");
+  private final static QName _RefreshPostalCode_QNAME = new QName("http://gnuob.netbrasoft.com/", "refreshPostalCode");
+  private final static QName _RefreshPostalCodeResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "refreshPostalCodeResponse");
+  private final static QName _RemovePostalCode_QNAME = new QName("http://gnuob.netbrasoft.com/", "removePostalCode");
+  private final static QName _RemovePostalCodeResponse_QNAME = new QName("http://gnuob.netbrasoft.com/", "removePostalCodeResponse");
 
-    /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.netbrasoft.gnuob.api
-     * 
-     */
-    public ObjectFactory() {
-    }
+  /**
+   * Create a new ObjectFactory that can be used to create new instances of schema derived classes
+   * for package: com.netbrasoft.gnuob.api
+   * 
+   */
+  public ObjectFactory() {}
 
-    /**
-     * Create an instance of {@link Content }
-     * 
-     */
-    public Content createContent() {
-        return new Content();
-    }
+  /**
+   * Create an instance of {@link CountPostalCode }
+   * 
+   */
+  public CountPostalCode createCountPostalCode() {
+    return new CountPostalCode();
+  }
 
-    /**
-     * Create an instance of {@link Paging }
-     * 
-     */
-    public Paging createPaging() {
-        return new Paging();
-    }
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link CountPostalCode }{@code >}}
+   * 
+   */
+  @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "countPostalCode")
+  public JAXBElement<CountPostalCode> createCountPostalCode(final CountPostalCode value) {
+    return new JAXBElement<CountPostalCode>(_CountPostalCode_QNAME, CountPostalCode.class, null, value);
+  }
 
-    /**
-     * Create an instance of {@link Permission }
-     * 
-     */
-    public Permission createPermission() {
-        return new Permission();
-    }
+  /**
+   * Create an instance of {@link CountPostalCodeResponse }
+   * 
+   */
+  public CountPostalCodeResponse createCountPostalCodeResponse() {
+    return new CountPostalCodeResponse();
+  }
 
-    /**
-     * Create an instance of {@link CountContent }
-     * 
-     */
-    public CountContent createCountContent() {
-        return new CountContent();
-    }
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link CountPostalCodeResponse }{@code >}}
+   * 
+   */
+  @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "countPostalCodeResponse")
+  public JAXBElement<CountPostalCodeResponse> createCountPostalCodeResponse(final CountPostalCodeResponse value) {
+    return new JAXBElement<CountPostalCodeResponse>(_CountPostalCodeResponse_QNAME, CountPostalCodeResponse.class, null, value);
+  }
 
-    /**
-     * Create an instance of {@link CountContentResponse }
-     * 
-     */
-    public CountContentResponse createCountContentResponse() {
-        return new CountContentResponse();
-    }
+  /**
+   * Create an instance of {@link FindPostalCode }
+   * 
+   */
+  public FindPostalCode createFindPostalCode() {
+    return new FindPostalCode();
+  }
 
-    /**
-     * Create an instance of {@link FindContent }
-     * 
-     */
-    public FindContent createFindContent() {
-        return new FindContent();
-    }
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link FindPostalCode }{@code >}}
+   * 
+   */
+  @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "findPostalCode")
+  public JAXBElement<FindPostalCode> createFindPostalCode(final FindPostalCode value) {
+    return new JAXBElement<FindPostalCode>(_FindPostalCode_QNAME, FindPostalCode.class, null, value);
+  }
 
-    /**
-     * Create an instance of {@link FindContentById }
-     * 
-     */
-    public FindContentById createFindContentById() {
-        return new FindContentById();
-    }
+  /**
+   * Create an instance of {@link FindPostalCodeById }
+   * 
+   */
+  public FindPostalCodeById createFindPostalCodeById() {
+    return new FindPostalCodeById();
+  }
 
-    /**
-     * Create an instance of {@link FindContentByIdResponse }
-     * 
-     */
-    public FindContentByIdResponse createFindContentByIdResponse() {
-        return new FindContentByIdResponse();
-    }
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link FindPostalCodeById }{@code >}}
+   * 
+   */
+  @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "findPostalCodeById")
+  public JAXBElement<FindPostalCodeById> createFindPostalCodeById(final FindPostalCodeById value) {
+    return new JAXBElement<FindPostalCodeById>(_FindPostalCodeById_QNAME, FindPostalCodeById.class, null, value);
+  }
 
-    /**
-     * Create an instance of {@link FindContentResponse }
-     * 
-     */
-    public FindContentResponse createFindContentResponse() {
-        return new FindContentResponse();
-    }
+  /**
+   * Create an instance of {@link FindPostalCodeByIdResponse }
+   * 
+   */
+  public FindPostalCodeByIdResponse createFindPostalCodeByIdResponse() {
+    return new FindPostalCodeByIdResponse();
+  }
 
-    /**
-     * Create an instance of {@link MergeContent }
-     * 
-     */
-    public MergeContent createMergeContent() {
-        return new MergeContent();
-    }
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link FindPostalCodeByIdResponse }{@code >}
+   * }
+   * 
+   */
+  @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "findPostalCodeByIdResponse")
+  public JAXBElement<FindPostalCodeByIdResponse> createFindPostalCodeByIdResponse(final FindPostalCodeByIdResponse value) {
+    return new JAXBElement<FindPostalCodeByIdResponse>(_FindPostalCodeByIdResponse_QNAME, FindPostalCodeByIdResponse.class, null, value);
+  }
 
-    /**
-     * Create an instance of {@link MergeContentResponse }
-     * 
-     */
-    public MergeContentResponse createMergeContentResponse() {
-        return new MergeContentResponse();
-    }
+  /**
+   * Create an instance of {@link FindPostalCodeResponse }
+   * 
+   */
+  public FindPostalCodeResponse createFindPostalCodeResponse() {
+    return new FindPostalCodeResponse();
+  }
 
-    /**
-     * Create an instance of {@link MetaData }
-     * 
-     */
-    public MetaData createMetaData() {
-        return new MetaData();
-    }
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link FindPostalCodeResponse }{@code >}}
+   * 
+   */
+  @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "findPostalCodeResponse")
+  public JAXBElement<FindPostalCodeResponse> createFindPostalCodeResponse(final FindPostalCodeResponse value) {
+    return new JAXBElement<FindPostalCodeResponse>(_FindPostalCodeResponse_QNAME, FindPostalCodeResponse.class, null, value);
+  }
 
-    /**
-     * Create an instance of {@link PersistContent }
-     * 
-     */
-    public PersistContent createPersistContent() {
-        return new PersistContent();
-    }
+  /**
+   * Create an instance of {@link MergePostalCode }
+   * 
+   */
+  public MergePostalCode createMergePostalCode() {
+    return new MergePostalCode();
+  }
 
-    /**
-     * Create an instance of {@link PersistContentResponse }
-     * 
-     */
-    public PersistContentResponse createPersistContentResponse() {
-        return new PersistContentResponse();
-    }
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link MergePostalCode }{@code >}}
+   * 
+   */
+  @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "mergePostalCode")
+  public JAXBElement<MergePostalCode> createMergePostalCode(final MergePostalCode value) {
+    return new JAXBElement<MergePostalCode>(_MergePostalCode_QNAME, MergePostalCode.class, null, value);
+  }
 
-    /**
-     * Create an instance of {@link RefreshContent }
-     * 
-     */
-    public RefreshContent createRefreshContent() {
-        return new RefreshContent();
-    }
+  /**
+   * Create an instance of {@link MergePostalCodeResponse }
+   * 
+   */
+  public MergePostalCodeResponse createMergePostalCodeResponse() {
+    return new MergePostalCodeResponse();
+  }
 
-    /**
-     * Create an instance of {@link RefreshContentResponse }
-     * 
-     */
-    public RefreshContentResponse createRefreshContentResponse() {
-        return new RefreshContentResponse();
-    }
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link MergePostalCodeResponse }{@code >}}
+   * 
+   */
+  @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "mergePostalCodeResponse")
+  public JAXBElement<MergePostalCodeResponse> createMergePostalCodeResponse(final MergePostalCodeResponse value) {
+    return new JAXBElement<MergePostalCodeResponse>(_MergePostalCodeResponse_QNAME, MergePostalCodeResponse.class, null, value);
+  }
 
-    /**
-     * Create an instance of {@link RemoveContent }
-     * 
-     */
-    public RemoveContent createRemoveContent() {
-        return new RemoveContent();
-    }
+  /**
+   * Create an instance of {@link MetaData }
+   * 
+   */
+  public MetaData createMetaData() {
+    return new MetaData();
+  }
 
-    /**
-     * Create an instance of {@link RemoveContentResponse }
-     * 
-     */
-    public RemoveContentResponse createRemoveContentResponse() {
-        return new RemoveContentResponse();
-    }
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link MetaData }{@code >}}
+   * 
+   */
+  @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "metaData")
+  public JAXBElement<MetaData> createMetaData(final MetaData value) {
+    return new JAXBElement<MetaData>(_MetaData_QNAME, MetaData.class, null, value);
+  }
 
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Content }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "Content")
-    public JAXBElement<Content> createContent(Content value) {
-        return new JAXBElement<Content>(_Content_QNAME, Content.class, null, value);
-    }
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link OrderBy }{@code >}}
+   * 
+   */
+  @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "OrderBy")
+  public JAXBElement<OrderBy> createOrderBy(final OrderBy value) {
+    return new JAXBElement<OrderBy>(_OrderBy_QNAME, OrderBy.class, null, value);
+  }
 
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link OrderBy }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "OrderBy")
-    public JAXBElement<OrderBy> createOrderBy(OrderBy value) {
-        return new JAXBElement<OrderBy>(_OrderBy_QNAME, OrderBy.class, null, value);
-    }
+  /**
+   * Create an instance of {@link Paging }
+   * 
+   */
+  public Paging createPaging() {
+    return new Paging();
+  }
 
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Paging }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "Paging")
-    public JAXBElement<Paging> createPaging(Paging value) {
-        return new JAXBElement<Paging>(_Paging_QNAME, Paging.class, null, value);
-    }
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link Paging }{@code >}}
+   * 
+   */
+  @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "Paging")
+  public JAXBElement<Paging> createPaging(final Paging value) {
+    return new JAXBElement<Paging>(_Paging_QNAME, Paging.class, null, value);
+  }
 
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Permission }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "Permission")
-    public JAXBElement<Permission> createPermission(Permission value) {
-        return new JAXBElement<Permission>(_Permission_QNAME, Permission.class, null, value);
-    }
+  /**
+   * Create an instance of {@link PersistPostalCode }
+   * 
+   */
+  public PersistPostalCode createPersistPostalCode() {
+    return new PersistPostalCode();
+  }
 
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Rule }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "Rule")
-    public JAXBElement<Rule> createRule(Rule value) {
-        return new JAXBElement<Rule>(_Rule_QNAME, Rule.class, null, value);
-    }
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link PersistPostalCode }{@code >}}
+   * 
+   */
+  @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "persistPostalCode")
+  public JAXBElement<PersistPostalCode> createPersistPostalCode(final PersistPostalCode value) {
+    return new JAXBElement<PersistPostalCode>(_PersistPostalCode_QNAME, PersistPostalCode.class, null, value);
+  }
 
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CountContent }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "countContent")
-    public JAXBElement<CountContent> createCountContent(CountContent value) {
-        return new JAXBElement<CountContent>(_CountContent_QNAME, CountContent.class, null, value);
-    }
+  /**
+   * Create an instance of {@link PersistPostalCodeResponse }
+   * 
+   */
+  public PersistPostalCodeResponse createPersistPostalCodeResponse() {
+    return new PersistPostalCodeResponse();
+  }
 
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CountContentResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "countContentResponse")
-    public JAXBElement<CountContentResponse> createCountContentResponse(CountContentResponse value) {
-        return new JAXBElement<CountContentResponse>(_CountContentResponse_QNAME, CountContentResponse.class, null, value);
-    }
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link PersistPostalCodeResponse }{@code >}}
+   * 
+   */
+  @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "persistPostalCodeResponse")
+  public JAXBElement<PersistPostalCodeResponse> createPersistPostalCodeResponse(final PersistPostalCodeResponse value) {
+    return new JAXBElement<PersistPostalCodeResponse>(_PersistPostalCodeResponse_QNAME, PersistPostalCodeResponse.class, null, value);
+  }
 
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindContent }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "findContent")
-    public JAXBElement<FindContent> createFindContent(FindContent value) {
-        return new JAXBElement<FindContent>(_FindContent_QNAME, FindContent.class, null, value);
-    }
+  /**
+   * Create an instance of {@link PostalCode }
+   * 
+   */
+  public PostalCode createPostalCode() {
+    return new PostalCode();
+  }
 
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindContentById }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "findContentById")
-    public JAXBElement<FindContentById> createFindContentById(FindContentById value) {
-        return new JAXBElement<FindContentById>(_FindContentById_QNAME, FindContentById.class, null, value);
-    }
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link PostalCode }{@code >}}
+   * 
+   */
+  @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "PostalCode")
+  public JAXBElement<PostalCode> createPostalCode(final PostalCode value) {
+    return new JAXBElement<PostalCode>(_PostalCode_QNAME, PostalCode.class, null, value);
+  }
 
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindContentByIdResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "findContentByIdResponse")
-    public JAXBElement<FindContentByIdResponse> createFindContentByIdResponse(FindContentByIdResponse value) {
-        return new JAXBElement<FindContentByIdResponse>(_FindContentByIdResponse_QNAME, FindContentByIdResponse.class, null, value);
-    }
+  /**
+   * Create an instance of {@link RefreshPostalCode }
+   * 
+   */
+  public RefreshPostalCode createRefreshPostalCode() {
+    return new RefreshPostalCode();
+  }
 
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindContentResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "findContentResponse")
-    public JAXBElement<FindContentResponse> createFindContentResponse(FindContentResponse value) {
-        return new JAXBElement<FindContentResponse>(_FindContentResponse_QNAME, FindContentResponse.class, null, value);
-    }
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link RefreshPostalCode }{@code >}}
+   * 
+   */
+  @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "refreshPostalCode")
+  public JAXBElement<RefreshPostalCode> createRefreshPostalCode(final RefreshPostalCode value) {
+    return new JAXBElement<RefreshPostalCode>(_RefreshPostalCode_QNAME, RefreshPostalCode.class, null, value);
+  }
 
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link MergeContent }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "mergeContent")
-    public JAXBElement<MergeContent> createMergeContent(MergeContent value) {
-        return new JAXBElement<MergeContent>(_MergeContent_QNAME, MergeContent.class, null, value);
-    }
+  /**
+   * Create an instance of {@link RefreshPostalCodeResponse }
+   * 
+   */
+  public RefreshPostalCodeResponse createRefreshPostalCodeResponse() {
+    return new RefreshPostalCodeResponse();
+  }
 
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link MergeContentResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "mergeContentResponse")
-    public JAXBElement<MergeContentResponse> createMergeContentResponse(MergeContentResponse value) {
-        return new JAXBElement<MergeContentResponse>(_MergeContentResponse_QNAME, MergeContentResponse.class, null, value);
-    }
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link RefreshPostalCodeResponse }{@code >}}
+   * 
+   */
+  @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "refreshPostalCodeResponse")
+  public JAXBElement<RefreshPostalCodeResponse> createRefreshPostalCodeResponse(final RefreshPostalCodeResponse value) {
+    return new JAXBElement<RefreshPostalCodeResponse>(_RefreshPostalCodeResponse_QNAME, RefreshPostalCodeResponse.class, null, value);
+  }
 
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link MetaData }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "metaData")
-    public JAXBElement<MetaData> createMetaData(MetaData value) {
-        return new JAXBElement<MetaData>(_MetaData_QNAME, MetaData.class, null, value);
-    }
+  /**
+   * Create an instance of {@link RemovePostalCode }
+   * 
+   */
+  public RemovePostalCode createRemovePostalCode() {
+    return new RemovePostalCode();
+  }
 
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PersistContent }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "persistContent")
-    public JAXBElement<PersistContent> createPersistContent(PersistContent value) {
-        return new JAXBElement<PersistContent>(_PersistContent_QNAME, PersistContent.class, null, value);
-    }
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link RemovePostalCode }{@code >}}
+   * 
+   */
+  @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "removePostalCode")
+  public JAXBElement<RemovePostalCode> createRemovePostalCode(final RemovePostalCode value) {
+    return new JAXBElement<RemovePostalCode>(_RemovePostalCode_QNAME, RemovePostalCode.class, null, value);
+  }
 
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PersistContentResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "persistContentResponse")
-    public JAXBElement<PersistContentResponse> createPersistContentResponse(PersistContentResponse value) {
-        return new JAXBElement<PersistContentResponse>(_PersistContentResponse_QNAME, PersistContentResponse.class, null, value);
-    }
+  /**
+   * Create an instance of {@link RemovePostalCodeResponse }
+   * 
+   */
+  public RemovePostalCodeResponse createRemovePostalCodeResponse() {
+    return new RemovePostalCodeResponse();
+  }
 
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RefreshContent }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "refreshContent")
-    public JAXBElement<RefreshContent> createRefreshContent(RefreshContent value) {
-        return new JAXBElement<RefreshContent>(_RefreshContent_QNAME, RefreshContent.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RefreshContentResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "refreshContentResponse")
-    public JAXBElement<RefreshContentResponse> createRefreshContentResponse(RefreshContentResponse value) {
-        return new JAXBElement<RefreshContentResponse>(_RefreshContentResponse_QNAME, RefreshContentResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RemoveContent }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "removeContent")
-    public JAXBElement<RemoveContent> createRemoveContent(RemoveContent value) {
-        return new JAXBElement<RemoveContent>(_RemoveContent_QNAME, RemoveContent.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RemoveContentResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "removeContentResponse")
-    public JAXBElement<RemoveContentResponse> createRemoveContentResponse(RemoveContentResponse value) {
-        return new JAXBElement<RemoveContentResponse>(_RemoveContentResponse_QNAME, RemoveContentResponse.class, null, value);
-    }
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link RemovePostalCodeResponse }{@code >}}
+   * 
+   */
+  @XmlElementDecl(namespace = "http://gnuob.netbrasoft.com/", name = "removePostalCodeResponse")
+  public JAXBElement<RemovePostalCodeResponse> createRemovePostalCodeResponse(final RemovePostalCodeResponse value) {
+    return new JAXBElement<RemovePostalCodeResponse>(_RemovePostalCodeResponse_QNAME, RemovePostalCodeResponse.class, null, value);
+  }
 
 }

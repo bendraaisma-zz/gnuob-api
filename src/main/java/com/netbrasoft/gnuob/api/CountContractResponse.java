@@ -2,6 +2,7 @@
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -9,10 +10,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for countContractResponse complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
+ * Java class for countContractResponse complex type.
+ *
+ * <p>
+ * The following schema fragment specifies the expected content contained within this class.
+ *
  * <pre>
  * &lt;complexType name="countContractResponse"&gt;
  *   &lt;complexContent&gt;
@@ -24,38 +27,31 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "countContractResponse", propOrder = {
-    "_return"
-})
-public class CountContractResponse
-    implements Serializable
-{
+@XmlType(name = "countContractResponse", propOrder = {"_return"})
+public class CountContractResponse implements Serializable {
 
-    /**
-    * 
-    */
-   private static final long serialVersionUID = 1225536243887788301L;
-   @XmlElement(name = "return")
-    protected long _return;
+  private static final long serialVersionUID = 1225536243887788301L;
+  @XmlElement(name = "return")
+  protected long _return;
 
-    /**
-     * Gets the value of the return property.
-     * 
-     */
-    public long getReturn() {
-        return _return;
-    }
+  /**
+   * Gets the value of the return property.
+   * 
+   */
+  public long getReturn() {
+    return _return;
+  }
 
-    /**
-     * Sets the value of the return property.
-     * 
-     */
-    public void setReturn(long value) {
-        this._return = value;
-    }
+  /**
+   * Sets the value of the return property.
+   * 
+   */
+  public void setReturn(final long value) {
+    this._return = value;
+  }
 
 }

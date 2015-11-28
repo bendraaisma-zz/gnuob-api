@@ -2,16 +2,19 @@
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for persistContract complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
+ * Java class for persistContract complex type.
+ *
+ * <p>
+ * The following schema fragment specifies the expected content contained within this class.
+ *
  * <pre>
  * &lt;complexType name="persistContract"&gt;
  *   &lt;complexContent&gt;
@@ -23,45 +26,34 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "persistContract", propOrder = {
-    "contract"
-})
-public class PersistContract
-    implements Serializable
-{
+@XmlType(name = "persistContract", propOrder = {"contract"})
+public class PersistContract implements Serializable {
 
-    /**
-    * 
-    */
-   private static final long serialVersionUID = -8390391616675787964L;
-   protected Contract contract;
+  private static final long serialVersionUID = -8390391616675787964L;
+  protected Contract contract;
 
-    /**
-     * Gets the value of the contract property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Contract }
-     *     
-     */
-    public Contract getContract() {
-        return contract;
-    }
+  /**
+   * Gets the value of the contract property.
+   * 
+   * @return possible object is {@link Contract }
+   * 
+   */
+  public Contract getContract() {
+    return contract;
+  }
 
-    /**
-     * Sets the value of the contract property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Contract }
-     *     
-     */
-    public void setContract(Contract value) {
-        this.contract = value;
-    }
+  /**
+   * Sets the value of the contract property.
+   * 
+   * @param value allowed object is {@link Contract }
+   * 
+   */
+  public void setContract(final Contract value) {
+    this.contract = value;
+  }
 
 }

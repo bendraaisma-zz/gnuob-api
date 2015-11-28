@@ -2,16 +2,19 @@
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for findSiteById complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
+ * Java class for findSiteById complex type.
+ *
+ * <p>
+ * The following schema fragment specifies the expected content contained within this class.
+ *
  * <pre>
  * &lt;complexType name="findSiteById"&gt;
  *   &lt;complexContent&gt;
@@ -23,45 +26,34 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "findSiteById", propOrder = {
-    "site"
-})
-public class FindSiteById
-    implements Serializable
-{
+@XmlType(name = "findSiteById", propOrder = {"site"})
+public class FindSiteById implements Serializable {
 
-    /**
-    * 
-    */
-   private static final long serialVersionUID = 2704708021838060414L;
-   protected Site site;
+  private static final long serialVersionUID = 2704708021838060414L;
+  protected Site site;
 
-    /**
-     * Gets the value of the site property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Site }
-     *     
-     */
-    public Site getSite() {
-        return site;
-    }
+  /**
+   * Gets the value of the site property.
+   * 
+   * @return possible object is {@link Site }
+   * 
+   */
+  public Site getSite() {
+    return site;
+  }
 
-    /**
-     * Sets the value of the site property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Site }
-     *     
-     */
-    public void setSite(Site value) {
-        this.site = value;
-    }
+  /**
+   * Sets the value of the site property.
+   * 
+   * @param value allowed object is {@link Site }
+   * 
+   */
+  public void setSite(final Site value) {
+    this.site = value;
+  }
 
 }

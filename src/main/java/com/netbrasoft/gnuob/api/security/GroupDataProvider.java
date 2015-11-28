@@ -10,21 +10,23 @@ import com.netbrasoft.gnuob.api.generic.AbstractGenericTypeDataProvider;
 import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
 
 @Monitored
-@Controller("GroupDataProvider")
+@Controller(GroupDataProvider.GROUP_DATA_PROVIDER_NAME)
 public class GroupDataProvider<G extends Group> extends AbstractGenericTypeDataProvider<G> {
 
-   private static final long serialVersionUID = -8167982674192813819L;
+  public static final String GROUP_DATA_PROVIDER_NAME = "GroupDataProvider";
 
-   @Resource(name = "GroupWebServiceRepository")
-   private transient GenericTypeWebServiceRepository<G> groupWebServiceRepository;
+  private static final long serialVersionUID = -8167982674192813819L;
 
-   @SuppressWarnings("unchecked")
-   public GroupDataProvider() {
-      super((G) new Group());
-   }
+  @Resource(name = GroupWebServiceRepository.GROUP_WEB_SERVICE_REPOSITORY_NAME)
+  private transient GenericTypeWebServiceRepository<G> groupWebServiceRepository;
 
-   @Override
-   public GenericTypeWebServiceRepository<G> getGenericTypeWebServiceRepository() {
-      return groupWebServiceRepository;
-   }
+  @SuppressWarnings("unchecked")
+  public GroupDataProvider() {
+    super((G) new Group());
+  }
+
+  @Override
+  public GenericTypeWebServiceRepository<G> getGenericTypeWebServiceRepository() {
+    return groupWebServiceRepository;
+  }
 }

@@ -2,6 +2,7 @@
 package com.netbrasoft.gnuob.api;
 
 import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -9,10 +10,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for findSettingById complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
+ * Java class for findSettingById complex type.
+ *
+ * <p>
+ * The following schema fragment specifies the expected content contained within this class.
+ *
  * <pre>
  * &lt;complexType name="findSettingById"&gt;
  *   &lt;complexContent&gt;
@@ -24,46 +27,35 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "findSettingById", propOrder = {
-    "setting"
-})
-public class FindSettingById
-    implements Serializable
-{
+@XmlType(name = "findSettingById", propOrder = {"setting"})
+public class FindSettingById implements Serializable {
 
-    /**
-    * 
-    */
-   private static final long serialVersionUID = 2986462443584954582L;
-   @XmlElement(name = "Setting")
-    protected Setting setting;
+  private static final long serialVersionUID = 2986462443584954582L;
+  @XmlElement(name = "Setting")
+  protected Setting setting;
 
-    /**
-     * Gets the value of the setting property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Setting }
-     *     
-     */
-    public Setting getSetting() {
-        return setting;
-    }
+  /**
+   * Gets the value of the setting property.
+   * 
+   * @return possible object is {@link Setting }
+   * 
+   */
+  public Setting getSetting() {
+    return setting;
+  }
 
-    /**
-     * Sets the value of the setting property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Setting }
-     *     
-     */
-    public void setSetting(Setting value) {
-        this.setting = value;
-    }
+  /**
+   * Sets the value of the setting property.
+   * 
+   * @param value allowed object is {@link Setting }
+   * 
+   */
+  public void setSetting(final Setting value) {
+    this.setting = value;
+  }
 
 }
