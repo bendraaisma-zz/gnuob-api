@@ -1,4 +1,24 @@
+/*
+ * Copyright 2016 Netbrasoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
 package com.netbrasoft.gnuob.api.order;
+
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.ORDER_DATA_PROVIDER_NAME;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.ORDER_WEB_SERVICE_REPOSITORY_NAME;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.PAGSEGURO_CHECK_OUT_WEB_SERVICE_REPOSITORY;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.PAY_PAL_EXPRESS_CHECK_OUT_WEB_SERVICE_REPOSITORY_NAME;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.UNCHECKED_VALUE;
 
 import javax.annotation.Resource;
 
@@ -7,105 +27,96 @@ import org.springframework.stereotype.Controller;
 
 import com.netbrasoft.gnuob.api.Order;
 import com.netbrasoft.gnuob.api.generic.AbstractGenericTypeDataProvider;
-import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
+import com.netbrasoft.gnuob.api.generic.IGenericTypeWebServiceRepository;
 
 @Monitored
-@Controller(OrderDataProvider.ORDER_DATA_PROVIDER_NAME)
-public class OrderDataProvider<O extends Order> extends AbstractGenericTypeDataProvider<O> implements GenericOrderCheckoutDataProvider<O> {
+@Controller(ORDER_DATA_PROVIDER_NAME)
+public class OrderDataProvider<O extends Order> extends AbstractGenericTypeDataProvider<O>
+    implements IGenericOrderCheckoutDataProvider<O> {
 
-  public enum CheckOut {
+  public enum PaymentProviderEnum {
     PAY_PAL, PAGSEGURO;
-
-    public static CheckOut fromValue(final String value) {
-      return valueOf(value);
-    }
-
-    public String value() {
-      return name();
-    }
   }
-
-  public static final String ORDER_DATA_PROVIDER_NAME = "OrderDataProvider";
 
   private static final long serialVersionUID = 1434788743241708993L;
 
-  @Resource(name = OrderWebServiceRepository.ORDER_WEB_SERVICE_REPOSITORY_NAME)
-  private transient GenericTypeWebServiceRepository<O> orderWebServiceRepository;
+  @Resource(name = ORDER_WEB_SERVICE_REPOSITORY_NAME)
+  private transient IGenericTypeWebServiceRepository<O> orderWebServiceRepository;
 
-  @Resource(name = PayPalExpressCheckOutWebServiceRepository.PAY_PAL_EXPRESS_CHECK_OUT_WEB_SERVICE_REPOSITORY_NAME)
-  private transient CheckoutWebServiceRepository<O> payPalExpressCheckoutWebServiceRepository;
+  @Resource(name = PAY_PAL_EXPRESS_CHECK_OUT_WEB_SERVICE_REPOSITORY_NAME)
+  private transient ICheckoutWebServiceRepository<O> payPalExpressCheckoutWebServiceRepository;
 
-  @Resource(name = PagseguroCheckOutWebServiceRepository.PAGSEGURO_CHECK_OUT_WEB_SERVICE_REPOSITORY)
-  private transient CheckoutWebServiceRepository<O> pagseguroCheckoutWebServiceRepository;
+  @Resource(name = PAGSEGURO_CHECK_OUT_WEB_SERVICE_REPOSITORY)
+  private transient ICheckoutWebServiceRepository<O> pagseguroCheckoutWebServiceRepository;
 
-  private CheckOut checkOut;
+  private PaymentProviderEnum paymentProvider;
 
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings(UNCHECKED_VALUE)
   public OrderDataProvider() {
     super((O) new Order());
-    checkOut = CheckOut.PAY_PAL;
+    paymentProvider = PaymentProviderEnum.PAY_PAL;
   }
 
   @Override
-  public O doCheckout(final O paramOrder) {
-    if (checkOut == CheckOut.PAGSEGURO) {
-      return pagseguroCheckoutWebServiceRepository.doCheckout(metaData, paramOrder);
+  public O doCheckout(final O orderType) {
+    if (PaymentProviderEnum.PAGSEGURO == paymentProvider) {
+      return pagseguroCheckoutWebServiceRepository.doCheckout(getCredentials(), orderType);
     }
-    return payPalExpressCheckoutWebServiceRepository.doCheckout(metaData, paramOrder);
+    return payPalExpressCheckoutWebServiceRepository.doCheckout(getCredentials(), orderType);
   }
 
   @Override
-  public O doCheckoutDetails(final O paramOrder) {
-    if (checkOut == CheckOut.PAGSEGURO) {
-      return pagseguroCheckoutWebServiceRepository.doCheckoutDetails(metaData, paramOrder);
+  public O doCheckoutDetails(final O orderType) {
+    if (PaymentProviderEnum.PAGSEGURO == paymentProvider) {
+      return pagseguroCheckoutWebServiceRepository.doCheckoutDetails(getCredentials(), orderType);
     }
-    return payPalExpressCheckoutWebServiceRepository.doCheckoutDetails(metaData, paramOrder);
+    return payPalExpressCheckoutWebServiceRepository.doCheckoutDetails(getCredentials(), orderType);
   }
 
   @Override
-  public O doCheckoutPayment(final O paramOrder) {
-    if (checkOut == CheckOut.PAGSEGURO) {
-      return pagseguroCheckoutWebServiceRepository.doCheckoutPayment(metaData, paramOrder);
+  public O doCheckoutPayment(final O orderType) {
+    if (PaymentProviderEnum.PAGSEGURO == paymentProvider) {
+      return pagseguroCheckoutWebServiceRepository.doCheckoutPayment(getCredentials(), orderType);
     }
-    return payPalExpressCheckoutWebServiceRepository.doCheckoutPayment(metaData, paramOrder);
+    return payPalExpressCheckoutWebServiceRepository.doCheckoutPayment(getCredentials(), orderType);
   }
 
   @Override
-  public O doNotification(final O paramOrder) {
-    if (checkOut == CheckOut.PAGSEGURO) {
-      return pagseguroCheckoutWebServiceRepository.doNotification(metaData, paramOrder);
+  public O doNotification(final O orderType) {
+    if (PaymentProviderEnum.PAGSEGURO == paymentProvider) {
+      return pagseguroCheckoutWebServiceRepository.doNotification(getCredentials(), orderType);
     }
-    return payPalExpressCheckoutWebServiceRepository.doNotification(metaData, paramOrder);
+    return payPalExpressCheckoutWebServiceRepository.doNotification(getCredentials(), orderType);
   }
 
   @Override
-  public O doRefundTransaction(final O paramOrder) {
-    if (checkOut == CheckOut.PAGSEGURO) {
-      return pagseguroCheckoutWebServiceRepository.doRefundTransaction(metaData, paramOrder);
+  public O doRefundTransaction(final O orderType) {
+    if (PaymentProviderEnum.PAGSEGURO == paymentProvider) {
+      return pagseguroCheckoutWebServiceRepository.doRefundTransaction(getCredentials(), orderType);
     }
-    return payPalExpressCheckoutWebServiceRepository.doRefundTransaction(metaData, paramOrder);
+    return payPalExpressCheckoutWebServiceRepository.doRefundTransaction(getCredentials(), orderType);
   }
 
   @Override
-  public O doTransactionDetails(final O paramOrder) {
-    if (checkOut == CheckOut.PAGSEGURO) {
-      return pagseguroCheckoutWebServiceRepository.doTransactionDetails(metaData, paramOrder);
+  public O doTransactionDetails(final O orderType) {
+    if (PaymentProviderEnum.PAGSEGURO == paymentProvider) {
+      return pagseguroCheckoutWebServiceRepository.doTransactionDetails(getCredentials(), orderType);
     }
-    return payPalExpressCheckoutWebServiceRepository.doTransactionDetails(metaData, paramOrder);
+    return payPalExpressCheckoutWebServiceRepository.doTransactionDetails(getCredentials(), orderType);
   }
 
   @Override
-  public CheckOut getCheckOut() {
-    return checkOut;
+  public PaymentProviderEnum getPaymentProvider() {
+    return paymentProvider;
   }
 
   @Override
-  public GenericTypeWebServiceRepository<O> getGenericTypeWebServiceRepository() {
+  public void setPaymentProvider(final PaymentProviderEnum paymentProvider) {
+    this.paymentProvider = paymentProvider;
+  }
+
+  @Override
+  public IGenericTypeWebServiceRepository<O> getGenericTypeWebServiceRepository() {
     return orderWebServiceRepository;
-  }
-
-  @Override
-  public void setCheckOut(final CheckOut checkOut) {
-    this.checkOut = checkOut;
   }
 }

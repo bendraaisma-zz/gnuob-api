@@ -1,112 +1,100 @@
+/*
+ * Copyright 2016 Netbrasoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
 package com.netbrasoft.gnuob.api.customer;
+
+import static com.netbrasoft.gnuob.api.customer.PostalCodeWebserviceWrapperHelper.wrapFindPostalCode;
+import static com.netbrasoft.gnuob.api.customer.PostalCodeWebserviceWrapperHelper.wrapToCountPostalCode;
+import static com.netbrasoft.gnuob.api.customer.PostalCodeWebserviceWrapperHelper.wrapToFindPostalCodeById;
+import static com.netbrasoft.gnuob.api.customer.PostalCodeWebserviceWrapperHelper.wrapToMergePostalCode;
+import static com.netbrasoft.gnuob.api.customer.PostalCodeWebserviceWrapperHelper.wrapToPersistPostalCode;
+import static com.netbrasoft.gnuob.api.customer.PostalCodeWebserviceWrapperHelper.wrapToRefreshPostalCode;
+import static com.netbrasoft.gnuob.api.customer.PostalCodeWebserviceWrapperHelper.wrapToRemovePostalCode;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.POSTAL_CODE_WEB_SERVICE_REPOSITORY_NAME;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.UNCHECKED_VALUE;
 
 import java.util.List;
 
 import org.javasimon.aop.Monitored;
 import org.springframework.stereotype.Repository;
 
-import com.netbrasoft.gnuob.api.CountPostalCode;
-import com.netbrasoft.gnuob.api.CountPostalCodeResponse;
-import com.netbrasoft.gnuob.api.FindPostalCode;
-import com.netbrasoft.gnuob.api.FindPostalCodeById;
-import com.netbrasoft.gnuob.api.FindPostalCodeByIdResponse;
-import com.netbrasoft.gnuob.api.FindPostalCodeResponse;
-import com.netbrasoft.gnuob.api.MergePostalCode;
-import com.netbrasoft.gnuob.api.MergePostalCodeResponse;
 import com.netbrasoft.gnuob.api.MetaData;
 import com.netbrasoft.gnuob.api.OrderBy;
 import com.netbrasoft.gnuob.api.Paging;
-import com.netbrasoft.gnuob.api.PersistPostalCode;
-import com.netbrasoft.gnuob.api.PersistPostalCodeResponse;
 import com.netbrasoft.gnuob.api.PostalCode;
 import com.netbrasoft.gnuob.api.PostalCodeWebServiceImpl;
 import com.netbrasoft.gnuob.api.PostalCodeWebServiceImplService;
-import com.netbrasoft.gnuob.api.RefreshPostalCode;
-import com.netbrasoft.gnuob.api.RefreshPostalCodeResponse;
-import com.netbrasoft.gnuob.api.RemovePostalCode;
-import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
+import com.netbrasoft.gnuob.api.generic.IGenericTypeWebServiceRepository;
 
 @Monitored
-@Repository(PostalCodeWebServiceRepository.POSTAL_CODE_WEB_SERVICE_REPOSITORY_NAME)
-public class PostalCodeWebServiceRepository<T extends PostalCode> implements GenericTypeWebServiceRepository<T> {
+@Repository(POSTAL_CODE_WEB_SERVICE_REPOSITORY_NAME)
+public class PostalCodeWebServiceRepository<P extends PostalCode> implements IGenericTypeWebServiceRepository<P> {
 
-  protected static final String POSTAL_CODE_WEB_SERVICE_REPOSITORY_NAME = "PostalCodeWebServiceRepository";
-
-  private PostalCodeWebServiceImpl postalCodeWebServiceImpl;
-
-  public PostalCodeWebServiceRepository() {
-    // Empty constructor.
-  }
-
-  @Override
-  public long count(final MetaData metaData, final T type) {
-    final CountPostalCode paramCountPostalCode = new CountPostalCode();
-    paramCountPostalCode.setPostalCode(type);
-    final CountPostalCodeResponse countPostalCodeResponse = getPostalCodeWebServiceImpl().countPostalCode(paramCountPostalCode, metaData);
-    return countPostalCodeResponse.getReturn();
-  }
-
-  @SuppressWarnings("unchecked")
-  @Override
-  public T find(final MetaData metaData, final T type) {
-    final FindPostalCodeById paramFindPostalCodeById = new FindPostalCodeById();
-    paramFindPostalCodeById.setPostalCode(type);
-    final FindPostalCodeByIdResponse findPostalCodeByIdResponse = getPostalCodeWebServiceImpl().findPostalCodeById(paramFindPostalCodeById, metaData);
-    return (T) findPostalCodeByIdResponse.getReturn();
-
-  }
-
-  @SuppressWarnings("unchecked")
-  @Override
-  public List<T> find(final MetaData metaData, final T type, final Paging paramPaging, final OrderBy paramOrderBy) {
-    final FindPostalCode paramFindPostalCode = new FindPostalCode();
-    paramFindPostalCode.setPostalCode(type);
-    paramFindPostalCode.setPaging(paramPaging);
-    paramFindPostalCode.setOrderBy(paramOrderBy);
-    final FindPostalCodeResponse findPostalCodeResponse = getPostalCodeWebServiceImpl().findPostalCode(paramFindPostalCode, metaData);
-    return (List<T>) findPostalCodeResponse.getReturn();
-  }
+  private transient PostalCodeWebServiceImpl postalCodeWebServiceImpl;
 
   private PostalCodeWebServiceImpl getPostalCodeWebServiceImpl() {
     if (postalCodeWebServiceImpl == null) {
-      final PostalCodeWebServiceImplService postalCodeWebServiceImplService = new PostalCodeWebServiceImplService(PostalCodeWebServiceImplService.WSDL_LOCATION);
-      postalCodeWebServiceImpl = postalCodeWebServiceImplService.getPostalCodeWebServiceImplPort();
+      postalCodeWebServiceImpl = new PostalCodeWebServiceImplService().getPostalCodeWebServiceImplPort();
     }
-
     return postalCodeWebServiceImpl;
   }
 
-  @SuppressWarnings("unchecked")
   @Override
-  public T merge(final MetaData metaData, final T type) {
-    final MergePostalCode paramMergePostalCode = new MergePostalCode();
-    paramMergePostalCode.setPostalCode(type);
-    final MergePostalCodeResponse mergePostalCodeResponse = getPostalCodeWebServiceImpl().mergePostalCode(paramMergePostalCode, metaData);
-    return (T) mergePostalCodeResponse.getReturn();
+  public long count(final MetaData credentials, final P postalCodeExample) {
+    return getPostalCodeWebServiceImpl().countPostalCode(wrapToCountPostalCode(postalCodeExample), credentials)
+        .getReturn();
   }
 
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings(UNCHECKED_VALUE)
   @Override
-  public T persist(final MetaData metaData, final T type) {
-    final PersistPostalCode paramPersistPostalCode = new PersistPostalCode();
-    paramPersistPostalCode.setPostalCode(type);
-    final PersistPostalCodeResponse persistPostalCodeResponse = getPostalCodeWebServiceImpl().persistPostalCode(paramPersistPostalCode, metaData);
-    return (T) persistPostalCodeResponse.getReturn();
+  public List<P> find(final MetaData credentials, final P postalCodeExample, final Paging paging,
+      final OrderBy orderingProperty) {
+    return (List<P>) getPostalCodeWebServiceImpl()
+        .findPostalCode(wrapFindPostalCode(postalCodeExample, paging, orderingProperty), credentials).getReturn();
   }
 
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings(UNCHECKED_VALUE)
   @Override
-  public T refresh(final MetaData metaData, final T type) {
-    final RefreshPostalCode paramRefresPostalCode = new RefreshPostalCode();
-    paramRefresPostalCode.setPostalCode(type);
-    final RefreshPostalCodeResponse refresPostalCodeResponse = getPostalCodeWebServiceImpl().refreshPostalCode(paramRefresPostalCode, metaData);
-    return (T) refresPostalCodeResponse.getReturn();
+  public P find(final MetaData credentials, final P postalCodeExample) {
+    return (P) getPostalCodeWebServiceImpl()
+        .findPostalCodeById(wrapToFindPostalCodeById(postalCodeExample), credentials).getReturn();
+
+  }
+
+  @SuppressWarnings(UNCHECKED_VALUE)
+  @Override
+  public P persist(final MetaData credentials, final P postalCode) {
+    return (P) getPostalCodeWebServiceImpl().persistPostalCode(wrapToPersistPostalCode(postalCode), credentials)
+        .getReturn();
+  }
+
+  @SuppressWarnings(UNCHECKED_VALUE)
+  @Override
+  public P merge(final MetaData credentials, final P postalCode) {
+    return (P) getPostalCodeWebServiceImpl().mergePostalCode(wrapToMergePostalCode(postalCode), credentials)
+        .getReturn();
+  }
+
+  @SuppressWarnings(UNCHECKED_VALUE)
+  @Override
+  public P refresh(final MetaData credentials, final P postalCode) {
+    return (P) getPostalCodeWebServiceImpl().refreshPostalCode(wrapToRefreshPostalCode(postalCode), credentials)
+        .getReturn();
   }
 
   @Override
-  public void remove(final MetaData metaData, final T type) {
-    final RemovePostalCode paramRemovePostalCode = new RemovePostalCode();
-    paramRemovePostalCode.setPostalCode(type);
-    getPostalCodeWebServiceImpl().removePostalCode(paramRemovePostalCode, metaData);
+  public void remove(final MetaData credentials, final P postalCode) {
+    getPostalCodeWebServiceImpl().removePostalCode(wrapToRemovePostalCode(postalCode), credentials);
   }
 }

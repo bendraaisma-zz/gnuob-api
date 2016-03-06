@@ -1,0 +1,555 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://gnuob.netbrasoft.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="ProductWebServiceImplService" targetNamespace="http://gnuob.netbrasoft.com/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://gnuob.netbrasoft.com/" elementFormDefault="unqualified" targetNamespace="http://gnuob.netbrasoft.com/" version="1.0">
+
+  <xs:element name="Content" type="tns:content"/>
+
+  <xs:element name="Option" type="tns:option"/>
+
+  <xs:element name="Paging" type="tns:paging"/>
+
+  <xs:element name="Permission" type="tns:permission"/>
+
+  <xs:element name="Product" type="tns:product"/>
+
+  <xs:element name="Rule" type="tns:rule"/>
+
+  <xs:element name="Stock" type="tns:stock"/>
+
+  <xs:element name="SubCategory" type="tns:subCategory"/>
+
+  <xs:element name="SubOption" type="tns:subOption"/>
+
+  <xs:element name="countProduct" type="tns:countProduct"/>
+
+  <xs:element name="countProductResponse" type="tns:countProductResponse"/>
+
+  <xs:element name="findProduct" type="tns:findProduct"/>
+
+  <xs:element name="findProductById" type="tns:findProductById"/>
+
+  <xs:element name="findProductByIdResponse" type="tns:findProductByIdResponse"/>
+
+  <xs:element name="findProductResponse" type="tns:findProductResponse"/>
+
+  <xs:element name="mergeProduct" type="tns:mergeProduct"/>
+
+  <xs:element name="mergeProductResponse" type="tns:mergeProductResponse"/>
+
+  <xs:element name="metaData" type="tns:metaData"/>
+
+  <xs:element name="persistProduct" type="tns:persistProduct"/>
+
+  <xs:element name="persistProductResponse" type="tns:persistProductResponse"/>
+
+  <xs:element name="refreshProduct" type="tns:refreshProduct"/>
+
+  <xs:element name="refreshProductResponse" type="tns:refreshProductResponse"/>
+
+  <xs:element name="removeProduct" type="tns:removeProduct"/>
+
+  <xs:element name="removeProductResponse" type="tns:removeProductResponse"/>
+
+  <xs:complexType name="countProduct">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="product" type="tns:product"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="product">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractAccess">
+        <xs:sequence>
+          <xs:element name="amount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="bestsellers" type="xs:boolean"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="contents" nillable="true" type="tns:content"/>
+          <xs:element name="description" type="xs:string"/>
+          <xs:element name="discount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="itemHeight" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="itemHeightUnit" type="xs:string"/>
+          <xs:element minOccurs="0" name="itemLength" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="itemLengthUnit" type="xs:string"/>
+          <xs:element minOccurs="0" name="itemUrl" type="xs:string"/>
+          <xs:element name="itemWeight" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="itemWeightUnit" type="xs:string"/>
+          <xs:element minOccurs="0" name="itemWidth" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="itemWidthUnit" type="xs:string"/>
+          <xs:element minOccurs="0" name="latestCollection" type="xs:boolean"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="number" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="options" nillable="true" type="tns:option"/>
+          <xs:element minOccurs="0" name="rating" type="xs:int"/>
+          <xs:element minOccurs="0" name="recommended" type="xs:boolean"/>
+          <xs:element name="shippingCost" type="xs:decimal"/>
+          <xs:element name="stock" type="tns:stock"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="subCategories" nillable="true" type="tns:subCategory"/>
+          <xs:element name="tax" type="xs:decimal"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="abstractAccess">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractType">
+        <xs:sequence>
+          <xs:element name="active" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="permission" type="tns:permission"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="abstractType">
+    <xs:sequence/>
+    <xs:attribute name="id" type="xs:long" use="required"/>
+    <xs:attribute name="version" type="xs:int" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="content">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractAccess">
+        <xs:sequence>
+          <xs:element name="content" type="xs:base64Binary"/>
+          <xs:element name="format" type="xs:string"/>
+          <xs:element name="name" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="permission">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractType">
+        <xs:sequence>
+          <xs:element name="group" type="tns:rule"/>
+          <xs:element name="others" type="tns:rule"/>
+          <xs:element name="owner" type="tns:rule"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="option">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractType">
+        <xs:sequence>
+          <xs:element name="description" type="xs:string"/>
+          <xs:element name="disabled" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="position" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="subOptions" nillable="true" type="tns:subOption"/>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="subOption">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractType">
+        <xs:sequence>
+          <xs:element name="description" type="xs:string"/>
+          <xs:element name="disabled" type="xs:boolean"/>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="stock">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractType">
+        <xs:sequence>
+          <xs:element name="maxQuantity" type="xs:integer"/>
+          <xs:element name="minQuantity" type="xs:integer"/>
+          <xs:element name="quantity" type="xs:integer"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="subCategory">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractType">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="contents" nillable="true" type="tns:content"/>
+          <xs:element name="description" type="xs:string"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="subCategories" nillable="true" type="tns:subCategory"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="metaData">
+    <xs:sequence>
+      <xs:element name="site" type="xs:string"/>
+      <xs:element name="user" type="xs:string"/>
+      <xs:element name="password" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="countProductResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findProduct">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="product" type="tns:product"/>
+      <xs:element minOccurs="0" name="paging" type="tns:paging"/>
+      <xs:element minOccurs="0" name="orderBy" type="tns:orderBy"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="paging">
+    <xs:sequence>
+      <xs:element name="first" type="xs:int"/>
+      <xs:element name="max" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findProductResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:product"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="removeProduct">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="product" type="tns:product"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="removeProductResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="findProductById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="product" type="tns:product"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findProductByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:product"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="persistProduct">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="product" type="tns:product"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="persistProductResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:product"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="refreshProduct">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="product" type="tns:product"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="refreshProductResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:product"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="mergeProduct">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="product" type="tns:product"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="mergeProductResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:product"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="rule">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CREATE_ACCESS"/>
+      <xs:enumeration value="DELETE_ACCESS"/>
+      <xs:enumeration value="NONE_ACCESS"/>
+      <xs:enumeration value="READ_ACCESS"/>
+      <xs:enumeration value="UPDATE_ACCESS"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="operation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CREATE"/>
+      <xs:enumeration value="DELETE"/>
+      <xs:enumeration value="NONE"/>
+      <xs:enumeration value="READ"/>
+      <xs:enumeration value="UPDATE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="orderBy">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="RECOMMENDED"/>
+      <xs:enumeration value="HIGHEST_DISCOUNT"/>
+      <xs:enumeration value="LOWEST_DISCOUNT"/>
+      <xs:enumeration value="HIGHEST_PRICE"/>
+      <xs:enumeration value="LOWEST_PRICE"/>
+      <xs:enumeration value="HIGHEST_RATING"/>
+      <xs:enumeration value="LOWEST_RATING"/>
+      <xs:enumeration value="BESTSELLERS"/>
+      <xs:enumeration value="LATEST_COLLECTION"/>
+      <xs:enumeration value="NAME_A_Z"/>
+      <xs:enumeration value="NAME_Z_A"/>
+      <xs:enumeration value="DESCRIPTION_A_Z"/>
+      <xs:enumeration value="DESCRIPTION_Z_A"/>
+      <xs:enumeration value="PROPERTY_A_Z"/>
+      <xs:enumeration value="PROPERTY_Z_A"/>
+      <xs:enumeration value="PLACE_NAME_A_Z"/>
+      <xs:enumeration value="PLACE_NAME_Z_A"/>
+      <xs:enumeration value="COUNTRY_CODE_A_Z"/>
+      <xs:enumeration value="COUNTRY_CODE_Z_A"/>
+      <xs:enumeration value="POSTAL_CODE_A_Z"/>
+      <xs:enumeration value="POSTAL_CODE_Z_A"/>
+      <xs:enumeration value="STATE_NAME_A_Z"/>
+      <xs:enumeration value="STATE_NAME_Z_A"/>
+      <xs:enumeration value="VALUE_A_Z"/>
+      <xs:enumeration value="VALUE_Z_A"/>
+      <xs:enumeration value="POSITION_A_Z"/>
+      <xs:enumeration value="POSITION_Z_A"/>
+      <xs:enumeration value="NONE"/>
+      <xs:enumeration value="FIRST_NAME_A_Z"/>
+      <xs:enumeration value="FIRST_NAME_Z_A"/>
+      <xs:enumeration value="LAST_NAME_A_Z"/>
+      <xs:enumeration value="LAST_NAME_Z_A"/>
+      <xs:enumeration value="CONTRACT_ID_A_Z"/>
+      <xs:enumeration value="CONTRACT_ID_Z_A"/>
+      <xs:enumeration value="ORDER_ID_A_Z"/>
+      <xs:enumeration value="ORDER_ID_Z_A"/>
+      <xs:enumeration value="OFFER_ID_A_Z"/>
+      <xs:enumeration value="OFFER_ID_Z_A"/>
+      <xs:enumeration value="NUMBER_A_Z"/>
+      <xs:enumeration value="NUMBER_Z_A"/>
+      <xs:enumeration value="CREATION_A_Z"/>
+      <xs:enumeration value="CREATION_Z_A"/>
+      <xs:enumeration value="MODIFICATION_A_Z"/>
+      <xs:enumeration value="MODIFICATION_Z_A"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="orderEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DESC"/>
+      <xs:enumeration value="ASC"/>
+      <xs:enumeration value="NONE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="findProduct">
+    <wsdl:part element="tns:findProduct" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="refreshProduct">
+    <wsdl:part element="tns:refreshProduct" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findProductByIdResponse">
+    <wsdl:part element="tns:findProductByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="refreshProductResponse">
+    <wsdl:part element="tns:refreshProductResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="mergeProductResponse">
+    <wsdl:part element="tns:mergeProductResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="persistProductResponse">
+    <wsdl:part element="tns:persistProductResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="countProduct">
+    <wsdl:part element="tns:countProduct" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="countProductResponse">
+    <wsdl:part element="tns:countProductResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeProduct">
+    <wsdl:part element="tns:removeProduct" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findProductById">
+    <wsdl:part element="tns:findProductById" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="persistProduct">
+    <wsdl:part element="tns:persistProduct" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeProductResponse">
+    <wsdl:part element="tns:removeProductResponse" name="result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findProductResponse">
+    <wsdl:part element="tns:findProductResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="mergeProduct">
+    <wsdl:part element="tns:mergeProduct" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ProductWebServiceImpl">
+    <wsdl:operation name="countProduct">
+      <wsdl:input message="tns:countProduct" name="countProduct">
+    </wsdl:input>
+      <wsdl:output message="tns:countProductResponse" name="countProductResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findProduct">
+      <wsdl:input message="tns:findProduct" name="findProduct">
+    </wsdl:input>
+      <wsdl:output message="tns:findProductResponse" name="findProductResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeProduct">
+      <wsdl:input message="tns:removeProduct" name="removeProduct">
+    </wsdl:input>
+      <wsdl:output message="tns:removeProductResponse" name="removeProductResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findProductById">
+      <wsdl:input message="tns:findProductById" name="findProductById">
+    </wsdl:input>
+      <wsdl:output message="tns:findProductByIdResponse" name="findProductByIdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="persistProduct">
+      <wsdl:input message="tns:persistProduct" name="persistProduct">
+    </wsdl:input>
+      <wsdl:output message="tns:persistProductResponse" name="persistProductResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="refreshProduct">
+      <wsdl:input message="tns:refreshProduct" name="refreshProduct">
+    </wsdl:input>
+      <wsdl:output message="tns:refreshProductResponse" name="refreshProductResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mergeProduct">
+      <wsdl:input message="tns:mergeProduct" name="mergeProduct">
+    </wsdl:input>
+      <wsdl:output message="tns:mergeProductResponse" name="mergeProductResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ProductWebServiceImplServiceSoapBinding" type="tns:ProductWebServiceImpl">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="countProduct">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="countProduct">
+        <soap:header message="tns:countProduct" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="countProductResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findProduct">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findProduct">
+        <soap:header message="tns:findProduct" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findProductResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeProduct">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="removeProduct">
+        <soap:header message="tns:removeProduct" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="removeProductResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findProductById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findProductById">
+        <soap:header message="tns:findProductById" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findProductByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="persistProduct">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="persistProduct">
+        <soap:header message="tns:persistProduct" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="persistProductResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="refreshProduct">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="refreshProduct">
+        <soap:header message="tns:refreshProduct" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="refreshProductResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mergeProduct">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="mergeProduct">
+        <soap:header message="tns:mergeProduct" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="mergeProductResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ProductWebServiceImplService">
+    <wsdl:port binding="tns:ProductWebServiceImplServiceSoapBinding" name="ProductWebServiceImplPort">
+      <soap:address location="http://localhost:8080/gnuob-soap/ProductWebServiceImpl"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,677 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://gnuob.netbrasoft.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="OfferWebServiceImplService" targetNamespace="http://gnuob.netbrasoft.com/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://gnuob.netbrasoft.com/" elementFormDefault="unqualified" targetNamespace="http://gnuob.netbrasoft.com/" version="1.0">
+
+  <xs:element name="Address" type="tns:address"/>
+
+  <xs:element name="Content" type="tns:content"/>
+
+  <xs:element name="Contract" type="tns:contract"/>
+
+  <xs:element name="Customer" type="tns:customer"/>
+
+  <xs:element name="Offer" type="tns:offer"/>
+
+  <xs:element name="OfferRecord" type="tns:offerRecord"/>
+
+  <xs:element name="Option" type="tns:option"/>
+
+  <xs:element name="Paging" type="tns:paging"/>
+
+  <xs:element name="Permission" type="tns:permission"/>
+
+  <xs:element name="Product" type="tns:product"/>
+
+  <xs:element name="Rule" type="tns:rule"/>
+
+  <xs:element name="Stock" type="tns:stock"/>
+
+  <xs:element name="SubCategory" type="tns:subCategory"/>
+
+  <xs:element name="SubOption" type="tns:subOption"/>
+
+  <xs:element name="countOffer" type="tns:countOffer"/>
+
+  <xs:element name="countOfferResponse" type="tns:countOfferResponse"/>
+
+  <xs:element name="findOffer" type="tns:findOffer"/>
+
+  <xs:element name="findOfferById" type="tns:findOfferById"/>
+
+  <xs:element name="findOfferByIdResponse" type="tns:findOfferByIdResponse"/>
+
+  <xs:element name="findOfferResponse" type="tns:findOfferResponse"/>
+
+  <xs:element name="mergeOffer" type="tns:mergeOffer"/>
+
+  <xs:element name="mergeOfferResponse" type="tns:mergeOfferResponse"/>
+
+  <xs:element name="metaData" type="tns:metaData"/>
+
+  <xs:element name="persistOffer" type="tns:persistOffer"/>
+
+  <xs:element name="persistOfferResponse" type="tns:persistOfferResponse"/>
+
+  <xs:element name="refreshOffer" type="tns:refreshOffer"/>
+
+  <xs:element name="refreshOfferResponse" type="tns:refreshOfferResponse"/>
+
+  <xs:element name="removeOffer" type="tns:removeOffer"/>
+
+  <xs:element name="removeOfferResponse" type="tns:removeOfferResponse"/>
+
+  <xs:complexType name="persistOffer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="offer" type="tns:offer"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="offer">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractAccess">
+        <xs:sequence>
+          <xs:element name="contract" type="tns:contract"/>
+          <xs:element minOccurs="0" name="discountTotal" type="xs:decimal"/>
+          <xs:element name="extraAmount" type="xs:decimal"/>
+          <xs:element name="handlingTotal" type="xs:decimal"/>
+          <xs:element name="insuranceTotal" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="itemTotal" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="maxTotal" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="offerDescription" type="xs:string"/>
+          <xs:element name="offerId" type="xs:string"/>
+          <xs:element minOccurs="0" name="offerTotal" type="xs:decimal"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="records" nillable="true" type="tns:offerRecord"/>
+          <xs:element name="shippingDiscount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="shippingTotal" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="taxTotal" type="xs:decimal"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="abstractAccess">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractType">
+        <xs:sequence>
+          <xs:element name="active" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="permission" type="tns:permission"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="abstractType">
+    <xs:sequence/>
+    <xs:attribute name="id" type="xs:long" use="required"/>
+    <xs:attribute name="version" type="xs:int" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="contract">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractAccess">
+        <xs:sequence>
+          <xs:element name="contractId" type="xs:string"/>
+          <xs:element name="customer" type="tns:customer"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="customer">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractAccess">
+        <xs:sequence>
+          <xs:element name="address" type="tns:address"/>
+          <xs:element name="buyerEmail" type="xs:string"/>
+          <xs:element minOccurs="0" name="buyerMarketingEmail" type="xs:string"/>
+          <xs:element minOccurs="0" name="contactPhone" type="xs:string"/>
+          <xs:element minOccurs="0" name="dateOfBirth" type="xs:dateTime"/>
+          <xs:element name="firstName" type="xs:string"/>
+          <xs:element minOccurs="0" name="friendlyName" type="xs:string"/>
+          <xs:element name="lastName" type="xs:string"/>
+          <xs:element minOccurs="0" name="middleName" type="xs:string"/>
+          <xs:element minOccurs="0" name="payer" type="xs:string"/>
+          <xs:element minOccurs="0" name="payerBusiness" type="xs:string"/>
+          <xs:element minOccurs="0" name="payerId" type="xs:string"/>
+          <xs:element minOccurs="0" name="payerStatus" type="xs:string"/>
+          <xs:element minOccurs="0" name="salutation" type="xs:string"/>
+          <xs:element minOccurs="0" name="suffix" type="xs:string"/>
+          <xs:element minOccurs="0" name="taxId" type="xs:string"/>
+          <xs:element minOccurs="0" name="taxIdType" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="address">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractType">
+        <xs:sequence>
+          <xs:element name="cityName" type="xs:string"/>
+          <xs:element minOccurs="0" name="complement" type="xs:string"/>
+          <xs:element name="country" type="xs:string"/>
+          <xs:element minOccurs="0" name="countryName" type="xs:string"/>
+          <xs:element minOccurs="0" name="district" type="xs:string"/>
+          <xs:element minOccurs="0" name="internationalStateAndCity" type="xs:string"/>
+          <xs:element minOccurs="0" name="internationalStreet" type="xs:string"/>
+          <xs:element minOccurs="0" name="number" type="xs:string"/>
+          <xs:element minOccurs="0" name="phone" type="xs:string"/>
+          <xs:element name="postalCode" type="xs:string"/>
+          <xs:element name="stateOrProvince" type="xs:string"/>
+          <xs:element name="street1" type="xs:string"/>
+          <xs:element minOccurs="0" name="street2" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="permission">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractType">
+        <xs:sequence>
+          <xs:element name="group" type="tns:rule"/>
+          <xs:element name="others" type="tns:rule"/>
+          <xs:element name="owner" type="tns:rule"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="offerRecord">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="amount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="discount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="itemHeight" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="itemHeightUnit" type="xs:string"/>
+          <xs:element minOccurs="0" name="itemLength" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="itemLengthUnit" type="xs:string"/>
+          <xs:element minOccurs="0" name="itemUrl" type="xs:string"/>
+          <xs:element minOccurs="0" name="itemWeight" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="itemWeightUnit" type="xs:string"/>
+          <xs:element minOccurs="0" name="itemWidth" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="itemWidthUnit" type="xs:string"/>
+          <xs:element minOccurs="0" name="name" type="xs:string"/>
+          <xs:element minOccurs="0" name="offerRecordId" type="xs:string"/>
+          <xs:element minOccurs="0" name="option" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="options" nillable="true" type="tns:option"/>
+          <xs:element minOccurs="0" name="product" type="tns:product"/>
+          <xs:element minOccurs="0" name="productNumber" type="xs:string"/>
+          <xs:element name="quantity" type="xs:integer"/>
+          <xs:element minOccurs="0" name="shippingCost" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="tax" type="xs:decimal"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="option">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractType">
+        <xs:sequence>
+          <xs:element name="description" type="xs:string"/>
+          <xs:element name="disabled" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="position" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="subOptions" nillable="true" type="tns:subOption"/>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="subOption">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractType">
+        <xs:sequence>
+          <xs:element name="description" type="xs:string"/>
+          <xs:element name="disabled" type="xs:boolean"/>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="product">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractAccess">
+        <xs:sequence>
+          <xs:element name="amount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="bestsellers" type="xs:boolean"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="contents" nillable="true" type="tns:content"/>
+          <xs:element name="description" type="xs:string"/>
+          <xs:element name="discount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="itemHeight" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="itemHeightUnit" type="xs:string"/>
+          <xs:element minOccurs="0" name="itemLength" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="itemLengthUnit" type="xs:string"/>
+          <xs:element minOccurs="0" name="itemUrl" type="xs:string"/>
+          <xs:element name="itemWeight" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="itemWeightUnit" type="xs:string"/>
+          <xs:element minOccurs="0" name="itemWidth" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="itemWidthUnit" type="xs:string"/>
+          <xs:element minOccurs="0" name="latestCollection" type="xs:boolean"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="number" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="options" nillable="true" type="tns:option"/>
+          <xs:element minOccurs="0" name="rating" type="xs:int"/>
+          <xs:element minOccurs="0" name="recommended" type="xs:boolean"/>
+          <xs:element name="shippingCost" type="xs:decimal"/>
+          <xs:element name="stock" type="tns:stock"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="subCategories" nillable="true" type="tns:subCategory"/>
+          <xs:element name="tax" type="xs:decimal"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="content">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractAccess">
+        <xs:sequence>
+          <xs:element name="content" type="xs:base64Binary"/>
+          <xs:element name="format" type="xs:string"/>
+          <xs:element name="name" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="stock">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractType">
+        <xs:sequence>
+          <xs:element name="maxQuantity" type="xs:integer"/>
+          <xs:element name="minQuantity" type="xs:integer"/>
+          <xs:element name="quantity" type="xs:integer"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="subCategory">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractType">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="contents" nillable="true" type="tns:content"/>
+          <xs:element name="description" type="xs:string"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="subCategories" nillable="true" type="tns:subCategory"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="metaData">
+    <xs:sequence>
+      <xs:element name="site" type="xs:string"/>
+      <xs:element name="user" type="xs:string"/>
+      <xs:element name="password" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="persistOfferResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:offer"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="removeOffer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="offer" type="tns:offer"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="removeOfferResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="findOfferById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="offer" type="tns:offer"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findOfferByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:offer"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="refreshOffer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="offer" type="tns:offer"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="refreshOfferResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:offer"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="countOffer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="offer" type="tns:offer"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="countOfferResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findOffer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="offer" type="tns:offer"/>
+      <xs:element minOccurs="0" name="paging" type="tns:paging"/>
+      <xs:element minOccurs="0" name="orderBy" type="tns:orderBy"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="paging">
+    <xs:sequence>
+      <xs:element name="first" type="xs:int"/>
+      <xs:element name="max" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findOfferResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:offer"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="mergeOffer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="offer" type="tns:offer"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="mergeOfferResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:offer"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="rule">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CREATE_ACCESS"/>
+      <xs:enumeration value="DELETE_ACCESS"/>
+      <xs:enumeration value="NONE_ACCESS"/>
+      <xs:enumeration value="READ_ACCESS"/>
+      <xs:enumeration value="UPDATE_ACCESS"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="operation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CREATE"/>
+      <xs:enumeration value="DELETE"/>
+      <xs:enumeration value="NONE"/>
+      <xs:enumeration value="READ"/>
+      <xs:enumeration value="UPDATE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="orderBy">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="RECOMMENDED"/>
+      <xs:enumeration value="HIGHEST_DISCOUNT"/>
+      <xs:enumeration value="LOWEST_DISCOUNT"/>
+      <xs:enumeration value="HIGHEST_PRICE"/>
+      <xs:enumeration value="LOWEST_PRICE"/>
+      <xs:enumeration value="HIGHEST_RATING"/>
+      <xs:enumeration value="LOWEST_RATING"/>
+      <xs:enumeration value="BESTSELLERS"/>
+      <xs:enumeration value="LATEST_COLLECTION"/>
+      <xs:enumeration value="NAME_A_Z"/>
+      <xs:enumeration value="NAME_Z_A"/>
+      <xs:enumeration value="DESCRIPTION_A_Z"/>
+      <xs:enumeration value="DESCRIPTION_Z_A"/>
+      <xs:enumeration value="PROPERTY_A_Z"/>
+      <xs:enumeration value="PROPERTY_Z_A"/>
+      <xs:enumeration value="PLACE_NAME_A_Z"/>
+      <xs:enumeration value="PLACE_NAME_Z_A"/>
+      <xs:enumeration value="COUNTRY_CODE_A_Z"/>
+      <xs:enumeration value="COUNTRY_CODE_Z_A"/>
+      <xs:enumeration value="POSTAL_CODE_A_Z"/>
+      <xs:enumeration value="POSTAL_CODE_Z_A"/>
+      <xs:enumeration value="STATE_NAME_A_Z"/>
+      <xs:enumeration value="STATE_NAME_Z_A"/>
+      <xs:enumeration value="VALUE_A_Z"/>
+      <xs:enumeration value="VALUE_Z_A"/>
+      <xs:enumeration value="POSITION_A_Z"/>
+      <xs:enumeration value="POSITION_Z_A"/>
+      <xs:enumeration value="NONE"/>
+      <xs:enumeration value="FIRST_NAME_A_Z"/>
+      <xs:enumeration value="FIRST_NAME_Z_A"/>
+      <xs:enumeration value="LAST_NAME_A_Z"/>
+      <xs:enumeration value="LAST_NAME_Z_A"/>
+      <xs:enumeration value="CONTRACT_ID_A_Z"/>
+      <xs:enumeration value="CONTRACT_ID_Z_A"/>
+      <xs:enumeration value="ORDER_ID_A_Z"/>
+      <xs:enumeration value="ORDER_ID_Z_A"/>
+      <xs:enumeration value="OFFER_ID_A_Z"/>
+      <xs:enumeration value="OFFER_ID_Z_A"/>
+      <xs:enumeration value="NUMBER_A_Z"/>
+      <xs:enumeration value="NUMBER_Z_A"/>
+      <xs:enumeration value="CREATION_A_Z"/>
+      <xs:enumeration value="CREATION_Z_A"/>
+      <xs:enumeration value="MODIFICATION_A_Z"/>
+      <xs:enumeration value="MODIFICATION_Z_A"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="orderEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DESC"/>
+      <xs:enumeration value="ASC"/>
+      <xs:enumeration value="NONE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="countOfferResponse">
+    <wsdl:part element="tns:countOfferResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="refreshOffer">
+    <wsdl:part element="tns:refreshOffer" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findOffer">
+    <wsdl:part element="tns:findOffer" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="mergeOfferResponse">
+    <wsdl:part element="tns:mergeOfferResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="persistOffer">
+    <wsdl:part element="tns:persistOffer" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeOffer">
+    <wsdl:part element="tns:removeOffer" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findOfferByIdResponse">
+    <wsdl:part element="tns:findOfferByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findOfferById">
+    <wsdl:part element="tns:findOfferById" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="refreshOfferResponse">
+    <wsdl:part element="tns:refreshOfferResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="persistOfferResponse">
+    <wsdl:part element="tns:persistOfferResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findOfferResponse">
+    <wsdl:part element="tns:findOfferResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeOfferResponse">
+    <wsdl:part element="tns:removeOfferResponse" name="result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="countOffer">
+    <wsdl:part element="tns:countOffer" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="mergeOffer">
+    <wsdl:part element="tns:mergeOffer" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="OfferWebServiceImpl">
+    <wsdl:operation name="persistOffer">
+      <wsdl:input message="tns:persistOffer" name="persistOffer">
+    </wsdl:input>
+      <wsdl:output message="tns:persistOfferResponse" name="persistOfferResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeOffer">
+      <wsdl:input message="tns:removeOffer" name="removeOffer">
+    </wsdl:input>
+      <wsdl:output message="tns:removeOfferResponse" name="removeOfferResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findOfferById">
+      <wsdl:input message="tns:findOfferById" name="findOfferById">
+    </wsdl:input>
+      <wsdl:output message="tns:findOfferByIdResponse" name="findOfferByIdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="refreshOffer">
+      <wsdl:input message="tns:refreshOffer" name="refreshOffer">
+    </wsdl:input>
+      <wsdl:output message="tns:refreshOfferResponse" name="refreshOfferResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="countOffer">
+      <wsdl:input message="tns:countOffer" name="countOffer">
+    </wsdl:input>
+      <wsdl:output message="tns:countOfferResponse" name="countOfferResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findOffer">
+      <wsdl:input message="tns:findOffer" name="findOffer">
+    </wsdl:input>
+      <wsdl:output message="tns:findOfferResponse" name="findOfferResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mergeOffer">
+      <wsdl:input message="tns:mergeOffer" name="mergeOffer">
+    </wsdl:input>
+      <wsdl:output message="tns:mergeOfferResponse" name="mergeOfferResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OfferWebServiceImplServiceSoapBinding" type="tns:OfferWebServiceImpl">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="removeOffer">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="removeOffer">
+        <soap:header message="tns:removeOffer" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="removeOfferResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="persistOffer">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="persistOffer">
+        <soap:header message="tns:persistOffer" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="persistOfferResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findOfferById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findOfferById">
+        <soap:header message="tns:findOfferById" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findOfferByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="refreshOffer">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="refreshOffer">
+        <soap:header message="tns:refreshOffer" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="refreshOfferResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="countOffer">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="countOffer">
+        <soap:header message="tns:countOffer" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="countOfferResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findOffer">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findOffer">
+        <soap:header message="tns:findOffer" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findOfferResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mergeOffer">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="mergeOffer">
+        <soap:header message="tns:mergeOffer" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="mergeOfferResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OfferWebServiceImplService">
+    <wsdl:port binding="tns:OfferWebServiceImplServiceSoapBinding" name="OfferWebServiceImplPort">
+      <soap:address location="http://localhost:8080/gnuob-soap/OfferWebServiceImpl"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -12,13 +12,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException_Exception;
 import com.netbrasoft.gnuob.api.Group;
 import com.netbrasoft.gnuob.api.MetaData;
 import com.netbrasoft.gnuob.api.Role;
 import com.netbrasoft.gnuob.api.Rule;
 import com.netbrasoft.gnuob.api.Site;
 import com.netbrasoft.gnuob.api.User;
+import com.netbrasoft.gnuob.api.generic.GNUOpenBusinessApplicationException;
 import com.netbrasoft.gnuob.api.security.SiteWebServiceRepository;
 import com.netbrasoft.gnuob.generic.utils.Utils;
 
@@ -64,7 +64,7 @@ public class SiteWebServiceRepositoryTest {
   }
 
   @Test
-  public void testFindSite() throws GNUOpenBusinessServiceException_Exception {
+  public void testFindSite() throws GNUOpenBusinessApplicationException {
     final String siteName = site.getName();
     final String siteDescription = site.getDescription();
 
@@ -78,7 +78,7 @@ public class SiteWebServiceRepositoryTest {
   }
 
   @Test
-  public void testMergeSite() throws GNUOpenBusinessServiceException_Exception {
+  public void testMergeSite() throws GNUOpenBusinessApplicationException {
     final String siteName = UUID.randomUUID().toString();
     final String siteDescription = UUID.randomUUID().toString();
 
@@ -95,7 +95,7 @@ public class SiteWebServiceRepositoryTest {
   }
 
   @Test
-  public void testPersistSite() throws GNUOpenBusinessServiceException_Exception {
+  public void testPersistSite() throws GNUOpenBusinessApplicationException {
     final String siteName = site.getName();
     final String siteDescription = site.getDescription();
 
@@ -107,7 +107,7 @@ public class SiteWebServiceRepositoryTest {
   }
 
   @Test
-  public void testPersistSiteWithSiteThatDoesNotExist() throws GNUOpenBusinessServiceException_Exception {
+  public void testPersistSiteWithSiteThatDoesNotExist() throws GNUOpenBusinessApplicationException {
     metaData.setSite("NO_ACCESS_SITE");
 
     try {
@@ -120,7 +120,7 @@ public class SiteWebServiceRepositoryTest {
   }
 
   @Test
-  public void testPersistSiteWithUserThatHasNoCreateAccess() throws GNUOpenBusinessServiceException_Exception {
+  public void testPersistSiteWithUserThatHasNoCreateAccess() throws GNUOpenBusinessApplicationException {
     metaData.setUser("guest");
     metaData.setPassword("guest");
     metaData.setSite("www.netbrasoft.com");
@@ -135,7 +135,7 @@ public class SiteWebServiceRepositoryTest {
   }
 
   @Test
-  public void testPersistSiteWithUserThatHaveNoAccessToTheSite() throws GNUOpenBusinessServiceException_Exception {
+  public void testPersistSiteWithUserThatHaveNoAccessToTheSite() throws GNUOpenBusinessApplicationException {
     metaData.setUser("manager");
     metaData.setPassword("manager");
     metaData.setSite("www.cheirodeflor.nl");
@@ -150,7 +150,7 @@ public class SiteWebServiceRepositoryTest {
   }
 
   @Test
-  public void testPersistSiteWithUserThatThatDoesNotExist() throws GNUOpenBusinessServiceException_Exception {
+  public void testPersistSiteWithUserThatThatDoesNotExist() throws GNUOpenBusinessApplicationException {
     metaData.setUser("NO_ACCESS_USER");
 
     try {
@@ -163,7 +163,7 @@ public class SiteWebServiceRepositoryTest {
   }
 
   @Test
-  public void testRefreshSite() throws GNUOpenBusinessServiceException_Exception {
+  public void testRefreshSite() throws GNUOpenBusinessApplicationException {
     final Site persistSite = siteWebServiceRepository.persist(metaData, site);
 
     final String siteName = site.getName();
@@ -180,7 +180,7 @@ public class SiteWebServiceRepositoryTest {
   }
 
   @Test
-  public void testRemoveSite() throws GNUOpenBusinessServiceException_Exception {
+  public void testRemoveSite() throws GNUOpenBusinessApplicationException {
     final Site persistSite = siteWebServiceRepository.persist(metaData, site);
     siteWebServiceRepository.remove(metaData, persistSite);
 
@@ -190,7 +190,8 @@ public class SiteWebServiceRepositoryTest {
   }
 
   @Test
-  public void testRemoveUserWithGroupAndSiteButOtherUserHasNoRightToDelete() throws GNUOpenBusinessServiceException_Exception {
+  public void testRemoveUserWithGroupAndSiteButOtherUserHasNoRightToDelete()
+      throws GNUOpenBusinessApplicationException {
     metaData.setUser("manager");
     metaData.setPassword("manager");
 

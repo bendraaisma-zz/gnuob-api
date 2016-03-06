@@ -10,13 +10,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException_Exception;
 import com.netbrasoft.gnuob.api.Group;
 import com.netbrasoft.gnuob.api.MetaData;
 import com.netbrasoft.gnuob.api.Role;
 import com.netbrasoft.gnuob.api.Rule;
 import com.netbrasoft.gnuob.api.Site;
 import com.netbrasoft.gnuob.api.User;
+import com.netbrasoft.gnuob.api.generic.GNUOpenBusinessApplicationException;
 import com.netbrasoft.gnuob.api.security.GroupWebServiceRepository;
 import com.netbrasoft.gnuob.generic.utils.Utils;
 
@@ -63,7 +63,7 @@ public class GroupWebServiceRepositoryTest {
   }
 
   @Test
-  public void testFindGroup() throws GNUOpenBusinessServiceException_Exception {
+  public void testFindGroup() throws GNUOpenBusinessApplicationException {
     final String groupName = group.getName();
     final String groupDescription = group.getDescription();
 
@@ -77,7 +77,7 @@ public class GroupWebServiceRepositoryTest {
   }
 
   @Test
-  public void testMergeGroup() throws GNUOpenBusinessServiceException_Exception {
+  public void testMergeGroup() throws GNUOpenBusinessApplicationException {
     final String groupName = UUID.randomUUID().toString();
     final String groupDescription = UUID.randomUUID().toString();
 
@@ -94,7 +94,7 @@ public class GroupWebServiceRepositoryTest {
   }
 
   @Test
-  public void testPersistGroup() throws GNUOpenBusinessServiceException_Exception {
+  public void testPersistGroup() throws GNUOpenBusinessApplicationException {
     final String groupName = group.getName();
     final String groupDescription = group.getDescription();
 
@@ -106,7 +106,7 @@ public class GroupWebServiceRepositoryTest {
   }
 
   @Test
-  public void testRefreshGroup() throws GNUOpenBusinessServiceException_Exception {
+  public void testRefreshGroup() throws GNUOpenBusinessApplicationException {
     final Group persistGroup = groupWebServiceRepository.persist(metaData, group);
 
     final String groupName = group.getName();
@@ -123,7 +123,7 @@ public class GroupWebServiceRepositoryTest {
   }
 
   @Test
-  public void testRemoveGroup() throws GNUOpenBusinessServiceException_Exception {
+  public void testRemoveGroup() throws GNUOpenBusinessApplicationException {
     final Group persistGroup = groupWebServiceRepository.persist(metaData, group);
     groupWebServiceRepository.remove(metaData, persistGroup);
 
@@ -133,7 +133,8 @@ public class GroupWebServiceRepositoryTest {
   }
 
   @Test
-  public void testRemoveUserWithGroupAndGroupButOtherUserHasNoRightToDelete() throws GNUOpenBusinessServiceException_Exception {
+  public void testRemoveUserWithGroupAndGroupButOtherUserHasNoRightToDelete()
+      throws GNUOpenBusinessApplicationException {
     metaData.setUser("manager");
     metaData.setPassword("manager");
 

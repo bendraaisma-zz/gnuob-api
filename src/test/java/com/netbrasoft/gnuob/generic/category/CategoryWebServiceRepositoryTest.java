@@ -13,12 +13,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.netbrasoft.gnuob.api.Category;
-import com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException_Exception;
 import com.netbrasoft.gnuob.api.MetaData;
 import com.netbrasoft.gnuob.api.OrderBy;
 import com.netbrasoft.gnuob.api.Paging;
 import com.netbrasoft.gnuob.api.SubCategory;
 import com.netbrasoft.gnuob.api.category.CategoryWebServiceRepository;
+import com.netbrasoft.gnuob.api.generic.GNUOpenBusinessApplicationException;
 import com.netbrasoft.gnuob.generic.utils.Utils;
 
 @RunWith(Arquillian.class)
@@ -29,7 +29,8 @@ public class CategoryWebServiceRepositoryTest {
     return Utils.createDeployment();
   }
 
-  private final CategoryWebServiceRepository<Category> categoryWebServiceRepository = new CategoryWebServiceRepository<Category>();
+  private final CategoryWebServiceRepository<Category> categoryWebServiceRepository =
+      new CategoryWebServiceRepository<Category>();
   private MetaData metaData = null;
   private Category category = null;
   private SubCategory subCategory = null;
@@ -56,7 +57,7 @@ public class CategoryWebServiceRepositoryTest {
   }
 
   @Test
-  public void testFindBySubCategoryName() throws GNUOpenBusinessServiceException_Exception {
+  public void testFindBySubCategoryName() throws GNUOpenBusinessApplicationException {
     final String categoryName = category.getName();
     final String categoryDescription = category.getDescription();
 
@@ -73,7 +74,8 @@ public class CategoryWebServiceRepositoryTest {
     final Category category = new Category();
     category.getSubCategories().add(subCategory);
 
-    final List<Category> findCategories = categoryWebServiceRepository.find(metaData, category, paging, OrderBy.NONE);
+    final List<Category> findCategories =
+        categoryWebServiceRepository.find(metaData, category, paging, OrderBy.NONE);
 
     Assert.assertTrue("Find categories has no value bigger than 1.", findCategories.size() == 1);
 
@@ -85,7 +87,7 @@ public class CategoryWebServiceRepositoryTest {
   }
 
   @Test
-  public void testMergeProduct() throws GNUOpenBusinessServiceException_Exception {
+  public void testMergeProduct() throws GNUOpenBusinessApplicationException {
     final String categoryName = UUID.randomUUID().toString();
     final String categoryDescription = UUID.randomUUID().toString();
 
@@ -104,7 +106,7 @@ public class CategoryWebServiceRepositoryTest {
   }
 
   @Test
-  public void testPersistCategory() throws GNUOpenBusinessServiceException_Exception {
+  public void testPersistCategory() throws GNUOpenBusinessApplicationException {
     final String categoryName = category.getName();
     final String categoryDescription = category.getDescription();
 
@@ -118,7 +120,7 @@ public class CategoryWebServiceRepositoryTest {
   }
 
   @Test
-  public void testRemoveProduct() throws GNUOpenBusinessServiceException_Exception {
+  public void testRemoveProduct() throws GNUOpenBusinessApplicationException {
     final Category persistCategory = categoryWebServiceRepository.persist(metaData, category);
     categoryWebServiceRepository.remove(metaData, persistCategory);
 
@@ -128,12 +130,13 @@ public class CategoryWebServiceRepositoryTest {
   }
 
   // @Test()
-  public void testTotalNumberOfCategories() throws GNUOpenBusinessServiceException_Exception {
+  public void testTotalNumberOfCategories() throws GNUOpenBusinessApplicationException {
     final Paging paging = new Paging();
     paging.setFirst(-1);
     paging.setMax(-1);
 
-    final List<Category> findCategories = categoryWebServiceRepository.find(metaData, new Category(), paging, OrderBy.NONE);
+    final List<Category> findCategories =
+        categoryWebServiceRepository.find(metaData, new Category(), paging, OrderBy.NONE);
 
     Assert.assertTrue("Find categories has no value bigger than 3.", findCategories.size() == 3);
   }

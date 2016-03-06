@@ -14,13 +14,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException_Exception;
 import com.netbrasoft.gnuob.api.MetaData;
 import com.netbrasoft.gnuob.api.OrderBy;
 import com.netbrasoft.gnuob.api.Paging;
 import com.netbrasoft.gnuob.api.Product;
 import com.netbrasoft.gnuob.api.Stock;
 import com.netbrasoft.gnuob.api.SubCategory;
+import com.netbrasoft.gnuob.api.generic.GNUOpenBusinessApplicationException;
 import com.netbrasoft.gnuob.api.product.ProductWebServiceRepository;
 import com.netbrasoft.gnuob.generic.utils.Utils;
 
@@ -32,7 +32,8 @@ public class ProductWebServiceRepositoryTest {
     return Utils.createDeployment();
   }
 
-  private final ProductWebServiceRepository<Product> productWebServiceRepository = new ProductWebServiceRepository<Product>();
+  private final ProductWebServiceRepository<Product> productWebServiceRepository =
+      new ProductWebServiceRepository<Product>();
   private MetaData metaData = null;
   private Product product = null;
 
@@ -76,7 +77,7 @@ public class ProductWebServiceRepositoryTest {
   }
 
   @Test
-  public void testFindProductBySubCategoryName() throws GNUOpenBusinessServiceException_Exception {
+  public void testFindProductBySubCategoryName() throws GNUOpenBusinessApplicationException {
     final String productName = product.getName();
     final String productDescription = product.getDescription();
 
@@ -105,7 +106,7 @@ public class ProductWebServiceRepositoryTest {
   }
 
   @Test
-  public void testMergeProduct() throws GNUOpenBusinessServiceException_Exception {
+  public void testMergeProduct() throws GNUOpenBusinessApplicationException {
     final String productName = UUID.randomUUID().toString();
     final String productDescription = UUID.randomUUID().toString();
 
@@ -122,7 +123,7 @@ public class ProductWebServiceRepositoryTest {
   }
 
   @Test
-  public void testPersistProduct() throws GNUOpenBusinessServiceException_Exception {
+  public void testPersistProduct() throws GNUOpenBusinessApplicationException {
     final String productName = product.getName();
     final String productDescription = product.getDescription();
 
@@ -134,7 +135,7 @@ public class ProductWebServiceRepositoryTest {
   }
 
   @Test
-  public void testRemoveProduct() throws GNUOpenBusinessServiceException_Exception {
+  public void testRemoveProduct() throws GNUOpenBusinessApplicationException {
     final Product persistProduct = productWebServiceRepository.persist(metaData, product);
     productWebServiceRepository.remove(metaData, persistProduct);
 

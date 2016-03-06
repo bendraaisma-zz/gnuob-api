@@ -2,13 +2,10 @@ package com.netbrasoft.gnuob.generic.order;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.Random;
 import java.util.UUID;
 
 import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.drone.api.annotation.Drone;
@@ -26,7 +23,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.netbrasoft.gnuob.api.Address;
 import com.netbrasoft.gnuob.api.Contract;
 import com.netbrasoft.gnuob.api.Customer;
-import com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException_Exception;
 import com.netbrasoft.gnuob.api.Invoice;
 import com.netbrasoft.gnuob.api.MetaData;
 import com.netbrasoft.gnuob.api.Order;
@@ -35,6 +31,7 @@ import com.netbrasoft.gnuob.api.Product;
 import com.netbrasoft.gnuob.api.Shipment;
 import com.netbrasoft.gnuob.api.Stock;
 import com.netbrasoft.gnuob.api.SubCategory;
+import com.netbrasoft.gnuob.api.generic.GNUOpenBusinessApplicationException;
 import com.netbrasoft.gnuob.api.order.OrderWebServiceRepository;
 import com.netbrasoft.gnuob.api.order.PayPalExpressCheckOutWebServiceRepository;
 import com.netbrasoft.gnuob.api.product.ProductWebServiceRepository;
@@ -51,9 +48,11 @@ public class PayPalExpressCheckOutWebServiceRepositoryTest {
   @Drone
   private WebDriver driver;
 
-  private final ProductWebServiceRepository<Product> productWebServiceRepository = new ProductWebServiceRepository<Product>();
+  private final ProductWebServiceRepository<Product> productWebServiceRepository =
+      new ProductWebServiceRepository<Product>();
   private final OrderWebServiceRepository<Order> orderWebServiceRepository = new OrderWebServiceRepository<Order>();
-  private final PayPalExpressCheckOutWebServiceRepository<Order> payPalExpressCheckOutWebServiceRepository = new PayPalExpressCheckOutWebServiceRepository<Order>();
+  private final PayPalExpressCheckOutWebServiceRepository<Order> payPalExpressCheckOutWebServiceRepository =
+      new PayPalExpressCheckOutWebServiceRepository<Order>();
   private MetaData metaData = null;
   private Customer customer = null;
   private Contract contract = null;
@@ -93,9 +92,7 @@ public class PayPalExpressCheckOutWebServiceRepositoryTest {
     customer.setBuyerEmail("MRzEPsqD@netbrasoft.com");
     customer.setAddress(address);
 
-    final GregorianCalendar c = new GregorianCalendar();
-    c.setTime(new Date());
-    customer.setDateOfBirth(DatatypeFactory.newInstance().newXMLGregorianCalendar(c));
+    // customer.setDateOfBirth(new LocalDate());
 
     contract.setActive(true);
     contract.setCustomer(customer);
@@ -142,7 +139,7 @@ public class PayPalExpressCheckOutWebServiceRepositoryTest {
   }
 
   @Test
-  public void testPersistOrderAndDoCheckOut() throws GNUOpenBusinessServiceException_Exception, InterruptedException {
+  public void testPersistOrderAndDoCheckOut() throws GNUOpenBusinessApplicationException, InterruptedException {
     final String productName = product.getName();
     final String productDescription = product.getDescription();
 
@@ -187,7 +184,8 @@ public class PayPalExpressCheckOutWebServiceRepositoryTest {
     Order checkoutDetailsOrder = payPalExpressCheckOutWebServiceRepository.doCheckoutDetails(metaData, checkoutOrder);
     checkoutDetailsOrder = orderWebServiceRepository.find(metaData, checkoutDetailsOrder);
 
-    Order checkoutPaymentOrder = payPalExpressCheckOutWebServiceRepository.doCheckoutPayment(metaData, checkoutDetailsOrder);
+    Order checkoutPaymentOrder =
+        payPalExpressCheckOutWebServiceRepository.doCheckoutPayment(metaData, checkoutDetailsOrder);
     checkoutPaymentOrder = orderWebServiceRepository.find(metaData, checkoutPaymentOrder);
 
     Assert.assertNotNull("Order transaction id has no value.", checkoutPaymentOrder.getTransactionId());

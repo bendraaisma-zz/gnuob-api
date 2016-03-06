@@ -6,13 +6,10 @@ import static org.junit.Assert.assertTrue;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.Random;
 import java.util.UUID;
 
 import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.drone.api.annotation.Drone;
@@ -29,7 +26,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.netbrasoft.gnuob.api.Address;
 import com.netbrasoft.gnuob.api.Contract;
 import com.netbrasoft.gnuob.api.Customer;
-import com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException_Exception;
 import com.netbrasoft.gnuob.api.Invoice;
 import com.netbrasoft.gnuob.api.MetaData;
 import com.netbrasoft.gnuob.api.Order;
@@ -38,6 +34,7 @@ import com.netbrasoft.gnuob.api.Product;
 import com.netbrasoft.gnuob.api.Shipment;
 import com.netbrasoft.gnuob.api.Stock;
 import com.netbrasoft.gnuob.api.SubCategory;
+import com.netbrasoft.gnuob.api.generic.GNUOpenBusinessApplicationException;
 import com.netbrasoft.gnuob.api.order.OrderWebServiceRepository;
 import com.netbrasoft.gnuob.api.order.PagseguroCheckOutWebServiceRepository;
 import com.netbrasoft.gnuob.api.product.ProductWebServiceRepository;
@@ -55,9 +52,11 @@ public class PagseguroCheckOutWebServiceRepositoryTest {
   @Drone
   private WebDriver driver;
 
-  private final ProductWebServiceRepository<Product> productWebServiceRepository = new ProductWebServiceRepository<Product>();
+  private final ProductWebServiceRepository<Product> productWebServiceRepository =
+      new ProductWebServiceRepository<Product>();
   private final OrderWebServiceRepository<Order> orderWebServiceRepository = new OrderWebServiceRepository<Order>();
-  private final PagseguroCheckOutWebServiceRepository<Order> pagseguroCheckOutWebServiceRepository = new PagseguroCheckOutWebServiceRepository<Order>();
+  private final PagseguroCheckOutWebServiceRepository<Order> pagseguroCheckOutWebServiceRepository =
+      new PagseguroCheckOutWebServiceRepository<Order>();
   private MetaData metaData = null;
   private Customer customer = null;
   private Contract contract = null;
@@ -97,9 +96,7 @@ public class PagseguroCheckOutWebServiceRepositoryTest {
     customer.setBuyerEmail("c77487489899036884556@sandbox.pagseguro.com.br");
     customer.setAddress(address);
 
-    final GregorianCalendar c = new GregorianCalendar();
-    c.setTime(new Date());
-    customer.setDateOfBirth(DatatypeFactory.newInstance().newXMLGregorianCalendar(c));
+    // customer.setDateOfBirth(new Date());
 
     contract.setActive(true);
     contract.setCustomer(customer);
@@ -146,7 +143,7 @@ public class PagseguroCheckOutWebServiceRepositoryTest {
   }
 
   @Test
-  public void testPersistOrderAndDoCheckOut() throws GNUOpenBusinessServiceException_Exception, InterruptedException {
+  public void testPersistOrderAndDoCheckOut() throws GNUOpenBusinessApplicationException, InterruptedException {
     final String productName = product.getName();
     final String productDescription = product.getDescription();
 
@@ -196,7 +193,8 @@ public class PagseguroCheckOutWebServiceRepositoryTest {
     Order checkoutDetailsOrder = pagseguroCheckOutWebServiceRepository.doCheckoutDetails(metaData, checkoutOrder);
     checkoutDetailsOrder = orderWebServiceRepository.find(metaData, checkoutDetailsOrder);
 
-    Order checkoutPaymentOrder = pagseguroCheckOutWebServiceRepository.doCheckoutPayment(metaData, checkoutDetailsOrder);
+    Order checkoutPaymentOrder =
+        pagseguroCheckOutWebServiceRepository.doCheckoutPayment(metaData, checkoutDetailsOrder);
     checkoutPaymentOrder = orderWebServiceRepository.find(metaData, checkoutPaymentOrder);
 
     assertNotNull("Order transaction id has no value.", checkoutPaymentOrder.getTransactionId());

@@ -1,112 +1,94 @@
+/*
+ * Copyright 2016 Netbrasoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
 package com.netbrasoft.gnuob.api.security;
+
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.UNCHECKED_VALUE;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.USER_WEB_SERVICE_REPOSITORY_NAME;
+import static com.netbrasoft.gnuob.api.security.UserWebServiceWrapperHelper.wrapToCountUser;
+import static com.netbrasoft.gnuob.api.security.UserWebServiceWrapperHelper.wrapToFindUser;
+import static com.netbrasoft.gnuob.api.security.UserWebServiceWrapperHelper.wrapToFindUserById;
+import static com.netbrasoft.gnuob.api.security.UserWebServiceWrapperHelper.wrapToMergeUser;
+import static com.netbrasoft.gnuob.api.security.UserWebServiceWrapperHelper.wrapToPersistUser;
+import static com.netbrasoft.gnuob.api.security.UserWebServiceWrapperHelper.wrapToRefreshUser;
+import static com.netbrasoft.gnuob.api.security.UserWebServiceWrapperHelper.wrapToRemoveUser;
 
 import java.util.List;
 
 import org.javasimon.aop.Monitored;
 import org.springframework.stereotype.Repository;
 
-import com.netbrasoft.gnuob.api.CountUser;
-import com.netbrasoft.gnuob.api.CountUserResponse;
-import com.netbrasoft.gnuob.api.FindUser;
-import com.netbrasoft.gnuob.api.FindUserById;
-import com.netbrasoft.gnuob.api.FindUserByIdResponse;
-import com.netbrasoft.gnuob.api.FindUserResponse;
-import com.netbrasoft.gnuob.api.MergeUser;
-import com.netbrasoft.gnuob.api.MergeUserResponse;
 import com.netbrasoft.gnuob.api.MetaData;
 import com.netbrasoft.gnuob.api.OrderBy;
 import com.netbrasoft.gnuob.api.Paging;
-import com.netbrasoft.gnuob.api.PersistUser;
-import com.netbrasoft.gnuob.api.PersistUserResponse;
-import com.netbrasoft.gnuob.api.RefreshUser;
-import com.netbrasoft.gnuob.api.RefreshUserResponse;
-import com.netbrasoft.gnuob.api.RemoveUser;
 import com.netbrasoft.gnuob.api.User;
 import com.netbrasoft.gnuob.api.UserWebServiceImpl;
 import com.netbrasoft.gnuob.api.UserWebServiceImplService;
-import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
+import com.netbrasoft.gnuob.api.generic.IGenericTypeWebServiceRepository;
 
 @Monitored
-@Repository(UserWebServiceRepository.USER_WEB_SERVICE_REPOSITORY_NAME)
-public class UserWebServiceRepository<U extends User> implements GenericTypeWebServiceRepository<U> {
+@Repository(USER_WEB_SERVICE_REPOSITORY_NAME)
+public class UserWebServiceRepository<U extends User> implements IGenericTypeWebServiceRepository<U> {
 
-  protected static final String USER_WEB_SERVICE_REPOSITORY_NAME = "UserWebServiceRepository";
-
-  private UserWebServiceImpl userWebServiceImpl;
-
-  public UserWebServiceRepository() {
-    // Empty constructor.
-  }
-
-  @Override
-  public long count(final MetaData paramMetaData, final U paramUser) {
-    final CountUser paramCountUser = new CountUser();
-    paramCountUser.setUser(paramUser);
-    final CountUserResponse countUserResponse = getUserWebServiceImpl().countUser(paramCountUser, paramMetaData);
-    return countUserResponse.getReturn();
-  }
-
-  @SuppressWarnings("unchecked")
-  @Override
-  public U find(final MetaData paramMetaData, final U paramUser) {
-    final FindUserById paramFindUserById = new FindUserById();
-    paramFindUserById.setUser(paramUser);
-    final FindUserByIdResponse findUserByIdResponse = getUserWebServiceImpl().findUserById(paramFindUserById, paramMetaData);
-    return (U) findUserByIdResponse.getReturn();
-
-  }
-
-  @SuppressWarnings("unchecked")
-  @Override
-  public List<U> find(final MetaData paramMetaData, final U paramUser, final Paging paramPaging, final OrderBy paramOrderBy) {
-    final FindUser paramFindUser = new FindUser();
-    paramFindUser.setUser(paramUser);
-    paramFindUser.setPaging(paramPaging);
-    paramFindUser.setOrderBy(paramOrderBy);
-    final FindUserResponse findUserResponse = getUserWebServiceImpl().findUser(paramFindUser, paramMetaData);
-    return (List<U>) findUserResponse.getReturn();
-  }
+  private transient UserWebServiceImpl userWebServiceImpl;
 
   private UserWebServiceImpl getUserWebServiceImpl() {
     if (userWebServiceImpl == null) {
-      final UserWebServiceImplService userWebServiceImplService = new UserWebServiceImplService(UserWebServiceImplService.WSDL_LOCATION);
-      userWebServiceImpl = userWebServiceImplService.getUserWebServiceImplPort();
+      userWebServiceImpl = new UserWebServiceImplService().getUserWebServiceImplPort();
     }
-
     return userWebServiceImpl;
   }
 
-  @SuppressWarnings("unchecked")
   @Override
-  public U merge(final MetaData paramMetaData, final U paramUser) {
-    final MergeUser paramMergeUser = new MergeUser();
-    paramMergeUser.setUser(paramUser);
-    final MergeUserResponse mergeUserResponse = getUserWebServiceImpl().mergeUser(paramMergeUser, paramMetaData);
-    return (U) mergeUserResponse.getReturn();
+  public long count(final MetaData credentials, final U userExample) {
+    return getUserWebServiceImpl().countUser(wrapToCountUser(userExample), credentials).getReturn();
   }
 
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings(UNCHECKED_VALUE)
   @Override
-  public U persist(final MetaData paramMetaData, final U paramUser) {
-    final PersistUser paramPersistUser = new PersistUser();
-    paramPersistUser.setUser(paramUser);
-    final PersistUserResponse persistUserResponse = getUserWebServiceImpl().persistUser(paramPersistUser, paramMetaData);
-    return (U) persistUserResponse.getReturn();
+  public List<U> find(final MetaData credentials, final U userExample, final Paging paging,
+      final OrderBy orderingProperty) {
+    return (List<U>) getUserWebServiceImpl()
+        .findUser(wrapToFindUser(userExample, paging, orderingProperty), credentials).getReturn();
   }
 
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings(UNCHECKED_VALUE)
   @Override
-  public U refresh(final MetaData paramMetaData, final U paramUser) {
-    final RefreshUser paramRefresUser = new RefreshUser();
-    paramRefresUser.setUser(paramUser);
-    final RefreshUserResponse refresUserResponse = getUserWebServiceImpl().refreshUser(paramRefresUser, paramMetaData);
-    return (U) refresUserResponse.getReturn();
+  public U find(final MetaData credentials, final U userExample) {
+    return (U) getUserWebServiceImpl().findUserById(wrapToFindUserById(userExample), credentials).getReturn();
+  }
+
+  @SuppressWarnings(UNCHECKED_VALUE)
+  @Override
+  public U persist(final MetaData credentials, final U user) {
+    return (U) getUserWebServiceImpl().persistUser(wrapToPersistUser(user), credentials).getReturn();
+  }
+
+  @SuppressWarnings(UNCHECKED_VALUE)
+  @Override
+  public U merge(final MetaData credentials, final U user) {
+    return (U) getUserWebServiceImpl().mergeUser(wrapToMergeUser(user), credentials).getReturn();
+  }
+
+  @SuppressWarnings(UNCHECKED_VALUE)
+  @Override
+  public U refresh(final MetaData credentials, final U user) {
+    return (U) getUserWebServiceImpl().refreshUser(wrapToRefreshUser(user), credentials).getReturn();
   }
 
   @Override
-  public void remove(final MetaData paramMetaData, final U paramUser) {
-    final RemoveUser paramRemoveUser = new RemoveUser();
-    paramRemoveUser.setUser(paramUser);
-    getUserWebServiceImpl().removeUser(paramRemoveUser, paramMetaData);
+  public void remove(final MetaData credentials, final U user) {
+    getUserWebServiceImpl().removeUser(wrapToRemoveUser(user), credentials);
   }
 }

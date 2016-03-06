@@ -1,113 +1,95 @@
+/*
+ * Copyright 2016 Netbrasoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
 package com.netbrasoft.gnuob.api.product;
+
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.PRODUCT_WEB_SERVICE_REPOSITORY_NAME;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.UNCHECKED_VALUE;
+import static com.netbrasoft.gnuob.api.product.ProductWebServiceWrapperHelper.wrapToCountProduc;
+import static com.netbrasoft.gnuob.api.product.ProductWebServiceWrapperHelper.wrapToFindProduct;
+import static com.netbrasoft.gnuob.api.product.ProductWebServiceWrapperHelper.wrapToFindProductById;
+import static com.netbrasoft.gnuob.api.product.ProductWebServiceWrapperHelper.wrapToMergeProduct;
+import static com.netbrasoft.gnuob.api.product.ProductWebServiceWrapperHelper.wrapToPersistProduct;
+import static com.netbrasoft.gnuob.api.product.ProductWebServiceWrapperHelper.wrapToRefreshProduct;
+import static com.netbrasoft.gnuob.api.product.ProductWebServiceWrapperHelper.wrapToRemoveProduct;
 
 import java.util.List;
 
 import org.javasimon.aop.Monitored;
 import org.springframework.stereotype.Repository;
 
-import com.netbrasoft.gnuob.api.CountProduct;
-import com.netbrasoft.gnuob.api.CountProductResponse;
-import com.netbrasoft.gnuob.api.FindProduct;
-import com.netbrasoft.gnuob.api.FindProductById;
-import com.netbrasoft.gnuob.api.FindProductByIdResponse;
-import com.netbrasoft.gnuob.api.FindProductResponse;
-import com.netbrasoft.gnuob.api.MergeProduct;
-import com.netbrasoft.gnuob.api.MergeProductResponse;
 import com.netbrasoft.gnuob.api.MetaData;
 import com.netbrasoft.gnuob.api.OrderBy;
 import com.netbrasoft.gnuob.api.Paging;
-import com.netbrasoft.gnuob.api.PersistProduct;
-import com.netbrasoft.gnuob.api.PersistProductResponse;
 import com.netbrasoft.gnuob.api.Product;
 import com.netbrasoft.gnuob.api.ProductWebServiceImpl;
 import com.netbrasoft.gnuob.api.ProductWebServiceImplService;
-import com.netbrasoft.gnuob.api.RefreshProduct;
-import com.netbrasoft.gnuob.api.RefreshProductResponse;
-import com.netbrasoft.gnuob.api.RemoveProduct;
-import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
+import com.netbrasoft.gnuob.api.generic.IGenericTypeWebServiceRepository;
 
 @Monitored
-@Repository(ProductWebServiceRepository.PRODUCT_WEB_SERVICE_REPOSITORY_NAME)
-public class ProductWebServiceRepository<P extends Product> implements GenericTypeWebServiceRepository<P> {
+@Repository(PRODUCT_WEB_SERVICE_REPOSITORY_NAME)
+public class ProductWebServiceRepository<P extends Product> implements IGenericTypeWebServiceRepository<P> {
 
-  public static final String PRODUCT_WEB_SERVICE_REPOSITORY_NAME = "ProductWebServiceRepository";
-
-  private ProductWebServiceImpl productWebServiceImpl;
-
-  public ProductWebServiceRepository() {
-    // Empty constructor.
-  }
-
-  @Override
-  public long count(final MetaData paramMetaData, final P paramProduct) {
-    final CountProduct paramCountProduct = new CountProduct();
-    paramCountProduct.setProduct(paramProduct);
-    final CountProductResponse countProductResponse = getProductWebServiceImpl().countProduct(paramCountProduct, paramMetaData);
-    return countProductResponse.getReturn();
-  }
-
-  @SuppressWarnings("unchecked")
-  @Override
-  public P find(final MetaData paramMetaData, final P paramProduct) {
-    final FindProductById paramFindProductById = new FindProductById();
-    paramFindProductById.setProduct(paramProduct);
-    final FindProductByIdResponse findProductByIdResponse = getProductWebServiceImpl().findProductById(paramFindProductById, paramMetaData);
-    return (P) findProductByIdResponse.getReturn();
-
-  }
-
-  @SuppressWarnings("unchecked")
-  @Override
-  public List<P> find(final MetaData paramMetaData, final P paramProduct, final Paging paramPaging, final OrderBy paramOrderBy) {
-    final FindProduct paramFindProduct = new FindProduct();
-    paramFindProduct.setProduct(paramProduct);
-    paramFindProduct.setPaging(paramPaging);
-    paramFindProduct.setOrderBy(paramOrderBy);
-    final FindProductResponse findProductResponse = getProductWebServiceImpl().findProduct(paramFindProduct, paramMetaData);
-
-    return (List<P>) findProductResponse.getReturn();
-  }
+  private transient ProductWebServiceImpl productWebServiceImpl;
 
   private ProductWebServiceImpl getProductWebServiceImpl() {
     if (productWebServiceImpl == null) {
-      final ProductWebServiceImplService productWebServiceImplService = new ProductWebServiceImplService(ProductWebServiceImplService.WSDL_LOCATION);
-      productWebServiceImpl = productWebServiceImplService.getProductWebServiceImplPort();
+      productWebServiceImpl = new ProductWebServiceImplService().getProductWebServiceImplPort();
     }
-
     return productWebServiceImpl;
   }
 
-  @SuppressWarnings("unchecked")
   @Override
-  public P merge(final MetaData paramMetaData, final P paramProduct) {
-    final MergeProduct paramMergeProduct = new MergeProduct();
-    paramMergeProduct.setProduct(paramProduct);
-    final MergeProductResponse mergeProductResponse = getProductWebServiceImpl().mergeProduct(paramMergeProduct, paramMetaData);
-    return (P) mergeProductResponse.getReturn();
+  public long count(final MetaData credentials, final P productExample) {
+    return getProductWebServiceImpl().countProduct(wrapToCountProduc(productExample), credentials).getReturn();
   }
 
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings(UNCHECKED_VALUE)
   @Override
-  public P persist(final MetaData paramMetaData, final P paramProduct) {
-    final PersistProduct paramPersistProduct = new PersistProduct();
-    paramPersistProduct.setProduct(paramProduct);
-    final PersistProductResponse persistProductResponse = getProductWebServiceImpl().persistProduct(paramPersistProduct, paramMetaData);
-    return (P) persistProductResponse.getReturn();
+  public List<P> find(final MetaData credentials, final P productExample, final Paging paging,
+      final OrderBy orderingProperty) {
+    return (List<P>) getProductWebServiceImpl()
+        .findProduct(wrapToFindProduct(productExample, paging, orderingProperty), credentials).getReturn();
   }
 
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings(UNCHECKED_VALUE)
   @Override
-  public P refresh(final MetaData paramMetaData, final P paramProduct) {
-    final RefreshProduct paramRefresProduct = new RefreshProduct();
-    paramRefresProduct.setProduct(paramProduct);
-    final RefreshProductResponse refresProductResponse = getProductWebServiceImpl().refreshProduct(paramRefresProduct, paramMetaData);
-    return (P) refresProductResponse.getReturn();
+  public P find(final MetaData credentials, final P productExample) {
+    return (P) getProductWebServiceImpl().findProductById(wrapToFindProductById(productExample), credentials)
+        .getReturn();
+  }
+
+  @SuppressWarnings(UNCHECKED_VALUE)
+  @Override
+  public P persist(final MetaData credentials, final P product) {
+    return (P) getProductWebServiceImpl().persistProduct(wrapToPersistProduct(product), credentials).getReturn();
+  }
+
+  @SuppressWarnings(UNCHECKED_VALUE)
+  @Override
+  public P merge(final MetaData credentials, final P product) {
+    return (P) getProductWebServiceImpl().mergeProduct(wrapToMergeProduct(product), credentials).getReturn();
+  }
+
+  @SuppressWarnings(UNCHECKED_VALUE)
+  @Override
+  public P refresh(final MetaData credentials, final P product) {
+    return (P) getProductWebServiceImpl().refreshProduct(wrapToRefreshProduct(product), credentials).getReturn();
   }
 
   @Override
-  public void remove(final MetaData paramMetaData, final P paramProduct) {
-    final RemoveProduct paramRemoveProduct = new RemoveProduct();
-    paramRemoveProduct.setProduct(paramProduct);
-    getProductWebServiceImpl().removeProduct(paramRemoveProduct, paramMetaData);
+  public void remove(final MetaData credentials, final P product) {
+    getProductWebServiceImpl().removeProduct(wrapToRemoveProduct(product), credentials);
   }
 }

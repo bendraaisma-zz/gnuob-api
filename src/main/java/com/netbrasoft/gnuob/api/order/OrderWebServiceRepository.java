@@ -1,110 +1,94 @@
+/*
+ * Copyright 2016 Netbrasoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
 package com.netbrasoft.gnuob.api.order;
+
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.ORDER_WEB_SERVICE_REPOSITORY_NAME;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.UNCHECKED_VALUE;
+import static com.netbrasoft.gnuob.api.order.OrderWebserviceWrapperHelper.wrapToCountOrder;
+import static com.netbrasoft.gnuob.api.order.OrderWebserviceWrapperHelper.wrapToFindOrder;
+import static com.netbrasoft.gnuob.api.order.OrderWebserviceWrapperHelper.wrapToFindOrderById;
+import static com.netbrasoft.gnuob.api.order.OrderWebserviceWrapperHelper.wrapToMergeOrder;
+import static com.netbrasoft.gnuob.api.order.OrderWebserviceWrapperHelper.wrapToPersistOrder;
+import static com.netbrasoft.gnuob.api.order.OrderWebserviceWrapperHelper.wrapToRefreshOrder;
+import static com.netbrasoft.gnuob.api.order.OrderWebserviceWrapperHelper.wrapToRemoveOrder;
 
 import java.util.List;
 
 import org.javasimon.aop.Monitored;
 import org.springframework.stereotype.Repository;
 
-import com.netbrasoft.gnuob.api.CountOrder;
-import com.netbrasoft.gnuob.api.CountOrderResponse;
-import com.netbrasoft.gnuob.api.FindOrder;
-import com.netbrasoft.gnuob.api.FindOrderById;
-import com.netbrasoft.gnuob.api.FindOrderByIdResponse;
-import com.netbrasoft.gnuob.api.FindOrderResponse;
-import com.netbrasoft.gnuob.api.MergeOrder;
-import com.netbrasoft.gnuob.api.MergeOrderResponse;
 import com.netbrasoft.gnuob.api.MetaData;
 import com.netbrasoft.gnuob.api.Order;
 import com.netbrasoft.gnuob.api.OrderBy;
 import com.netbrasoft.gnuob.api.OrderWebServiceImpl;
 import com.netbrasoft.gnuob.api.OrderWebServiceImplService;
 import com.netbrasoft.gnuob.api.Paging;
-import com.netbrasoft.gnuob.api.PersistOrder;
-import com.netbrasoft.gnuob.api.PersistOrderResponse;
-import com.netbrasoft.gnuob.api.RefreshOrder;
-import com.netbrasoft.gnuob.api.RefreshOrderResponse;
-import com.netbrasoft.gnuob.api.RemoveOrder;
-import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
+import com.netbrasoft.gnuob.api.generic.IGenericTypeWebServiceRepository;
 
 @Monitored
-@Repository(OrderWebServiceRepository.ORDER_WEB_SERVICE_REPOSITORY_NAME)
-public class OrderWebServiceRepository<O extends Order> implements GenericTypeWebServiceRepository<O> {
+@Repository(ORDER_WEB_SERVICE_REPOSITORY_NAME)
+public class OrderWebServiceRepository<O extends Order> implements IGenericTypeWebServiceRepository<O> {
 
-  protected static final String ORDER_WEB_SERVICE_REPOSITORY_NAME = "OrderWebServiceRepository";
-
-  private OrderWebServiceImpl orderWebServiceImpl;
-
-  public OrderWebServiceRepository() {
-    // Empty constructor.
-  }
-
-  @Override
-  public long count(final MetaData paramMetaData, final O paramOrder) {
-    final CountOrder paramCountOrder = new CountOrder();
-    paramCountOrder.setOrder(paramOrder);
-    final CountOrderResponse countOrderResponse = getOrderWebServiceImpl().countOrder(paramCountOrder, paramMetaData);
-    return countOrderResponse.getReturn();
-  }
-
-  @SuppressWarnings("unchecked")
-  @Override
-  public O find(final MetaData paramMetaData, final O paramOrder) {
-    final FindOrderById paramFindOrderById = new FindOrderById();
-    paramFindOrderById.setOrder(paramOrder);
-    final FindOrderByIdResponse findOrderByIdResponse = getOrderWebServiceImpl().findOrderById(paramFindOrderById, paramMetaData);
-    return (O) findOrderByIdResponse.getReturn();
-  }
-
-  @SuppressWarnings("unchecked")
-  @Override
-  public List<O> find(final MetaData paramMetaData, final O paramOrder, final Paging paramPaging, final OrderBy paramOrderBy) {
-    final FindOrder paramFindOrder = new FindOrder();
-    paramFindOrder.setOrder(paramOrder);
-    paramFindOrder.setPaging(paramPaging);
-    paramFindOrder.setOrderBy(paramOrderBy);
-    final FindOrderResponse findOrderResponse = getOrderWebServiceImpl().findOrder(paramFindOrder, paramMetaData);
-    return (List<O>) findOrderResponse.getReturn();
-  }
+  private transient OrderWebServiceImpl orderWebServiceImpl;
 
   private OrderWebServiceImpl getOrderWebServiceImpl() {
     if (orderWebServiceImpl == null) {
-      final OrderWebServiceImplService orderWebServiceImplService = new OrderWebServiceImplService(OrderWebServiceImplService.WSDL_LOCATION);
-      orderWebServiceImpl = orderWebServiceImplService.getOrderWebServiceImplPort();
+      orderWebServiceImpl = new OrderWebServiceImplService().getOrderWebServiceImplPort();
     }
     return orderWebServiceImpl;
   }
 
-  @SuppressWarnings("unchecked")
   @Override
-  public O merge(final MetaData paramMetaData, final O paramOrder) {
-    final MergeOrder paramMergeOrder = new MergeOrder();
-    paramMergeOrder.setOrder(paramOrder);
-    final MergeOrderResponse mergeOrderResponse = getOrderWebServiceImpl().mergeOrder(paramMergeOrder, paramMetaData);
-    return (O) mergeOrderResponse.getReturn();
+  public long count(final MetaData credentials, final O orderTypeExample) {
+    return getOrderWebServiceImpl().countOrder(wrapToCountOrder(orderTypeExample), credentials).getReturn();
   }
 
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings(UNCHECKED_VALUE)
   @Override
-  public O persist(final MetaData paramMetaData, final O paramOrder) {
-    final PersistOrder paramPersistOrder = new PersistOrder();
-    paramPersistOrder.setOrder(paramOrder);
-    final PersistOrderResponse persistOrderResponse = getOrderWebServiceImpl().persistOrder(paramPersistOrder, paramMetaData);
-    return (O) persistOrderResponse.getReturn();
+  public List<O> find(final MetaData credentials, final O orderTypeExample, final Paging paging,
+      final OrderBy orderingProperty) {
+    return (List<O>) getOrderWebServiceImpl()
+        .findOrder(wrapToFindOrder(orderTypeExample, paging, orderingProperty), credentials).getReturn();
   }
 
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings(UNCHECKED_VALUE)
   @Override
-  public O refresh(final MetaData paramMetaData, final O paramOrder) {
-    final RefreshOrder paramRefreshOrder = new RefreshOrder();
-    paramRefreshOrder.setOrder(paramOrder);
-    final RefreshOrderResponse refreshOrderResponse = getOrderWebServiceImpl().refreshOrder(paramRefreshOrder, paramMetaData);
-    return (O) refreshOrderResponse.getReturn();
+  public O find(final MetaData credentials, final O orderTypeExample) {
+    return (O) getOrderWebServiceImpl().findOrderById(wrapToFindOrderById(orderTypeExample), credentials).getReturn();
+  }
+
+  @SuppressWarnings(UNCHECKED_VALUE)
+  @Override
+  public O merge(final MetaData credentials, final O orderType) {
+    return (O) getOrderWebServiceImpl().mergeOrder(wrapToMergeOrder(orderType), credentials).getReturn();
+  }
+
+  @SuppressWarnings(UNCHECKED_VALUE)
+  @Override
+  public O persist(final MetaData credentials, final O orderType) {
+    return (O) getOrderWebServiceImpl().persistOrder(wrapToPersistOrder(orderType), credentials).getReturn();
+  }
+
+  @SuppressWarnings(UNCHECKED_VALUE)
+  @Override
+  public O refresh(final MetaData credentials, final O orderType) {
+    return (O) getOrderWebServiceImpl().refreshOrder(wrapToRefreshOrder(orderType), credentials).getReturn();
   }
 
   @Override
-  public void remove(final MetaData paramMetaData, final O paramOrder) {
-    final RemoveOrder paramRemoveOrder = new RemoveOrder();
-    paramRemoveOrder.setOrder(paramOrder);
-    getOrderWebServiceImpl().removeOrder(paramRemoveOrder, paramMetaData);
+  public void remove(final MetaData credentials, final O orderType) {
+    getOrderWebServiceImpl().removeOrder(wrapToRemoveOrder(orderType), credentials);
   }
 }

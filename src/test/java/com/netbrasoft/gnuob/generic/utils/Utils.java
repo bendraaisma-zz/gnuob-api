@@ -11,9 +11,9 @@ public final class Utils {
 
   public static Archive<?> createDeployment() {
 
-    final JavaArchive[] wicketCore = Maven.resolver().resolve("org.apache.wicket:wicket-core:7.0.0").withoutTransitivity().as(JavaArchive.class);
-    final JavaArchive[] wicketUtil = Maven.resolver().resolve("org.apache.wicket:wicket-util:7.0.0").withoutTransitivity().as(JavaArchive.class);
-    final JavaArchive[] wicketExtentsion = Maven.resolver().resolve("org.apache.wicket:wicket-extensions:7.0.0").withoutTransitivity().as(JavaArchive.class);
+    final JavaArchive[] wicketCore = Maven.resolver().resolve("org.apache.wicket:wicket-core:7.0.1").withoutTransitivity().as(JavaArchive.class);
+    final JavaArchive[] wicketUtil = Maven.resolver().resolve("org.apache.wicket:wicket-util:7.0.1").withoutTransitivity().as(JavaArchive.class);
+    final JavaArchive[] wicketExtentsion = Maven.resolver().resolve("org.apache.wicket:wicket-extensions:7.0.1").withoutTransitivity().as(JavaArchive.class);
     final JavaArchive[] pbkdf2 = Maven.resolver().resolve("de.rtner:PBKDF2:1.1.1").withoutTransitivity().as(JavaArchive.class);
     final JavaArchive[] picketbox = Maven.resolver().resolve("org.picketbox:picketbox:4.9.2.Final").withoutTransitivity().as(JavaArchive.class);
 

@@ -1,4 +1,28 @@
+/*
+ * Copyright 2016 Netbrasoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
 package com.netbrasoft.gnuob.api.contract;
+
+import static com.netbrasoft.gnuob.api.contract.ContractWebServiceWrapperHelper.wrapToCountContract;
+import static com.netbrasoft.gnuob.api.contract.ContractWebServiceWrapperHelper.wrapToFindContract;
+import static com.netbrasoft.gnuob.api.contract.ContractWebServiceWrapperHelper.wrapToFindContractById;
+import static com.netbrasoft.gnuob.api.contract.ContractWebServiceWrapperHelper.wrapToMergeContract;
+import static com.netbrasoft.gnuob.api.contract.ContractWebServiceWrapperHelper.wrapToPersistContract;
+import static com.netbrasoft.gnuob.api.contract.ContractWebServiceWrapperHelper.wrapToRefreshContract;
+import static com.netbrasoft.gnuob.api.contract.ContractWebServiceWrapperHelper.wrapToRemoveContract;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.CONTRACT_WEB_SERVICE_REPOSITORY_NAME;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.UNCHECKED_VALUE;
 
 import java.util.List;
 
@@ -8,105 +32,64 @@ import org.springframework.stereotype.Repository;
 import com.netbrasoft.gnuob.api.Contract;
 import com.netbrasoft.gnuob.api.ContractWebServiceImpl;
 import com.netbrasoft.gnuob.api.ContractWebServiceImplService;
-import com.netbrasoft.gnuob.api.CountContract;
-import com.netbrasoft.gnuob.api.CountContractResponse;
-import com.netbrasoft.gnuob.api.FindContract;
-import com.netbrasoft.gnuob.api.FindContractById;
-import com.netbrasoft.gnuob.api.FindContractByIdResponse;
-import com.netbrasoft.gnuob.api.FindContractResponse;
-import com.netbrasoft.gnuob.api.MergeContract;
-import com.netbrasoft.gnuob.api.MergeContractResponse;
 import com.netbrasoft.gnuob.api.MetaData;
 import com.netbrasoft.gnuob.api.OrderBy;
 import com.netbrasoft.gnuob.api.Paging;
-import com.netbrasoft.gnuob.api.PersistContract;
-import com.netbrasoft.gnuob.api.PersistContractResponse;
-import com.netbrasoft.gnuob.api.RefreshContract;
-import com.netbrasoft.gnuob.api.RefreshContractResponse;
-import com.netbrasoft.gnuob.api.RemoveContract;
-import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
+import com.netbrasoft.gnuob.api.generic.IGenericTypeWebServiceRepository;
 
 @Monitored
-@Repository(ContractWebServiceRepository.CONTRACT_WEB_SERVICE_REPOSITORY_NAME)
-public class ContractWebServiceRepository<C extends Contract> implements GenericTypeWebServiceRepository<C> {
+@Repository(CONTRACT_WEB_SERVICE_REPOSITORY_NAME)
+public class ContractWebServiceRepository<C extends Contract> implements IGenericTypeWebServiceRepository<C> {
 
-  protected static final String CONTRACT_WEB_SERVICE_REPOSITORY_NAME = "ContractWebServiceRepository";
-
-  private ContractWebServiceImpl contractWebServiceImpl;
-
-  public ContractWebServiceRepository() {
-    // Empty constructor.
-  }
-
-  @Override
-  public long count(final MetaData paramMetaData, final C paramContract) {
-    final CountContract paramCountContract = new CountContract();
-    paramCountContract.setContract(paramContract);
-    final CountContractResponse countContractResponse = getContractWebServiceImpl().countContract(paramCountContract, paramMetaData);
-    return countContractResponse.getReturn();
-  }
-
-  @SuppressWarnings("unchecked")
-  @Override
-  public C find(final MetaData paramMetaData, final C paramContract) {
-    final FindContractById paramFindContractById = new FindContractById();
-    paramFindContractById.setContract(paramContract);
-    final FindContractByIdResponse findContractByIdResponse = getContractWebServiceImpl().findContractById(paramFindContractById, paramMetaData);
-    return (C) findContractByIdResponse.getReturn();
-
-  }
-
-  @SuppressWarnings("unchecked")
-  @Override
-  public List<C> find(final MetaData paramMetaData, final C paramContract, final Paging paramPaging, final OrderBy paramOrderBy) {
-    final FindContract paramFindContract = new FindContract();
-    paramFindContract.setContract(paramContract);
-    paramFindContract.setPaging(paramPaging);
-    paramFindContract.setOrderBy(paramOrderBy);
-    final FindContractResponse findContractResponse = getContractWebServiceImpl().findContract(paramFindContract, paramMetaData);
-    return (List<C>) findContractResponse.getReturn();
-  }
+  private transient ContractWebServiceImpl contractWebServiceImpl;
 
   private ContractWebServiceImpl getContractWebServiceImpl() {
     if (contractWebServiceImpl == null) {
-      final ContractWebServiceImplService contractWebServiceImplService = new ContractWebServiceImplService(ContractWebServiceImplService.WSDL_LOCATION);
-      contractWebServiceImpl = contractWebServiceImplService.getContractWebServiceImplPort();
+      contractWebServiceImpl = new ContractWebServiceImplService().getContractWebServiceImplPort();
     }
-
     return contractWebServiceImpl;
   }
 
-  @SuppressWarnings("unchecked")
   @Override
-  public C merge(final MetaData paramMetaData, final C paramContract) {
-    final MergeContract paramMergeContract = new MergeContract();
-    paramMergeContract.setContract(paramContract);
-    final MergeContractResponse mergeContractResponse = getContractWebServiceImpl().mergeContract(paramMergeContract, paramMetaData);
-    return (C) mergeContractResponse.getReturn();
+  public long count(final MetaData credentials, final C contractExample) {
+    return getContractWebServiceImpl().countContract(wrapToCountContract(contractExample), credentials).getReturn();
   }
 
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings(UNCHECKED_VALUE)
   @Override
-  public C persist(final MetaData paramMetaData, final C paramContract) {
-    final PersistContract paramPersistContract = new PersistContract();
-    paramPersistContract.setContract(paramContract);
-    final PersistContractResponse persistContractResponse = getContractWebServiceImpl().persistContract(paramPersistContract, paramMetaData);
-    return (C) persistContractResponse.getReturn();
+  public List<C> find(final MetaData credentials, final C contractExample, final Paging paging,
+      final OrderBy orderingProperty) {
+    return (List<C>) getContractWebServiceImpl()
+        .findContract(wrapToFindContract(contractExample, paging, orderingProperty), credentials).getReturn();
   }
 
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings(UNCHECKED_VALUE)
   @Override
-  public C refresh(final MetaData paramMetaData, final C paramContract) {
-    final RefreshContract paramRefresContract = new RefreshContract();
-    paramRefresContract.setContract(paramContract);
-    final RefreshContractResponse refresContractResponse = getContractWebServiceImpl().refreshContract(paramRefresContract, paramMetaData);
-    return (C) refresContractResponse.getReturn();
+  public C find(final MetaData credentials, final C contractExample) {
+    return (C) getContractWebServiceImpl().findContractById(wrapToFindContractById(contractExample), credentials)
+        .getReturn();
+  }
+
+  @SuppressWarnings(UNCHECKED_VALUE)
+  @Override
+  public C persist(final MetaData credentials, final C contract) {
+    return (C) getContractWebServiceImpl().persistContract(wrapToPersistContract(contract), credentials).getReturn();
+  }
+
+  @SuppressWarnings(UNCHECKED_VALUE)
+  @Override
+  public C merge(final MetaData credentials, final C contract) {
+    return (C) getContractWebServiceImpl().mergeContract(wrapToMergeContract(contract), credentials).getReturn();
+  }
+
+  @SuppressWarnings(UNCHECKED_VALUE)
+  @Override
+  public C refresh(final MetaData credentials, final C contract) {
+    return (C) getContractWebServiceImpl().refreshContract(wrapToRefreshContract(contract), credentials).getReturn();
   }
 
   @Override
-  public void remove(final MetaData paramMetaData, final C paramContract) {
-    final RemoveContract paramRemoveContract = new RemoveContract();
-    paramRemoveContract.setContract(paramContract);
-    getContractWebServiceImpl().removeContract(paramRemoveContract, paramMetaData);
+  public void remove(final MetaData credentials, final C contract) {
+    getContractWebServiceImpl().removeContract(wrapToRemoveContract(contract), credentials);
   }
 }

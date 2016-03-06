@@ -1,4 +1,22 @@
+/*
+ * Copyright 2016 Netbrasoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
 package com.netbrasoft.gnuob.api.contract;
+
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.CONTRACT_DATA_PROVIDER_NAME;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.CONTRACT_WEB_SERVICE_REPOSITORY_NAME;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.UNCHECKED_VALUE;
 
 import javax.annotation.Resource;
 
@@ -7,26 +25,24 @@ import org.springframework.stereotype.Controller;
 
 import com.netbrasoft.gnuob.api.Contract;
 import com.netbrasoft.gnuob.api.generic.AbstractGenericTypeDataProvider;
-import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
+import com.netbrasoft.gnuob.api.generic.IGenericTypeWebServiceRepository;
 
 @Monitored
-@Controller(ContractDataProvider.CONTRACT_DATA_PROVIDER_NAME)
+@Controller(CONTRACT_DATA_PROVIDER_NAME)
 public class ContractDataProvider<C extends Contract> extends AbstractGenericTypeDataProvider<C> {
-
-  public static final String CONTRACT_DATA_PROVIDER_NAME = "ContractDataProvider";
 
   private static final long serialVersionUID = -7147810111954265342L;
 
-  @Resource(name = ContractWebServiceRepository.CONTRACT_WEB_SERVICE_REPOSITORY_NAME)
-  private transient GenericTypeWebServiceRepository<C> contractWebServiceRepository;
+  @Resource(name = CONTRACT_WEB_SERVICE_REPOSITORY_NAME)
+  private transient IGenericTypeWebServiceRepository<C> contractWebServiceRepository;
 
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings(UNCHECKED_VALUE)
   public ContractDataProvider() {
     super((C) new Contract());
   }
 
   @Override
-  public GenericTypeWebServiceRepository<C> getGenericTypeWebServiceRepository() {
+  public IGenericTypeWebServiceRepository<C> getGenericTypeWebServiceRepository() {
     return contractWebServiceRepository;
   }
 }

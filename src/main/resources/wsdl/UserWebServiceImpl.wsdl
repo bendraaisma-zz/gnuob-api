@@ -1,0 +1,502 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://gnuob.netbrasoft.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="UserWebServiceImplService" targetNamespace="http://gnuob.netbrasoft.com/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://gnuob.netbrasoft.com/" elementFormDefault="unqualified" targetNamespace="http://gnuob.netbrasoft.com/" version="1.0">
+
+  <xs:element name="Group" type="tns:group"/>
+
+  <xs:element name="Paging" type="tns:paging"/>
+
+  <xs:element name="Permission" type="tns:permission"/>
+
+  <xs:element name="Role" type="tns:role"/>
+
+  <xs:element name="Rule" type="tns:rule"/>
+
+  <xs:element name="Site" type="tns:site"/>
+
+  <xs:element name="User" type="tns:user"/>
+
+  <xs:element name="countUser" type="tns:countUser"/>
+
+  <xs:element name="countUserResponse" type="tns:countUserResponse"/>
+
+  <xs:element name="findUser" type="tns:findUser"/>
+
+  <xs:element name="findUserById" type="tns:findUserById"/>
+
+  <xs:element name="findUserByIdResponse" type="tns:findUserByIdResponse"/>
+
+  <xs:element name="findUserResponse" type="tns:findUserResponse"/>
+
+  <xs:element name="mergeUser" type="tns:mergeUser"/>
+
+  <xs:element name="mergeUserResponse" type="tns:mergeUserResponse"/>
+
+  <xs:element name="metaData" type="tns:metaData"/>
+
+  <xs:element name="persistUser" type="tns:persistUser"/>
+
+  <xs:element name="persistUserResponse" type="tns:persistUserResponse"/>
+
+  <xs:element name="refreshUser" type="tns:refreshUser"/>
+
+  <xs:element name="refreshUserResponse" type="tns:refreshUserResponse"/>
+
+  <xs:element name="removeUser" type="tns:removeUser"/>
+
+  <xs:element name="removeUserResponse" type="tns:removeUserResponse"/>
+
+  <xs:complexType name="findUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="user" type="tns:user"/>
+      <xs:element minOccurs="0" name="paging" type="tns:paging"/>
+      <xs:element minOccurs="0" name="orderBy" type="tns:orderBy"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="user">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractAccess">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="access" type="tns:rule"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="groups" nillable="true" type="tns:group"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="password" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="roles" nillable="true" type="tns:role"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="sites" nillable="true" type="tns:site"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="abstractAccess">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractType">
+        <xs:sequence>
+          <xs:element name="active" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="permission" type="tns:permission"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="abstractType">
+    <xs:sequence/>
+    <xs:attribute name="id" type="xs:long" use="required"/>
+    <xs:attribute name="version" type="xs:int" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="group">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractAccess">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element name="name" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="permission">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractType">
+        <xs:sequence>
+          <xs:element name="group" type="tns:rule"/>
+          <xs:element name="others" type="tns:rule"/>
+          <xs:element name="owner" type="tns:rule"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="site">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractAccess">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element name="name" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="paging">
+    <xs:sequence>
+      <xs:element name="first" type="xs:int"/>
+      <xs:element name="max" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="metaData">
+    <xs:sequence>
+      <xs:element name="site" type="xs:string"/>
+      <xs:element name="user" type="xs:string"/>
+      <xs:element name="password" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findUserResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:user"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="persistUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="user" type="tns:user"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="persistUserResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:user"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="removeUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="user" type="tns:user"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="removeUserResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="refreshUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="user" type="tns:user"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="refreshUserResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:user"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="mergeUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="user" type="tns:user"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="mergeUserResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:user"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="countUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="user" type="tns:user"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="countUserResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findUserById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="user" type="tns:user"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findUserByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:user"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="rule">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CREATE_ACCESS"/>
+      <xs:enumeration value="DELETE_ACCESS"/>
+      <xs:enumeration value="NONE_ACCESS"/>
+      <xs:enumeration value="READ_ACCESS"/>
+      <xs:enumeration value="UPDATE_ACCESS"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="role">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ADMINISTRATOR"/>
+      <xs:enumeration value="EMPLOYEE"/>
+      <xs:enumeration value="GUEST"/>
+      <xs:enumeration value="MANAGER"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="orderBy">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="RECOMMENDED"/>
+      <xs:enumeration value="HIGHEST_DISCOUNT"/>
+      <xs:enumeration value="LOWEST_DISCOUNT"/>
+      <xs:enumeration value="HIGHEST_PRICE"/>
+      <xs:enumeration value="LOWEST_PRICE"/>
+      <xs:enumeration value="HIGHEST_RATING"/>
+      <xs:enumeration value="LOWEST_RATING"/>
+      <xs:enumeration value="BESTSELLERS"/>
+      <xs:enumeration value="LATEST_COLLECTION"/>
+      <xs:enumeration value="NAME_A_Z"/>
+      <xs:enumeration value="NAME_Z_A"/>
+      <xs:enumeration value="DESCRIPTION_A_Z"/>
+      <xs:enumeration value="DESCRIPTION_Z_A"/>
+      <xs:enumeration value="PROPERTY_A_Z"/>
+      <xs:enumeration value="PROPERTY_Z_A"/>
+      <xs:enumeration value="PLACE_NAME_A_Z"/>
+      <xs:enumeration value="PLACE_NAME_Z_A"/>
+      <xs:enumeration value="COUNTRY_CODE_A_Z"/>
+      <xs:enumeration value="COUNTRY_CODE_Z_A"/>
+      <xs:enumeration value="POSTAL_CODE_A_Z"/>
+      <xs:enumeration value="POSTAL_CODE_Z_A"/>
+      <xs:enumeration value="STATE_NAME_A_Z"/>
+      <xs:enumeration value="STATE_NAME_Z_A"/>
+      <xs:enumeration value="VALUE_A_Z"/>
+      <xs:enumeration value="VALUE_Z_A"/>
+      <xs:enumeration value="POSITION_A_Z"/>
+      <xs:enumeration value="POSITION_Z_A"/>
+      <xs:enumeration value="NONE"/>
+      <xs:enumeration value="FIRST_NAME_A_Z"/>
+      <xs:enumeration value="FIRST_NAME_Z_A"/>
+      <xs:enumeration value="LAST_NAME_A_Z"/>
+      <xs:enumeration value="LAST_NAME_Z_A"/>
+      <xs:enumeration value="CONTRACT_ID_A_Z"/>
+      <xs:enumeration value="CONTRACT_ID_Z_A"/>
+      <xs:enumeration value="ORDER_ID_A_Z"/>
+      <xs:enumeration value="ORDER_ID_Z_A"/>
+      <xs:enumeration value="OFFER_ID_A_Z"/>
+      <xs:enumeration value="OFFER_ID_Z_A"/>
+      <xs:enumeration value="NUMBER_A_Z"/>
+      <xs:enumeration value="NUMBER_Z_A"/>
+      <xs:enumeration value="CREATION_A_Z"/>
+      <xs:enumeration value="CREATION_Z_A"/>
+      <xs:enumeration value="MODIFICATION_A_Z"/>
+      <xs:enumeration value="MODIFICATION_Z_A"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="operation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CREATE"/>
+      <xs:enumeration value="DELETE"/>
+      <xs:enumeration value="NONE"/>
+      <xs:enumeration value="READ"/>
+      <xs:enumeration value="UPDATE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="orderEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DESC"/>
+      <xs:enumeration value="ASC"/>
+      <xs:enumeration value="NONE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="findUserResponse">
+    <wsdl:part element="tns:findUserResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeUserResponse">
+    <wsdl:part element="tns:removeUserResponse" name="result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeUser">
+    <wsdl:part element="tns:removeUser" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findUserByIdResponse">
+    <wsdl:part element="tns:findUserByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="refreshUser">
+    <wsdl:part element="tns:refreshUser" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="mergeUser">
+    <wsdl:part element="tns:mergeUser" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findUserById">
+    <wsdl:part element="tns:findUserById" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="mergeUserResponse">
+    <wsdl:part element="tns:mergeUserResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="refreshUserResponse">
+    <wsdl:part element="tns:refreshUserResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findUser">
+    <wsdl:part element="tns:findUser" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="persistUser">
+    <wsdl:part element="tns:persistUser" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="persistUserResponse">
+    <wsdl:part element="tns:persistUserResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="countUserResponse">
+    <wsdl:part element="tns:countUserResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="countUser">
+    <wsdl:part element="tns:countUser" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="UserWebServiceImpl">
+    <wsdl:operation name="findUser">
+      <wsdl:input message="tns:findUser" name="findUser">
+    </wsdl:input>
+      <wsdl:output message="tns:findUserResponse" name="findUserResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="persistUser">
+      <wsdl:input message="tns:persistUser" name="persistUser">
+    </wsdl:input>
+      <wsdl:output message="tns:persistUserResponse" name="persistUserResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeUser">
+      <wsdl:input message="tns:removeUser" name="removeUser">
+    </wsdl:input>
+      <wsdl:output message="tns:removeUserResponse" name="removeUserResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="refreshUser">
+      <wsdl:input message="tns:refreshUser" name="refreshUser">
+    </wsdl:input>
+      <wsdl:output message="tns:refreshUserResponse" name="refreshUserResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mergeUser">
+      <wsdl:input message="tns:mergeUser" name="mergeUser">
+    </wsdl:input>
+      <wsdl:output message="tns:mergeUserResponse" name="mergeUserResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="countUser">
+      <wsdl:input message="tns:countUser" name="countUser">
+    </wsdl:input>
+      <wsdl:output message="tns:countUserResponse" name="countUserResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findUserById">
+      <wsdl:input message="tns:findUserById" name="findUserById">
+    </wsdl:input>
+      <wsdl:output message="tns:findUserByIdResponse" name="findUserByIdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UserWebServiceImplServiceSoapBinding" type="tns:UserWebServiceImpl">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="persistUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="persistUser">
+        <soap:header message="tns:persistUser" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="persistUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findUser">
+        <soap:header message="tns:findUser" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="removeUser">
+        <soap:header message="tns:removeUser" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="removeUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="refreshUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="refreshUser">
+        <soap:header message="tns:refreshUser" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="refreshUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mergeUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="mergeUser">
+        <soap:header message="tns:mergeUser" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="mergeUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="countUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="countUser">
+        <soap:header message="tns:countUser" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="countUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findUserById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findUserById">
+        <soap:header message="tns:findUserById" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findUserByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UserWebServiceImplService">
+    <wsdl:port binding="tns:UserWebServiceImplServiceSoapBinding" name="UserWebServiceImplPort">
+      <soap:address location="http://localhost:8080/gnuob-soap/UserWebServiceImpl"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

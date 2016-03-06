@@ -1,0 +1,644 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://gnuob.netbrasoft.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="PayPalExpressCheckOutWebServiceImplService" targetNamespace="http://gnuob.netbrasoft.com/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://gnuob.netbrasoft.com/" elementFormDefault="unqualified" targetNamespace="http://gnuob.netbrasoft.com/" version="1.0">
+
+  <xs:element name="Address" type="tns:address"/>
+
+  <xs:element name="Content" type="tns:content"/>
+
+  <xs:element name="Contract" type="tns:contract"/>
+
+  <xs:element name="Customer" type="tns:customer"/>
+
+  <xs:element name="Invoice" type="tns:invoice"/>
+
+  <xs:element name="Option" type="tns:option"/>
+
+  <xs:element name="Order" type="tns:order"/>
+
+  <xs:element name="OrderRecord" type="tns:orderRecord"/>
+
+  <xs:element name="Payment" type="tns:payment"/>
+
+  <xs:element name="Permission" type="tns:permission"/>
+
+  <xs:element name="Product" type="tns:product"/>
+
+  <xs:element name="Rule" type="tns:rule"/>
+
+  <xs:element name="Shipment" type="tns:shipment"/>
+
+  <xs:element name="Stock" type="tns:stock"/>
+
+  <xs:element name="SubCategory" type="tns:subCategory"/>
+
+  <xs:element name="SubOption" type="tns:subOption"/>
+
+  <xs:element name="doCheckout" type="tns:doCheckout"/>
+
+  <xs:element name="doCheckoutDetails" type="tns:doCheckoutDetails"/>
+
+  <xs:element name="doCheckoutDetailsResponse" type="tns:doCheckoutDetailsResponse"/>
+
+  <xs:element name="doCheckoutPayment" type="tns:doCheckoutPayment"/>
+
+  <xs:element name="doCheckoutPaymentResponse" type="tns:doCheckoutPaymentResponse"/>
+
+  <xs:element name="doCheckoutResponse" type="tns:doCheckoutResponse"/>
+
+  <xs:element name="doNotification" type="tns:doNotification"/>
+
+  <xs:element name="doNotificationResponse" type="tns:doNotificationResponse"/>
+
+  <xs:element name="doRefundTransaction" type="tns:doRefundTransaction"/>
+
+  <xs:element name="doRefundTransactionResponse" type="tns:doRefundTransactionResponse"/>
+
+  <xs:element name="doTransactionDetails" type="tns:doTransactionDetails"/>
+
+  <xs:element name="doTransactionDetailsResponse" type="tns:doTransactionDetailsResponse"/>
+
+  <xs:element name="metaData" type="tns:metaData"/>
+
+  <xs:complexType name="doRefundTransaction">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="order" type="tns:order"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="order">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractAccess">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="billingAgreementId" type="xs:string"/>
+          <xs:element minOccurs="0" name="checkout" type="xs:string"/>
+          <xs:element minOccurs="0" name="checkoutStatus" type="xs:string"/>
+          <xs:element name="contract" type="tns:contract"/>
+          <xs:element minOccurs="0" name="custom" type="xs:string"/>
+          <xs:element minOccurs="0" name="discountTotal" type="xs:decimal"/>
+          <xs:element name="extraAmount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="giftMessage" type="xs:string"/>
+          <xs:element minOccurs="0" name="giftMessageEnable" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="giftReceiptEnable" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="giftWrapAmount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="giftWrapEnable" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="giftWrapName" type="xs:string"/>
+          <xs:element name="handlingTotal" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="insuranceOptionOffered" type="xs:boolean"/>
+          <xs:element name="insuranceTotal" type="xs:decimal"/>
+          <xs:element name="invoice" type="tns:invoice"/>
+          <xs:element minOccurs="0" name="itemTotal" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="maxTotal" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="note" type="xs:string"/>
+          <xs:element minOccurs="0" name="noteText" type="xs:string"/>
+          <xs:element minOccurs="0" name="notificationId" type="xs:string"/>
+          <xs:element minOccurs="0" name="orderDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="orderDescription" type="xs:string"/>
+          <xs:element name="orderId" type="xs:string"/>
+          <xs:element minOccurs="0" name="orderTotal" type="xs:decimal"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="records" nillable="true" type="tns:orderRecord"/>
+          <xs:element minOccurs="0" name="shipment" type="tns:shipment"/>
+          <xs:element name="shippingDiscount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="shippingTotal" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="taxTotal" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="token" type="xs:string"/>
+          <xs:element minOccurs="0" name="transactionId" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="abstractAccess">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractType">
+        <xs:sequence>
+          <xs:element name="active" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="permission" type="tns:permission"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="abstractType">
+    <xs:sequence/>
+    <xs:attribute name="id" type="xs:long" use="required"/>
+    <xs:attribute name="version" type="xs:int" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="contract">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractAccess">
+        <xs:sequence>
+          <xs:element name="contractId" type="xs:string"/>
+          <xs:element name="customer" type="tns:customer"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="customer">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractAccess">
+        <xs:sequence>
+          <xs:element name="address" type="tns:address"/>
+          <xs:element name="buyerEmail" type="xs:string"/>
+          <xs:element minOccurs="0" name="buyerMarketingEmail" type="xs:string"/>
+          <xs:element minOccurs="0" name="contactPhone" type="xs:string"/>
+          <xs:element minOccurs="0" name="dateOfBirth" type="xs:dateTime"/>
+          <xs:element name="firstName" type="xs:string"/>
+          <xs:element minOccurs="0" name="friendlyName" type="xs:string"/>
+          <xs:element name="lastName" type="xs:string"/>
+          <xs:element minOccurs="0" name="middleName" type="xs:string"/>
+          <xs:element minOccurs="0" name="payer" type="xs:string"/>
+          <xs:element minOccurs="0" name="payerBusiness" type="xs:string"/>
+          <xs:element minOccurs="0" name="payerId" type="xs:string"/>
+          <xs:element minOccurs="0" name="payerStatus" type="xs:string"/>
+          <xs:element minOccurs="0" name="salutation" type="xs:string"/>
+          <xs:element minOccurs="0" name="suffix" type="xs:string"/>
+          <xs:element minOccurs="0" name="taxId" type="xs:string"/>
+          <xs:element minOccurs="0" name="taxIdType" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="address">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractType">
+        <xs:sequence>
+          <xs:element name="cityName" type="xs:string"/>
+          <xs:element minOccurs="0" name="complement" type="xs:string"/>
+          <xs:element name="country" type="xs:string"/>
+          <xs:element minOccurs="0" name="countryName" type="xs:string"/>
+          <xs:element minOccurs="0" name="district" type="xs:string"/>
+          <xs:element minOccurs="0" name="internationalStateAndCity" type="xs:string"/>
+          <xs:element minOccurs="0" name="internationalStreet" type="xs:string"/>
+          <xs:element minOccurs="0" name="number" type="xs:string"/>
+          <xs:element minOccurs="0" name="phone" type="xs:string"/>
+          <xs:element name="postalCode" type="xs:string"/>
+          <xs:element name="stateOrProvince" type="xs:string"/>
+          <xs:element name="street1" type="xs:string"/>
+          <xs:element minOccurs="0" name="street2" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="permission">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractType">
+        <xs:sequence>
+          <xs:element name="group" type="tns:rule"/>
+          <xs:element name="others" type="tns:rule"/>
+          <xs:element name="owner" type="tns:rule"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="invoice">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractType">
+        <xs:sequence>
+          <xs:element name="address" type="tns:address"/>
+          <xs:element minOccurs="0" name="invoiceId" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="payments" type="tns:payment"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="payment">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="exchangeRate" type="xs:string"/>
+          <xs:element minOccurs="0" name="feeAmount" type="xs:decimal"/>
+          <xs:element name="grossAmount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="holdDecision" type="xs:string"/>
+          <xs:element minOccurs="0" name="installmentCount" type="xs:integer"/>
+          <xs:element minOccurs="0" name="paymentDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="paymentRequestId" type="xs:string"/>
+          <xs:element name="paymentStatus" type="xs:string"/>
+          <xs:element name="paymentType" type="xs:string"/>
+          <xs:element minOccurs="0" name="pendingReason" type="xs:string"/>
+          <xs:element minOccurs="0" name="protectionEligibilityType" type="xs:string"/>
+          <xs:element minOccurs="0" name="reasonCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="settleAmount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="storeId" type="xs:string"/>
+          <xs:element minOccurs="0" name="taxAmount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="terminalId" type="xs:string"/>
+          <xs:element name="transactionId" type="xs:string"/>
+          <xs:element name="transactionType" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="orderRecord">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="amount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="deliveryDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="discount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="itemHeight" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="itemHeightUnit" type="xs:string"/>
+          <xs:element minOccurs="0" name="itemLength" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="itemLengthUnit" type="xs:string"/>
+          <xs:element minOccurs="0" name="itemUrl" type="xs:string"/>
+          <xs:element minOccurs="0" name="itemWeight" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="itemWeightUnit" type="xs:string"/>
+          <xs:element minOccurs="0" name="itemWidth" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="itemWidthUnit" type="xs:string"/>
+          <xs:element minOccurs="0" name="name" type="xs:string"/>
+          <xs:element minOccurs="0" name="option" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="options" nillable="true" type="tns:option"/>
+          <xs:element minOccurs="0" name="orderRecordId" type="xs:string"/>
+          <xs:element minOccurs="0" name="product" type="tns:product"/>
+          <xs:element minOccurs="0" name="productNumber" type="xs:string"/>
+          <xs:element name="quantity" type="xs:integer"/>
+          <xs:element minOccurs="0" name="shippingCost" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="tax" type="xs:decimal"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="option">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractType">
+        <xs:sequence>
+          <xs:element name="description" type="xs:string"/>
+          <xs:element name="disabled" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="position" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="subOptions" nillable="true" type="tns:subOption"/>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="subOption">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractType">
+        <xs:sequence>
+          <xs:element name="description" type="xs:string"/>
+          <xs:element name="disabled" type="xs:boolean"/>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="product">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractAccess">
+        <xs:sequence>
+          <xs:element name="amount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="bestsellers" type="xs:boolean"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="contents" nillable="true" type="tns:content"/>
+          <xs:element name="description" type="xs:string"/>
+          <xs:element name="discount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="itemHeight" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="itemHeightUnit" type="xs:string"/>
+          <xs:element minOccurs="0" name="itemLength" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="itemLengthUnit" type="xs:string"/>
+          <xs:element minOccurs="0" name="itemUrl" type="xs:string"/>
+          <xs:element name="itemWeight" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="itemWeightUnit" type="xs:string"/>
+          <xs:element minOccurs="0" name="itemWidth" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="itemWidthUnit" type="xs:string"/>
+          <xs:element minOccurs="0" name="latestCollection" type="xs:boolean"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="number" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="options" nillable="true" type="tns:option"/>
+          <xs:element minOccurs="0" name="rating" type="xs:int"/>
+          <xs:element minOccurs="0" name="recommended" type="xs:boolean"/>
+          <xs:element name="shippingCost" type="xs:decimal"/>
+          <xs:element name="stock" type="tns:stock"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="subCategories" nillable="true" type="tns:subCategory"/>
+          <xs:element name="tax" type="xs:decimal"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="content">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractAccess">
+        <xs:sequence>
+          <xs:element name="content" type="xs:base64Binary"/>
+          <xs:element name="format" type="xs:string"/>
+          <xs:element name="name" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="stock">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractType">
+        <xs:sequence>
+          <xs:element name="maxQuantity" type="xs:integer"/>
+          <xs:element name="minQuantity" type="xs:integer"/>
+          <xs:element name="quantity" type="xs:integer"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="subCategory">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractType">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="contents" nillable="true" type="tns:content"/>
+          <xs:element name="description" type="xs:string"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="subCategories" nillable="true" type="tns:subCategory"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="shipment">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractType">
+        <xs:sequence>
+          <xs:element name="address" type="tns:address"/>
+          <xs:element minOccurs="0" name="shipmentType" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="metaData">
+    <xs:sequence>
+      <xs:element name="site" type="xs:string"/>
+      <xs:element name="user" type="xs:string"/>
+      <xs:element name="password" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="doRefundTransactionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:order"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="doCheckoutPayment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="order" type="tns:order"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="doCheckoutPaymentResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:order"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="doCheckout">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="order" type="tns:order"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="doCheckoutResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:order"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="doCheckoutDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="order" type="tns:order"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="doCheckoutDetailsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:order"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="doNotification">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="order" type="tns:order"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="doNotificationResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:order"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="doTransactionDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="order" type="tns:order"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="doTransactionDetailsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:order"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="rule">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CREATE_ACCESS"/>
+      <xs:enumeration value="DELETE_ACCESS"/>
+      <xs:enumeration value="NONE_ACCESS"/>
+      <xs:enumeration value="READ_ACCESS"/>
+      <xs:enumeration value="UPDATE_ACCESS"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="operation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CREATE"/>
+      <xs:enumeration value="DELETE"/>
+      <xs:enumeration value="NONE"/>
+      <xs:enumeration value="READ"/>
+      <xs:enumeration value="UPDATE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="doRefundTransaction">
+    <wsdl:part element="tns:doRefundTransaction" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="doTransactionDetailsResponse">
+    <wsdl:part element="tns:doTransactionDetailsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="doCheckoutPayment">
+    <wsdl:part element="tns:doCheckoutPayment" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="doCheckoutPaymentResponse">
+    <wsdl:part element="tns:doCheckoutPaymentResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="doCheckout">
+    <wsdl:part element="tns:doCheckout" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="doCheckoutDetails">
+    <wsdl:part element="tns:doCheckoutDetails" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="doRefundTransactionResponse">
+    <wsdl:part element="tns:doRefundTransactionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="doCheckoutDetailsResponse">
+    <wsdl:part element="tns:doCheckoutDetailsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="doNotificationResponse">
+    <wsdl:part element="tns:doNotificationResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="doNotification">
+    <wsdl:part element="tns:doNotification" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="doTransactionDetails">
+    <wsdl:part element="tns:doTransactionDetails" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="doCheckoutResponse">
+    <wsdl:part element="tns:doCheckoutResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="PayPalExpressCheckOutWebServiceImpl">
+    <wsdl:operation name="doRefundTransaction">
+      <wsdl:input message="tns:doRefundTransaction" name="doRefundTransaction">
+    </wsdl:input>
+      <wsdl:output message="tns:doRefundTransactionResponse" name="doRefundTransactionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doCheckoutPayment">
+      <wsdl:input message="tns:doCheckoutPayment" name="doCheckoutPayment">
+    </wsdl:input>
+      <wsdl:output message="tns:doCheckoutPaymentResponse" name="doCheckoutPaymentResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doCheckout">
+      <wsdl:input message="tns:doCheckout" name="doCheckout">
+    </wsdl:input>
+      <wsdl:output message="tns:doCheckoutResponse" name="doCheckoutResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doCheckoutDetails">
+      <wsdl:input message="tns:doCheckoutDetails" name="doCheckoutDetails">
+    </wsdl:input>
+      <wsdl:output message="tns:doCheckoutDetailsResponse" name="doCheckoutDetailsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doNotification">
+      <wsdl:input message="tns:doNotification" name="doNotification">
+    </wsdl:input>
+      <wsdl:output message="tns:doNotificationResponse" name="doNotificationResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doTransactionDetails">
+      <wsdl:input message="tns:doTransactionDetails" name="doTransactionDetails">
+    </wsdl:input>
+      <wsdl:output message="tns:doTransactionDetailsResponse" name="doTransactionDetailsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PayPalExpressCheckOutWebServiceImplServiceSoapBinding" type="tns:PayPalExpressCheckOutWebServiceImpl">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="doRefundTransaction">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="doRefundTransaction">
+        <soap:header message="tns:doRefundTransaction" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="doRefundTransactionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doCheckoutPayment">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="doCheckoutPayment">
+        <soap:header message="tns:doCheckoutPayment" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="doCheckoutPaymentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doCheckout">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="doCheckout">
+        <soap:header message="tns:doCheckout" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="doCheckoutResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doCheckoutDetails">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="doCheckoutDetails">
+        <soap:header message="tns:doCheckoutDetails" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="doCheckoutDetailsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doNotification">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="doNotification">
+        <soap:header message="tns:doNotification" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="doNotificationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doTransactionDetails">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="doTransactionDetails">
+        <soap:header message="tns:doTransactionDetails" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="doTransactionDetailsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PayPalExpressCheckOutWebServiceImplService">
+    <wsdl:port binding="tns:PayPalExpressCheckOutWebServiceImplServiceSoapBinding" name="PayPalExpressCheckOutWebServiceImplPort">
+      <soap:address location="http://localhost:8080/gnuob-soap/PayPalExpressCheckOutWebServiceImpl"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

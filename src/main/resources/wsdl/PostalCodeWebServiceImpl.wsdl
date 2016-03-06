@@ -1,0 +1,423 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://gnuob.netbrasoft.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="PostalCodeWebServiceImplService" targetNamespace="http://gnuob.netbrasoft.com/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://gnuob.netbrasoft.com/" elementFormDefault="unqualified" targetNamespace="http://gnuob.netbrasoft.com/" version="1.0">
+
+  <xs:element name="Paging" type="tns:paging"/>
+
+  <xs:element name="PostalCode" type="tns:postalCode"/>
+
+  <xs:element name="countPostalCode" type="tns:countPostalCode"/>
+
+  <xs:element name="countPostalCodeResponse" type="tns:countPostalCodeResponse"/>
+
+  <xs:element name="findPostalCode" type="tns:findPostalCode"/>
+
+  <xs:element name="findPostalCodeById" type="tns:findPostalCodeById"/>
+
+  <xs:element name="findPostalCodeByIdResponse" type="tns:findPostalCodeByIdResponse"/>
+
+  <xs:element name="findPostalCodeResponse" type="tns:findPostalCodeResponse"/>
+
+  <xs:element name="mergePostalCode" type="tns:mergePostalCode"/>
+
+  <xs:element name="mergePostalCodeResponse" type="tns:mergePostalCodeResponse"/>
+
+  <xs:element name="metaData" type="tns:metaData"/>
+
+  <xs:element name="persistPostalCode" type="tns:persistPostalCode"/>
+
+  <xs:element name="persistPostalCodeResponse" type="tns:persistPostalCodeResponse"/>
+
+  <xs:element name="refreshPostalCode" type="tns:refreshPostalCode"/>
+
+  <xs:element name="refreshPostalCodeResponse" type="tns:refreshPostalCodeResponse"/>
+
+  <xs:element name="removePostalCode" type="tns:removePostalCode"/>
+
+  <xs:element name="removePostalCodeResponse" type="tns:removePostalCodeResponse"/>
+
+  <xs:complexType name="findPostalCodeById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="postalCode" type="tns:postalCode"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="postalCode">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="accuracy" type="xs:string"/>
+          <xs:element name="adminCode1" type="xs:string"/>
+          <xs:element minOccurs="0" name="adminCode2" type="xs:string"/>
+          <xs:element minOccurs="0" name="adminCode3" type="xs:string"/>
+          <xs:element name="adminName1" type="xs:string"/>
+          <xs:element minOccurs="0" name="adminName2" type="xs:string"/>
+          <xs:element minOccurs="0" name="adminName3" type="xs:string"/>
+          <xs:element name="countryCode" type="xs:string"/>
+          <xs:element name="latitude" type="xs:decimal"/>
+          <xs:element name="longitude" type="xs:decimal"/>
+          <xs:element name="placeName" type="xs:string"/>
+          <xs:element name="postalCode" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="abstractType">
+    <xs:sequence/>
+    <xs:attribute name="id" type="xs:long" use="required"/>
+    <xs:attribute name="version" type="xs:int" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="metaData">
+    <xs:sequence>
+      <xs:element name="site" type="xs:string"/>
+      <xs:element name="user" type="xs:string"/>
+      <xs:element name="password" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findPostalCodeByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:postalCode"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="countPostalCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="postalCode" type="tns:postalCode"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="countPostalCodeResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findPostalCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="postalCode" type="tns:postalCode"/>
+      <xs:element minOccurs="0" name="paging" type="tns:paging"/>
+      <xs:element minOccurs="0" name="orderBy" type="tns:orderBy"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="paging">
+    <xs:sequence>
+      <xs:element name="first" type="xs:int"/>
+      <xs:element name="max" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findPostalCodeResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:postalCode"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="refreshPostalCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="postalCode" type="tns:postalCode"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="refreshPostalCodeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:postalCode"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="mergePostalCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="postalCode" type="tns:postalCode"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="mergePostalCodeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:postalCode"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="persistPostalCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="postalCode" type="tns:postalCode"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="persistPostalCodeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:postalCode"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="removePostalCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="postalCode" type="tns:postalCode"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="removePostalCodeResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:simpleType name="orderBy">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="RECOMMENDED"/>
+      <xs:enumeration value="HIGHEST_DISCOUNT"/>
+      <xs:enumeration value="LOWEST_DISCOUNT"/>
+      <xs:enumeration value="HIGHEST_PRICE"/>
+      <xs:enumeration value="LOWEST_PRICE"/>
+      <xs:enumeration value="HIGHEST_RATING"/>
+      <xs:enumeration value="LOWEST_RATING"/>
+      <xs:enumeration value="BESTSELLERS"/>
+      <xs:enumeration value="LATEST_COLLECTION"/>
+      <xs:enumeration value="NAME_A_Z"/>
+      <xs:enumeration value="NAME_Z_A"/>
+      <xs:enumeration value="DESCRIPTION_A_Z"/>
+      <xs:enumeration value="DESCRIPTION_Z_A"/>
+      <xs:enumeration value="PROPERTY_A_Z"/>
+      <xs:enumeration value="PROPERTY_Z_A"/>
+      <xs:enumeration value="PLACE_NAME_A_Z"/>
+      <xs:enumeration value="PLACE_NAME_Z_A"/>
+      <xs:enumeration value="COUNTRY_CODE_A_Z"/>
+      <xs:enumeration value="COUNTRY_CODE_Z_A"/>
+      <xs:enumeration value="POSTAL_CODE_A_Z"/>
+      <xs:enumeration value="POSTAL_CODE_Z_A"/>
+      <xs:enumeration value="STATE_NAME_A_Z"/>
+      <xs:enumeration value="STATE_NAME_Z_A"/>
+      <xs:enumeration value="VALUE_A_Z"/>
+      <xs:enumeration value="VALUE_Z_A"/>
+      <xs:enumeration value="POSITION_A_Z"/>
+      <xs:enumeration value="POSITION_Z_A"/>
+      <xs:enumeration value="NONE"/>
+      <xs:enumeration value="FIRST_NAME_A_Z"/>
+      <xs:enumeration value="FIRST_NAME_Z_A"/>
+      <xs:enumeration value="LAST_NAME_A_Z"/>
+      <xs:enumeration value="LAST_NAME_Z_A"/>
+      <xs:enumeration value="CONTRACT_ID_A_Z"/>
+      <xs:enumeration value="CONTRACT_ID_Z_A"/>
+      <xs:enumeration value="ORDER_ID_A_Z"/>
+      <xs:enumeration value="ORDER_ID_Z_A"/>
+      <xs:enumeration value="OFFER_ID_A_Z"/>
+      <xs:enumeration value="OFFER_ID_Z_A"/>
+      <xs:enumeration value="NUMBER_A_Z"/>
+      <xs:enumeration value="NUMBER_Z_A"/>
+      <xs:enumeration value="CREATION_A_Z"/>
+      <xs:enumeration value="CREATION_Z_A"/>
+      <xs:enumeration value="MODIFICATION_A_Z"/>
+      <xs:enumeration value="MODIFICATION_Z_A"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="orderEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DESC"/>
+      <xs:enumeration value="ASC"/>
+      <xs:enumeration value="NONE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="countPostalCodeResponse">
+    <wsdl:part element="tns:countPostalCodeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findPostalCodeResponse">
+    <wsdl:part element="tns:findPostalCodeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="mergePostalCode">
+    <wsdl:part element="tns:mergePostalCode" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="persistPostalCodeResponse">
+    <wsdl:part element="tns:persistPostalCodeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removePostalCodeResponse">
+    <wsdl:part element="tns:removePostalCodeResponse" name="result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="persistPostalCode">
+    <wsdl:part element="tns:persistPostalCode" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findPostalCodeById">
+    <wsdl:part element="tns:findPostalCodeById" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="countPostalCode">
+    <wsdl:part element="tns:countPostalCode" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findPostalCode">
+    <wsdl:part element="tns:findPostalCode" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="refreshPostalCode">
+    <wsdl:part element="tns:refreshPostalCode" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="refreshPostalCodeResponse">
+    <wsdl:part element="tns:refreshPostalCodeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findPostalCodeByIdResponse">
+    <wsdl:part element="tns:findPostalCodeByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removePostalCode">
+    <wsdl:part element="tns:removePostalCode" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="mergePostalCodeResponse">
+    <wsdl:part element="tns:mergePostalCodeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="PostalCodeWebServiceImpl">
+    <wsdl:operation name="findPostalCodeById">
+      <wsdl:input message="tns:findPostalCodeById" name="findPostalCodeById">
+    </wsdl:input>
+      <wsdl:output message="tns:findPostalCodeByIdResponse" name="findPostalCodeByIdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="countPostalCode">
+      <wsdl:input message="tns:countPostalCode" name="countPostalCode">
+    </wsdl:input>
+      <wsdl:output message="tns:countPostalCodeResponse" name="countPostalCodeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findPostalCode">
+      <wsdl:input message="tns:findPostalCode" name="findPostalCode">
+    </wsdl:input>
+      <wsdl:output message="tns:findPostalCodeResponse" name="findPostalCodeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="refreshPostalCode">
+      <wsdl:input message="tns:refreshPostalCode" name="refreshPostalCode">
+    </wsdl:input>
+      <wsdl:output message="tns:refreshPostalCodeResponse" name="refreshPostalCodeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mergePostalCode">
+      <wsdl:input message="tns:mergePostalCode" name="mergePostalCode">
+    </wsdl:input>
+      <wsdl:output message="tns:mergePostalCodeResponse" name="mergePostalCodeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="persistPostalCode">
+      <wsdl:input message="tns:persistPostalCode" name="persistPostalCode">
+    </wsdl:input>
+      <wsdl:output message="tns:persistPostalCodeResponse" name="persistPostalCodeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removePostalCode">
+      <wsdl:input message="tns:removePostalCode" name="removePostalCode">
+    </wsdl:input>
+      <wsdl:output message="tns:removePostalCodeResponse" name="removePostalCodeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PostalCodeWebServiceImplServiceSoapBinding" type="tns:PostalCodeWebServiceImpl">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="findPostalCodeById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findPostalCodeById">
+        <soap:header message="tns:findPostalCodeById" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findPostalCodeByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="countPostalCode">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="countPostalCode">
+        <soap:header message="tns:countPostalCode" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="countPostalCodeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findPostalCode">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findPostalCode">
+        <soap:header message="tns:findPostalCode" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findPostalCodeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="refreshPostalCode">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="refreshPostalCode">
+        <soap:header message="tns:refreshPostalCode" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="refreshPostalCodeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mergePostalCode">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="mergePostalCode">
+        <soap:header message="tns:mergePostalCode" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="mergePostalCodeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="persistPostalCode">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="persistPostalCode">
+        <soap:header message="tns:persistPostalCode" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="persistPostalCodeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removePostalCode">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="removePostalCode">
+        <soap:header message="tns:removePostalCode" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="removePostalCodeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PostalCodeWebServiceImplService">
+    <wsdl:port binding="tns:PostalCodeWebServiceImplServiceSoapBinding" name="PostalCodeWebServiceImplPort">
+      <soap:address location="http://localhost:8080/gnuob-soap/PostalCodeWebServiceImpl"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -10,7 +10,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.netbrasoft.gnuob.api.GNUOpenBusinessServiceException_Exception;
 import com.netbrasoft.gnuob.api.Group;
 import com.netbrasoft.gnuob.api.MetaData;
 import com.netbrasoft.gnuob.api.Permission;
@@ -18,6 +17,7 @@ import com.netbrasoft.gnuob.api.Role;
 import com.netbrasoft.gnuob.api.Rule;
 import com.netbrasoft.gnuob.api.Site;
 import com.netbrasoft.gnuob.api.User;
+import com.netbrasoft.gnuob.api.generic.GNUOpenBusinessApplicationException;
 import com.netbrasoft.gnuob.api.security.UserWebServiceRepository;
 import com.netbrasoft.gnuob.generic.utils.Utils;
 
@@ -65,7 +65,7 @@ public class UserWebServiceRepositoryTest {
   }
 
   @Test
-  public void testFindUserWithGroupAndSite() throws GNUOpenBusinessServiceException_Exception {
+  public void testFindUserWithGroupAndSite() throws GNUOpenBusinessApplicationException {
     final String userName = user.getName();
     final String userDescription = user.getDescription();
     final String userPassword = user.getPassword();
@@ -85,7 +85,8 @@ public class UserWebServiceRepositoryTest {
     Assert.assertTrue("User id has no value bigger than zero.", findUser.getId() > 0);
     Assert.assertEquals("User name is not equal.", userName, findUser.getName());
     Assert.assertEquals("User description is not equal.", userDescription, findUser.getDescription());
-    Assert.assertTrue("User password is not correct.", new SimplePBKDF2().verifyKeyFormatted(findUser.getPassword(), userPassword));
+    Assert.assertTrue("User password is not correct.",
+        new SimplePBKDF2().verifyKeyFormatted(findUser.getPassword(), userPassword));
     Assert.assertEquals("User access is not equal.", userAccess, findUser.getAccess());
 
     Assert.assertTrue("User is not assigned to a group.", !findUser.getGroups().isEmpty());
@@ -106,7 +107,7 @@ public class UserWebServiceRepositoryTest {
   }
 
   @Test
-  public void testMergeUserWithGroupAndSite() throws GNUOpenBusinessServiceException_Exception {
+  public void testMergeUserWithGroupAndSite() throws GNUOpenBusinessApplicationException {
     final String userName = UUID.randomUUID().toString();
     final String userDescription = UUID.randomUUID().toString();
     final String userPassword = UUID.randomUUID().toString();
@@ -134,7 +135,8 @@ public class UserWebServiceRepositoryTest {
     Assert.assertTrue("User id has no value bigger than zero.", mergeUser.getId() > 0);
     Assert.assertEquals("User name is not equal.", userName, mergeUser.getName());
     Assert.assertEquals("User description is not equal.", userDescription, mergeUser.getDescription());
-    Assert.assertTrue("User password is not correct.", new SimplePBKDF2().verifyKeyFormatted(mergeUser.getPassword(), userPassword));
+    Assert.assertTrue("User password is not correct.",
+        new SimplePBKDF2().verifyKeyFormatted(mergeUser.getPassword(), userPassword));
 
     Assert.assertTrue("User is not assigned to a group.", !mergeUser.getGroups().isEmpty());
 
@@ -154,7 +156,7 @@ public class UserWebServiceRepositoryTest {
   }
 
   @Test
-  public void testMergeUserWithGroupAndSiteWhereOthersHasUpdateAccess() throws GNUOpenBusinessServiceException_Exception {
+  public void testMergeUserWithGroupAndSiteWhereOthersHasUpdateAccess() throws GNUOpenBusinessApplicationException {
     final String userName = UUID.randomUUID().toString();
     final String userDescription = UUID.randomUUID().toString();
     final String userPassword = UUID.randomUUID().toString();
@@ -190,7 +192,8 @@ public class UserWebServiceRepositoryTest {
     Assert.assertTrue("User id has no value bigger than zero.", mergeUser.getId() > 0);
     Assert.assertEquals("User name is not equal.", userName, mergeUser.getName());
     Assert.assertEquals("User description is not equal.", userDescription, mergeUser.getDescription());
-    Assert.assertTrue("User password is not correct.", new SimplePBKDF2().verifyKeyFormatted(mergeUser.getPassword(), userPassword));
+    Assert.assertTrue("User password is not correct.",
+        new SimplePBKDF2().verifyKeyFormatted(mergeUser.getPassword(), userPassword));
 
     Assert.assertTrue("User is not assigned to a group.", !mergeUser.getGroups().isEmpty());
 
@@ -210,7 +213,7 @@ public class UserWebServiceRepositoryTest {
   }
 
   @Test
-  public void testPersistUserWithGroupAndSite() throws GNUOpenBusinessServiceException_Exception {
+  public void testPersistUserWithGroupAndSite() throws GNUOpenBusinessApplicationException {
     final String userName = user.getName();
     final String userDescription = user.getDescription();
     final String userPassword = user.getPassword();
@@ -226,7 +229,8 @@ public class UserWebServiceRepositoryTest {
     Assert.assertTrue("User id has no value bigger than zero.", persistUser.getId() > 0);
     Assert.assertEquals("User name is not equal.", userName, persistUser.getName());
     Assert.assertEquals("User description is not equal.", userDescription, persistUser.getDescription());
-    Assert.assertTrue("User password is not correct.", new SimplePBKDF2().verifyKeyFormatted(persistUser.getPassword(), userPassword));
+    Assert.assertTrue("User password is not correct.",
+        new SimplePBKDF2().verifyKeyFormatted(persistUser.getPassword(), userPassword));
     Assert.assertEquals("User rule is not equal.", userRule, persistUser.getAccess());
 
     Assert.assertTrue("User is not assigned to a group.", !persistUser.getGroups().isEmpty());
@@ -247,7 +251,7 @@ public class UserWebServiceRepositoryTest {
   }
 
   @Test
-  public void testRefreshUserWithGroupAndSite() throws GNUOpenBusinessServiceException_Exception {
+  public void testRefreshUserWithGroupAndSite() throws GNUOpenBusinessApplicationException {
     final User persistUser = userWebServiceRepository.persist(metaData, user);
     final Group persistGroup = persistUser.getGroups().iterator().next();
     final Site persistSite = persistUser.getSites().iterator().next();
@@ -275,7 +279,8 @@ public class UserWebServiceRepositoryTest {
     Assert.assertTrue("User id has no value bigger than zero.", refreshUser.getId() > 0);
     Assert.assertEquals("User name is not equal.", userName, refreshUser.getName());
     Assert.assertEquals("User description is not equal.", userDescription, refreshUser.getDescription());
-    Assert.assertTrue("User password is not correct.", new SimplePBKDF2().verifyKeyFormatted(refreshUser.getPassword(), userPassword));
+    Assert.assertTrue("User password is not correct.",
+        new SimplePBKDF2().verifyKeyFormatted(refreshUser.getPassword(), userPassword));
 
     Assert.assertTrue("User is not assigned to a group.", !refreshUser.getGroups().isEmpty());
 
@@ -295,7 +300,7 @@ public class UserWebServiceRepositoryTest {
   }
 
   @Test
-  public void testRemoveUserWithGroupAndSite() throws GNUOpenBusinessServiceException_Exception {
+  public void testRemoveUserWithGroupAndSite() throws GNUOpenBusinessApplicationException {
     final User persistUser = userWebServiceRepository.persist(metaData, user);
     userWebServiceRepository.remove(metaData, persistUser);
 
@@ -305,7 +310,7 @@ public class UserWebServiceRepositoryTest {
   }
 
   @Test
-  public void testRemoveUserWithGroupAndSiteButOtherHasRightToDelete() throws GNUOpenBusinessServiceException_Exception {
+  public void testRemoveUserWithGroupAndSiteButOtherHasRightToDelete() throws GNUOpenBusinessApplicationException {
     Site userSite = user.getSites().iterator().next();
     Group userGroup = user.getGroups().iterator().next();
 
@@ -373,7 +378,8 @@ public class UserWebServiceRepositoryTest {
   }
 
   @Test
-  public void testRemoveUserWithGroupAndSiteButOtherUserHasNoRightToDelete() throws GNUOpenBusinessServiceException_Exception {
+  public void testRemoveUserWithGroupAndSiteButOtherUserHasNoRightToDelete()
+      throws GNUOpenBusinessApplicationException {
     metaData.setUser("manager");
     metaData.setPassword("manager");
 

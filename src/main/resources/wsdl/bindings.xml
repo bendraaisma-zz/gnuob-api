@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project>
+<jaxws:bindings
+   xmlns:jaxws="http://java.sun.com/xml/ns/jaxws"
+   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+   jxb:version="2.0"
+   jxb:extensionBindingPrefixes="xjc">
+   <jaxws:bindings node="wsdl:definitions/wsdl:types/xs:schema[@targetNamespace='http://gnuob.netbrasoft.com/']">
+      <jxb:globalBindings
+         xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+         xmlns:xs="http://www.w3.org/2001/XMLSchema">
+         <xjc:serializable />
+         <xjc:javaType
+            name="byte[]"
+            xmlType="xsd:base64Binary"
+            adapter="com.netbrasoft.gnuob.api.generic.converter.ByteArrayAdapter">
+         </xjc:javaType>
+      </jxb:globalBindings>
+   </jaxws:bindings>
+</jaxws:bindings>

@@ -1,112 +1,95 @@
+/*
+ * Copyright 2016 Netbrasoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
 package com.netbrasoft.gnuob.api.customer;
+
+import static com.netbrasoft.gnuob.api.customer.CustomerWebserviceWrapperHelper.wrapToCountCustomer;
+import static com.netbrasoft.gnuob.api.customer.CustomerWebserviceWrapperHelper.wrapToFindCustomer;
+import static com.netbrasoft.gnuob.api.customer.CustomerWebserviceWrapperHelper.wrapToFindCustomerById;
+import static com.netbrasoft.gnuob.api.customer.CustomerWebserviceWrapperHelper.wrapToMergeCustomer;
+import static com.netbrasoft.gnuob.api.customer.CustomerWebserviceWrapperHelper.wrapToPersistCustomer;
+import static com.netbrasoft.gnuob.api.customer.CustomerWebserviceWrapperHelper.wrapToRefreshCustomer;
+import static com.netbrasoft.gnuob.api.customer.CustomerWebserviceWrapperHelper.wrapToRemoveCustomer;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.CUSTOMER_WEB_SERVICE_REPOSITORY_NAME;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.UNCHECKED_VALUE;
 
 import java.util.List;
 
 import org.javasimon.aop.Monitored;
 import org.springframework.stereotype.Repository;
 
-import com.netbrasoft.gnuob.api.CountCustomer;
-import com.netbrasoft.gnuob.api.CountCustomerResponse;
 import com.netbrasoft.gnuob.api.Customer;
 import com.netbrasoft.gnuob.api.CustomerWebServiceImpl;
 import com.netbrasoft.gnuob.api.CustomerWebServiceImplService;
-import com.netbrasoft.gnuob.api.FindCustomer;
-import com.netbrasoft.gnuob.api.FindCustomerById;
-import com.netbrasoft.gnuob.api.FindCustomerByIdResponse;
-import com.netbrasoft.gnuob.api.FindCustomerResponse;
-import com.netbrasoft.gnuob.api.MergeCustomer;
-import com.netbrasoft.gnuob.api.MergeCustomerResponse;
 import com.netbrasoft.gnuob.api.MetaData;
 import com.netbrasoft.gnuob.api.OrderBy;
 import com.netbrasoft.gnuob.api.Paging;
-import com.netbrasoft.gnuob.api.PersistCustomer;
-import com.netbrasoft.gnuob.api.PersistCustomerResponse;
-import com.netbrasoft.gnuob.api.RefreshCustomer;
-import com.netbrasoft.gnuob.api.RefreshCustomerResponse;
-import com.netbrasoft.gnuob.api.RemoveCustomer;
-import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
+import com.netbrasoft.gnuob.api.generic.IGenericTypeWebServiceRepository;
 
 @Monitored
-@Repository(CustomerWebServiceRepository.CUSTOMER_WEB_SERVICE_REPOSITORY_NAME)
-public class CustomerWebServiceRepository<C extends Customer> implements GenericTypeWebServiceRepository<C> {
+@Repository(CUSTOMER_WEB_SERVICE_REPOSITORY_NAME)
+public class CustomerWebServiceRepository<C extends Customer> implements IGenericTypeWebServiceRepository<C> {
 
-  protected static final String CUSTOMER_WEB_SERVICE_REPOSITORY_NAME = "CustomerWebServiceRepository";
-
-  private CustomerWebServiceImpl customerWebServiceImpl;
-
-  public CustomerWebServiceRepository() {
-    // Empty constructor.
-  }
-
-  @Override
-  public long count(final MetaData paramMetaData, final C paramCustomer) {
-    final CountCustomer paramCountCustomer = new CountCustomer();
-    paramCountCustomer.setCustomer(paramCustomer);
-    final CountCustomerResponse countCustomerResponse = getCustomerWebServiceImpl().countCustomer(paramCountCustomer, paramMetaData);
-    return countCustomerResponse.getReturn();
-  }
-
-  @SuppressWarnings("unchecked")
-  @Override
-  public C find(final MetaData paramMetaData, final C paramCustomer) {
-    final FindCustomerById paramFindCustomerById = new FindCustomerById();
-    paramFindCustomerById.setCustomer(paramCustomer);
-    final FindCustomerByIdResponse findCustomerByIdResponse = getCustomerWebServiceImpl().findCustomerById(paramFindCustomerById, paramMetaData);
-    return (C) findCustomerByIdResponse.getReturn();
-
-  }
-
-  @SuppressWarnings("unchecked")
-  @Override
-  public List<C> find(final MetaData paramMetaData, final C paramCustomer, final Paging paramPaging, final OrderBy paramOrderBy) {
-    final FindCustomer paramFindCustomer = new FindCustomer();
-    paramFindCustomer.setCustomer(paramCustomer);
-    paramFindCustomer.setPaging(paramPaging);
-    paramFindCustomer.setOrderBy(paramOrderBy);
-    final FindCustomerResponse findCustomerResponse = getCustomerWebServiceImpl().findCustomer(paramFindCustomer, paramMetaData);
-    return (List<C>) findCustomerResponse.getReturn();
-  }
+  private transient CustomerWebServiceImpl customerWebServiceImpl;
 
   private CustomerWebServiceImpl getCustomerWebServiceImpl() {
     if (customerWebServiceImpl == null) {
-      final CustomerWebServiceImplService customerWebServiceImplService = new CustomerWebServiceImplService(CustomerWebServiceImplService.WSDL_LOCATION);
-      customerWebServiceImpl = customerWebServiceImplService.getCustomerWebServiceImplPort();
+      customerWebServiceImpl = new CustomerWebServiceImplService().getCustomerWebServiceImplPort();
     }
-
     return customerWebServiceImpl;
   }
 
-  @SuppressWarnings("unchecked")
   @Override
-  public C merge(final MetaData paramMetaData, final C paramCustomer) {
-    final MergeCustomer paramMergeCustomer = new MergeCustomer();
-    paramMergeCustomer.setCustomer(paramCustomer);
-    final MergeCustomerResponse mergeCustomerResponse = getCustomerWebServiceImpl().mergeCustomer(paramMergeCustomer, paramMetaData);
-    return (C) mergeCustomerResponse.getReturn();
+  public long count(final MetaData credentials, final C customerExample) {
+    return getCustomerWebServiceImpl().countCustomer(wrapToCountCustomer(customerExample), credentials).getReturn();
   }
 
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings(UNCHECKED_VALUE)
   @Override
-  public C persist(final MetaData paramMetaData, final C paramCustomer) {
-    final PersistCustomer paramPersistCustomer = new PersistCustomer();
-    paramPersistCustomer.setCustomer(paramCustomer);
-    final PersistCustomerResponse persistCustomerResponse = getCustomerWebServiceImpl().persistCustomer(paramPersistCustomer, paramMetaData);
-    return (C) persistCustomerResponse.getReturn();
+  public List<C> find(final MetaData credentials, final C customerExample, final Paging paging,
+      final OrderBy orderingProperty) {
+    return (List<C>) getCustomerWebServiceImpl()
+        .findCustomer(wrapToFindCustomer(customerExample, paging, orderingProperty), credentials).getReturn();
   }
 
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings(UNCHECKED_VALUE)
   @Override
-  public C refresh(final MetaData paramMetaData, final C paramCustomer) {
-    final RefreshCustomer paramRefresCustomer = new RefreshCustomer();
-    paramRefresCustomer.setCustomer(paramCustomer);
-    final RefreshCustomerResponse refresCustomerResponse = getCustomerWebServiceImpl().refreshCustomer(paramRefresCustomer, paramMetaData);
-    return (C) refresCustomerResponse.getReturn();
+  public C find(final MetaData credentials, final C customerExample) {
+    return (C) getCustomerWebServiceImpl().findCustomerById(wrapToFindCustomerById(customerExample), credentials)
+        .getReturn();
+  }
+
+  @SuppressWarnings(UNCHECKED_VALUE)
+  @Override
+  public C persist(final MetaData credentials, final C customer) {
+    return (C) getCustomerWebServiceImpl().persistCustomer(wrapToPersistCustomer(customer), credentials).getReturn();
+  }
+
+  @SuppressWarnings(UNCHECKED_VALUE)
+  @Override
+  public C merge(final MetaData credentials, final C customer) {
+    return (C) getCustomerWebServiceImpl().mergeCustomer(wrapToMergeCustomer(customer), credentials).getReturn();
+  }
+
+  @SuppressWarnings(UNCHECKED_VALUE)
+  @Override
+  public C refresh(final MetaData credentials, final C customer) {
+    return (C) getCustomerWebServiceImpl().refreshCustomer(wrapToRefreshCustomer(customer), credentials).getReturn();
   }
 
   @Override
-  public void remove(final MetaData paramMetaData, final C paramCustomer) {
-    final RemoveCustomer paramRemoveCustomer = new RemoveCustomer();
-    paramRemoveCustomer.setCustomer(paramCustomer);
-    getCustomerWebServiceImpl().removeCustomer(paramRemoveCustomer, paramMetaData);
+  public void remove(final MetaData credentials, final C customer) {
+    getCustomerWebServiceImpl().removeCustomer(wrapToRemoveCustomer(customer), credentials);
   }
 }

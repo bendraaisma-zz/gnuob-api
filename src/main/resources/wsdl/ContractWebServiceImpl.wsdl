@@ -1,0 +1,512 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://gnuob.netbrasoft.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="ContractWebServiceImplService" targetNamespace="http://gnuob.netbrasoft.com/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://gnuob.netbrasoft.com/" elementFormDefault="unqualified" targetNamespace="http://gnuob.netbrasoft.com/" version="1.0">
+
+  <xs:element name="Address" type="tns:address"/>
+
+  <xs:element name="Contract" type="tns:contract"/>
+
+  <xs:element name="Customer" type="tns:customer"/>
+
+  <xs:element name="Paging" type="tns:paging"/>
+
+  <xs:element name="Permission" type="tns:permission"/>
+
+  <xs:element name="Rule" type="tns:rule"/>
+
+  <xs:element name="countContract" type="tns:countContract"/>
+
+  <xs:element name="countContractResponse" type="tns:countContractResponse"/>
+
+  <xs:element name="findContract" type="tns:findContract"/>
+
+  <xs:element name="findContractById" type="tns:findContractById"/>
+
+  <xs:element name="findContractByIdResponse" type="tns:findContractByIdResponse"/>
+
+  <xs:element name="findContractResponse" type="tns:findContractResponse"/>
+
+  <xs:element name="mergeContract" type="tns:mergeContract"/>
+
+  <xs:element name="mergeContractResponse" type="tns:mergeContractResponse"/>
+
+  <xs:element name="metaData" type="tns:metaData"/>
+
+  <xs:element name="persistContract" type="tns:persistContract"/>
+
+  <xs:element name="persistContractResponse" type="tns:persistContractResponse"/>
+
+  <xs:element name="refreshContract" type="tns:refreshContract"/>
+
+  <xs:element name="refreshContractResponse" type="tns:refreshContractResponse"/>
+
+  <xs:element name="removeContract" type="tns:removeContract"/>
+
+  <xs:element name="removeContractResponse" type="tns:removeContractResponse"/>
+
+  <xs:complexType name="persistContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="contract" type="tns:contract"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="contract">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractAccess">
+        <xs:sequence>
+          <xs:element name="contractId" type="xs:string"/>
+          <xs:element name="customer" type="tns:customer"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="abstractAccess">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractType">
+        <xs:sequence>
+          <xs:element name="active" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="permission" type="tns:permission"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="abstractType">
+    <xs:sequence/>
+    <xs:attribute name="id" type="xs:long" use="required"/>
+    <xs:attribute name="version" type="xs:int" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="customer">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractAccess">
+        <xs:sequence>
+          <xs:element name="address" type="tns:address"/>
+          <xs:element name="buyerEmail" type="xs:string"/>
+          <xs:element minOccurs="0" name="buyerMarketingEmail" type="xs:string"/>
+          <xs:element minOccurs="0" name="contactPhone" type="xs:string"/>
+          <xs:element minOccurs="0" name="dateOfBirth" type="xs:dateTime"/>
+          <xs:element name="firstName" type="xs:string"/>
+          <xs:element minOccurs="0" name="friendlyName" type="xs:string"/>
+          <xs:element name="lastName" type="xs:string"/>
+          <xs:element minOccurs="0" name="middleName" type="xs:string"/>
+          <xs:element minOccurs="0" name="payer" type="xs:string"/>
+          <xs:element minOccurs="0" name="payerBusiness" type="xs:string"/>
+          <xs:element minOccurs="0" name="payerId" type="xs:string"/>
+          <xs:element minOccurs="0" name="payerStatus" type="xs:string"/>
+          <xs:element minOccurs="0" name="salutation" type="xs:string"/>
+          <xs:element minOccurs="0" name="suffix" type="xs:string"/>
+          <xs:element minOccurs="0" name="taxId" type="xs:string"/>
+          <xs:element minOccurs="0" name="taxIdType" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="address">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractType">
+        <xs:sequence>
+          <xs:element name="cityName" type="xs:string"/>
+          <xs:element minOccurs="0" name="complement" type="xs:string"/>
+          <xs:element name="country" type="xs:string"/>
+          <xs:element minOccurs="0" name="countryName" type="xs:string"/>
+          <xs:element minOccurs="0" name="district" type="xs:string"/>
+          <xs:element minOccurs="0" name="internationalStateAndCity" type="xs:string"/>
+          <xs:element minOccurs="0" name="internationalStreet" type="xs:string"/>
+          <xs:element minOccurs="0" name="number" type="xs:string"/>
+          <xs:element minOccurs="0" name="phone" type="xs:string"/>
+          <xs:element name="postalCode" type="xs:string"/>
+          <xs:element name="stateOrProvince" type="xs:string"/>
+          <xs:element name="street1" type="xs:string"/>
+          <xs:element minOccurs="0" name="street2" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="permission">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractType">
+        <xs:sequence>
+          <xs:element name="group" type="tns:rule"/>
+          <xs:element name="others" type="tns:rule"/>
+          <xs:element name="owner" type="tns:rule"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="metaData">
+    <xs:sequence>
+      <xs:element name="site" type="xs:string"/>
+      <xs:element name="user" type="xs:string"/>
+      <xs:element name="password" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="persistContractResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:contract"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="contract" type="tns:contract"/>
+      <xs:element minOccurs="0" name="paging" type="tns:paging"/>
+      <xs:element minOccurs="0" name="orderBy" type="tns:orderBy"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="paging">
+    <xs:sequence>
+      <xs:element name="first" type="xs:int"/>
+      <xs:element name="max" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findContractResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:contract"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="refreshContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="contract" type="tns:contract"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="refreshContractResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:contract"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findContractById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="contract" type="tns:contract"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findContractByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:contract"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="countContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="contract" type="tns:contract"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="countContractResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="mergeContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="contract" type="tns:contract"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="mergeContractResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:contract"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="removeContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="contract" type="tns:contract"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="removeContractResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:simpleType name="rule">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CREATE_ACCESS"/>
+      <xs:enumeration value="DELETE_ACCESS"/>
+      <xs:enumeration value="NONE_ACCESS"/>
+      <xs:enumeration value="READ_ACCESS"/>
+      <xs:enumeration value="UPDATE_ACCESS"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="operation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CREATE"/>
+      <xs:enumeration value="DELETE"/>
+      <xs:enumeration value="NONE"/>
+      <xs:enumeration value="READ"/>
+      <xs:enumeration value="UPDATE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="orderBy">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="RECOMMENDED"/>
+      <xs:enumeration value="HIGHEST_DISCOUNT"/>
+      <xs:enumeration value="LOWEST_DISCOUNT"/>
+      <xs:enumeration value="HIGHEST_PRICE"/>
+      <xs:enumeration value="LOWEST_PRICE"/>
+      <xs:enumeration value="HIGHEST_RATING"/>
+      <xs:enumeration value="LOWEST_RATING"/>
+      <xs:enumeration value="BESTSELLERS"/>
+      <xs:enumeration value="LATEST_COLLECTION"/>
+      <xs:enumeration value="NAME_A_Z"/>
+      <xs:enumeration value="NAME_Z_A"/>
+      <xs:enumeration value="DESCRIPTION_A_Z"/>
+      <xs:enumeration value="DESCRIPTION_Z_A"/>
+      <xs:enumeration value="PROPERTY_A_Z"/>
+      <xs:enumeration value="PROPERTY_Z_A"/>
+      <xs:enumeration value="PLACE_NAME_A_Z"/>
+      <xs:enumeration value="PLACE_NAME_Z_A"/>
+      <xs:enumeration value="COUNTRY_CODE_A_Z"/>
+      <xs:enumeration value="COUNTRY_CODE_Z_A"/>
+      <xs:enumeration value="POSTAL_CODE_A_Z"/>
+      <xs:enumeration value="POSTAL_CODE_Z_A"/>
+      <xs:enumeration value="STATE_NAME_A_Z"/>
+      <xs:enumeration value="STATE_NAME_Z_A"/>
+      <xs:enumeration value="VALUE_A_Z"/>
+      <xs:enumeration value="VALUE_Z_A"/>
+      <xs:enumeration value="POSITION_A_Z"/>
+      <xs:enumeration value="POSITION_Z_A"/>
+      <xs:enumeration value="NONE"/>
+      <xs:enumeration value="FIRST_NAME_A_Z"/>
+      <xs:enumeration value="FIRST_NAME_Z_A"/>
+      <xs:enumeration value="LAST_NAME_A_Z"/>
+      <xs:enumeration value="LAST_NAME_Z_A"/>
+      <xs:enumeration value="CONTRACT_ID_A_Z"/>
+      <xs:enumeration value="CONTRACT_ID_Z_A"/>
+      <xs:enumeration value="ORDER_ID_A_Z"/>
+      <xs:enumeration value="ORDER_ID_Z_A"/>
+      <xs:enumeration value="OFFER_ID_A_Z"/>
+      <xs:enumeration value="OFFER_ID_Z_A"/>
+      <xs:enumeration value="NUMBER_A_Z"/>
+      <xs:enumeration value="NUMBER_Z_A"/>
+      <xs:enumeration value="CREATION_A_Z"/>
+      <xs:enumeration value="CREATION_Z_A"/>
+      <xs:enumeration value="MODIFICATION_A_Z"/>
+      <xs:enumeration value="MODIFICATION_Z_A"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="orderEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DESC"/>
+      <xs:enumeration value="ASC"/>
+      <xs:enumeration value="NONE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="countContractResponse">
+    <wsdl:part element="tns:countContractResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findContractByIdResponse">
+    <wsdl:part element="tns:findContractByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="refreshContract">
+    <wsdl:part element="tns:refreshContract" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="refreshContractResponse">
+    <wsdl:part element="tns:refreshContractResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findContractById">
+    <wsdl:part element="tns:findContractById" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="countContract">
+    <wsdl:part element="tns:countContract" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="mergeContract">
+    <wsdl:part element="tns:mergeContract" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeContractResponse">
+    <wsdl:part element="tns:removeContractResponse" name="result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeContract">
+    <wsdl:part element="tns:removeContract" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="mergeContractResponse">
+    <wsdl:part element="tns:mergeContractResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="persistContract">
+    <wsdl:part element="tns:persistContract" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="persistContractResponse">
+    <wsdl:part element="tns:persistContractResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findContract">
+    <wsdl:part element="tns:findContract" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:metaData" name="metaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findContractResponse">
+    <wsdl:part element="tns:findContractResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ContractWebServiceImpl">
+    <wsdl:operation name="persistContract">
+      <wsdl:input message="tns:persistContract" name="persistContract">
+    </wsdl:input>
+      <wsdl:output message="tns:persistContractResponse" name="persistContractResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findContract">
+      <wsdl:input message="tns:findContract" name="findContract">
+    </wsdl:input>
+      <wsdl:output message="tns:findContractResponse" name="findContractResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="refreshContract">
+      <wsdl:input message="tns:refreshContract" name="refreshContract">
+    </wsdl:input>
+      <wsdl:output message="tns:refreshContractResponse" name="refreshContractResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findContractById">
+      <wsdl:input message="tns:findContractById" name="findContractById">
+    </wsdl:input>
+      <wsdl:output message="tns:findContractByIdResponse" name="findContractByIdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="countContract">
+      <wsdl:input message="tns:countContract" name="countContract">
+    </wsdl:input>
+      <wsdl:output message="tns:countContractResponse" name="countContractResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mergeContract">
+      <wsdl:input message="tns:mergeContract" name="mergeContract">
+    </wsdl:input>
+      <wsdl:output message="tns:mergeContractResponse" name="mergeContractResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeContract">
+      <wsdl:input message="tns:removeContract" name="removeContract">
+    </wsdl:input>
+      <wsdl:output message="tns:removeContractResponse" name="removeContractResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ContractWebServiceImplServiceSoapBinding" type="tns:ContractWebServiceImpl">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="persistContract">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="persistContract">
+        <soap:header message="tns:persistContract" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="persistContractResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findContract">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findContract">
+        <soap:header message="tns:findContract" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findContractResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="refreshContract">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="refreshContract">
+        <soap:header message="tns:refreshContract" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="refreshContractResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findContractById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findContractById">
+        <soap:header message="tns:findContractById" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findContractByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="countContract">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="countContract">
+        <soap:header message="tns:countContract" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="countContractResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mergeContract">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="mergeContract">
+        <soap:header message="tns:mergeContract" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="mergeContractResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeContract">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="removeContract">
+        <soap:header message="tns:removeContract" part="metaData" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="removeContractResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ContractWebServiceImplService">
+    <wsdl:port binding="tns:ContractWebServiceImplServiceSoapBinding" name="ContractWebServiceImplPort">
+      <soap:address location="http://localhost:8080/gnuob-soap/ContractWebServiceImpl"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

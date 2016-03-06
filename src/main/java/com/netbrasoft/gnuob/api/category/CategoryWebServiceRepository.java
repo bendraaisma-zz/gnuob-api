@@ -1,4 +1,28 @@
+/*
+ * Copyright 2016 Netbrasoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
 package com.netbrasoft.gnuob.api.category;
+
+import static com.netbrasoft.gnuob.api.category.CategoryWebServiceWrapperHelper.wrapToCountCategory;
+import static com.netbrasoft.gnuob.api.category.CategoryWebServiceWrapperHelper.wrapToFindCategory;
+import static com.netbrasoft.gnuob.api.category.CategoryWebServiceWrapperHelper.wrapToFindCategoryById;
+import static com.netbrasoft.gnuob.api.category.CategoryWebServiceWrapperHelper.wrapToMergeCategory;
+import static com.netbrasoft.gnuob.api.category.CategoryWebServiceWrapperHelper.wrapToPersistCategory;
+import static com.netbrasoft.gnuob.api.category.CategoryWebServiceWrapperHelper.wrapToRefreshCategory;
+import static com.netbrasoft.gnuob.api.category.CategoryWebServiceWrapperHelper.wrapToRemoveCategory;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.CATEGORY_WEB_SERVICE_REPOSITORY_NAME;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.UNCHECKED_VALUE;
 
 import java.util.List;
 
@@ -8,106 +32,64 @@ import org.springframework.stereotype.Repository;
 import com.netbrasoft.gnuob.api.Category;
 import com.netbrasoft.gnuob.api.CategoryWebServiceImpl;
 import com.netbrasoft.gnuob.api.CategoryWebServiceImplService;
-import com.netbrasoft.gnuob.api.CountCategory;
-import com.netbrasoft.gnuob.api.CountCategoryResponse;
-import com.netbrasoft.gnuob.api.FindCategory;
-import com.netbrasoft.gnuob.api.FindCategoryById;
-import com.netbrasoft.gnuob.api.FindCategoryByIdResponse;
-import com.netbrasoft.gnuob.api.FindCategoryResponse;
-import com.netbrasoft.gnuob.api.MergeCategory;
-import com.netbrasoft.gnuob.api.MergeCategoryResponse;
 import com.netbrasoft.gnuob.api.MetaData;
 import com.netbrasoft.gnuob.api.OrderBy;
 import com.netbrasoft.gnuob.api.Paging;
-import com.netbrasoft.gnuob.api.PersistCategory;
-import com.netbrasoft.gnuob.api.PersistCategoryResponse;
-import com.netbrasoft.gnuob.api.RefreshCategory;
-import com.netbrasoft.gnuob.api.RefreshCategoryResponse;
-import com.netbrasoft.gnuob.api.RemoveCategory;
-import com.netbrasoft.gnuob.api.generic.GenericTypeWebServiceRepository;
+import com.netbrasoft.gnuob.api.generic.IGenericTypeWebServiceRepository;
 
 @Monitored
-@Repository(CategoryWebServiceRepository.CATEGORY_WEB_SERVICE_REPOSITORY_NAME)
-public class CategoryWebServiceRepository<C extends Category> implements GenericTypeWebServiceRepository<C> {
+@Repository(CATEGORY_WEB_SERVICE_REPOSITORY_NAME)
+public class CategoryWebServiceRepository<C extends Category> implements IGenericTypeWebServiceRepository<C> {
 
-  public static final String CATEGORY_WEB_SERVICE_REPOSITORY_NAME = "CategoryWebServiceRepository";
-
-  private CategoryWebServiceImpl categoryWebServiceImpl = null;
-
-  public CategoryWebServiceRepository() {
-    // Empty constructor.
-  }
-
-  @Override
-  public long count(final MetaData paramMetaData, final C paramCategory) {
-    final CountCategory paramCountCategory = new CountCategory();
-    paramCountCategory.setCategory(paramCategory);
-    final CountCategoryResponse countCategoryResponse = getCategoryWebServiceImpl().countCategory(paramCountCategory, paramMetaData);
-    return countCategoryResponse.getReturn();
-  }
-
-  @Override
-  @SuppressWarnings("unchecked")
-  public C find(final MetaData paramMetaData, final C paramCategory) {
-    final FindCategoryById paramFindCategoryById = new FindCategoryById();
-    paramFindCategoryById.setCategory(paramCategory);
-    final FindCategoryByIdResponse findCategoryByIdResponse = getCategoryWebServiceImpl().findCategoryById(paramFindCategoryById, paramMetaData);
-    return (C) findCategoryByIdResponse.getReturn();
-
-  }
-
-  @Override
-  @SuppressWarnings("unchecked")
-  public List<C> find(final MetaData paramMetaData, final C paramCategory, final Paging paramPaging, final OrderBy paramOrderBy) {
-    final FindCategory paramFindCategory = new FindCategory();
-    paramFindCategory.setCategory(paramCategory);
-    paramFindCategory.setPaging(paramPaging);
-    paramFindCategory.setOrderBy(paramOrderBy);
-    final FindCategoryResponse findCategoryResponse = getCategoryWebServiceImpl().findCategory(paramFindCategory, paramMetaData);
-    return (List<C>) findCategoryResponse.getReturn();
-  }
+  private transient CategoryWebServiceImpl categoryWebServiceImpl = null;
 
   private CategoryWebServiceImpl getCategoryWebServiceImpl() {
-
     if (categoryWebServiceImpl == null) {
-      final CategoryWebServiceImplService categoryWebServiceImplService = new CategoryWebServiceImplService(CategoryWebServiceImplService.WSDL_LOCATION);
-      categoryWebServiceImpl = categoryWebServiceImplService.getCategoryWebServiceImplPort();
+      categoryWebServiceImpl = new CategoryWebServiceImplService().getCategoryWebServiceImplPort();
     }
-
     return categoryWebServiceImpl;
   }
 
   @Override
-  @SuppressWarnings("unchecked")
-  public C merge(final MetaData paramMetaData, final C paramCategory) {
-    final MergeCategory paramMergeCategory = new MergeCategory();
-    paramMergeCategory.setCategory(paramCategory);
-    final MergeCategoryResponse mergeCategoryResponse = getCategoryWebServiceImpl().mergeCategory(paramMergeCategory, paramMetaData);
-    return (C) mergeCategoryResponse.getReturn();
+  public long count(final MetaData credentials, final C categoryExample) {
+    return getCategoryWebServiceImpl().countCategory(wrapToCountCategory(categoryExample), credentials).getReturn();
   }
 
   @Override
-  @SuppressWarnings("unchecked")
-  public C persist(final MetaData paramMetaData, final C paramCategory) {
-    final PersistCategory paramPersistCategory = new PersistCategory();
-    paramPersistCategory.setCategory(paramCategory);
-    final PersistCategoryResponse persistCategoryResponse = getCategoryWebServiceImpl().persistCategory(paramPersistCategory, paramMetaData);
-    return (C) persistCategoryResponse.getReturn();
+  @SuppressWarnings(UNCHECKED_VALUE)
+  public List<C> find(final MetaData credentials, final C categoryExample, final Paging paging,
+      final OrderBy orderingProperty) {
+    return (List<C>) getCategoryWebServiceImpl()
+        .findCategory(wrapToFindCategory(categoryExample, paging, orderingProperty), credentials).getReturn();
   }
 
   @Override
-  @SuppressWarnings("unchecked")
-  public C refresh(final MetaData paramMetaData, final C paramCategory) {
-    final RefreshCategory paramRefresCategory = new RefreshCategory();
-    paramRefresCategory.setCategory(paramCategory);
-    final RefreshCategoryResponse refreshCategoryResponse = getCategoryWebServiceImpl().refreshCategory(paramRefresCategory, paramMetaData);
-    return (C) refreshCategoryResponse.getReturn();
+  @SuppressWarnings(UNCHECKED_VALUE)
+  public C find(final MetaData credentials, final C categoryExample) {
+    return (C) getCategoryWebServiceImpl().findCategoryById(wrapToFindCategoryById(categoryExample), credentials)
+        .getReturn();
   }
 
   @Override
-  public void remove(final MetaData paramMetaData, final C paramCategory) {
-    final RemoveCategory paramRemoveCategory = new RemoveCategory();
-    paramRemoveCategory.setCategory(paramCategory);
-    getCategoryWebServiceImpl().removeCategory(paramRemoveCategory, paramMetaData);
+  @SuppressWarnings(UNCHECKED_VALUE)
+  public C persist(final MetaData credentials, final C category) {
+    return (C) getCategoryWebServiceImpl().persistCategory(wrapToPersistCategory(category), credentials).getReturn();
+  }
+
+  @Override
+  @SuppressWarnings(UNCHECKED_VALUE)
+  public C merge(final MetaData credentials, final C category) {
+    return (C) getCategoryWebServiceImpl().mergeCategory(wrapToMergeCategory(category), credentials).getReturn();
+  }
+
+  @Override
+  @SuppressWarnings(UNCHECKED_VALUE)
+  public C refresh(final MetaData credentials, final C category) {
+    return (C) getCategoryWebServiceImpl().refreshCategory(wrapToRefreshCategory(category), credentials).getReturn();
+  }
+
+  @Override
+  public void remove(final MetaData credentials, final C category) {
+    getCategoryWebServiceImpl().removeCategory(wrapToRemoveCategory(category), credentials);
   }
 }

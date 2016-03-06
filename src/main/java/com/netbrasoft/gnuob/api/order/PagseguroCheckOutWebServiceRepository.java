@@ -1,98 +1,88 @@
+/*
+ * Copyright 2016 Netbrasoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
 package com.netbrasoft.gnuob.api.order;
+
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.PAGSEGURO_CHECK_OUT_WEB_SERVICE_REPOSITORY;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.UNCHECKED_VALUE;
+import static com.netbrasoft.gnuob.api.order.OrderWebserviceWrapperHelper.wrapToDoCheckout;
+import static com.netbrasoft.gnuob.api.order.OrderWebserviceWrapperHelper.wrapToDoCheckoutDetails;
+import static com.netbrasoft.gnuob.api.order.OrderWebserviceWrapperHelper.wrapToDoCheckoutPayment;
+import static com.netbrasoft.gnuob.api.order.OrderWebserviceWrapperHelper.wrapToDoNotification;
+import static com.netbrasoft.gnuob.api.order.OrderWebserviceWrapperHelper.wrapToDoRefundTransaction;
+import static com.netbrasoft.gnuob.api.order.OrderWebserviceWrapperHelper.wrapToDoTransactionDetails;
 
 import org.javasimon.aop.Monitored;
 import org.springframework.stereotype.Repository;
 
-import com.netbrasoft.gnuob.api.DoCheckout;
-import com.netbrasoft.gnuob.api.DoCheckoutDetails;
-import com.netbrasoft.gnuob.api.DoCheckoutDetailsResponse;
-import com.netbrasoft.gnuob.api.DoCheckoutPayment;
-import com.netbrasoft.gnuob.api.DoCheckoutPaymentResponse;
-import com.netbrasoft.gnuob.api.DoCheckoutResponse;
-import com.netbrasoft.gnuob.api.DoNotification;
-import com.netbrasoft.gnuob.api.DoNotificationResponse;
-import com.netbrasoft.gnuob.api.DoRefundTransaction;
-import com.netbrasoft.gnuob.api.DoRefundTransactionResponse;
-import com.netbrasoft.gnuob.api.DoTransactionDetails;
-import com.netbrasoft.gnuob.api.DoTransactionDetailsResponse;
 import com.netbrasoft.gnuob.api.MetaData;
 import com.netbrasoft.gnuob.api.Order;
 import com.netbrasoft.gnuob.api.PagseguroCheckOutWebServiceImpl;
 import com.netbrasoft.gnuob.api.PagseguroCheckOutWebServiceImplService;
 
 @Monitored
-@Repository(PagseguroCheckOutWebServiceRepository.PAGSEGURO_CHECK_OUT_WEB_SERVICE_REPOSITORY)
-public class PagseguroCheckOutWebServiceRepository<O extends Order> implements CheckoutWebServiceRepository<O> {
+@Repository(PAGSEGURO_CHECK_OUT_WEB_SERVICE_REPOSITORY)
+public class PagseguroCheckOutWebServiceRepository<O extends Order> implements ICheckoutWebServiceRepository<O> {
 
-  protected static final String PAGSEGURO_CHECK_OUT_WEB_SERVICE_REPOSITORY = "PagseguroCheckOutWebServiceRepository";
-
-  private PagseguroCheckOutWebServiceImpl pagseguroCheckOutWebServiceImpl = null;
-
-  public PagseguroCheckOutWebServiceRepository() {
-    // Empty constructor.
-  }
-
-  @SuppressWarnings("unchecked")
-  @Override
-  public O doCheckout(final MetaData metaData, final O order) {
-    final DoCheckout paramDoCheckout = new DoCheckout();
-    paramDoCheckout.setOrder(order);
-    final DoCheckoutResponse doCheckoutResponse = getPagseguroCheckOutWebServiceImpl().doCheckout(paramDoCheckout, metaData);
-    return (O) doCheckoutResponse.getReturn();
-  }
-
-  @SuppressWarnings("unchecked")
-  @Override
-  public O doCheckoutDetails(final MetaData metaData, final O order) {
-    final DoCheckoutDetails paramDoCheckoutDetails = new DoCheckoutDetails();
-    paramDoCheckoutDetails.setOrder(order);
-    final DoCheckoutDetailsResponse doCheckoutDetailsResponse = getPagseguroCheckOutWebServiceImpl().doCheckoutDetails(paramDoCheckoutDetails, metaData);
-    return (O) doCheckoutDetailsResponse.getReturn();
-  }
-
-  @SuppressWarnings("unchecked")
-  @Override
-  public O doCheckoutPayment(final MetaData metaData, final O order) {
-    final DoCheckoutPayment paramDoCheckoutPayment = new DoCheckoutPayment();
-    paramDoCheckoutPayment.setOrder(order);
-    final DoCheckoutPaymentResponse doCheckoutPaymentResponse = getPagseguroCheckOutWebServiceImpl().doCheckoutPayment(paramDoCheckoutPayment, metaData);
-    return (O) doCheckoutPaymentResponse.getReturn();
-  }
-
-  @SuppressWarnings("unchecked")
-  @Override
-  public O doNotification(final MetaData metaData, final O order) {
-    final DoNotification paramDoNotification = new DoNotification();
-    paramDoNotification.setOrder(order);
-    final DoNotificationResponse doNotificationResponse = getPagseguroCheckOutWebServiceImpl().doNotification(paramDoNotification, metaData);
-    return (O) doNotificationResponse.getReturn();
-  }
-
-  @SuppressWarnings("unchecked")
-  @Override
-  public O doRefundTransaction(final MetaData metaData, final O order) {
-    final DoRefundTransaction paramRefundTransaction = new DoRefundTransaction();
-    paramRefundTransaction.setOrder(order);
-    final DoRefundTransactionResponse doRefundTransactionResponse = getPagseguroCheckOutWebServiceImpl().doRefundTransaction(paramRefundTransaction, metaData);
-    return (O) doRefundTransactionResponse.getReturn();
-  }
-
-  @SuppressWarnings("unchecked")
-  @Override
-  public O doTransactionDetails(final MetaData metaData, final O order) {
-    final DoTransactionDetails paramDoTransactionDetails = new DoTransactionDetails();
-    paramDoTransactionDetails.setOrder(order);
-    final DoTransactionDetailsResponse doTransactionDetailsResponse = getPagseguroCheckOutWebServiceImpl().doTransactionDetails(paramDoTransactionDetails, metaData);
-    return (O) doTransactionDetailsResponse.getReturn();
-  }
+  private transient PagseguroCheckOutWebServiceImpl pagseguroCheckOutWebServiceImpl = null;
 
   private PagseguroCheckOutWebServiceImpl getPagseguroCheckOutWebServiceImpl() {
     if (pagseguroCheckOutWebServiceImpl == null) {
-      final PagseguroCheckOutWebServiceImplService pagseguroCheckOutWebServiceImplService =
-          new PagseguroCheckOutWebServiceImplService(PagseguroCheckOutWebServiceImplService.WSDL_LOCATION);
-      pagseguroCheckOutWebServiceImpl = pagseguroCheckOutWebServiceImplService.getPagseguroCheckOutWebServiceImplPort();
+      pagseguroCheckOutWebServiceImpl =
+          new PagseguroCheckOutWebServiceImplService().getPagseguroCheckOutWebServiceImplPort();
     }
-
     return pagseguroCheckOutWebServiceImpl;
+  }
+
+  @SuppressWarnings(UNCHECKED_VALUE)
+  @Override
+  public O doCheckout(final MetaData credentials, final O orderType) {
+    return (O) getPagseguroCheckOutWebServiceImpl().doCheckout(wrapToDoCheckout(orderType), credentials).getReturn();
+  }
+
+  @SuppressWarnings(UNCHECKED_VALUE)
+  @Override
+  public O doCheckoutDetails(final MetaData credentials, final O orderType) {
+    return (O) getPagseguroCheckOutWebServiceImpl().doCheckoutDetails(wrapToDoCheckoutDetails(orderType), credentials)
+        .getReturn();
+  }
+
+  @SuppressWarnings(UNCHECKED_VALUE)
+  @Override
+  public O doCheckoutPayment(final MetaData credentials, final O orderType) {
+    return (O) getPagseguroCheckOutWebServiceImpl().doCheckoutPayment(wrapToDoCheckoutPayment(orderType), credentials)
+        .getReturn();
+  }
+
+  @SuppressWarnings(UNCHECKED_VALUE)
+  @Override
+  public O doNotification(final MetaData credentials, final O orderType) {
+    return (O) getPagseguroCheckOutWebServiceImpl().doNotification(wrapToDoNotification(orderType), credentials)
+        .getReturn();
+  }
+
+  @SuppressWarnings(UNCHECKED_VALUE)
+  @Override
+  public O doRefundTransaction(final MetaData credentials, final O orderType) {
+    return (O) getPagseguroCheckOutWebServiceImpl()
+        .doRefundTransaction(wrapToDoRefundTransaction(orderType), credentials).getReturn();
+  }
+
+  @SuppressWarnings(UNCHECKED_VALUE)
+  @Override
+  public O doTransactionDetails(final MetaData credentials, final O orderType) {
+    return (O) getPagseguroCheckOutWebServiceImpl()
+        .doTransactionDetails(wrapToDoTransactionDetails(orderType), credentials).getReturn();
   }
 }
