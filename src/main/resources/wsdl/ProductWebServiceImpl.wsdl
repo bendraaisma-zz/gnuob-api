@@ -69,7 +69,17 @@
           <xs:element minOccurs="0" name="itemHeightUnit" type="xs:string"/>
           <xs:element minOccurs="0" name="itemLength" type="xs:decimal"/>
           <xs:element minOccurs="0" name="itemLengthUnit" type="xs:string"/>
-          <xs:element minOccurs="0" name="itemUrl" type="xs:string"/>
+          <xs:element
+             minOccurs="0"
+             name="itemUrl">
+             <xs:simpleType>
+                <xs:restriction base="xs:string">
+                   <xs:pattern
+                      value="^(http:\/\/|https:\/\/)?(www.)?([a-zA-Z0-9]+).[a-zA-Z0-9]*.[a-z]{3}.?([a-z]+)?$">
+                   </xs:pattern>
+                </xs:restriction>
+             </xs:simpleType>
+          </xs:element>
           <xs:element name="itemWeight" type="xs:decimal"/>
           <xs:element minOccurs="0" name="itemWeightUnit" type="xs:string"/>
           <xs:element minOccurs="0" name="itemWidth" type="xs:decimal"/>

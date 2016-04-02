@@ -22,7 +22,7 @@
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       <version.jar.plugin>2.5</version.jar.plugin>
       <version.springframework.plugin>4.1.7.RELEASE</version.springframework.plugin>
-      <version.wicket.plugin>7.0.0</version.wicket.plugin>
+      <version.wicket.plugin>7.2.0</version.wicket.plugin>
       <version.surefire.plugin>2.17</version.surefire.plugin>
       <version.javasimon>4.1.1</version.javasimon>
       <version.PBKDF2>1.1.1</version.PBKDF2>
