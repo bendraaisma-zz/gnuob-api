@@ -38,8 +38,8 @@ public abstract class AbstractGenericTypeDataProvider<T extends AbstractType> ex
   private OrderBy orderingProperty;
   private MetaData credentials;
 
-  public AbstractGenericTypeDataProvider(final T objectType) {
-    this(OrderBy.NONE, objectType);
+  public AbstractGenericTypeDataProvider(final T exampleType) {
+    this(OrderBy.NONE, exampleType);
   }
 
   private AbstractGenericTypeDataProvider(final OrderBy orderingProperty, final T exampleType) {
