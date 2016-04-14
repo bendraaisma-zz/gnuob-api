@@ -25,9 +25,9 @@ import com.netbrasoft.gnuob.api.RefreshSetting;
 import com.netbrasoft.gnuob.api.RemoveSetting;
 import com.netbrasoft.gnuob.api.Setting;
 
-final class SettingsWebServiceWrapperHelper {
+final class SettingWebServiceWrapperHelper {
 
-  private SettingsWebServiceWrapperHelper() {}
+  private SettingWebServiceWrapperHelper() {}
 
   static CountSetting wrapToCountSetting(final Setting setting) {
     final CountSetting paramCountSetting = new CountSetting();
