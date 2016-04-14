@@ -1,47 +1,5 @@
 <dataset>
-   <!--SITE -->
-   <gnuob_access
-      ID="200"
-      CREATION="2015-08-23 10:49:32"
-      VERSION="0"
-      ACTIVE="true"
-      group_ID="100"
-      permission_ID="200"
-      site_ID="200"
-      owner_ID="1" />
-   <gnuob_sites
-      ID="200"
-      DESCRIPTION="Site label cluster"
-      NAME="cluster" />
-   <gnuob_permissions
-      ID="200"
-      CREATION="2015-08-23 10:49:32"
-      VERSION="0"
-      GROUP="READ_ACCESS"
-      OTHERS="READ_ACCESS"
-      OWNER="DELETE_ACCESS" />
-   <!--SITE -->
-   <gnuob_access
-      ID="201"
-      CREATION="2015-08-23 10:49:32"
-      VERSION="0"
-      ACTIVE="true"
-      group_ID="100"
-      permission_ID="201"
-      site_ID="200"
-      owner_ID="1" />
-   <gnuob_sites
-      ID="201"
-      DESCRIPTION="Site label domain"
-      NAME="domain" />
-   <gnuob_permissions
-      ID="201"
-      CREATION="2015-08-23 10:49:32"
-      VERSION="0"
-      GROUP="READ_ACCESS"
-      OTHERS="READ_ACCESS"
-      OWNER="DELETE_ACCESS" />
-   <!-- USER Administrator -->
+   <!-- USER ROOT -->
    <gnuob_access
       ID="1"
       CREATION="2015-08-23 10:49:32"
@@ -53,9 +11,9 @@
       owner_ID="1" />
    <gnuob_users
       ID="1"
-      DESCRIPTION="Administrator"
-      NAME="administrator"
-      PASSWORD="134F9CB98B4E06A3:1000:EF0C9781F43513CA207AEDBB032333901C7CCB0D"
+      DESCRIPTION="Root"
+      NAME="root"
+      PASSWORD="ACD7D2CEFAED04E9:1000:C95550E2B8D75B232C3D84FB0CBD7475AEC638E6"
       ACCESS="DELETE_ACCESS"
       ROOT="true" />
    <gnuob_permissions
@@ -68,25 +26,13 @@
    <gnuob_users_gnuob_sites
       sites_ID="200"
       GNUOB_USERS_ID="1" />
-   <gnuob_users_gnuob_sites
-      sites_ID="201"
-      GNUOB_USERS_ID="1" />
    <gnuob_users_gnuob_groups
       groups_ID="100"
       GNUOB_USERS_ID="1" />
    <gnuob_roles
       GNUOB_USERS_ID="1"
       ROLE="ADMINISTRATOR" />
-   <gnuob_roles
-      GNUOB_USERS_ID="1"
-      ROLE="MANAGER" />
-   <gnuob_roles
-      GNUOB_USERS_ID="1"
-      ROLE="EMPLOYEE" />
-   <gnuob_roles
-      GNUOB_USERS_ID="1"
-      ROLE="GUEST" />
-   <!-- GROUP Administrator -->
+   <!-- GROUP ROOT -->
    <gnuob_access
       ID="100"
       CREATION="2015-08-23 10:49:32"
@@ -99,8 +45,8 @@
       owner_ID="1" />
    <gnuob_groups
       ID="100"
-      DESCRIPTION="Administrator account"
-      NAME="administrator" />
+      DESCRIPTION="Root"
+      NAME="root" />
    <gnuob_permissions
       ID="100"
       CREATION="2015-08-23 10:49:32"
@@ -108,7 +54,7 @@
       GROUP="READ_ACCESS"
       OTHERS="READ_ACCESS"
       OWNER="DELETE_ACCESS" />
-   <!-- USER Manager -->
+   <!-- USER ADMINISTRATOR -->
    <gnuob_access
       ID="2"
       CREATION="2015-08-23 10:49:32"
@@ -120,10 +66,10 @@
       owner_ID="2" />
    <gnuob_users
       ID="2"
-      DESCRIPTION="Manager"
-      NAME="manager"
-      PASSWORD="7CDA11491AA5E427:1000:EA06D92A5C6F62038765EF307750D4C41B0F96D8"
-      ACCESS="UPDATE_ACCESS"
+      DESCRIPTION="Administrator"
+      NAME="administrator"
+      PASSWORD="134F9CB98B4E06A3:1000:EF0C9781F43513CA207AEDBB032333901C7CCB0D"
+      ACCESS="DELETE_ACCESS"
       ROOT="false" />
    <gnuob_permissions
       ID="2"
@@ -133,7 +79,10 @@
       OTHERS="READ_ACCESS"
       OWNER="DELETE_ACCESS" />
    <gnuob_users_gnuob_sites
-      sites_ID="201"
+      sites_ID="200"
+      GNUOB_USERS_ID="2" />
+   <gnuob_users_gnuob_groups
+      groups_ID="100"
       GNUOB_USERS_ID="2" />
    <gnuob_users_gnuob_groups
       groups_ID="101"
@@ -141,16 +90,7 @@
    <gnuob_roles
       GNUOB_USERS_ID="2"
       ROLE="ADMINISTRATOR" />
-   <gnuob_roles
-      GNUOB_USERS_ID="2"
-      ROLE="MANAGER" />
-   <gnuob_roles
-      GNUOB_USERS_ID="2"
-      ROLE="EMPLOYEE" />
-   <gnuob_roles
-      GNUOB_USERS_ID="2"
-      ROLE="GUEST" />
-   <!-- GROUP Manager -->
+   <!-- GROUP ADMINISTRATOR -->
    <gnuob_access
       ID="101"
       CREATION="2015-08-23 10:49:32"
@@ -163,8 +103,8 @@
       owner_ID="2" />
    <gnuob_groups
       ID="101"
-      DESCRIPTION="Manager account"
-      NAME="manager" />
+      DESCRIPTION="Administrator"
+      NAME="administrator" />
    <gnuob_permissions
       ID="101"
       CREATION="2015-08-23 10:49:32"
@@ -172,7 +112,7 @@
       GROUP="READ_ACCESS"
       OTHERS="READ_ACCESS"
       OWNER="DELETE_ACCESS" />
-   <!-- USER Employee -->
+   <!-- USER MANAGER -->
    <gnuob_access
       ID="3"
       CREATION="2015-08-23 10:49:32"
@@ -184,10 +124,10 @@
       owner_ID="3" />
    <gnuob_users
       ID="3"
-      DESCRIPTION="Employee"
-      NAME="employee"
-      PASSWORD="657811BAC87BC82B:1000:3853363ED77DCB208418774AB636887EEDB3F181"
-      ACCESS="DELETE_ACCESS"
+      DESCRIPTION="Manager"
+      NAME="manager"
+      PASSWORD="8C9B059052B0713A:1000:97672CDB2DD5EFA96B7EC5C7FC7186357EDD0316"
+      ACCESS="UPDATE_ACCESS"
       ROOT="false" />
    <gnuob_permissions
       ID="3"
@@ -202,22 +142,10 @@
    <gnuob_users_gnuob_groups
       groups_ID="102"
       GNUOB_USERS_ID="3" />
-   <gnuob_users_gnuob_groups
-      groups_ID="100"
-      GNUOB_USERS_ID="3" />
-   <gnuob_roles
-      GNUOB_USERS_ID="3"
-      ROLE="ADMINISTRATOR" />
    <gnuob_roles
       GNUOB_USERS_ID="3"
       ROLE="MANAGER" />
-   <gnuob_roles
-      GNUOB_USERS_ID="3"
-      ROLE="EMPLOYEE" />
-   <gnuob_roles
-      GNUOB_USERS_ID="3"
-      ROLE="GUEST" />
-   <!-- GROUP Employee -->
+   <!-- GROUP MANAGER -->
    <gnuob_access
       ID="102"
       CREATION="2015-08-23 10:49:32"
@@ -230,8 +158,8 @@
       owner_ID="3" />
    <gnuob_groups
       ID="102"
-      DESCRIPTION="Employee account"
-      NAME="employee" />
+      DESCRIPTION="Manager"
+      NAME="manager" />
    <gnuob_permissions
       ID="102"
       CREATION="2015-08-23 10:49:32"
@@ -239,7 +167,7 @@
       GROUP="READ_ACCESS"
       OTHERS="READ_ACCESS"
       OWNER="DELETE_ACCESS" />
-   <!-- USER Guest -->
+   <!-- USER EMPLOYEE -->
    <gnuob_access
       ID="4"
       CREATION="2015-08-23 10:49:32"
@@ -251,10 +179,10 @@
       owner_ID="4" />
    <gnuob_users
       ID="4"
-      DESCRIPTION="Guest"
-      NAME="guest"
-      PASSWORD="F1E29598E01173FF:1000:260846CA84D462CCB5F93C76B1241B2CAB89BB16"
-      ACCESS="NONE_ACCESS" />
+      DESCRIPTION="Employee"
+      NAME="employee"
+      PASSWORD="D4531DCA64025B96:1000:25F513E5A4F049FC006A420363A14C696DC3B829"
+      ACCESS="CREATE_ACCESS" />
    <gnuob_permissions
       ID="4"
       CREATION="2015-08-23 10:49:32"
@@ -270,17 +198,8 @@
       GNUOB_USERS_ID="4" />
    <gnuob_roles
       GNUOB_USERS_ID="4"
-      ROLE="ADMINISTRATOR" />
-   <gnuob_roles
-      GNUOB_USERS_ID="4"
-      ROLE="MANAGER" />
-   <gnuob_roles
-      GNUOB_USERS_ID="4"
       ROLE="EMPLOYEE" />
-   <gnuob_roles
-      GNUOB_USERS_ID="4"
-      ROLE="GUEST" />
-   <!-- GROUP Guest -->
+   <!-- GROUP EMPLOYEE -->
    <gnuob_access
       ID="103"
       CREATION="2015-08-23 10:49:32"
@@ -293,10 +212,157 @@
       owner_ID="4" />
    <gnuob_groups
       ID="103"
-      DESCRIPTION="Guest account"
-      NAME="guest" />
+      DESCRIPTION="Employee"
+      NAME="employee" />
    <gnuob_permissions
       ID="103"
+      CREATION="2015-08-23 10:49:32"
+      VERSION="0"
+      GROUP="READ_ACCESS"
+      OTHERS="READ_ACCESS"
+      OWNER="DELETE_ACCESS" />
+   <!-- USER GUEST -->
+   <gnuob_access
+      ID="5"
+      CREATION="2015-08-23 10:49:32"
+      VERSION="0"
+      ACTIVE="true"
+      group_ID="104"
+      permission_ID="5"
+      site_ID="200"
+      owner_ID="5" />
+   <gnuob_users
+      ID="5"
+      DESCRIPTION="Guest"
+      NAME="guest"
+      PASSWORD="3CA83E5AABA27826:1000:EE2BEB6F4EDE87CF4C8E24D198914F43476C5C4C"
+      ACCESS="READ_ACCESS" />
+   <gnuob_permissions
+      ID="5"
+      CREATION="2015-08-23 10:49:32"
+      VERSION="0"
+      GROUP="READ_ACCESS"
+      OTHERS="READ_ACCESS"
+      OWNER="DELETE_ACCESS" />
+   <gnuob_users_gnuob_sites
+      sites_ID="200"
+      GNUOB_USERS_ID="5" />
+   <gnuob_users_gnuob_groups
+      groups_ID="104"
+      GNUOB_USERS_ID="5" />
+   <gnuob_roles
+      GNUOB_USERS_ID="5"
+      ROLE="GUEST" />
+   <!-- GROUP GUEST -->
+   <gnuob_access
+      ID="104"
+      CREATION="2015-08-23 10:49:32"
+      MODIFICATION="2015-08-23 10:49:32"
+      VERSION="0"
+      ACTIVE="true"
+      group_ID="104"
+      permission_ID="104"
+      site_ID="200"
+      owner_ID="5" />
+   <gnuob_groups
+      ID="104"
+      DESCRIPTION="Guest"
+      NAME="guest" />
+   <gnuob_permissions
+      ID="104"
+      CREATION="2015-08-23 10:49:32"
+      VERSION="0"
+      GROUP="READ_ACCESS"
+      OTHERS="READ_ACCESS"
+      OWNER="DELETE_ACCESS" />
+   <!-- USER STUDENT -->
+   <gnuob_access
+      ID="6"
+      CREATION="2015-08-23 10:49:32"
+      VERSION="0"
+      ACTIVE="true"
+      group_ID="105"
+      permission_ID="6"
+      site_ID="200"
+      owner_ID="6" />
+   <gnuob_users
+      ID="6"
+      DESCRIPTION="Student"
+      NAME="student"
+      PASSWORD="7C51B95707EB22FC:1000:0C503B42C458DEA62518A9E09C20E5A0209DEE72"
+      ACCESS="NONE_ACCESS" />
+   <gnuob_permissions
+      ID="6"
+      CREATION="2015-08-23 10:49:32"
+      VERSION="0"
+      GROUP="READ_ACCESS"
+      OTHERS="READ_ACCESS"
+      OWNER="DELETE_ACCESS" />
+   <gnuob_users_gnuob_sites
+      sites_ID="200"
+      GNUOB_USERS_ID="6" />
+   <gnuob_users_gnuob_groups
+      groups_ID="105"
+      GNUOB_USERS_ID="6" />
+   <!-- GROUP STUDENT -->
+   <gnuob_access
+      ID="105"
+      CREATION="2015-08-23 10:49:32"
+      MODIFICATION="2015-08-23 10:49:32"
+      VERSION="0"
+      ACTIVE="true"
+      group_ID="105"
+      permission_ID="105"
+      site_ID="200"
+      owner_ID="6" />
+   <gnuob_groups
+      ID="105"
+      DESCRIPTION="Student"
+      NAME="student" />
+   <gnuob_permissions
+      ID="105"
+      CREATION="2015-08-23 10:49:32"
+      VERSION="0"
+      GROUP="READ_ACCESS"
+      OTHERS="READ_ACCESS"
+      OWNER="DELETE_ACCESS" />
+   <!--SITE DOMAIN -->
+   <gnuob_access
+      ID="200"
+      CREATION="2015-08-23 10:49:32"
+      VERSION="0"
+      ACTIVE="true"
+      group_ID="100"
+      permission_ID="200"
+      site_ID="200"
+      owner_ID="1" />
+   <gnuob_sites
+      ID="200"
+      DESCRIPTION="Site label domain"
+      NAME="domain" />
+   <gnuob_permissions
+      ID="200"
+      CREATION="2015-08-23 10:49:32"
+      VERSION="0"
+      GROUP="READ_ACCESS"
+      OTHERS="READ_ACCESS"
+      OWNER="DELETE_ACCESS" />
+   <!--SITE DUMMY -->
+   <gnuob_access
+      ID="201"
+      CREATION="2015-08-23 10:49:32"
+      VERSION="0"
+      ACTIVE="true"
+      group_ID="100"
+      permission_ID="201"
+      site_ID="201"
+      owner_ID="1" />
+   <gnuob_sites
+      ID="201"
+      DESCRIPTION="Site label dummy"
+      NAME="dummy" />
+   <gnuob_permissions
+      ID="201"
       CREATION="2015-08-23 10:49:32"
       VERSION="0"
       GROUP="READ_ACCESS"
@@ -322,7 +388,7 @@
       ID="400"
       CREATION="2015-08-23 10:49:32"
       VERSION="0"
-      GROUP="READ_ACCESS"
-      OTHERS="READ_ACCESS"
+      GROUP="DELETE_ACCESS"
+      OTHERS="DELETE_ACCESS"
       OWNER="DELETE_ACCESS" />
 </dataset>
