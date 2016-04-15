@@ -33,14 +33,14 @@ import com.netbrasoft.gnuob.generic.utils.Utils;
 
 public abstract class AbstractGenericTypeDataProviderTest<T extends AbstractType> {
 
-  private static final String STUDENT = "student";
-  private static final String GUEST = "guest";
-  private static final String EMPLOYEE = "employee";
-  private static final String MANAGER = "manager";
-  private static final String DATASETS_SETTINGS_XML = "datasets/settings.xml";
-  private static final String SCRIPTS_TO_EXECUTE_BEFORE_TEST_SQL = "scripts/scriptsToExecuteBeforeTest.sql";
-  private static final String ADMINISTRATOR = "administrator";
-  private static final String ROOT = "root";
+  protected static final String STUDENT = "student";
+  protected static final String GUEST = "guest";
+  protected static final String EMPLOYEE = "employee";
+  protected static final String MANAGER = "manager";
+  protected static final String ADMINISTRATOR = "administrator";
+  protected static final String ROOT = "root";
+  protected static final String DATASETS_SETTINGS_XML = "datasets/settings.xml";
+  protected static final String SCRIPTS_TO_EXECUTE_BEFORE_TEST_SQL = "scripts/scriptsToExecuteBeforeTest.sql";
 
   @Deployment
   public static Archive<?> createDeployment() {
