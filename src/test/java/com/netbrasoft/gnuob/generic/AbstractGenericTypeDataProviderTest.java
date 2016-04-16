@@ -60,6 +60,7 @@ public abstract class AbstractGenericTypeDataProviderTest<T extends AbstractType
   public void testSizeAsRoot() {
     getGenericTypeProvider().setUser(ROOT);
     getGenericTypeProvider().setPassword(ROOT);
+    getGenericTypeProvider().setType(getType());
     assertEquals("Size", 1L, getGenericTypeProvider().size());
   }
 
@@ -69,6 +70,7 @@ public abstract class AbstractGenericTypeDataProviderTest<T extends AbstractType
   public void testSizeAsAdministrator() {
     getGenericTypeProvider().setUser(ADMINISTRATOR);
     getGenericTypeProvider().setPassword(ADMINISTRATOR);
+    getGenericTypeProvider().setType(getType());
     assertEquals("Size", 1L, getGenericTypeProvider().size());
   }
 
@@ -78,6 +80,7 @@ public abstract class AbstractGenericTypeDataProviderTest<T extends AbstractType
   public void testSizeAsManager() {
     getGenericTypeProvider().setUser(MANAGER);
     getGenericTypeProvider().setPassword(MANAGER);
+    getGenericTypeProvider().setType(getType());
     assertEquals("Size", 1L, getGenericTypeProvider().size());
   }
 
@@ -87,6 +90,7 @@ public abstract class AbstractGenericTypeDataProviderTest<T extends AbstractType
   public void testSizeAsEmployee() {
     getGenericTypeProvider().setUser(EMPLOYEE);
     getGenericTypeProvider().setPassword(EMPLOYEE);
+    getGenericTypeProvider().setType(getType());
     assertEquals("Size", 1L, getGenericTypeProvider().size());
   }
 
@@ -96,6 +100,7 @@ public abstract class AbstractGenericTypeDataProviderTest<T extends AbstractType
   public void testSizeAsGuest() {
     getGenericTypeProvider().setUser(GUEST);
     getGenericTypeProvider().setPassword(GUEST);
+    getGenericTypeProvider().setType(getType());
     assertEquals("Size", 1L, getGenericTypeProvider().size());
   }
 
@@ -117,6 +122,7 @@ public abstract class AbstractGenericTypeDataProviderTest<T extends AbstractType
   public void testIteratorAsRoot() {
     getGenericTypeProvider().setUser(ROOT);
     getGenericTypeProvider().setPassword(ROOT);
+    getGenericTypeProvider().setType(getType());
     assertTrue("Iterator", getGenericTypeProvider().iterator(0, 1).hasNext());
   }
 
@@ -126,6 +132,7 @@ public abstract class AbstractGenericTypeDataProviderTest<T extends AbstractType
   public void testIteratorAsAdministrator() {
     getGenericTypeProvider().setUser(ADMINISTRATOR);
     getGenericTypeProvider().setPassword(ADMINISTRATOR);
+    getGenericTypeProvider().setType(getType());
     assertTrue("Iterator", getGenericTypeProvider().iterator(0, 1).hasNext());
   }
 
@@ -135,6 +142,7 @@ public abstract class AbstractGenericTypeDataProviderTest<T extends AbstractType
   public void testIteratorAsManager() {
     getGenericTypeProvider().setUser(MANAGER);
     getGenericTypeProvider().setPassword(MANAGER);
+    getGenericTypeProvider().setType(getType());
     assertTrue("Iterator", getGenericTypeProvider().iterator(0, 1).hasNext());
   }
 
@@ -144,6 +152,7 @@ public abstract class AbstractGenericTypeDataProviderTest<T extends AbstractType
   public void testIteratorAsEmployee() {
     getGenericTypeProvider().setUser(EMPLOYEE);
     getGenericTypeProvider().setPassword(EMPLOYEE);
+    getGenericTypeProvider().setType(getType());
     assertTrue("Iterator", getGenericTypeProvider().iterator(0, 1).hasNext());
   }
 
@@ -153,6 +162,7 @@ public abstract class AbstractGenericTypeDataProviderTest<T extends AbstractType
   public void testIteratorAsGuest() {
     getGenericTypeProvider().setUser(GUEST);
     getGenericTypeProvider().setPassword(GUEST);
+    getGenericTypeProvider().setType(getType());
     assertTrue("Iterator", getGenericTypeProvider().iterator(0, 1).hasNext());
   }
 

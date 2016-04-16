@@ -12,10 +12,10 @@
  * the License.
  */
 
-package com.netbrasoft.gnuob.api.security;
+package com.netbrasoft.gnuob.api.product;
 
-import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.SITE_DATA_PROVIDER_NAME;
-import static com.netbrasoft.gnuob.generic.utils.EntityInstanceHelper.getSiteInstance;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.PRODUCT_DATA_PROVIDER_NAME;
+import static com.netbrasoft.gnuob.generic.utils.EntityInstanceHelper.getProductInstance;
 
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.spring.integration.test.annotation.SpringWebConfiguration;
@@ -25,39 +25,39 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-import com.netbrasoft.gnuob.api.Site;
+import com.netbrasoft.gnuob.api.Product;
 import com.netbrasoft.gnuob.api.generic.AbstractGenericTypeDataProvider;
 import com.netbrasoft.gnuob.api.generic.IGenericTypeDataProvider;
 import com.netbrasoft.gnuob.generic.AbstractGenericTypeDataProviderTest;
 
 @RunWith(Arquillian.class)
 @SpringWebConfiguration()
-public class SiteDataProviderTest extends AbstractGenericTypeDataProviderTest<Site> {
+public class ProductDataProviderTest extends AbstractGenericTypeDataProviderTest<Product> {
 
   @Autowired
-  @Qualifier(SITE_DATA_PROVIDER_NAME)
-  private AbstractGenericTypeDataProvider<Site> siteDataProvider;
-  private Site site;
+  @Qualifier(PRODUCT_DATA_PROVIDER_NAME)
+  private AbstractGenericTypeDataProvider<Product> productDataProvider;
+  private Product product;
 
   @Before
   public void setUp() throws Exception {
-    siteDataProvider.setUser(ROOT);
-    siteDataProvider.setPassword(ROOT);
-    siteDataProvider.setSite("domain");
-    siteDataProvider.getType().setActive(true);
-    site = siteDataProvider.persist(getSiteInstance());
+    productDataProvider.setUser(ROOT);
+    productDataProvider.setPassword(ROOT);
+    productDataProvider.setSite("domain");
+    productDataProvider.getType().setActive(true);
+    product = productDataProvider.persist(getProductInstance());
   }
 
   @After
   public void tearDown() throws Exception {}
 
   @Override
-  public IGenericTypeDataProvider<Site> getGenericTypeProvider() {
-    return siteDataProvider;
+  public IGenericTypeDataProvider<Product> getGenericTypeProvider() {
+    return productDataProvider;
   }
 
   @Override
-  public Site getType() {
-    return site;
+  public Product getType() {
+    return product;
   }
 }

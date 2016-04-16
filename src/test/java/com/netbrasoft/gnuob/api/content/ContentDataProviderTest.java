@@ -12,10 +12,10 @@
  * the License.
  */
 
-package com.netbrasoft.gnuob.api.security;
+package com.netbrasoft.gnuob.api.content;
 
-import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.SITE_DATA_PROVIDER_NAME;
-import static com.netbrasoft.gnuob.generic.utils.EntityInstanceHelper.getSiteInstance;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.CONTENT_DATA_PROVIDER_NAME;
+import static com.netbrasoft.gnuob.generic.utils.EntityInstanceHelper.getContentInstance;
 
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.spring.integration.test.annotation.SpringWebConfiguration;
@@ -25,39 +25,38 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-import com.netbrasoft.gnuob.api.Site;
+import com.netbrasoft.gnuob.api.Content;
 import com.netbrasoft.gnuob.api.generic.AbstractGenericTypeDataProvider;
 import com.netbrasoft.gnuob.api.generic.IGenericTypeDataProvider;
 import com.netbrasoft.gnuob.generic.AbstractGenericTypeDataProviderTest;
 
 @RunWith(Arquillian.class)
 @SpringWebConfiguration()
-public class SiteDataProviderTest extends AbstractGenericTypeDataProviderTest<Site> {
+public class ContentDataProviderTest extends AbstractGenericTypeDataProviderTest<Content> {
 
   @Autowired
-  @Qualifier(SITE_DATA_PROVIDER_NAME)
-  private AbstractGenericTypeDataProvider<Site> siteDataProvider;
-  private Site site;
+  @Qualifier(CONTENT_DATA_PROVIDER_NAME)
+  private AbstractGenericTypeDataProvider<Content> contentDataProvider;
+  private Content content;
 
   @Before
   public void setUp() throws Exception {
-    siteDataProvider.setUser(ROOT);
-    siteDataProvider.setPassword(ROOT);
-    siteDataProvider.setSite("domain");
-    siteDataProvider.getType().setActive(true);
-    site = siteDataProvider.persist(getSiteInstance());
+    contentDataProvider.setUser(ROOT);
+    contentDataProvider.setPassword(ROOT);
+    contentDataProvider.setSite("domain");
+    content = contentDataProvider.persist(getContentInstance());
   }
 
   @After
   public void tearDown() throws Exception {}
 
   @Override
-  public IGenericTypeDataProvider<Site> getGenericTypeProvider() {
-    return siteDataProvider;
+  public IGenericTypeDataProvider<Content> getGenericTypeProvider() {
+    return contentDataProvider;
   }
 
   @Override
-  public Site getType() {
-    return site;
+  public Content getType() {
+    return content;
   }
 }

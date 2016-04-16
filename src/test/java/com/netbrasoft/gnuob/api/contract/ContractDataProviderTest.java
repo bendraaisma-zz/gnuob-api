@@ -12,10 +12,10 @@
  * the License.
  */
 
-package com.netbrasoft.gnuob.api.security;
+package com.netbrasoft.gnuob.api.contract;
 
-import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.SITE_DATA_PROVIDER_NAME;
-import static com.netbrasoft.gnuob.generic.utils.EntityInstanceHelper.getSiteInstance;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.CONTRACT_DATA_PROVIDER_NAME;
+import static com.netbrasoft.gnuob.generic.utils.EntityInstanceHelper.getContractInstance;
 
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.spring.integration.test.annotation.SpringWebConfiguration;
@@ -25,39 +25,38 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-import com.netbrasoft.gnuob.api.Site;
+import com.netbrasoft.gnuob.api.Contract;
 import com.netbrasoft.gnuob.api.generic.AbstractGenericTypeDataProvider;
 import com.netbrasoft.gnuob.api.generic.IGenericTypeDataProvider;
 import com.netbrasoft.gnuob.generic.AbstractGenericTypeDataProviderTest;
 
 @RunWith(Arquillian.class)
 @SpringWebConfiguration()
-public class SiteDataProviderTest extends AbstractGenericTypeDataProviderTest<Site> {
+public class ContractDataProviderTest extends AbstractGenericTypeDataProviderTest<Contract> {
 
   @Autowired
-  @Qualifier(SITE_DATA_PROVIDER_NAME)
-  private AbstractGenericTypeDataProvider<Site> siteDataProvider;
-  private Site site;
+  @Qualifier(CONTRACT_DATA_PROVIDER_NAME)
+  private AbstractGenericTypeDataProvider<Contract> contractDataProvider;
+  private Contract contract;
 
   @Before
   public void setUp() throws Exception {
-    siteDataProvider.setUser(ROOT);
-    siteDataProvider.setPassword(ROOT);
-    siteDataProvider.setSite("domain");
-    siteDataProvider.getType().setActive(true);
-    site = siteDataProvider.persist(getSiteInstance());
+    contractDataProvider.setUser(ROOT);
+    contractDataProvider.setPassword(ROOT);
+    contractDataProvider.setSite("domain");
+    contract = contractDataProvider.persist(getContractInstance());
   }
 
   @After
   public void tearDown() throws Exception {}
 
   @Override
-  public IGenericTypeDataProvider<Site> getGenericTypeProvider() {
-    return siteDataProvider;
+  public IGenericTypeDataProvider<Contract> getGenericTypeProvider() {
+    return contractDataProvider;
   }
 
   @Override
-  public Site getType() {
-    return site;
+  public Contract getType() {
+    return contract;
   }
 }

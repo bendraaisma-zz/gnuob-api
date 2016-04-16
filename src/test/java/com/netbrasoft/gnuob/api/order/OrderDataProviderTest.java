@@ -12,10 +12,10 @@
  * the License.
  */
 
-package com.netbrasoft.gnuob.api.security;
+package com.netbrasoft.gnuob.api.order;
 
-import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.SITE_DATA_PROVIDER_NAME;
-import static com.netbrasoft.gnuob.generic.utils.EntityInstanceHelper.getSiteInstance;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.ORDER_DATA_PROVIDER_NAME;
+import static com.netbrasoft.gnuob.generic.utils.EntityInstanceHelper.getOrderInstance;
 
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.spring.integration.test.annotation.SpringWebConfiguration;
@@ -25,39 +25,39 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-import com.netbrasoft.gnuob.api.Site;
+import com.netbrasoft.gnuob.api.Order;
 import com.netbrasoft.gnuob.api.generic.AbstractGenericTypeDataProvider;
 import com.netbrasoft.gnuob.api.generic.IGenericTypeDataProvider;
 import com.netbrasoft.gnuob.generic.AbstractGenericTypeDataProviderTest;
 
 @RunWith(Arquillian.class)
 @SpringWebConfiguration()
-public class SiteDataProviderTest extends AbstractGenericTypeDataProviderTest<Site> {
+public class OrderDataProviderTest extends AbstractGenericTypeDataProviderTest<Order> {
 
   @Autowired
-  @Qualifier(SITE_DATA_PROVIDER_NAME)
-  private AbstractGenericTypeDataProvider<Site> siteDataProvider;
-  private Site site;
+  @Qualifier(ORDER_DATA_PROVIDER_NAME)
+  private AbstractGenericTypeDataProvider<Order> orderDataProvider;
+  private Order order;
 
   @Before
   public void setUp() throws Exception {
-    siteDataProvider.setUser(ROOT);
-    siteDataProvider.setPassword(ROOT);
-    siteDataProvider.setSite("domain");
-    siteDataProvider.getType().setActive(true);
-    site = siteDataProvider.persist(getSiteInstance());
+    orderDataProvider.setUser(ROOT);
+    orderDataProvider.setPassword(ROOT);
+    orderDataProvider.setSite("domain");
+    orderDataProvider.getType().setActive(true);
+    order = orderDataProvider.persist(getOrderInstance());
   }
 
   @After
   public void tearDown() throws Exception {}
 
   @Override
-  public IGenericTypeDataProvider<Site> getGenericTypeProvider() {
-    return siteDataProvider;
+  public IGenericTypeDataProvider<Order> getGenericTypeProvider() {
+    return orderDataProvider;
   }
 
   @Override
-  public Site getType() {
-    return site;
+  public Order getType() {
+    return order;
   }
 }
