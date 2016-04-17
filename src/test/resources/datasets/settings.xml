@@ -368,24 +368,148 @@
       GROUP="READ_ACCESS"
       OTHERS="READ_ACCESS"
       OWNER="DELETE_ACCESS" />
-   <!-- SETTINGS -->
+   <!-- USER GUEST -->
    <gnuob_access
-      ID="400"
+      ID="5"
+      CREATION="2015-08-23 10:49:32"
+      VERSION="0"
+      ACTIVE="true"
+      group_ID="104"
+      permission_ID="5"
+      site_ID="200"
+      owner_ID="5" />
+   <gnuob_users
+      ID="5"
+      DESCRIPTION="Guest"
+      NAME="guest"
+      PASSWORD="3CA83E5AABA27826:1000:EE2BEB6F4EDE87CF4C8E24D198914F43476C5C4C"
+      ACCESS="READ_ACCESS" />
+   <gnuob_permissions
+      ID="5"
+      CREATION="2015-08-23 10:49:32"
+      VERSION="0"
+      GROUP="READ_ACCESS"
+      OTHERS="READ_ACCESS"
+      OWNER="DELETE_ACCESS" />
+   <gnuob_users_gnuob_sites
+      sites_ID="200"
+      GNUOB_USERS_ID="5" />
+   <gnuob_users_gnuob_groups
+      groups_ID="104"
+      GNUOB_USERS_ID="5" />
+   <gnuob_roles
+      GNUOB_USERS_ID="5"
+      ROLE="GUEST" />
+   <!-- GROUP GUEST -->
+   <gnuob_access
+      ID="104"
       CREATION="2015-08-23 10:49:32"
       MODIFICATION="2015-08-23 10:49:32"
       VERSION="0"
       ACTIVE="true"
+      group_ID="104"
+      permission_ID="104"
+      site_ID="200"
+      owner_ID="5" />
+   <gnuob_groups
+      ID="104"
+      DESCRIPTION="Guest"
+      NAME="guest" />
+   <gnuob_permissions
+      ID="104"
+      CREATION="2015-08-23 10:49:32"
+      VERSION="0"
+      GROUP="READ_ACCESS"
+      OTHERS="READ_ACCESS"
+      OWNER="DELETE_ACCESS" />
+   <!-- USER STUDENT -->
+   <gnuob_access
+      ID="6"
+      CREATION="2015-08-23 10:49:32"
+      VERSION="0"
+      ACTIVE="true"
+      group_ID="105"
+      permission_ID="6"
+      site_ID="200"
+      owner_ID="6" />
+   <gnuob_users
+      ID="6"
+      DESCRIPTION="Student"
+      NAME="student"
+      PASSWORD="7C51B95707EB22FC:1000:0C503B42C458DEA62518A9E09C20E5A0209DEE72"
+      ACCESS="NONE_ACCESS" />
+   <gnuob_permissions
+      ID="6"
+      CREATION="2015-08-23 10:49:32"
+      VERSION="0"
+      GROUP="READ_ACCESS"
+      OTHERS="READ_ACCESS"
+      OWNER="DELETE_ACCESS" />
+   <gnuob_users_gnuob_sites
+      sites_ID="200"
+      GNUOB_USERS_ID="6" />
+   <gnuob_users_gnuob_groups
+      groups_ID="105"
+      GNUOB_USERS_ID="6" />
+   <!-- GROUP STUDENT -->
+   <gnuob_access
+      ID="105"
+      CREATION="2015-08-23 10:49:32"
+      MODIFICATION="2015-08-23 10:49:32"
+      VERSION="0"
+      ACTIVE="true"
+      group_ID="105"
+      permission_ID="105"
+      site_ID="200"
+      owner_ID="6" />
+   <gnuob_groups
+      ID="105"
+      DESCRIPTION="Student"
+      NAME="student" />
+   <gnuob_permissions
+      ID="105"
+      CREATION="2015-08-23 10:49:32"
+      VERSION="0"
+      GROUP="READ_ACCESS"
+      OTHERS="READ_ACCESS"
+      OWNER="DELETE_ACCESS" />
+   <!--SITE DOMAIN -->
+   <gnuob_access
+      ID="200"
+      CREATION="2015-08-23 10:49:32"
+      VERSION="0"
+      ACTIVE="true"
       group_ID="100"
-      permission_ID="400"
+      permission_ID="200"
       site_ID="200"
       owner_ID="1" />
-   <gnuob_settings
-      ID="400"
-      DESCRIPTION="Folly words widow one downs few age every seven."
-      PROPERTY="Folly words widow one downs few age every seven."
-      VALUE="Folly words widow one downs few age every seven." />
+   <gnuob_sites
+      ID="200"
+      DESCRIPTION="Site label domain"
+      NAME="domain" />
    <gnuob_permissions
-      ID="400"
+      ID="200"
+      CREATION="2015-08-23 10:49:32"
+      VERSION="0"
+      GROUP="READ_ACCESS"
+      OTHERS="READ_ACCESS"
+      OWNER="DELETE_ACCESS" />
+   <!--SITE DUMMY -->
+   <gnuob_access
+      ID="201"
+      CREATION="2015-08-23 10:49:32"
+      VERSION="0"
+      ACTIVE="true"
+      group_ID="100"
+      permission_ID="201"
+      site_ID="201"
+      owner_ID="1" />
+   <gnuob_sites
+      ID="201"
+      DESCRIPTION="Site label dummy"
+      NAME="dummy" />
+   <gnuob_permissions
+      ID="201"
       CREATION="2015-08-23 10:49:32"
       VERSION="0"
       GROUP="DELETE_ACCESS"

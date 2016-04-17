@@ -16,13 +16,13 @@ package com.netbrasoft.gnuob.api.setting;
 
 import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.SETTING_WEB_SERVICE_REPOSITORY_NAME;
 import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.UNCHECKED_VALUE;
-import static com.netbrasoft.gnuob.api.setting.SettingsWebServiceWrapperHelper.wrapToCountSetting;
-import static com.netbrasoft.gnuob.api.setting.SettingsWebServiceWrapperHelper.wrapToFindSetting;
-import static com.netbrasoft.gnuob.api.setting.SettingsWebServiceWrapperHelper.wrapToFindSettingsById;
-import static com.netbrasoft.gnuob.api.setting.SettingsWebServiceWrapperHelper.wrapToMergeSetting;
-import static com.netbrasoft.gnuob.api.setting.SettingsWebServiceWrapperHelper.wrapToPersistSetting;
-import static com.netbrasoft.gnuob.api.setting.SettingsWebServiceWrapperHelper.wrapToRefreshSetting;
-import static com.netbrasoft.gnuob.api.setting.SettingsWebServiceWrapperHelper.wrapToRemoveSetting;
+import static com.netbrasoft.gnuob.api.setting.SettingWebServiceWrapperHelper.wrapToCountSetting;
+import static com.netbrasoft.gnuob.api.setting.SettingWebServiceWrapperHelper.wrapToFindSetting;
+import static com.netbrasoft.gnuob.api.setting.SettingWebServiceWrapperHelper.wrapToFindSettingsById;
+import static com.netbrasoft.gnuob.api.setting.SettingWebServiceWrapperHelper.wrapToMergeSetting;
+import static com.netbrasoft.gnuob.api.setting.SettingWebServiceWrapperHelper.wrapToPersistSetting;
+import static com.netbrasoft.gnuob.api.setting.SettingWebServiceWrapperHelper.wrapToRefreshSetting;
+import static com.netbrasoft.gnuob.api.setting.SettingWebServiceWrapperHelper.wrapToRemoveSetting;
 
 import java.util.List;
 

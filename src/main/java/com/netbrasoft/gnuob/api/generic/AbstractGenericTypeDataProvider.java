@@ -127,8 +127,8 @@ public abstract class AbstractGenericTypeDataProvider<T extends AbstractType> ex
   }
 
   @Override
-  public void setOrderBy(final OrderBy OrderBy) {
-    this.orderingProperty = OrderBy;
+  public void setOrderBy(final OrderBy orderingProperty) {
+    this.orderingProperty = orderingProperty;
   }
 
   @Override
@@ -163,7 +163,7 @@ public abstract class AbstractGenericTypeDataProvider<T extends AbstractType> ex
 
   @Override
   public IModel<T> model(final T objectType) {
-    return new GenericTypeLoadableDetachableModel<T>(objectType);
+    return new GenericTypeLoadableDetachableModel<>(objectType);
   }
 
   @Override

@@ -12,10 +12,10 @@
  * the License.
  */
 
-package com.netbrasoft.gnuob.api.setting;
+package com.netbrasoft.gnuob.api.security;
 
-import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.SETTING_DATA_PROVIDER_NAME;
-import static com.netbrasoft.gnuob.generic.utils.EntityInstanceHelper.getSettingInstance;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.USER_DATA_PROVIDER_NAME;
+import static com.netbrasoft.gnuob.generic.utils.EntityInstanceHelper.getUserInstance;
 
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.spring.integration.test.annotation.SpringWebConfiguration;
@@ -25,40 +25,40 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-import com.netbrasoft.gnuob.api.Setting;
+import com.netbrasoft.gnuob.api.User;
 import com.netbrasoft.gnuob.api.generic.AbstractGenericTypeDataProvider;
 import com.netbrasoft.gnuob.api.generic.IGenericTypeDataProvider;
 import com.netbrasoft.gnuob.generic.AbstractGenericTypeDataProviderTest;
 
 @RunWith(Arquillian.class)
 @SpringWebConfiguration()
-public class SettingDataProviderTest extends AbstractGenericTypeDataProviderTest<Setting> {
+public class UserDataProviderTest extends AbstractGenericTypeDataProviderTest<User> {
 
   @Autowired
-  @Qualifier(SETTING_DATA_PROVIDER_NAME)
-  private AbstractGenericTypeDataProvider<Setting> settingDataProvider;
+  @Qualifier(USER_DATA_PROVIDER_NAME)
+  private AbstractGenericTypeDataProvider<User> userDataProvider;
 
-  private Setting setting;
+  private User user;
 
   @Before
   public void setUp() throws Exception {
-    settingDataProvider.setUser(ROOT);
-    settingDataProvider.setPassword(ROOT);
-    settingDataProvider.setSite("domain");
-    settingDataProvider.getType().setActive(true);
-    setting = settingDataProvider.persist(getSettingInstance());
+    userDataProvider.setUser(ROOT);
+    userDataProvider.setPassword(ROOT);
+    userDataProvider.setSite("domain");
+    userDataProvider.getType().setActive(true);
+    user = userDataProvider.persist(getUserInstance());
   }
 
   @After
   public void tearDown() throws Exception {}
 
   @Override
-  public IGenericTypeDataProvider<Setting> getGenericTypeProvider() {
-    return settingDataProvider;
+  public IGenericTypeDataProvider<User> getGenericTypeProvider() {
+    return userDataProvider;
   }
 
   @Override
-  public Setting getType() {
-    return setting;
+  public User getType() {
+    return user;
   }
 }
