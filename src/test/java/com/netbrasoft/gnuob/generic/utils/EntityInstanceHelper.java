@@ -396,7 +396,7 @@ public final class EntityInstanceHelper {
     product.setItemHeightUnit(_20_CHARS);
     product.setItemLength(BigDecimal.valueOf(_19_2_CHARS));
     product.setItemLengthUnit(_20_CHARS);
-    product.setItemUrl(_129_CHARS);
+    product.setItemUrl(_255_CHARS);
     product.setItemWeight(BigDecimal.valueOf(_19_2_CHARS));
     product.setItemWeightUnit(_20_CHARS);
     product.setItemWidth(BigDecimal.valueOf(_19_2_CHARS));

@@ -55,9 +55,31 @@
       <xs:extension base="tns:abstractAccess">
         <xs:sequence>
           <xs:element maxOccurs="unbounded" minOccurs="0" name="contents" nillable="true" type="tns:content"/>
-          <xs:element name="description" type="xs:string"/>
-          <xs:element name="name" type="xs:string"/>
-          <xs:element minOccurs="0" name="position" type="xs:int"/>
+          <xs:element name="description">
+             <xs:simpleType>
+                <xs:restriction base="xs:string">
+                   <xs:minLength value="5"></xs:minLength>
+                   <xs:maxLength value="128"></xs:maxLength>
+                </xs:restriction>
+             </xs:simpleType>
+          </xs:element>
+          <xs:element name="name">
+             <xs:simpleType>
+                <xs:restriction base="xs:string">
+                   <xs:minLength value="5"></xs:minLength>
+                   <xs:maxLength value="128"></xs:maxLength>
+                </xs:restriction>
+             </xs:simpleType>
+          </xs:element>
+          <xs:element
+             minOccurs="0"
+             name="position">
+             <xs:simpleType>
+                <xs:restriction base="xs:int">
+                   <xs:minInclusive value="0"></xs:minInclusive>
+                </xs:restriction>
+             </xs:simpleType>
+          </xs:element>
           <xs:element maxOccurs="unbounded" minOccurs="0" name="subCategories" nillable="true" type="tns:subCategory"/>
         </xs:sequence>
       </xs:extension>
