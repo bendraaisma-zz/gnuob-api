@@ -15,7 +15,7 @@
 package com.netbrasoft.gnuob.api.category;
 
 import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.CATEGORY_DATA_PROVIDER_NAME;
-import static com.netbrasoft.gnuob.generic.utils.EntityInstanceHelper.getCategoryInstance;
+import static com.netbrasoft.gnuob.generic.utils.DummyInstanceHelper.getCategoryInstance;
 
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.spring.integration.test.annotation.SpringWebConfiguration;
@@ -26,7 +26,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.netbrasoft.gnuob.api.Category;
-import com.netbrasoft.gnuob.api.generic.AbstractGenericTypeDataProvider;
 import com.netbrasoft.gnuob.api.generic.IGenericTypeDataProvider;
 import com.netbrasoft.gnuob.generic.AbstractGenericTypeDataProviderTest;
 
@@ -36,7 +35,7 @@ public class CategoryDataProviderTest extends AbstractGenericTypeDataProviderTes
 
   @Autowired
   @Qualifier(CATEGORY_DATA_PROVIDER_NAME)
-  private AbstractGenericTypeDataProvider<Category> categoryDataProvider;
+  private IGenericTypeDataProvider<Category> categoryDataProvider;
   private Category category;
 
   @Before

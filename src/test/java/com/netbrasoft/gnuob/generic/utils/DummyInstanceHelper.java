@@ -48,7 +48,7 @@ import com.netbrasoft.gnuob.api.User;
 
 import de.rtner.security.auth.spi.SimplePBKDF2;
 
-public final class EntityInstanceHelper {
+public final class DummyInstanceHelper {
 
   private static final String _10_CHARS = "Folly wo.";
   private static final String _100_CHARS =

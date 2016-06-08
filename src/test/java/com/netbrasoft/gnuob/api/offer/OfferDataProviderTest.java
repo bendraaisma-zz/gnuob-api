@@ -15,7 +15,7 @@
 package com.netbrasoft.gnuob.api.offer;
 
 import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.OFFER_DATA_PROVIDER_NAME;
-import static com.netbrasoft.gnuob.generic.utils.EntityInstanceHelper.getOfferInstance;
+import static com.netbrasoft.gnuob.generic.utils.DummyInstanceHelper.getOfferInstance;
 
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.spring.integration.test.annotation.SpringWebConfiguration;
@@ -26,7 +26,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.netbrasoft.gnuob.api.Offer;
-import com.netbrasoft.gnuob.api.generic.AbstractGenericTypeDataProvider;
 import com.netbrasoft.gnuob.api.generic.IGenericTypeDataProvider;
 import com.netbrasoft.gnuob.generic.AbstractGenericTypeDataProviderTest;
 
@@ -36,7 +35,7 @@ public class OfferDataProviderTest extends AbstractGenericTypeDataProviderTest<O
 
   @Autowired
   @Qualifier(OFFER_DATA_PROVIDER_NAME)
-  private AbstractGenericTypeDataProvider<Offer> offerDataProvider;
+  private IGenericTypeDataProvider<Offer> offerDataProvider;
   private Offer offer;
 
   @Before

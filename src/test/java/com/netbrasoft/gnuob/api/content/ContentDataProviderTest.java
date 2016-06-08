@@ -15,7 +15,7 @@
 package com.netbrasoft.gnuob.api.content;
 
 import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.CONTENT_DATA_PROVIDER_NAME;
-import static com.netbrasoft.gnuob.generic.utils.EntityInstanceHelper.getContentInstance;
+import static com.netbrasoft.gnuob.generic.utils.DummyInstanceHelper.getContentInstance;
 
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.spring.integration.test.annotation.SpringWebConfiguration;
@@ -26,7 +26,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.netbrasoft.gnuob.api.Content;
-import com.netbrasoft.gnuob.api.generic.AbstractGenericTypeDataProvider;
 import com.netbrasoft.gnuob.api.generic.IGenericTypeDataProvider;
 import com.netbrasoft.gnuob.generic.AbstractGenericTypeDataProviderTest;
 
@@ -36,7 +35,7 @@ public class ContentDataProviderTest extends AbstractGenericTypeDataProviderTest
 
   @Autowired
   @Qualifier(CONTENT_DATA_PROVIDER_NAME)
-  private AbstractGenericTypeDataProvider<Content> contentDataProvider;
+  private IGenericTypeDataProvider<Content> contentDataProvider;
   private Content content;
 
   @Before

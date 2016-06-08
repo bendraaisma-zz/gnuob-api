@@ -15,7 +15,7 @@
 package com.netbrasoft.gnuob.api.setting;
 
 import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.SETTING_DATA_PROVIDER_NAME;
-import static com.netbrasoft.gnuob.generic.utils.EntityInstanceHelper.getSettingInstance;
+import static com.netbrasoft.gnuob.generic.utils.DummyInstanceHelper.getSettingInstance;
 
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.spring.integration.test.annotation.SpringWebConfiguration;
@@ -26,7 +26,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.netbrasoft.gnuob.api.Setting;
-import com.netbrasoft.gnuob.api.generic.AbstractGenericTypeDataProvider;
 import com.netbrasoft.gnuob.api.generic.IGenericTypeDataProvider;
 import com.netbrasoft.gnuob.generic.AbstractGenericTypeDataProviderTest;
 
@@ -36,8 +35,7 @@ public class SettingDataProviderTest extends AbstractGenericTypeDataProviderTest
 
   @Autowired
   @Qualifier(SETTING_DATA_PROVIDER_NAME)
-  private AbstractGenericTypeDataProvider<Setting> settingDataProvider;
-
+  private IGenericTypeDataProvider<Setting> settingDataProvider;
   private Setting setting;
 
   @Before

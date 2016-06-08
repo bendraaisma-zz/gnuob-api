@@ -12,7 +12,7 @@
       <jxb:globalBindings
          xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
          xmlns:xs="http://www.w3.org/2001/XMLSchema">
-         <xjc:serializable />
+         <xjc:serializable uid="1"  />
          <xjc:javaType
             name="byte[]"
             xmlType="xsd:base64Binary"

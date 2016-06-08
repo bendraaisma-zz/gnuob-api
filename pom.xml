@@ -22,7 +22,7 @@
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       <version.jar.plugin>2.5</version.jar.plugin>
       <version.springframework.plugin>4.1.7.RELEASE</version.springframework.plugin>
-      <version.wicket.plugin>7.2.0</version.wicket.plugin>
+      <version.wicket.plugin>7.3.0</version.wicket.plugin>
       <version.surefire.plugin>2.17</version.surefire.plugin>
       <version.javasimon>4.1.1</version.javasimon>
       <version.PBKDF2>1.1.1</version.PBKDF2>
@@ -108,6 +108,29 @@
          <version>${version.arquillian-persistence-dbunit}</version>
          <scope>test</scope>
       </dependency>
+      <!-- NEEDED FOR ARQUILLIAN TESTS -->
+      <dependency>
+         <groupId>com.google.guava</groupId>
+         <artifactId>guava</artifactId>
+         <version>18.0</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.seleniumhq.selenium</groupId>
+         <artifactId>selenium-api</artifactId>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.seleniumhq.selenium</groupId>
+         <artifactId>selenium-support</artifactId>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>com.sun.net.httpserver</groupId>
+         <artifactId>http</artifactId>
+         <version>20070405</version>
+         <scope>test</scope>
+      </dependency>
       <!-- SPRING -->
       <dependency>
          <groupId>org.springframework</groupId>
@@ -171,7 +194,8 @@
                   <manifestEntries>
                      <mode>development</mode>
                      <url>${project.url}</url>
-                     <dependencies>org.apache.cxf services,org.apache.cxf.impl</dependencies>
+                     <dependencies>org.apache.cxf
+                        services,org.apache.cxf.impl</dependencies>
                   </manifestEntries>
                   <manifest>
                      <addDefaultImplementationEntries>true</addDefaultImplementationEntries>

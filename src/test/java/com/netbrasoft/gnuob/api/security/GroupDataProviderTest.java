@@ -15,7 +15,7 @@
 package com.netbrasoft.gnuob.api.security;
 
 import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.GROUP_DATA_PROVIDER_NAME;
-import static com.netbrasoft.gnuob.generic.utils.EntityInstanceHelper.getGroupInstance;
+import static com.netbrasoft.gnuob.generic.utils.DummyInstanceHelper.getGroupInstance;
 
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.spring.integration.test.annotation.SpringWebConfiguration;
@@ -26,7 +26,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.netbrasoft.gnuob.api.Group;
-import com.netbrasoft.gnuob.api.generic.AbstractGenericTypeDataProvider;
 import com.netbrasoft.gnuob.api.generic.IGenericTypeDataProvider;
 import com.netbrasoft.gnuob.generic.AbstractGenericTypeDataProviderTest;
 
@@ -36,7 +35,7 @@ public class GroupDataProviderTest extends AbstractGenericTypeDataProviderTest<G
 
   @Autowired
   @Qualifier(GROUP_DATA_PROVIDER_NAME)
-  private AbstractGenericTypeDataProvider<Group> groupDataProvider;
+  private IGenericTypeDataProvider<Group> groupDataProvider;
   private Group group;
 
   @Before

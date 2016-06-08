@@ -37,11 +37,13 @@ public final class Utils {
   private static final String WICKET_UTIL = "org.apache.wicket:wicket-util:7.2.0";
 
   public static Archive<?> createDeployment() {
-    return ShrinkWrap.create(WebArchive.class, GNUOB_API_WAR)
-        .addPackages(true, COM_NETBRASOFT_GNUOB_GENERIC_PKG).addPackages(true, COM_NETBRASOFT_GNUOB_API_PKG)
-        .addAsResource(META_INF_MANIFEST_MF).addAsWebInfResource(APPLICATION_CONTEXT_XML).addAsWebInfResource(WEB_XML)
+    return ShrinkWrap.create(WebArchive.class, GNUOB_API_WAR).addPackages(true, COM_NETBRASOFT_GNUOB_GENERIC_PKG)
+        .addPackages(true, COM_NETBRASOFT_GNUOB_API_PKG).addAsResource(META_INF_MANIFEST_MF)
+        .addAsWebInfResource(APPLICATION_CONTEXT_XML).addAsWebInfResource(WEB_XML)
         .addAsLibraries(Maven.resolver().loadPomFromFile(POM_XML)
-            .resolve(WICKET_UTIL, WICKET_EXTENSIONS, WICKET_CORE, PICKETBOX, PBKDF2, SPRING_CONTEXT, SPRING_WEB)
+            .resolve("com.sun.net.httpserver:http:20070405", "com.google.guava:guava:18.0",
+                "org.seleniumhq.selenium:selenium-api:2.42.0", "org.seleniumhq.selenium:selenium-support:2.42.0",
+                WICKET_UTIL, WICKET_EXTENSIONS, WICKET_CORE, PICKETBOX, PBKDF2, SPRING_CONTEXT, SPRING_WEB)
             .withTransitivity().asFile());
   }
 }

@@ -15,7 +15,7 @@
 package com.netbrasoft.gnuob.api.order;
 
 import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.ORDER_DATA_PROVIDER_NAME;
-import static com.netbrasoft.gnuob.generic.utils.EntityInstanceHelper.getOrderInstance;
+import static com.netbrasoft.gnuob.generic.utils.DummyInstanceHelper.getOrderInstance;
 
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.spring.integration.test.annotation.SpringWebConfiguration;
@@ -26,7 +26,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.netbrasoft.gnuob.api.Order;
-import com.netbrasoft.gnuob.api.generic.AbstractGenericTypeDataProvider;
 import com.netbrasoft.gnuob.api.generic.IGenericTypeDataProvider;
 import com.netbrasoft.gnuob.generic.AbstractGenericTypeDataProviderTest;
 
@@ -36,7 +35,7 @@ public class OrderDataProviderTest extends AbstractGenericTypeDataProviderTest<O
 
   @Autowired
   @Qualifier(ORDER_DATA_PROVIDER_NAME)
-  private AbstractGenericTypeDataProvider<Order> orderDataProvider;
+  private IGenericTypeDataProvider<Order> orderDataProvider;
   private Order order;
 
   @Before

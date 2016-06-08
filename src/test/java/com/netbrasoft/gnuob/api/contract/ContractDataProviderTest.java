@@ -15,7 +15,7 @@
 package com.netbrasoft.gnuob.api.contract;
 
 import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.CONTRACT_DATA_PROVIDER_NAME;
-import static com.netbrasoft.gnuob.generic.utils.EntityInstanceHelper.getContractInstance;
+import static com.netbrasoft.gnuob.generic.utils.DummyInstanceHelper.getContractInstance;
 
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.spring.integration.test.annotation.SpringWebConfiguration;
@@ -26,7 +26,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.netbrasoft.gnuob.api.Contract;
-import com.netbrasoft.gnuob.api.generic.AbstractGenericTypeDataProvider;
 import com.netbrasoft.gnuob.api.generic.IGenericTypeDataProvider;
 import com.netbrasoft.gnuob.generic.AbstractGenericTypeDataProviderTest;
 
@@ -36,7 +35,7 @@ public class ContractDataProviderTest extends AbstractGenericTypeDataProviderTes
 
   @Autowired
   @Qualifier(CONTRACT_DATA_PROVIDER_NAME)
-  private AbstractGenericTypeDataProvider<Contract> contractDataProvider;
+  private IGenericTypeDataProvider<Contract> contractDataProvider;
   private Contract contract;
 
   @Before

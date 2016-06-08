@@ -15,7 +15,7 @@
 package com.netbrasoft.gnuob.api.customer;
 
 import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.POSTAL_CODE_DATA_PROVIDER_NAME;
-import static com.netbrasoft.gnuob.generic.utils.EntityInstanceHelper.getPostalCodeInstance;
+import static com.netbrasoft.gnuob.generic.utils.DummyInstanceHelper.getPostalCodeInstance;
 
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.spring.integration.test.annotation.SpringWebConfiguration;
@@ -26,7 +26,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.netbrasoft.gnuob.api.PostalCode;
-import com.netbrasoft.gnuob.api.generic.AbstractGenericTypeDataProvider;
 import com.netbrasoft.gnuob.api.generic.IGenericTypeDataProvider;
 import com.netbrasoft.gnuob.generic.AbstractGenericTypeDataProviderTest;
 
@@ -36,7 +35,7 @@ public class PostalCodeDataProviderTest extends AbstractGenericTypeDataProviderT
 
   @Autowired
   @Qualifier(POSTAL_CODE_DATA_PROVIDER_NAME)
-  private AbstractGenericTypeDataProvider<PostalCode> postalCodeDataProvider;
+  private IGenericTypeDataProvider<PostalCode> postalCodeDataProvider;
   private PostalCode postalCode;
 
   @Before
