@@ -15,7 +15,9 @@
 package com.netbrasoft.gnuob.api.customer;
 
 import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.POSTAL_CODE_DATA_PROVIDER_NAME;
-import static com.netbrasoft.gnuob.generic.utils.DummyInstanceHelper.getPostalCodeInstance;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants.DOMAIN;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants.ROOT;
+import static com.netbrasoft.gnuob.api.generic.utils.DummyInstanceHelper.getPostalCodeInstance;
 
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.spring.integration.test.annotation.SpringWebConfiguration;
@@ -26,8 +28,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.netbrasoft.gnuob.api.PostalCode;
+import com.netbrasoft.gnuob.api.generic.AbstractGenericTypeDataProviderTest;
 import com.netbrasoft.gnuob.api.generic.IGenericTypeDataProvider;
-import com.netbrasoft.gnuob.generic.AbstractGenericTypeDataProviderTest;
 
 @RunWith(Arquillian.class)
 @SpringWebConfiguration()
@@ -42,7 +44,7 @@ public class PostalCodeDataProviderTest extends AbstractGenericTypeDataProviderT
   public void setUp() throws Exception {
     postalCodeDataProvider.setUser(ROOT);
     postalCodeDataProvider.setPassword(ROOT);
-    postalCodeDataProvider.setSite("domain");
+    postalCodeDataProvider.setSite(DOMAIN);
     postalCode = postalCodeDataProvider.persist(getPostalCodeInstance());
   }
 

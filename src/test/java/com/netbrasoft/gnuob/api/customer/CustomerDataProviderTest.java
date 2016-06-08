@@ -15,7 +15,9 @@
 package com.netbrasoft.gnuob.api.customer;
 
 import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.CUSTOMER_DATA_PROVIDER_NAME;
-import static com.netbrasoft.gnuob.generic.utils.DummyInstanceHelper.getCustomerInstance;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants.DOMAIN;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants.ROOT;
+import static com.netbrasoft.gnuob.api.generic.utils.DummyInstanceHelper.getCustomerInstance;
 
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.spring.integration.test.annotation.SpringWebConfiguration;
@@ -26,8 +28,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.netbrasoft.gnuob.api.Customer;
+import com.netbrasoft.gnuob.api.generic.AbstractGenericTypeDataProviderTest;
 import com.netbrasoft.gnuob.api.generic.IGenericTypeDataProvider;
-import com.netbrasoft.gnuob.generic.AbstractGenericTypeDataProviderTest;
 
 @RunWith(Arquillian.class)
 @SpringWebConfiguration()
@@ -42,7 +44,7 @@ public class CustomerDataProviderTest extends AbstractGenericTypeDataProviderTes
   public void setUp() throws Exception {
     customerDataProvider.setUser(ROOT);
     customerDataProvider.setPassword(ROOT);
-    customerDataProvider.setSite("domain");
+    customerDataProvider.setSite(DOMAIN);
     customer = customerDataProvider.persist(getCustomerInstance());
   }
 

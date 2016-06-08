@@ -12,8 +12,16 @@
  * the License.
  */
 
-package com.netbrasoft.gnuob.generic;
+package com.netbrasoft.gnuob.api.generic;
 
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants.ADMINISTRATOR;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants.DATASETS_SETTINGS_XML;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants.EMPLOYEE;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants.GUEST;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants.MANAGER;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants.ROOT;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants.SCRIPTS_TO_EXECUTE_BEFORE_TEST_SQL;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants.STUDENT;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -29,18 +37,9 @@ import org.junit.rules.ExpectedException;
 import com.netbrasoft.gnuob.api.AbstractType;
 import com.netbrasoft.gnuob.api.generic.GNUOpenBusinessApplicationException;
 import com.netbrasoft.gnuob.api.generic.IGenericTypeDataProvider;
-import com.netbrasoft.gnuob.generic.utils.Utils;
+import com.netbrasoft.gnuob.api.generic.utils.Utils;
 
 public abstract class AbstractGenericTypeDataProviderTest<T extends AbstractType> {
-
-  protected static final String STUDENT = "student";
-  protected static final String GUEST = "guest";
-  protected static final String EMPLOYEE = "employee";
-  protected static final String MANAGER = "manager";
-  protected static final String ADMINISTRATOR = "administrator";
-  protected static final String ROOT = "root";
-  protected static final String DATASETS_SETTINGS_XML = "datasets/settings.xml";
-  protected static final String SCRIPTS_TO_EXECUTE_BEFORE_TEST_SQL = "scripts/scriptsToExecuteBeforeTest.sql";
 
   @Deployment
   public static Archive<?> createDeployment() {

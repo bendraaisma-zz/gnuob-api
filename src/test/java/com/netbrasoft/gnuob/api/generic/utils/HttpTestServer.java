@@ -12,7 +12,11 @@
  * the License.
  */
 
-package com.netbrasoft.gnuob.generic.utils;
+package com.netbrasoft.gnuob.api.generic.utils;
+
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants.DELAY_TIME_IN_SEC;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants.PORT;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants.SOCKET_ADDRESS;
 
 import java.net.InetSocketAddress;
 
@@ -21,14 +25,13 @@ import org.junit.rules.ExternalResource;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 
-@SuppressWarnings("restriction")
 public class HttpTestServer extends ExternalResource {
 
   private final InetSocketAddress address;
   private HttpServer httpServer;
 
   public static HttpTestServer server() {
-    return new HttpTestServer(8000);
+    return new HttpTestServer(PORT);
   }
 
   public HttpTestServer(final int port) {
@@ -38,13 +41,13 @@ public class HttpTestServer extends ExternalResource {
   @Override
   protected final void before() throws Throwable {
     super.before();
-    httpServer = HttpServer.create(address, 0);
+    httpServer = HttpServer.create(address, SOCKET_ADDRESS);
     httpServer.start();
   }
 
   @Override
   protected final void after() {
-    httpServer.stop(0);
+    httpServer.stop(DELAY_TIME_IN_SEC);
     super.after();
   }
 

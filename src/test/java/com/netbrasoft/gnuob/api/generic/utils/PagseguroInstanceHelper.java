@@ -12,7 +12,7 @@
  * the License.
  */
 
-package com.netbrasoft.gnuob.generic.utils;
+package com.netbrasoft.gnuob.api.generic.utils;
 
 import static com.netbrasoft.gnuob.api.Rule.DELETE_ACCESS;
 

@@ -12,10 +12,29 @@
  * the License.
  */
 
-package com.netbrasoft.gnuob.generic.utils;
+package com.netbrasoft.gnuob.api.generic.utils;
 
 import static com.netbrasoft.gnuob.api.Rule.DELETE_ACCESS;
 import static com.netbrasoft.gnuob.api.Rule.READ_ACCESS;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants._100_CHARS;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants._10_CHARS;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants._127_CHARS;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants._128_CHARS;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants._129_CHARS;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants._150_CHARS;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants._15_CHARS;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants._165_CHARS;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants._17_CHARS;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants._180_CHARS;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants._19_2_DOUBLE;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants._19_4_DOUBLE;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants._20_CHARS;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants._255_CHARS;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants._25_CHARS;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants._2_CHARS;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants._40_CHARS;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants._64_CHARS;
+import static com.netbrasoft.gnuob.api.generic.NetbrasoftApiTestConstants._80_CHARS;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -49,35 +68,6 @@ import com.netbrasoft.gnuob.api.User;
 import de.rtner.security.auth.spi.SimplePBKDF2;
 
 public final class DummyInstanceHelper {
-
-  private static final String _10_CHARS = "Folly wo.";
-  private static final String _100_CHARS =
-      "Folly words widow one downs few age every seven. Folly words widow one downs few age every seven...";
-  private static final String _127_CHARS =
-      "Folly words widow one downs few age every seven. Folly words widow one downs few age every seven. Folly words widow one downs.";
-  private static final String _128_CHARS =
-      "Folly words widow one downs few age every seven. Folly words widow one downs few age every seven. Folly words widow one downs..";
-  private static final String _129_CHARS =
-      "Folly words widow one downs few age every seven. Folly words widow one downs few age every seven. Folly words widow one downs f.";
-  private static final String _15_CHARS = "Folly words wi.";
-  private static final String _150_CHARS =
-      "Folly words widow one downs few age every seven. Folly words widow one downs few age every seven. Folly words widow one downs few age every seven. F.";
-  private static final String _165_CHARS =
-      "Folly words widow one downs few age every seven. Folly words widow one downs few age every seven. Folly words widow one downs few age every seven. Folly words wido.";
-  private static final String _17_CHARS = "Folly words widw.";
-  private static final String _180_CHARS =
-      "Folly words widow one downs few age every seven. Folly words widow one downs few age every seven. Folly words widow one downs few age every seven. Folly words widow one downs few..";
-  private static final double _19_2_CHARS = 9999999999999999.99;
-  private static final double _19_4_CHARS = 99999999999999.9999;
-  private static final String _2_CHARS = "F.";
-  private static final String _20_CHARS = "Folly words widow..";
-  private static final String _25_CHARS = "Folly words widow one d.";
-  private static final String _255_CHARS =
-      "Folly words widow one downs few age every seven.Folly words widow one downs few age every seven.Folly words widow one downs few age every seven.Folly words widow one downs few age every seven.Folly words widow one downs few age every seven.Folly words w.";
-  private static final String _40_CHARS = "Folly words widow one downs few age ev.";
-  private static final String _64_CHARS = "Folly words widow one downs few age every seven. Folly words w.";
-  private static final String _80_CHARS =
-      "Folly words widow one downs few age every seven. Folly words widow one downs f.";
 
   public static Address getAddressInstance() {
     final Address address = new Address();
@@ -192,23 +182,23 @@ public final class DummyInstanceHelper {
     offer.setId(0L);
     offer.setVersion(0);
     offer.setContract(getContractInstance());
-    offer.setDiscountTotal(BigDecimal.valueOf(_19_2_CHARS));
-    offer.setExtraAmount(BigDecimal.valueOf(_19_2_CHARS));
-    offer.setHandlingTotal(BigDecimal.valueOf(_19_2_CHARS));
-    offer.setInsuranceTotal(BigDecimal.valueOf(_19_2_CHARS));
-    offer.setItemTotal(BigDecimal.valueOf(_19_2_CHARS));
-    offer.setMaxTotal(BigDecimal.valueOf(_19_2_CHARS));
+    offer.setDiscountTotal(BigDecimal.valueOf(_19_2_DOUBLE));
+    offer.setExtraAmount(BigDecimal.valueOf(_19_2_DOUBLE));
+    offer.setHandlingTotal(BigDecimal.valueOf(_19_2_DOUBLE));
+    offer.setInsuranceTotal(BigDecimal.valueOf(_19_2_DOUBLE));
+    offer.setItemTotal(BigDecimal.valueOf(_19_2_DOUBLE));
+    offer.setMaxTotal(BigDecimal.valueOf(_19_2_DOUBLE));
     final GregorianCalendar gregorianCalendar = new GregorianCalendar();
     gregorianCalendar.setTime(new Date());
     // FIXME: Fix criteria find by example to find also by date properties.
     // offer.setOfferDate(DatatypeFactory.newInstance().newXMLGregorianCalendar(gregorianCalendar));
     offer.setOfferDescription(_127_CHARS);
     offer.setOfferId(_64_CHARS);
-    offer.setOfferTotal(BigDecimal.valueOf(_19_2_CHARS));
+    offer.setOfferTotal(BigDecimal.valueOf(_19_2_DOUBLE));
     offer.setPermission(getPermissionInstance());
-    offer.setShippingDiscount(BigDecimal.valueOf(_19_2_CHARS));
-    offer.setShippingTotal(BigDecimal.valueOf(_19_2_CHARS));
-    offer.setTaxTotal(BigDecimal.valueOf(_19_2_CHARS));
+    offer.setShippingDiscount(BigDecimal.valueOf(_19_2_DOUBLE));
+    offer.setShippingTotal(BigDecimal.valueOf(_19_2_DOUBLE));
+    offer.setTaxTotal(BigDecimal.valueOf(_19_2_DOUBLE));
     offer.getRecords().add(getOfferRecordInstance());
     return offer;
   }
@@ -217,19 +207,19 @@ public final class DummyInstanceHelper {
     final OfferRecord offerRecord = new OfferRecord();
     offerRecord.setId(0L);
     offerRecord.setVersion(0);
-    offerRecord.setAmount(BigDecimal.valueOf(_19_2_CHARS));
+    offerRecord.setAmount(BigDecimal.valueOf(_19_2_DOUBLE));
     // FIXME: Fix criteria find by example to find also by date properties.
     // offerRecord.setDeliveryDate(DatatypeFactory.newInstance().newXMLGregorianCalendar(gregorianCalendar));
     offerRecord.setDescription(_128_CHARS);
-    offerRecord.setDiscount(BigDecimal.valueOf(_19_2_CHARS));
-    offerRecord.setItemHeight(BigDecimal.valueOf(_19_2_CHARS));
+    offerRecord.setDiscount(BigDecimal.valueOf(_19_2_DOUBLE));
+    offerRecord.setItemHeight(BigDecimal.valueOf(_19_2_DOUBLE));
     offerRecord.setItemHeightUnit(_20_CHARS);
-    offerRecord.setItemLength(BigDecimal.valueOf(_19_2_CHARS));
+    offerRecord.setItemLength(BigDecimal.valueOf(_19_2_DOUBLE));
     offerRecord.setItemLengthUnit(_20_CHARS);
     offerRecord.setItemUrl(_255_CHARS);
-    offerRecord.setItemWeight(BigDecimal.valueOf(_19_2_CHARS));
+    offerRecord.setItemWeight(BigDecimal.valueOf(_19_2_DOUBLE));
     offerRecord.setItemWeightUnit(_20_CHARS);
-    offerRecord.setItemWidth(BigDecimal.valueOf(_19_2_CHARS));
+    offerRecord.setItemWidth(BigDecimal.valueOf(_19_2_DOUBLE));
     offerRecord.setItemWidthUnit(_20_CHARS);
     offerRecord.setName(_128_CHARS);
     offerRecord.setOption(_128_CHARS);
@@ -237,8 +227,8 @@ public final class DummyInstanceHelper {
     offerRecord.setProduct(getProductInstance());
     offerRecord.setProductNumber(_64_CHARS);
     offerRecord.setQuantity(BigInteger.valueOf(Integer.MAX_VALUE));
-    offerRecord.setShippingCost(BigDecimal.valueOf(_19_2_CHARS));
-    offerRecord.setTax(BigDecimal.valueOf(_19_2_CHARS));
+    offerRecord.setShippingCost(BigDecimal.valueOf(_19_2_DOUBLE));
+    offerRecord.setTax(BigDecimal.valueOf(_19_2_DOUBLE));
     return offerRecord;
   }
 
@@ -264,20 +254,20 @@ public final class DummyInstanceHelper {
     order.setCheckoutStatus(_255_CHARS);
     order.setContract(getContractInstance());
     order.setCustom(_255_CHARS);
-    order.setDiscountTotal(BigDecimal.valueOf(_19_2_CHARS));
-    order.setExtraAmount(BigDecimal.valueOf(_19_2_CHARS));
+    order.setDiscountTotal(BigDecimal.valueOf(_19_2_DOUBLE));
+    order.setExtraAmount(BigDecimal.valueOf(_19_2_DOUBLE));
     order.setGiftMessage(_150_CHARS);
     order.setGiftMessageEnable(Boolean.TRUE);
     order.setGiftReceiptEnable(Boolean.TRUE);
-    order.setGiftWrapAmount(BigDecimal.valueOf(_19_2_CHARS));
+    order.setGiftWrapAmount(BigDecimal.valueOf(_19_2_DOUBLE));
     order.setGiftWrapName(_25_CHARS);
     order.setGiftWrapEnable(Boolean.TRUE);
-    order.setHandlingTotal(BigDecimal.valueOf(_19_2_CHARS));
+    order.setHandlingTotal(BigDecimal.valueOf(_19_2_DOUBLE));
     order.setInsuranceOptionOffered(Boolean.TRUE);
-    order.setInsuranceTotal(BigDecimal.valueOf(_19_2_CHARS));
+    order.setInsuranceTotal(BigDecimal.valueOf(_19_2_DOUBLE));
     order.setInvoice(getInvoiceInstance());
-    order.setItemTotal(BigDecimal.valueOf(_19_2_CHARS));
-    order.setMaxTotal(BigDecimal.valueOf(_19_2_CHARS));
+    order.setItemTotal(BigDecimal.valueOf(_19_2_DOUBLE));
+    order.setMaxTotal(BigDecimal.valueOf(_19_2_DOUBLE));
     order.setNote(_165_CHARS);
     order.setNoteText(_255_CHARS);
     order.setNotificationId(_255_CHARS);
@@ -287,12 +277,12 @@ public final class DummyInstanceHelper {
     // order.setOrderDate(DatatypeFactory.newInstance().newXMLGregorianCalendar(gregorianCalendar));
     order.setOrderDescription(_127_CHARS);
     order.setOrderId(_64_CHARS);
-    order.setOrderTotal(BigDecimal.valueOf(_19_2_CHARS));
+    order.setOrderTotal(BigDecimal.valueOf(_19_2_DOUBLE));
     order.setPermission(getPermissionInstance());
     order.setShipment(getShipmentInstance());
-    order.setShippingDiscount(BigDecimal.valueOf(_19_2_CHARS));
-    order.setShippingTotal(BigDecimal.valueOf(_19_2_CHARS));
-    order.setTaxTotal(BigDecimal.valueOf(_19_2_CHARS));
+    order.setShippingDiscount(BigDecimal.valueOf(_19_2_DOUBLE));
+    order.setShippingTotal(BigDecimal.valueOf(_19_2_DOUBLE));
+    order.setTaxTotal(BigDecimal.valueOf(_19_2_DOUBLE));
     order.setToken(_40_CHARS);
     order.setTransactionId(_64_CHARS);
     order.getRecords().add(getOrderRecordInstance());
@@ -303,19 +293,19 @@ public final class DummyInstanceHelper {
     final OrderRecord orderRecord = new OrderRecord();
     orderRecord.setId(0L);
     orderRecord.setVersion(0);
-    orderRecord.setAmount(BigDecimal.valueOf(_19_2_CHARS));
+    orderRecord.setAmount(BigDecimal.valueOf(_19_2_DOUBLE));
     // FIXME: Fix criteria find by example to find also by date properties.
     // orderRecord.setDeliveryDate(DatatypeFactory.newInstance().newXMLGregorianCalendar(gregorianCalendar));
     orderRecord.setDescription(_128_CHARS);
-    orderRecord.setDiscount(BigDecimal.valueOf(_19_2_CHARS));
-    orderRecord.setItemHeight(BigDecimal.valueOf(_19_2_CHARS));
+    orderRecord.setDiscount(BigDecimal.valueOf(_19_2_DOUBLE));
+    orderRecord.setItemHeight(BigDecimal.valueOf(_19_2_DOUBLE));
     orderRecord.setItemHeightUnit(_20_CHARS);
-    orderRecord.setItemLength(BigDecimal.valueOf(_19_2_CHARS));
+    orderRecord.setItemLength(BigDecimal.valueOf(_19_2_DOUBLE));
     orderRecord.setItemLengthUnit(_20_CHARS);
     orderRecord.setItemUrl(_255_CHARS);
-    orderRecord.setItemWeight(BigDecimal.valueOf(_19_2_CHARS));
+    orderRecord.setItemWeight(BigDecimal.valueOf(_19_2_DOUBLE));
     orderRecord.setItemWeightUnit(_20_CHARS);
-    orderRecord.setItemWidth(BigDecimal.valueOf(_19_2_CHARS));
+    orderRecord.setItemWidth(BigDecimal.valueOf(_19_2_DOUBLE));
     orderRecord.setItemWidthUnit(_20_CHARS);
     orderRecord.setName(_128_CHARS);
     orderRecord.setOption(_128_CHARS);
@@ -323,8 +313,8 @@ public final class DummyInstanceHelper {
     orderRecord.setProduct(getProductInstance());
     orderRecord.setProductNumber(_64_CHARS);
     orderRecord.setQuantity(BigInteger.valueOf(Integer.MAX_VALUE));
-    orderRecord.setShippingCost(BigDecimal.valueOf(_19_2_CHARS));
-    orderRecord.setTax(BigDecimal.valueOf(_19_2_CHARS));
+    orderRecord.setShippingCost(BigDecimal.valueOf(_19_2_DOUBLE));
+    orderRecord.setTax(BigDecimal.valueOf(_19_2_DOUBLE));
     return orderRecord;
   }
 
@@ -333,8 +323,8 @@ public final class DummyInstanceHelper {
     payment.setId(0L);
     payment.setVersion(0);
     payment.setExchangeRate(_17_CHARS);
-    payment.setFeeAmount(BigDecimal.valueOf(_19_2_CHARS));
-    payment.setGrossAmount(BigDecimal.valueOf(_19_2_CHARS));
+    payment.setFeeAmount(BigDecimal.valueOf(_19_2_DOUBLE));
+    payment.setGrossAmount(BigDecimal.valueOf(_19_2_DOUBLE));
     payment.setHoldDecision(_20_CHARS);
     payment.setInstallmentCount(BigInteger.valueOf(Integer.MAX_VALUE));
     // FIXME: Fix criteria find by example to find also by date properties.
@@ -345,9 +335,9 @@ public final class DummyInstanceHelper {
     payment.setPendingReason(_20_CHARS);
     payment.setProtectionEligibilityType(_128_CHARS);
     payment.setReasonCode(_20_CHARS);
-    payment.setSettleAmount(BigDecimal.valueOf(_19_2_CHARS));
+    payment.setSettleAmount(BigDecimal.valueOf(_19_2_DOUBLE));
     payment.setStoreId(_20_CHARS);
-    payment.setTaxAmount(BigDecimal.valueOf(_19_2_CHARS));
+    payment.setTaxAmount(BigDecimal.valueOf(_19_2_DOUBLE));
     payment.setTerminalId(_20_CHARS);
     payment.setTransactionId(_64_CHARS);
     payment.setTransactionType(_20_CHARS);
@@ -376,8 +366,8 @@ public final class DummyInstanceHelper {
     postalCode.setAdminName2(_100_CHARS);
     postalCode.setAdminName3(_100_CHARS);
     postalCode.setCountryCode(_2_CHARS);
-    postalCode.setLatitude(BigDecimal.valueOf(_19_4_CHARS));
-    postalCode.setLongitude(BigDecimal.valueOf(_19_4_CHARS));
+    postalCode.setLatitude(BigDecimal.valueOf(_19_4_DOUBLE));
+    postalCode.setLongitude(BigDecimal.valueOf(_19_4_DOUBLE));
     postalCode.setPlaceName(_180_CHARS);
     postalCode.setPostalCode(_20_CHARS);
     return postalCode;
@@ -388,27 +378,27 @@ public final class DummyInstanceHelper {
     product.setActive(true);
     product.setId(0L);
     product.setVersion(0);
-    product.setAmount(BigDecimal.valueOf(_19_2_CHARS));
+    product.setAmount(BigDecimal.valueOf(_19_2_DOUBLE));
     product.setBestsellers(Boolean.TRUE);
     product.setDescription(_129_CHARS);
-    product.setDiscount(BigDecimal.valueOf(_19_2_CHARS));
-    product.setItemHeight(BigDecimal.valueOf(_19_2_CHARS));
+    product.setDiscount(BigDecimal.valueOf(_19_2_DOUBLE));
+    product.setItemHeight(BigDecimal.valueOf(_19_2_DOUBLE));
     product.setItemHeightUnit(_20_CHARS);
-    product.setItemLength(BigDecimal.valueOf(_19_2_CHARS));
+    product.setItemLength(BigDecimal.valueOf(_19_2_DOUBLE));
     product.setItemLengthUnit(_20_CHARS);
     product.setItemUrl(_255_CHARS);
-    product.setItemWeight(BigDecimal.valueOf(_19_2_CHARS));
+    product.setItemWeight(BigDecimal.valueOf(_19_2_DOUBLE));
     product.setItemWeightUnit(_20_CHARS);
-    product.setItemWidth(BigDecimal.valueOf(_19_2_CHARS));
+    product.setItemWidth(BigDecimal.valueOf(_19_2_DOUBLE));
     product.setItemWidthUnit(_20_CHARS);
     product.setName(_129_CHARS);
     product.setNumber(_64_CHARS);
     product.setPermission(getPermissionInstance());
     product.setRating(Integer.MAX_VALUE);
     product.setRecommended(Boolean.TRUE);
-    product.setShippingCost(BigDecimal.valueOf(_19_2_CHARS));
+    product.setShippingCost(BigDecimal.valueOf(_19_2_DOUBLE));
     product.setStock(getStockInstance());
-    product.setTax(BigDecimal.valueOf(_19_2_CHARS));
+    product.setTax(BigDecimal.valueOf(_19_2_DOUBLE));
     product.getOptions().add(getOptionInstance());
     product.getSubCategories().add(getSubCategoryInstance());
     return product;
