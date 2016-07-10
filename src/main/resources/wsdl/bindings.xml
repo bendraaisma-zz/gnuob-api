@@ -16,7 +16,7 @@
          <xjc:javaType
             name="byte[]"
             xmlType="xsd:base64Binary"
-            adapter="com.netbrasoft.gnuob.api.generic.converter.ByteArrayAdapter">
+            adapter="br.com.netbrasoft.gnuob.api.generic.converter.ByteArrayAdapter">
          </xjc:javaType>
       </jxb:globalBindings>
    </jaxws:bindings>

@@ -13,5 +13,5 @@
         http://www.springframework.org/schema/aop
 		http://www.springframework.org/schema/aop/spring-aop.xsd">
    <context:annotation-config />
-   <context:component-scan base-package="com.netbrasoft.gnuob" />
+   <context:component-scan base-package="br.com.netbrasoft.gnuob" />
 </beans>

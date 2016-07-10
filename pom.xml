@@ -4,7 +4,7 @@
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
    <modelVersion>4.0.0</modelVersion>
-   <groupId>com.netbrasoft</groupId>
+   <groupId>br.com.netbrasoft</groupId>
    <artifactId>gnuob-api</artifactId>
    <version>0.0.9-SNAPSHOT</version>
    <packaging>jar</packaging>
@@ -231,7 +231,7 @@
                            <wsdl>${basedir}/src/main/resources/wsdl/CategoryWebServiceImpl.wsdl</wsdl>
                            <extraargs>
                               <extraarg>-p</extraarg>
-                              <extraarg>com.netbrasoft.gnuob.api</extraarg>
+                              <extraarg>br.com.netbrasoft.gnuob.api</extraarg>
                               <extraarg>-xjc-XJsr303Annotations</extraarg>
                            </extraargs>
                         </wsdlOption>
@@ -239,7 +239,7 @@
                            <wsdl>${basedir}/src/main/resources/wsdl/ContentWebServiceImpl.wsdl</wsdl>
                            <extraargs>
                               <extraarg>-p</extraarg>
-                              <extraarg>com.netbrasoft.gnuob.api</extraarg>
+                              <extraarg>br.com.netbrasoft.gnuob.api</extraarg>
                               <extraarg>-xjc-XJsr303Annotations</extraarg>
                            </extraargs>
                         </wsdlOption>
@@ -247,7 +247,7 @@
                            <wsdl>${basedir}/src/main/resources/wsdl/ContractWebServiceImpl.wsdl</wsdl>
                            <extraargs>
                               <extraarg>-p</extraarg>
-                              <extraarg>com.netbrasoft.gnuob.api</extraarg>
+                              <extraarg>br.com.netbrasoft.gnuob.api</extraarg>
                               <extraarg>-xjc-XJsr303Annotations</extraarg>
                            </extraargs>
                         </wsdlOption>
@@ -255,7 +255,7 @@
                            <wsdl>${basedir}/src/main/resources/wsdl/CustomerWebServiceImpl.wsdl</wsdl>
                            <extraargs>
                               <extraarg>-p</extraarg>
-                              <extraarg>com.netbrasoft.gnuob.api</extraarg>
+                              <extraarg>br.com.netbrasoft.gnuob.api</extraarg>
                               <extraarg>-xjc-XJsr303Annotations</extraarg>
                            </extraargs>
                         </wsdlOption>
@@ -263,7 +263,7 @@
                            <wsdl>${basedir}/src/main/resources/wsdl/GroupWebServiceImpl.wsdl</wsdl>
                            <extraargs>
                               <extraarg>-p</extraarg>
-                              <extraarg>com.netbrasoft.gnuob.api</extraarg>
+                              <extraarg>br.com.netbrasoft.gnuob.api</extraarg>
                               <extraarg>-xjc-XJsr303Annotations</extraarg>
                            </extraargs>
                         </wsdlOption>
@@ -271,7 +271,7 @@
                            <wsdl>${basedir}/src/main/resources/wsdl/OfferWebServiceImpl.wsdl</wsdl>
                            <extraargs>
                               <extraarg>-p</extraarg>
-                              <extraarg>com.netbrasoft.gnuob.api</extraarg>
+                              <extraarg>br.com.netbrasoft.gnuob.api</extraarg>
                               <extraarg>-xjc-XJsr303Annotations</extraarg>
                            </extraargs>
                         </wsdlOption>
@@ -279,7 +279,7 @@
                            <wsdl>${basedir}/src/main/resources/wsdl/OrderWebServiceImpl.wsdl</wsdl>
                            <extraargs>
                               <extraarg>-p</extraarg>
-                              <extraarg>com.netbrasoft.gnuob.api</extraarg>
+                              <extraarg>br.com.netbrasoft.gnuob.api</extraarg>
                               <extraarg>-xjc-XJsr303Annotations</extraarg>
                            </extraargs>
                         </wsdlOption>
@@ -287,7 +287,7 @@
                            <wsdl>${basedir}/src/main/resources/wsdl/PagseguroCheckOutWebServiceImpl.wsdl</wsdl>
                            <extraargs>
                               <extraarg>-p</extraarg>
-                              <extraarg>com.netbrasoft.gnuob.api</extraarg>
+                              <extraarg>br.com.netbrasoft.gnuob.api</extraarg>
                               <extraarg>-xjc-XJsr303Annotations</extraarg>
                            </extraargs>
                         </wsdlOption>
@@ -295,7 +295,7 @@
                            <wsdl>${basedir}/src/main/resources/wsdl/PayPalExpressCheckOutWebServiceImpl.wsdl</wsdl>
                            <extraargs>
                               <extraarg>-p</extraarg>
-                              <extraarg>com.netbrasoft.gnuob.api</extraarg>
+                              <extraarg>br.com.netbrasoft.gnuob.api</extraarg>
                               <extraarg>-xjc-XJsr303Annotations</extraarg>
                            </extraargs>
                         </wsdlOption>
@@ -303,7 +303,7 @@
                            <wsdl>${basedir}/src/main/resources/wsdl/PostalCodeWebServiceImpl.wsdl</wsdl>
                            <extraargs>
                               <extraarg>-p</extraarg>
-                              <extraarg>com.netbrasoft.gnuob.api</extraarg>
+                              <extraarg>br.com.netbrasoft.gnuob.api</extraarg>
                               <extraarg>-xjc-XJsr303Annotations</extraarg>
                            </extraargs>
                         </wsdlOption>
@@ -311,7 +311,7 @@
                            <wsdl>${basedir}/src/main/resources/wsdl/ProductWebServiceImpl.wsdl</wsdl>
                            <extraargs>
                               <extraarg>-p</extraarg>
-                              <extraarg>com.netbrasoft.gnuob.api</extraarg>
+                              <extraarg>br.com.netbrasoft.gnuob.api</extraarg>
                               <extraarg>-xjc-XJsr303Annotations</extraarg>
                            </extraargs>
                         </wsdlOption>
@@ -319,7 +319,7 @@
                            <wsdl>${basedir}/src/main/resources/wsdl/SettingWebServiceImpl.wsdl</wsdl>
                            <extraargs>
                               <extraarg>-p</extraarg>
-                              <extraarg>com.netbrasoft.gnuob.api</extraarg>
+                              <extraarg>br.com.netbrasoft.gnuob.api</extraarg>
                               <extraarg>-xjc-XJsr303Annotations</extraarg>
                            </extraargs>
                         </wsdlOption>
@@ -327,7 +327,7 @@
                            <wsdl>${basedir}/src/main/resources/wsdl/SiteWebServiceImpl.wsdl</wsdl>
                            <extraargs>
                               <extraarg>-p</extraarg>
-                              <extraarg>com.netbrasoft.gnuob.api</extraarg>
+                              <extraarg>br.com.netbrasoft.gnuob.api</extraarg>
                               <extraarg>-xjc-XJsr303Annotations</extraarg>
                            </extraargs>
                         </wsdlOption>
@@ -335,7 +335,7 @@
                            <wsdl>${basedir}/src/main/resources/wsdl/UserWebServiceImpl.wsdl</wsdl>
                            <extraargs>
                               <extraarg>-p</extraarg>
-                              <extraarg>com.netbrasoft.gnuob.api</extraarg>
+                              <extraarg>br.com.netbrasoft.gnuob.api</extraarg>
                               <extraarg>-xjc-XJsr303Annotations</extraarg>
                            </extraargs>
                         </wsdlOption>
