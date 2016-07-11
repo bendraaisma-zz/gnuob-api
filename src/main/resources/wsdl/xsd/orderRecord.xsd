@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns:tns="http://gnuob.netbrasoft.com/"
+   elementFormDefault="unqualified"
+   targetNamespace="http://gnuob.netbrasoft.com/"
+   version="1.0">
+   <xs:include schemaLocation="abstractType.xsd"></xs:include>
+   <xs:include schemaLocation="option.xsd"></xs:include>
+   <xs:include schemaLocation="product.xsd"></xs:include>
+   <xs:complexType name="orderRecord">
+      <xs:complexContent>
+         <xs:extension base="tns:abstractType">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="amount"
+                  type="xs:decimal" />
+               <xs:element
+                  minOccurs="0"
+                  name="deliveryDate"
+                  type="xs:dateTime" />
+               <xs:element
+                  minOccurs="0"
+                  name="description">
+                  <xs:simpleType>
+                     <xs:restriction base="xs:string">
+                        <xs:minLength value="0"></xs:minLength>
+                        <xs:maxLength value="128"></xs:maxLength>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:element>
+               <xs:element
+                  minOccurs="0"
+                  name="discount"
+                  type="xs:decimal" />
+               <xs:element
+                  minOccurs="0"
+                  name="itemHeight"
+                  type="xs:decimal" />
+               <xs:element
+                  minOccurs="0"
+                  name="itemHeightUnit"
+                  type="xs:string" />
+               <xs:element
+                  minOccurs="0"
+                  name="itemLength"
+                  type="xs:decimal" />
+               <xs:element
+                  minOccurs="0"
+                  name="itemLengthUnit">
+                  <xs:simpleType>
+                     <xs:restriction base="xs:string">
+                        <xs:minLength value="0"></xs:minLength>
+                        <xs:maxLength value="20"></xs:maxLength>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:element>
+               <xs:element
+                  minOccurs="0"
+                  name="itemUrl">
+                  <xs:simpleType>
+                     <xs:restriction base="xs:string">
+                        <xs:minLength value="0"></xs:minLength>
+                        <xs:maxLength value="255"></xs:maxLength>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:element>
+               <xs:element
+                  minOccurs="0"
+                  name="itemWeight"
+                  type="xs:decimal" />
+               <xs:element
+                  minOccurs="0"
+                  name="itemWeightUnit">
+                  <xs:simpleType>
+                     <xs:restriction base="xs:string">
+                        <xs:minLength value="0"></xs:minLength>
+                        <xs:maxLength value="20"></xs:maxLength>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:element>
+               <xs:element
+                  minOccurs="0"
+                  name="itemWidth"
+                  type="xs:decimal" />
+               <xs:element
+                  minOccurs="0"
+                  name="itemWidthUnit">
+                  <xs:simpleType>
+                     <xs:restriction base="xs:string">
+                        <xs:minLength value="0"></xs:minLength>
+                        <xs:maxLength value="20"></xs:maxLength>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:element>
+               <xs:element
+                  minOccurs="0"
+                  name="name">
+                  <xs:simpleType>
+                     <xs:restriction base="xs:string">
+                        <xs:minLength value="0"></xs:minLength>
+                        <xs:maxLength value="128"></xs:maxLength>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:element>
+               <xs:element
+                  minOccurs="0"
+                  name="option">
+                  <xs:simpleType>
+                     <xs:restriction base="xs:string">
+                        <xs:minLength value="0"></xs:minLength>
+                        <xs:maxLength value="128"></xs:maxLength>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:element>
+               <xs:element
+                  maxOccurs="unbounded"
+                  minOccurs="0"
+                  name="options"
+                  nillable="true"
+                  type="tns:option" />
+               <xs:element
+                  minOccurs="0"
+                  name="orderRecordId">
+                  <xs:simpleType>
+                     <xs:restriction base="xs:string">
+                        <xs:minLength value="0"></xs:minLength>
+                        <xs:maxLength value="127"></xs:maxLength>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:element>
+               <xs:element
+                  minOccurs="0"
+                  name="product"
+                  type="tns:product" />
+               <xs:element
+                  minOccurs="0"
+                  name="productNumber">
+                  <xs:simpleType>
+                     <xs:restriction base="xs:string">
+                        <xs:minLength value="0"></xs:minLength>
+                        <xs:maxLength value="64"></xs:maxLength>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:element>
+               <xs:element
+                  name="quantity"
+                  type="xs:integer" />
+               <xs:element
+                  minOccurs="0"
+                  name="shippingCost"
+                  type="xs:decimal" />
+               <xs:element
+                  minOccurs="0"
+                  name="tax"
+                  type="xs:decimal" />
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+</xs:schema>

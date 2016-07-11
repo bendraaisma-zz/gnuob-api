@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns:tns="http://gnuob.netbrasoft.com/"
+   elementFormDefault="unqualified"
+   targetNamespace="http://gnuob.netbrasoft.com/"
+   version="1.0">
+   <xs:simpleType name="operation">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="CREATE" />
+         <xs:enumeration value="DELETE" />
+         <xs:enumeration value="NONE" />
+         <xs:enumeration value="READ" />
+         <xs:enumeration value="UPDATE" />
+      </xs:restriction>
+   </xs:simpleType>
+</xs:schema>

@@ -1,514 +1,528 @@
-<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://gnuob.netbrasoft.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="CategoryWebServiceImplService" targetNamespace="http://gnuob.netbrasoft.com/">
-  <wsdl:types>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://gnuob.netbrasoft.com/" elementFormDefault="unqualified" targetNamespace="http://gnuob.netbrasoft.com/" version="1.0">
-
-  <xs:element name="Category" type="tns:category"/>
-
-  <xs:element name="Content" type="tns:content"/>
-
-  <xs:element name="Paging" type="tns:paging"/>
-
-  <xs:element name="Permission" type="tns:permission"/>
-
-  <xs:element name="Rule" type="tns:rule"/>
-
-  <xs:element name="SubCategory" type="tns:subCategory"/>
-
-  <xs:element name="countCategory" type="tns:countCategory"/>
-
-  <xs:element name="countCategoryResponse" type="tns:countCategoryResponse"/>
-
-  <xs:element name="findCategory" type="tns:findCategory"/>
-
-  <xs:element name="findCategoryById" type="tns:findCategoryById"/>
-
-  <xs:element name="findCategoryByIdResponse" type="tns:findCategoryByIdResponse"/>
-
-  <xs:element name="findCategoryResponse" type="tns:findCategoryResponse"/>
-
-  <xs:element name="mergeCategory" type="tns:mergeCategory"/>
-
-  <xs:element name="mergeCategoryResponse" type="tns:mergeCategoryResponse"/>
-
-  <xs:element name="metaData" type="tns:metaData"/>
-
-  <xs:element name="persistCategory" type="tns:persistCategory"/>
-
-  <xs:element name="persistCategoryResponse" type="tns:persistCategoryResponse"/>
-
-  <xs:element name="refreshCategory" type="tns:refreshCategory"/>
-
-  <xs:element name="refreshCategoryResponse" type="tns:refreshCategoryResponse"/>
-
-  <xs:element name="removeCategory" type="tns:removeCategory"/>
-
-  <xs:element name="removeCategoryResponse" type="tns:removeCategoryResponse"/>
-
-  <xs:complexType name="refreshCategory">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="category" type="tns:category"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="category">
-    <xs:complexContent>
-      <xs:extension base="tns:abstractAccess">
-        <xs:sequence>
-          <xs:element maxOccurs="unbounded" minOccurs="0" name="contents" nillable="true" type="tns:content"/>
-          <xs:element name="description">
-             <xs:simpleType>
-                <xs:restriction base="xs:string">
-                   <xs:minLength value="5"></xs:minLength>
-                   <xs:maxLength value="128"></xs:maxLength>
-                </xs:restriction>
-             </xs:simpleType>
-          </xs:element>
-          <xs:element name="name">
-             <xs:simpleType>
-                <xs:restriction base="xs:string">
-                   <xs:minLength value="5"></xs:minLength>
-                   <xs:maxLength value="128"></xs:maxLength>
-                </xs:restriction>
-             </xs:simpleType>
-          </xs:element>
-          <xs:element
-             minOccurs="0"
-             name="position">
-             <xs:simpleType>
-                <xs:restriction base="xs:int">
-                   <xs:minInclusive value="0"></xs:minInclusive>
-                </xs:restriction>
-             </xs:simpleType>
-          </xs:element>
-          <xs:element maxOccurs="unbounded" minOccurs="0" name="subCategories" nillable="true" type="tns:subCategory"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType abstract="true" name="abstractAccess">
-    <xs:complexContent>
-      <xs:extension base="tns:abstractType">
-        <xs:sequence>
-          <xs:element name="active" type="xs:boolean"/>
-          <xs:element minOccurs="0" name="permission" type="tns:permission"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType abstract="true" name="abstractType">
-    <xs:sequence/>
-    <xs:attribute name="id" type="xs:long" use="required"/>
-    <xs:attribute name="version" type="xs:int" use="required"/>
-  </xs:complexType>
-
-  <xs:complexType name="content">
-    <xs:complexContent>
-      <xs:extension base="tns:abstractAccess">
-        <xs:sequence>
-          <xs:element name="content" type="xs:base64Binary"/>
-          <xs:element name="format" type="xs:string"/>
-          <xs:element name="name" type="xs:string"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="permission">
-    <xs:complexContent>
-      <xs:extension base="tns:abstractType">
-        <xs:sequence>
-          <xs:element name="group" type="tns:rule"/>
-          <xs:element name="others" type="tns:rule"/>
-          <xs:element name="owner" type="tns:rule"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="subCategory">
-    <xs:complexContent>
-      <xs:extension base="tns:abstractType">
-        <xs:sequence>
-          <xs:element maxOccurs="unbounded" minOccurs="0" name="contents" nillable="true" type="tns:content"/>
-          <xs:element name="description" type="xs:string"/>
-          <xs:element name="name" type="xs:string"/>
-          <xs:element maxOccurs="unbounded" minOccurs="0" name="subCategories" nillable="true" type="tns:subCategory"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="metaData">
-    <xs:sequence>
-      <xs:element name="site" type="xs:string"/>
-      <xs:element name="user" type="xs:string"/>
-      <xs:element name="password" type="xs:string"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="refreshCategoryResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:category"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="mergeCategory">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="category" type="tns:category"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="mergeCategoryResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:category"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="countCategory">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="category" type="tns:category"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="countCategoryResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:long"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="findCategoryById">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="category" type="tns:category"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="findCategoryByIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:category"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="findCategory">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="category" type="tns:category"/>
-      <xs:element minOccurs="0" name="paging" type="tns:paging"/>
-      <xs:element minOccurs="0" name="orderBy" type="tns:orderBy"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="paging">
-    <xs:sequence>
-      <xs:element name="first" type="xs:int"/>
-      <xs:element name="max" type="xs:int"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="findCategoryResponse">
-    <xs:sequence>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:category"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="removeCategory">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="category" type="tns:category"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="removeCategoryResponse">
-    <xs:sequence/>
-  </xs:complexType>
-
-  <xs:complexType name="persistCategory">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="category" type="tns:category"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="persistCategoryResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:category"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:simpleType name="rule">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="CREATE_ACCESS"/>
-      <xs:enumeration value="DELETE_ACCESS"/>
-      <xs:enumeration value="NONE_ACCESS"/>
-      <xs:enumeration value="READ_ACCESS"/>
-      <xs:enumeration value="UPDATE_ACCESS"/>
-    </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="operation">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="CREATE"/>
-      <xs:enumeration value="DELETE"/>
-      <xs:enumeration value="NONE"/>
-      <xs:enumeration value="READ"/>
-      <xs:enumeration value="UPDATE"/>
-    </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="orderBy">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="RECOMMENDED"/>
-      <xs:enumeration value="HIGHEST_DISCOUNT"/>
-      <xs:enumeration value="LOWEST_DISCOUNT"/>
-      <xs:enumeration value="HIGHEST_PRICE"/>
-      <xs:enumeration value="LOWEST_PRICE"/>
-      <xs:enumeration value="HIGHEST_RATING"/>
-      <xs:enumeration value="LOWEST_RATING"/>
-      <xs:enumeration value="BESTSELLERS"/>
-      <xs:enumeration value="LATEST_COLLECTION"/>
-      <xs:enumeration value="NAME_A_Z"/>
-      <xs:enumeration value="NAME_Z_A"/>
-      <xs:enumeration value="DESCRIPTION_A_Z"/>
-      <xs:enumeration value="DESCRIPTION_Z_A"/>
-      <xs:enumeration value="PROPERTY_A_Z"/>
-      <xs:enumeration value="PROPERTY_Z_A"/>
-      <xs:enumeration value="PLACE_NAME_A_Z"/>
-      <xs:enumeration value="PLACE_NAME_Z_A"/>
-      <xs:enumeration value="COUNTRY_CODE_A_Z"/>
-      <xs:enumeration value="COUNTRY_CODE_Z_A"/>
-      <xs:enumeration value="POSTAL_CODE_A_Z"/>
-      <xs:enumeration value="POSTAL_CODE_Z_A"/>
-      <xs:enumeration value="STATE_NAME_A_Z"/>
-      <xs:enumeration value="STATE_NAME_Z_A"/>
-      <xs:enumeration value="VALUE_A_Z"/>
-      <xs:enumeration value="VALUE_Z_A"/>
-      <xs:enumeration value="POSITION_A_Z"/>
-      <xs:enumeration value="POSITION_Z_A"/>
-      <xs:enumeration value="NONE"/>
-      <xs:enumeration value="FIRST_NAME_A_Z"/>
-      <xs:enumeration value="FIRST_NAME_Z_A"/>
-      <xs:enumeration value="LAST_NAME_A_Z"/>
-      <xs:enumeration value="LAST_NAME_Z_A"/>
-      <xs:enumeration value="CONTRACT_ID_A_Z"/>
-      <xs:enumeration value="CONTRACT_ID_Z_A"/>
-      <xs:enumeration value="ORDER_ID_A_Z"/>
-      <xs:enumeration value="ORDER_ID_Z_A"/>
-      <xs:enumeration value="OFFER_ID_A_Z"/>
-      <xs:enumeration value="OFFER_ID_Z_A"/>
-      <xs:enumeration value="NUMBER_A_Z"/>
-      <xs:enumeration value="NUMBER_Z_A"/>
-      <xs:enumeration value="CREATION_A_Z"/>
-      <xs:enumeration value="CREATION_Z_A"/>
-      <xs:enumeration value="MODIFICATION_A_Z"/>
-      <xs:enumeration value="MODIFICATION_Z_A"/>
-    </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="orderEnum">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="DESC"/>
-      <xs:enumeration value="ASC"/>
-      <xs:enumeration value="NONE"/>
-    </xs:restriction>
-  </xs:simpleType>
-
-</xs:schema>
-  </wsdl:types>
-  <wsdl:message name="refreshCategory">
-    <wsdl:part element="tns:refreshCategory" name="parameters">
-    </wsdl:part>
-    <wsdl:part element="tns:metaData" name="metaData">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="findCategoryResponse">
-    <wsdl:part element="tns:findCategoryResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="findCategoryByIdResponse">
-    <wsdl:part element="tns:findCategoryByIdResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="countCategoryResponse">
-    <wsdl:part element="tns:countCategoryResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="mergeCategory">
-    <wsdl:part element="tns:mergeCategory" name="parameters">
-    </wsdl:part>
-    <wsdl:part element="tns:metaData" name="metaData">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="removeCategoryResponse">
-    <wsdl:part element="tns:removeCategoryResponse" name="result">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="refreshCategoryResponse">
-    <wsdl:part element="tns:refreshCategoryResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="removeCategory">
-    <wsdl:part element="tns:removeCategory" name="parameters">
-    </wsdl:part>
-    <wsdl:part element="tns:metaData" name="metaData">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="persistCategory">
-    <wsdl:part element="tns:persistCategory" name="parameters">
-    </wsdl:part>
-    <wsdl:part element="tns:metaData" name="metaData">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="persistCategoryResponse">
-    <wsdl:part element="tns:persistCategoryResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="mergeCategoryResponse">
-    <wsdl:part element="tns:mergeCategoryResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="countCategory">
-    <wsdl:part element="tns:countCategory" name="parameters">
-    </wsdl:part>
-    <wsdl:part element="tns:metaData" name="metaData">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="findCategoryById">
-    <wsdl:part element="tns:findCategoryById" name="parameters">
-    </wsdl:part>
-    <wsdl:part element="tns:metaData" name="metaData">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="findCategory">
-    <wsdl:part element="tns:findCategory" name="parameters">
-    </wsdl:part>
-    <wsdl:part element="tns:metaData" name="metaData">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:portType name="CategoryWebServiceImpl">
-    <wsdl:operation name="refreshCategory">
-      <wsdl:input message="tns:refreshCategory" name="refreshCategory">
-    </wsdl:input>
-      <wsdl:output message="tns:refreshCategoryResponse" name="refreshCategoryResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="mergeCategory">
-      <wsdl:input message="tns:mergeCategory" name="mergeCategory">
-    </wsdl:input>
-      <wsdl:output message="tns:mergeCategoryResponse" name="mergeCategoryResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="countCategory">
-      <wsdl:input message="tns:countCategory" name="countCategory">
-    </wsdl:input>
-      <wsdl:output message="tns:countCategoryResponse" name="countCategoryResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="findCategoryById">
-      <wsdl:input message="tns:findCategoryById" name="findCategoryById">
-    </wsdl:input>
-      <wsdl:output message="tns:findCategoryByIdResponse" name="findCategoryByIdResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="findCategory">
-      <wsdl:input message="tns:findCategory" name="findCategory">
-    </wsdl:input>
-      <wsdl:output message="tns:findCategoryResponse" name="findCategoryResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="removeCategory">
-      <wsdl:input message="tns:removeCategory" name="removeCategory">
-    </wsdl:input>
-      <wsdl:output message="tns:removeCategoryResponse" name="removeCategoryResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="persistCategory">
-      <wsdl:input message="tns:persistCategory" name="persistCategory">
-    </wsdl:input>
-      <wsdl:output message="tns:persistCategoryResponse" name="persistCategoryResponse">
-    </wsdl:output>
-    </wsdl:operation>
-  </wsdl:portType>
-  <wsdl:binding name="CategoryWebServiceImplServiceSoapBinding" type="tns:CategoryWebServiceImpl">
-    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-    <wsdl:operation name="refreshCategory">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="refreshCategory">
-        <soap:header message="tns:refreshCategory" part="metaData" use="literal">
-        </soap:header>
-        <soap:body parts="parameters" use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="refreshCategoryResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="mergeCategory">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="mergeCategory">
-        <soap:header message="tns:mergeCategory" part="metaData" use="literal">
-        </soap:header>
-        <soap:body parts="parameters" use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="mergeCategoryResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="countCategory">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="countCategory">
-        <soap:header message="tns:countCategory" part="metaData" use="literal">
-        </soap:header>
-        <soap:body parts="parameters" use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="countCategoryResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="findCategoryById">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="findCategoryById">
-        <soap:header message="tns:findCategoryById" part="metaData" use="literal">
-        </soap:header>
-        <soap:body parts="parameters" use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="findCategoryByIdResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="findCategory">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="findCategory">
-        <soap:header message="tns:findCategory" part="metaData" use="literal">
-        </soap:header>
-        <soap:body parts="parameters" use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="findCategoryResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="removeCategory">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="removeCategory">
-        <soap:header message="tns:removeCategory" part="metaData" use="literal">
-        </soap:header>
-        <soap:body parts="parameters" use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="removeCategoryResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="persistCategory">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="persistCategory">
-        <soap:header message="tns:persistCategory" part="metaData" use="literal">
-        </soap:header>
-        <soap:body parts="parameters" use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="persistCategoryResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:service name="CategoryWebServiceImplService">
-    <wsdl:port binding="tns:CategoryWebServiceImplServiceSoapBinding" name="CategoryWebServiceImplPort">
-      <soap:address location="http://localhost:8080/gnuob-soap/CategoryWebServiceImpl"/>
-    </wsdl:port>
-  </wsdl:service>
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:tns="http://gnuob.netbrasoft.com/"
+   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+   xmlns:ns1="http://schemas.xmlsoap.org/soap/http"
+   name="CategoryWebServiceImplService"
+   targetNamespace="http://gnuob.netbrasoft.com/">
+   <wsdl:types>
+      <xs:schema
+         xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         xmlns:tns="http://gnuob.netbrasoft.com/"
+         elementFormDefault="unqualified"
+         targetNamespace="http://gnuob.netbrasoft.com/"
+         version="1.0">
+         <xs:include schemaLocation="./xsd/category.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/metaData.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/operation.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/orderBy.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/orderEnum.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/paging.xsd"></xs:include>
+         <xs:element
+            name="Category"
+            type="tns:category" />
+         <xs:element
+            name="Content"
+            type="tns:content" />
+         <xs:element
+            name="Paging"
+            type="tns:paging" />
+         <xs:element
+            name="Permission"
+            type="tns:permission" />
+         <xs:element
+            name="Rule"
+            type="tns:rule" />
+         <xs:element
+            name="SubCategory"
+            type="tns:subCategory" />
+         <xs:element
+            name="countCategory"
+            type="tns:countCategory" />
+         <xs:element
+            name="countCategoryResponse"
+            type="tns:countCategoryResponse" />
+         <xs:element
+            name="findCategory"
+            type="tns:findCategory" />
+         <xs:element
+            name="findCategoryById"
+            type="tns:findCategoryById" />
+         <xs:element
+            name="findCategoryByIdResponse"
+            type="tns:findCategoryByIdResponse" />
+         <xs:element
+            name="findCategoryResponse"
+            type="tns:findCategoryResponse" />
+         <xs:element
+            name="mergeCategory"
+            type="tns:mergeCategory" />
+         <xs:element
+            name="mergeCategoryResponse"
+            type="tns:mergeCategoryResponse" />
+         <xs:element
+            name="metaData"
+            type="tns:metaData" />
+         <xs:element
+            name="persistCategory"
+            type="tns:persistCategory" />
+         <xs:element
+            name="persistCategoryResponse"
+            type="tns:persistCategoryResponse" />
+         <xs:element
+            name="refreshCategory"
+            type="tns:refreshCategory" />
+         <xs:element
+            name="refreshCategoryResponse"
+            type="tns:refreshCategoryResponse" />
+         <xs:element
+            name="removeCategory"
+            type="tns:removeCategory" />
+         <xs:element
+            name="removeCategoryResponse"
+            type="tns:removeCategoryResponse" />
+         <xs:complexType name="refreshCategory">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="category"
+                  type="tns:category" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="refreshCategoryResponse">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="return"
+                  type="tns:category" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="mergeCategory">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="category"
+                  type="tns:category" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="mergeCategoryResponse">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="return"
+                  type="tns:category" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="countCategory">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="category"
+                  type="tns:category" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="countCategoryResponse">
+            <xs:sequence>
+               <xs:element
+                  name="return"
+                  type="xs:long" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="findCategoryById">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="category"
+                  type="tns:category" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="findCategoryByIdResponse">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="return"
+                  type="tns:category" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="findCategory">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="category"
+                  type="tns:category" />
+               <xs:element
+                  minOccurs="0"
+                  name="paging"
+                  type="tns:paging" />
+               <xs:element
+                  minOccurs="0"
+                  name="orderBy"
+                  type="tns:orderBy" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="findCategoryResponse">
+            <xs:sequence>
+               <xs:element
+                  maxOccurs="unbounded"
+                  minOccurs="0"
+                  name="return"
+                  type="tns:category" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="removeCategory">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="category"
+                  type="tns:category" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="removeCategoryResponse">
+            <xs:sequence />
+         </xs:complexType>
+         <xs:complexType name="persistCategory">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="category"
+                  type="tns:category" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="persistCategoryResponse">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="return"
+                  type="tns:category" />
+            </xs:sequence>
+         </xs:complexType>
+      </xs:schema>
+   </wsdl:types>
+   <wsdl:message name="refreshCategory">
+      <wsdl:part
+         element="tns:refreshCategory"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="findCategoryResponse">
+      <wsdl:part
+         element="tns:findCategoryResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="findCategoryByIdResponse">
+      <wsdl:part
+         element="tns:findCategoryByIdResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="countCategoryResponse">
+      <wsdl:part
+         element="tns:countCategoryResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="mergeCategory">
+      <wsdl:part
+         element="tns:mergeCategory"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="removeCategoryResponse">
+      <wsdl:part
+         element="tns:removeCategoryResponse"
+         name="result">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="refreshCategoryResponse">
+      <wsdl:part
+         element="tns:refreshCategoryResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="removeCategory">
+      <wsdl:part
+         element="tns:removeCategory"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="persistCategory">
+      <wsdl:part
+         element="tns:persistCategory"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="persistCategoryResponse">
+      <wsdl:part
+         element="tns:persistCategoryResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="mergeCategoryResponse">
+      <wsdl:part
+         element="tns:mergeCategoryResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="countCategory">
+      <wsdl:part
+         element="tns:countCategory"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="findCategoryById">
+      <wsdl:part
+         element="tns:findCategoryById"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="findCategory">
+      <wsdl:part
+         element="tns:findCategory"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:portType name="CategoryWebServiceImpl">
+      <wsdl:operation name="refreshCategory">
+         <wsdl:input
+            message="tns:refreshCategory"
+            name="refreshCategory">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:refreshCategoryResponse"
+            name="refreshCategoryResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="mergeCategory">
+         <wsdl:input
+            message="tns:mergeCategory"
+            name="mergeCategory">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:mergeCategoryResponse"
+            name="mergeCategoryResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="countCategory">
+         <wsdl:input
+            message="tns:countCategory"
+            name="countCategory">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:countCategoryResponse"
+            name="countCategoryResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="findCategoryById">
+         <wsdl:input
+            message="tns:findCategoryById"
+            name="findCategoryById">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:findCategoryByIdResponse"
+            name="findCategoryByIdResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="findCategory">
+         <wsdl:input
+            message="tns:findCategory"
+            name="findCategory">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:findCategoryResponse"
+            name="findCategoryResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="removeCategory">
+         <wsdl:input
+            message="tns:removeCategory"
+            name="removeCategory">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:removeCategoryResponse"
+            name="removeCategoryResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="persistCategory">
+         <wsdl:input
+            message="tns:persistCategory"
+            name="persistCategory">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:persistCategoryResponse"
+            name="persistCategoryResponse">
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:portType>
+   <wsdl:binding
+      name="CategoryWebServiceImplServiceSoapBinding"
+      type="tns:CategoryWebServiceImpl">
+      <soap:binding
+         style="document"
+         transport="http://schemas.xmlsoap.org/soap/http" />
+      <wsdl:operation name="refreshCategory">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="refreshCategory">
+            <soap:header
+               message="tns:refreshCategory"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="refreshCategoryResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="mergeCategory">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="mergeCategory">
+            <soap:header
+               message="tns:mergeCategory"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="mergeCategoryResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="countCategory">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="countCategory">
+            <soap:header
+               message="tns:countCategory"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="countCategoryResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="findCategoryById">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="findCategoryById">
+            <soap:header
+               message="tns:findCategoryById"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="findCategoryByIdResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="findCategory">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="findCategory">
+            <soap:header
+               message="tns:findCategory"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="findCategoryResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="removeCategory">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="removeCategory">
+            <soap:header
+               message="tns:removeCategory"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="removeCategoryResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="persistCategory">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="persistCategory">
+            <soap:header
+               message="tns:persistCategory"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="persistCategoryResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:service name="CategoryWebServiceImplService">
+      <wsdl:port
+         binding="tns:CategoryWebServiceImplServiceSoapBinding"
+         name="CategoryWebServiceImplPort">
+         <soap:address
+            location="http://localhost:8080/gnuob-soap/CategoryWebServiceImpl" />
+      </wsdl:port>
+   </wsdl:service>
 </wsdl:definitions>

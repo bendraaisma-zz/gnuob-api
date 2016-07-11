@@ -14,6 +14,9 @@
 
 package br.com.netbrasoft.gnuob.api.order;
 
+import static br.com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.CAN_NOT_INITIALIZE_THE_DEFAULT_WSDL_FROM_0;
+import static br.com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.GNUOB_SOAP_ORDER_PAY_PAL_WEBSERVICE_WSDL;
+import static br.com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.HTTP_LOCALHOST_8080_GNUOB_SOAP_ORDER_PAY_PAL_WEB_SERVICE_IMPL_WSDL;
 import static br.com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.PAY_PAL_EXPRESS_CHECK_OUT_WEB_SERVICE_REPOSITORY_NAME;
 import static br.com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.UNCHECKED_VALUE;
 import static br.com.netbrasoft.gnuob.api.order.OrderWebserviceWrapperHelper.wrapToDoCheckout;
@@ -22,8 +25,14 @@ import static br.com.netbrasoft.gnuob.api.order.OrderWebserviceWrapperHelper.wra
 import static br.com.netbrasoft.gnuob.api.order.OrderWebserviceWrapperHelper.wrapToDoNotification;
 import static br.com.netbrasoft.gnuob.api.order.OrderWebserviceWrapperHelper.wrapToDoRefundTransaction;
 import static br.com.netbrasoft.gnuob.api.order.OrderWebserviceWrapperHelper.wrapToDoTransactionDetails;
+import static java.lang.System.getProperty;
+import static org.slf4j.LoggerFactory.getLogger;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import org.javasimon.aop.Monitored;
+import org.slf4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import br.com.netbrasoft.gnuob.api.MetaData;
@@ -35,12 +44,27 @@ import br.com.netbrasoft.gnuob.api.PayPalExpressCheckOutWebServiceImplService;
 @Repository(PAY_PAL_EXPRESS_CHECK_OUT_WEB_SERVICE_REPOSITORY_NAME)
 public class PayPalExpressCheckOutWebServiceRepository<O extends Order> implements ICheckoutWebServiceRepository<O> {
 
+  private static final Logger LOGGER = getLogger(PayPalExpressCheckOutWebServiceRepository.class);
+  private static final URL WSDL_LOCATION;
+
+  static {
+    URL url = null;
+    try {
+      url = new URL(getProperty(GNUOB_SOAP_ORDER_PAY_PAL_WEBSERVICE_WSDL,
+          HTTP_LOCALHOST_8080_GNUOB_SOAP_ORDER_PAY_PAL_WEB_SERVICE_IMPL_WSDL));
+    } catch (final MalformedURLException e) {
+      LOGGER.info(CAN_NOT_INITIALIZE_THE_DEFAULT_WSDL_FROM_0, getProperty(GNUOB_SOAP_ORDER_PAY_PAL_WEBSERVICE_WSDL,
+          HTTP_LOCALHOST_8080_GNUOB_SOAP_ORDER_PAY_PAL_WEB_SERVICE_IMPL_WSDL));
+    }
+    WSDL_LOCATION = url;
+  }
+
   private transient PayPalExpressCheckOutWebServiceImpl payPalExpressCheckOutWebServiceImpl = null;
 
   private PayPalExpressCheckOutWebServiceImpl getPayPalExpressCheckOutWebServiceImpl() {
     if (payPalExpressCheckOutWebServiceImpl == null) {
       payPalExpressCheckOutWebServiceImpl =
-          new PayPalExpressCheckOutWebServiceImplService().getPayPalExpressCheckOutWebServiceImplPort();
+          new PayPalExpressCheckOutWebServiceImplService(WSDL_LOCATION).getPayPalExpressCheckOutWebServiceImplPort();
     }
     return payPalExpressCheckOutWebServiceImpl;
   }

@@ -1,460 +1,522 @@
-<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://gnuob.netbrasoft.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="GroupWebServiceImplService" targetNamespace="http://gnuob.netbrasoft.com/">
-  <wsdl:types>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://gnuob.netbrasoft.com/" elementFormDefault="unqualified" targetNamespace="http://gnuob.netbrasoft.com/" version="1.0">
-
-  <xs:element name="Group" type="tns:group"/>
-
-  <xs:element name="Paging" type="tns:paging"/>
-
-  <xs:element name="Permission" type="tns:permission"/>
-
-  <xs:element name="Rule" type="tns:rule"/>
-
-  <xs:element name="countGroup" type="tns:countGroup"/>
-
-  <xs:element name="countGroupResponse" type="tns:countGroupResponse"/>
-
-  <xs:element name="findGroup" type="tns:findGroup"/>
-
-  <xs:element name="findGroupById" type="tns:findGroupById"/>
-
-  <xs:element name="findGroupByIdResponse" type="tns:findGroupByIdResponse"/>
-
-  <xs:element name="findGroupResponse" type="tns:findGroupResponse"/>
-
-  <xs:element name="mergeGroup" type="tns:mergeGroup"/>
-
-  <xs:element name="mergeGroupResponse" type="tns:mergeGroupResponse"/>
-
-  <xs:element name="metaData" type="tns:metaData"/>
-
-  <xs:element name="persistGroup" type="tns:persistGroup"/>
-
-  <xs:element name="persistGroupResponse" type="tns:persistGroupResponse"/>
-
-  <xs:element name="refreshGroup" type="tns:refreshGroup"/>
-
-  <xs:element name="refreshGroupResponse" type="tns:refreshGroupResponse"/>
-
-  <xs:element name="removeGroup" type="tns:removeGroup"/>
-
-  <xs:element name="removeGroupResponse" type="tns:removeGroupResponse"/>
-
-  <xs:complexType name="findGroupById">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="group" type="tns:group"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="group">
-    <xs:complexContent>
-      <xs:extension base="tns:abstractAccess">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="description" type="xs:string"/>
-          <xs:element name="name" type="xs:string"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType abstract="true" name="abstractAccess">
-    <xs:complexContent>
-      <xs:extension base="tns:abstractType">
-        <xs:sequence>
-          <xs:element name="active" type="xs:boolean"/>
-          <xs:element minOccurs="0" name="permission" type="tns:permission"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType abstract="true" name="abstractType">
-    <xs:sequence/>
-    <xs:attribute name="id" type="xs:long" use="required"/>
-    <xs:attribute name="version" type="xs:int" use="required"/>
-  </xs:complexType>
-
-  <xs:complexType name="permission">
-    <xs:complexContent>
-      <xs:extension base="tns:abstractType">
-        <xs:sequence>
-          <xs:element name="group" type="tns:rule"/>
-          <xs:element name="others" type="tns:rule"/>
-          <xs:element name="owner" type="tns:rule"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="metaData">
-    <xs:sequence>
-      <xs:element name="site" type="xs:string"/>
-      <xs:element name="user" type="xs:string"/>
-      <xs:element name="password" type="xs:string"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="findGroupByIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:group"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="mergeGroup">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="group" type="tns:group"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="mergeGroupResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:group"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="persistGroup">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="group" type="tns:group"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="persistGroupResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:group"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="removeGroup">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="group" type="tns:group"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="removeGroupResponse">
-    <xs:sequence/>
-  </xs:complexType>
-
-  <xs:complexType name="refreshGroup">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="group" type="tns:group"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="refreshGroupResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:group"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="findGroup">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="group" type="tns:group"/>
-      <xs:element minOccurs="0" name="paging" type="tns:paging"/>
-      <xs:element minOccurs="0" name="orderBy" type="tns:orderBy"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="paging">
-    <xs:sequence>
-      <xs:element name="first" type="xs:int"/>
-      <xs:element name="max" type="xs:int"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="findGroupResponse">
-    <xs:sequence>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:group"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="countGroup">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="group" type="tns:group"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="countGroupResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:long"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:simpleType name="rule">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="CREATE_ACCESS"/>
-      <xs:enumeration value="DELETE_ACCESS"/>
-      <xs:enumeration value="NONE_ACCESS"/>
-      <xs:enumeration value="READ_ACCESS"/>
-      <xs:enumeration value="UPDATE_ACCESS"/>
-    </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="operation">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="CREATE"/>
-      <xs:enumeration value="DELETE"/>
-      <xs:enumeration value="NONE"/>
-      <xs:enumeration value="READ"/>
-      <xs:enumeration value="UPDATE"/>
-    </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="orderBy">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="RECOMMENDED"/>
-      <xs:enumeration value="HIGHEST_DISCOUNT"/>
-      <xs:enumeration value="LOWEST_DISCOUNT"/>
-      <xs:enumeration value="HIGHEST_PRICE"/>
-      <xs:enumeration value="LOWEST_PRICE"/>
-      <xs:enumeration value="HIGHEST_RATING"/>
-      <xs:enumeration value="LOWEST_RATING"/>
-      <xs:enumeration value="BESTSELLERS"/>
-      <xs:enumeration value="LATEST_COLLECTION"/>
-      <xs:enumeration value="NAME_A_Z"/>
-      <xs:enumeration value="NAME_Z_A"/>
-      <xs:enumeration value="DESCRIPTION_A_Z"/>
-      <xs:enumeration value="DESCRIPTION_Z_A"/>
-      <xs:enumeration value="PROPERTY_A_Z"/>
-      <xs:enumeration value="PROPERTY_Z_A"/>
-      <xs:enumeration value="PLACE_NAME_A_Z"/>
-      <xs:enumeration value="PLACE_NAME_Z_A"/>
-      <xs:enumeration value="COUNTRY_CODE_A_Z"/>
-      <xs:enumeration value="COUNTRY_CODE_Z_A"/>
-      <xs:enumeration value="POSTAL_CODE_A_Z"/>
-      <xs:enumeration value="POSTAL_CODE_Z_A"/>
-      <xs:enumeration value="STATE_NAME_A_Z"/>
-      <xs:enumeration value="STATE_NAME_Z_A"/>
-      <xs:enumeration value="VALUE_A_Z"/>
-      <xs:enumeration value="VALUE_Z_A"/>
-      <xs:enumeration value="POSITION_A_Z"/>
-      <xs:enumeration value="POSITION_Z_A"/>
-      <xs:enumeration value="NONE"/>
-      <xs:enumeration value="FIRST_NAME_A_Z"/>
-      <xs:enumeration value="FIRST_NAME_Z_A"/>
-      <xs:enumeration value="LAST_NAME_A_Z"/>
-      <xs:enumeration value="LAST_NAME_Z_A"/>
-      <xs:enumeration value="CONTRACT_ID_A_Z"/>
-      <xs:enumeration value="CONTRACT_ID_Z_A"/>
-      <xs:enumeration value="ORDER_ID_A_Z"/>
-      <xs:enumeration value="ORDER_ID_Z_A"/>
-      <xs:enumeration value="OFFER_ID_A_Z"/>
-      <xs:enumeration value="OFFER_ID_Z_A"/>
-      <xs:enumeration value="NUMBER_A_Z"/>
-      <xs:enumeration value="NUMBER_Z_A"/>
-      <xs:enumeration value="CREATION_A_Z"/>
-      <xs:enumeration value="CREATION_Z_A"/>
-      <xs:enumeration value="MODIFICATION_A_Z"/>
-      <xs:enumeration value="MODIFICATION_Z_A"/>
-    </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="orderEnum">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="DESC"/>
-      <xs:enumeration value="ASC"/>
-      <xs:enumeration value="NONE"/>
-    </xs:restriction>
-  </xs:simpleType>
-
-</xs:schema>
-  </wsdl:types>
-  <wsdl:message name="refreshGroupResponse">
-    <wsdl:part element="tns:refreshGroupResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="persistGroupResponse">
-    <wsdl:part element="tns:persistGroupResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="findGroupById">
-    <wsdl:part element="tns:findGroupById" name="parameters">
-    </wsdl:part>
-    <wsdl:part element="tns:metaData" name="metaData">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="findGroupByIdResponse">
-    <wsdl:part element="tns:findGroupByIdResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="persistGroup">
-    <wsdl:part element="tns:persistGroup" name="parameters">
-    </wsdl:part>
-    <wsdl:part element="tns:metaData" name="metaData">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="removeGroup">
-    <wsdl:part element="tns:removeGroup" name="parameters">
-    </wsdl:part>
-    <wsdl:part element="tns:metaData" name="metaData">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="findGroupResponse">
-    <wsdl:part element="tns:findGroupResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="countGroupResponse">
-    <wsdl:part element="tns:countGroupResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="mergeGroup">
-    <wsdl:part element="tns:mergeGroup" name="parameters">
-    </wsdl:part>
-    <wsdl:part element="tns:metaData" name="metaData">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="mergeGroupResponse">
-    <wsdl:part element="tns:mergeGroupResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="refreshGroup">
-    <wsdl:part element="tns:refreshGroup" name="parameters">
-    </wsdl:part>
-    <wsdl:part element="tns:metaData" name="metaData">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="findGroup">
-    <wsdl:part element="tns:findGroup" name="parameters">
-    </wsdl:part>
-    <wsdl:part element="tns:metaData" name="metaData">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="countGroup">
-    <wsdl:part element="tns:countGroup" name="parameters">
-    </wsdl:part>
-    <wsdl:part element="tns:metaData" name="metaData">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="removeGroupResponse">
-    <wsdl:part element="tns:removeGroupResponse" name="result">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:portType name="GroupWebServiceImpl">
-    <wsdl:operation name="findGroupById">
-      <wsdl:input message="tns:findGroupById" name="findGroupById">
-    </wsdl:input>
-      <wsdl:output message="tns:findGroupByIdResponse" name="findGroupByIdResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="mergeGroup">
-      <wsdl:input message="tns:mergeGroup" name="mergeGroup">
-    </wsdl:input>
-      <wsdl:output message="tns:mergeGroupResponse" name="mergeGroupResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="persistGroup">
-      <wsdl:input message="tns:persistGroup" name="persistGroup">
-    </wsdl:input>
-      <wsdl:output message="tns:persistGroupResponse" name="persistGroupResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="removeGroup">
-      <wsdl:input message="tns:removeGroup" name="removeGroup">
-    </wsdl:input>
-      <wsdl:output message="tns:removeGroupResponse" name="removeGroupResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="refreshGroup">
-      <wsdl:input message="tns:refreshGroup" name="refreshGroup">
-    </wsdl:input>
-      <wsdl:output message="tns:refreshGroupResponse" name="refreshGroupResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="findGroup">
-      <wsdl:input message="tns:findGroup" name="findGroup">
-    </wsdl:input>
-      <wsdl:output message="tns:findGroupResponse" name="findGroupResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="countGroup">
-      <wsdl:input message="tns:countGroup" name="countGroup">
-    </wsdl:input>
-      <wsdl:output message="tns:countGroupResponse" name="countGroupResponse">
-    </wsdl:output>
-    </wsdl:operation>
-  </wsdl:portType>
-  <wsdl:binding name="GroupWebServiceImplServiceSoapBinding" type="tns:GroupWebServiceImpl">
-    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-    <wsdl:operation name="findGroupById">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="findGroupById">
-        <soap:header message="tns:findGroupById" part="metaData" use="literal">
-        </soap:header>
-        <soap:body parts="parameters" use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="findGroupByIdResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="mergeGroup">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="mergeGroup">
-        <soap:header message="tns:mergeGroup" part="metaData" use="literal">
-        </soap:header>
-        <soap:body parts="parameters" use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="mergeGroupResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="persistGroup">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="persistGroup">
-        <soap:header message="tns:persistGroup" part="metaData" use="literal">
-        </soap:header>
-        <soap:body parts="parameters" use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="persistGroupResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="removeGroup">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="removeGroup">
-        <soap:header message="tns:removeGroup" part="metaData" use="literal">
-        </soap:header>
-        <soap:body parts="parameters" use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="removeGroupResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="refreshGroup">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="refreshGroup">
-        <soap:header message="tns:refreshGroup" part="metaData" use="literal">
-        </soap:header>
-        <soap:body parts="parameters" use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="refreshGroupResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="findGroup">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="findGroup">
-        <soap:header message="tns:findGroup" part="metaData" use="literal">
-        </soap:header>
-        <soap:body parts="parameters" use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="findGroupResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="countGroup">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="countGroup">
-        <soap:header message="tns:countGroup" part="metaData" use="literal">
-        </soap:header>
-        <soap:body parts="parameters" use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="countGroupResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:service name="GroupWebServiceImplService">
-    <wsdl:port binding="tns:GroupWebServiceImplServiceSoapBinding" name="GroupWebServiceImplPort">
-      <soap:address location="http://localhost:8080/gnuob-soap/GroupWebServiceImpl"/>
-    </wsdl:port>
-  </wsdl:service>
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:tns="http://gnuob.netbrasoft.com/"
+   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+   xmlns:ns1="http://schemas.xmlsoap.org/soap/http"
+   name="GroupWebServiceImplService"
+   targetNamespace="http://gnuob.netbrasoft.com/">
+   <wsdl:types>
+      <xs:schema
+         xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         xmlns:tns="http://gnuob.netbrasoft.com/"
+         elementFormDefault="unqualified"
+         targetNamespace="http://gnuob.netbrasoft.com/"
+         version="1.0">
+         <xs:include schemaLocation="./xsd/group.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/metaData.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/operation.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/orderBy.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/orderEnum.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/paging.xsd"></xs:include>
+         <xs:element
+            name="Group"
+            type="tns:group" />
+         <xs:element
+            name="Paging"
+            type="tns:paging" />
+         <xs:element
+            name="Permission"
+            type="tns:permission" />
+         <xs:element
+            name="Rule"
+            type="tns:rule" />
+         <xs:element
+            name="countGroup"
+            type="tns:countGroup" />
+         <xs:element
+            name="countGroupResponse"
+            type="tns:countGroupResponse" />
+         <xs:element
+            name="findGroup"
+            type="tns:findGroup" />
+         <xs:element
+            name="findGroupById"
+            type="tns:findGroupById" />
+         <xs:element
+            name="findGroupByIdResponse"
+            type="tns:findGroupByIdResponse" />
+         <xs:element
+            name="findGroupResponse"
+            type="tns:findGroupResponse" />
+         <xs:element
+            name="mergeGroup"
+            type="tns:mergeGroup" />
+         <xs:element
+            name="mergeGroupResponse"
+            type="tns:mergeGroupResponse" />
+         <xs:element
+            name="metaData"
+            type="tns:metaData" />
+         <xs:element
+            name="persistGroup"
+            type="tns:persistGroup" />
+         <xs:element
+            name="persistGroupResponse"
+            type="tns:persistGroupResponse" />
+         <xs:element
+            name="refreshGroup"
+            type="tns:refreshGroup" />
+         <xs:element
+            name="refreshGroupResponse"
+            type="tns:refreshGroupResponse" />
+         <xs:element
+            name="removeGroup"
+            type="tns:removeGroup" />
+         <xs:element
+            name="removeGroupResponse"
+            type="tns:removeGroupResponse" />
+         <xs:complexType name="findGroupById">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="group"
+                  type="tns:group" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="findGroupByIdResponse">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="return"
+                  type="tns:group" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="mergeGroup">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="group"
+                  type="tns:group" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="mergeGroupResponse">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="return"
+                  type="tns:group" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="persistGroup">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="group"
+                  type="tns:group" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="persistGroupResponse">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="return"
+                  type="tns:group" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="removeGroup">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="group"
+                  type="tns:group" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="removeGroupResponse">
+            <xs:sequence />
+         </xs:complexType>
+         <xs:complexType name="refreshGroup">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="group"
+                  type="tns:group" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="refreshGroupResponse">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="return"
+                  type="tns:group" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="findGroup">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="group"
+                  type="tns:group" />
+               <xs:element
+                  minOccurs="0"
+                  name="paging"
+                  type="tns:paging" />
+               <xs:element
+                  minOccurs="0"
+                  name="orderBy"
+                  type="tns:orderBy" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="findGroupResponse">
+            <xs:sequence>
+               <xs:element
+                  maxOccurs="unbounded"
+                  minOccurs="0"
+                  name="return"
+                  type="tns:group" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="countGroup">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="group"
+                  type="tns:group" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="countGroupResponse">
+            <xs:sequence>
+               <xs:element
+                  name="return"
+                  type="xs:long" />
+            </xs:sequence>
+         </xs:complexType>
+      </xs:schema>
+   </wsdl:types>
+   <wsdl:message name="refreshGroupResponse">
+      <wsdl:part
+         element="tns:refreshGroupResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="persistGroupResponse">
+      <wsdl:part
+         element="tns:persistGroupResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="findGroupById">
+      <wsdl:part
+         element="tns:findGroupById"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="findGroupByIdResponse">
+      <wsdl:part
+         element="tns:findGroupByIdResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="persistGroup">
+      <wsdl:part
+         element="tns:persistGroup"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="removeGroup">
+      <wsdl:part
+         element="tns:removeGroup"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="findGroupResponse">
+      <wsdl:part
+         element="tns:findGroupResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="countGroupResponse">
+      <wsdl:part
+         element="tns:countGroupResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="mergeGroup">
+      <wsdl:part
+         element="tns:mergeGroup"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="mergeGroupResponse">
+      <wsdl:part
+         element="tns:mergeGroupResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="refreshGroup">
+      <wsdl:part
+         element="tns:refreshGroup"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="findGroup">
+      <wsdl:part
+         element="tns:findGroup"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="countGroup">
+      <wsdl:part
+         element="tns:countGroup"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="removeGroupResponse">
+      <wsdl:part
+         element="tns:removeGroupResponse"
+         name="result">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:portType name="GroupWebServiceImpl">
+      <wsdl:operation name="findGroupById">
+         <wsdl:input
+            message="tns:findGroupById"
+            name="findGroupById">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:findGroupByIdResponse"
+            name="findGroupByIdResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="mergeGroup">
+         <wsdl:input
+            message="tns:mergeGroup"
+            name="mergeGroup">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:mergeGroupResponse"
+            name="mergeGroupResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="persistGroup">
+         <wsdl:input
+            message="tns:persistGroup"
+            name="persistGroup">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:persistGroupResponse"
+            name="persistGroupResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="removeGroup">
+         <wsdl:input
+            message="tns:removeGroup"
+            name="removeGroup">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:removeGroupResponse"
+            name="removeGroupResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="refreshGroup">
+         <wsdl:input
+            message="tns:refreshGroup"
+            name="refreshGroup">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:refreshGroupResponse"
+            name="refreshGroupResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="findGroup">
+         <wsdl:input
+            message="tns:findGroup"
+            name="findGroup">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:findGroupResponse"
+            name="findGroupResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="countGroup">
+         <wsdl:input
+            message="tns:countGroup"
+            name="countGroup">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:countGroupResponse"
+            name="countGroupResponse">
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:portType>
+   <wsdl:binding
+      name="GroupWebServiceImplServiceSoapBinding"
+      type="tns:GroupWebServiceImpl">
+      <soap:binding
+         style="document"
+         transport="http://schemas.xmlsoap.org/soap/http" />
+      <wsdl:operation name="findGroupById">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="findGroupById">
+            <soap:header
+               message="tns:findGroupById"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="findGroupByIdResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="mergeGroup">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="mergeGroup">
+            <soap:header
+               message="tns:mergeGroup"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="mergeGroupResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="persistGroup">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="persistGroup">
+            <soap:header
+               message="tns:persistGroup"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="persistGroupResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="removeGroup">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="removeGroup">
+            <soap:header
+               message="tns:removeGroup"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="removeGroupResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="refreshGroup">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="refreshGroup">
+            <soap:header
+               message="tns:refreshGroup"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="refreshGroupResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="findGroup">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="findGroup">
+            <soap:header
+               message="tns:findGroup"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="findGroupResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="countGroup">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="countGroup">
+            <soap:header
+               message="tns:countGroup"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="countGroupResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:service name="GroupWebServiceImplService">
+      <wsdl:port
+         binding="tns:GroupWebServiceImplServiceSoapBinding"
+         name="GroupWebServiceImplPort">
+         <soap:address
+            location="http://localhost:8080/gnuob-soap/GroupWebServiceImpl" />
+      </wsdl:port>
+   </wsdl:service>
 </wsdl:definitions>

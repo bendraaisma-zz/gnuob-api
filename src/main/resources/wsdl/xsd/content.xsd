@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns:tns="http://gnuob.netbrasoft.com/"
+   elementFormDefault="unqualified"
+   targetNamespace="http://gnuob.netbrasoft.com/"
+   version="1.0">
+   <xs:include schemaLocation="abstractAccess.xsd"></xs:include>
+   <xs:complexType name="content">
+      <xs:complexContent>
+         <xs:extension base="tns:abstractAccess">
+            <xs:sequence>
+               <xs:element
+                  name="content"
+                  type="xs:base64Binary" />
+               <xs:element name="format">
+                  <xs:simpleType>
+                     <xs:restriction base="xs:string">
+                        <xs:minLength value="5"></xs:minLength>
+                        <xs:maxLength value="128"></xs:maxLength>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:element>
+               <xs:element name="name">
+                  <xs:simpleType>
+                     <xs:restriction base="xs:string">
+                        <xs:minLength value="5"></xs:minLength>
+                        <xs:maxLength value="128"></xs:maxLength>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:element>
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+</xs:schema>

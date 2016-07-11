@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns:tns="http://gnuob.netbrasoft.com/"
+   elementFormDefault="unqualified"
+   targetNamespace="http://gnuob.netbrasoft.com/"
+   version="1.0">
+   <xs:include schemaLocation="abstractAccess.xsd"></xs:include>
+   <xs:include schemaLocation="customer.xsd"></xs:include>
+   <xs:complexType name="contract">
+      <xs:complexContent>
+         <xs:extension base="tns:abstractAccess">
+            <xs:sequence>
+               <xs:element name="contractId">
+                  <xs:simpleType>
+                     <xs:restriction base="xs:string">
+                        <xs:minLength value="0"></xs:minLength>
+                        <xs:maxLength value="127"></xs:maxLength>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:element>
+               <xs:element
+                  name="customer"
+                  type="tns:customer" />
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+</xs:schema>

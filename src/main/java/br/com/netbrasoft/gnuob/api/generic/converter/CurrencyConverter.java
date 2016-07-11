@@ -14,6 +14,9 @@
 
 package br.com.netbrasoft.gnuob.api.generic.converter;
 
+import static java.text.NumberFormat.getCurrencyInstance;
+import static java.text.NumberFormat.getNumberInstance;
+
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.text.ParseException;
@@ -26,10 +29,14 @@ public class CurrencyConverter extends AbstractNumberConverter<BigDecimal> {
 
   private static final long serialVersionUID = 5677756371671782444L;
 
+  public static final CurrencyConverter getInstance() {
+    return new CurrencyConverter();
+  }
+
   @Override
   public BigDecimal convertToObject(final String value, final Locale locale) {
     try {
-      return (BigDecimal) NumberFormat.getNumberInstance(locale).parse(value.replaceAll("[^\\d.,]", ""));
+      return (BigDecimal) getNumberInstance(locale).parse(value.replaceAll("[^\\d.,]", ""));
     } catch (final ParseException e) {
       throw new ConversionException(e.getMessage(), e);
     }
@@ -42,6 +49,6 @@ public class CurrencyConverter extends AbstractNumberConverter<BigDecimal> {
 
   @Override
   protected NumberFormat newNumberFormat(final Locale locale) {
-    return NumberFormat.getCurrencyInstance();
+    return getCurrencyInstance();
   }
 }
