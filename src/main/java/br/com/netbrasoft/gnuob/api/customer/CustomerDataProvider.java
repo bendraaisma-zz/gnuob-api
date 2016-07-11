@@ -24,7 +24,6 @@ import org.javasimon.aop.Monitored;
 import org.springframework.stereotype.Controller;
 
 import br.com.netbrasoft.gnuob.api.Customer;
-
 import br.com.netbrasoft.gnuob.api.generic.AbstractGenericTypeDataProvider;
 import br.com.netbrasoft.gnuob.api.generic.IGenericTypeWebServiceRepository;
 

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns:tns="http://gnuob.netbrasoft.com/"
+   elementFormDefault="unqualified"
+   targetNamespace="http://gnuob.netbrasoft.com/"
+   version="1.0">
+   <xs:include schemaLocation="abstractType.xsd"></xs:include>
+   <xs:include schemaLocation="permission.xsd"></xs:include>
+   <xs:complexType
+      abstract="true"
+      name="abstractAccess">
+      <xs:complexContent>
+         <xs:extension base="tns:abstractType">
+            <xs:sequence>
+               <xs:element
+                  name="active"
+                  type="xs:boolean" />
+               <xs:element
+                  minOccurs="0"
+                  name="permission"
+                  type="tns:permission" />
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+</xs:schema>

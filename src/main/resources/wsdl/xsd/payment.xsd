@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns:tns="http://gnuob.netbrasoft.com/"
+   elementFormDefault="unqualified"
+   targetNamespace="http://gnuob.netbrasoft.com/"
+   version="1.0">
+   <xs:include schemaLocation="abstractType.xsd"></xs:include>
+   <xs:complexType name="payment">
+      <xs:complexContent>
+         <xs:extension base="tns:abstractType">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="exchangeRate">
+                  <xs:simpleType>
+                     <xs:restriction base="xs:string">
+                        <xs:minLength value="0"></xs:minLength>
+                        <xs:maxLength value="17"></xs:maxLength>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:element>
+               <xs:element
+                  minOccurs="0"
+                  name="feeAmount"
+                  type="xs:decimal" />
+               <xs:element
+                  name="grossAmount"
+                  type="xs:decimal" />
+               <xs:element
+                  minOccurs="0"
+                  name="holdDecision">
+                  <xs:simpleType>
+                     <xs:restriction base="xs:string">
+                        <xs:minLength value="0"></xs:minLength>
+                        <xs:maxLength value="20"></xs:maxLength>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:element>
+               <xs:element
+                  minOccurs="0"
+                  name="installmentCount"
+                  type="xs:integer" />
+               <xs:element
+                  minOccurs="0"
+                  name="paymentDate"
+                  type="xs:dateTime" />
+               <xs:element
+                  minOccurs="0"
+                  name="paymentRequestId">
+                  <xs:simpleType>
+                     <xs:restriction base="xs:string">
+                        <xs:minLength value="0"></xs:minLength>
+                        <xs:maxLength value="127"></xs:maxLength>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:element>
+               <xs:element name="paymentStatus">
+                  <xs:simpleType>
+                     <xs:restriction base="xs:string">
+                        <xs:minLength value="5"></xs:minLength>
+                        <xs:maxLength value="20"></xs:maxLength>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:element>
+               <xs:element name="paymentType">
+                  <xs:simpleType>
+                     <xs:restriction base="xs:string">
+                        <xs:minLength value="5"></xs:minLength>
+                        <xs:maxLength value="20"></xs:maxLength>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:element>
+               <xs:element
+                  minOccurs="0"
+                  name="pendingReason">
+                  <xs:simpleType>
+                     <xs:restriction base="xs:string">
+                        <xs:minLength value="0"></xs:minLength>
+                        <xs:maxLength value="20"></xs:maxLength>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:element>
+               <xs:element
+                  minOccurs="0"
+                  name="protectionEligibilityType">
+                  <xs:simpleType>
+                     <xs:restriction base="xs:string">
+                        <xs:minLength value="0"></xs:minLength>
+                        <xs:maxLength value="128"></xs:maxLength>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:element>
+               <xs:element
+                  minOccurs="0"
+                  name="reasonCode">
+                  <xs:simpleType>
+                     <xs:restriction base="xs:string">
+                        <xs:minLength value="0"></xs:minLength>
+                        <xs:maxLength value="20"></xs:maxLength>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:element>
+               <xs:element
+                  minOccurs="0"
+                  name="settleAmount"
+                  type="xs:decimal" />
+               <xs:element
+                  minOccurs="0"
+                  name="storeId">
+                  <xs:simpleType>
+                     <xs:restriction base="xs:string">
+                        <xs:minLength value="0"></xs:minLength>
+                        <xs:maxLength value="20"></xs:maxLength>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:element>
+               <xs:element
+                  minOccurs="0"
+                  name="taxAmount"
+                  type="xs:decimal" />
+               <xs:element
+                  minOccurs="0"
+                  name="terminalId">
+                  <xs:simpleType>
+                     <xs:restriction base="xs:string">
+                        <xs:minLength value="0"></xs:minLength>
+                        <xs:maxLength value="20"></xs:maxLength>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:element>
+               <xs:element name="transactionId">
+                  <xs:simpleType>
+                     <xs:restriction base="xs:string">
+                        <xs:minLength value="5"></xs:minLength>
+                        <xs:maxLength value="64"></xs:maxLength>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:element>
+               <xs:element name="transactionType">
+                  <xs:simpleType>
+                     <xs:restriction base="xs:string">
+                        <xs:minLength value="5"></xs:minLength>
+                        <xs:maxLength value="20"></xs:maxLength>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:element>
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+</xs:schema>

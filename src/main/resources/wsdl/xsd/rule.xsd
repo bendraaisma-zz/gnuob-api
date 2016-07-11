@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns:tns="http://gnuob.netbrasoft.com/"
+   elementFormDefault="unqualified"
+   targetNamespace="http://gnuob.netbrasoft.com/"
+   version="1.0">
+   <xs:simpleType name="rule">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="CREATE_ACCESS" />
+         <xs:enumeration value="DELETE_ACCESS" />
+         <xs:enumeration value="NONE_ACCESS" />
+         <xs:enumeration value="READ_ACCESS" />
+         <xs:enumeration value="UPDATE_ACCESS" />
+      </xs:restriction>
+   </xs:simpleType>
+</xs:schema>

@@ -14,6 +14,9 @@
 
 package br.com.netbrasoft.gnuob.api.security;
 
+import static br.com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.CAN_NOT_INITIALIZE_THE_DEFAULT_WSDL_FROM_0;
+import static br.com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.GNUOB_SOAP_USER_WEBSERVICE_WSDL;
+import static br.com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.HTTP_LOCALHOST_8080_GNUOB_SOAP_USER_WEB_SERVICE_IMPL_WSDL;
 import static br.com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.UNCHECKED_VALUE;
 import static br.com.netbrasoft.gnuob.api.generic.NetbrasoftApiConstants.USER_WEB_SERVICE_REPOSITORY_NAME;
 import static br.com.netbrasoft.gnuob.api.security.UserWebServiceWrapperHelper.wrapToCountUser;
@@ -23,10 +26,15 @@ import static br.com.netbrasoft.gnuob.api.security.UserWebServiceWrapperHelper.w
 import static br.com.netbrasoft.gnuob.api.security.UserWebServiceWrapperHelper.wrapToPersistUser;
 import static br.com.netbrasoft.gnuob.api.security.UserWebServiceWrapperHelper.wrapToRefreshUser;
 import static br.com.netbrasoft.gnuob.api.security.UserWebServiceWrapperHelper.wrapToRemoveUser;
+import static java.lang.System.getProperty;
+import static org.slf4j.LoggerFactory.getLogger;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 import org.javasimon.aop.Monitored;
+import org.slf4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import br.com.netbrasoft.gnuob.api.MetaData;
@@ -35,18 +43,32 @@ import br.com.netbrasoft.gnuob.api.Paging;
 import br.com.netbrasoft.gnuob.api.User;
 import br.com.netbrasoft.gnuob.api.UserWebServiceImpl;
 import br.com.netbrasoft.gnuob.api.UserWebServiceImplService;
-
 import br.com.netbrasoft.gnuob.api.generic.IGenericTypeWebServiceRepository;
 
 @Monitored
 @Repository(USER_WEB_SERVICE_REPOSITORY_NAME)
 public class UserWebServiceRepository<U extends User> implements IGenericTypeWebServiceRepository<U> {
 
+  private static final Logger LOGGER = getLogger(UserWebServiceRepository.class);
+  private static final URL WSDL_LOCATION;
+
+  static {
+    URL url = null;
+    try {
+      url = new URL(
+          getProperty(GNUOB_SOAP_USER_WEBSERVICE_WSDL, HTTP_LOCALHOST_8080_GNUOB_SOAP_USER_WEB_SERVICE_IMPL_WSDL));
+    } catch (final MalformedURLException e) {
+      LOGGER.info(CAN_NOT_INITIALIZE_THE_DEFAULT_WSDL_FROM_0,
+          getProperty(GNUOB_SOAP_USER_WEBSERVICE_WSDL, HTTP_LOCALHOST_8080_GNUOB_SOAP_USER_WEB_SERVICE_IMPL_WSDL));
+    }
+    WSDL_LOCATION = url;
+  }
+
   private transient UserWebServiceImpl userWebServiceImpl;
 
   private UserWebServiceImpl getUserWebServiceImpl() {
     if (userWebServiceImpl == null) {
-      userWebServiceImpl = new UserWebServiceImplService().getUserWebServiceImplPort();
+      userWebServiceImpl = new UserWebServiceImplService(WSDL_LOCATION).getUserWebServiceImplPort();
     }
     return userWebServiceImpl;
   }

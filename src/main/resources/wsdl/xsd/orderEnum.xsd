@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns:tns="http://gnuob.netbrasoft.com/"
+   elementFormDefault="unqualified"
+   targetNamespace="http://gnuob.netbrasoft.com/"
+   version="1.0">
+   <xs:simpleType name="orderEnum">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="DESC" />
+         <xs:enumeration value="ASC" />
+         <xs:enumeration value="NONE" />
+      </xs:restriction>
+   </xs:simpleType>
+</xs:schema>

@@ -15,11 +15,13 @@
 package br.com.netbrasoft.gnuob.api.generic;
 
 import org.apache.wicket.extensions.markup.html.repeater.data.table.ISortableDataProvider;
+import org.apache.wicket.markup.html.navigation.paging.IPageableItems;
 import org.apache.wicket.markup.repeater.data.IDataProvider;
 
 import br.com.netbrasoft.gnuob.api.OrderBy;
 
-public abstract interface IGenericTypeDataProvider<T> extends IDataProvider<T>, ISortableDataProvider<T, String> {
+public abstract interface IGenericTypeDataProvider<T>
+    extends IDataProvider<T>, ISortableDataProvider<T, String>, IPageableItems {
 
   public abstract T findById(T type);
 
@@ -31,7 +33,7 @@ public abstract interface IGenericTypeDataProvider<T> extends IDataProvider<T>, 
 
   public abstract void remove(T type);
 
-  public abstract void setOrderBy(OrderBy OrderBy);
+  public abstract void setOrderBy(OrderBy orderBy);
 
   public abstract T getType();
 
