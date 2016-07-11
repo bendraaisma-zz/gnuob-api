@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns:tns="http://gnuob.netbrasoft.com/"
+   elementFormDefault="unqualified"
+   targetNamespace="http://gnuob.netbrasoft.com/"
+   version="1.0">
+   <xs:include schemaLocation="abstractType.xsd"></xs:include>
+   <xs:include schemaLocation="rule.xsd"></xs:include>
+   <xs:complexType name="permission">
+      <xs:complexContent>
+         <xs:extension base="tns:abstractType">
+            <xs:sequence>
+               <xs:element
+                  name="group"
+                  type="tns:rule" />
+               <xs:element
+                  name="others"
+                  type="tns:rule" />
+               <xs:element
+                  name="owner"
+                  type="tns:rule" />
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+</xs:schema>

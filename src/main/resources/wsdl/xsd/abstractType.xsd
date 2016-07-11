@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns:tns="http://gnuob.netbrasoft.com/"
+   elementFormDefault="unqualified"
+   targetNamespace="http://gnuob.netbrasoft.com/"
+   version="1.0">
+   <xs:complexType
+      abstract="true"
+      name="abstractType">
+      <xs:sequence />
+      <xs:attribute
+         name="id"
+         type="xs:long"
+         use="required" />
+      <xs:attribute
+         name="version"
+         type="xs:int"
+         use="required" />
+   </xs:complexType>
+</xs:schema>

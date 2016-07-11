@@ -16,8 +16,11 @@ package br.com.netbrasoft.gnuob.api.generic;
 
 public final class NetbrasoftApiConstants {
 
+  public static final String UNCHECKED = "unchecked";
   public static final String AMOUNT_PROPERTY = "amount";
   public static final String BESTSELLER_PROPERTY = "bestseller";
+  public static final String CAN_NOT_INITIALIZE_THE_DEFAULT_WSDL_FROM_0 =
+      "Can not initialize the default wsdl from {0}";
   public static final String CATEGORY_DATA_PROVIDER_NAME = "CategoryDataProvider";
   public static final String CATEGORY_WEB_SERVICE_REPOSITORY_NAME = "CategoryWebServiceRepository";
   public static final String CONTENT_DATA_PROVIDER_NAME = "ContentDataProvider";
@@ -32,8 +35,50 @@ public final class NetbrasoftApiConstants {
   public static final String DESCRIPTION_PROPERTY = "description";
   public static final String DISCOUNT_PROPERTY = "discount";
   public static final String FIRST_NAME_PROPERTY = "firstName";
+  public static final String GNUOB_SOAP_CATEGORY_WEBSERVICE_WSDL = "gnuob.soap.category.webservice.wsdl";
+  public static final String GNUOB_SOAP_CONTENT_WEBSERVICE_WSDL = "gnuob.soap.content.webservice.wsdl";
+  public static final String GNUOB_SOAP_CONTRACT_WEBSERVICE_WSDL = "gnuob.soap.contract.webservice.wsdl";
+  public static final String GNUOB_SOAP_CUSTOMER_WEBSERVICE_WSDL = "gnuob.soap.customer.webservice.wsdl";
+  public static final String GNUOB_SOAP_GROUP_WEBSERVICE_WSDL = "gnuob.soap.group.webservice.wsdl";
+  public static final String GNUOB_SOAP_OFFER_WEBSERVICE_WSDL = "gnuob.soap.offer.webservice.wsdl";
+  public static final String GNUOB_SOAP_ORDER_PAGSEGURO_WEBSERVICE_WSDL = "gnuob.soap.order.pagseguro.webservice.wsdl";
+  public static final String GNUOB_SOAP_ORDER_PAY_PAL_WEBSERVICE_WSDL = "gnuob.soap.order.pay.pal.webservice.wsdl";
+  public static final String GNUOB_SOAP_ORDER_WEBSERVICE_WSDL = "gnuob.soap.order.webservice.wsdl";
+  public static final String GNUOB_SOAP_POSTAL_CODE_WEBSERVICE_WSDL = "gnuob.soap.postal.code.webservice.wsdl";
+  public static final String GNUOB_SOAP_PRODUCT_WEBSERVICE_WSDL = "gnuob.soap.product.webservice.wsdl";
+  public static final String GNUOB_SOAP_SETTING_WEBSERVICE_WSDL = "gnuob.soap.setting.webservice.wsdl";
+  public static final String GNUOB_SOAP_SITE_WEBSERVICE_WSDL = "gnuob.soap.site.webservice.wsdl";
+  public static final String GNUOB_SOAP_USER_WEBSERVICE_WSDL = "gnuob.soap.user.webservice.wsdl";
   public static final String GROUP_DATA_PROVIDER_NAME = "GroupDataProvider";
   public static final String GROUP_WEB_SERVICE_REPOSITORY_NAME = "GroupWebServiceRepository";
+  public static final String HTTP_LOCALHOST_8080_GNUOB_SOAP_CATEGORY_WEB_SERVICE_IMPL_WSDL =
+      "http://localhost:8080/gnuob-soap/CategoryWebServiceImpl?wsdl";
+  public static final String HTTP_LOCALHOST_8080_GNUOB_SOAP_CONTENT_WEB_SERVICE_IMPL_WSDL =
+      "http://localhost:8080/gnuob-soap/ContentWebServiceImpl?wsdl";
+  public static final String HTTP_LOCALHOST_8080_GNUOB_SOAP_CONTRACT_WEB_SERVICE_IMPL_WSDL =
+      "http://localhost:8080/gnuob-soap/ContractWebServiceImpl?wsdl";
+  public static final String HTTP_LOCALHOST_8080_GNUOB_SOAP_CUSTOMER_WEB_SERVICE_IMPL_WSDL =
+      "http://localhost:8080/gnuob-soap/CustomerWebServiceImpl?wsdl";
+  public static final String HTTP_LOCALHOST_8080_GNUOB_SOAP_GROUP_WEB_SERVICE_IMPL_WSDL =
+      "http://localhost:8080/gnuob-soap/GroupWebServiceImpl?wsdl";
+  public static final String HTTP_LOCALHOST_8080_GNUOB_SOAP_OFFER_WEB_SERVICE_IMPL_WSDL =
+      "http://localhost:8080/gnuob-soap/OfferWebServiceImpl?wsdl";
+  public static final String HTTP_LOCALHOST_8080_GNUOB_SOAP_ORDER_PAGSEGURO_WEB_SERVICE_IMPL_WSDL =
+      "http://localhost:8080/gnuob-soap/PagseguroCheckOutWebServiceImpl?wsdl";
+  public static final String HTTP_LOCALHOST_8080_GNUOB_SOAP_ORDER_PAY_PAL_WEB_SERVICE_IMPL_WSDL =
+      "http://localhost:8080/gnuob-soap/PayPalExpressCheckOutWebServiceImpl?wsdl";
+  public static final String HTTP_LOCALHOST_8080_GNUOB_SOAP_ORDER_WEB_SERVICE_IMPL_WSDL =
+      "http://localhost:8080/gnuob-soap/OrderWebServiceImpl?wsdl";
+  public static final String HTTP_LOCALHOST_8080_GNUOB_SOAP_POSTAL_CODE_WEB_SERVICE_IMPL_WSDL =
+      "http://localhost:8080/gnuob-soap/PostalCodeWebServiceImpl?wsdl";
+  public static final String HTTP_LOCALHOST_8080_GNUOB_SOAP_PRODUCT_WEB_SERVICE_IMPL_WSDL =
+      "http://localhost:8080/gnuob-soap/ProductWebServiceImpl?wsdl";
+  public static final String HTTP_LOCALHOST_8080_GNUOB_SOAP_SETTING_WEB_SERVICE_IMPL_WSDL =
+      "http://localhost:8080/gnuob-soap/SettingWebServiceImpl?wsdl";
+  public static final String HTTP_LOCALHOST_8080_GNUOB_SOAP_SITE_WEB_SERVICE_IMPL_WSDL =
+      "http://localhost:8080/gnuob-soap/SiteWebServiceImpl?wsdl";
+  public static final String HTTP_LOCALHOST_8080_GNUOB_SOAP_USER_WEB_SERVICE_IMPL_WSDL =
+      "http://localhost:8080/gnuob-soap/UserWebServiceImpl?wsdl";
   public static final String LAST_NAME_PROPERTY = "lastName";
   public static final String LATEST_COLLECTION_PROPERTY = "latestCollection";
   public static final String MODIFICATION_PROPERTY = "modification";
