@@ -1,460 +1,522 @@
-<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://gnuob.netbrasoft.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="SiteWebServiceImplService" targetNamespace="http://gnuob.netbrasoft.com/">
-  <wsdl:types>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://gnuob.netbrasoft.com/" elementFormDefault="unqualified" targetNamespace="http://gnuob.netbrasoft.com/" version="1.0">
-
-  <xs:element name="Paging" type="tns:paging"/>
-
-  <xs:element name="Permission" type="tns:permission"/>
-
-  <xs:element name="Rule" type="tns:rule"/>
-
-  <xs:element name="Site" type="tns:site"/>
-
-  <xs:element name="countSite" type="tns:countSite"/>
-
-  <xs:element name="countSiteResponse" type="tns:countSiteResponse"/>
-
-  <xs:element name="findSite" type="tns:findSite"/>
-
-  <xs:element name="findSiteById" type="tns:findSiteById"/>
-
-  <xs:element name="findSiteByIdResponse" type="tns:findSiteByIdResponse"/>
-
-  <xs:element name="findSiteResponse" type="tns:findSiteResponse"/>
-
-  <xs:element name="mergeSite" type="tns:mergeSite"/>
-
-  <xs:element name="mergeSiteResponse" type="tns:mergeSiteResponse"/>
-
-  <xs:element name="metaData" type="tns:metaData"/>
-
-  <xs:element name="persistSite" type="tns:persistSite"/>
-
-  <xs:element name="persistSiteResponse" type="tns:persistSiteResponse"/>
-
-  <xs:element name="refreshSite" type="tns:refreshSite"/>
-
-  <xs:element name="refreshSiteResponse" type="tns:refreshSiteResponse"/>
-
-  <xs:element name="removeSite" type="tns:removeSite"/>
-
-  <xs:element name="removeSiteResponse" type="tns:removeSiteResponse"/>
-
-  <xs:complexType name="removeSite">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="site" type="tns:site"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="site">
-    <xs:complexContent>
-      <xs:extension base="tns:abstractAccess">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="description" type="xs:string"/>
-          <xs:element name="name" type="xs:string"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType abstract="true" name="abstractAccess">
-    <xs:complexContent>
-      <xs:extension base="tns:abstractType">
-        <xs:sequence>
-          <xs:element name="active" type="xs:boolean"/>
-          <xs:element minOccurs="0" name="permission" type="tns:permission"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType abstract="true" name="abstractType">
-    <xs:sequence/>
-    <xs:attribute name="id" type="xs:long" use="required"/>
-    <xs:attribute name="version" type="xs:int" use="required"/>
-  </xs:complexType>
-
-  <xs:complexType name="permission">
-    <xs:complexContent>
-      <xs:extension base="tns:abstractType">
-        <xs:sequence>
-          <xs:element name="group" type="tns:rule"/>
-          <xs:element name="others" type="tns:rule"/>
-          <xs:element name="owner" type="tns:rule"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="metaData">
-    <xs:sequence>
-      <xs:element name="site" type="xs:string"/>
-      <xs:element name="user" type="xs:string"/>
-      <xs:element name="password" type="xs:string"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="removeSiteResponse">
-    <xs:sequence/>
-  </xs:complexType>
-
-  <xs:complexType name="findSiteById">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="site" type="tns:site"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="findSiteByIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:site"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="findSite">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="site" type="tns:site"/>
-      <xs:element minOccurs="0" name="paging" type="tns:paging"/>
-      <xs:element minOccurs="0" name="orderBy" type="tns:orderBy"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="paging">
-    <xs:sequence>
-      <xs:element name="first" type="xs:int"/>
-      <xs:element name="max" type="xs:int"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="findSiteResponse">
-    <xs:sequence>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:site"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="persistSite">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="site" type="tns:site"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="persistSiteResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:site"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="mergeSite">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="site" type="tns:site"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="mergeSiteResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:site"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="countSite">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="site" type="tns:site"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="countSiteResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:long"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="refreshSite">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="site" type="tns:site"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="refreshSiteResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:site"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:simpleType name="rule">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="CREATE_ACCESS"/>
-      <xs:enumeration value="DELETE_ACCESS"/>
-      <xs:enumeration value="NONE_ACCESS"/>
-      <xs:enumeration value="READ_ACCESS"/>
-      <xs:enumeration value="UPDATE_ACCESS"/>
-    </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="operation">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="CREATE"/>
-      <xs:enumeration value="DELETE"/>
-      <xs:enumeration value="NONE"/>
-      <xs:enumeration value="READ"/>
-      <xs:enumeration value="UPDATE"/>
-    </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="orderBy">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="RECOMMENDED"/>
-      <xs:enumeration value="HIGHEST_DISCOUNT"/>
-      <xs:enumeration value="LOWEST_DISCOUNT"/>
-      <xs:enumeration value="HIGHEST_PRICE"/>
-      <xs:enumeration value="LOWEST_PRICE"/>
-      <xs:enumeration value="HIGHEST_RATING"/>
-      <xs:enumeration value="LOWEST_RATING"/>
-      <xs:enumeration value="BESTSELLERS"/>
-      <xs:enumeration value="LATEST_COLLECTION"/>
-      <xs:enumeration value="NAME_A_Z"/>
-      <xs:enumeration value="NAME_Z_A"/>
-      <xs:enumeration value="DESCRIPTION_A_Z"/>
-      <xs:enumeration value="DESCRIPTION_Z_A"/>
-      <xs:enumeration value="PROPERTY_A_Z"/>
-      <xs:enumeration value="PROPERTY_Z_A"/>
-      <xs:enumeration value="PLACE_NAME_A_Z"/>
-      <xs:enumeration value="PLACE_NAME_Z_A"/>
-      <xs:enumeration value="COUNTRY_CODE_A_Z"/>
-      <xs:enumeration value="COUNTRY_CODE_Z_A"/>
-      <xs:enumeration value="POSTAL_CODE_A_Z"/>
-      <xs:enumeration value="POSTAL_CODE_Z_A"/>
-      <xs:enumeration value="STATE_NAME_A_Z"/>
-      <xs:enumeration value="STATE_NAME_Z_A"/>
-      <xs:enumeration value="VALUE_A_Z"/>
-      <xs:enumeration value="VALUE_Z_A"/>
-      <xs:enumeration value="POSITION_A_Z"/>
-      <xs:enumeration value="POSITION_Z_A"/>
-      <xs:enumeration value="NONE"/>
-      <xs:enumeration value="FIRST_NAME_A_Z"/>
-      <xs:enumeration value="FIRST_NAME_Z_A"/>
-      <xs:enumeration value="LAST_NAME_A_Z"/>
-      <xs:enumeration value="LAST_NAME_Z_A"/>
-      <xs:enumeration value="CONTRACT_ID_A_Z"/>
-      <xs:enumeration value="CONTRACT_ID_Z_A"/>
-      <xs:enumeration value="ORDER_ID_A_Z"/>
-      <xs:enumeration value="ORDER_ID_Z_A"/>
-      <xs:enumeration value="OFFER_ID_A_Z"/>
-      <xs:enumeration value="OFFER_ID_Z_A"/>
-      <xs:enumeration value="NUMBER_A_Z"/>
-      <xs:enumeration value="NUMBER_Z_A"/>
-      <xs:enumeration value="CREATION_A_Z"/>
-      <xs:enumeration value="CREATION_Z_A"/>
-      <xs:enumeration value="MODIFICATION_A_Z"/>
-      <xs:enumeration value="MODIFICATION_Z_A"/>
-    </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="orderEnum">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="DESC"/>
-      <xs:enumeration value="ASC"/>
-      <xs:enumeration value="NONE"/>
-    </xs:restriction>
-  </xs:simpleType>
-
-</xs:schema>
-  </wsdl:types>
-  <wsdl:message name="removeSite">
-    <wsdl:part element="tns:removeSite" name="parameters">
-    </wsdl:part>
-    <wsdl:part element="tns:metaData" name="metaData">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="findSiteByIdResponse">
-    <wsdl:part element="tns:findSiteByIdResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="countSiteResponse">
-    <wsdl:part element="tns:countSiteResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="findSiteResponse">
-    <wsdl:part element="tns:findSiteResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="persistSiteResponse">
-    <wsdl:part element="tns:persistSiteResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="refreshSiteResponse">
-    <wsdl:part element="tns:refreshSiteResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="mergeSiteResponse">
-    <wsdl:part element="tns:mergeSiteResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="findSiteById">
-    <wsdl:part element="tns:findSiteById" name="parameters">
-    </wsdl:part>
-    <wsdl:part element="tns:metaData" name="metaData">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="findSite">
-    <wsdl:part element="tns:findSite" name="parameters">
-    </wsdl:part>
-    <wsdl:part element="tns:metaData" name="metaData">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="persistSite">
-    <wsdl:part element="tns:persistSite" name="parameters">
-    </wsdl:part>
-    <wsdl:part element="tns:metaData" name="metaData">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="mergeSite">
-    <wsdl:part element="tns:mergeSite" name="parameters">
-    </wsdl:part>
-    <wsdl:part element="tns:metaData" name="metaData">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="countSite">
-    <wsdl:part element="tns:countSite" name="parameters">
-    </wsdl:part>
-    <wsdl:part element="tns:metaData" name="metaData">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="removeSiteResponse">
-    <wsdl:part element="tns:removeSiteResponse" name="result">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="refreshSite">
-    <wsdl:part element="tns:refreshSite" name="parameters">
-    </wsdl:part>
-    <wsdl:part element="tns:metaData" name="metaData">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:portType name="SiteWebServiceImpl">
-    <wsdl:operation name="removeSite">
-      <wsdl:input message="tns:removeSite" name="removeSite">
-    </wsdl:input>
-      <wsdl:output message="tns:removeSiteResponse" name="removeSiteResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="findSiteById">
-      <wsdl:input message="tns:findSiteById" name="findSiteById">
-    </wsdl:input>
-      <wsdl:output message="tns:findSiteByIdResponse" name="findSiteByIdResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="findSite">
-      <wsdl:input message="tns:findSite" name="findSite">
-    </wsdl:input>
-      <wsdl:output message="tns:findSiteResponse" name="findSiteResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="persistSite">
-      <wsdl:input message="tns:persistSite" name="persistSite">
-    </wsdl:input>
-      <wsdl:output message="tns:persistSiteResponse" name="persistSiteResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="mergeSite">
-      <wsdl:input message="tns:mergeSite" name="mergeSite">
-    </wsdl:input>
-      <wsdl:output message="tns:mergeSiteResponse" name="mergeSiteResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="countSite">
-      <wsdl:input message="tns:countSite" name="countSite">
-    </wsdl:input>
-      <wsdl:output message="tns:countSiteResponse" name="countSiteResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="refreshSite">
-      <wsdl:input message="tns:refreshSite" name="refreshSite">
-    </wsdl:input>
-      <wsdl:output message="tns:refreshSiteResponse" name="refreshSiteResponse">
-    </wsdl:output>
-    </wsdl:operation>
-  </wsdl:portType>
-  <wsdl:binding name="SiteWebServiceImplServiceSoapBinding" type="tns:SiteWebServiceImpl">
-    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-    <wsdl:operation name="removeSite">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="removeSite">
-        <soap:header message="tns:removeSite" part="metaData" use="literal">
-        </soap:header>
-        <soap:body parts="parameters" use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="removeSiteResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="findSiteById">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="findSiteById">
-        <soap:header message="tns:findSiteById" part="metaData" use="literal">
-        </soap:header>
-        <soap:body parts="parameters" use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="findSiteByIdResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="findSite">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="findSite">
-        <soap:header message="tns:findSite" part="metaData" use="literal">
-        </soap:header>
-        <soap:body parts="parameters" use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="findSiteResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="persistSite">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="persistSite">
-        <soap:header message="tns:persistSite" part="metaData" use="literal">
-        </soap:header>
-        <soap:body parts="parameters" use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="persistSiteResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="mergeSite">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="mergeSite">
-        <soap:header message="tns:mergeSite" part="metaData" use="literal">
-        </soap:header>
-        <soap:body parts="parameters" use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="mergeSiteResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="countSite">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="countSite">
-        <soap:header message="tns:countSite" part="metaData" use="literal">
-        </soap:header>
-        <soap:body parts="parameters" use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="countSiteResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="refreshSite">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="refreshSite">
-        <soap:header message="tns:refreshSite" part="metaData" use="literal">
-        </soap:header>
-        <soap:body parts="parameters" use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="refreshSiteResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:service name="SiteWebServiceImplService">
-    <wsdl:port binding="tns:SiteWebServiceImplServiceSoapBinding" name="SiteWebServiceImplPort">
-      <soap:address location="http://localhost:8080/gnuob-soap/SiteWebServiceImpl"/>
-    </wsdl:port>
-  </wsdl:service>
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:tns="http://gnuob.netbrasoft.com/"
+   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+   xmlns:ns1="http://schemas.xmlsoap.org/soap/http"
+   name="SiteWebServiceImplService"
+   targetNamespace="http://gnuob.netbrasoft.com/">
+   <wsdl:types>
+      <xs:schema
+         xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         xmlns:tns="http://gnuob.netbrasoft.com/"
+         elementFormDefault="unqualified"
+         targetNamespace="http://gnuob.netbrasoft.com/"
+         version="1.0">
+         <xs:include schemaLocation="./xsd/site.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/metaData.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/operation.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/orderBy.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/orderEnum.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/paging.xsd"></xs:include>
+         <xs:element
+            name="Paging"
+            type="tns:paging" />
+         <xs:element
+            name="Permission"
+            type="tns:permission" />
+         <xs:element
+            name="Rule"
+            type="tns:rule" />
+         <xs:element
+            name="Site"
+            type="tns:site" />
+         <xs:element
+            name="countSite"
+            type="tns:countSite" />
+         <xs:element
+            name="countSiteResponse"
+            type="tns:countSiteResponse" />
+         <xs:element
+            name="findSite"
+            type="tns:findSite" />
+         <xs:element
+            name="findSiteById"
+            type="tns:findSiteById" />
+         <xs:element
+            name="findSiteByIdResponse"
+            type="tns:findSiteByIdResponse" />
+         <xs:element
+            name="findSiteResponse"
+            type="tns:findSiteResponse" />
+         <xs:element
+            name="mergeSite"
+            type="tns:mergeSite" />
+         <xs:element
+            name="mergeSiteResponse"
+            type="tns:mergeSiteResponse" />
+         <xs:element
+            name="metaData"
+            type="tns:metaData" />
+         <xs:element
+            name="persistSite"
+            type="tns:persistSite" />
+         <xs:element
+            name="persistSiteResponse"
+            type="tns:persistSiteResponse" />
+         <xs:element
+            name="refreshSite"
+            type="tns:refreshSite" />
+         <xs:element
+            name="refreshSiteResponse"
+            type="tns:refreshSiteResponse" />
+         <xs:element
+            name="removeSite"
+            type="tns:removeSite" />
+         <xs:element
+            name="removeSiteResponse"
+            type="tns:removeSiteResponse" />
+         <xs:complexType name="removeSite">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="site"
+                  type="tns:site" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="removeSiteResponse">
+            <xs:sequence />
+         </xs:complexType>
+         <xs:complexType name="findSiteById">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="site"
+                  type="tns:site" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="findSiteByIdResponse">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="return"
+                  type="tns:site" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="findSite">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="site"
+                  type="tns:site" />
+               <xs:element
+                  minOccurs="0"
+                  name="paging"
+                  type="tns:paging" />
+               <xs:element
+                  minOccurs="0"
+                  name="orderBy"
+                  type="tns:orderBy" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="findSiteResponse">
+            <xs:sequence>
+               <xs:element
+                  maxOccurs="unbounded"
+                  minOccurs="0"
+                  name="return"
+                  type="tns:site" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="persistSite">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="site"
+                  type="tns:site" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="persistSiteResponse">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="return"
+                  type="tns:site" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="mergeSite">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="site"
+                  type="tns:site" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="mergeSiteResponse">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="return"
+                  type="tns:site" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="countSite">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="site"
+                  type="tns:site" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="countSiteResponse">
+            <xs:sequence>
+               <xs:element
+                  name="return"
+                  type="xs:long" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="refreshSite">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="site"
+                  type="tns:site" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="refreshSiteResponse">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="return"
+                  type="tns:site" />
+            </xs:sequence>
+         </xs:complexType>
+      </xs:schema>
+   </wsdl:types>
+   <wsdl:message name="removeSite">
+      <wsdl:part
+         element="tns:removeSite"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="findSiteByIdResponse">
+      <wsdl:part
+         element="tns:findSiteByIdResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="countSiteResponse">
+      <wsdl:part
+         element="tns:countSiteResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="findSiteResponse">
+      <wsdl:part
+         element="tns:findSiteResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="persistSiteResponse">
+      <wsdl:part
+         element="tns:persistSiteResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="refreshSiteResponse">
+      <wsdl:part
+         element="tns:refreshSiteResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="mergeSiteResponse">
+      <wsdl:part
+         element="tns:mergeSiteResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="findSiteById">
+      <wsdl:part
+         element="tns:findSiteById"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="findSite">
+      <wsdl:part
+         element="tns:findSite"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="persistSite">
+      <wsdl:part
+         element="tns:persistSite"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="mergeSite">
+      <wsdl:part
+         element="tns:mergeSite"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="countSite">
+      <wsdl:part
+         element="tns:countSite"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="removeSiteResponse">
+      <wsdl:part
+         element="tns:removeSiteResponse"
+         name="result">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="refreshSite">
+      <wsdl:part
+         element="tns:refreshSite"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:portType name="SiteWebServiceImpl">
+      <wsdl:operation name="removeSite">
+         <wsdl:input
+            message="tns:removeSite"
+            name="removeSite">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:removeSiteResponse"
+            name="removeSiteResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="findSiteById">
+         <wsdl:input
+            message="tns:findSiteById"
+            name="findSiteById">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:findSiteByIdResponse"
+            name="findSiteByIdResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="findSite">
+         <wsdl:input
+            message="tns:findSite"
+            name="findSite">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:findSiteResponse"
+            name="findSiteResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="persistSite">
+         <wsdl:input
+            message="tns:persistSite"
+            name="persistSite">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:persistSiteResponse"
+            name="persistSiteResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="mergeSite">
+         <wsdl:input
+            message="tns:mergeSite"
+            name="mergeSite">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:mergeSiteResponse"
+            name="mergeSiteResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="countSite">
+         <wsdl:input
+            message="tns:countSite"
+            name="countSite">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:countSiteResponse"
+            name="countSiteResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="refreshSite">
+         <wsdl:input
+            message="tns:refreshSite"
+            name="refreshSite">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:refreshSiteResponse"
+            name="refreshSiteResponse">
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:portType>
+   <wsdl:binding
+      name="SiteWebServiceImplServiceSoapBinding"
+      type="tns:SiteWebServiceImpl">
+      <soap:binding
+         style="document"
+         transport="http://schemas.xmlsoap.org/soap/http" />
+      <wsdl:operation name="removeSite">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="removeSite">
+            <soap:header
+               message="tns:removeSite"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="removeSiteResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="findSiteById">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="findSiteById">
+            <soap:header
+               message="tns:findSiteById"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="findSiteByIdResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="findSite">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="findSite">
+            <soap:header
+               message="tns:findSite"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="findSiteResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="persistSite">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="persistSite">
+            <soap:header
+               message="tns:persistSite"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="persistSiteResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="mergeSite">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="mergeSite">
+            <soap:header
+               message="tns:mergeSite"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="mergeSiteResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="countSite">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="countSite">
+            <soap:header
+               message="tns:countSite"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="countSiteResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="refreshSite">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="refreshSite">
+            <soap:header
+               message="tns:refreshSite"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="refreshSiteResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:service name="SiteWebServiceImplService">
+      <wsdl:port
+         binding="tns:SiteWebServiceImplServiceSoapBinding"
+         name="SiteWebServiceImplPort">
+         <soap:address
+            location="http://localhost:8080/gnuob-soap/SiteWebServiceImpl" />
+      </wsdl:port>
+   </wsdl:service>
 </wsdl:definitions>

@@ -1,499 +1,525 @@
-<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://gnuob.netbrasoft.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="CustomerWebServiceImplService" targetNamespace="http://gnuob.netbrasoft.com/">
-  <wsdl:types>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://gnuob.netbrasoft.com/" elementFormDefault="unqualified" targetNamespace="http://gnuob.netbrasoft.com/" version="1.0">
-
-  <xs:element name="Address" type="tns:address"/>
-
-  <xs:element name="Customer" type="tns:customer"/>
-
-  <xs:element name="Paging" type="tns:paging"/>
-
-  <xs:element name="Permission" type="tns:permission"/>
-
-  <xs:element name="Rule" type="tns:rule"/>
-
-  <xs:element name="countCustomer" type="tns:countCustomer"/>
-
-  <xs:element name="countCustomerResponse" type="tns:countCustomerResponse"/>
-
-  <xs:element name="findCustomer" type="tns:findCustomer"/>
-
-  <xs:element name="findCustomerById" type="tns:findCustomerById"/>
-
-  <xs:element name="findCustomerByIdResponse" type="tns:findCustomerByIdResponse"/>
-
-  <xs:element name="findCustomerResponse" type="tns:findCustomerResponse"/>
-
-  <xs:element name="mergeCustomer" type="tns:mergeCustomer"/>
-
-  <xs:element name="mergeCustomerResponse" type="tns:mergeCustomerResponse"/>
-
-  <xs:element name="metaData" type="tns:metaData"/>
-
-  <xs:element name="persistCustomer" type="tns:persistCustomer"/>
-
-  <xs:element name="persistCustomerResponse" type="tns:persistCustomerResponse"/>
-
-  <xs:element name="refreshCustomer" type="tns:refreshCustomer"/>
-
-  <xs:element name="refreshCustomerResponse" type="tns:refreshCustomerResponse"/>
-
-  <xs:element name="removeCustomer" type="tns:removeCustomer"/>
-
-  <xs:element name="removeCustomerResponse" type="tns:removeCustomerResponse"/>
-
-  <xs:complexType name="countCustomer">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="customer" type="tns:customer"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="customer">
-    <xs:complexContent>
-      <xs:extension base="tns:abstractAccess">
-        <xs:sequence>
-          <xs:element name="address" type="tns:address"/>
-          <xs:element name="buyerEmail" type="xs:string"/>
-          <xs:element minOccurs="0" name="buyerMarketingEmail" type="xs:string"/>
-          <xs:element minOccurs="0" name="contactPhone" type="xs:string"/>
-          <xs:element minOccurs="0" name="dateOfBirth" type="xs:dateTime"/>
-          <xs:element name="firstName" type="xs:string"/>
-          <xs:element minOccurs="0" name="friendlyName" type="xs:string"/>
-          <xs:element name="lastName" type="xs:string"/>
-          <xs:element minOccurs="0" name="middleName" type="xs:string"/>
-          <xs:element minOccurs="0" name="payer" type="xs:string"/>
-          <xs:element minOccurs="0" name="payerBusiness" type="xs:string"/>
-          <xs:element minOccurs="0" name="payerId" type="xs:string"/>
-          <xs:element minOccurs="0" name="payerStatus" type="xs:string"/>
-          <xs:element minOccurs="0" name="salutation" type="xs:string"/>
-          <xs:element minOccurs="0" name="suffix" type="xs:string"/>
-          <xs:element minOccurs="0" name="taxId" type="xs:string"/>
-          <xs:element minOccurs="0" name="taxIdType" type="xs:string"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType abstract="true" name="abstractAccess">
-    <xs:complexContent>
-      <xs:extension base="tns:abstractType">
-        <xs:sequence>
-          <xs:element name="active" type="xs:boolean"/>
-          <xs:element minOccurs="0" name="permission" type="tns:permission"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType abstract="true" name="abstractType">
-    <xs:sequence/>
-    <xs:attribute name="id" type="xs:long" use="required"/>
-    <xs:attribute name="version" type="xs:int" use="required"/>
-  </xs:complexType>
-
-  <xs:complexType name="address">
-    <xs:complexContent>
-      <xs:extension base="tns:abstractType">
-        <xs:sequence>
-          <xs:element name="cityName" type="xs:string"/>
-          <xs:element minOccurs="0" name="complement" type="xs:string"/>
-          <xs:element name="country" type="xs:string"/>
-          <xs:element minOccurs="0" name="countryName" type="xs:string"/>
-          <xs:element minOccurs="0" name="district" type="xs:string"/>
-          <xs:element minOccurs="0" name="internationalStateAndCity" type="xs:string"/>
-          <xs:element minOccurs="0" name="internationalStreet" type="xs:string"/>
-          <xs:element minOccurs="0" name="number" type="xs:string"/>
-          <xs:element minOccurs="0" name="phone" type="xs:string"/>
-          <xs:element name="postalCode" type="xs:string"/>
-          <xs:element name="stateOrProvince" type="xs:string"/>
-          <xs:element name="street1" type="xs:string"/>
-          <xs:element minOccurs="0" name="street2" type="xs:string"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="permission">
-    <xs:complexContent>
-      <xs:extension base="tns:abstractType">
-        <xs:sequence>
-          <xs:element name="group" type="tns:rule"/>
-          <xs:element name="others" type="tns:rule"/>
-          <xs:element name="owner" type="tns:rule"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="metaData">
-    <xs:sequence>
-      <xs:element name="site" type="xs:string"/>
-      <xs:element name="user" type="xs:string"/>
-      <xs:element name="password" type="xs:string"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="countCustomerResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:long"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="mergeCustomer">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="customer" type="tns:customer"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="mergeCustomerResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:customer"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="removeCustomer">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="customer" type="tns:customer"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="removeCustomerResponse">
-    <xs:sequence/>
-  </xs:complexType>
-
-  <xs:complexType name="findCustomerById">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="customer" type="tns:customer"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="findCustomerByIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:customer"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="findCustomer">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="customer" type="tns:customer"/>
-      <xs:element minOccurs="0" name="paging" type="tns:paging"/>
-      <xs:element minOccurs="0" name="orderBy" type="tns:orderBy"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="paging">
-    <xs:sequence>
-      <xs:element name="first" type="xs:int"/>
-      <xs:element name="max" type="xs:int"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="findCustomerResponse">
-    <xs:sequence>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:customer"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="persistCustomer">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="customer" type="tns:customer"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="persistCustomerResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:customer"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="refreshCustomer">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="customer" type="tns:customer"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="refreshCustomerResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:customer"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:simpleType name="rule">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="CREATE_ACCESS"/>
-      <xs:enumeration value="DELETE_ACCESS"/>
-      <xs:enumeration value="NONE_ACCESS"/>
-      <xs:enumeration value="READ_ACCESS"/>
-      <xs:enumeration value="UPDATE_ACCESS"/>
-    </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="operation">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="CREATE"/>
-      <xs:enumeration value="DELETE"/>
-      <xs:enumeration value="NONE"/>
-      <xs:enumeration value="READ"/>
-      <xs:enumeration value="UPDATE"/>
-    </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="orderBy">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="RECOMMENDED"/>
-      <xs:enumeration value="HIGHEST_DISCOUNT"/>
-      <xs:enumeration value="LOWEST_DISCOUNT"/>
-      <xs:enumeration value="HIGHEST_PRICE"/>
-      <xs:enumeration value="LOWEST_PRICE"/>
-      <xs:enumeration value="HIGHEST_RATING"/>
-      <xs:enumeration value="LOWEST_RATING"/>
-      <xs:enumeration value="BESTSELLERS"/>
-      <xs:enumeration value="LATEST_COLLECTION"/>
-      <xs:enumeration value="NAME_A_Z"/>
-      <xs:enumeration value="NAME_Z_A"/>
-      <xs:enumeration value="DESCRIPTION_A_Z"/>
-      <xs:enumeration value="DESCRIPTION_Z_A"/>
-      <xs:enumeration value="PROPERTY_A_Z"/>
-      <xs:enumeration value="PROPERTY_Z_A"/>
-      <xs:enumeration value="PLACE_NAME_A_Z"/>
-      <xs:enumeration value="PLACE_NAME_Z_A"/>
-      <xs:enumeration value="COUNTRY_CODE_A_Z"/>
-      <xs:enumeration value="COUNTRY_CODE_Z_A"/>
-      <xs:enumeration value="POSTAL_CODE_A_Z"/>
-      <xs:enumeration value="POSTAL_CODE_Z_A"/>
-      <xs:enumeration value="STATE_NAME_A_Z"/>
-      <xs:enumeration value="STATE_NAME_Z_A"/>
-      <xs:enumeration value="VALUE_A_Z"/>
-      <xs:enumeration value="VALUE_Z_A"/>
-      <xs:enumeration value="POSITION_A_Z"/>
-      <xs:enumeration value="POSITION_Z_A"/>
-      <xs:enumeration value="NONE"/>
-      <xs:enumeration value="FIRST_NAME_A_Z"/>
-      <xs:enumeration value="FIRST_NAME_Z_A"/>
-      <xs:enumeration value="LAST_NAME_A_Z"/>
-      <xs:enumeration value="LAST_NAME_Z_A"/>
-      <xs:enumeration value="CONTRACT_ID_A_Z"/>
-      <xs:enumeration value="CONTRACT_ID_Z_A"/>
-      <xs:enumeration value="ORDER_ID_A_Z"/>
-      <xs:enumeration value="ORDER_ID_Z_A"/>
-      <xs:enumeration value="OFFER_ID_A_Z"/>
-      <xs:enumeration value="OFFER_ID_Z_A"/>
-      <xs:enumeration value="NUMBER_A_Z"/>
-      <xs:enumeration value="NUMBER_Z_A"/>
-      <xs:enumeration value="CREATION_A_Z"/>
-      <xs:enumeration value="CREATION_Z_A"/>
-      <xs:enumeration value="MODIFICATION_A_Z"/>
-      <xs:enumeration value="MODIFICATION_Z_A"/>
-    </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="orderEnum">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="DESC"/>
-      <xs:enumeration value="ASC"/>
-      <xs:enumeration value="NONE"/>
-    </xs:restriction>
-  </xs:simpleType>
-
-</xs:schema>
-  </wsdl:types>
-  <wsdl:message name="removeCustomerResponse">
-    <wsdl:part element="tns:removeCustomerResponse" name="result">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="countCustomerResponse">
-    <wsdl:part element="tns:countCustomerResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="persistCustomerResponse">
-    <wsdl:part element="tns:persistCustomerResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="removeCustomer">
-    <wsdl:part element="tns:removeCustomer" name="parameters">
-    </wsdl:part>
-    <wsdl:part element="tns:metaData" name="metaData">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="persistCustomer">
-    <wsdl:part element="tns:persistCustomer" name="parameters">
-    </wsdl:part>
-    <wsdl:part element="tns:metaData" name="metaData">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="refreshCustomer">
-    <wsdl:part element="tns:refreshCustomer" name="parameters">
-    </wsdl:part>
-    <wsdl:part element="tns:metaData" name="metaData">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="findCustomerResponse">
-    <wsdl:part element="tns:findCustomerResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="findCustomerByIdResponse">
-    <wsdl:part element="tns:findCustomerByIdResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="refreshCustomerResponse">
-    <wsdl:part element="tns:refreshCustomerResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="mergeCustomerResponse">
-    <wsdl:part element="tns:mergeCustomerResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="countCustomer">
-    <wsdl:part element="tns:countCustomer" name="parameters">
-    </wsdl:part>
-    <wsdl:part element="tns:metaData" name="metaData">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="mergeCustomer">
-    <wsdl:part element="tns:mergeCustomer" name="parameters">
-    </wsdl:part>
-    <wsdl:part element="tns:metaData" name="metaData">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="findCustomerById">
-    <wsdl:part element="tns:findCustomerById" name="parameters">
-    </wsdl:part>
-    <wsdl:part element="tns:metaData" name="metaData">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="findCustomer">
-    <wsdl:part element="tns:findCustomer" name="parameters">
-    </wsdl:part>
-    <wsdl:part element="tns:metaData" name="metaData">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:portType name="CustomerWebServiceImpl">
-    <wsdl:operation name="countCustomer">
-      <wsdl:input message="tns:countCustomer" name="countCustomer">
-    </wsdl:input>
-      <wsdl:output message="tns:countCustomerResponse" name="countCustomerResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="mergeCustomer">
-      <wsdl:input message="tns:mergeCustomer" name="mergeCustomer">
-    </wsdl:input>
-      <wsdl:output message="tns:mergeCustomerResponse" name="mergeCustomerResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="removeCustomer">
-      <wsdl:input message="tns:removeCustomer" name="removeCustomer">
-    </wsdl:input>
-      <wsdl:output message="tns:removeCustomerResponse" name="removeCustomerResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="findCustomerById">
-      <wsdl:input message="tns:findCustomerById" name="findCustomerById">
-    </wsdl:input>
-      <wsdl:output message="tns:findCustomerByIdResponse" name="findCustomerByIdResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="findCustomer">
-      <wsdl:input message="tns:findCustomer" name="findCustomer">
-    </wsdl:input>
-      <wsdl:output message="tns:findCustomerResponse" name="findCustomerResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="persistCustomer">
-      <wsdl:input message="tns:persistCustomer" name="persistCustomer">
-    </wsdl:input>
-      <wsdl:output message="tns:persistCustomerResponse" name="persistCustomerResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="refreshCustomer">
-      <wsdl:input message="tns:refreshCustomer" name="refreshCustomer">
-    </wsdl:input>
-      <wsdl:output message="tns:refreshCustomerResponse" name="refreshCustomerResponse">
-    </wsdl:output>
-    </wsdl:operation>
-  </wsdl:portType>
-  <wsdl:binding name="CustomerWebServiceImplServiceSoapBinding" type="tns:CustomerWebServiceImpl">
-    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-    <wsdl:operation name="countCustomer">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="countCustomer">
-        <soap:header message="tns:countCustomer" part="metaData" use="literal">
-        </soap:header>
-        <soap:body parts="parameters" use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="countCustomerResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="mergeCustomer">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="mergeCustomer">
-        <soap:header message="tns:mergeCustomer" part="metaData" use="literal">
-        </soap:header>
-        <soap:body parts="parameters" use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="mergeCustomerResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="removeCustomer">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="removeCustomer">
-        <soap:header message="tns:removeCustomer" part="metaData" use="literal">
-        </soap:header>
-        <soap:body parts="parameters" use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="removeCustomerResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="findCustomerById">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="findCustomerById">
-        <soap:header message="tns:findCustomerById" part="metaData" use="literal">
-        </soap:header>
-        <soap:body parts="parameters" use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="findCustomerByIdResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="findCustomer">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="findCustomer">
-        <soap:header message="tns:findCustomer" part="metaData" use="literal">
-        </soap:header>
-        <soap:body parts="parameters" use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="findCustomerResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="persistCustomer">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="persistCustomer">
-        <soap:header message="tns:persistCustomer" part="metaData" use="literal">
-        </soap:header>
-        <soap:body parts="parameters" use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="persistCustomerResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="refreshCustomer">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="refreshCustomer">
-        <soap:header message="tns:refreshCustomer" part="metaData" use="literal">
-        </soap:header>
-        <soap:body parts="parameters" use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="refreshCustomerResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:service name="CustomerWebServiceImplService">
-    <wsdl:port binding="tns:CustomerWebServiceImplServiceSoapBinding" name="CustomerWebServiceImplPort">
-      <soap:address location="http://localhost:8080/gnuob-soap/CustomerWebServiceImpl"/>
-    </wsdl:port>
-  </wsdl:service>
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:tns="http://gnuob.netbrasoft.com/"
+   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+   xmlns:ns1="http://schemas.xmlsoap.org/soap/http"
+   name="CustomerWebServiceImplService"
+   targetNamespace="http://gnuob.netbrasoft.com/">
+   <wsdl:types>
+      <xs:schema
+         xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         xmlns:tns="http://gnuob.netbrasoft.com/"
+         elementFormDefault="unqualified"
+         targetNamespace="http://gnuob.netbrasoft.com/"
+         version="1.0">
+         <xs:include schemaLocation="./xsd/customer.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/metaData.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/operation.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/orderBy.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/orderEnum.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/paging.xsd"></xs:include>
+         <xs:element
+            name="Address"
+            type="tns:address" />
+         <xs:element
+            name="Customer"
+            type="tns:customer" />
+         <xs:element
+            name="Paging"
+            type="tns:paging" />
+         <xs:element
+            name="Permission"
+            type="tns:permission" />
+         <xs:element
+            name="Rule"
+            type="tns:rule" />
+         <xs:element
+            name="countCustomer"
+            type="tns:countCustomer" />
+         <xs:element
+            name="countCustomerResponse"
+            type="tns:countCustomerResponse" />
+         <xs:element
+            name="findCustomer"
+            type="tns:findCustomer" />
+         <xs:element
+            name="findCustomerById"
+            type="tns:findCustomerById" />
+         <xs:element
+            name="findCustomerByIdResponse"
+            type="tns:findCustomerByIdResponse" />
+         <xs:element
+            name="findCustomerResponse"
+            type="tns:findCustomerResponse" />
+         <xs:element
+            name="mergeCustomer"
+            type="tns:mergeCustomer" />
+         <xs:element
+            name="mergeCustomerResponse"
+            type="tns:mergeCustomerResponse" />
+         <xs:element
+            name="metaData"
+            type="tns:metaData" />
+         <xs:element
+            name="persistCustomer"
+            type="tns:persistCustomer" />
+         <xs:element
+            name="persistCustomerResponse"
+            type="tns:persistCustomerResponse" />
+         <xs:element
+            name="refreshCustomer"
+            type="tns:refreshCustomer" />
+         <xs:element
+            name="refreshCustomerResponse"
+            type="tns:refreshCustomerResponse" />
+         <xs:element
+            name="removeCustomer"
+            type="tns:removeCustomer" />
+         <xs:element
+            name="removeCustomerResponse"
+            type="tns:removeCustomerResponse" />
+         <xs:complexType name="countCustomer">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="customer"
+                  type="tns:customer" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="countCustomerResponse">
+            <xs:sequence>
+               <xs:element
+                  name="return"
+                  type="xs:long" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="mergeCustomer">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="customer"
+                  type="tns:customer" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="mergeCustomerResponse">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="return"
+                  type="tns:customer" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="removeCustomer">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="customer"
+                  type="tns:customer" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="removeCustomerResponse">
+            <xs:sequence />
+         </xs:complexType>
+         <xs:complexType name="findCustomerById">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="customer"
+                  type="tns:customer" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="findCustomerByIdResponse">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="return"
+                  type="tns:customer" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="findCustomer">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="customer"
+                  type="tns:customer" />
+               <xs:element
+                  minOccurs="0"
+                  name="paging"
+                  type="tns:paging" />
+               <xs:element
+                  minOccurs="0"
+                  name="orderBy"
+                  type="tns:orderBy" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="findCustomerResponse">
+            <xs:sequence>
+               <xs:element
+                  maxOccurs="unbounded"
+                  minOccurs="0"
+                  name="return"
+                  type="tns:customer" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="persistCustomer">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="customer"
+                  type="tns:customer" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="persistCustomerResponse">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="return"
+                  type="tns:customer" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="refreshCustomer">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="customer"
+                  type="tns:customer" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="refreshCustomerResponse">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="return"
+                  type="tns:customer" />
+            </xs:sequence>
+         </xs:complexType>
+      </xs:schema>
+   </wsdl:types>
+   <wsdl:message name="removeCustomerResponse">
+      <wsdl:part
+         element="tns:removeCustomerResponse"
+         name="result">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="countCustomerResponse">
+      <wsdl:part
+         element="tns:countCustomerResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="persistCustomerResponse">
+      <wsdl:part
+         element="tns:persistCustomerResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="removeCustomer">
+      <wsdl:part
+         element="tns:removeCustomer"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="persistCustomer">
+      <wsdl:part
+         element="tns:persistCustomer"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="refreshCustomer">
+      <wsdl:part
+         element="tns:refreshCustomer"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="findCustomerResponse">
+      <wsdl:part
+         element="tns:findCustomerResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="findCustomerByIdResponse">
+      <wsdl:part
+         element="tns:findCustomerByIdResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="refreshCustomerResponse">
+      <wsdl:part
+         element="tns:refreshCustomerResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="mergeCustomerResponse">
+      <wsdl:part
+         element="tns:mergeCustomerResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="countCustomer">
+      <wsdl:part
+         element="tns:countCustomer"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="mergeCustomer">
+      <wsdl:part
+         element="tns:mergeCustomer"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="findCustomerById">
+      <wsdl:part
+         element="tns:findCustomerById"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="findCustomer">
+      <wsdl:part
+         element="tns:findCustomer"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:portType name="CustomerWebServiceImpl">
+      <wsdl:operation name="countCustomer">
+         <wsdl:input
+            message="tns:countCustomer"
+            name="countCustomer">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:countCustomerResponse"
+            name="countCustomerResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="mergeCustomer">
+         <wsdl:input
+            message="tns:mergeCustomer"
+            name="mergeCustomer">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:mergeCustomerResponse"
+            name="mergeCustomerResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="removeCustomer">
+         <wsdl:input
+            message="tns:removeCustomer"
+            name="removeCustomer">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:removeCustomerResponse"
+            name="removeCustomerResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="findCustomerById">
+         <wsdl:input
+            message="tns:findCustomerById"
+            name="findCustomerById">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:findCustomerByIdResponse"
+            name="findCustomerByIdResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="findCustomer">
+         <wsdl:input
+            message="tns:findCustomer"
+            name="findCustomer">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:findCustomerResponse"
+            name="findCustomerResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="persistCustomer">
+         <wsdl:input
+            message="tns:persistCustomer"
+            name="persistCustomer">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:persistCustomerResponse"
+            name="persistCustomerResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="refreshCustomer">
+         <wsdl:input
+            message="tns:refreshCustomer"
+            name="refreshCustomer">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:refreshCustomerResponse"
+            name="refreshCustomerResponse">
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:portType>
+   <wsdl:binding
+      name="CustomerWebServiceImplServiceSoapBinding"
+      type="tns:CustomerWebServiceImpl">
+      <soap:binding
+         style="document"
+         transport="http://schemas.xmlsoap.org/soap/http" />
+      <wsdl:operation name="countCustomer">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="countCustomer">
+            <soap:header
+               message="tns:countCustomer"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="countCustomerResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="mergeCustomer">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="mergeCustomer">
+            <soap:header
+               message="tns:mergeCustomer"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="mergeCustomerResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="removeCustomer">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="removeCustomer">
+            <soap:header
+               message="tns:removeCustomer"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="removeCustomerResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="findCustomerById">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="findCustomerById">
+            <soap:header
+               message="tns:findCustomerById"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="findCustomerByIdResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="findCustomer">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="findCustomer">
+            <soap:header
+               message="tns:findCustomer"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="findCustomerResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="persistCustomer">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="persistCustomer">
+            <soap:header
+               message="tns:persistCustomer"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="persistCustomerResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="refreshCustomer">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="refreshCustomer">
+            <soap:header
+               message="tns:refreshCustomer"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="refreshCustomerResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:service name="CustomerWebServiceImplService">
+      <wsdl:port
+         binding="tns:CustomerWebServiceImplServiceSoapBinding"
+         name="CustomerWebServiceImplPort">
+         <soap:address
+            location="http://localhost:8080/gnuob-soap/CustomerWebServiceImpl" />
+      </wsdl:port>
+   </wsdl:service>
 </wsdl:definitions>

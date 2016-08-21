@@ -4,9 +4,9 @@
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
    <modelVersion>4.0.0</modelVersion>
-   <groupId>com.netbrasoft</groupId>
+   <groupId>br.com.netbrasoft</groupId>
    <artifactId>gnuob-api</artifactId>
-   <version>0.0.8-SNAPSHOT</version>
+   <version>0.0.9-SNAPSHOT</version>
    <packaging>jar</packaging>
    <name>GNU Open Business Platform Application Programming Interface</name>
    <description>GNU Open Business Platform is a open source business framework</description>
@@ -22,7 +22,7 @@
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       <version.jar.plugin>2.5</version.jar.plugin>
       <version.springframework.plugin>4.1.7.RELEASE</version.springframework.plugin>
-      <version.wicket.plugin>7.2.0</version.wicket.plugin>
+      <version.wicket.plugin>7.4.0</version.wicket.plugin>
       <version.surefire.plugin>2.17</version.surefire.plugin>
       <version.javasimon>4.1.1</version.javasimon>
       <version.PBKDF2>1.1.1</version.PBKDF2>
@@ -30,9 +30,15 @@
       <version.mockito-all>1.10.19</version.mockito-all>
       <version.graphene-webdriver>2.0.3.Final</version.graphene-webdriver>
       <version.wildfly.plugin>10.0.0.Final</version.wildfly.plugin>
+      <version.arquillian>1.1.10.Final</version.arquillian>
       <version.commons-lang3>3.2.1</version.commons-lang3>
       <version.org.apache.cxf>3.1.4</version.org.apache.cxf>
       <version.krasa-jaxb-tools>1.4</version.krasa-jaxb-tools>
+      <version.org.dbunit>2.5.1</version.org.dbunit>
+      <version.arquillian-service-integration-spring-inject>1.1.0.Alpha1</version.arquillian-service-integration-spring-inject>
+      <version.arquillian-persistence-integration-tests>1.0.0.Alpha7</version.arquillian-persistence-integration-tests>
+      <version.wildfly-arquillian-container-remote>8.2.1.Final</version.wildfly-arquillian-container-remote>
+      <version.arquillian-persistence-dbunit>1.0.0.Alpha7</version.arquillian-persistence-dbunit>
       <maven.compiler.target>1.8</maven.compiler.target>
       <maven.compiler.source>1.8</maven.compiler.source>
    </properties>
@@ -45,19 +51,32 @@
             <type>pom</type>
             <scope>import</scope>
          </dependency>
+         <dependency>
+            <groupId>org.jboss.arquillian</groupId>
+            <artifactId>arquillian-bom</artifactId>
+            <version>${version.arquillian}</version>
+            <type>pom</type>
+            <scope>import</scope>
+         </dependency>
       </dependencies>
    </dependencyManagement>
    <dependencies>
-      <!-- JBOSS Etc. -->
-      <dependency>
-         <groupId>org.jboss.arquillian.graphene</groupId>
-         <artifactId>graphene-webdriver</artifactId>
-         <type>pom</type>
-         <scope>test</scope>
-      </dependency>
+      <!-- TESTING -->
       <dependency>
          <groupId>junit</groupId>
          <artifactId>junit</artifactId>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.dbunit</groupId>
+         <artifactId>dbunit</artifactId>
+         <version>${version.org.dbunit}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.mockito</groupId>
+         <artifactId>mockito-all</artifactId>
+         <version>${version.mockito-all}</version>
          <scope>test</scope>
       </dependency>
       <dependency>
@@ -66,15 +85,56 @@
          <scope>test</scope>
       </dependency>
       <dependency>
-         <groupId>org.jboss.arquillian.extension</groupId>
-         <artifactId>arquillian-warp-spring</artifactId>
-         <version>1.1.0.Alpha1</version>
+         <groupId>org.jboss.arquillian.graphene</groupId>
+         <artifactId>graphene-webdriver</artifactId>
+         <type>pom</type>
          <scope>test</scope>
       </dependency>
       <dependency>
-         <groupId>org.mockito</groupId>
-         <artifactId>mockito-all</artifactId>
-         <version>${version.mockito-all}</version>
+         <groupId>org.jboss.arquillian.extension</groupId>
+         <artifactId>arquillian-service-integration-spring-inject</artifactId>
+         <version>${version.arquillian-service-integration-spring-inject}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.jboss.arquillian.extension</groupId>
+         <artifactId>arquillian-persistence-integration-tests</artifactId>
+         <version>${version.arquillian-persistence-integration-tests}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.jboss.arquillian.extension</groupId>
+         <artifactId>arquillian-persistence-dbunit</artifactId>
+         <version>${version.arquillian-persistence-dbunit}</version>
+         <scope>test</scope>
+      </dependency>
+      <!-- NEEDED FOR ARQUILLIAN TESTS -->
+      <dependency>
+         <groupId>com.google.guava</groupId>
+         <artifactId>guava</artifactId>
+         <version>18.0</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.seleniumhq.selenium</groupId>
+         <artifactId>selenium-api</artifactId>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.seleniumhq.selenium</groupId>
+         <artifactId>selenium-support</artifactId>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>com.sun.net.httpserver</groupId>
+         <artifactId>http</artifactId>
+         <version>20070405</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.apache.httpcomponents</groupId>
+         <artifactId>httpclient</artifactId>
+         <version>4.3.2</version>
          <scope>test</scope>
       </dependency>
       <!-- SPRING -->
@@ -140,7 +200,8 @@
                   <manifestEntries>
                      <mode>development</mode>
                      <url>${project.url}</url>
-                     <dependencies>org.apache.cxf services,org.apache.cxf.impl</dependencies>
+                     <dependencies>org.apache.cxf
+                        services,org.apache.cxf.impl</dependencies>
                   </manifestEntries>
                   <manifest>
                      <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
@@ -170,7 +231,7 @@
                            <wsdl>${basedir}/src/main/resources/wsdl/CategoryWebServiceImpl.wsdl</wsdl>
                            <extraargs>
                               <extraarg>-p</extraarg>
-                              <extraarg>com.netbrasoft.gnuob.api</extraarg>
+                              <extraarg>br.com.netbrasoft.gnuob.api</extraarg>
                               <extraarg>-xjc-XJsr303Annotations</extraarg>
                            </extraargs>
                         </wsdlOption>
@@ -178,7 +239,7 @@
                            <wsdl>${basedir}/src/main/resources/wsdl/ContentWebServiceImpl.wsdl</wsdl>
                            <extraargs>
                               <extraarg>-p</extraarg>
-                              <extraarg>com.netbrasoft.gnuob.api</extraarg>
+                              <extraarg>br.com.netbrasoft.gnuob.api</extraarg>
                               <extraarg>-xjc-XJsr303Annotations</extraarg>
                            </extraargs>
                         </wsdlOption>
@@ -186,7 +247,7 @@
                            <wsdl>${basedir}/src/main/resources/wsdl/ContractWebServiceImpl.wsdl</wsdl>
                            <extraargs>
                               <extraarg>-p</extraarg>
-                              <extraarg>com.netbrasoft.gnuob.api</extraarg>
+                              <extraarg>br.com.netbrasoft.gnuob.api</extraarg>
                               <extraarg>-xjc-XJsr303Annotations</extraarg>
                            </extraargs>
                         </wsdlOption>
@@ -194,7 +255,7 @@
                            <wsdl>${basedir}/src/main/resources/wsdl/CustomerWebServiceImpl.wsdl</wsdl>
                            <extraargs>
                               <extraarg>-p</extraarg>
-                              <extraarg>com.netbrasoft.gnuob.api</extraarg>
+                              <extraarg>br.com.netbrasoft.gnuob.api</extraarg>
                               <extraarg>-xjc-XJsr303Annotations</extraarg>
                            </extraargs>
                         </wsdlOption>
@@ -202,7 +263,7 @@
                            <wsdl>${basedir}/src/main/resources/wsdl/GroupWebServiceImpl.wsdl</wsdl>
                            <extraargs>
                               <extraarg>-p</extraarg>
-                              <extraarg>com.netbrasoft.gnuob.api</extraarg>
+                              <extraarg>br.com.netbrasoft.gnuob.api</extraarg>
                               <extraarg>-xjc-XJsr303Annotations</extraarg>
                            </extraargs>
                         </wsdlOption>
@@ -210,7 +271,7 @@
                            <wsdl>${basedir}/src/main/resources/wsdl/OfferWebServiceImpl.wsdl</wsdl>
                            <extraargs>
                               <extraarg>-p</extraarg>
-                              <extraarg>com.netbrasoft.gnuob.api</extraarg>
+                              <extraarg>br.com.netbrasoft.gnuob.api</extraarg>
                               <extraarg>-xjc-XJsr303Annotations</extraarg>
                            </extraargs>
                         </wsdlOption>
@@ -218,7 +279,7 @@
                            <wsdl>${basedir}/src/main/resources/wsdl/OrderWebServiceImpl.wsdl</wsdl>
                            <extraargs>
                               <extraarg>-p</extraarg>
-                              <extraarg>com.netbrasoft.gnuob.api</extraarg>
+                              <extraarg>br.com.netbrasoft.gnuob.api</extraarg>
                               <extraarg>-xjc-XJsr303Annotations</extraarg>
                            </extraargs>
                         </wsdlOption>
@@ -226,7 +287,7 @@
                            <wsdl>${basedir}/src/main/resources/wsdl/PagseguroCheckOutWebServiceImpl.wsdl</wsdl>
                            <extraargs>
                               <extraarg>-p</extraarg>
-                              <extraarg>com.netbrasoft.gnuob.api</extraarg>
+                              <extraarg>br.com.netbrasoft.gnuob.api</extraarg>
                               <extraarg>-xjc-XJsr303Annotations</extraarg>
                            </extraargs>
                         </wsdlOption>
@@ -234,7 +295,7 @@
                            <wsdl>${basedir}/src/main/resources/wsdl/PayPalExpressCheckOutWebServiceImpl.wsdl</wsdl>
                            <extraargs>
                               <extraarg>-p</extraarg>
-                              <extraarg>com.netbrasoft.gnuob.api</extraarg>
+                              <extraarg>br.com.netbrasoft.gnuob.api</extraarg>
                               <extraarg>-xjc-XJsr303Annotations</extraarg>
                            </extraargs>
                         </wsdlOption>
@@ -242,7 +303,7 @@
                            <wsdl>${basedir}/src/main/resources/wsdl/PostalCodeWebServiceImpl.wsdl</wsdl>
                            <extraargs>
                               <extraarg>-p</extraarg>
-                              <extraarg>com.netbrasoft.gnuob.api</extraarg>
+                              <extraarg>br.com.netbrasoft.gnuob.api</extraarg>
                               <extraarg>-xjc-XJsr303Annotations</extraarg>
                            </extraargs>
                         </wsdlOption>
@@ -250,7 +311,7 @@
                            <wsdl>${basedir}/src/main/resources/wsdl/ProductWebServiceImpl.wsdl</wsdl>
                            <extraargs>
                               <extraarg>-p</extraarg>
-                              <extraarg>com.netbrasoft.gnuob.api</extraarg>
+                              <extraarg>br.com.netbrasoft.gnuob.api</extraarg>
                               <extraarg>-xjc-XJsr303Annotations</extraarg>
                            </extraargs>
                         </wsdlOption>
@@ -258,7 +319,7 @@
                            <wsdl>${basedir}/src/main/resources/wsdl/SettingWebServiceImpl.wsdl</wsdl>
                            <extraargs>
                               <extraarg>-p</extraarg>
-                              <extraarg>com.netbrasoft.gnuob.api</extraarg>
+                              <extraarg>br.com.netbrasoft.gnuob.api</extraarg>
                               <extraarg>-xjc-XJsr303Annotations</extraarg>
                            </extraargs>
                         </wsdlOption>
@@ -266,7 +327,7 @@
                            <wsdl>${basedir}/src/main/resources/wsdl/SiteWebServiceImpl.wsdl</wsdl>
                            <extraargs>
                               <extraarg>-p</extraarg>
-                              <extraarg>com.netbrasoft.gnuob.api</extraarg>
+                              <extraarg>br.com.netbrasoft.gnuob.api</extraarg>
                               <extraarg>-xjc-XJsr303Annotations</extraarg>
                            </extraargs>
                         </wsdlOption>
@@ -274,7 +335,7 @@
                            <wsdl>${basedir}/src/main/resources/wsdl/UserWebServiceImpl.wsdl</wsdl>
                            <extraargs>
                               <extraarg>-p</extraarg>
-                              <extraarg>com.netbrasoft.gnuob.api</extraarg>
+                              <extraarg>br.com.netbrasoft.gnuob.api</extraarg>
                               <extraarg>-xjc-XJsr303Annotations</extraarg>
                            </extraargs>
                         </wsdlOption>
@@ -297,9 +358,6 @@
    </build>
    <profiles>
       <profile>
-         <!-- The default profile skips all tests, though you can tune it to run just unit tests based on a custom pattern -->
-         <!-- Seperate profiles are provided for running all tests, including Arquillian tests that execute in the specified 
-            container -->
          <id>default</id>
          <activation>
             <activeByDefault>true</activeByDefault>
@@ -315,6 +373,17 @@
                </plugin>
             </plugins>
          </build>
+      </profile>
+      <profile>
+         <id>arq-jbossas-managed</id>
+         <dependencies>
+            <dependency>
+               <groupId>org.wildfly</groupId>
+               <artifactId>wildfly-arquillian-container-remote</artifactId>
+               <version>${version.wildfly-arquillian-container-remote}</version>
+               <scope>test</scope>
+            </dependency>
+         </dependencies>
       </profile>
    </profiles>
    <organization>
