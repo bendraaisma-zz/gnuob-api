@@ -46,4 +46,8 @@ public class XmlGregorianCalendarConverter implements IConverter<XMLGregorianCal
   public String convertToString(final XMLGregorianCalendar value, final Locale locale) {
     return new SimpleDateFormat("dd-MM-YYYY").format(value.toGregorianCalendar().getTime());
   }
+
+  public static XmlGregorianCalendarConverter getInstance() {
+    return new XmlGregorianCalendarConverter();
+  }
 }

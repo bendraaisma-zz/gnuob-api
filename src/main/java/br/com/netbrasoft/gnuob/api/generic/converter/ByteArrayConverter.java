@@ -14,6 +14,9 @@
 
 package br.com.netbrasoft.gnuob.api.generic.converter;
 
+import static java.util.Base64.getDecoder;
+import static java.util.Base64.getEncoder;
+
 import java.util.Locale;
 
 import org.apache.wicket.util.convert.IConverter;
@@ -24,11 +27,11 @@ public class ByteArrayConverter implements IConverter<byte[]> {
 
   @Override
   public byte[] convertToObject(final String value, final Locale locale) {
-    return value != null ? value.getBytes() : null;
+    return value != null ? getEncoder().encode(value.getBytes()) : null;
   }
 
   @Override
   public String convertToString(final byte[] value, final Locale locale) {
-    return value != null ? new String(value) : null;
+    return value != null ? new String(getDecoder().decode(value)) : null;
   }
 }
